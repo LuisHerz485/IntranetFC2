@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a href="inicio" class="brand-link">
       
-      <img src="vistas/dist/img/" alt="">
+      <img src="vistas/dist/img/logo-blanco.png" width="240px" alt="">
     </a>
     
     <!-- Sidebar -->
