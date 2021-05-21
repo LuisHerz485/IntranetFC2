@@ -33,6 +33,12 @@
             }
         }
 
+        static public function ctrMostrarUsuario($item,$valor){
+			$tabla = "departamento";
+			$respuesta = ModeloDepartamento::mdlMostrarDepartamento($tabla,$item,$valor);
+			return $respuesta;
+		}
+
         
     
     

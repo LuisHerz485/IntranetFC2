@@ -44,6 +44,7 @@
                     <th>Estado</th>
                   </thead>
                   <tbody>
+                    
                   </tbody>
                   <tfoot>
                     <th>Opciones</th>
@@ -64,12 +65,29 @@
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
                     <label for="">Tipo usuario(*):</label>
                     <select name="idtipousuario" id="idtipousuario" class="form-control select-picker" required>
+                    <option value="">Seleccione ...</option>
+                    <?php 
+                      $item = 1;
+                      $valor = null;
+                      $tipousuario = ControladorTipoUsuario::ctrMostrarTipoUsuario($item,$valor);
+                      foreach($tipousuario as $key => $value){ 
+                        echo '<option  value="'.$value['idtipousuario'].'">'.$value['nombre'].'</option>';
+                      }
+                    ?>
                     </select>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
                     <label for="">Departamento(*):</label>
                     <select name="iddepartamento" id="iddepartamento" class="form-control select-picker" required>
-                  
+                    <option value="">Seleccione ...</option>
+                    <?php 
+                      $item = 1;
+                      $valor = null;
+                      $departamento = ControladorDepartamento::ctrMostrarDepartamento($item,$valor);
+                      foreach($departamento as $key => $value){ 
+                        echo '<option  value="'.$value['iddepartamento'].'">'.$value['nombre'].'</option>';
+                      }
+                    ?>
                     </select>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">

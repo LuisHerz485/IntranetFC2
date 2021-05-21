@@ -1,13 +1,13 @@
 <?php
     require_once "conexion.php";
 
-    class ModeloUsuarios{
-        static public function mdlMostrarUsuarios($tabla,$item,$valor){
+    class ModeloTipoUsuario{
+        static public function mdlMostrarTipoUsuario($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by nombre DESC LIMIT 1");
+                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by nombre");
                     $stmt -> execute();
-                    return $stmt -> fetch();
+                    return $stmt -> fetchAll();
                 }else{
                     $stmt = Conexion::conectar()->prepare("SELECT U.estado as estado, U.nombre AS nombre, U.apellidos AS apellidos, u.login AS usuario, u.password1 as password1, u.imagen as imagen, tu.nombre as tipousuario FROM $tabla U JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario WHERE $item = :$item");
                     $stmt -> bindParam(":".$item,$valor,PDO::PARAM_STR);
