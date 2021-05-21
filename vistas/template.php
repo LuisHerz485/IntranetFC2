@@ -20,7 +20,7 @@
   <!-- JQVMap -->
   <link rel="stylesheet" href="vistas/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="vistas/dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="vistas/dist/css/adminlte.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="vistas/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Daterange picker -->
@@ -66,9 +66,6 @@
   <script src="vistas/dist/js/demo.js"></script>
 
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
-
 <?php
       if(isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion']=="ok"){
         echo '<body class="hold-transition sidebar-mini layout-fixed">';
@@ -79,15 +76,7 @@
       
         if(isset($_GET['ruta'])){
           if($_GET['ruta'] == "inicio" ||
-              $_GET['ruta'] =="server" ||
-              $_GET['ruta'] =="headers" ||
-              $_GET['ruta'] =="menubar" ||
-              $_GET['ruta'] =="slider" ||
-              $_GET['ruta'] =="body" ||
-              $_GET['ruta'] =="contactoysocial" ||
-              $_GET['ruta'] =="social" ||
               $_GET['ruta'] =="usuarios" ||
-              $_GET['ruta'] =="footer" ||
               $_GET['ruta'] =="salir"){
                 include "vistas/modulos/paginas/".$_GET['ruta'].".php";
           }else{
@@ -96,7 +85,7 @@
         }
         include "vistas/modulos/templates/footer.php";
       }else{
-        echo '<body class="hold-transition sidebar-mini layout-fixed login-page">';
+        echo '<body class="hold-transition login-page">';
         include "vistas/modulos/paginas/login.php";
       }   
   ?>

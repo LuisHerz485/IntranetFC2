@@ -15,7 +15,13 @@
             <i class="fas fa-user-times"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">Nombre de Usuario</span>
+          <?php 
+            if($_SESSION['nombre']!=""){
+              echo ' <span class="dropdown-item dropdown-header">'.$_SESSION["nombre"].' '.$_SESSION["apellidos"].'<br/>'.$_SESSION["login"].' - '.$_SESSION["tipousuario"].'</span>';
+            }else{
+              echo '<span class="dropdown-item dropdown-header">Nombre de Usuario</span>';  
+            }
+          ?>
             <div class="dropdown-divider"></div>
             <a href="salir" class="dropdown-item">
             <i class="fas fa-user-times mr-2"></i> Cerrar Sesión
