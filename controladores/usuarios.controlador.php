@@ -34,8 +34,8 @@
         }
 
         static public function ctrMostrarUsuario($item,$valor){
-			$tabla = "departamento";
-			$respuesta = ModeloDepartamento::mdlMostrarDepartamento($tabla,$item,$valor);
+			$tabla = "usuario";
+			$respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla,$item,$valor);
 			return $respuesta;
 		}
 

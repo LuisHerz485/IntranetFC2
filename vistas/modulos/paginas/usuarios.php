@@ -44,7 +44,23 @@
                     <th>Estado</th>
                   </thead>
                   <tbody>
-                    
+                  <?php 
+                      $item = null;
+                      $valor = null;
+                      $usuarios = ControladorUsuarios::ctrMostrarUsuario($item,$valor);
+                      foreach($usuarios as $key => $value){
+                        echo '<tr>
+                          <th scope="row"><button class="btn btn-warning btn-xs btnDetalleTicket" idTicket=""><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-info btn-xs btnDetalleTicket" idTicket=""><i class="fas fa-key"></i></button></th>
+                          <td>'.$value['nombre'].'</td>
+                          <td>'.$value['apellidos'].'</td>
+                          <td>'.$value['login'].'</td>
+                          <td>'.$value['email'].'</td>
+                          <td>'.$value['imagen'].'</td>
+                          <td>'.$value['fechacreado'].'</td>
+                          <td>'.$value['estado'].'</td>
+                          </tr>';
+                      }
+                  ?>
                   </tbody>
                   <tfoot>
                     <th>Opciones</th>
