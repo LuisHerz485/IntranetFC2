@@ -29,6 +29,9 @@
   <link rel="stylesheet" href="vistas/plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- DataTable -->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" type="text/css" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
 
   <!-- jQuery -->
   <script src="vistas/plugins/jquery/jquery.min.js"></script>
@@ -64,6 +67,10 @@
   <script src="vistas/dist/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="vistas/dist/js/demo.js"></script>
+  <!-- DataTable -->
+  <script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="vistas/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+  <script type="text/javascript" src="vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
 
 </head>
 <?php
@@ -89,6 +96,9 @@
         include "vistas/modulos/paginas/login.php";
       }   
   ?>
+
+  <script src="vistas/js/usuario.js"></script>
+  <script src="vistas/js/dataTable.js"></script>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
