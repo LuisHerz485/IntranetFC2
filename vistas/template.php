@@ -100,6 +100,7 @@
   <script src="vistas/js/usuario.js"></script>
   <script src="vistas/js/dataTable.js"></script>
 
+
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
