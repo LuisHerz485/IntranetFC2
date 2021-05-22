@@ -54,11 +54,19 @@
                           <td>'.$value['nombre'].'</td>
                           <td>'.$value['apellidos'].'</td>
                           <td>'.$value['login'].'</td>
-                          <td>'.$value['email'].'</td>
-                          <td>'.$value['imagen'].'</td>
-                          <td>'.$value['fechacreado'].'</td>
-                          <td>'.$value['estado'].'</td>
-                          </tr>';
+                          <td>'.$value['email'].'</td>';
+                          if($value["imagen"]!=""){
+                            echo '<td><img src="'.$value['imagen'].'" width="50px"></td>';
+                          }else{
+                            echo '<td><img src="vistas/dist/img/avatar.png" width="50px"></td>';
+                          }
+                          echo'<td>'.$value['fechacreado'].'</td>';
+                          if($value['estado']!="1"){
+                            echo'<td><button class="btn btn-danger btnprueba btn-xs btnActivar" idUsuario="'.$value["login"].'" estadoUsuario="1">Inactivo</button></td>';
+                          }else{
+                            echo'<td><button class="btn btn-success btnprueba btn-xs btnActivar" idUsuario="'.$value["login"].'" estadoUsuario="0">Activo</button></td>';
+                          }
+                          echo'</tr>';
                       }
                   ?>
                   </tbody>
@@ -76,7 +84,7 @@
               </div>
             </div>
             <div class="card-body panel-body" id="formularioregistros">
-              <form action="" name="formulario" id="formulario" method="POST">
+              <form action="" name="formulario" id="formulario" method="POST" enctype="multipart/form-data">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
                     <label for="">Tipo usuario(*):</label>
@@ -133,14 +141,20 @@
                     <input class="form-control" type="text" name="codigo_persona" id="codigo_persona" maxlength="64" placeholder="Clave">
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                    <label for="">Imagen:</label>
-                    <input class="form-control filestyle" data-buttonText="Seleccionar foto" type="file" name="imagen" id="imagen">
+                    <label class="panel" for="">Imagen:</label>
+                    <input type="file" class="nuevaFoto center-block" name="nuevaFoto" id="nuevaFoto">
+                    <p class="center-block">Peso maximo de la foto 2Mb</p>
                     <input type="hidden" name="imagenactual" id="imagenactual">
-                    <img src="" alt="" width="150px" id="imagenmuestra">
+                    <img src="vistas/dist/img/avatar.png" class="thumbnail center-block previsualizar" alt="" width="150px" id="imagenmuestra">
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>
                     <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+                  </div>
+                  <?php 
+                    $crearusuario = new ControladorUsuarios();
+                    $crearusuario -> ctrCrearUsuario();
+                  ?>
                 </div>
               </form>
             </div>

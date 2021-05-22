@@ -32,6 +32,8 @@
   <!-- DataTable -->
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
   <link rel="stylesheet" type="text/css" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <!-- Toastr -->
+  <link rel="stylesheet" href="vistas/plugins/toastr/toastr.min.css">
 
   <!-- jQuery -->
   <script src="vistas/plugins/jquery/jquery.min.js"></script>
@@ -71,6 +73,10 @@
   <script type="text/javascript" src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="vistas/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
   <script type="text/javascript" src="vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+  <!-- Toastr -->
+  <script src="vistas/plugins/toastr/toastr.min.js"></script>
+  <!--Swal alert-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 </head>
 <?php
