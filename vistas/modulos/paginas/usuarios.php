@@ -30,8 +30,8 @@
 
               </div>
               <br/>
-              <div >
-                <table id="tbllistado" class="table table-striped  dt-responsive">
+              <div id="tbllistado">
+                <table  class="table table-striped tablaDataTable dt-responsive">
                   <thead>
                     <th>Opciones</th>
                     <th>Nombre</th>
