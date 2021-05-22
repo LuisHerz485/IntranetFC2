@@ -18,7 +18,7 @@
 							$_SESSION['login']=$respuesta['usuario'];
                             $_SESSION['tipousuario']=$respuesta['tipousuario'];
                             $_SESSION['estado']=$respuesta['estado'];
-							$_SESSION['imagen']= "vistas/dist/img/user2-160x160.jpg";
+							$_SESSION['imagen']= $respuesta['imagen'];
 							$_SESSION['perfil']= $respuesta['tipousuario'];			  					  
 							echo '<script>
 								window.location="inicio";
