@@ -54,20 +54,21 @@
 
 						//De acuerdo al tipo de imagen se hace el proceso de recorte de la foto
 						if($_FILES['nuevaFoto']['type']=="image/jpeg"){
-							$ruta = $directorio."/".$_POST['login'].".jpg";
+							$aleatorio = mt_rand(100,999);
+							$ruta = $directorio."/".$aleatorio.".jpg";
 							$origen = imagecreatefromjpeg($_FILES['nuevaFoto']['tmp_name']);
 							$destino = imagecreatetruecolor($nuevoancho, $nuevoalto);
 							imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoancho, $nuevoalto, $ancho, $alto);
 							imagejpeg($destino,$ruta);
 						}
 						if($_FILES['nuevaFoto']['type']=="image/png"){
-							$ruta = $directorio."/".$_POST['login'].".png";
+							$aleatorio = mt_rand(100,999);
+							$ruta = $directorio."/".$aleatorio.".png";
 							$origen = imagecreatefrompng($_FILES['nuevaFoto']['tmp_name']);
 							$destino = imagecreatetruecolor($nuevoancho, $nuevoalto);
 							imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoancho, $nuevoalto, $ancho, $alto);
 							imagepng($destino,$ruta);
 						}
-
 					}
 
 					$tabla = "usuario";
