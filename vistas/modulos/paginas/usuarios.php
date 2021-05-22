@@ -1,3 +1,4 @@
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -26,13 +27,11 @@
             </div>
             <div class="card-body panel-body" id="listadoregistros">
               <div class="dt-buttons">
-                <a class="btn btn-default" tabindex="0" aria-controls="tbllistado" href="#"><span>Copy</span></a>
-                <a class="btn btn-default" tabindex="0" aria-controls="tbllistado" href="#"><span>Excel</span></a>
-                <a class="btn btn-default" tabindex="0" aria-controls="tbllistado" href="#"><span>PDF</span></a>
+
               </div>
               <br/>
               <div id="tbllistado">
-                <table class="table table-striped tablaDataTable dt-responsive">
+                <table  class="table table-striped tablaDataTable dt-responsive">
                   <thead>
                     <th>Opciones</th>
                     <th>Nombre</th>
@@ -164,4 +163,8 @@
     </div>
   </div>
 </div>  
+
+
+
+
   <!-- /.content-wrapper -->

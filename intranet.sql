@@ -60,6 +60,39 @@ CREATE TABLE asistencia(
 );
 
 
+/*
+CREATE TABLE auditoria(
+	idregistro int primary key auto_increment,
+	idusuario varchar(50) not null,
+	nomusuario varchar(100) not null,
+	fecha datetime not null,
+	accion varchar(100) not null
+);
+
+DROP TRIGGER IF EXISTS `INSERTAR_USUARIO`;
+DROP TRIGGER IF EXISTS `ACTUALIZAR_USUARIO`;
+DROP TRIGGER IF EXISTS `ELIMINAR_USUARIO`;
+
+CREATE TRIGGER `INSERTAR_USUARIO` AFTER INSERT ON `usuario` FOR EACH ROW 
+INSERT INTO auditoria (idusuario,nomusuario,fecha,accion)
+VALUES(NEW.idusuario,NEW.nombre,NOW(),"Ingreso nuevo usuario");
 
 
+CREATE TRIGGER `ACTUALIZAR_USUARIO` AFTER UPDATE ON `usuario` 
+FOR EACH ROW 
+BEGIN
+UPDATE 
+
+END
+
+
+
+CREATE TRIGGER `ELIMINAR_USUARIO` AFTER DELETE ON `usuario` 
+FOR EACH ROW 
+BEGIN
+DELETE 
+
+END
+
+*/
 
