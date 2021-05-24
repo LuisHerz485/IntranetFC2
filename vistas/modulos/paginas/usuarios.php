@@ -49,7 +49,7 @@
                       $usuarios = ControladorUsuarios::ctrMostrarUsuario($item,$valor);
                       foreach($usuarios as $key => $value){
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-xs btnDetalleTicket" idTicket=""><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-info btn-xs btnDetalleTicket" idTicket=""><i class="fas fa-key"></i></button></th>
+                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarUsuario" onclick="mostrarform(true)" login="'.$value['login'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-info btn-xs btnContra" login="'.$value['login'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>
                           <td>'.$value['nombre'].'</td>
                           <td>'.$value['apellidos'].'</td>
                           <td>'.$value['login'].'</td>
@@ -88,7 +88,7 @@
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
                     <label for="">Tipo usuario(*):</label>
                     <select name="idtipousuario" id="idtipousuario" class="form-control select-picker" required>
-                    <option value="">Seleccione ...</option>
+                    <option value="0">Seleccione ...</option>
                     <?php 
                       $item = 1;
                       $valor = null;
@@ -102,7 +102,7 @@
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
                     <label for="">Departamento(*):</label>
                     <select name="iddepartamento" id="iddepartamento" class="form-control select-picker" required>
-                    <option value="">Seleccione ...</option>
+                    <option value="0">Seleccione ...</option>
                     <?php 
                       $item = 1;
                       $valor = null;
@@ -115,6 +115,7 @@
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
                     <label for="">Nombre(*):</label>
+                    <input class="form-control" type="hidden" name="editar" id="editar" value="no">
                     <input class="form-control" type="hidden" name="idusuario" id="idusuario">
                     <input class="form-control" type="text" name="nombre" id="nombre" maxlength="100" placeholder="Nombre" required>
                   </div>
@@ -130,11 +131,11 @@
                     <label for="">Login(*):</label>
                     <input class="form-control" type="text" name="login" id="login" maxlength="20" placeholder="nombre de usuario" required>
                   </div>
-                  <div class="form-group col-lg-6 col-md-6 col-xs-12" id="claves">
+                  <div class="form-group col-lg-6 col-md-6 col-xs-12" id="claves" name="claves">
                     <label for="">Clave de ingreso(*):</label>
                     <input class="form-control" type="password" name="clave" id="clave" maxlength="64" placeholder="Clave">
                   </div>
-                  <div class="form-group col-lg-6 col-md-6 col-xs-12" id="claves">
+                  <div class="form-group col-lg-6 col-md-6 col-xs-12" id="claves1">
                     <label for="">Clave de asistencia(*):</label>
                     <button class="btn btn-info" type="button" onclick="generar(6);" >Generar</button>
                     <input class="form-control" type="text" name="codigo_persona" id="codigo_persona" maxlength="64" placeholder="Clave">
@@ -142,15 +143,15 @@
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
                     <label class="panel" for="">Imagen:</label>
                     <input type="file" class="nuevaFoto center-block" name="nuevaFoto" id="nuevaFoto">
+                    <input class="form-control" type="hidden" name="fotoaux" id="fotoaux">
                     <p class="center-block">Peso maximo de la foto 2Mb</p>
-                    <input type="hidden" name="imagenactual" id="imagenactual">
-                    <img src="vistas/dist/img/avatar.png" class="thumbnail center-block previsualizar" alt="" width="150px" id="imagenmuestra">
+                    <img src="vistas/dist/img/avatar.png" class="thumbnail center-block previsualizar" alt="" width="150px" id="imagenmuestra" name="imagenmuestra">
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>  Guardar</button>
+                    <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
                     <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
                   </div>
-                  <?php 
+                  <?php
                     $crearusuario = new ControladorUsuarios();
                     $crearusuario -> ctrCrearUsuario();
                   ?>
@@ -164,7 +165,37 @@
   </div>
 </div>  
 
+<!-- Modal Contraseña -->
+<div class="modal fade" id="modalContra" role="dialog">
+  <div class="modal-dialog">
+    <form role="form" method="post" enctype="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cambio de contraseña</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon" style="margin:10px 10px 0px 0px;"><i class="fas fa-key"></i></span>
+              <input class="form-control" type="hidden" name="idusuario1" id="idusuario1">
+              <input type="password" name="contra" id="contra" class="form-control input-lg" placeholder="Contraseña" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+        <?php
+          $contrausuario = new ControladorUsuarios();
+          $contrausuario -> ctrEditarContra();
+        ?>
+      </div>
+    </form>
+  </div>
+</div>
 
-
-
-  <!-- /.content-wrapper -->
+<!-- /.content-wrapper -->

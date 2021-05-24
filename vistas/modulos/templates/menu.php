@@ -2,20 +2,19 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="inicio" class="brand-link">
-      
       <img src="vistas/dist/img/logo-blanco.png" width="240px" alt="">
     </a>
     
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center;">
         <div class="image">
             <?php
                 if($_SESSION['imagen']!=""){
-                    echo '<img src="'.$_SESSION['imagen'].'" class="img-circle elevation-2" alt="User Image">';
+                    echo '<img src="'.$_SESSION['imagen'].'" class="img-circle elevation-2" alt="User Image" style="width: 55px;">';
                 }else{
-                    echo '<img src="vistas/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">';
+                    echo '<img src="vistas/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image" style="width: 55px;">';
                 }
             ?>
         </div>

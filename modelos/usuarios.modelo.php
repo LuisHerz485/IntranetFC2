@@ -9,7 +9,10 @@
                     $stmt -> execute();
                     return $stmt -> fetch();
                 }else{
-                    $stmt = Conexion::conectar()->prepare("SELECT U.estado as estado, U.nombre AS nombre, U.apellidos AS apellidos, u.login AS usuario, u.password1 as password1, u.imagen as imagen, tu.nombre as tipousuario FROM $tabla U JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario WHERE $item = :$item");
+                    $stmt = Conexion::conectar()->prepare("SELECT U.idusuario as idusuario, D.iddepartamento as iddepartamento, TU.idtipousuario as idtipousuario, U.estado as estado, U.nombre AS nombre, U.apellidos AS apellidos, u.login AS usuario, u.password1 as password1, u.imagen as imagen, tu.nombre as tipousuario, D.nombre as departamento, u.email as email, u.codigopersona as codigopersona
+                    FROM $tabla U 
+                    JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario
+                    JOIN departamento D ON U.iddepartamento = D.iddepartamento WHERE $item = :$item");
                     $stmt -> bindParam(":".$item,$valor,PDO::PARAM_STR);
                     $stmt -> execute();
                     return $stmt -> fetch();
@@ -50,6 +53,40 @@
 			$stmt = conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");
 			$stmt -> bindParam(":".$item1,$valor1,PDO::PARAM_STR);
 			$stmt -> bindParam(":".$item2,$valor2,PDO::PARAM_STR);
+			if($stmt->execute()){
+				return "ok";
+			}else{
+				return "error";
+			}
+			$stmt ->close();
+			$stmt = null;
+		}
+
+        static public function mdlEditarUsuario($tabla,$datos){
+			$stmt = conexion::conectar()->prepare("UPDATE $tabla SET idtipousuario=:idtipousuario,iddepartamento=:iddepartamento,nombre=:nombre,apellidos=:apellidos,email=:email,login=:login,codigopersona=:codigopersona,imagen=:imagen WHERE idusuario=:idusuario");
+			$stmt -> bindParam(":iddepartamento", $datos["iddepartamento"],PDO::PARAM_STR);
+            $stmt -> bindParam(":idtipousuario", $datos["idtipousuario"],PDO::PARAM_STR);
+            $stmt -> bindParam(":nombre", $datos["nombre"],PDO::PARAM_STR);
+            $stmt -> bindParam(":apellidos", $datos["apellidos"],PDO::PARAM_STR);
+            $stmt -> bindParam(":login",$datos['login'],PDO::PARAM_STR);
+            $stmt -> bindParam(":email", $datos["email"],PDO::PARAM_STR);
+            $stmt -> bindParam(":imagen",$datos['imagen'],PDO::PARAM_STR);
+            $stmt -> bindParam(":codigopersona",$datos['codigo_persona'],PDO::PARAM_STR);
+            $stmt -> bindParam(":idusuario",$datos['idusuario'],PDO::PARAM_STR);
+
+			if($stmt->execute()){
+				return "ok";
+			}else{
+				return "error";
+			}
+			$stmt ->close();
+			$stmt = null;
+		}
+
+        static public function mdlEditarContra($tabla,$datos){
+			$stmt = conexion::conectar()->prepare("UPDATE $tabla SET password1=:password1 WHERE idusuario=:idusuario");
+			$stmt -> bindParam(":password1", $datos["password1"],PDO::PARAM_STR);
+            $stmt -> bindParam(":idusuario", $datos["idusuario"],PDO::PARAM_STR);
 			if($stmt->execute()){
 				return "ok";
 			}else{

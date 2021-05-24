@@ -11,20 +11,24 @@
                     $clavehash=hash("SHA256", $_POST['password']);
 
                     if($respuesta['usuario']==$_POST['usuario'] && $respuesta['password1']==$clavehash){
-                        if($respuesta['estado']==1){
-							$_SESSION['iniciarSesion']="ok";
-							$_SESSION['nombre']=$respuesta['nombre'];
-                            $_SESSION['apellidos']=$respuesta['apellidos'];
-							$_SESSION['login']=$respuesta['usuario'];
-                            $_SESSION['tipousuario']=$respuesta['tipousuario'];
-                            $_SESSION['estado']=$respuesta['estado'];
-							$_SESSION['imagen']= $respuesta['imagen'];
-							$_SESSION['perfil']= $respuesta['tipousuario'];			  					  
-							echo '<script>
-								window.location="inicio";
-							</script>';
+						if($respuesta['idtipousuario'] == 1){
+							if($respuesta['estado']==1){
+								$_SESSION['iniciarSesion']="ok";
+								$_SESSION['nombre']=$respuesta['nombre'];
+								$_SESSION['apellidos']=$respuesta['apellidos'];
+								$_SESSION['login']=$respuesta['usuario'];
+								$_SESSION['tipousuario']=$respuesta['tipousuario'];
+								$_SESSION['estado']=$respuesta['estado'];
+								$_SESSION['imagen']= $respuesta['imagen'];
+								$_SESSION['perfil']= $respuesta['tipousuario'];			  					  
+								echo '<script>
+									window.location="inicio";
+								</script>';
+							}else{
+								echo("<br /><div class='alert alert-danger'>Usuario inactivo, contacte al administrador del sistema</div>");
+							}
 						}else{
-							echo("<br /><div class='alert alert-danger'>Usuario inactivo, contacte al administrador del sistema</div>");
+							echo("<br /><div class='alert alert-danger'>Usuario sin acceso al sistema, contacte al administrador del sistema</div>");
 						}
                     }else{
                         echo("<br /><div class='alert alert-danger'>Usuario y/o contraseña incorrecta</div>");
@@ -41,11 +45,11 @@
 
         static public function ctrCrearUsuario(){
 			if(isset($_POST['nombre'])){
-			    if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/', $_POST['nombre'])&&
-			    preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/', $_POST['apellidos'])){
+			    if(preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+$/', $_POST['nombre'])&&
+			    preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+$/', $_POST['apellidos'])){
 
 					$ruta="";
-					if(isset($_FILES['nuevaFoto']['tmp_name'])){
+					if(isset($_FILES['nuevaFoto']['tmp_name'])&&!empty($_FILES['nuevaFoto']['tmp_name'])){
 						list($ancho, $alto) = getimagesize($_FILES['nuevaFoto']['tmp_name']);
 						$nuevoancho = 500;
 						$nuevoalto = 500;
@@ -54,27 +58,28 @@
 
 						//De acuerdo al tipo de imagen se hace el proceso de recorte de la foto
 						if($_FILES['nuevaFoto']['type']=="image/jpeg"){
-							$aleatorio = mt_rand(100,999);
-							$ruta = $directorio."/".$aleatorio.".jpg";
+							$ruta = $directorio."/".$_POST['login'].".jpg";
 							$origen = imagecreatefromjpeg($_FILES['nuevaFoto']['tmp_name']);
 							$destino = imagecreatetruecolor($nuevoancho, $nuevoalto);
 							imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoancho, $nuevoalto, $ancho, $alto);
 							imagejpeg($destino,$ruta);
 						}
 						if($_FILES['nuevaFoto']['type']=="image/png"){
-							$aleatorio = mt_rand(100,999);
-							$ruta = $directorio."/".$aleatorio.".png";
+							$ruta = $directorio."/".$_POST['login'].".png";
 							$origen = imagecreatefrompng($_FILES['nuevaFoto']['tmp_name']);
 							$destino = imagecreatetruecolor($nuevoancho, $nuevoalto);
 							imagecopyresized($destino, $origen, 0, 0, 0, 0, $nuevoancho, $nuevoalto, $ancho, $alto);
 							imagepng($destino,$ruta);
 						}
+					}else{
+						$ruta=$_POST['fotoaux'];
 					}
 
 					$tabla = "usuario";
 					//Hash SHA256 para la contraseña
 					$clavehash=hash("SHA256", $_POST['clave']);
-				    $datos = array("idtipousuario" => $_POST['idtipousuario'],
+				    $datos = array("idusuario" => $_POST['idusuario'],
+								"idtipousuario" => $_POST['idtipousuario'],
                                 "iddepartamento" => $_POST['iddepartamento'],
                                 "nombre" => $_POST['nombre'],
 								"apellidos" => $_POST['apellidos'],
@@ -84,21 +89,27 @@
 								"codigo_persona" => $_POST['codigo_persona'],
 								"imagen" => $ruta,
 								"estado" => 1);
-					$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla,$datos);
-				    if($respuesta =="ok"){
-                        echo"<script>
-							Swal.fire({ 
-								title: 'Success!',
-								text: '¡El usuario ha sido creado correctamente!',
-								icon: 'success',
-								confirmButtonText:'Ok'
-								}).then((result)=>{
-									if(result.value){
-										window.location='usuarios';
-									}
-								})
-						</script>";
-				    }
+
+					if($_POST['editar'] === "no"){
+						$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla,$datos);
+						
+					}else{
+						$respuesta = ModeloUsuarios::mdlEditarUsuario($tabla,$datos);
+						if($respuesta =="ok"){
+							echo"<script>
+								Swal.fire({ 
+									title: 'Success!',
+									text: '¡El usuario se modificó correctamente!',
+									icon: 'success',
+									confirmButtonText:'Ok'
+									}).then((result)=>{
+										if(result.value){
+											window.location='usuarios';
+										}
+									})
+							</script>";
+						}
+					} 
                 }else{
                     echo ("<script>
 					Swal.fire({
@@ -109,6 +120,45 @@
 					});
 				</script>");
 			    }
+			}
+		}
+
+		static public function ctrEditarContra(){
+			if(isset($_POST['contra'])){
+				if(preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+$/', $_POST['contra'])){
+					$tabla = "usuario";
+
+					//Hash SHA256 para la contraseña
+					$clavehash = hash("SHA256", $_POST['contra']);
+					
+					$datos = array("idusuario" => $_POST['idusuario1'],
+								"password1" => $clavehash);
+
+					$respuesta = ModeloUsuarios::mdlEditarContra($tabla,$datos);
+					if($respuesta =="ok"){
+						echo"<script>
+							Swal.fire({ 
+								title: 'Success!',
+								text: '¡La contraseña fue modificada correctamente!',
+								icon: 'success',
+								confirmButtonText:'Ok'
+								}).then((result)=>{
+									if(result.value){
+										window.location='usuarios';
+									}
+								})
+						</script>";
+					}
+				}else{
+					echo ("<script>
+					Swal.fire({
+					title: 'Error!',
+					text: '¡No puedes usar caracteres especiales!',
+					icon: 'error',
+					confirmButtonText: 'Ok'
+					});
+				</script>");
+				}
 			}
 		}
     
