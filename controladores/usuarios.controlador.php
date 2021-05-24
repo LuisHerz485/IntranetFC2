@@ -92,7 +92,20 @@
 
 					if($_POST['editar'] === "no"){
 						$respuesta = ModeloUsuarios::mdlIngresarUsuario($tabla,$datos);
-						
+						if($respuesta =="ok"){
+							echo"<script>
+								Swal.fire({ 
+									title: 'Success!',
+									text: '¡El usuario se creo correctamente!',
+									icon: 'success',
+									confirmButtonText:'Ok'
+									}).then((result)=>{
+										if(result.value){
+											window.location='usuarios';
+										}
+									})
+							</script>";
+						}
 					}else{
 						$respuesta = ModeloUsuarios::mdlEditarUsuario($tabla,$datos);
 						if($respuesta =="ok"){

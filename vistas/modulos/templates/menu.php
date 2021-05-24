@@ -58,7 +58,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="tipousuario" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Tipo Usuario</p>
                         </a>

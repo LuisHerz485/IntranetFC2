@@ -7,7 +7,7 @@ CREATE TABLE tipousuario(
 	idtipousuario int primary key auto_increment,
 	nombre varchar(45) not null,
 	descripcion varchar(45) not null,
-	fechaCreada datetime not null
+	fechaCreada timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
 );
 
 INSERT INTO `tipousuario`(`idtipousuario`, `nombre`, `descripcion`, `fechaCreada`) VALUES (1, 'Administrador', 'Con priviliegios de gestionar todo el sistema', '2020-01-18 00:00:00');
@@ -16,7 +16,7 @@ CREATE TABLE departamento(
 	iddepartamento int primary key auto_increment,
 	nombre varchar(45) not null,
 	descripcion varchar(45) not null,
-	fechaCreada datetime not null
+	fechaCreada timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
 );
 
 INSERT INTO `departamento` (`iddepartamento`, `nombre`, `descripcion`, `fechacreada`) VALUES
@@ -42,7 +42,7 @@ CREATE TABLE usuario(
 	password1 varchar(64) not null,
 	imagen varchar(45) not null,
 	estado tinyint not null,
-	fechacreado datetime not null,
+	fechacreado timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
 	codigopersona varchar(20) not null,
 	idmensaje int,
 	CONSTRAINT fk_user_dep FOREIGN KEY (iddepartamento) REFERENCES departamento(iddepartamento),
