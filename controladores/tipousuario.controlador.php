@@ -15,9 +15,10 @@
 
 				    $datos = array("idtipousuario" => $_POST['idtipousuario'],
 								"nombre" => $_POST['nombre'],
-                                "descripcion" => $_POST['descripcion']);
+                                "descripcion" => $_POST['descripcion'],
+								"estado" => 1);
 
-					if($_POST['editar'] === "no"){
+					if($_POST['editarTU'] === "no"){
 						$respuesta = ModeloTipoUsuario::mdlIngresarTipoUsuario($tabla,$datos);
 						if($respuesta =="ok"){
 							echo"<script>

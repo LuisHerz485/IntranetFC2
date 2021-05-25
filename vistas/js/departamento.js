@@ -1,38 +1,38 @@
 function init() {
-    mostrarformTU(false);
+    mostrarformD(false);
 }
 
 function limpiar() {
-    $("#editarTU").val("no");
+    $("#editarD").val("no");
     $("#nombre").val("");
     $("#descripcion").val("");
 }
 
-function mostrarformTU(flag) {
+function mostrarformD(flag) {
     if (flag) {
-        $("#listadoregistrosTU").hide();
-        $("#formularioregistrosTU").show();
+        $("#listadoregistrosD").hide();
+        $("#formularioregistrosD").show();
         $("#btnGuardar").prop("disabled", false);
         $("#btnagregar").hide();
     } else {
-        $("#listadoregistrosTU").show();
-        $("#formularioregistrosTU").hide();
+        $("#listadoregistrosD").show();
+        $("#formularioregistrosD").hide();
         $("#btnagregar").show();
     }
 }
 
-function cancelarformTU() {
+function cancelarformD() {
     limpiar();
-    mostrarformTU(false);
+    mostrarformD(false);
 }
 
-$(".btnEditarTipoUsuario").click(function() {
-    $("#editarTU").val("si");
+$(".btnEditarDepartamento").click(function() {
+    $("#editarD").val("si");
     var nombre = $(this).attr("nombre");
     var datos = new FormData();
     datos.append("nombre", nombre);
     $.ajax({
-        url: "ajax/tipousuario.ajax.php",
+        url: "ajax/departamento.ajax.php",
         method: "POST",
         data: datos,
         cache: false,
@@ -40,7 +40,7 @@ $(".btnEditarTipoUsuario").click(function() {
         processData: false,
         dataType: "json",
         success: function(respuesta) {
-            $("#idtipousuario").val(respuesta['idtipousuario']);
+            $("#iddepartamento").val(respuesta['iddepartamento']);
             $("#nombre").val(respuesta['nombre']);
             $("#descripcion").val(respuesta['descripcion']);
         },
@@ -50,7 +50,7 @@ $(".btnEditarTipoUsuario").click(function() {
     });
 })
 
-$(".btnActivarTU").click(function() {
+$(".btnActivarD").click(function() {
     var nombre = $(this).attr("nombre");
     var estado = $(this).attr("estado");
     var datos = new FormData();
@@ -58,13 +58,13 @@ $(".btnActivarTU").click(function() {
     datos.append("estado", estado);
 
     Swal.fire({
-        title: '¿Seguro que deseas cambiar el estado del tipo usuario?',
+        title: '¿Seguro que deseas cambiar el estado del Área?',
         showCancelButton: true,
         confirmButtonText: `Guardar`,
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: "ajax/tipousuario.ajax.php",
+                url: "ajax/departamento.ajax.php",
                 method: "POST",
                 data: datos,
                 cache: false,

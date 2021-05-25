@@ -11,25 +11,26 @@ CREATE TABLE tipousuario(
 	estado int not null
 );
 
-INSERT INTO `tipousuario`(`idtipousuario`, `nombre`, `descripcion`, `fechaCreada`) VALUES (1, 'Administrador', 'Con priviliegios de gestionar todo el sistema', '2020-01-18 00:00:00');
+INSERT INTO `tipousuario`(`idtipousuario`, `nombre`, `descripcion`, `estado`) VALUES (1, 'Administrador', 'Con priviliegios de gestionar todo el sistema', 1);
 
 CREATE TABLE departamento(
 	iddepartamento int primary key auto_increment,
 	nombre varchar(45) not null,
 	descripcion varchar(45) not null,
-	fechaCreada timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+	fechaCreada timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	estado int not null
 );
 
-INSERT INTO `departamento` (`iddepartamento`, `nombre`, `descripcion`, `fechacreada`) VALUES
-(1, 'Administracion', 'Area de Administracion', '2021-02-26 00:00:00'),
-(2, 'Comunicaciones', 'Area de Comunicaciones', '2021-02-26 00:00:00'),
-(3, 'Contabilidad', 'Area de contabilidad', '2021-02-26 00:00:00'),
-(4, 'Diseno y Marketing', 'Area de Diseno y Marketing', '2021-02-26 00:00:00'),
-(5, 'Laboral', 'Area Laboral', '2021-02-26 00:00:00'),
-(6, 'Psicologia', 'Area de Psicologia', '2021-02-26 00:00:00'),
-(7, 'Sistemas', 'Area de Sistemas', '2021-02-26 00:00:00'),
-(8, 'Tributaria', 'Area Tributaria', '2021-02-26 00:00:00'),
-(9, 'Gerencia', 'Gerencia', '2021-02-26 00:00:00');
+INSERT INTO `departamento` (`iddepartamento`, `nombre`, `descripcion`, `estado`) VALUES
+(1, 'Administracion', 'Area de Administracion', 1),
+(2, 'Comunicaciones', 'Area de Comunicaciones', 1),
+(3, 'Contabilidad', 'Area de contabilidad', 1),
+(4, 'Diseno y Marketing', 'Area de Diseno y Marketing', 1),
+(5, 'Laboral', 'Area Laboral', 1),
+(6, 'Psicologia', 'Area de Psicologia', 1),
+(7, 'Sistemas', 'Area de Sistemas', 1),
+(8, 'Tributaria', 'Area Tributaria', 1),
+(9, 'Gerencia', 'Gerencia', 1);
 
 
 CREATE TABLE usuario(

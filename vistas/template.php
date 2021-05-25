@@ -91,6 +91,7 @@
           if($_GET['ruta'] == "inicio" ||
               $_GET['ruta'] =="usuarios" ||
               $_GET['ruta'] =="tipousuario" ||
+              $_GET['ruta'] =="departamento" ||
               $_GET['ruta'] =="salir"){
                 include "vistas/modulos/paginas/".$_GET['ruta'].".php";
           }else{
@@ -106,6 +107,7 @@
 
   <script src="vistas/js/usuario.js"></script>
   <script src="vistas/js/tipousuario.js"></script>
+  <script src="vistas/js/departamento.js"></script>
   <script src="vistas/js/dataTable.js"></script>
 
 

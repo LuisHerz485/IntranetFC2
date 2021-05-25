@@ -1,5 +1,5 @@
 <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
@@ -9,8 +9,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Administración de Usuarios</a></li>
-              <li class="breadcrumb-item active">Tipo de usuarios</li>
+              <li class="breadcrumb-item"><a href="#">Administración de Áreas</a></li>
+              <li class="breadcrumb-item active">Áreas</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -22,9 +22,9 @@
         <div class="col-md-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Tipo de usuarios&emsp;<button class="btn btn-success" onclick="mostrarformTU(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
+              <h3 class="card-title">Áreas&emsp;<button class="btn btn-success" onclick="mostrarformD(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
             </div>
-            <div class="card-body panel-body" id="listadoregistrosTU">
+            <div class="card-body panel-body" id="listadoregistrosD">
               <div class="dt-buttons">
 
               </div>
@@ -42,17 +42,17 @@
                   <?php
                       $item = null;
                       $valor = null;
-                      $tipousuario = ControladorTipoUsuario::ctrMostrarTipoUsuario($item,$valor);
+                      $tipousuario = ControladorDepartamento::ctrMostrarDepartamento($item,$valor);
                       foreach($tipousuario as $key => $value){
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarTipoUsuario" onclick="mostrarformTU(true)" nombre="'.$value['nombre'].'"><i class="fas fa-pencil-alt"></i></button></th>
+                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarDepartamento" onclick="mostrarformD(true)" nombre="'.$value['nombre'].'"><i class="fas fa-pencil-alt"></i></button></th>
                           <td>'.$value['nombre'].'</td>
                           <td>'.$value['descripcion'].'</td>
                           <td>'.$value['fechaCreada'].'</td>';
                           if($value['estado']!="1"){
-                            echo'<td><button class="btn btn-danger btn-xs btnActivarTU" nombre="'.$value["nombre"].'" estado="1">Inactivo</button></td>';
+                            echo'<td><button class="btn btn-danger btn-xs btnActivarD" nombre="'.$value["nombre"].'" estado="1">Inactivo</button></td>';
                           }else{
-                            echo'<td><button class="btn btn-success btn-xs btnActivarTU" nombre="'.$value["nombre"].'" estado="0">Activo</button></td>';
+                            echo'<td><button class="btn btn-success btn-xs btnActivarD" nombre="'.$value["nombre"].'" estado="0">Activo</button></td>';
                           }
                         echo'</tr>';
                       }
@@ -68,13 +68,13 @@
                 </table>
               </div>
             </div>
-            <div class="card-body panel-body" id="formularioregistrosTU">
+            <div class="card-body panel-body" id="formularioregistrosD">
               <form action="" name="formulario" id="formulario" method="POST" enctype="multipart/form-data">
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
                     <label for="">Nombre(*):</label>
-                    <input class="form-control" type="hidden" name="editarTU" id="editarTU" value="no">
-                    <input class="form-control" type="hidden" name="idtipousuario" id="idtipousuario">
+                    <input class="form-control" type="hidden" name="editarD" id="editarD" value="no">
+                    <input class="form-control" type="hidden" name="iddepartamento" id="iddepartamento">
                     <input class="form-control" type="text" name="nombre" id="nombre" maxlength="100" placeholder="Nombre" required>
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -83,11 +83,11 @@
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
-                    <button class="btn btn-danger" onclick="cancelarformTU()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+                    <button class="btn btn-danger" onclick="cancelarformD()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
                   </div>
                   <?php
-                    $creartipousuario = new ControladorTipoUsuario();
-                    $creartipousuario -> ctrCrearTipoUsuario();
+                    $creardepartamento = new ControladorDepartamento();
+                    $creardepartamento -> ctrCrearDepartamento();
                   ?>
                 </div>
               </form>

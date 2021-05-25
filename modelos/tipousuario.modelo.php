@@ -24,9 +24,10 @@
         }
 
         static public function mdlIngresarTipoUsuario($tabla,$datos){
-            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,descripcion) VALUES (:nombre,:descripcion)");
+            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,descripcion,estado) VALUES (:nombre,:descripcion,:estado)");
             $stmt -> bindParam(":nombre", $datos["nombre"],PDO::PARAM_STR);
             $stmt -> bindParam(":descripcion", $datos["descripcion"],PDO::PARAM_STR);
+            $stmt -> bindParam(":estado", $datos["estado"],PDO::PARAM_STR);
             
             if($stmt -> execute()){
                 return "ok";
