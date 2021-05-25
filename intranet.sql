@@ -8,6 +8,7 @@ CREATE TABLE tipousuario(
 	nombre varchar(45) not null,
 	descripcion varchar(45) not null,
 	fechaCreada timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	estado int not null
 );
 
 INSERT INTO `tipousuario`(`idtipousuario`, `nombre`, `descripcion`, `fechaCreada`) VALUES (1, 'Administrador', 'Con priviliegios de gestionar todo el sistema', '2020-01-18 00:00:00');
@@ -16,7 +17,7 @@ CREATE TABLE departamento(
 	iddepartamento int primary key auto_increment,
 	nombre varchar(45) not null,
 	descripcion varchar(45) not null,
-	fechaCreada timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	fechaCreada timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 );
 
 INSERT INTO `departamento` (`iddepartamento`, `nombre`, `descripcion`, `fechacreada`) VALUES

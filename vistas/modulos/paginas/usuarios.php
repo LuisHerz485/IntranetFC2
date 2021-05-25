@@ -60,9 +60,9 @@
                           }
                           echo'<td>'.$value['fechacreado'].'</td>';
                           if($value['estado']!="1"){
-                            echo'<td><button class="btn btn-danger btnprueba btn-xs btnActivar" login="'.$value["login"].'" estado="1">Inactivo</button></td>';
+                            echo'<td><button class="btn btn-danger btn-xs btnActivar" login="'.$value["login"].'" estado="1">Inactivo</button></td>';
                           }else{
-                            echo'<td><button class="btn btn-success btnprueba btn-xs btnActivar" login="'.$value["login"].'" estados="0">Activo</button></td>';
+                            echo'<td><button class="btn btn-success btn-xs btnActivar" login="'.$value["login"].'" estado="0">Activo</button></td>';
                           }
                         echo'</tr>';
                       }
