@@ -59,7 +59,7 @@
                           }else if($value['estado']=="1"){
                             echo'<td>Justificado</td>';
                           }else{
-                            echo'<td>Sin necesidad</td>';
+                            echo'<td>Correcto</td>';
                           }
                         echo'<td>'.$value['detalle'].'</td></tr>';
                       }
@@ -99,12 +99,12 @@
         <div class="modal-body">
           <div class="form-group">
             <div class="input-group">
-              <span class="input-group-addon" style="margin:10px 10px 0px 0px;"><i class="fa fa-user"></i></span>
+              <span class="input-group-addon" style="margin:10px 10px 0px 0px;"><i class="fas fa-check"></i></span>
               <select class="form-control input-lg" name="nuevoPerfil">
                 <option value="3">Seleccionar ...</option>
                 <option value="0">Injustificado</option>
                 <option value="1">Justificado</option>
-                <option value="2">Sin necesidad</option>
+                <option value="2">Correcto</option>
               </select>
             </div>
           </div>
