@@ -22,7 +22,7 @@
 								$_SESSION['imagen']= $respuesta['imagen'];
 								$_SESSION['perfil']= $respuesta['tipousuario'];			  					  
 								echo '<script>
-									window.location="inicio";
+									window.location="escritorio";
 								</script>';
 							}else{
 								echo("<br /><div class='alert alert-danger'>Usuario inactivo, contacte al administrador del sistema</div>");

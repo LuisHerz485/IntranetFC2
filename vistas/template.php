@@ -88,11 +88,12 @@
         include "vistas/modulos/templates/menu.php";
       
         if(isset($_GET['ruta'])){
-          if($_GET['ruta'] == "inicio" ||
-              $_GET['ruta'] =="usuarios" ||
-              $_GET['ruta'] =="tipousuario" ||
-              $_GET['ruta'] =="departamento" ||
-              $_GET['ruta'] =="salir"){
+          if($_GET['ruta'] == "escritorio" ||
+              $_GET['ruta'] == "usuarios" ||
+              $_GET['ruta'] == "tipousuario" ||
+              $_GET['ruta'] == "departamento" ||
+              $_GET['ruta'] == "asistencia" ||
+              $_GET['ruta'] == "salir"){
                 include "vistas/modulos/paginas/".$_GET['ruta'].".php";
           }else{
             include "vistas/modulos/paginas/404.php";
@@ -102,7 +103,7 @@
       }else{
         echo '<body class="hold-transition login-page">';
         include "vistas/modulos/paginas/login.php";
-      }   
+      }
   ?>
 
   <script src="vistas/js/usuario.js"></script>

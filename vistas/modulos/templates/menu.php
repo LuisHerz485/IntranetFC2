@@ -37,7 +37,7 @@
             
             <li class="nav-header">GENERAL</li>
             <li class="nav-item">
-                <a href="inicio" class="nav-link">
+                <a href="escritorio" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>Escritorio</p>
                 </a>
@@ -86,9 +86,9 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="asistencia" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Asistencia</p>
+                            <p>Registro de Asistencia</p>
                         </a>
                     </li>
                     <li class="nav-item">

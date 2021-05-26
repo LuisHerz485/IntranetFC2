@@ -57,7 +57,8 @@ CREATE TABLE asistencia(
 	idusuario int,
 	fechahora timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
 	tipo varchar(45) not null,
-	fecha date not null,
+	estado int not null,
+	detalle varchar(100) not null,
 	CONSTRAINT fk_as_us FOREIGN KEY (idusuario) REFERENCES usuario(idusuario)
 );
 

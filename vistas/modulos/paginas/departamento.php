@@ -42,8 +42,8 @@
                   <?php
                       $item = null;
                       $valor = null;
-                      $tipousuario = ControladorDepartamento::ctrMostrarDepartamento($item,$valor);
-                      foreach($tipousuario as $key => $value){
+                      $departamento = ControladorDepartamento::ctrMostrarDepartamento($item,$valor);
+                      foreach($departamento as $key => $value){
                         echo '<tr>
                           <th scope="row"><button class="btn btn-warning btn-xs btnEditarDepartamento" onclick="mostrarformD(true)" nombre="'.$value['nombre'].'"><i class="fas fa-pencil-alt"></i></button></th>
                           <td>'.$value['nombre'].'</td>

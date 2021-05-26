@@ -1,6 +1,6 @@
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Intranet</b> FC</a>
+    <a href="#"><b>Login</b> Administradores</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -38,8 +38,7 @@
             $login = new ControladorUsuarios();
             $login -> ctrIngresar();
         ?>
-
-
+        
       </form>
     <!-- /.login-card-body -->
   </div>
