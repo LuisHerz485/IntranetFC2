@@ -9,3 +9,11 @@ RewriteRule ^([-a-zA-Z0-9]+)$ index.php?ruta=$1
 order allow,deny
 deny from all
 </files>
+
+#Redirecciones
+RewriteCond %{HTTP_HOST} ^fccontadores.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.fccontadores.com$\.com
+
+RewriteEngine on
+RewriteCond %{HTTPS} !=on
+RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301, L]
