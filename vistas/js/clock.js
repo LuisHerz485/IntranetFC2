@@ -1,28 +1,29 @@
-let udateTime = function(){
-	var currentDate = new Date(),
-	hours = currentDate.getHours(),
-	minutes = currentDate.getMinutes(),
-	seconds = currentDate.getSeconds(),
-	weekDay = currentDate.getDay(),
-	day = currentDate.getMonth(),
-	year = currentDate.getFullYear();
+let udateTime = function() {
+    var currentDate = new Date(),
+        hours = currentDate.getHours(),
+        minutes = currentDate.getMinutes(), 
+        seconds = currentDate.getSeconds(),
+        weekDay = currentDate.getDay(), 
+        day = currentDate.getDay(), 
+        month = currentDate.getMonth(), 
+        year = currentDate.getFullYear();
 
-
-	const weekDay = [
-		'Domingo',
-		'Lunes',
-		'Martes',
-		'Miercoles',
-		'Jueves',
-		'Viernes',
-		'Sabado'
-
-	];
-
-	document.getElementById('weekDay').textContent = weekDays[weekDay];
-	document.getElementById('day').textContent = day;
-
-	const months = [
+    
+ 
+    const weekDays = [
+        'Domingo',
+        'Lunes',
+        'Martes',
+        'Miércoles',
+        'Jueves',
+        'Viernes',
+        'Sabado'
+    ];
+ 	
+    document.getElementById('weekDay').textContent = weekDays[weekDay];
+    document.getElementById('day').textContent = day;
+ 
+    const months = [
         'Enero',
         'Febrero',
         'Marzo',
@@ -36,25 +37,24 @@ let udateTime = function(){
         'Noviembre',
         'Diciembre'
     ];
-
-    document.getElementById('month').textContent = month[month];
+ 
+    document.getElementById('month').textContent = months[month];
     document.getElementById('year').textContent = year;
+ 
     document.getElementById('hours').textContent = hours;
-
-    if(minutes < 10){
-    	minutes = "0" + minutes
+ 
+    if (minutes < 10) {
+        minutes = "0" + minutes
     }
-
-    if(minutes > 10){
-    	seconds = "0" + seconds
+ 
+    if (seconds < 10) {
+        seconds = "0" + seconds
     }
-
+ 
     document.getElementById('minutes').textContent = minutes;
     document.getElementById('seconds').textContent = seconds;
-
-
 };
-
+ 
 udateTime();
-
+ 
 setInterval(udateTime, 1000);
