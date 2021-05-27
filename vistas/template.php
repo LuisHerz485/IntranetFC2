@@ -34,8 +34,7 @@
   <link rel="stylesheet" type="text/css" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <!-- Toastr -->
   <link rel="stylesheet" href="vistas/plugins/toastr/toastr.min.css">
-  <!-- PDFMAKE -->
-  <link rel="stylesheet" href="vistas/plugins/datatables-buttons/buttons.bootstrap4.css">
+
 
   <!-- jQuery -->
   <script src="vistas/plugins/jquery/jquery.min.js"></script>
@@ -80,13 +79,14 @@
   <!--Swal alert-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   <!-- Popper -->
-  <script src="/vistas/plugins/popper/popper.js"></script>
+  <script src="vistas/plugins/popper/esm/popper.js"></script>
+  <script src="vistas/plugins/popper/esm/popper.js.map"></script>
   <!-- PDFMAKE -->
   <script src="vistas/plugins/pdfmake/pdfmake.js"></script>
   <script src="vistas/plugins/pdfmake/vfs_fonts.js"></script>
   <!-- Buttons HTML -->
-  <script src="vistas/plugins/datatables-buttons/buttons.html5.js"></script>
-  <script src="vistas/plugins/datatables-buttons/dataTables.buttons.js"></script>
+  <script src="vistas/plugins/datatables-buttons/js/buttons.html5.js"></script>
+  <script src="vistas/plugins/datatables-buttons/js/dataTables.buttons.js"></script>
   <!-- JSZIP -->
   <script src="vistas/plugins/jszip/jszip.min.js"></script>
 
