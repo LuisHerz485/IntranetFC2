@@ -81,6 +81,8 @@
   <!-- Popper -->
   <script src="vistas/plugins/popper/esm/popper.js"></script>
   <script src="vistas/plugins/popper/esm/popper.js.map"></script>
+  <script src="vistas/plugins/popper/esm/popper-utils.js"></script>
+  <script src="vistas/plugins/popper/esm/popper-utils.js.map"></script>
   <!-- PDFMAKE -->
   <script src="vistas/plugins/pdfmake/pdfmake.js"></script>
   <script src="vistas/plugins/pdfmake/vfs_fonts.js"></script>
