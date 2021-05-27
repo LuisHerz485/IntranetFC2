@@ -176,5 +176,4 @@ $(".btnContra").click(function() {
     });
 })
 
-
 init();

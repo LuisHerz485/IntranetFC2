@@ -92,9 +92,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="reportes" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Resportes</p>
+                            <p>Reportes</p>
                         </a>
                     </li>
                 </ul>
@@ -149,7 +149,6 @@
                     <p><span>Solicitar Ayuda</span>&emsp;&ensp;<span class="badge bg-success pull-right">Whatsapp</span></p>  
                 </a>
             </li>
-
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

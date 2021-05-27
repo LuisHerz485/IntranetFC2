@@ -5,12 +5,12 @@
         static public function mdlMostrarUsuarios($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by nombre DESC LIMIT 1");
+                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by nombre ASC");
                     $stmt -> execute();
-                    return $stmt -> fetch();
+                    return $stmt -> fetchAll();
                 }else{
                     $stmt = Conexion::conectar()->prepare("SELECT U.idusuario as idusuario, D.iddepartamento as iddepartamento, TU.idtipousuario as idtipousuario, U.estado as estado, U.nombre AS nombre, U.apellidos AS apellidos, u.login AS usuario, u.password1 as password1, u.imagen as imagen, tu.nombre as tipousuario, D.nombre as departamento, u.email as email, u.codigopersona as codigopersona
-                    FROM $tabla U 
+                    FROM $tabla U
                     JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario
                     JOIN departamento D ON U.iddepartamento = D.iddepartamento WHERE $item = :$item");
                     $stmt -> bindParam(":".$item,$valor,PDO::PARAM_STR);

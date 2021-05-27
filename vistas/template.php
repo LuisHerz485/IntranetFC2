@@ -75,9 +75,19 @@
   <script type="text/javascript" src="vistas/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
   <!-- Toastr -->
   <script src="vistas/plugins/toastr/toastr.min.js"></script>
-  <!--Swal alert-->
+  <!-- Swal alert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+  <!-- DataTable Buttons -->
+  <script type="text/javascript" src="vistas/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="vistas/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" src="vistas/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+  <!-- JSZIP -->
+  <script src="vistas/plugins/jszip/jszip.min.js"></script>
+  <!-- PDFMAKE -->
+  <script src="vistas/plugins/pdfmake/pdfmake.min.js"></script>
+  <script src="vistas/plugins/pdfmake/vfs_fonts.js"></script>
 
+  
 </head>
 <?php
       if(isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion']=="ok"){
@@ -93,6 +103,7 @@
               $_GET['ruta'] == "tipousuario" ||
               $_GET['ruta'] == "departamento" ||
               $_GET['ruta'] == "asistencia" ||
+              $_GET['ruta'] == "reportes" ||
               $_GET['ruta'] == "salir"){
                 include "vistas/modulos/paginas/".$_GET['ruta'].".php";
           }else{
@@ -110,6 +121,7 @@
   <script src="vistas/js/tipousuario.js"></script>
   <script src="vistas/js/departamento.js"></script>
   <script src="vistas/js/asistencia.js"></script>
+  <script src="vistas/js/reportes.js"></script>
   <script src="vistas/js/dataTable.js"></script>
 
 

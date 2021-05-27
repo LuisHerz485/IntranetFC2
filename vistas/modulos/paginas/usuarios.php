@@ -30,7 +30,7 @@
               </div>
               <br/>
               <div id="tbllistado">
-                <table  class="table table-striped tablaDataTable dt-responsive">
+                <table id="" class="table table-striped tablaDataTable dt-responsive">
                   <thead>
                     <th>Opciones</th>
                     <th>Nombre</th>
