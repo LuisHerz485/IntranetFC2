@@ -26,11 +26,10 @@
             </div>
             <div class="card-body panel-body" id="listadoregistros">
               <div class="dt-buttons">
-
               </div>
               <br/>
               <div id="tbllistado">
-                <table  class="table table-striped tablaDataTable dt-responsive">
+                <table id="tablausuario" class="table table-striped tablaDataTable dt-responsive">
                   <thead>
                     <th>Opciones</th>
                     <th>Nombre</th>

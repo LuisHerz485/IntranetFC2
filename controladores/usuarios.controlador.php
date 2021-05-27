@@ -12,7 +12,7 @@
 
                     if($respuesta['usuario']==$_POST['usuario'] && $respuesta['password1']==$clavehash){
 						if($respuesta['idtipousuario'] == 1){
-							if($respuesta['estado']==1){
+							if($respuesta['estado']== 1){
 								$_SESSION['iniciarSesion']="ok";
 								$_SESSION['nombre']=$respuesta['nombre'];
 								$_SESSION['apellidos']=$respuesta['apellidos'];
