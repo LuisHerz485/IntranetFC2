@@ -75,7 +75,7 @@
 	  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 </head>
-<body>
+<body style="background: url('../../dist/img/main-background.jpg')no-repeat; background-size: cover;">
 	
 	
 	<?php 
@@ -121,11 +121,14 @@
 							<!-- Configuracion de fecha-->
 							<div class="text-center" style="font-size:15pt;">
 								<div class="lockscreen-name">
+									<p></p>
 									<?php 
+
 										echo date('d') . ' / '
 										. date('m') . ' / '
 										. date('Y');
 									?>
+
 								</div>
 							</div>
 
