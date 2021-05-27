@@ -26,11 +26,14 @@
             </div>
             <div class="card-body panel-body" id="listadoregistros">
               <div class="dt-buttons">
-
               </div>
               <br/>
               <div id="tbllistado">
+<<<<<<< HEAD
                 <table id="" class="table table-striped tablaDataTable dt-responsive">
+=======
+                <table id="tablausuario" class="table table-striped tablaDataTable dt-responsive">
+>>>>>>> 9498ab7771ca56cd043fa5d5f394981723aae726
                   <thead>
                     <th>Opciones</th>
                     <th>Nombre</th>
