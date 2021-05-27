@@ -92,7 +92,7 @@
                       $valor = null;
                       $tipousuario = ControladorTipoUsuario::ctrMostrarTipoUsuario($item,$valor);
                       foreach($tipousuario as $key => $value){ 
-                        echo '<option  value="'.$value['idtipousuario'].'">'.$value['nombre'].'</option>';
+                        echo '<option value="'.$value['idtipousuario'].'">'.$value['nombre'].'</option>';
                       }
                     ?>
                     </select>
@@ -106,7 +106,7 @@
                       $valor = null;
                       $departamento = ControladorDepartamento::ctrMostrarDepartamento($item,$valor);
                       foreach($departamento as $key => $value){ 
-                        echo '<option  value="'.$value['iddepartamento'].'">'.$value['nombre'].'</option>';
+                        echo '<option value="'.$value['iddepartamento'].'">'.$value['nombre'].'</option>';
                       }
                     ?>
                     </select>
