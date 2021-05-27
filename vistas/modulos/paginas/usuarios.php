@@ -29,11 +29,7 @@
               </div>
               <br/>
               <div id="tbllistado">
-
                 <table id="" class="table table-striped tablaDataTable dt-responsive">
-
-                <table id="tablausuario" class="table table-striped tablaDataTable dt-responsive">
-
                   <thead>
                     <th>Opciones</th>
                     <th>Nombre</th>

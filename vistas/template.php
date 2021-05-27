@@ -78,7 +78,6 @@
   <script src="vistas/plugins/toastr/toastr.min.js"></script>
   <!-- Swal alert -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-
   <!-- DataTable Buttons -->
   <script type="text/javascript" src="vistas/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
   <script type="text/javascript" src="vistas/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
@@ -88,22 +87,6 @@
   <!-- PDFMAKE -->
   <script src="vistas/plugins/pdfmake/pdfmake.min.js"></script>
   <script src="vistas/plugins/pdfmake/vfs_fonts.js"></script>
-
-  <!-- Popper -->
-  <script src="vistas/plugins/popper/esm/popper.js"></script>
-  <script src="vistas/plugins/popper/esm/popper.js.map"></script>
-  <script src="vistas/plugins/popper/esm/popper-utils.js"></script>
-  <script src="vistas/plugins/popper/esm/popper-utils.js.map"></script>
-  <!-- PDFMAKE -->
-  <script src="vistas/plugins/pdfmake/pdfmake.js"></script>
-  <script src="vistas/plugins/pdfmake/vfs_fonts.js"></script>
-  <!-- Buttons HTML -->
-  <script src="vistas/plugins/datatables-buttons/js/buttons.html5.js"></script>
-  <script src="vistas/plugins/datatables-buttons/js/dataTables.buttons.js"></script>
-  <!-- JSZIP -->
-  <script src="vistas/plugins/jszip/jszip.min.js"></script>
-
-
   
 </head>
 <?php
