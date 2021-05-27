@@ -13,8 +13,9 @@
                     $stmt -> execute();
                     return $stmt -> fetchAll();
                 }else{
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $item = :$item");
-                    $stmt -> bindParam(":".$item,$valor,PDO::PARAM_STR);
+                    $stmt = Conexion::conectar()->prepare("SELECT a.estado as estado, a.detalle as detalle
+                    FROM $tabla A
+                    JOIN usuario U ON U.idusuario = A.idusuario WHERE u.codigopersona = $valor");
                     $stmt -> execute();
                     return $stmt -> fetch();
                 }
@@ -27,6 +28,16 @@
                 $stmt -> execute();
                 return $stmt -> fetchAll();
             }
+            $stmt -> close();
+            $stmt = null;
+        }
+
+        static public function mdlMostrarDetalleAsistencia($tabla,$item1,$valor1,$item2,$valor2){
+            $stmt = Conexion::conectar()->prepare("SELECT a.estado as estado, a.detalle as detalle, a.idasistencia as idasistencia, a.fechahora as fecha
+            FROM $tabla A
+            JOIN usuario U ON U.idusuario = A.idusuario WHERE $item1 = \"$valor1\" AND $item2 = \"$valor2\"");
+            $stmt -> execute();
+            return $stmt -> fetch();
             $stmt -> close();
             $stmt = null;
         }

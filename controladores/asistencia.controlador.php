@@ -4,6 +4,6 @@
 			$tabla = "asistencia";
 			$respuesta = ModeloAsistencia::mdlMostrarAsistencia($tabla,$item,$valor);
 			return $respuesta;
-		}	
-
+		}
+		
     }

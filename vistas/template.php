@@ -109,6 +109,7 @@
   <script src="vistas/js/usuario.js"></script>
   <script src="vistas/js/tipousuario.js"></script>
   <script src="vistas/js/departamento.js"></script>
+  <script src="vistas/js/asistencia.js"></script>
   <script src="vistas/js/dataTable.js"></script>
 
 

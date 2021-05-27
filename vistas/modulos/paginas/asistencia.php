@@ -48,7 +48,7 @@
                       $asistencia = ControladorAsistencia::ctrMostrarAsistencia($item,$valor);
                       foreach($asistencia as $key => $value){
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarDetalle" nombre="'.$value['nombre'].'" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-pencil-alt"></i></button></th>
+                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarDetalle" fecha="'.$value['fecha'].'" codigo="'.$value['codigo'].'" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-pencil-alt"></i></button></th>
                           <td>'.$value['codigo'].'</td>
                           <td>'.$value['nombre'].' '.$value['apellidos'].'</td>
                           <td>'.$value['area'].'</td>
@@ -100,12 +100,20 @@
           <div class="form-group">
             <div class="input-group">
               <span class="input-group-addon" style="margin:10px 10px 0px 0px;"><i class="fas fa-check"></i></span>
-              <select class="form-control input-lg" name="nuevoPerfil">
+              <select class="form-control input-lg" name="estado" id="estado">
                 <option value="3">Seleccionar ...</option>
                 <option value="0">Injustificado</option>
                 <option value="1">Justificado</option>
                 <option value="2">Correcto</option>
               </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon" style="margin:10px 10px 0px 0px;"><i class="fas fa-comment-alt"></i></span>
+              <input class="form-control" type="hidden" name="idasistencia" id="idasistencia">
+              <input class="form-control" type="hidden" name="fecha" id="fecha">
+              <input type="text" name="detalle" id="detalle" class="form-control input-lg" placeholder="Detalle" required>
             </div>
           </div>
         </div>
