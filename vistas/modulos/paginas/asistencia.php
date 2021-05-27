@@ -112,8 +112,7 @@
             <div class="input-group">
               <span class="input-group-addon" style="margin:10px 10px 0px 0px;"><i class="fas fa-comment-alt"></i></span>
               <input class="form-control" type="hidden" name="idasistencia" id="idasistencia">
-              <input class="form-control" type="hidden" name="fecha" id="fecha">
-              <input type="text" name="detalle" id="detalle" class="form-control input-lg" placeholder="Detalle" required>
+              <input type="text" name="detalle" id="detalle" class="form-control input-lg" placeholder="Detalle">
             </div>
           </div>
         </div>
@@ -122,8 +121,8 @@
             <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
         <?php
-          $contrausuario = new ControladorUsuarios();
-          $contrausuario -> ctrEditarContra();
+          $ingresarDetalle = new ControladorAsistencia();
+          $ingresarDetalle -> ctrEditarDetalleAsistencia();
         ?>
       </div>
     </form>

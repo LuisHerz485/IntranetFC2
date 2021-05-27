@@ -41,6 +41,21 @@
             $stmt -> close();
             $stmt = null;
         }
+
+        static public function mdlIngresarDetalleAsitencia($tabla,$datos){
+            $stmt = conexion::conectar()->prepare("UPDATE $tabla SET detalle=:detalle,estado=:estado WHERE idasistencia=:idasistencia");
+			$stmt -> bindParam(":detalle", $datos["detalle"],PDO::PARAM_STR);
+            $stmt -> bindParam(":estado", $datos["estado"],PDO::PARAM_STR);
+            $stmt -> bindParam(":idasistencia", $datos["idasistencia"],PDO::PARAM_STR);
+
+			if($stmt->execute()){
+				return "ok";
+			}else{
+				return "error";
+			}
+			$stmt ->close();
+			$stmt = null;
+        }
         
 
     }
