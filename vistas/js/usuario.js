@@ -176,8 +176,7 @@ $(".btnContra").click(function() {
     });
 })
 
-<<<<<<< HEAD
-=======
+
 $(document).ready(function() {    
     $('#').DataTable({        
         language: {
@@ -221,6 +220,4 @@ $(document).ready(function() {
     });     
 });
 
-
->>>>>>> 9498ab7771ca56cd043fa5d5f394981723aae726
 init();
