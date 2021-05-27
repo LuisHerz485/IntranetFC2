@@ -27,3 +27,5 @@ if(isset($_POST["codigo"])){
     $editar -> fecha = $_POST["fecha"];
 	$editar -> ajaxEditarDetalleAsistencia();
 }
+
+
