@@ -1,7 +1,14 @@
 <?php
     require_once "conexion.php";
 
+
+
     class ModeloUsuarios{
+
+        public function __construct(){
+
+        }
+
         static public function mdlMostrarUsuarios($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
@@ -95,5 +102,17 @@
 			$stmt ->close();
 			$stmt = null;
 		}
+
+
+        static public function mdlConsultarUsuario($codigopersona){
+            
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM usuario WHERE codigopersona = \"$codigopersona\"");
+            $stmt -> execute();
+            return $stmt -> fetch();
+            
+            $stmt -> close();
+            $stmt = null;
+        
+        }
 
     }
