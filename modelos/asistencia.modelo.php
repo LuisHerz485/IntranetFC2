@@ -2,6 +2,12 @@
     require_once "conexion.php";
 
     class ModeloAsistencia{
+
+
+        public function __construct(){
+            
+        }
+
         static public function mdlMostrarAsistencia($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
@@ -43,7 +49,7 @@
         }
 
         static public function mdlIngresarDetalleAsitencia($tabla,$datos){
-            $stmt = conexion::conectar()->prepare("UPDATE $tabla SET detalle=:detalle,estado=:estado WHERE idasistencia=:idasistencia");
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET detalle=:detalle,estado=:estado WHERE idasistencia=:idasistencia");
 			$stmt -> bindParam(":detalle", $datos["detalle"],PDO::PARAM_STR);
             $stmt -> bindParam(":estado", $datos["estado"],PDO::PARAM_STR);
             $stmt -> bindParam(":idasistencia", $datos["idasistencia"],PDO::PARAM_STR);
@@ -56,6 +62,35 @@
 			$stmt ->close();
 			$stmt = null;
         }
+
+        static public function mdlConsultarAsistencia($valor){
+            $stmt = Conexion::conectar()->prepare("SELECT  (A.fechahora) as fechahora, a.tipo as tipo, U.idusuario as idusuario 
+                FROM asistencia A 
+                JOIN usuario U ON U.idusuario = A.idusuario
+                WHERE U.idusuario=$valor  ORDER BY A.fechahora DESC LIMIT 1");
+            $stmt -> execute();
+            return $stmt -> fetch();
+            $stmt -> close();
+            $stmt = null;
+        }
+
+
+
+        static public function mdlMarcarAsistencia($tabla,$idusuario, $tipo){
+            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (idusuario, tipo, estado, detalle) VALUES (idusuario=$idusuario, tipo=\"$tipo\", estado = 2, detalle = \"\")");
+
+            if($stmt->execute()){
+                return "ok";
+            }else{
+                return "error";
+            }
+            $stmt -> close();
+            $stmt = null;
+ 
+        }
+
+
+
         
 
     }

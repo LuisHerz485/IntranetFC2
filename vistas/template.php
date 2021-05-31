@@ -114,7 +114,8 @@
         include "vistas/modulos/templates/footer.php";
       }else{
         echo '<body class="hold-transition login-page">';
-        include "vistas/modulos/paginas/login.php";
+        include "vistas/modulos/paginas/marcarasistencia.php";
+
       }
   ?>
 
@@ -125,6 +126,7 @@
   <script src="vistas/js/reportes.js"></script>
   <script src="vistas/js/clientes.js"></script>
   <script src="vistas/js/dataTable.js"></script>
+  <script src="vistas/js/clock.js"></script>
 
 
   <!-- Control Sidebar -->

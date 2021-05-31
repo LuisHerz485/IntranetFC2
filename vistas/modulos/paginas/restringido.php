@@ -17,16 +17,18 @@
     <title>redireccion</title>
   </head>
   <body>
-    <div >
-      <div class="">
-        <div class=" text-center alert alert-warning p-5" role="alert">
-          <h1 class="alert-heading text-dark mt-3">Acceso Restringido</h1>
-          <h2><i class="fas fa-exclamation-triangle text-warning mt-2"></i></h2>
-          <p class="text-dark mt-3">Ustedes solo puede registrar su asistencia <br>desde una computadora</p>
-          <hr>
-          <p class="mb-0 text-dark mt-3">Regresar al <a href="#">inicio</a></p>
+    <div class="m-0 vh-100 row align-items-center bg-transparent">
+        <div class="alert alert-warning p-5 text-center border-end-0 border-start-0 border-warning" role="alert">
+            <h1 class="alert-heading text-dark mt-3 ">Acceso Restringido</h1>
+            <h2><i class="fas fa-exclamation-triangle text-warning mt-2 fa-2x"></i></h2>
+            <strong>
+                <p class="text-dark mt-3">Ustedes solo puede registrar su asistencia <br>desde una computadora.</p>
+            </strong>
+            <div class="dropdown-divider border-2 bg-warning"></div>
+            <strong>
+                <p class="mb-0 text-dark mt-3">Regresar al inicio dando clic. <a class="text-decoration-none" href="#">Aqui</a></p>
+            </strong>
         </div>
-      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
