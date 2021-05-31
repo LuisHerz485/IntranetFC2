@@ -60,7 +60,41 @@ CREATE TABLE asistencia(
 	estado int not null,
 	detalle varchar(100) not null,
 	CONSTRAINT fk_as_us FOREIGN KEY (idusuario) REFERENCES usuario(idusuario)
+); 
+
+CREATE TABLE cliente(
+	idcliente int primary key auto_increment,
+	ruc varchar(12) not null,
+	razonsocial varchar(100) not null,
+	logincliente varchar(45) not null,
+	contrasenacliente varchar(64) not null,
+	estado tinyint not null,
+	fechacreado timestamp not null current_timestamp() ON UPDATE current_timestamp(),
+	tipocliente varchar(14) not null,
+	iddrive varchar(100) not null,
+	imagen varchar(50) not null
 );
+
+CREATE TABLE representante(
+	idrepresentante int primary key auto_increment,
+	detalleCargo varchar(50) not null,
+	nombreCompleto varchar(100) not null
+);
+
+CREATE TABLE agenda(
+	idcliente int,
+	idrepresentante int,
+	telefono1 varchar(15) not null,
+	telefono2 varchar(15) not null,
+	correo1 varchar(45) not null,
+	correo2 varchar(45) not null,
+	CONSTRAINT fk_age_cli FOREIGN KEY (idcliente) REFERENCES cliente(idcliente),
+	CONSTRAINT fk_age_rep FOREIGN KEY (idrepresentante) REFERENCES representante(idrepresentante),
+	CONSTRAINT pk_agenda PRIMARY KEY (idcliente,idrepresentante)
+);
+
+
+
 
 
 /*

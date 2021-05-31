@@ -5,11 +5,13 @@
     require_once "controladores/tipousuario.controlador.php";
     require_once "controladores/asistencia.controlador.php";
     require_once "controladores/reportes.controlador.php";
+    require_once "controladores/clientes.controlador.php";
 
     require_once "modelos/usuarios.modelo.php";
     require_once "modelos/departamento.modelo.php";
     require_once "modelos/tipousuario.modelo.php";
     require_once "modelos/asistencia.modelo.php";
     require_once "modelos/reportes.modelo.php";
+    require_once "modelos/clientes.modelo.php";
     $template = new ControladorTemplate();
     $template -> ctrTemplate();

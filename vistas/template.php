@@ -103,6 +103,7 @@
               $_GET['ruta'] == "tipousuario" ||
               $_GET['ruta'] == "departamento" ||
               $_GET['ruta'] == "asistencia" ||
+              $_GET['ruta'] == "clientes" ||
               $_GET['ruta'] == "reportes" ||
               $_GET['ruta'] == "salir"){
                 include "vistas/modulos/paginas/".$_GET['ruta'].".php";
@@ -122,6 +123,7 @@
   <script src="vistas/js/departamento.js"></script>
   <script src="vistas/js/asistencia.js"></script>
   <script src="vistas/js/reportes.js"></script>
+  <script src="vistas/js/clientes.js"></script>
   <script src="vistas/js/dataTable.js"></script>
 
 
