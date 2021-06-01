@@ -1,32 +1,31 @@
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>Intranet</b> FC</a>
+    <a href="#" class="display-5" style="color: #042770;"><b>Intranet</b> FC</a>
   </div>
 	<div class="small-box bg-red">
 		<a href="#" class="small-box-footer">
 	    <div class="inner">
 		   	<br>
-		     	<h4 style="font-size: 20px;"><strong>Clientes   </strong></h4>
+		     	<h4><strong>Cliente</strong></h4>
 		    <br>
-		</div>
-		<div class="icon">
-			<i class="fa fa-info" aria-hidden="true"></i>
-		</div>
-		</a><a href="#" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>			    
+			</div>
+			<div class="icon">
+				<i class="ion ion-person-add " aria-hidden="true"></i>
+			</div>
+		</a>
+		<a href="#" class="small-box-footer font-italic">Ingresar <i class="fa fa-arrow-circle-right pl-1"></i></a>			    
 	</div>
-    <div class="small-box bg-blue">
+  <div class="small-box bg-blue">
 		<a href="login" class="small-box-footer">
-		<div class="inner">
+			<div class="inner">
 		    <br>
-			    <h4 style="font-size: 20px;"><strong>Colaboradores   </strong> </h4>
-			<br>
-		</div>
-		<div class="icon">
-			 <i class="fa fa-users" aria-hidden="true"></i>
-		</div>
-		</a><a href="login" class="small-box-footer">Ingresar <i class="fa fa-arrow-circle-right"></i></a>    
-		</div>
-  	</div>
-</div>
-
+			    <h4><strong>Colaborador</strong></h4>
+				<br>
+			</div>
+			<div class="icon">
+			 	<i class="fa fa-users " aria-hidden="true"></i>
+			</div>
+		</a>
+		<a href="login" class="small-box-footer font-italic">Ingresar <i class="fa fa-arrow-circle-right pl-1"></i></a>    
+	</div>
 </div>
