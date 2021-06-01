@@ -3,11 +3,6 @@
 
     class ModeloAsistencia{
 
-
-        public function __construct(){
-            
-        }
-
         static public function mdlMostrarAsistencia($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
@@ -64,33 +59,27 @@
         }
 
         static public function mdlConsultarAsistencia($valor){
-            $stmt = Conexion::conectar()->prepare("SELECT  (A.fechahora) as fechahora, a.tipo as tipo, U.idusuario as idusuario 
+            $stmt = Conexion::conectar()->prepare("SELECT (A.fechahora) as fechahora, a.tipo as tipo, U.idusuario as idusuario 
                 FROM asistencia A 
                 JOIN usuario U ON U.idusuario = A.idusuario
-                WHERE U.idusuario=$valor  ORDER BY A.fechahora DESC LIMIT 1");
+                WHERE U.idusuario=$valor ORDER BY A.fechahora DESC LIMIT 1");
             $stmt -> execute();
             return $stmt -> fetch();
             $stmt -> close();
             $stmt = null;
         }
 
-
-
         static public function mdlMarcarAsistencia($tabla,$idusuario, $tipo){
-            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (idusuario, tipo, estado, detalle) VALUES (idusuario=$idusuario, tipo=\"$tipo\", estado = 2, detalle = \"\")");
+            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (idusuario, tipo, estado, detalle) VALUES ($idusuario, \"$tipo\", 2, \"\")");
 
             if($stmt->execute()){
                 return "ok";
             }else{
                 return "error";
             }
+
             $stmt -> close();
             $stmt = null;
- 
         }
-
-
-
-        
 
     }

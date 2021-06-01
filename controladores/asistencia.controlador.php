@@ -49,105 +49,96 @@
 
 		static public function ctrMarcarAsistencia(){
 			if(isset($_POST['codigopersona'])){
-				$usuario = new ModeloUsuarios();
-				$respuesta = $usuario->mdlConsultarUsuario($_POST['codigopersona']);
-				$asistencia = new ModeloAsistencia();
-				$respuesta3  = $asistencia->mdlConsultarAsistencia($respuesta['idusuario']);
-				$tabla = "asistencia";
-				
-				echo "<script>alert(".$respuesta3['idusuario'].")</script>";
-				
-				if($respuesta3['tipo']!=""){
-					if($respuesta3['tipo'] === "Entrada"){
+				$respuesta = ModeloUsuarios::mdlConsultarUsuario($_POST['codigopersona']);
 
+				if($respuesta['idusuario']!= ""){
+					$respuesta3 = ModeloAsistencia::mdlConsultarAsistencia($respuesta['idusuario']);
+					$tabla = "asistencia";
+					
+					if($respuesta3['tipo']!=""){
+						if($respuesta3['tipo'] === "Entrada"){
 							echo "<script>
 								Swal.fire({
-									title : 'Estas seguro?',
+									title: '¿Estas seguro?',
 									text : 'Usted va a marcar su salida!',
 									icon : 'warning',
 									confirmButtonColor: '#3085d6',
-  									cancelButtonColor: '#d33',
-  									confirmButtonText: 'Si, marcar!'
-								}).then((result) =>{
-
-									if(result.isConfirmed){" .
-										$salida = ModeloAsistencia::mdlMarcarAsistencia($tabla, $respuesta3['idusuario'],'Salida')
-									 . "
-											Swal.fire(
-      										'Marcado!',
-      										'Tu salida ha sido registrada!',
-      										'success'
-    										)
+									cancelButtonColor: '#d33',
+									confirmButtonText: 'Si, marcar!'
+								}).then((result) => {
+									if (result.isConfirmed) {";
+										$salida = ModeloAsistencia::mdlMarcarAsistencia($tabla, $respuesta3['idusuario'],'Salida');
+										if($salida == "ok"){
+											echo "Swal.fire('Tu salida ha sido registrada ".$respuesta['nombre']." ".$respuesta['apellidos']."!', '', 'success')";
+										}else{
+											echo "Swal.fire('Ocurrio un problema!', '', 'error')";
 										}
-									})
-							</script>";	
-
-							
+									echo "
+									} else if (result.isDenied) {
+										Swal.fire('Asistencia no marcada', '', 'info')
+									}
+								})
+							</script>";
 						}
-
 						if($respuesta3['tipo'] === "Salida"){
 							echo "<script>
 								Swal.fire({
-									title : 'Estas seguro?',
+									title: '¿Estas seguro?',
 									text : 'Usted va a marcar su entrada!',
 									icon : 'warning',
 									confirmButtonColor: '#3085d6',
-  									cancelButtonColor: '#d33',
-  									confirmButtonText: 'Si, marcar!'
-								}).then((result) =>{
-
-									if(result.isConfirmed){" .
-
-									$entrada = ModeloAsistencia::mdlMarcarAsistencia($tabla, $respuesta3['idusuario'], 'Entrada') . "
-											Swal.fire(
-      										'Marcado!',
-      										'Tu entrada ha sido registrada!',
-      										'success'
-    										)
+									cancelButtonColor: '#d33',
+									confirmButtonText: 'Si, marcar!'
+								}).then((result) => {
+									if (result.isConfirmed) {";
+										$entrada = ModeloAsistencia::mdlMarcarAsistencia($tabla, $respuesta3['idusuario'], 'Entrada');
+										if($entrada == "ok"){
+											echo "Swal.fire('Tu entrada ha sido registrada ".$respuesta['nombre']." ".$respuesta['apellidos']."!', '', 'success')";
+										}else{
+											echo "Swal.fire('Ocurrio un problema!', '', 'error')";
 										}
-									})
-							</script>";	
-							
+									echo "
+									} else if (result.isDenied) {
+										Swal.fire('Asistencia no marcada', '', 'info')
+									}
+								})
+							</script>";			
 						}
-				}else{
-					echo "<script>alert(".$respuesta['idusuario'].")</script>";
-					echo "<script>
+					}else{
+						echo "<script>
 								Swal.fire({
-									title : 'Mi primera asistencia!',
+									title: 'Mi primera asistencia!',
 									text : 'Usted va a marcar su entrada!',
 									icon : 'warning',
 									confirmButtonColor: '#3085d6',
-  									cancelButtonColor: '#d33',
-  									confirmButtonText: 'Si, marcar!'
-								}).then((result) =>{
-
-									if(result.isConfirmed){" .
-
-									$entrada = ModeloAsistencia::mdlMarcarAsistencia($tabla, $respuesta['idusuario'], 'Entrada') . "
-											Swal.fire(
-      										'Marcado!',
-      										'Tu entrada ha sido registrada!',
-      										'success'
-    										)
+									cancelButtonColor: '#d33',
+									confirmButtonText: 'Si, marcar!'
+								}).then((result) => {
+									if (result.isConfirmed) {";
+										$entrada = ModeloAsistencia::mdlMarcarAsistencia($tabla, $respuesta['idusuario'], 'Entrada');
+										if($entrada == "ok"){
+											echo "Swal.fire('Tu entrada ha sido registrada ".$respuesta['nombre']." ".$respuesta['apellidos']."!', '', 'success')";
+										}else{
+											echo "Swal.fire('Ocurrio un problema!', '', 'error')";
 										}
-									})
-							</script>";
+									echo "
+									} else if (result.isDenied) {
+										Swal.fire('Asistencia no marcada', '', 'info')
+									}
+								})
+						</script>";
+					}
+				}else{
+					echo ("<script>
+						Swal.fire({
+						title: 'Error!',
+						text: '¡No existe ningun colaboradores con ese codigo!',
+						icon: 'error',
+						confirmButtonText: 'Ok'
+						});
+					</script>");
 				}
-
-						
-
-/*
-						else{
-							    echo ("<script>
-									Swal.fire({
-		           				 	title: 'Error!',
-        							text: '¡No existe ningun colaboradores con ese codigo!',
-									icon: 'error',
-									confirmButtonText: 'Ok'
-									});
-									</script>");
-						}*/
-				}
+			}
 			
 		}
 		

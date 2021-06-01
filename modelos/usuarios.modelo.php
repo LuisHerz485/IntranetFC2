@@ -104,15 +104,13 @@
 		}
 
 
-        static public function mdlConsultarUsuario($codigopersona){
-            
+        static public function mdlConsultarUsuario($codigopersona){ 
             $stmt = Conexion::conectar()->prepare("SELECT * FROM usuario WHERE codigopersona = \"$codigopersona\"");
             $stmt -> execute();
             return $stmt -> fetch();
             
             $stmt -> close();
             $stmt = null;
-        
         }
 
     }
