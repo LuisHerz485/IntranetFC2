@@ -29,12 +29,9 @@
 								<div>
 									<button type="submit" class="btn btn-primary btn-block">Marcar</button>
 								</div>
-
-
 									<?php 
-											$marcarAsistencia = new ControladorAsistencia();
-											$marcarAsistencia -> ctrMarcarAsistencia(); 
-											
+										$marcarAsistencia = new ControladorAsistencia();
+										$marcarAsistencia -> ctrMarcarAsistencia(); 
 									?>
 							</form>
 

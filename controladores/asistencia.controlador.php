@@ -51,30 +51,42 @@
 			if(isset($_POST['codigopersona'])){
 				$respuesta = ModeloUsuarios::mdlConsultarUsuario($_POST['codigopersona']);
 
-				if($respuesta['idusuario']!= ""){
+				if($respuesta['idusuario'] != ""){
 					$respuesta3 = ModeloAsistencia::mdlConsultarAsistencia($respuesta['idusuario']);
 					$tabla = "asistencia";
+
+					$idusuario = $respuesta['idusuario'];
 					
-					if($respuesta3['tipo']!=""){
+					if($respuesta3['tipo'] != ""){
 						if($respuesta3['tipo'] === "Entrada"){
 							echo "<script>
+							var idusuario = ".$idusuario."
+							var tipo = 'Salida'
+							var datos = new FormData();
+							datos.append('idusuario', idusuario);
+							datos.append('tipo', tipo);
 								Swal.fire({
 									title: '¿Estas seguro?',
-									text : 'Usted va a marcar su salida!',
-									icon : 'warning',
+									text: 'Usted va a marcar su salida!',
+									icon: 'warning',
+									showCancelButton: true,
 									confirmButtonColor: '#3085d6',
 									cancelButtonColor: '#d33',
 									confirmButtonText: 'Si, marcar!'
 								}).then((result) => {
-									if (result.isConfirmed) {";
-										$salida = ModeloAsistencia::mdlMarcarAsistencia($tabla, $respuesta3['idusuario'],'Salida');
-										if($salida == "ok"){
-											echo "Swal.fire('Tu salida ha sido registrada ".$respuesta['nombre']." ".$respuesta['apellidos']."!', '', 'success')";
-										}else{
-											echo "Swal.fire('Ocurrio un problema!', '', 'error')";
-										}
-									echo "
-									} else if (result.isDenied) {
+									if (result.isConfirmed) {
+										$.ajax({
+											url: 'ajax/asistencia.ajax.php',
+											method: 'POST',
+											data: datos,
+											cache: false,
+											contentType: false,
+											processData: false,
+											success: function(respuesta) {
+												Swal.fire('Tu salida ha sido registrada ".$respuesta['nombre']." ".$respuesta['apellidos']."!', '', 'success')
+											}
+										})
+									}else{
 										Swal.fire('Asistencia no marcada', '', 'info')
 									}
 								})
@@ -82,23 +94,33 @@
 						}
 						if($respuesta3['tipo'] === "Salida"){
 							echo "<script>
+							var idusuario = ".$idusuario."
+							var tipo = 'Entrada'
+							var datos = new FormData();
+							datos.append('idusuario', idusuario);
+							datos.append('tipo', tipo);
 								Swal.fire({
 									title: '¿Estas seguro?',
-									text : 'Usted va a marcar su entrada!',
-									icon : 'warning',
+									text: 'Usted va a marcar su entrada!',
+									icon: 'warning',
+									showCancelButton: true,
 									confirmButtonColor: '#3085d6',
 									cancelButtonColor: '#d33',
 									confirmButtonText: 'Si, marcar!'
 								}).then((result) => {
-									if (result.isConfirmed) {";
-										$entrada = ModeloAsistencia::mdlMarcarAsistencia($tabla, $respuesta3['idusuario'], 'Entrada');
-										if($entrada == "ok"){
-											echo "Swal.fire('Tu entrada ha sido registrada ".$respuesta['nombre']." ".$respuesta['apellidos']."!', '', 'success')";
-										}else{
-											echo "Swal.fire('Ocurrio un problema!', '', 'error')";
-										}
-									echo "
-									} else if (result.isDenied) {
+									if (result.isConfirmed) {
+										$.ajax({
+											url: 'ajax/asistencia.ajax.php',
+											method: 'POST',
+											data: datos,
+											cache: false,
+											contentType: false,
+											processData: false,
+											success: function(respuesta) {
+												Swal.fire('Tu entrada ha sido registrada ".$respuesta['nombre']." ".$respuesta['apellidos']."!', '', 'success')
+											}
+										})
+									}else{
 										Swal.fire('Asistencia no marcada', '', 'info')
 									}
 								})
@@ -106,27 +128,37 @@
 						}
 					}else{
 						echo "<script>
+							var idusuario = ".$idusuario."
+							var tipo = 'Entrada'
+							var datos = new FormData();
+							datos.append('idusuario', idusuario);
+							datos.append('tipo', tipo);
 								Swal.fire({
-									title: 'Mi primera asistencia!',
-									text : 'Usted va a marcar su entrada!',
-									icon : 'warning',
+									title: '¿Estas seguro?',
+									text: 'Usted va a marcar su primera entrada!',
+									icon: 'warning',
+									showCancelButton: true,
 									confirmButtonColor: '#3085d6',
 									cancelButtonColor: '#d33',
 									confirmButtonText: 'Si, marcar!'
 								}).then((result) => {
-									if (result.isConfirmed) {";
-										$entrada = ModeloAsistencia::mdlMarcarAsistencia($tabla, $respuesta['idusuario'], 'Entrada');
-										if($entrada == "ok"){
-											echo "Swal.fire('Tu entrada ha sido registrada ".$respuesta['nombre']." ".$respuesta['apellidos']."!', '', 'success')";
-										}else{
-											echo "Swal.fire('Ocurrio un problema!', '', 'error')";
-										}
-									echo "
-									} else if (result.isDenied) {
+									if (result.isConfirmed) {
+										$.ajax({
+											url: 'ajax/asistencia.ajax.php',
+											method: 'POST',
+											data: datos,
+											cache: false,
+											contentType: false,
+											processData: false,
+											success: function(respuesta) {
+												Swal.fire('Tu entrada ha sido registrada ".$respuesta['nombre']." ".$respuesta['apellidos']."!', '', 'success')
+											}
+										})
+									}else{
 										Swal.fire('Asistencia no marcada', '', 'info')
 									}
 								})
-						</script>";
+						</script>";	
 					}
 				}else{
 					echo ("<script>

@@ -69,7 +69,7 @@
             $stmt = null;
         }
 
-        static public function mdlMarcarAsistencia($tabla,$idusuario, $tipo){
+        static public function mdlMarcarAsistencia($tabla,$idusuario,$tipo){
             $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (idusuario, tipo, estado, detalle) VALUES ($idusuario, \"$tipo\", 2, \"\")");
 
             if($stmt->execute()){
