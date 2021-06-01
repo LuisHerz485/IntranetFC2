@@ -1,7 +1,4 @@
 <?php
-
-	
-
     class ControladorAsistencia{
         static public function ctrMostrarAsistencia($item,$valor){
 			$tabla = "asistencia";

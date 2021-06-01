@@ -58,6 +58,13 @@
 								</div>
 							</div>
 
+							<div class="lockscreen-footer text-center">
+								<a href="login">Administrar</a>
+							</div>
+							<div class="lockscreen-footer text-center">
+								<a href="inicio">Atrás</a>
+							</div>
+
 						</div>
 					</div>
 				</div>
