@@ -114,8 +114,17 @@
         include "vistas/modulos/templates/footer.php";
       }else{
         echo '<body class="hold-transition login-page">';
-        include "vistas/modulos/paginas/marcarasistencia.php";
-
+        if(isset($_GET['ruta'])){
+          if($_GET['ruta'] == "marcarasistencia" ||
+              $_GET['ruta'] == "login" ||
+              $_GET['ruta'] == "inicio"){
+                include "vistas/modulos/paginas/".$_GET['ruta'].".php";
+          }else{
+            include "vistas/modulos/paginas/404.php";
+          }
+        }else{
+          include "vistas/modulos/paginas/inicio.php";
+        }
       }
   ?>
 

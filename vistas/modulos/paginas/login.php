@@ -40,6 +40,10 @@
         ?>
         
       </form>
+      <br />
+      <div class="lockscreen-footer text-center">
+				<a href="marcarasistencia">Atrás</a>
+      </div>
     <!-- /.login-card-body -->
   </div>
 </div>
