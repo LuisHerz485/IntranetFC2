@@ -7,7 +7,7 @@ CREATE TABLE tipousuario(
 	idtipousuario int primary key auto_increment,
 	nombre varchar(45) not null,
 	descripcion varchar(45) not null,
-	fechaCreada timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	fechaCreada timestamp NOT NULL,
 	estado int not null
 );
 
@@ -17,7 +17,7 @@ CREATE TABLE departamento(
 	iddepartamento int primary key auto_increment,
 	nombre varchar(45) not null,
 	descripcion varchar(45) not null,
-	fechaCreada timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	fechaCreada timestamp NOT NULL ,
 	estado int not null
 );
 
@@ -44,7 +44,7 @@ CREATE TABLE usuario(
 	password1 varchar(64) not null,
 	imagen varchar(45) not null,
 	estado tinyint not null,
-	fechacreado timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	fechacreado timestamp NOT NULL,
 	codigopersona varchar(20) not null,
 	idmensaje int,
 	CONSTRAINT fk_user_dep FOREIGN KEY (iddepartamento) REFERENCES departamento(iddepartamento),
@@ -55,7 +55,7 @@ CREATE TABLE usuario(
 CREATE TABLE asistencia(
 	idasistencia int primary key auto_increment,
 	idusuario int,
-	fechahora timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+	fechahora timestamp NOT NULL,
 	tipo varchar(45) not null,
 	estado int not null,
 	detalle varchar(100) not null,
@@ -69,7 +69,7 @@ CREATE TABLE cliente(
 	logincliente varchar(45) not null,
 	contrasenacliente varchar(64) not null,
 	estado tinyint not null,
-	fechacreado timestamp not null current_timestamp() ON UPDATE current_timestamp(),
+	fechacreado timestamp not null,
 	tipocliente varchar(14) not null,
 	iddrive varchar(100) not null,
 	imagen varchar(50) not null
