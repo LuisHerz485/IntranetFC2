@@ -29,15 +29,14 @@
               </div>
               <br/>
               <div id="tbllistado">
-                <table id="" class="table table-striped tablaDataTable dt-responsive">
+                <table class="table table-striped tablaDataTable dt-responsive">
                   <thead>
-                    <th style="width:15px">Opciones</th>
-                    <th style="width:60px">Nombre Comleto</th>
-                    <th>Login</th>
-                    <th>Email</th>
-                    <th>Foto</th>
-                    <th>Fecha/Registro</th>
-                    <th>Estado</th>
+                    <th style="width:50px;">Opciones</th>
+                    <th style="width:50px;">Estado</th>
+                    <th style="width:100px;">Área</th>
+                    <th style="width:250px;">Nombre Completo</th>
+                    <th style="width:250px;">Email</th>
+                    <th style="width:100px;">Foto</th>
                   </thead>
                   <tbody>
                   <?php 
@@ -46,20 +45,19 @@
                       $usuarios = ControladorUsuarios::ctrMostrarUsuario($item,$valor);
                       foreach($usuarios as $key => $value){
                         echo '<tr>
-                          <th style="width:15px" scope="row"><button class="btn btn-warning btn-xs btnEditarUsuario" onclick="mostrarform(true)" login="'.$value['login'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-info btn-xs btnContra" login="'.$value['login'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>
-                          <td style="width:60px">'.$value['nombre'].' '.$value['apellidos'].'</td>
-                          <td>'.$value['login'].'</td>
+                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarUsuario" onclick="mostrarform(true)" login="'.$value['usuario'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-info btn-xs btnContra" login="'.$value['usuario'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
+                          if($value['estado']!="1"){
+                            echo'<td><button class="btn btn-danger btn-xs btnActivarUs" login="'.$value["usuario"].'" estado="1">Inactivo</button></td>';
+                          }else{
+                            echo'<td><button class="btn btn-success btn-xs btnActivarUs" login="'.$value["usuario"].'" estado="0">Activo</button></td>';
+                          }
+                          echo '<td>'.$value['departamento'].'</td>
+                          <td>'.$value['nombre'].' '.$value['apellidos'].'</td>
                           <td>'.$value['email'].'</td>';
                           if($value["imagen"]!=""){
                             echo '<td><img src="'.$value['imagen'].'" width="50px"></td>';
                           }else{
                             echo '<td><img src="vistas/dist/img/avatar.png" width="50px"></td>';
-                          }
-                          echo'<td>'.$value['fechacreado'].'</td>';
-                          if($value['estado']!="1"){
-                            echo'<td><button class="btn btn-danger btn-xs btnActivar" login="'.$value["login"].'" estado="1">Inactivo</button></td>';
-                          }else{
-                            echo'<td><button class="btn btn-success btn-xs btnActivar" login="'.$value["login"].'" estado="0">Activo</button></td>';
                           }
                         echo'</tr>';
                       }
@@ -67,12 +65,11 @@
                   </tbody>
                   <tfoot>
                     <th>Opciones</th>
+                    <th>Estado</th>
+                    <th>Área</th>
                     <th>Nombre Completo</th>
-                    <th>Login</th>
                     <th>Email</th>
                     <th>Foto</th>
-                    <th>Fecha/Registro</th>
-                    <th>Estado</th>
                   </tfoot>   
                 </table>
               </div>

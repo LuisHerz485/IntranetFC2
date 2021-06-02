@@ -41,4 +41,5 @@ $('.tablaDataTable').DataTable({
             className: 'btn btn-default'
         },
     ],
+    'autoWidth': false,
 });
