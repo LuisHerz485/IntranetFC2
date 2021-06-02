@@ -11,9 +11,9 @@ class AjaxUsuarios{
 	public function ajaxActivarUsuario(){
 		$tabla = "usuario";
 		$item1 = "estado";
-		$valor1 = $this -> estado;
+		$valor1 = $this -> activarUsuario;
 		$item2 = "login";
-		$valor2 = $this -> login;
+		$valor2 = $this -> activarLogin;
 		$respuesta = ModeloUsuarios::mdlActualizarUsuario($tabla,$item1,$valor1,$item2,$valor2);
 	}
 
@@ -30,8 +30,8 @@ class AjaxUsuarios{
 /* Activar usuario*/
 if(isset($_POST['estado'])){
     $estado = new AjaxUsuarios();
-    $estado -> estado = $_POST['estado'];
-    $estado -> login = $_POST['login'];
+    $estado -> activarUsuario = $_POST['estado'];
+    $estado -> activarLogin = $_POST['login'];
     $estado ->ajaxActivarUsuario();
 }
 

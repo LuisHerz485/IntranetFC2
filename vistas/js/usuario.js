@@ -77,7 +77,7 @@ $(".nuevaFoto").change(function() {
     }
 })
 
-$(".btnActivar").click(function() {
+$(".btnActivarUs").click(function() {
     var login = $(this).attr("login");
     var estado = $(this).attr("estado");
     var datos = new FormData();
