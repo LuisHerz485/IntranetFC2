@@ -20,10 +20,10 @@
 					if($respuesta =="ok"){
 						echo"<script>
 							Swal.fire({ 
-								title: 'Success!',
-								text: '¡Detalle agregado correctamente!',
-								icon: 'success',
-								confirmButtonText:'Ok'
+								title:	'Success!',
+								text:	'¡Detalle agregado correctamente!',
+								icon:	'success',
+								confirmButtonText:	'Ok'
 								}).then((result)=>{
 									if(result.value){
 										window.location='asistencia';
