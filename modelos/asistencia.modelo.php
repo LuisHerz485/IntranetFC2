@@ -6,22 +6,22 @@
         static public function mdlMostrarAsistencia($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
-                    $stmt = Conexion::conectar()->prepare("SELECT u.codigopersona as codigo, u.nombre as nombre, u.apellidos as apellidos, d.nombre as area, a.fechahora as fecha, a.tipo as asistencia, a.estado as estado, a.detalle as detalle
+                    $stmt = Conexion::conectar()->prepare("SELECT U.codigopersona as codigo, U.nombre as nombre, U.apellidos as apellidos, D.nombre as area, A.fechahora as fecha, A.tipo as asistencia, A.estado as estado, A.detalle as detalle
                     FROM $tabla A
                     JOIN usuario U ON U.idusuario = A.idusuario
                     JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario
-                    JOIN departamento D ON U.iddepartamento = D.iddepartamento WHERE u.codigopersona = $valor");
+                    JOIN departamento D ON U.iddepartamento = D.iddepartamento WHERE U.codigopersona = $valor");
                     $stmt -> execute();
                     return $stmt -> fetchAll();
                 }else{
-                    $stmt = Conexion::conectar()->prepare("SELECT a.estado as estado, a.detalle as detalle
+                    $stmt = Conexion::conectar()->prepare("SELECT A.estado as estado, A.detalle as detalle
                     FROM $tabla A
-                    JOIN usuario U ON U.idusuario = A.idusuario WHERE u.codigopersona = $valor");
+                    JOIN usuario U ON U.idusuario = A.idusuario WHERE U.codigopersona = $valor");
                     $stmt -> execute();
                     return $stmt -> fetch();
                 }
             }else{
-                $stmt = Conexion::conectar()->prepare("SELECT u.codigopersona as codigo, u.nombre as nombre, u.apellidos as apellidos, d.nombre as area, a.fechahora as fecha, a.tipo as asistencia, a.estado as estado, a.detalle as detalle
+                $stmt = Conexion::conectar()->prepare("SELECT U.codigopersona as codigo, U.nombre as nombre, U.apellidos as apellidos, D.nombre as area, A.fechahora as fecha, A.tipo as asistencia, A.estado as estado, A.detalle as detalle
                 FROM $tabla A
                 JOIN usuario U ON U.idusuario = A.idusuario
                 JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario
@@ -34,7 +34,7 @@
         }
 
         static public function mdlMostrarDetalleAsistencia($tabla,$item1,$valor1,$item2,$valor2){
-            $stmt = Conexion::conectar()->prepare("SELECT a.estado as estado, a.detalle as detalle, a.idasistencia as idasistencia, a.fechahora as fecha
+            $stmt = Conexion::conectar()->prepare("SELECT A.estado as estado, A.detalle as detalle, A.idasistencia as idasistencia, A.fechahora as fecha
             FROM $tabla A
             JOIN usuario U ON U.idusuario = A.idusuario WHERE $item1 = \"$valor1\" AND $item2 = \"$valor2\"");
             $stmt -> execute();
@@ -59,7 +59,7 @@
         }
 
         static public function mdlConsultarAsistencia($valor){
-            $stmt = Conexion::conectar()->prepare("SELECT (A.fechahora) as fechahora, a.tipo as tipo, U.idusuario as idusuario 
+            $stmt = Conexion::conectar()->prepare("SELECT A.fechahora as fechahora, A.tipo as tipo, U.idusuario as idusuario 
                 FROM asistencia A 
                 JOIN usuario U ON U.idusuario = A.idusuario
                 WHERE U.idusuario=$valor ORDER BY A.fechahora DESC LIMIT 1");

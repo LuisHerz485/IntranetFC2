@@ -1,14 +1,7 @@
 <?php
     require_once "conexion.php";
 
-
-
     class ModeloUsuarios{
-
-        public function __construct(){
-
-        }
-
         static public function mdlMostrarUsuarios($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
@@ -16,7 +9,7 @@
                     $stmt -> execute();
                     return $stmt -> fetchAll();
                 }else{
-                    $stmt = Conexion::conectar()->prepare("SELECT U.idusuario as idusuario, D.iddepartamento as iddepartamento, TU.idtipousuario as idtipousuario, U.estado as estado, U.nombre AS nombre, U.apellidos AS apellidos, u.login AS usuario, u.password1 as password1, u.imagen as imagen, tu.nombre as tipousuario, D.nombre as departamento, u.email as email, u.codigopersona as codigopersona
+                    $stmt = Conexion::conectar()->prepare("SELECT U.idusuario as idusuario, D.iddepartamento as iddepartamento, TU.idtipousuario as idtipousuario, U.estado as estado, U.nombre AS nombre, U.apellidos AS apellidos, U.login AS usuario, U.password1 as password1, U.imagen as imagen, TU.nombre as tipousuario, D.nombre as departamento, U.email as email, U.codigopersona as codigopersona
                     FROM $tabla U
                     JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario
                     JOIN departamento D ON U.iddepartamento = D.iddepartamento WHERE $item = :$item");

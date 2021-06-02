@@ -95,7 +95,7 @@
                     $stmt -> execute();
                     return $stmt -> fetchAll();
                 }else{
-                    $stmt = Conexion::conectar()->prepare("SELECT r.idrepresentante as idrepresentante, R.nombrecompleto as nombrecompleto, r.detallecargo as cargo, a.telefono1 as telefono1, a.telefono2 as telefono2, a.correo1 as correo1, a.correo2 as correo2
+                    $stmt = Conexion::conectar()->prepare("SELECT R.idrepresentante as idrepresentante, R.nombrecompleto as nombrecompleto, R.detallecargo as cargo, A.telefono1 as telefono1, A.telefono2 as telefono2, A.correo1 as correo1, A.correo2 as correo2
                     FROM agenda A
                     JOIN representante R ON R.idrepresentante = A.idrepresentante WHERE A.idcliente = :$item");
                     $stmt -> bindParam(":".$item,$valor,PDO::PARAM_STR);
