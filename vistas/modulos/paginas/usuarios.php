@@ -31,12 +31,14 @@
               <div id="tbllistado">
                 <table class="table table-striped tablaDataTable dt-responsive">
                   <thead>
-                    <th style="width:50px;">Opciones</th>
-                    <th style="width:50px;">Estado</th>
-                    <th style="width:100px;">Área</th>
-                    <th style="width:250px;">Nombre Completo</th>
-                    <th style="width:250px;">Email</th>
-                    <th style="width:100px;">Foto</th>
+                    <th>Opciones</th>
+                    <th>Estado</th>
+                    <th>Área</th>
+                    <th>Nombre Completo</th>
+                    <th>Usuario</th>
+                    <th>Asistencia</th>
+                    <th>Email</th>
+                    <th>Foto</th>
                   </thead>
                   <tbody>
                   <?php 
@@ -53,6 +55,8 @@
                           }
                           echo '<td>'.$value['departamento'].'</td>
                           <td>'.$value['nombre'].' '.$value['apellidos'].'</td>
+                          <td>'.$value['usuario'].'</td>
+                          <td>'.$value['codigopersona'].'</td>
                           <td>'.$value['email'].'</td>';
                           if($value["imagen"]!=""){
                             echo '<td><img src="'.$value['imagen'].'" width="50px"></td>';
@@ -68,6 +72,8 @@
                     <th>Estado</th>
                     <th>Área</th>
                     <th>Nombre Completo</th>
+                    <th>Usuario</th>
+                    <th>Asistencia</th>
                     <th>Email</th>
                     <th>Foto</th>
                   </tfoot>   
