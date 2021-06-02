@@ -39,12 +39,12 @@ function cancelarform() {
     mostrarform(false);
 }
 
-function generar(longitud) {
+function generarU(longitud) {
     long = parseInt(longitud);
     var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
-    var contraseña = "";
-    for (i = 0; i < long; i++) contraseña += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
-    $("#codigo_persona").val(contraseña);
+    var password = "";
+    for (i = 0; i < long; i++) password += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+    $("#codigo_persona").val(password);
 }
 
 $(".nuevaFoto").change(function() {

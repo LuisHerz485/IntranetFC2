@@ -31,9 +31,8 @@
               <div id="tbllistado">
                 <table id="" class="table table-striped tablaDataTable dt-responsive">
                   <thead>
-                    <th>Opciones</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
+                    <th style="width:15px">Opciones</th>
+                    <th style="width:60px">Nombre Comleto</th>
                     <th>Login</th>
                     <th>Email</th>
                     <th>Foto</th>
@@ -47,9 +46,8 @@
                       $usuarios = ControladorUsuarios::ctrMostrarUsuario($item,$valor);
                       foreach($usuarios as $key => $value){
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarUsuario" onclick="mostrarform(true)" login="'.$value['login'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-info btn-xs btnContra" login="'.$value['login'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>
-                          <td>'.$value['nombre'].'</td>
-                          <td>'.$value['apellidos'].'</td>
+                          <th style="width:15px" scope="row"><button class="btn btn-warning btn-xs btnEditarUsuario" onclick="mostrarform(true)" login="'.$value['login'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-info btn-xs btnContra" login="'.$value['login'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>
+                          <td style="width:60px">'.$value['nombre'].' '.$value['apellidos'].'</td>
                           <td>'.$value['login'].'</td>
                           <td>'.$value['email'].'</td>';
                           if($value["imagen"]!=""){
@@ -69,8 +67,7 @@
                   </tbody>
                   <tfoot>
                     <th>Opciones</th>
-                    <th>Nombre</th>
-                    <th>Apellidos</th>
+                    <th>Nombre Completo</th>
                     <th>Login</th>
                     <th>Email</th>
                     <th>Foto</th>
@@ -135,7 +132,7 @@
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-xs-12" id="claves1">
                     <label for="">Clave de asistencia(*):</label>
-                    <button class="btn btn-info" type="button" onclick="generar(6);" >Generar</button>
+                    <button class="btn btn-info" type="button" onclick="generarU  (6)" >Generar</button>
                     <input class="form-control" type="text" name="codigo_persona" id="codigo_persona" maxlength="64" placeholder="Clave">
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
