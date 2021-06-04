@@ -98,38 +98,174 @@ CREATE TABLE agenda(
 
 
 /*
-CREATE TABLE auditoria(
+/*=============tabla usuario========================
+CREATE TABLE auditoria_usuario(
 	idregistro int primary key auto_increment,
-	idusuario varchar(50) not null,
-	nomusuario varchar(100) not null,
+	idusuario int not null,
+	o_nomusuario varchar(100) not null,
+	n_nomusuario varchar(100) not null,
+	fecha datetime not null,
+	accion varchar(100) not null
+);
+/*
+DROP TRIGGER IF EXISTS `INGRESAR_USUARIO`;
+DROP TRIGGER IF EXISTS `ACTUALIZAR_USUARIO`;
+DROP TRIGGER IF EXISTS `ELIMINAR_USUARIO`;
+*/
+
+/*
+DELIMITER $$
+CREATE TRIGGER INGRESAR_USUARIO AFTER INSERT ON usuario 
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_usuario(idusuario,o_nomusuario,fecha,accion) 
+	VALUES(new.idusuario,new.nombre,NOW(),"usuario registrado");
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ACTUALIZAR_USUARIO BEFORE UPDATE ON usuario 
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_usuario(idusuario,o_nomusuario,n_nomusuario,fecha,accion)
+	VALUES(OLD.idusuario,OLD.nombre,NEW.nombre,NOW(),"usuario actualizado");
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ELIMINAR_USUARIO AFTER DELETE ON usuario 
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_usuario(idusuario,o_nomusuario,fecha,accion)
+	VALUES(OLD.idusuario,OLD.nombre,NOW(),"usuario eliminado");
+END$$
+DELIMITER ;
+
+*/
+/*=================== Tabla Cliente=====================
+CREATE TABLE auditoria_cliente(
+	idregistro int primary key auto_increment,
+	idcliente int not null,
+	o_ruc varchar(15) not null,
+	n_ruc varchar(15) not null,
+	fecha datetime not null,
+	accion varchar(100) not null
+);
+/*
+DROP TRIGGER IF EXISTS `INGRESAR_CLIENTE`;
+DROP TRIGGER IF EXISTS `ACTUALIZAR_CLIENTE`;
+DROP TRIGGER IF EXISTS `ELIMINAR_CLIENTE`;
+*/
+
+/*
+DELIMITER $$
+CREATE TRIGGER INGRESAR_CLIENTE AFTER INSERT ON cliente 
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_cliente(idcliente,o_ruc,fecha,accion) 
+	VALUES(new.idcliente,new.ruc,NOW(),"cliente registrado");
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ACTUALIZAR_CLIENTE BEFORE UPDATE ON cliente 
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_cliente(idcliente,o_ruc,n_ruc,fecha,accion)
+	VALUES(OLD.idcliente,OLD.ruc,NEW.ruc,NOW(),"cliente actualizado");
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ELIMINAR_CLIENTE AFTER DELETE ON cliente 
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_cliente(idcliente,o_ruc,fecha,accion)
+	VALUES(OLD.idcliente,OLD.ruc,NOW(),"cliente eliminado");
+END$$
+DELIMITER ;
+
+/*=========================tabla agenda=======================
+CREATE TABLE auditoria_agenda(
+	idregistro int primary key auto_increment,
+	idcliente int not null,
+	idrepresentante int not null,
+	o_telefono1 varchar(15) not null,
+	n_telefono1 varchar(15) not null,
 	fecha datetime not null,
 	accion varchar(100) not null
 );
 
-DROP TRIGGER IF EXISTS `INSERTAR_USUARIO`;
-DROP TRIGGER IF EXISTS `ACTUALIZAR_USUARIO`;
-DROP TRIGGER IF EXISTS `ELIMINAR_USUARIO`;
+DROP TRIGGER IF EXISTS `INGRESAR_AGENDA`;
+DROP TRIGGER IF EXISTS `ACTUALIZAR_AGENDA`;
+DROP TRIGGER IF EXISTS `ELIMINAR_AGENDA`;
 
-CREATE TRIGGER `INSERTAR_USUARIO` AFTER INSERT ON `usuario` FOR EACH ROW 
-INSERT INTO auditoria (idusuario,nomusuario,fecha,accion)
-VALUES(NEW.idusuario,NEW.nombre,NOW(),"Ingreso nuevo usuario");
-
-
-CREATE TRIGGER `ACTUALIZAR_USUARIO` AFTER UPDATE ON `usuario` 
+DELIMITER $$
+CREATE TRIGGER INGRESAR_AGENDA AFTER INSERT ON agenda
 FOR EACH ROW 
 BEGIN
-UPDATE 
+	INSERT INTO auditoria_agenda(idcliente,idrepresentante,o_telefono1,fecha,accion) 
+	VALUES(new.idcliente,new.idrepresentante,new.telefono1,NOW(),"agenda registrado");
+END$$
+DELIMITER ;
 
-END
-
-
-
-CREATE TRIGGER `ELIMINAR_USUARIO` AFTER DELETE ON `usuario` 
+DELIMITER $$
+CREATE TRIGGER ACTUALIZAR_AGENDA BEFORE UPDATE ON agenda 
 FOR EACH ROW 
 BEGIN
-DELETE 
+	INSERT INTO auditoria_agenda(idcliente,idrepresentante,o_telefono1,n_telefono1,fecha,accion)
+	VALUES(OLD.idcliente,OLD.idrepresentante,OLD.telefono1,NEW.telefono1,NOW(),"agenda actualizado");
+END$$
+DELIMITER ;
 
-END
+DELIMITER $$
+CREATE TRIGGER ELIMINAR_AGENDA AFTER DELETE ON agenda 
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_agenda(o_idcliente,o_idrepresentante,o_telefono1,fecha,accion)
+	VALUES(OLD.idcliente,OLD.idrepresentante,OLD.telefono1,NOW(),"agenda eliminado");
+END$$
+DELIMITER ;
+========================tabla asistencia===============================
+CREATE TABLE auditoria_asistencia(
+	idregistro int primary key auto_increment,
+	idasistencia int not null,
+	idusuario int not null,
+	o_fechahora datetime not null,
+	n_fechahora datetime not null,
+	fechaaccion datetime not null,
+	accion varchar(100) not null
+);
+DROP TRIGGER IF EXISTS `INGRESAR_ASISTENCIA`;
+DROP TRIGGER IF EXISTS `ACTUALIZAR_ASISTENCIA`;
+DROP TRIGGER IF EXISTS `ELIMINAR_ASISTENCIA`;
+
+DELIMITER $$
+CREATE TRIGGER INGRESAR_ASISTENCIA AFTER INSERT ON asistencia
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_asistencia(idasistencia,idusuario,fechaaccion,accion) 
+	VALUES(new.idasistencia,new.idusuario,NOW(),"asistencia registrada");
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ACTUALIZAR_ASISTENCIA BEFORE UPDATE ON asistencia 
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_asistencia(idasistencia,idusuario,o_fechahora,n_fechahora,fechaaccion,accion)
+	VALUES(OLD.idasistencia,OLD.idusuario,OLD.fechahora,NEW.fechahora,NOW(),"asistencia actualizada");
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ELIMINAR_ASISTENCIA AFTER DELETE ON asistencia 
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_asistencia(idasistencia,idusuario,fechaaccion,accion)
+	VALUES(OLD.idasistencia,OLD.idusuario,NOW(),"asistencia eliminada");
+END$$
+DELIMITER ;
 
 */
 
