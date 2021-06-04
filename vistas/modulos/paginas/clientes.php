@@ -121,15 +121,15 @@
             <div class="card-body panel-body" id="formulariodetalleC">
               <div class="row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Cargo(*):</label>
+                  <input type="text" class="form-control" name="detallecargo" id="detallecargo" required>
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Nombres y Apellidos(*):</label>
                   <input type="hidden" class="form-control" name="idclienteA" id="idclienteA" required>
                   <input class="form-control" type="hidden" name="editarAg" id="editarAg" value="no">
                   <input class="form-control" type="hidden" name="idrepresentante" id="idrepresentante">
                   <input type="text" class="form-control" name="nombrecompleto" id="nombrecompleto" required>
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                  <label>Cargo(*):</label>
-                  <input type="text" class="form-control" name="detallecargo" id="detallecargo" required>
                 </div>
                 <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
                   <label>Telefono1(*):</label>

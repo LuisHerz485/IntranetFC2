@@ -56,12 +56,20 @@ class AjaxAgenda{
 
 	public function ajaxEditarRepresentante(){
         $tabla = "agenda";
-		$item = "A.idrepresentante";
+		$item = 1;
 		$valor = $this->idrepre;
 		$respuesta = ModeloAgenda::mdlMostrarAgendaCliente($tabla, $item, $valor);
 		echo json_encode($respuesta);
 	}
 
+	public $idrepreE;
+
+	public function ajaxEliminarRepresentante(){
+		$valor = $this->idrepreE;
+		$respuesta = ModeloAgenda::mdlEliminarRepresentanteAgenda($valor);
+		$respuesta2 = ModeloRepresentante::mdlEliminarRepresentante($valor);
+	}
+	
 }
 
 /* Mostrar agenda*/
@@ -87,8 +95,16 @@ if(isset($_POST["idclienteAg"])){
 	$agregarA -> ajaxEditarAgregarAgenda();
 }
 
+/* Editar agenda*/
 if(isset($_POST["idrepre"])){
 	$editar = new AjaxAgenda();
 	$editar -> idrepre = $_POST["idrepre"];
 	$editar -> ajaxEditarRepresentante();
+}
+
+/* Elimnar agenda*/
+if(isset($_POST["idrepreE"])){
+	$eliminar = new AjaxAgenda();
+	$eliminar -> idrepreE = $_POST["idrepreE"];
+	$eliminar -> ajaxEliminarRepresentante();
 }

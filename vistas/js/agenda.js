@@ -46,7 +46,7 @@ function listarAgenda() {
         success: function(respuesta) {
             $.each(respuesta, function(index, value) {
                 /* Vamos agregando a nuestra tabla las filas necesarias */
-                $("#mostrarAgenda").append("<tr><th scope=\"row\"><button class=\"btn btn-warning btn-xs\" onclick=\"btnEditarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-pencil-alt\"></i></button> <button class=\"btn btn-danger btn-xs btnEditarDepartamento\" onclick=\"mostrarformD(true)\" idrepre=" + value.idrepresentante + "><i class=\"fas fa-times-circle\"></i></button></th><td>" + value.cargo + "</td><td>" + value.nombrecompleto + "</td><td>" + value.telefono1 + "</td><td>" + value.telefono2 + "</td><td>" + value.correo1 + "</td><td>" + value.correo2 + "</td></tr>");
+                $("#mostrarAgenda").append("<tr><th scope=\"row\"><button class=\"btn btn-warning btn-xs\" onclick=\"btnEditarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-pencil-alt\"></i></button> <button class=\"btn btn-danger btn-xs\" onclick=\"btnEliminarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-times-circle\"></i></button></th><td>" + value.cargo + "</td><td>" + value.nombrecompleto + "</td><td>" + value.telefono1 + "</td><td>" + value.telefono2 + "</td><td>" + value.correo1 + "</td><td>" + value.correo2 + "</td></tr>");
             });
         },
         error: function(respuesta) {
@@ -56,7 +56,29 @@ function listarAgenda() {
 }
 
 $(".btnEditarDetalleCliente").click(function() {
-    listarAgenda();
+    $("#mostrarAgenda > tbody").empty();
+    var idclienteA = $(this).attr("idcliente");
+    $("#idclienteA").val(idclienteA);
+    var datos = new FormData();
+    datos.append("idclienteA", idclienteA);
+    $.ajax({
+        url: "ajax/agenda.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
+            $.each(respuesta, function(index, value) {
+                /* Vamos agregando a nuestra tabla las filas necesarias */
+                $("#mostrarAgenda").append("<tr><th scope=\"row\"><button class=\"btn btn-warning btn-xs\" onclick=\"btnEditarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-pencil-alt\"></i></button> <button class=\"btn btn-danger btn-xs\" onclick=\"btnEliminarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-times-circle\"></i></button></th><td>" + value.cargo + "</td><td>" + value.nombrecompleto + "</td><td>" + value.telefono1 + "</td><td>" + value.telefono2 + "</td><td>" + value.correo1 + "</td><td>" + value.correo2 + "</td></tr>");
+            });
+        },
+        error: function(respuesta) {
+            console.log("Error", respuesta);
+        }
+    });
 })
 
 $(".btnAgregarAgenda").click(function() {
@@ -95,11 +117,7 @@ $(".btnAgregarAgenda").click(function() {
                 icon: 'success',
                 confirmButtonText: 'Ok'
             }).then((result) => {
-                if (editarAg == "no") {
-                    if (result.value) {
-                        $("#mostrarAgenda").append("<tr><td><button class=\"btn btn-warning btn-xs btnEditarDetAgen\" idrepre=" + respuesta['idrepresentante'] + "><i class=\"fas fa-pencil-alt\"></i></button> <button class=\"btn btn-danger btn-xs btnEliminarDetAgen\" idrepre=" + respuesta['idrepresentante'] + "><i class=\"fas fa-times-circle\"></i></button></td><td>" + detallecargo + "</td><td>" + nombrecompleto + "</td><td>" + telefono1 + "</td><td>" + telefono2 + "</td><td>" + correo1 + "</td><td>" + correo2 + "</td></tr>");
-                    }
-                } else {
+                if (result.value) {
                     listarAgenda();
                 }
             })
@@ -127,7 +145,7 @@ function btnEditarDetAgen(idrepresentante) {
         success: function(respuesta) {
             $("#idrepresentante").val(respuesta['idrepresentante']);
             $("#nombrecompleto").val(respuesta['nombrecompleto']);
-            $("#detallecargo").val(respuesta['detallecargo']);
+            $("#detallecargo").val(respuesta['cargo']);
             $("#telefono1").val(respuesta['telefono1']);
             $("#telefono2").val(respuesta['telefono2']);
             $("#correo1").val(respuesta['correo1']);
@@ -137,6 +155,35 @@ function btnEditarDetAgen(idrepresentante) {
             console.log("Error", respuesta);
         }
     });
+}
+
+function btnEliminarDetAgen(idrepresentante) {
+    console.log("entro");
+    var idrepre = idrepresentante;
+    var datos = new FormData();
+    datos.append("idrepreE", idrepre);
+
+    Swal.fire({
+        title: '¿Seguro que deseas elimnar al representante de la agenda?',
+        showCancelButton: true,
+        confirmButtonText: `Guardar`,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "ajax/agenda.ajax.php",
+                method: "POST",
+                data: datos,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(respuesta) {}
+            })
+            Swal.fire('Representante Eliminado!', '', 'success');
+            listarAgenda();
+        } else if (result.isDenied) {
+            Swal.fire('Cambios no realizado', '', 'info')
+        }
+    })
 }
 
 init();

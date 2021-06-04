@@ -36,6 +36,17 @@
 			$stmt = null;
 		}
         
+        static public function mdlEliminarRepresentante($valor){
+			$stmt = conexion::conectar()->prepare("DELETE FROM representante WHERE idrepresentante=:idrepresentante");
+			$stmt -> bindParam(":idrepresentante", $valor,PDO::PARAM_STR);
+			if($stmt->execute()){
+				return "ok";
+			}else{
+				return "error";
+			}
+			$stmt ->close();
+			$stmt = null;
+		}
 
     }
 

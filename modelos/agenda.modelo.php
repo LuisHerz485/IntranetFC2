@@ -5,9 +5,11 @@
         static public function mdlMostrarAgendaCliente($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by nombre ASC");
+                    $stmt = Conexion::conectar()->prepare("SELECT R.idrepresentante as idrepresentante, R.nombrecompleto as nombrecompleto, R.detallecargo as cargo, A.telefono1 as telefono1, A.telefono2 as telefono2, A.correo1 as correo1, A.correo2 as correo2
+                    FROM $tabla A
+                    JOIN representante R ON R.idrepresentante = A.idrepresentante WHERE R.idrepresentante = $valor");
                     $stmt -> execute();
-                    return $stmt -> fetchAll();
+                    return $stmt -> fetch();
                 }else{
                     $stmt = Conexion::conectar()->prepare("SELECT R.idrepresentante as idrepresentante, R.nombrecompleto as nombrecompleto, R.detallecargo as cargo, A.telefono1 as telefono1, A.telefono2 as telefono2, A.correo1 as correo1, A.correo2 as correo2
                     FROM agenda A
@@ -52,6 +54,18 @@
             $stmt -> bindParam(":correo2", $valor7,PDO::PARAM_STR);
             $stmt -> bindParam(":idcliente", $valor1,PDO::PARAM_STR);
             $stmt -> bindParam(":idrepresentante", $valor8,PDO::PARAM_STR);
+			if($stmt->execute()){
+				return "ok";
+			}else{
+				return "error";
+			}
+			$stmt ->close();
+			$stmt = null;
+		}
+
+        static public function mdlEliminarRepresentanteAgenda($valor){
+			$stmt = conexion::conectar()->prepare("DELETE FROM agenda WHERE idrepresentante=:idrepresentante");
+			$stmt -> bindParam(":idrepresentante", $valor,PDO::PARAM_STR);
 			if($stmt->execute()){
 				return "ok";
 			}else{
