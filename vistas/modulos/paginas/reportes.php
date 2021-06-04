@@ -25,10 +25,6 @@
               <h3 class="card-title">Consulta de Asistencia por Fecha</h3>
             </div>
             <div class="card-body panel-body" id="listadoregistrosR">
-              <div class="dt-buttons">
-
-              </div>
-              <br/>
               <div class="row">
                 <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
                   <label>Fecha Inicio</label>
@@ -68,7 +64,6 @@
                     <th>Detalle</th>
                   </thead>
                   <tbody>
-                  
                   </tbody>
                   <tfoot>
                     <th>Código</th>

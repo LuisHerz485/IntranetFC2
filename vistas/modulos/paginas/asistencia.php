@@ -25,10 +25,6 @@
               <h3 class="card-title">Registro de Asistencia</h3>
             </div>
             <div class="card-body panel-body" id="listadoregistrosA">
-              <div class="dt-buttons">
-
-              </div>
-              <br/>
               <div id="tbllistado">
                 <table  class="table table-striped tablaDataTable dt-responsive">
                   <thead>

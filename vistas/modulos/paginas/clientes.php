@@ -25,19 +25,16 @@
               <h3 class="card-title">Clientes&emsp;<button class="btn btn-success" onclick="mostrarformC(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
             </div>
             <div class="card-body panel-body" id="listadoregistrosC">
-              <div class="dt-buttons">
-              </div>
-              <br/>
               <div id="tbllistado">
                 <table id="" class="table table-striped tablaDataTable dt-responsive">
                   <thead>
                     <th>Opciones</th>
+                    <th>Estado</th>
                     <th>RUC</th>
                     <th>Razón Social</th>
                     <th>Login</th>
                     <th>Fecha Creado</th>
                     <th>Imagen</th>
-                    <th>Estado</th>
                   </thead>
                   <tbody>
                   <?php 
@@ -46,8 +43,13 @@
                       $clientes = ControladorClientes::ctrMostrarCliente($item,$valor);
                       foreach($clientes as $key => $value){
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarCliente" onclick="mostrarformC(true)" idcliente="'.$value['idcliente'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-secondary btn-xs btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="'.$value['idcliente'].'"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-xs btnContraC" idcliente="'.$value['idcliente'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>
-                          <td>'.$value['ruc'].'</td>
+                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarCliente" onclick="mostrarformC(true)" idcliente="'.$value['idcliente'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-secondary btn-xs btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="'.$value['idcliente'].'"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-xs btnContraC" idcliente="'.$value['idcliente'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
+                          if($value['estado']!="1"){
+                            echo'<td><button class="btn btn-danger btn-xs btnActivarC" idcliente="'.$value["idcliente"].'" estado="1">Inactivo</button></td>';
+                          }else{
+                            echo'<td><button class="btn btn-success btn-xs btnActivarC" idcliente="'.$value["idcliente"].'" estado="0">Activo</button></td>';
+                          }
+                          echo '<td>'.$value['ruc'].'</td>
                           <td>'.$value['razonsocial'].'</td>
                           <td>'.$value['logincliente'].'</td>
                           <td>'.$value['fechacreado'].'</td>';
@@ -56,23 +58,18 @@
                           }else{
                             echo '<td><img src="vistas/dist/img/avatar.png" width="50px"></td>';
                           }
-                          if($value['estado']!="1"){
-                            echo'<td><button class="btn btn-danger btn-xs btnActivarC" idcliente="'.$value["idcliente"].'" estado="1">Inactivo</button></td>';
-                          }else{
-                            echo'<td><button class="btn btn-success btn-xs btnActivarC" idcliente="'.$value["idcliente"].'" estado="0">Activo</button></td>';
-                          }
                         echo'</tr>';
                       }
                   ?>
                   </tbody>
                   <tfoot>
                     <th>Opciones</th>
+                    <th>Estado</th>
                     <th>RUC</th>
                     <th>Razón Social</th>
                     <th>Login</th>
                     <th>Fecha Creado</th>
                     <th>Imagen</th>
-                    <th>Estado</th>
                   </tfoot>   
                 </table>
               </div>
@@ -82,7 +79,7 @@
                 <div class="row">
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">
                     <label for="">RUC(*):</label>
-                    <input class="form-control" type="hidden" name="editar" id="editar" value="no">
+                    <input class="form-control" type="hidden" name="editarDA" id="editarDA" value="no">
                     <input class="form-control" type="hidden" name="idcliente" id="idcliente">
                     <input class="form-control" type="text" name="ruc" id="ruc" maxlength="12" placeholder="RUC" required>
                   </div>
@@ -126,6 +123,8 @@
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Nombres y Apellidos(*):</label>
                   <input type="hidden" class="form-control" name="idclienteA" id="idclienteA" required>
+                  <input class="form-control" type="hidden" name="editarAg" id="editarAg" value="no">
+                  <input class="form-control" type="hidden" name="idrepresentante" id="idrepresentante">
                   <input type="text" class="form-control" name="nombrecompleto" id="nombrecompleto" required>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -150,6 +149,7 @@
                 </div>
               </div>
               <button class="btn btn-success btnAgregarAgenda">Agregar</button>
+              <button class="btn btn-primary" onclick="limpiarAgenda()" type="button">Limpiar</button>
               <button class="btn btn-danger" onclick="cancelarDetformC()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
               <br/>
               <br/>

@@ -25,18 +25,15 @@
               <h3 class="card-title">Áreas&emsp;<button class="btn btn-success" onclick="mostrarformD(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
             </div>
             <div class="card-body panel-body" id="listadoregistrosD">
-              <div class="dt-buttons">
-
-              </div>
-              <br/>
               <div id="tbllistado">
                 <table  class="table table-striped tablaDataTable dt-responsive">
                   <thead>
                     <th>Opciones</th>
+                    <th>Estado</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Fecha/registro</th>
-                    <th>Estado</th>
+                    
                   </thead>
                   <tbody>
                   <?php
@@ -45,25 +42,24 @@
                       $departamento = ControladorDepartamento::ctrMostrarDepartamento($item,$valor);
                       foreach($departamento as $key => $value){
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarDepartamento" onclick="mostrarformD(true)" nombre="'.$value['nombre'].'"><i class="fas fa-pencil-alt"></i></button></th>
-                          <td>'.$value['nombre'].'</td>
-                          <td>'.$value['descripcion'].'</td>
-                          <td>'.$value['fechaCreada'].'</td>';
+                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarDepartamento" onclick="mostrarformD(true)" nombre="'.$value['nombre'].'"><i class="fas fa-pencil-alt"></i></button></th>';
                           if($value['estado']!="1"){
                             echo'<td><button class="btn btn-danger btn-xs btnActivarD" nombre="'.$value["nombre"].'" estado="1">Inactivo</button></td>';
                           }else{
                             echo'<td><button class="btn btn-success btn-xs btnActivarD" nombre="'.$value["nombre"].'" estado="0">Activo</button></td>';
                           }
-                        echo'</tr>';
+                          echo '<td>'.$value['nombre'].'</td>
+                          <td>'.$value['descripcion'].'</td>
+                          <td>'.$value['fechaCreada'].'</td></tr>';
                       }
                   ?>
                   </tbody>
                   <tfoot>
                     <th>Opciones</th>
+                    <th>Estado</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Fecha/registro</th>
-                    <th>Estado</th>
                   </tfoot>   
                 </table>
               </div>

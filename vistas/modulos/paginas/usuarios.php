@@ -25,9 +25,6 @@
               <h3 class="card-title">Usuarios&emsp;<button class="btn btn-success" onclick="mostrarform(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
             </div>
             <div class="card-body panel-body" id="listadoregistros">
-              <div class="dt-buttons">
-              </div>
-              <br/>
               <div id="tbllistado">
                 <table class="table table-striped tablaDataTable dt-responsive">
                   <thead>

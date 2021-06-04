@@ -23,13 +23,8 @@
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Tipo de usuarios&emsp;<button class="btn btn-success" onclick="mostrarformTU(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
-              
             </div>
             <div class="card-body panel-body" id="listadoregistrosTU">
-              <div class="dt-buttons">
-
-              </div>
-              <br/>
               <div id="tbllistado">
                 <table  class="table table-striped tablaDataTable dt-responsive">
                   <thead>
