@@ -49,7 +49,7 @@
                                 "tipocliente" => "clienteaccess",
 								"estado" => 1);
 
-					if($_POST['editar'] === "no"){
+					if($_POST['editarDA'] === "no"){
 						$respuesta = ModeloClientes::mdlIngresarCliente($tabla,$datos);
 						if($respuesta =="ok"){
 							echo"<script>
