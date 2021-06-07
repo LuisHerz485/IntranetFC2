@@ -266,6 +266,128 @@ BEGIN
 	VALUES(OLD.idasistencia,OLD.idusuario,NOW(),"asistencia eliminada");
 END$$
 DELIMITER ;
+========================tabla tipousuario===============================
+CREATE TABLE auditoria_tipousuario(
+	idregistro int primary key auto_increment,
+	idtipousuario int not null,
+	o_nombre varchar(100) not null,
+	n_nombre varchar(100) not null,
+	o_descripcion varchar(100)not null,
+	n_descripcion varchar(100)not null,
+	fechaaccion datetime not null,
+	accion varchar(100) not null
+);
+DROP TRIGGER IF EXISTS `INGRESAR_TIPOUSUARIO`;
+DROP TRIGGER IF EXISTS `ACTUALIZAR_TIPOUSUARIO`;
+DROP TRIGGER IF EXISTS `ELIMINAR_TIPOUSUARIO`;
 
+DELIMITER $$
+CREATE TRIGGER INGRESAR_TIPOUSUARIO AFTER INSERT ON tipousuario
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_tipousuario(idtipousuario,o_nombre,o_descripcion,fechaaccion,accion) 
+	VALUES(new.idtipousuario,new.nombre,new.descripcion,NOW(),"tipo_usuario registrado");
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ACTUALIZAR_TIPOUSUARIO BEFORE UPDATE ON tipousuario
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_tipousuario(idtipousuario,o_nombre,o_descripcion,n_nombre,n_descripcion,fechaaccion,accion)
+	VALUES(OLD.idtipousuario,OLD.nombre,OLD.descripcion,NEW.nombre,NEW.descripcion,NOW(),"tipo_usuario actualizado");
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ELIMINAR_TIPOUSUARIO AFTER DELETE ON tipousuario 
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_tipousuario(idtipousuario,o_nombre,o_descripcion,fechaaccion,accion)
+	VALUES(OLD.idtipousuario,OLD.nombre,OLD.descripcion,NOW(),"tipo_usuario eliminado");
+END$$
+DELIMITER ;
+========================tabla departamento==============================
+CREATE TABLE auditoria_departamento(
+	idregistro int primary key auto_increment,
+	iddepartamento int not null,
+	o_nombre varchar(100) not null,
+	n_nombre varchar(100) not null,
+	o_descripcion varchar(100)not null,
+	n_descripcion varchar(100)not null,
+	fechaaccion datetime not null,
+	accion varchar(100) not null
+);
+DROP TRIGGER IF EXISTS `INGRESAR_DEPARTAMENTO`;
+DROP TRIGGER IF EXISTS `ACTUALIZAR_DEPARTAMENTO`;
+DROP TRIGGER IF EXISTS `ELIMINAR_DEPARTAMENTO`;
+
+DELIMITER $$
+CREATE TRIGGER INGRESAR_DEPARTAMENTO AFTER INSERT ON departamento
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_departamento(iddepartamento,o_nombre,o_descripcion,fechaaccion,accion) 
+	VALUES(new.iddepartamento,new.nombre,new.descripcion,NOW(),"departamento registrado");
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ACTUALIZAR_DEPARTAMENTO BEFORE UPDATE ON departamento
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_departamento(iddepartamento,o_nombre,o_descripcion,n_nombre,n_descripcion,fechaaccion,accion)
+	VALUES(OLD.iddepartamento,OLD.nombre,OLD.descripcion,NEW.nombre,NEW.descripcion,NOW(),"departamento actualizado");
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ELIMINAR_DEPARTAMENTO AFTER DELETE ON departamento 
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_departamento(iddepartamento,o_nombre,o_descripcion,fechaaccion,accion)
+	VALUES(OLD.iddepartamento,OLD.nombre,OLD.descripcion,NOW(),"departamento eliminado");
+END$$
+DELIMITER ;
+========================tabla representante============================
+CREATE TABLE auditoria_representante(
+	idregistro int primary key auto_increment,
+	idrepresentante int not null,
+	o_detalle varchar(100) not null,
+	n_detalle varchar(100) not null,
+	o_nombre varchar(100)not null,
+	n_nombre varchar(100)not null,
+	fechaaccion datetime not null,
+	accion varchar(100) not null
+);
+DROP TRIGGER IF EXISTS `INGRESAR_REPRESENTANTE`;
+DROP TRIGGER IF EXISTS `ACTUALIZAR_REPRESENTANTE`;
+DROP TRIGGER IF EXISTS `ELIMINAR_REPRESENTANTE`;
+
+DELIMITER $$
+CREATE TRIGGER INGRESAR_REPRESENTANTE AFTER INSERT ON representante
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_representante(idrepresentante,o_detalle,o_nombre,fechaaccion,accion) 
+	VALUES(new.idrepresentante,new.detalleCargo,new.nombreCompleto,NOW(),"representante registrado");
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ACTUALIZAR_REPRESENTANTE BEFORE UPDATE ON representante
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_representante(idrepresentante,o_detalle,o_nombre,n_detalle,n_nombre,fechaaccion,accion)
+	VALUES(OLD.idrepresentante,OLD.detalleCargo,OLD.nombreCompleto,NEW.detalleCargo,NEW.nombreCompleto,NOW(),"representante actualizado");
+END$$
+DELIMITER ;
+
+DELIMITER $$
+CREATE TRIGGER ELIMINAR_REPRESENTANTE AFTER DELETE ON representante 
+FOR EACH ROW 
+BEGIN
+	INSERT INTO auditoria_representante(idrepresentante,o_detalle,o_nombre,fechaaccion,accion)
+	VALUES(OLD.idrepresentante,OLD.detalleCargo,OLD.nombreCompleto,NOW(),"representante eliminado");
+END$$
+DELIMITER ;
 */
 
