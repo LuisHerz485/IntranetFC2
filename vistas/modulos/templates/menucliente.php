@@ -21,8 +21,8 @@
         </div>
         <div class="info">
             <?php
-                if($_SESSION['razonsocial']!=""){
-                    echo '<a class="d-block">'.$_SESSION['razonsocial']. '</a>';
+                if($_SESSION['nombre']!=""){
+                    echo '<a class="d-block">'.$_SESSION['nombre']. '</a>';
                 }else{
                     echo '<a class="d-block">Nombre de empresa</a>';
                 }
@@ -43,190 +43,187 @@
                     <p>Escritorio</p>
                 </a>
             </li>
-
+            
             <li class="nav-header">MIS ARCHIVOS</li>
-            <li class="nav-item has-treeview">
+            <li class="nav-item menu-is-opening menu-open">
                 <a href="#" class="nav-link">
-                    <i class="fas fa-folder"></i>
-                    <p style="font-size: 14px;">Area Tributaria<i class="right fas fa-angle-right"></i></p>
-                    
+                    <i class="nav-icon fas fa-folder"></i>
+                    <p>Área Tributaria<i class="fas fa-angle-left right"></i></p>
                 </a>
-                <ul class="nav nav-treeview">
+                <ul class="nav nav-treeview" style="display: block;">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Comprobante de percepciones</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Comprobante de percepciones</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Comprobante de retenciones</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Comprobante de retenciones</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Cronograma de fraccionamiento</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Cronograma de <br/>fraccionamiento</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pages/UI/sliders.html" class="nav-link">
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Declaraciones anuales</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Declaraciones anuales</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Declaraciones mensuales</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Declaraciones mensuales</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Extracto de pagos</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Extracto de pagos</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Ficha RUC</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Ficha RUC</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Gestiones SUNARP</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Gestiones SUNARP</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Importaciones DUAS</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Importaciones DUAS</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Liquidacion de impuestos</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Liquidacion de impuestos</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Pago de detracciones</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Pago de detracciones</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Reporte de compras</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Reporte de compras</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Reporte de ventas</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Reporte de ventas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Comprobante de terceros</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Comprobante de terceros</p>
                         </a>
                     </li>
                 </ul>
             </li>
 
-
-            <li class="nav-item has-treeview">
+            <li class="nav-item menu-is-opening menu-open">
                 <a href="#" class="nav-link">
-                    <i class="fas fa-folder"></i>
-                    <p>Area Laboral<i class="right fas fa-angle-right"></i></p>
+                    <i class="nav-icon fas fa-folder"></i>
+                    <p>Área Laboral<i class="fas fa-angle-left right"></i></p>
                 </a>
-                <ul class="nav nav-treeview">
+                <ul class="nav nav-treeview" style="display: block;">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>AFP y ONP</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">AFP y ONP</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Alta y bajas</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Alta y bajas</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Backup PLAME</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Backup PLAME</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pages/UI/sliders.html" class="nav-link">
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Boletas de pagos</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Boletas de pagos</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Comprobantes de pagos AFP</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Comprobantes de pagos AFP</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Contratos de personal</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Contratos de personal</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">ESSALUD y microempresa</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>ESSALUD y microempresa</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">PDT 601</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>PDT 601</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">REMYPE</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>REMYPE</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Tickets AFP</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Tickets AFP</p>
                         </a>
                     </li>
                 </ul>
-            </li> 
-   
+            </li>
 
             <li class="nav-header">PAGOS</li>
-            <li class="nav-item has-treeview">
+            <li class="nav-item menu-is-opening menu-open">
                 <a href="#" class="nav-link">
-                    <i class="fas fa-folder"></i>
-                    <p style="font-size: 14px;">Seguimiento de Pagos<i class="right fas fa-angle-left"></i></p>
+                    <i class="nav-icon fas fa-folder"></i>
+                    <p>Seguimiento de Pagos<i class="fas fa-angle-left right"></i></p>
                 </a>
-                <ul class="nav nav-treeview">
+                <ul class="nav nav-treeview" style="display: block;">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Pagos Pendientes</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Pagos Pendientes</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Pagos Realizados</p>
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Pagos Realizados</p>
                         </a>
                     </li>
                 </ul>

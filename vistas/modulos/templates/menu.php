@@ -48,7 +48,6 @@
                 <a href="#" class="nav-link">
                     <i class="fas fa-folder"></i>
                     <p style="font-size: 14px;">Administración de Usuarios<i class="right fas fa-angle-left"></i></p>
-                    
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">

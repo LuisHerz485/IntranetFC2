@@ -95,7 +95,13 @@
         echo '<div class="wrapper">';
             
         include "vistas/modulos/templates/encabezado.php";
-        include "vistas/modulos/templates/menu.php";
+
+        if(isset($_SESSION['cliente']) && $_SESSION['cliente']=="no"){
+          include "vistas/modulos/templates/menu.php";
+        }else{
+          include "vistas/modulos/templates/menucliente.php";
+        }
+        
       
         if(isset($_GET['ruta'])){
           if($_GET['ruta'] == "escritorio" ||
@@ -117,6 +123,7 @@
         if(isset($_GET['ruta'])){
           if($_GET['ruta'] == "marcarasistencia" ||
               $_GET['ruta'] == "login" ||
+              $_GET['ruta'] == "loginCliente" ||
               $_GET['ruta'] == "inicio"){
                 include "vistas/modulos/paginas/".$_GET['ruta'].".php";
           }else{

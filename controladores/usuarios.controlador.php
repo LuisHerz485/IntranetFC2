@@ -14,13 +14,13 @@
 						if($respuesta['idtipousuario'] == 1){
 							if($respuesta['estado']== 1){
 								$_SESSION['iniciarSesion']="ok";
+								$_SESSION['cliente']="no";
 								$_SESSION['nombre']=$respuesta['nombre'];
 								$_SESSION['apellidos']=$respuesta['apellidos'];
 								$_SESSION['login']=$respuesta['usuario'];
 								$_SESSION['tipousuario']=$respuesta['tipousuario'];
 								$_SESSION['estado']=$respuesta['estado'];
-								$_SESSION['imagen']= $respuesta['imagen'];
-								$_SESSION['perfil']= $respuesta['tipousuario'];			  					  
+								$_SESSION['imagen']= $respuesta['imagen'];		  
 								echo '<script>
 									window.location="escritorio";
 								</script>';

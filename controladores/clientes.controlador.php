@@ -1,5 +1,42 @@
 <?php
     class ControladorClientes{
+		static public function ctrIngresar(){
+            if(isset($_POST['usuario'])){
+                if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/',$_POST['usuario']) && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/',$_POST['password'])){
+                    $tabla = "cliente";
+                    $item = "logincliente";
+                    $valor = $_POST['usuario'];
+                    $respuesta = ModeloClientes::mdlMostrarClientes($tabla,$item,$valor);
+                    
+                    $clavehash=hash("SHA256", $_POST['password']);
+
+                    if($respuesta['logincliente']==$_POST['usuario'] && $respuesta['contrasenacliente']==$clavehash){
+						if($respuesta['tipocliente'] == "clienteaccess"){
+							if($respuesta['estado']== 1){
+								$_SESSION['iniciarSesion']="ok";
+								$_SESSION['cliente']="si";
+								$_SESSION['nombre']=$respuesta['razonsocial'];
+								$_SESSION['apellidos']="";
+								$_SESSION['login']=$respuesta['logincliente'];
+								$_SESSION['tipousuario']=$respuesta['tipocliente'];
+								$_SESSION['estado']=$respuesta['estado'];
+								$_SESSION['imagen']= $respuesta['imagen'];				  
+								echo '<script>
+									window.location="escritorio";
+								</script>';
+							}else{
+								echo("<br /><div class='alert alert-danger'>Usuario inactivo, contacte al administrador del sistema</div>");
+							}
+						}else{
+							echo("<br /><div class='alert alert-danger'>Usuario sin acceso al sistema, contacte al administrador del sistema</div>");
+						}
+                    }else{
+                        echo("<br /><div class='alert alert-danger'>Usuario y/o contraseña incorrecta</div>");
+                    }
+                }
+            }
+        }
+
         static public function ctrMostrarCliente($item,$valor){
 			$tabla = "cliente";
 			$respuesta = ModeloClientes::mdlMostrarClientes($tabla,$item,$valor);
