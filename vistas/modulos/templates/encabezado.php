@@ -23,7 +23,13 @@
             }
           ?>
             <div class="dropdown-divider"></div>
-            <a href="salir" class="dropdown-item">
+            <?php
+            if($_SESSION["cliente"] == "si"){
+              echo '<a href="salirC" class="dropdown-item">';
+            }else{
+              echo '<a href="salir" class="dropdown-item">';
+            }
+            ?>
             <i class="fas fa-user-times mr-2"></i> Cerrar Sesión
             <span class="float-right text-muted text-sm">Activa</span>
             </a>

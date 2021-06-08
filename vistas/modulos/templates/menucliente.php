@@ -38,23 +38,23 @@
             
             <li class="nav-header">GENERAL</li>
             <li class="nav-item">
-                <a href="escritoriocliente" class="nav-link">
+                <a href="escritorio" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>Escritorio</p>
                 </a>
             </li>
             
             <li class="nav-header">MIS ARCHIVOS</li>
-            <li class="nav-item menu-is-opening menu-open">
+            <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-folder"></i>
                     <p>Área Tributaria<i class="fas fa-angle-left right"></i></p>
                 </a>
-                <ul class="nav nav-treeview" style="display: block;">
+                <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Comprobante de percepciones</p>
+                            <p style="font-size: 14px;">Comprobante de<br /> percepciones</p>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -138,12 +138,12 @@
                 </ul>
             </li>
 
-            <li class="nav-item menu-is-opening menu-open">
+            <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-folder"></i>
                     <p>Área Laboral<i class="fas fa-angle-left right"></i></p>
                 </a>
-                <ul class="nav nav-treeview" style="display: block;">
+                <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
@@ -208,12 +208,12 @@
             </li>
 
             <li class="nav-header">PAGOS</li>
-            <li class="nav-item menu-is-opening menu-open">
+            <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-folder"></i>
                     <p>Seguimiento de Pagos<i class="fas fa-angle-left right"></i></p>
                 </a>
-                <ul class="nav nav-treeview" style="display: block;">
+                <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
