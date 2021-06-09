@@ -1,76 +1,44 @@
-<?php 
-
-ob_start();
-session_start();
-
-$razon = $_SESSION['razonsocial'];
-if(!isset($razon)){
-	header("Location:login.html");
-}else{
-
-	require 'headerCliente.php';
-?>
-
-	<div class="content-wrapper">
-    <!-- Main content -->
-    <section class="content">
-
-      <!-- Default box -->
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark"></h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Mis Archivos</a></li>
+              <li class="breadcrumb-item active">Subir archivos</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+    <div class="content">
       <div class="row">
         <div class="col-md-12">
-      <div class="box">
-<div class="box-header with-border">
-  <h1 class="box-title">Subir Archivos</h1>
-  <div class="box-tools pull-right">
-    
-  </div>
-
-  	<form action="../ajax/upload.php" method="POST" enctype="multipart/form-data">
-  		</br>
-		Elige un archivo:
-		<input type="file" name="archivos">
-
-		</br>
-		<div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i>Subir</button>
-
-      <button class="btn btn-danger" onclick="cancelarform()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
-
-      
-
-	</form>
-
-    
-
-      
+          <div class="card card-primary">
+            <div class="card-header">
+              <h3 class="card-title">Áreas</h3>
+            </div>
+            <div class="card-body panel-body" id="listadoregistrosD">
+              <h1>Sube tus archivos</h1>
+              <form name="upload" id="upload" method="POST" action="../../../controladores/upload.controlador.php" enctype="multipart/form-data" >
+                </br>
+                Elige tus archivos: 
+                <input type="file" name="archivos" multiple="">	
+                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Cargar</button>
+              </form>
+            </div>
+          </div>
+        </div>           
+      </div>
     </div>
-  </form>
-</div>
-<!--fin centro-->
-      </div>
-      </div>
-      </div>
-      <!-- /.box -->
-
-    </section>
   </div>
-
 </div>
 
+<!-- /.content-wrapper -->
 
-
-
-
-<?php 
-require 'footer.php';
- ?>
-
-
-
-<?php  
-	};
-
-
-ob_end_flush();
-
-	?>

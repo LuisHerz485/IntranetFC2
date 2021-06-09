@@ -111,6 +111,7 @@
               $_GET['ruta'] == "asistencia" ||
               $_GET['ruta'] == "clientes" ||
               $_GET['ruta'] == "reportes" ||
+              $_GET['ruta'] == "upload" ||
               $_GET['ruta'] == "salirC" ||
               $_GET['ruta'] == "salir"){
                 include "vistas/modulos/paginas/".$_GET['ruta'].".php";

@@ -206,6 +206,13 @@
                     </li>
                 </ul>
             </li>
+                
+            <li class="nav-item">
+                <a href="upload" class="nav-link">
+                    <i class="nav-icon fas fa-upload"></i>
+                    <p>Subir archivos</p>
+                </a>
+            </li>
 
             <li class="nav-header">PAGOS</li>
             <li class="nav-item">

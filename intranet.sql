@@ -93,7 +93,22 @@ CREATE TABLE agenda(
 	CONSTRAINT pk_agenda PRIMARY KEY (idcliente,idrepresentante)
 );
 
+CREATE TABLE tipoarchivo(
+	idtipoarchivo int primary key auto_increment,
+	descripcion varchar(40) not null
+);
 
+CREATE TABLE archivo(
+	idarchivo int primary key auto_increment,
+	idcliente int not null,
+	idtipoarchivo int not null,
+	nombre varchar(100) not null,
+	ruta varchar(100) not null,
+	extension varchar(100) not null,
+	fechacreado timestamp NOT NULL,
+	CONSTRAINT fk_arc_cli FOREIGN KEY (idcliente) REFERENCES cliente(idcliente),
+	CONSTRAINT fk_arc_tar FOREIGN KEY (idtipoarchivo) REFERENCES tipoarchivo(idtipoarchivo)
+);
 
 
 
