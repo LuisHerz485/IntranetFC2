@@ -7,6 +7,7 @@
     require_once "controladores/reportes.controlador.php";
     require_once "controladores/clientes.controlador.php";
     require_once "controladores/agenda.controlador.php";
+    require_once "controladores/updload.controlador.php";
 
 
     require_once "modelos/usuarios.modelo.php";
