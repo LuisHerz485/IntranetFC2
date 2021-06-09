@@ -15,6 +15,7 @@
 							if($respuesta['estado']== 1){
 								$_SESSION['iniciarSesion']="ok";
 								$_SESSION['cliente']="si";
+								$_SESSION['iddrive']=$respuesta['iddrive'];
 								$_SESSION['nombre']=$respuesta['razonsocial'];
 								$_SESSION['apellidos']="";
 								$_SESSION['login']=$respuesta['logincliente'];
