@@ -1,11 +1,6 @@
 <?php 
 
-
-
-require '../modelos/conexion.php';
-require_once '../modelos/clientes.modelo.php';
-
-include '../plugins/google-api-php-client-2.9.1/vendor/autoload.php';
+require_once 'plugins/google-api-php-client-2.9.1/vendor/autoload.php';
 
 //Llenar con json de API
 putenv('GOOGLE_APPLICATION_CREDENTIALS=');
@@ -63,4 +58,3 @@ try{
 }
 
 
-?>
