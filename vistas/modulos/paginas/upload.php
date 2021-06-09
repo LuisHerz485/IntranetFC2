@@ -26,11 +26,15 @@
             </div>
             <div class="card-body panel-body" id="listadoregistrosD">
               <h1>Sube tus archivos</h1>
-              <form name="upload" id="upload" method="POST" action="../../../controladores/upload.controlador.php" enctype="multipart/form-data" >
+              <form name="upload" id="upload" method="POST" enctype="multipart/form-data" >
                 </br>
                 Elige tus archivos: 
                 <input type="file" name="archivos" multiple="">	
                 <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Cargar</button>
+                <?php
+                    $subirarchivo = new ControladorUpload();
+                    $subirarchivo -> ctrSubirArchivo();
+                ?>
               </form>
             </div>
           </div>
