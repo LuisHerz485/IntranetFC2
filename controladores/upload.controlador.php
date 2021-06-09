@@ -1,10 +1,11 @@
 <?php 
 
+
+
 require '../modelos/conexion.php';
-require_once '../modelos/archivo.modelo.php';
 require_once '../modelos/clientes.modelo.php';
 
-include 'google-api-php-cliente-2.9.1/vendor/autoload.php';
+include '../plugins/google-api-php-client-2.9.1/vendor/autoload.php';
 
 //Llenar con json de API
 putenv('GOOGLE_APPLICATION_CREDENTIALS=');
@@ -14,30 +15,28 @@ $client->useApplicationDefaultCredentials();
 $client->SetScopes(['https://www.googleapis.com/auth/drive.file']);
 
 $iddrive = $_SESSION['iddrive'];
-$razonsocial = $_SESSION['nombre'];
+$nombre = $_SESSION['nombre'];
 
 try{
 	$service = new Google_Service_Drive($client);
-	$file_patch = $_FILE['archivos']['tmp_name'];
+	$file_path = $_FILES['archivos']['tmp_name'];
 
 	$file = new Google_Service_Drive_DriveFile();
-	$file->setName($_FILE['archivos']['name']);
+	$file->setName($_FILES['archivos']['name']);
 
-	$info = finfo_open(FILEINFO_MIME_TYPE);
-	$mime_type = finfo_file($finfo, $flie_path);
+	$finfo = finfo_open(FILEINFO_MIME_TYPE);
+	$mime_type = finfo_file($finfo, $file_path);
 
-	$file->setParents(arrat($iddrive));
-	$file->setDescription("Archivo subido por " . $nombre ." | gracias a la intranet FC Contadores y Asociados");
+	$file->setParents(array($iddrive));
+	$file->setDescription("Subido por: " . $nombre . "| Gracias a la Intranet de FC Contadores");
 	$file->setMimeType($mime_type);
 
 	$resultado = $service->files->create(
 		$file,
 		array(
-			'data' => file_get_contents($file_path),
-			'MimeType' => $mime_type,
-			'updateType' => 'media'
-
-
+				'data' => file_get_contents($file_path),
+				'mimeType' => $mime_type,
+				'uploadType' => 'media'
 		)
 
 	);
@@ -64,4 +63,4 @@ try{
 }
 
 
- ?>
+?>
