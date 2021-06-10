@@ -8,7 +8,7 @@
     require_once "controladores/clientes.controlador.php";
     require_once "controladores/agenda.controlador.php";
     require_once "controladores/upload.controlador.php";
-
+    require_once "controladores/updload.controlador.php";
 
     require_once "modelos/usuarios.modelo.php";
     require_once "modelos/departamento.modelo.php";
