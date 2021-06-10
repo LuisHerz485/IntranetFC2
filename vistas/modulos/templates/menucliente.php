@@ -206,6 +206,33 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-folder"></i>
+                    <p>Auditorias<i class="fas fa-angle-left right"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Preventiva</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Tributaria</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
+                            <p style="font-size: 14px;">Financiera</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
                 
             <li class="nav-item">
                 <a href="upload" class="nav-link">
@@ -235,7 +262,6 @@
                     </li>
                 </ul>
             </li>
-
 
             <li class="nav-header">AYUDA</li>
             <li class="nav-item">

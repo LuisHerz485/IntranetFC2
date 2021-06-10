@@ -29,11 +29,11 @@
               <form name="upload" id="upload" method="POST" enctype="multipart/form-data" >
                 </br>
                 Elige tus archivos: 
-                <input type="file" name="archivos" multiple="">	
+                <input type="file" name="archivos[]" multiple="">	
                 <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Cargar</button>
                 <?php
-                    $subirarchivo = new ControladorUpload();
-                    $subirarchivo -> ctrSubirArchivo();
+                  $subirarchivo = new ControladorUpload();
+                  $subirarchivo -> ctrSubirArchivo();
                 ?>
               </form>
             </div>
