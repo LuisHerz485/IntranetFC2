@@ -2,7 +2,7 @@
     class ControladorClientes{
 		static public function ctrIngresar(){
             if(isset($_POST['usuario'])){
-                if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/',$_POST['usuario']) && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/',$_POST['password'])){
+                if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/',$_POST['usuario']) && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ!#$%&\/()=?¡*-_+.]+$/',$_POST['password'])){
                     $tabla = "cliente";
                     $item = "logincliente";
                     $valor = $_POST['usuario'];
@@ -12,11 +12,12 @@
 
                     if($respuesta['logincliente']==$_POST['usuario'] && $respuesta['contrasenacliente']==$clavehash){
 						if($respuesta['tipocliente'] == "clienteaccess"){
-							if($respuesta['estado']== 1){
+							if($respuesta['estado']==  1){
 								$_SESSION['iniciarSesion']="ok";
 								$_SESSION['cliente']="si";
 								$_SESSION['iddrive']=$respuesta['iddrive'];
 								$_SESSION['nombre']=$respuesta['razonsocial'];
+								$_SESSION['idcliente']=$respuesta['idcliente'];
 								$_SESSION['apellidos']="";
 								$_SESSION['login']=$respuesta['logincliente'];
 								$_SESSION['tipousuario']=$respuesta['tipocliente'];
@@ -34,7 +35,9 @@
                     }else{
                         echo("<br /><div class='alert alert-danger'>Usuario y/o contraseña incorrecta</div>");
                     }
-                }
+                }else{
+					echo("<br /><div class='alert alert-danger'>No se permite ese tipo de caracteres especiales</div>");
+				}
             }
         }
 

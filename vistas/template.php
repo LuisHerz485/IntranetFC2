@@ -103,7 +103,7 @@
         }
         
       
-        if(isset($_GET['ruta'])){
+        if(isset($_GET['ruta'])){ 
           if($_GET['ruta'] == "escritorio" ||
               $_GET['ruta'] == "usuarios" ||
               $_GET['ruta'] == "tipousuario" ||
@@ -112,6 +112,9 @@
               $_GET['ruta'] == "clientes" ||
               $_GET['ruta'] == "reportes" ||
               $_GET['ruta'] == "upload" ||
+              $_GET['ruta'] == "tributaria" ||
+              $_GET['ruta'] == "laboral" ||
+              $_GET['ruta'] == "auditoria" ||
               $_GET['ruta'] == "salirC" ||
               $_GET['ruta'] == "salir"){
                 include "vistas/modulos/paginas/".$_GET['ruta'].".php";
@@ -144,6 +147,7 @@
   <script src="vistas/js/reportes.js"></script>
   <script src="vistas/js/clientes.js"></script>
   <script src="vistas/js/agenda.js"></script>
+  <script src="vistas/js/archivo.js"></script>
   <script src="vistas/js/dataTable.js"></script>
   <script src="vistas/js/clock.js"></script>
 

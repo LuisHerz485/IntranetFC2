@@ -35,7 +35,7 @@ function cancelarformC() {
 
 function generar(longitud) {
     long = parseInt(longitud);
-    var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789";
+    var caracteres = "abcdefghijkmnpqrtuvwxyzABCDEFGHIJKLMNPQRTUVWXYZ2346789!#$%&/()=?¡*-_+.";
     var contraseña = "";
     for (i = 0; i < long; i++) contraseña += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
     $("#contrasenacliente").val(contraseña);

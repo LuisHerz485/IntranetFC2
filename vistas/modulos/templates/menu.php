@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="inicio" class="brand-link">
+    <a href="escritorio" class="brand-link">
       <img src="vistas/dist/img/logo-blanco.png" width="240px" alt="">
     </a>
     

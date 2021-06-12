@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="inicio" class="brand-link">
+    <a href="escritoriocliente" class="brand-link">
       <img src="vistas/dist/img/logo-blanco.png" width="240px" alt="">
     </a>
     
@@ -46,192 +46,22 @@
             
             <li class="nav-header">MIS ARCHIVOS</li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-folder"></i>
-                    <p>Área Tributaria<i class="fas fa-angle-left right"></i></p>
+                <a href="tributaria" class="nav-link">
+                    <i class="fas fa-folder nav-icon"></i>
+                    <p>Área Tributaria</p>
                 </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Comprobante de<br /> percepciones</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Comprobante de retenciones</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Cronograma de <br/>fraccionamiento</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/UI/sliders.html" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Declaraciones anuales</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Declaraciones mensuales</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Extracto de pagos</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Ficha RUC</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Gestiones SUNARP</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Importaciones DUAS</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Liquidacion de impuestos</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Pago de detracciones</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Reporte de compras</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Reporte de ventas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Comprobante de terceros</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
-
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-folder"></i>
-                    <p>Área Laboral<i class="fas fa-angle-left right"></i></p>
+                <a href="laboral" class="nav-link">
+                    <i class="fas fa-folder nav-icon"></i>
+                    <p>Área Laboral</p>
                 </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">AFP y ONP</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Alta y bajas</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Backup PLAME</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="pages/UI/sliders.html" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Boletas de pagos</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Comprobantes de pagos AFP</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Contratos de personal</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">ESSALUD y microempresa</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">PDT 601</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">REMYPE</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Tickets AFP</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
-
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-folder"></i>
-                    <p>Auditorias<i class="fas fa-angle-left right"></i></p>
+                <a href="auditoria" class="nav-link">
+                    <i class="fas fa-folder nav-icon"></i>
+                    <p>Auditorias</p>
                 </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Preventiva</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Tributaria</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Financiera</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
                 
             <li class="nav-item">
@@ -250,14 +80,14 @@
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Pagos Pendientes</p>
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Pagos Pendientes</p>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i style="font-size: 14px;" class="far fa-circle nav-icon"></i>
-                            <p style="font-size: 14px;">Pagos Realizados</p>
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Pagos Realizados</p>
                         </a>
                     </li>
                 </ul>

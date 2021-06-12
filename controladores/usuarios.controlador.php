@@ -2,7 +2,7 @@
     class ControladorUsuarios{
         static public function ctrIngresar(){
             if(isset($_POST['usuario'])){
-                if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/',$_POST['usuario']) && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/',$_POST['password'])){
+                if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/',$_POST['usuario']) && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ!#$%&\/()=?¡*-_+.]+$/',$_POST['password'])){
                     $tabla = "usuario";
                     $item = "login";
                     $valor = $_POST['usuario'];
@@ -33,7 +33,9 @@
                     }else{
                         echo("<br /><div class='alert alert-danger'>Usuario y/o contraseña incorrecta</div>");
                     }
-                }
+                }else{
+					echo("<br /><div class='alert alert-danger'>Caracteres especiales no permitidos por el sistema</div>");
+				}
             }
         }
 
@@ -138,7 +140,7 @@
 
 		static public function ctrEditarContra(){
 			if(isset($_POST['contra'])){
-				if(preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+$/', $_POST['contra'])){
+				if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ!#$%&\/()=?¡*-_+.]+$/', $_POST['contra'])){
 					$tabla = "usuario";
 
 					//Hash SHA256 para la contraseña

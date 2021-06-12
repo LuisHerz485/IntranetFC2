@@ -1,5 +1,5 @@
 $('.tablaDataTable').DataTable({
-    dom: 'Bfrtip',
+    dom: 'B<"float-left"i><"float-right"f>t<"float-left"l><"float-right"p><"clearfix">',
     buttons: [{
             extend: 'excelHtml5',
             text: '<i class="fas fa-file-excel"> Excel</i> ',
@@ -41,5 +41,9 @@ $('.tablaDataTable').DataTable({
             className: 'btn btn-default'
         },
     ],
+    'autoWidth': false,
+});
+
+$('.tablaDataTableC').DataTable({
     'autoWidth': false,
 });
