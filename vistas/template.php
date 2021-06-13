@@ -5,6 +5,14 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Intranet FC</title>
+
+  <meta property="og:title" content="Intranet FC Contadores" />
+  <meta property="og:url" content="https://intranet.fccontadores.com/" />
+  <meta property="og:description" content="Sistema de Control de FC Contadores & Asociados S.A.C.">
+  <meta property="og:image" itemprop="image" content="vistas/dist/img/url.jpg"/>
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="en_GB" />
+
   <!-- Icono del sistema -->
   <link rel="shortcut icon" href="vistas/dist/img/favicon.ico">
   <!-- Tell the browser to be responsive to screen width -->
