@@ -255,9 +255,96 @@ CREATE TABLE archivo(
 	CONSTRAINT fk_arc_tar FOREIGN KEY (idtipoarchivo) REFERENCES tipoarchivo(idtipoarchivo)
 );
 
+/*=========================================MODULO COBRANZA=====================*/
+create table localCliente(
+	idCliente int not null,
+	idUbicacion int not null,
+    	direccion varchar(150) not null,
+    	constraint fk_locCli_cli foreign key (idCliente) references cliente(idcliente),
+    	constraint fk_locCli_ubi foreign key (idUbicacion) references ubicacion(idUbicacion),
+    	constraint pk_locCli primary key (idCliente, idUbicacion)
+);
 
+create table ubicacion(
+	idUbicacion int primary key auto_increment,
+    	detalleUbicacion varchar(50) not null,
+    	departamento varchar(50) not null,
+    	distrito varchar(50) not null
+);
 
-/*
+create table servicio(
+	idServicio int primary key auto_increment,
+   	detalleServicio varchar(45) not null
+);
+
+create table detalleServicio(
+	idDetalleServicio int primary key auto_increment,
+    	idServicio int not null,
+    	idUbicacion int not null,
+    	monto double not null,
+    	constraint fk_detSer_ser foreign key (idServicio) references servicio(idServicio),
+    	constraint fk_detSer_ubi foreign key (idUbicacion) references ubicacion(idUbicacion),
+    	constraint pk_detSer primary key(idServicio, idUbicacion)
+);
+
+create table cobranza(
+	idCobranza int primary key auto_increment,
+    	idDetalleServicio int not null,
+    	idServicio int not null,
+    	idUbicacion int not null,
+    	constraint fk_cob_detser foreign key (idDetallerServicio) references detalleServicio(idDetalleServicio),
+    	constraint fk_cob_ser foreign key (idServicio) references detalleServicio(idDetalleServicio),
+	constraint fk_cob_ubi foreign key (idUbicacion) references detalleServicio(idUbicacion),
+    	constraint pk_cob primary key (idDetalleServicio, idServicio, idUbicacion)
+    
+);
+
+create table detalleCobranza(
+	idDetalleCobranza int primary key auto_increment,
+    	idCliente int not null,
+    	idUbicacion int not null,
+    	idCobranza int not null,
+    	idDetalleServicio int not null,
+    	idServicio int not null,
+    	fechaEmision date not null,
+    	FechaVencimiento date,
+    	constraint fk_detCob_cli foreign key (idCliente) references localCliente(idCliente),
+    	constraint fk_detCob_ubi foreign key (idUbicacion) references localCliente(idUbicacion),
+	constraint fk_detCob_cob foreign key (idCobranza) references cobranza(idCobranza),
+	constraint fk_detCob_detser foreign key (idDetalleServicio) references cobranza(idDetalleServicio),
+	constraint fk_detCob_ser foreign key (idServicio) references cobranza(idServicio),
+	constraint pk_detCob primary key(idCliente, idUbicacion, idCobranza, idDetalleServicio, idServicio)
+);
+
+create table constancia(
+	idConstancia int primary key auto_increment,
+	detalle varchar(45) not null
+);
+
+create table detalleConstancia(
+	idDetalleConstancia int primary key auto_increment,
+	idDetalleCobranza int not null,
+	idCliente int not null,
+	idCobranza int not null,
+	idConstancia int not null,
+	idDetalleServicio int not null,
+	idServicio int not null,
+	idUbicacion int not null,
+	tipoPago varchar(45) not null,
+	detallePago varchar(45) not null,
+	fechaPago date not null,
+	monto double not null,
+	constraint fk_detCons_detcob foreign key (idDetalleCobranza) references detalleCobranza(idDetalleCobranza),
+	constraint fk_detCons_cli foreign key (idCliente) references detalleCobranza(idCliente),
+	constraint fk_detCons_cob foreign key (idCobranza) references detalleCobranza(idCobranza),
+	constraint fk_detCons_cons foreign key (idConstancia) references constancia(idConstancia),
+	constraint fk_detCons_detser foreign key (idDetalleServicio) references detalleCobranza(idDetalleServicio),
+	constraint fk_detCons_ser foreign key (idServicio) references detalleCobranza(idServicio),
+	constraint fk_detCons_ubi foreign key (idUbicacion) references detalleCobranza(idUbicacion),
+	constraint pk_detCons primary key(idDetalleCobranza, idCliente, idCobranza, idConstancia, idDetalleServicio, idServicio, idUbicacion)
+);
+/*=================================================================================*/
+
 /*=============tabla usuario========================
 CREATE TABLE auditoria_usuario(
 	idregistro int primary key auto_increment,
