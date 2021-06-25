@@ -5,7 +5,7 @@
         static public function mdlMostrarClientes($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by nombre ASC");
+                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by razonsocial ASC");
                     $stmt -> execute();
                     return $stmt -> fetchAll();
                 }else{

@@ -121,13 +121,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="generarCobranza" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Generar Cobranza</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="seguimiento" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Seguimiento</p>
                         </a>
