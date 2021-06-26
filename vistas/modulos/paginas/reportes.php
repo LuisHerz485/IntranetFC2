@@ -35,8 +35,8 @@
                   <input type="date" class="form-control" name="fecha_fin" id="fecha_fin">
                 </div>
                 <div class="form-group col-lg-6 col-md-3 col-sm-6 col-xs-12">
-                    <label for="">Empleado</label>
-                    <select name="idusuario" id="idusuario" class="form-control selectpicker" data-live-search="true" required>
+                  <label for="">Empleado</label>
+                  <select name="idusuario" id="idusuario" class="form-control select2" data-live-search="true" required>
                     <option value="0">Seleccione ...</option>
                     <?php 
                       $item = 1;
@@ -46,7 +46,7 @@
                         echo '<option value="'.$value['idusuario'].'">'.$value['nombre'].' '.$value['apellidos'].'</option>';
                       }
                     ?>
-                    </select>
+                  </select>
                 </div>
               </div>
               <button class="btn btn-success btnMostrar">Mostrar</button>

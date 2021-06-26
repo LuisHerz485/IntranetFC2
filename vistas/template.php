@@ -42,17 +42,9 @@
   <link rel="stylesheet" type="text/css" href="vistas/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <!-- Toastr -->
   <link rel="stylesheet" href="vistas/plugins/toastr/toastr.min.css">
-
-
-
-
-<!--
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
--->
+  <!-- Select2 -->
+  <link rel="stylesheet" href="vistas/plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="vistas/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 
 
 
@@ -107,7 +99,9 @@
   <!-- PDFMAKE -->
   <script src="vistas/plugins/pdfmake/pdfmake.min.js"></script>
   <script src="vistas/plugins/pdfmake/vfs_fonts.js"></script>
-  
+  <!-- Select2 -->
+  <script src="vistas/plugins/select2/js/select2.full.min.js"></script>
+
 </head>
 <?php
       if(isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion']=="ok"){
@@ -172,6 +166,7 @@
   <script src="vistas/js/archivo.js"></script>
   <script src="vistas/js/dataTable.js"></script>
   <script src="vistas/js/clock.js"></script>
+  <script src="vistas/js/select2.js"></script>
 
 
   <!-- Control Sidebar -->
