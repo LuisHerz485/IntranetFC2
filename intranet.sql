@@ -339,6 +339,7 @@ create table detalleConstancia(
 );
 /*=================================================================================*/
 
+
 /*=============tabla usuario========================
 CREATE TABLE auditoria_usuario(
 	idregistro int primary key auto_increment,
