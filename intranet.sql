@@ -307,10 +307,10 @@ create table detalleCobranza(
     constraint fk_detCob_cli foreign key (idcliente) references localcliente(idcliente),
     constraint fk_detCob_ubil foreign key (idubicacionl) references localcliente(idubicacion),
 	constraint fk_detCob_cob foreign key (idcobranza) references cobranza(idcobranza),
-	constraint fk_detCob_detser foreign key (iddetalleservicio) references cobranza(iddetalleservicio),
-	constraint fk_detCob_ser foreign key (idservicio) references cobranza(idservicio),
-	constraint fk_detCob_ubis foreign key (idubicacions) references cobranza(idubicacion),
-	constraint pk_detCob primary key(idcliente, idubicacionl, idcobranza, iddetalleServicio, idservicio, idubicacions)
+	constraint fk_detCob_detser foreign key (iddetalleservicio) references detalleservicio(iddetalleservicio),
+	constraint fk_detCob_ser foreign key (idservicio) references detalleservicio(idservicio),
+	constraint fk_detCob_ubis foreign key (idubicacions) references detalleservicio(idubicacion),
+	constraint pk_detCob primary key(idcliente, idubicacionl, idcobranza, iddetalleservicio, idservicio, idubicacions)
 );
 
 create table constancia(
@@ -335,7 +335,7 @@ create table detalleConstancia(
 	constraint fk_detCons_detser foreign key (iddetalleservicio) references detallecobranza(iddetalleservicio),
 	constraint fk_detCons_ser foreign key (idservicio) references detallecobranza(idservicio),
 	constraint fk_detCons_ubi foreign key (idubicacion) references detallecobranza(idubicacionl),
-	constraint pk_detCons primary key(idcliente, idcobranza, idconstancia, iddetalleServicio, idservicio, idubicacion)
+	constraint pk_detCons primary key(idcliente, idcobranza, idconstancia, iddetalleservicio, idservicio, idubicacion)
 );
 /*=================================================================================*/
 

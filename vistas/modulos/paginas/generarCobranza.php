@@ -22,7 +22,7 @@
         <div class="col-md-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Conbranza&emsp;
+              <h3 class="card-title">Cobranza&emsp;
                 <button class="btn btn-success" onclick="mostrarformGC" id="btnagregar"><i class="fa fa-plus-circle"> Añadir</i></button>
               </h3>
             </div>
