@@ -259,18 +259,18 @@ CREATE TABLE archivo(
 
 create table ubicacion(
 	idubicacion int primary key auto_increment,
-    	detalleubicacion varchar(100) not null,
-    	departamento varchar(100) not null,
-    	distrito varchar(100) not null
+    detalleubicacion varchar(100) not null,
+    departamento varchar(100) not null,
+    distrito varchar(100) not null
 );
 
 create table localcliente(
 	idcliente int,
 	idubicacion int,
-    	direccion varchar(150) not null,
-    	constraint fk_locli_cli foreign key (idcliente) references cliente(idcliente),
-    	constraint fk_locli_ubi foreign key (idubicacion) references ubicacion(idubicacion),
-    	constraint pk_locli primary key (idcliente, idubicacion)
+    direccion varchar(150) not null,
+    constraint fk_locli_cli foreign key (idcliente) references cliente(idcliente),
+    constraint fk_locli_ubi foreign key (idubicacion) references ubicacion(idubicacion),
+    constraint pk_locli primary key (idcliente, idubicacion)
 );
 
 
@@ -281,38 +281,31 @@ create table servicio(
 
 create table detalleservicio(
 	iddetalleservicio int auto_increment,
-    	idservicio int,
-    	idubicacion int,
-    	monto double not null,
-    	constraint fk_detser_ser foreign key (idservicio) references servicio(idservicio),
-    	constraint fk_detser_ubi foreign key (idubicacion) references ubicacion(idubicacion),
-    	constraint pk_detser primary key(iddetalleservicio, idservicio, idubicacion)
+    idservicio int,
+    idubicacion int,
+    monto double not null,
+    constraint fk_detser_ser foreign key (idservicio) references servicio(idservicio),
+    constraint fk_detser_ubi foreign key (idubicacion) references ubicacion(idubicacion),
+    constraint pk_detser primary key(iddetalleservicio, idservicio, idubicacion)
 );
 
 create table cobranza(
-	idcobranza int auto_increment,
-    	iddetalleservicio int,
-    	idservicio int,
-    	idubicacion int,
-    	constraint fk_cob_detser foreign key (iddetalleservicio) references detalleservicio(iddetalleservicio),
-    	constraint fk_cob_ser foreign key (idservicio) references detalleservicio(idservicio),
-	constraint fk_cob_ubi foreign key (idubicacion) references detalleservicio(idubicacion),
-    	constraint pk_cob primary key (idcobranza, iddetalleservicio, idservicio, idubicacion)
-    
+	idcobranza int  primary key auto_increment,
+	detallecobranza varchar(45) not null
 );
 
 create table detalleCobranza(
-    	idcliente int not null,
-    	idubicacionl int not null,
-    	idcobranza int not null,
-    	iddetalleservicio int not null,
-    	idservicio int not null,
+    idcliente int not null,
+    idubicacionl int not null,
+    idcobranza int not null,
+    iddetalleservicio int not null,
+    idservicio int not null,
 	idubicacions int not null,
-    	fechaemision date not null,
-    	fechavencimiento date not null,
+    fechaemision date not null,
+    fechavencimiento date not null,
 	estado tinyint not null,
-    	constraint fk_detCob_cli foreign key (idcliente) references localcliente(idcliente),
-    	constraint fk_detCob_ubil foreign key (idubicacionl) references localcliente(idubicacion),
+    constraint fk_detCob_cli foreign key (idcliente) references localcliente(idcliente),
+    constraint fk_detCob_ubil foreign key (idubicacionl) references localcliente(idubicacion),
 	constraint fk_detCob_cob foreign key (idcobranza) references cobranza(idcobranza),
 	constraint fk_detCob_detser foreign key (iddetalleservicio) references cobranza(iddetalleservicio),
 	constraint fk_detCob_ser foreign key (idservicio) references cobranza(idservicio),
