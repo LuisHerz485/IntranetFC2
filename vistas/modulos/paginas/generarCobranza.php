@@ -22,7 +22,7 @@
         <div class="col-md-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Conbranza&emsp;</h3>
+              <h3 class="card-title">Cobranza&emsp;</h3>
             </div>
             <div class="card-body panel-body" id="listadoCobranza">
               <div class="row">
