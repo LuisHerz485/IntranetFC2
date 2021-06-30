@@ -21,5 +21,6 @@
     require_once "modelos/representante.modelo.php";
     require_once "modelos/tipoarchivo.modelo.php";
     require_once "modelos/archivo.modelo.php";
+    
     $template = new ControladorTemplate();
     $template -> ctrTemplate();

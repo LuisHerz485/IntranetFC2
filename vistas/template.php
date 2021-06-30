@@ -167,7 +167,7 @@
   <script src="vistas/js/dataTable.js"></script>
   <script src="vistas/js/clock.js"></script>
   <script src="vistas/js/select2.js"></script>
-
+  <script src="vistas/js/detallecobranza.js"></script>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
