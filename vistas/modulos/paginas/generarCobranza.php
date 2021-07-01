@@ -104,7 +104,7 @@
               <form action="" name="formulario" id="formulario" method="POST" enctype="multipart/form-data">
                 <div class="row">
                   <div class="form-group col-lg-4 col-md-4 col-xs-12">
-                    <label for=""> Serevicio:</label>
+                    <label for=""> Servicio:</label>
                     <input class="form-control" type="text" name="servicio" id="servicio" maxlength="100" placeholder="servicio">
                   </div>
                   <div class="form-group col-lg-4 col-md-4 col-xs-12">
