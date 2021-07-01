@@ -47,3 +47,5 @@ $('.tablaDataTable').DataTable({
 $('.tablaDataTableC').DataTable({
     'autoWidth': false,
 });
+
+$('.tabtable').DataTable();

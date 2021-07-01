@@ -26,6 +26,12 @@ class AjaxClientes{
 		echo json_encode($respuesta);
 	}
 
+	public function ajaxMostrar(){
+		$item = "idcliente";
+		$valor1 = $this->idcliente;
+		$respuesta = ControladorClientes::ctrMostrarCliente($item, $valor1);
+		echo json_encode($respuesta);
+	}
 }
 
 /* Activar cliente*/
@@ -41,4 +47,11 @@ if(isset($_POST["idcliente"])){
 	$editar = new AjaxClientes();
 	$editar -> idcliente = $_POST["idcliente"];
 	$editar -> ajaxEditarCliente();
+}
+
+/* Mostrar Tabla Cliente */
+if(isset($_POST["idcliente"])){
+	$mostrar = new AjaxClientes();
+	$mostrar -> idcliente = $_POST["idcliente"];
+	$mostrar -> ajaxMostrar();
 }
