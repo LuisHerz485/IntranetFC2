@@ -8,10 +8,11 @@
                     $stmt -> execute();
                     return $stmt -> fetchAll();
                 }else{
-                    $stmt = Conexion::conectar()->prepare("SELECT LC.idcliente as idcliente, DC.estado as estado,LC.idubicacion as idubicacion, DS.iddetalleservicio as iddetalleservicio, C.idcobranza as idcobranza, DS.idservicio as idservicio, DC.fechaemision AS fechaemision, DC.fechavencimiento AS fechavencimiento
+                    $stmt = Conexion::conectar()->prepare("SELECT LC.idcliente as idcliente, DC.estado as estado,LC.idubicacionl as idubicacionl, DS.idubicacions as idubicacions,DS.iddetalleservicio as iddetalleservicio, C.idcobranza as idcobranza, DS.idservicio as idservicio, DC.fechaemision AS fechaemision, DC.fechavencimiento AS fechavencimiento
                     FROM $tabla DC
                     JOIN localcliente LC ON DC.idcliente = LC.idcliente
-                    JOIN localcliente LC ON DC.idubicacion = LC.idubicacion
+                    JOIN localcliente LC ON DC.idubicacionl = LC.idubicacionl
+                    JOIN detalleservicio DS ON DC.idubicacions = DS.idubicacions
                     JOIN detalleservicio DS ON DC.iddetalleservicio = DS.iddetalleservicio
                     JOIN detalleservicio DS ON DC.idservicio = DS.idservicio
                     JOIN cobranza C ON DC.idcobranza = C.idcobranza WHERE $item = :$item");
@@ -20,10 +21,11 @@
                     return $stmt -> fetch();
                 }
             }else{
-                $stmt = Conexion::conectar()->prepare("SELECT LC.idcliente as idcliente, DC.estado as estado,LC.idubicacion as idubicacion, DS.iddetalleservicio as iddetalleservicio, C.idcobranza as idcobranza, DS.idservicio as idservicio, DC.fechaemision AS fechaemision, DC.fechavencimiento AS fechavencimiento
+                $stmt = Conexion::conectar()->prepare("SELECT LC.idcliente as idcliente, DC.estado as estado,LC.idubicacionl as idubicacionl, DS.idubicacions as idubicacions,DS.iddetalleservicio as iddetalleservicio, C.idcobranza as idcobranza, DS.idservicio as idservicio, DC.fechaemision AS fechaemision, DC.fechavencimiento AS fechavencimiento
                     FROM $tabla DC
                     JOIN localcliente LC ON DC.idcliente = LC.idcliente
-                    JOIN localcliente LC ON DC.idubicacion = LC.idubicacion
+                    JOIN localcliente LC ON DC.idubicacionl = LC.idubicacionl
+                    JOIN detalleservicio DS ON DC.idubicacions = DS.idubicacions
                     JOIN detalleservicio DS ON DC.iddetalleservicio = DS.iddetalleservicio
                     JOIN detalleservicio DS ON DC.idservicio = DS.idservicio
                     JOIN cobranza C ON DC.idcobranza = C.idcobranza");
@@ -34,12 +36,13 @@
             $stmt = null;
 		}
          static public function mdlIngresarCobranza($tabla,$datos){
-            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idcliente,idubicacion,idcobranza,iddetalleservicio,idservicio,fechaemision,fechavencimiento,estado) VALUES (:idcliente,:idubicacion,:idcobranza,:iddetalleservicio,:idservicio,:fechaemision,:fechavencimiento,:estado)");
+            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idcliente,idubicacionl,idcobranza,iddetalleservicio,idservicio,idubicacions,fechaemision,fechavencimiento,estado) VALUES (:idcliente,:idubicacionl,:idcobranza,:iddetalleservicio,:idservicio,:idubicacions,:fechaemision,:fechavencimiento,:estado)");
             $stmt -> bindParam(":idcliente", $datos["idcliente"],PDO::PARAM_STR);
-            $stmt -> bindParam(":idubicacion", $datos["idubicacion"],PDO::PARAM_STR);
+            $stmt -> bindParam(":idubicacionl", $datos["idubicacionl"],PDO::PARAM_STR);
             $stmt -> bindParam(":idcobranza", $datos["idcobranza"],PDO::PARAM_STR);
             $stmt -> bindParam(":iddetalleservicio", $datos["iddetalleservicio"],PDO::PARAM_STR);
             $stmt -> bindParam(":idservicio",$datos['idservicio'],PDO::PARAM_STR);
+            $stmt -> bindParam(":idubicacions", $datos["idubicacions"],PDO::PARAM_STR);
             $stmt -> bindParam(":fechaemision", $datos["fechaemision"],PDO::PARAM_STR);
             $stmt -> bindParam(":fechavencimiento", $datos["fechavencimiento"],PDO::PARAM_STR);
             $stmt -> bindParam(":estado",$datos['estado'],PDO::PARAM_STR);
