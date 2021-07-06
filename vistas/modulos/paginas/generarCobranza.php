@@ -83,7 +83,7 @@
                   </select>
                 </div>
               </div>
-              <button class="btn btn-success btnAgregarCobranza">Agregar Cobranza</button>
+              <button class="btn btn-success btnAgregarCobranza">Generar Cobranza</button>
               <button class="btn btn-danger" onclick="cancelarGC()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
               <br/>
               <br/>
@@ -91,23 +91,21 @@
                 <table id="mostrarAgenda" class="table table-striped tablaDataTableC dt-responsive">
                   <thead>
                     <th>Opciones</th>
-                    <th>Cargo</th>
-                    <th>Nombre Completo</th>
-                    <th>Telefono1</th>
-                    <th>Telefono2</th>
-                    <th>Correo1</th>
-                    <th>Correo2</th>
+                    <th>Direccion</th>
+                    <th>Fecha de Emisión</th>
+                    <th>Fecha de Vencimiento</th>
+                    <th>Estado</th>
+                    <th>Descripción</th>
                   </thead>
                   <tbody>
                   </tbody>
                   <tfoot>
                     <th>Opciones</th>
-                    <th>Cargo</th>
-                    <th>Nombre Completo</th>
-                    <th>Telefono1</th>
-                    <th>Telefono2</th>
-                    <th>Correo1</th>
-                    <th>Correo2</th>
+                    <th>Direccion</th>
+                    <th>Fecha de Emisión</th>
+                    <th>Fecha de Vencimiento</th>
+                    <th>Estado</th>
+                    <th>Descripción</th>
                   </tfoot>   
                 </table>
               </div>
