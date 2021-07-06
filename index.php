@@ -10,6 +10,7 @@
     require_once "controladores/upload.controlador.php";
     require_once "controladores/tipoarchivo.controlador.php";
     require_once "controladores/archivo.controlador.php";
+    require_once "controladores/local.controlador.php";
 
     require_once "modelos/usuarios.modelo.php";
     require_once "modelos/departamento.modelo.php";
@@ -21,6 +22,7 @@
     require_once "modelos/representante.modelo.php";
     require_once "modelos/tipoarchivo.modelo.php";
     require_once "modelos/archivo.modelo.php";
+    require_once "modelos/local.modelo.php";
     
     $template = new ControladorTemplate();
     $template -> ctrTemplate();

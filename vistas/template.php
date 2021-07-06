@@ -164,10 +164,11 @@
   <script src="vistas/js/clientes.js"></script>
   <script src="vistas/js/agenda.js"></script>
   <script src="vistas/js/archivo.js"></script>
+  <script src="vistas/js/cobranza.js"></script>
   <script src="vistas/js/dataTable.js"></script>
   <script src="vistas/js/clock.js"></script>
   <script src="vistas/js/select2.js"></script>
-  <script src="vistas/js/detallecobranza.js"></script>
+  
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
