@@ -1,23 +1,24 @@
 <?php 
 	class ControladorCobranza{
 		static public function ctrMostrarCobranza($item,$valor){
-			$tabla = "detallecobranza";
+			$tabla = "cobranza";
 			$respuesta = ModeloCobranza::mdlMostrarCobranza($tabla,$item,$valor);
 			return $respuesta;
 		}
 
 		static public function ctrCrearCobranza(){
-			if(isset($_POST['idcotizacion'])){
-					$tabla = "detallecobranza";
+			if(isset($_POST['descripcion'])){
+			    if(preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+$/', $_POST['descripcion'])){
+
+					$tabla = "cobranza";
 				    $datos = array("idcotizacion" => $_POST['idcotizacion'],
+				    			"idlocalcliente" => $_POST['idlocalcliente'],
                                 "idcliente" => $_POST['idcliente'],
-                                "idubicacionl" => $_POST['idubicacionl'],
-                                "iddetalleservicio" => $_POST['iddetalleservicio'],
-                                "idservicio" => $_POST['idservicio'],
-                                "idubicacions" => $_POST['idubicacions'],
+                                "idubicacion" => $_POST['idubicacion'],
                                 "fechaemision" => $_POST['fechaemision'],
                                 "fechavencimiento" => $_POST['fechavencimiento'],
-								"estado" => $_POST['estado']);
+								"estado" => 1,
+				    			"descripcion" => $_POST['descripcion']);
 
 				    if($_POST['editar'] === "no"){
 						$respuesta = ModeloCobranza::mdlIngresarCobranza($tabla,$datos);
@@ -25,12 +26,12 @@
 							echo"<script>
 								Swal.fire({ 
 									title:	'Success!',
-									text:	'¡Detalle agregado correctamente!',
+									text:	'¡Cobranza agregado correctamente!',
 									icon:	'success',
 									confirmButtonText:	'Ok'
 									}).then((result)=>{
 										if(result.value){
-											window.location='generarCobranza';
+											window.location='generarcobranza';
 										}
 									})
 								</script>";
@@ -41,7 +42,7 @@
 							echo"<script>
 								Swal.fire({ 
 									title: 'Success!',
-									text: '¡El usuario se modificó correctamente!',
+									text: '¡La cotizacion se modificó correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'
 									}).then((result)=>{
@@ -52,6 +53,7 @@
 							</script>";
 						}
 					} 
+				}
 			}
 		}
 	}
