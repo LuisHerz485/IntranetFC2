@@ -1,43 +1,29 @@
 <?php 
 	require_once "conexion.php";
 	class ModeloCobranza{
-		static public function mdlMostrarCobranza($tabla,$item,$valor){
-            if($item!= null){
-                if($item === 1){
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by nombre ASC");
-                    $stmt -> execute();
-                    return $stmt -> fetchAll();
-                }else{
-                    $stmt = Conexion::conectar()->prepare("SELECT C.idcobranza as idcobranza,LC.idlocalcliente as idlocalcliente,LC.idcliente as idcliente, LC.idubicacion as idubicacion, C.fechaemision AS fechaemision, C.fechavencimiento AS fechavencimiento, C.estado as estado, C.descripcion as descripcion
-                    FROM $tabla C
-                    JOIN localcliente LC ON C.idcliente = LC.idcliente
-                    JOIN localcliente LC ON C.idubicacion = LC.idubicacion
-                    JOIN localcliente LC ON C.idlocalcliente = LC.idlocalcliente WHERE $item = :$item");
-                    $stmt -> bindParam(":".$item,$valor,PDO::PARAM_STR);
-                    $stmt -> execute();
-                    return $stmt -> fetch();
-                }
-            }else{
-                $stmt = Conexion::conectar()->prepare("SELECT C.idcobranza as idcobranza,LC.idlocalcliente as idlocalcliente,LC.idcliente as idcliente, LC.idubicacion as idubicacion, C.fechaemision AS fechaemision, C.fechavencimiento AS fechavencimiento, C.estado as estado, C.descripcion as descripcion
-                    FROM $tabla C
-                    JOIN localcliente LC ON C.idcliente = LC.idcliente
-                    JOIN localcliente LC ON C.idubicacion = LC.idubicacion
-                    JOIN localcliente LC ON C.idlocalcliente = LC.idlocalcliente");
-                $stmt -> execute();
-                return $stmt -> fetchAll();
-            }
+        
+		static public function mdlMostrarCobranza($valor){
+            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT C.idcobranza as idcobranza, C.idlocalcliente as idlocalcliente, C.idcliente as idcliente, C.idubicacion as idubicacion, C.fechaemision as fechaemision, C.fechavencimiento as fechavencimiento, C.estado as estado, C.descripcion as descripcion, U.distrito as distrito, U.departamento as departamento, LC.direccion as direccion
+            FROM cobranza C 
+            JOIN localcliente LC ON LC.idlocalcliente = C.idlocalcliente 
+            JOIN localcliente LCC ON LCC.idcliente = C.idcliente 
+            JOIN localcliente LCU ON LCU.idubicacion = C.idubicacion 
+            JOIN ubicacion U ON U.idubicacion = LCU.idubicacion WHERE C.idcliente = $valor");
+            $stmt -> execute();
+            return $stmt -> fetchAll();
             $stmt -> close();
             $stmt = null;
 		}
-         static public function mdlIngresarCobranza($tabla,$datos){
-            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idlocalcliente, idcliente, idubicacion, fechaemision, fechavencimiento, estado, descripcion) VALUES (:idlocalcliente, :idcliente, :idubicacion, :fechaemision, :fechavencimiento, :estado, :descripcion)");
-            $stmt -> bindParam(":idlocalcliente", $datos["idlocalcliente"],PDO::PARAM_STR);
-            $stmt -> bindParam(":idcliente", $datos["idcliente"],PDO::PARAM_STR);
-            $stmt -> bindParam(":idubicacion", $datos["idubicacion"],PDO::PARAM_STR);
-            $stmt -> bindParam(":fechaemision", $datos["fechaemision"],PDO::PARAM_STR);
-            $stmt -> bindParam(":fechavencimiento", $datos["fechavencimiento"],PDO::PARAM_STR);
-            $stmt -> bindParam(":estado",$datos['estado'],PDO::PARAM_STR);
-            $stmt -> bindParam(":descripcion",$datos['descripcion'],PDO::PARAM_STR);
+        
+        static public function mdlAgregarCobranza($valor1,$valor2,$valor3,$valor4,$valor5){
+            $estado = "0";
+            $stmt = Conexion::conectar()->prepare("INSERT INTO cobranza(idlocalcliente, idcliente, idubicacion, fechavencimiento, estado, descripcion) VALUES (:idlocalcliente, :idcliente, :idubicacion, :fechavencimiento, :estado, :descripcion)");
+            $stmt -> bindParam(":idlocalcliente", $valor1,PDO::PARAM_STR);
+            $stmt -> bindParam(":idcliente", $valor2,PDO::PARAM_STR);
+            $stmt -> bindParam(":idubicacion", $valor3,PDO::PARAM_STR);
+            $stmt -> bindParam(":fechavencimiento", $valor4,PDO::PARAM_STR);
+            $stmt -> bindParam(":estado",$estado,PDO::PARAM_STR);
+            $stmt -> bindParam(":descripcion",$valor5,PDO::PARAM_STR);
             if($stmt -> execute()){
                 return "ok";
             }else{

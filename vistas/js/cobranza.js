@@ -15,6 +15,8 @@ function mostrarformDC(flag) {
 function limpiar() {
     $("#iddistrito").find('option').remove();
     $("#iddireccion").find('option').remove();
+    $("#fecha_vencimiento").val("");
+    $("#descripcion").val("");
 }
 
 function cancelarGC() {
@@ -22,8 +24,7 @@ function cancelarGC() {
     mostrarformDC(false);
 }
 
-$(".btnListarLocal").click(function() {
-    var idcliente = $(this).attr("idcliente");
+function listarLocal(idcliente) {
     $("#idcliente").val(idcliente);
     var datos = new FormData();
     datos.append("idcliente", idcliente);
@@ -47,6 +48,41 @@ $(".btnListarLocal").click(function() {
             console.log("Error", respuesta);
         }
     });
+}
+
+function listarCobranzas(idcliente) {
+    $("#mostrarCobranza > tbody").empty();
+    $("#idcliente").val(idcliente);
+    var datos = new FormData();
+    datos.append("idcliente", idcliente);
+    $.ajax({
+        url: "ajax/cobranza.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
+            $.each(respuesta, function(index, value) {
+                if (value.estado != 1) {
+                    $("#mostrarCobranza").append("<tr><th scope=\"row\"><button class=\"btn btn-info btn-xs\" onclick=\"btnEditarDetCobranza(" + value.idcobranza + ")\"><i class=\"fas fa-pencil-alt\"></i></button></th><td>" + value.departamento + "</td><td>" + value.distrito + "</td><td>" + value.direccion + "</td><td>" + value.fechaemision + "</td><td>" + value.fechavencimiento + "</td><td><button class='btn btn-warning btn-xs btnActivarC' idcliente='" + value.estado + "' estado='1'>Pendiente</button></td><td>" + value.descripcion + "</td></tr>");
+
+                } else {
+                    $("#mostrarCobranza").append("<tr><th scope=\"row\"><button class=\"btn btn-info btn-xs\" onclick=\"btnEditarDetCobranza(" + value.idcobranza + ")\"><i class=\"fas fa-pencil-alt\"></i></button></th><td>" + value.departamento + "</td><td>" + value.distrito + "</td><td>" + value.direccion + "</td><td>" + value.fechaemision + "</td><td>" + value.fechavencimiento + "</td><td><button class='btn btn-success btn-xs btnActivarC' idcliente='" + value.estado + "' estado='1'>Pagado</button></td><td>" + value.descripcion + "</td></tr>");
+                }
+            });
+        },
+        error: function(respuesta) {
+            console.log("Error", respuesta);
+        }
+    });
+}
+
+$(".btnListarLocal").click(function() {
+    var idcliente = $(this).attr("idcliente");
+    listarLocal(idcliente);
+    listarCobranzas(idcliente);
 })
 
 $("#iddepartamento").change(function() {
@@ -70,11 +106,17 @@ $("#iddepartamento").change(function() {
             $.each(respuesta, function(index, value) {
                 $("#iddistrito").append('<option value="' + value.idubicacion + '">' + value.distrito + '</option>');
             });
+
+
         },
         error: function(respuesta) {
             console.log("Error", respuesta);
         }
     });
+});
+
+$("#iddepartamento").change(function() {
+    $("#idubicacion").val($(this).val());
 });
 
 $("#iddistrito").change(function() {
@@ -105,30 +147,25 @@ $("#iddistrito").change(function() {
     });
 });
 
+$("#iddireccion").change(function() {
+    $("#idlocalcliente").val($(this).val());
+});
+
 $(".btnAgregarCobranza").click(function() {
-    /*
-    $("#mostrarReporte > tbody").empty();
-    var idclienteAg = $("#idclienteA").val();
-    var nombrecompleto = $("#nombrecompleto").val();
-    var detallecargo = $("#detallecargo").val();
-    var telefono1 = $("#telefono1").val();
-    var telefono2 = $("#telefono2").val();
-    var correo1 = $("#correo1").val();
-    var correo2 = $("#correo2").val();
-    var editarAg = $("#editarAg").val();
-    var idrepresentante = $("#idrepresentante").val();
+    $("#mostrarCobranza > tbody").empty();
+    var idlocalcliente = $("#idlocalcliente").val();
+    var idcliente = $("#idcliente").val();
+    var idubicacion = $("#idubicacion").val();
+    var fecha_vencimiento = $("#fecha_vencimiento").val();
+    var descripcion = $("#descripcion").val();
     var datos = new FormData();
-    datos.append("idclienteAg", idclienteAg);
-    datos.append("nombrecompleto", nombrecompleto);
-    datos.append("detallecargo", detallecargo);
-    datos.append("telefono1", telefono1);
-    datos.append("telefono2", telefono2);
-    datos.append("correo1", correo1);
-    datos.append("correo2", correo2);
-    datos.append("editarAg", editarAg);
-    datos.append("idrepresentante", idrepresentante);
+    datos.append("idlocalcliente", idlocalcliente);
+    datos.append("idcliente", idcliente);
+    datos.append("idubicacion", idubicacion);
+    datos.append("fecha_vencimiento", fecha_vencimiento);
+    datos.append("descripcion", descripcion);
     $.ajax({
-        url: "ajax/agenda.ajax.php",
+        url: "ajax/cobranza.ajax.php",
         method: "POST",
         data: datos,
         cache: false,
@@ -138,12 +175,12 @@ $(".btnAgregarCobranza").click(function() {
         success: function(respuesta) {
             Swal.fire({
                 title: 'Success!',
-                text: '¡La Agenda agregado correctamente!',
+                text: '¡La cobranza se agregado correctamente!',
                 icon: 'success',
                 confirmButtonText: 'Ok'
             }).then((result) => {
                 if (result.value) {
-                    listarAgenda();
+                    listarCobranzas(idcliente);
                 }
             })
         },
@@ -151,8 +188,7 @@ $(".btnAgregarCobranza").click(function() {
             console.log("Error", respuesta);
         }
     });
-    limpiarAgenda();*/
+    limpiar();
 })
-
 
 init();

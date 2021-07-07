@@ -65,6 +65,8 @@
               <div class="row">
                 <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
                   <label>Departamento(*):</label>
+                  <input class="form-control" type="hidden" name="idlocalcliente" id="idlocalcliente">
+                  <input class="form-control" type="hidden" name="idubicacion" id="idubicacion">
                   <input class="form-control" type="hidden" name="idcliente" id="idcliente">
                   <select name="iddepartamento" id="iddepartamento" class="form-control select2" data-live-search="true" required>
                     
@@ -82,15 +84,25 @@
                     
                   </select>
                 </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                  <label>Fecha Vencimiento(*):</label>
+                  <input type="date" class="form-control" name="fecha_vencimiento" id="fecha_vencimiento">
+                </div>
+                <div class="form-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                  <label>Descripción:</label>
+                  <input type="text" class="form-control" name="descripcion" id="descripcion">
+                </div>
               </div>
               <button class="btn btn-success btnAgregarCobranza">Generar Cobranza</button>
               <button class="btn btn-danger" onclick="cancelarGC()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
               <br/>
               <br/>
               <div id="tbllistadoCobranza">
-                <table id="mostrarAgenda" class="table table-striped tablaDataTableC dt-responsive">
+                <table id="mostrarCobranza" class="table table-striped tablaDataTableC dt-responsive">
                   <thead>
                     <th>Opciones</th>
+                    <th>Departamento</th>
+                    <th>Distrito</th>
                     <th>Direccion</th>
                     <th>Fecha de Emisión</th>
                     <th>Fecha de Vencimiento</th>
@@ -101,6 +113,8 @@
                   </tbody>
                   <tfoot>
                     <th>Opciones</th>
+                    <th>Departamento</th>
+                    <th>Distrito</th>
                     <th>Direccion</th>
                     <th>Fecha de Emisión</th>
                     <th>Fecha de Vencimiento</th>

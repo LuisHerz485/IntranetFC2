@@ -1,11 +1,6 @@
 <?php 
 	class ControladorCobranza{
-		static public function ctrMostrarCobranza($item,$valor){
-			$tabla = "cobranza";
-			$respuesta = ModeloCobranza::mdlMostrarCobranza($tabla,$item,$valor);
-			return $respuesta;
-		}
-
+		/*
 		static public function ctrCrearCobranza(){
 			if(isset($_POST['descripcion'])){
 			    if(preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+$/', $_POST['descripcion'])){
@@ -55,5 +50,5 @@
 					} 
 				}
 			}
-		}
+		}*/
 	}
