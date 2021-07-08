@@ -132,7 +132,9 @@
               $_GET['ruta'] == "salirC" ||
               $_GET['ruta'] == "generarCobranza" ||
               $_GET['ruta'] == "seguimiento" ||
-              $_GET['ruta'] == "salir"){
+              $_GET['ruta'] == "salir" ||
+              $_GET['ruta'] == "pagospendientes" ||
+              $_GET['ruta'] == "pagosrealizados"){
                 include "vistas/modulos/paginas/".$_GET['ruta'].".php";
           }else{
             include "vistas/modulos/paginas/404.php";
@@ -165,6 +167,7 @@
   <script src="vistas/js/agenda.js"></script>
   <script src="vistas/js/archivo.js"></script>
   <script src="vistas/js/cobranza.js"></script>
+  <script src="vistas/js/traduccion.js"></script>
   <script src="vistas/js/dataTable.js"></script>
   <script src="vistas/js/clock.js"></script>
   <script src="vistas/js/select2.js"></script>

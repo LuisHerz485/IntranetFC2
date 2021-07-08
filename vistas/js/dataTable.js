@@ -42,8 +42,48 @@ $('.tablaDataTable').DataTable({
         },
     ],
     'autoWidth': false,
+    'language': language,
 });
 
 $('.tablaDataTableC').DataTable({
     'autoWidth': false,
+    'language': language,
 });
+
+$('.tablaDataPagos').DataTable({
+    dom: 'B<"float-left"i><"float-right"f>t<"float-left"l><"float-right"p><"clearfix">',
+    buttons: [{
+            extend: 'excelHtml5',
+            text: '<i class="fas fa-file-excel"> Excel</i> ',
+            titleAttr: 'Exportar a Excel',
+            className: 'btn btn-success'
+        },
+        {
+            extend: 'pdf',
+            text: '<i class="fas fa-file-pdf"> PDF</i> ',
+            titleAttr: 'Exportar a PDF',
+            className: 'btn btn-danger'
+        },
+        {
+            extend: 'print',
+            text: '<i class="fa fa-print"> Imprimir</i> ',
+            titleAttr: 'Imprimir',
+            className: 'btn btn-warning',
+            customize: function(win) {
+                $(win.document.body)
+                    .css('font-size', '10pt')
+                    .prepend(
+                        '<img src="vistas/dist/img/logo-azul.png" style="position:absolute; top:0; left:0;" />'
+                    );
+                $(win.document.body).find('table')
+                    .addClass('compact')
+                    .css('font-size', 'inherit');
+            }
+        },
+    ],
+    'autoWidth': false,
+    'language': language,
+});
+
+
+$('.tabla')

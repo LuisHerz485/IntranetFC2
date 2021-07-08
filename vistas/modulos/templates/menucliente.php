@@ -79,13 +79,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="pagospendientes" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Pagos Pendientes</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="pagosrealizados" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Pagos Realizados</p>
                         </a>

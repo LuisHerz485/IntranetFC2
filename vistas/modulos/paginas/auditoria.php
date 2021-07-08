@@ -9,7 +9,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Auditorias</a></li>
+              <li class="breadcrumb-item"><a href="#">Área Auditorias</a></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
