@@ -21,6 +21,7 @@ function mostrarDetformC(flag) {
     } else {
         $("#listadoregistrosC").show();
         $("#formulariodetalleC").hide();
+        $("#btnagregar").show();
     }
 }
 

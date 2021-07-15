@@ -12,6 +12,7 @@
     require_once "controladores/archivo.controlador.php";
     require_once "controladores/local.controlador.php";
     require_once "controladores/cobranza.controlador.php";
+    require_once "controladores/detallecobranza.controlador.php";
 
     require_once "modelos/usuarios.modelo.php";
     require_once "modelos/departamento.modelo.php";
@@ -25,6 +26,7 @@
     require_once "modelos/archivo.modelo.php";
     require_once "modelos/local.modelo.php";
     require_once "modelos/cobranza.modelo.php";
+    require_once "modelos/detallecobranza.modelo.php";
     
     $template = new ControladorTemplate();
     $template -> ctrTemplate();

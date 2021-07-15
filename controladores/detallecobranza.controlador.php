@@ -1,10 +1,10 @@
 <?php 
 	class ControladorDetalleCobranza{
-		static public function ctrMostrarDetalleCobranza($item,$valor){
-			$tabla = "detallecobranza";
-			$respuesta = ModeloDetalleCobranza::mdlMostrarDetalleCobranza($tabla,$item,$valor);
+		static public function ctrMostrarServicio($item,$valor){
+			$tabla = "servicio";
+			$respuesta = ModeloDetalleCobranza::mdlMostrarServicio($tabla,$item,$valor);
 			return $respuesta;
-		}
+		}/*
 
 		static public function ctrCrearDetalleCobranza(){
 			if(isset($_POST['nota'])){
@@ -54,5 +54,5 @@
 					} 
 				}
 			}
-		}
+		}*/
 	}

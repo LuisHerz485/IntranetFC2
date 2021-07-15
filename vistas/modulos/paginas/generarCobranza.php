@@ -110,6 +110,7 @@
                     <th>Descripción</th>
                   </thead>
                   <tbody>
+                    
                   </tbody>
                   <tfoot>
                     <th>Opciones</th>
@@ -124,6 +125,67 @@
                 </table>
               </div>
             </div>
+
+            <div class="card-body panel-body" id="formularioS">
+              <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Servicio</label>
+                  <select name="idservicio" id="idservicio" class="form-control select2" data-live-search="true" required>
+                    <option value="0">Seleccione ...</option>
+                    <?php 
+                      $item = 1;
+                      $valor = null;
+                      $servicio = ControladorDetalleCobranza::ctrMostrarServicio($item,$valor);
+                      foreach($servicio as $key => $value){ 
+                        echo '<option value="'.$value['idservicio'].'">'.$value['nombre'].'</option>';
+                      }
+                    ?>
+                    </select>
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Planes</label>
+                  <select name="idplanes" id="idplanes" class="form-control select2" data-live-search="true" required>
+                  </select>
+                </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                  <label>Precio</label>
+                  <input name="idprecio" id="idprecio" class="form-control" disabled>
+                </div>
+                <div class="form-group col-lg-9 col-md-9 col-sm-6 col-xs-12">
+                  <label>Observación</label>
+                  <input name="idnota" id="idnota" class="form-control" required>
+                </div>
+              </div>
+              <button class="btn btn-success btnAgregarDetCobranza">Generar Detalle</button>
+              <button class="btn btn-danger" onclick="cancelarDetC()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+              <br/>
+              <br/>
+              <div id="tbllistadoDetCobranza">
+                <table id="mostrarDetCobranza" class="table table-striped tablaDataTableC dt-responsive text-center">
+                  <thead>
+                    <th>Opciones</th>
+                    <th>Servicio</th>
+                    <th>Plan</th>
+                    <th>Monto</th>
+                    <th>Estado</th>
+                    <th>Observación</th>
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+                  <tfoot>
+                    <th>Opciones</th>
+                    <th>Servicio</th>
+                    <th>Plan</th>
+                    <th>Monto</th>
+                    <th>Estado</th>
+                    <th>Observación</th>
+                  </tfoot>   
+                </table>
+              </div>
+            </div>
+            </div>
+
           </div>
         </div>           
       </div>
