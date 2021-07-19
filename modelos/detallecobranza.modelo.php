@@ -56,7 +56,7 @@
         static public function mdlMostrarServicio($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE estado <> 0 ORDER by nombre");
+                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by ASC");
                     $stmt -> execute();
                     return $stmt -> fetchAll();
                 }else{
