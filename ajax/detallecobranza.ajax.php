@@ -26,17 +26,16 @@ class AjaxDetCobranza{
 		$respuesta = ModeloCobranza::mdlAgregarDetCobranza($valor1,$valor2,$valor3,$valor4);
 	}
 
-	public $idcobranza;
+	public $iddetallecobranza;
 
-	public function ajaxMostrarDetCobranza(){
-		$item = "idcobranza";
-		$valor = $this->idcobranza;
-		$respuesta = ControladorDetalleCobranza::ctrMostrarDetCobranza($item, $valor);
+	public function ajaxMostrarDetalleCobranza(){
+		$valor = $this -> idcobranza;
+		$respuesta = ModeloDetalleCobranza::mdlMostrarDetalleCobranza($valor);
 		echo json_encode($respuesta);
 	}
 }
 
-/* Mostrar Detalle Cobranza */
+/* Mostrar Cobranza */
 if(isset($_POST["idcobranza"])){
 	$mostrarCo = new AjaxDetCobranza();
 	$mostrarCo -> idcliente = $_POST["idcobranza"];
@@ -55,7 +54,7 @@ if(isset($_POST["idservicio"])){
 
 /* Mostrar Detalle Cobranza*/
 if(isset($_POST["idcobranza"])){
-	$editar = new AjaxDetCobranza();
-	$editar -> login = $_POST["idcobranza"];
-	$editar -> ajaxMostrarDetCobranza();
+	$mostrar = new AjaxDetCobranza();
+	$mostrar -> idcobranza = $_POST["idcobranza"];
+	$mostrar -> ajaxMostrarDetalleCobranza();
 }
