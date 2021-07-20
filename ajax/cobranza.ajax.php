@@ -19,7 +19,6 @@ class AjaxCobranza{
 	public $idubicacion;
 	public $fecha_vencimiento;
 	public $descripcion;
-	public $idcobranza;
 	public $idplan;
 	public $precio;
 	public $nota;
@@ -30,16 +29,13 @@ class AjaxCobranza{
 		$valor3 = $this -> idubicacion;
 		$valor4 = $this -> fecha_vencimiento;
 		$valor5 = $this -> descripcion;
-		$valor6 = $this -> idcobranza;
-		$valor7 = $this -> idplan;
-		$valor8 = $this -> precio;
-		$valor9 = $this -> nota;
+		$valor6 = $this -> idplan;
+		$valor7 = $this -> precio;
+		$valor8 = $this -> nota;
 
 		$respuesta = ModeloCobranza::mdlAgregarCobranza($valor1,$valor2,$valor3,$valor4,$valor5);
-		$respuesta1 = ModeloDetalleCobranza::mdlAgregarDetCobranza($valor6,$valor7,$valor8,$valor9);
+		$respuesta1 = ModeloDetalleCobranza::mdlAgregarDetCobranza($respuesta,$valor6,$valor7,$valor8);
 	}
-
-
 }
 
 /* Mostrar Cobranza */
@@ -57,10 +53,9 @@ if(isset($_POST["idlocalcliente"])){
 	$agregarCo -> idubicacion = $_POST["idubicacion"];
 	$agregarCo -> fecha_vencimiento = $_POST["fecha_vencimiento"];
 	$agregarCo -> descripcion = $_POST["descripcion"];
-	$agregarDetCo -> idcobranza = $_POST["idcobranza"];
-	$agregarDetCo -> idplan = $_POST["idplan"];
-	$agregarDetCo -> precio = $_POST["precio"];
-	$agregarDetCo -> nota = $_POST["nota"];
+	$agregarCo -> idplan = $_POST["idplan"];
+	$agregarCo -> precio = $_POST["precio"];
+	$agregarCo -> nota = $_POST["nota"];
 	$agregarCo -> ajaxAgregarCobranza();
 }
 

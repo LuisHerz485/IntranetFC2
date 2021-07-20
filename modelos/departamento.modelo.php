@@ -5,7 +5,7 @@
         static public function mdlMostrarDepartamento($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by ASC");
+                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ");
                     $stmt -> execute();
                     return $stmt -> fetchAll();
                 }else{

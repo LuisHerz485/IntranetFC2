@@ -97,7 +97,7 @@
                       $valor = null;
                       $servicio = ControladorDetalleCobranza::ctrMostrarPlanes($item,$valor);
                       foreach($servicio as $key => $value){ 
-                        echo '<option value="'.$value['idplan'].'">'.$value['nombre'].'</option>';
+                        echo '<option id="plan'.$value['idplan'].'" precio="'.$value['precio'].'" value="'.$value['idplan'].'">'.$value['nombre'].'</option>';
                       }
                     ?>
                   </select>
@@ -224,6 +224,70 @@
   </div>
 </div>  
 
+</div>
+
+<!-- Modal Detalle Cobranza -->
+<div class="modal fade" id="modalDetCob" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <form role="form" method="post" enctype="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><strong>Detalle de Cobranza</strong></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Departamento</label>
+                  <input name="" id="" class="form-control">
+                  
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Distrito</label>
+                  <input name="" id="" class="form-control">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Direccion</label>
+                  <input name="direccion" id="direccion" class="form-control">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Fecha Emision</label>
+                  <input name="" id="" class="form-control">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Fecha Vencimiento</label>
+                  <input name="" id="" class="form-control">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Descripcion</label>
+                  <input name="descripcion" id="descripcion" class="form-control">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Plan</label>
+                  <input name="" id="" class="form-control">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Monto</label>
+                  <input name="" id="" class="form-control">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Observación sobre el precio</label>
+                  <input name="" id="" class="form-control">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
 
 <!-- /.content-wrapper -->

@@ -53,4 +53,25 @@ function listarDetCobranzas(idcobranza) {
     });
 }
 
+$(".btnMostraDetCob").click(function() {
+    var idcobranza = $(this).attr("idcobranza");
+    var datos = new FormData();
+    datos.append("idcobranza", idcobranza);
+    $.ajax({
+        url: "ajax/detallecobranza.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
+            $("#descripcion").val(respuesta['descripcion']);
+        },
+        error: function(respuesta) {
+            console.log("Error", respuesta);
+        }
+    });
+})
+
 init();

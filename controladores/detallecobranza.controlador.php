@@ -12,6 +12,13 @@
 			return $respuesta;
 		}
 
+		static public function ctrMostrarDetCobranza($item,$valor){
+			$tabla = "detallecobranza";
+			$respuesta = ModeloCobranza::mdlMostrarCobranza($tabla,$item,$valor);
+			return $respuesta;
+		}
+
+
 		/*
 
 		static public function ctrCrearDetalleCobranza(){
