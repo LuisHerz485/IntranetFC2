@@ -4,7 +4,15 @@
 			$tabla = "servicio";
 			$respuesta = ModeloDetalleCobranza::mdlMostrarServicio($tabla,$item,$valor);
 			return $respuesta;
-		}/*
+		}
+
+		static public function ctrMostrarPlanes($item,$valor){
+			$tabla = "plan";
+			$respuesta = ModeloDetalleCobranza::mdlMostrarPlanes($tabla,$item,$valor);
+			return $respuesta;
+		}
+
+		/*
 
 		static public function ctrCrearDetalleCobranza(){
 			if(isset($_POST['nota'])){

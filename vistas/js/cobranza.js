@@ -158,12 +158,18 @@ $(".btnAgregarCobranza").click(function() {
     var idubicacion = $("#idubicacion").val();
     var fecha_vencimiento = $("#fecha_vencimiento").val();
     var descripcion = $("#descripcion").val();
+    var idplan = $("#idplan").val();
+    var precio = $('#precio').val();
+    var nota = $('#nota').val();
     var datos = new FormData();
     datos.append("idlocalcliente", idlocalcliente);
     datos.append("idcliente", idcliente);
     datos.append("idubicacion", idubicacion);
     datos.append("fecha_vencimiento", fecha_vencimiento);
     datos.append("descripcion", descripcion);
+    datos.append("idplan", idplan);
+    datos.append("precio", precio);
+    datos.append("nota", nota);
     $.ajax({
         url: "ajax/cobranza.ajax.php",
         method: "POST",

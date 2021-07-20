@@ -63,7 +63,7 @@
             </div>
             <div class="card-body panel-body" id="formularioGC">
               <div class="row">
-                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <label>Departamento(*):</label>
                   <input class="form-control" type="hidden" name="idlocalcliente" id="idlocalcliente">
                   <input class="form-control" type="hidden" name="idubicacion" id="idubicacion">
@@ -72,23 +72,45 @@
                     
                   </select>
                 </div>
-                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <label>Distrito(*):</label>
                   <select name="iddistrito" id="iddistrito" class="form-control select2" data-live-search="true" required>
                     
                   </select>
                 </div>
-                <div class="form-group col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <label for="">Local(*):</label>
                   <select name="iddireccion" id="iddireccion" class="form-control select2" data-live-search="true" required>
                     
                   </select>
                 </div>
-                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <label>Fecha Vencimiento(*):</label>
                   <input type="date" class="form-control" name="fecha_vencimiento" id="fecha_vencimiento">
                 </div>
-                <div class="form-group col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label>Planes</label>
+                  <select name="idplan" id="idplan" class="form-control select2" data-live-search="true" required>
+                    <option value="0" >Seleccione Plan ...</option>
+                    <?php 
+                      $item = 1;
+                      $valor = null;
+                      $servicio = ControladorDetalleCobranza::ctrMostrarPlanes($item,$valor);
+                      foreach($servicio as $key => $value){ 
+                        echo '<option value="'.$value['idplan'].'">'.$value['nombre'].'</option>';
+                      }
+                    ?>
+                  </select>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label>Precio</label>
+                  <input name="precio" id="precio" class="form-control">
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                  <label>Nota (Precio)</label>
+                  <input name="nota" id="nota" class="form-control">
+                </div>
+                <div class="form-group col-lg-6 col-md-3 col-sm-6 col-xs-12">
                   <label>Descripción:</label>
                   <input type="text" class="form-control" name="descripcion" id="descripcion">
                 </div>
@@ -126,25 +148,34 @@
               </div>
             </div>
 
-            <div class="card-body panel-body" id="formularioS">
+            <!--<div class="card-body panel-body" id="formularioS">
               <div class="row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Servicio</label>
                   <select name="idservicio" id="idservicio" class="form-control select2" data-live-search="true" required>
-                    <option value="0">Seleccione ...</option>
-                    <?php 
+                    <option value="0">Seleccione Servicio ...</option>
+                    <?php /*
                       $item = 1;
                       $valor = null;
                       $servicio = ControladorDetalleCobranza::ctrMostrarServicio($item,$valor);
                       foreach($servicio as $key => $value){ 
                         echo '<option value="'.$value['idservicio'].'">'.$value['nombre'].'</option>';
-                      }
+                      }*/
                     ?>
                     </select>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Planes</label>
                   <select name="idplanes" id="idplanes" class="form-control select2" data-live-search="true" required>
+                    <option value="0" >Seleccione Plan ...</option>
+                    <?php 
+                      /*$item = 1;
+                      $valor = null;
+                      $servicio = ControladorDetalleCobranza::ctrMostrarPlanes($item,$valor);
+                      foreach($servicio as $key => $value){ 
+                        echo '<option value="'.$value['idplan'].'">'.$value['nombre'].'</option>';
+                      }*/
+                    ?>
                   </select>
                 </div>
                 <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -183,7 +214,7 @@
                   </tfoot>   
                 </table>
               </div>
-            </div>
+            </div> -->
             </div>
 
           </div>

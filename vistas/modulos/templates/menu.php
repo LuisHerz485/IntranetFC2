@@ -126,12 +126,6 @@
                             <p>Generar Cobranza</p>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="seguimiento" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Seguimiento</p>
-                        </a>
-                    </li>
                 </ul>
             </li>  
 

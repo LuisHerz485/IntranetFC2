@@ -15,11 +15,15 @@
 
         static public function mdlAgregarDetCobranza($valor1,$valor2,$valor3,$valor4){
             $estado = "0";
-            $stmt = Conexion::conectar()->prepare("INSERT INTO cobranza(idplan, idservicio, precio, estado, nota) VALUES (:idplan, :idservicio, :precio, :fechavencimiento, :estado, :nota)");
-            $stmt -> bindParam(":idplan", $valor1,PDO::PARAM_STR);
-            $stmt -> bindParam(":idservicio", $valor2,PDO::PARAM_STR);
-            $stmt -> bindParam(":precio", $valor3,PDO::PARAM_STR);
-            $stmt -> bindParam(":estado",$estado,PDO::PARAM_STR);
+            $servicio = "1";
+            $nombre = "";
+            $stmt = Conexion::conectar()->prepare("INSERT INTO detallecobranza(idcobranza, idplan, idservicio, estado, nombre, precio, nota) VALUES (:idcobranza, :idplan, :idservicio, :estado, :nombre, :precio, :nota)");
+            $stmt -> bindParam(":idcobranza", $valor1,PDO::PARAM_STR);
+            $stmt -> bindParam(":idplan", $valor2,PDO::PARAM_STR);  
+            $stmt -> bindParam(":idservicio", $servicio,PDO::PARAM_STR);
+            $stmt -> bindParam(":nombre", $nombre,PDO::PARAM_STR);
+            $stmt -> bindParam(":estado", $estado,PDO::PARAM_STR);
+            $stmt -> bindParam(":precio",$valor3,PDO::PARAM_STR);
             $stmt -> bindParam(":nota",$valor4,PDO::PARAM_STR);
             if($stmt -> execute()){
                 return "ok";
@@ -56,7 +60,28 @@
         static public function mdlMostrarServicio($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by ASC");
+                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+                    $stmt -> execute();
+                    return $stmt -> fetchAll();
+                }else{
+                    $stmt = Conexion::conectar()->prepare("SELECT *  FROM $tabla WHERE $item = :$item");
+                    $stmt -> bindParam(":".$item,$valor,PDO::PARAM_STR);
+                    $stmt -> execute();
+                    return $stmt -> fetch();
+                }
+            }else{
+                $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+                $stmt -> execute();
+                return $stmt -> fetchAll();
+            }
+            $stmt -> close();
+            $stmt = null;
+        }
+
+        static public function mdlMostrarPlanes($tabla,$item,$valor){
+            if($item!= null){
+                if($item === 1){
+                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE idplan != 1");
                     $stmt -> execute();
                     return $stmt -> fetchAll();
                 }else{
