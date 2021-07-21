@@ -36,6 +36,18 @@ class AjaxCobranza{
 		$respuesta = ModeloCobranza::mdlAgregarCobranza($valor1,$valor2,$valor3,$valor4,$valor5);
 		$respuesta1 = ModeloDetalleCobranza::mdlAgregarDetCobranza($respuesta,$valor6,$valor7,$valor8);
 	}
+
+	public $activarCobranza;
+	public $activarId;
+
+	public function ajaxActivarCobranza(){
+		$tabla = "cobranza";
+		$item1 = "estado";
+		$valor1 = $this -> activarCobranza;
+		$item2 = "idcobranza";
+		$valor2 = $this -> activarId;
+		$respuesta = ModeloCobranza::mdlActualizarCobranza($tabla,$item1,$valor1,$item2,$valor2);
+	}
 }
 
 /* Mostrar Cobranza */
@@ -59,4 +71,10 @@ if(isset($_POST["idlocalcliente"])){
 	$agregarCo -> ajaxAgregarCobranza();
 }
 
-
+/* Activar cobranza*/
+if(isset($_POST['estado'])){
+    $estado = new AjaxCobranza();
+    $estado -> activarCobranza = $_POST['estado'];
+    $estado -> activarId = $_POST['idcobranza'];
+    $estado ->ajaxActivarCobranza();
+}

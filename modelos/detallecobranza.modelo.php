@@ -1,17 +1,11 @@
 <?php 
 	require_once "conexion.php";
 	class ModeloDetalleCobranza{
-		static public function mdlMostrarDetalleCobranza($valor){
-            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT DC.iddetallecobranza as iddetallecobranza, C.idcobranza as idcobranza, P.idplan as idplan, S.idservicio as idservicio, DC.estado as estado, DC.precio as precio, DC.nota as nota
-            FROM $tabla DC
-            JOIN cobranza C ON C.idcobranza = DC.idcobranza
-            JOIN plan P ON P.idplan = DC.idplan
-            JOIN servicio S ON S.idservicio = DC.idservicio WHERE DC.idcobranza = :$valor");
+		static public function mdlMostrarDetalleCobranza(int $valor){
+            $stmt = Conexion::conectar()->prepare("SELECT DC.iddetallecobranza, DC.estado, DC.precio AS monto, DC.nota AS observacion, P.idplan,P.nombre AS plan FROM detallecobranza AS DC INNER JOIN plan AS P ON P.idplan = DC.idplan WHERE DC.idcobranza = $valor");
             $stmt -> execute();
-            return $stmt -> fetchAll();
-            $stmt -> close();
-            $stmt = null;
-		}
+            return $stmt -> fetchAll(); 
+        }
 
         static public function mdlAgregarDetCobranza($valor1,$valor2,$valor3,$valor4){
             $estado = "0";

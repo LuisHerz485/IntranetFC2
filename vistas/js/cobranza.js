@@ -5,18 +5,22 @@ function init() {
 function mostrarformDC(flag) {
     if (flag) {
         $("#listadoGC").hide();
-        $("#formularioGC").show();
+        $("#formularioGC").show();  
     } else {
         $("#listadoGC").show();
         $("#formularioGC").hide();
     }
 }
 
-function limpiar() {
+function limpiarCobranza() {
+    $("#iddepartamento").find('option').remove();
     $("#iddistrito").find('option').remove();
     $("#iddireccion").find('option').remove();
     $("#fecha_vencimiento").val("");
     $("#descripcion").val("");
+    $("#idplan").find('option').remove();
+    $("#precio").val("");
+    $("#nota").val("");
 }
 
 function cancelarGC() {
@@ -66,12 +70,77 @@ function listarCobranzas(idcliente) {
         success: function(respuesta) {
             $.each(respuesta, function(index, value) {
                 if (value.estado != 1) {
-                    $("#mostrarCobranza").append("<tr><th scope=\"row\" class=\"text-center\"><button class=\"btn btn-info btn-xs btnMostraDetCob\" idcobranza="+ value.idcobranza +" data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></th><td>" + value.departamento + "</td><td>" + value.distrito + "</td><td>" + value.direccion + "</td><td>" + value.fechaemision + "</td><td>" + value.fechavencimiento + "</td><td><button class='btn btn-warning btn-xs btnActivarC' idcliente='" + value.estado + "' estado='1'>Pendiente</button></td><td>" + value.descripcion + "</td></tr>");
+                    $("#mostrarCobranza").append("<tr><th scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-xs btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-xs btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></th><td>" + value.departamento + "</td><td>" + value.distrito + "</td><td>" + value.direccion + "</td><td>" + value.fechaemision + "</td><td>" + value.fechavencimiento + "</td><td><button class='btn btn-warning btn-xs btnActivarC' idcobranza='" + value.idcobranza + "' estado='1'>Pendiente</button></td></tr>");
 
                 } else {
-                    $("#mostrarCobranza").append("<tr><th scope=\"row\" class=\"text-center\"><button class=\"btn btn-info btn-xs btnMostraDetCob\" idcobranza="+ value.idcobranza +" data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></th><td>" + value.departamento + "</td><td>" + value.distrito + "</td><td>" + value.direccion + "</td><td>" + value.fechaemision + "</td><td>" + value.fechavencimiento + "</td><td><button class='btn btn-success btn-xs btnActivarC' idcliente='" + value.estado + "' estado='1'>Pagado</button></td><td>" + value.descripcion + "</td></tr>");
+                    $("#mostrarCobranza").append("<tr><th scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-xs btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-xs btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></th><td>" + value.departamento + "</td><td>" + value.distrito + "</td><td>" + value.direccion + "</td><td>" + value.fechaemision + "</td><td>" + value.fechavencimiento + "</td><td><button class='btn btn-success btn-xs btnActivarC' idcobranza='" + value.idcobranza + "' estado='0'>Pagado</button></td></tr>");
                 }
             });
+            $('.btnMostraDetCob').click(function() {
+                var datos = new FormData();
+                datos.append('idcobranza', $(this).attr('idcobranza'));
+                $('#modalDepartamento').val(respuesta[this.value].departamento);
+                $('#modalDistrito').val(respuesta[this.value].distrito);
+                $('#modalDireccion').val(respuesta[this.value].direccion);
+                $('#modalFechaEmision').val(respuesta[this.value].fechaemision);
+                $('#modelFechaVencimiento').val(respuesta[this.value].fechavencimiento);
+                $('#modalDescripcion').val(respuesta[this.value].descripcion);
+                $.ajax({
+                  url: 'ajax/detallecobranza.ajax.php',
+                  method: 'POST',
+                  cache: false,
+                  contentType: false,
+                  processData: false,
+                  dataType: 'json',
+                  data: datos,
+                  success: function (data) {
+                    console.log(data);
+                    $('#modalPlan').val(data[0].plan);
+                    $('#modalMonto').val(data[0].monto);
+                    $('#modalObservacion').val(data[0].observacion);
+                  },
+                });
+            });
+            $(".btnActivarC").click(function() {
+                var idcobranza = $(this).attr("idcobranza");
+                var estado = $(this).attr("estado");
+                var datos = new FormData();
+                datos.append("idcobranza", idcobranza);
+                datos.append("estado", estado);
+
+                Swal.fire({
+                    title: '¿Seguro que deseas cambiar el estado de cobranza?',
+                    showCancelButton: true,
+                    confirmButtonText: `Guardar`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "ajax/cobranza.ajax.php",
+                            method: "POST",
+                            data: datos,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            success: function(respuesta) {}
+                        })
+                        if (estado == 0) {
+                            $(this).removeClass('btn-success');
+                            $(this).addClass('btn-warning');
+                            $(this).html('Pendiente');
+                            $(this).attr('estado', 1);
+                        } else {    
+                            $(this).removeClass('btn-warning');
+                            $(this).addClass('btn-success');
+                            $(this).html('Pagado');
+                            $(this).attr('estado', 0);
+                            
+                        }
+                        Swal.fire('Cambio Realizado!', '', 'success')
+                    } else if (result.isDenied) {
+                        Swal.fire('Cambios no realizado', '', 'info')
+                    }
+                })
+            })
         },
         error: function(respuesta) {
             console.log("Error", respuesta);
@@ -200,5 +269,9 @@ $(".btnAgregarCobranza").click(function() {
     });
     limpiar();
 })
+
+$(document).ready( function() {
+    $('#fecha_vencimiento').val(new Date().toDateInputValue());
+});
 
 init();

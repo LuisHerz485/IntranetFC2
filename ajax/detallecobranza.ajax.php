@@ -2,6 +2,7 @@
 
 require_once "../controladores/detallecobranza.controlador.php";
 require_once "../modelos/detallecobranza.modelo.php";
+require_once "../modelos/cobranza.modelo.php";
 
 class AjaxDetCobranza{
 
@@ -9,7 +10,7 @@ class AjaxDetCobranza{
 
 	public function ajaxMostrarDetCobranza(){
 		$valor = $this -> idcobranza;
-		$respuesta = ModeloDetallecCobranza::mdlMostrarDetalleCobranza($valor);
+		$respuesta = ModeloDetalleCobranza::mdlMostrarDetalleCobranza($valor);
 		echo json_encode($respuesta);
 	}
 
@@ -25,20 +26,12 @@ class AjaxDetCobranza{
 		$valor4 = $this -> nota;
 		$respuesta = ModeloCobranza::mdlAgregarDetCobranza($valor1,$valor2,$valor3,$valor4);
 	}
-
-	public $iddetallecobranza;
-
-	public function ajaxMostrarDetalleCobranza(){
-		$valor = $this -> idcobranza;
-		$respuesta = ModeloDetalleCobranza::mdlMostrarDetalleCobranza($valor);
-		echo json_encode($respuesta);
-	}
 }
 
 /* Mostrar Cobranza */
 if(isset($_POST["idcobranza"])){
 	$mostrarCo = new AjaxDetCobranza();
-	$mostrarCo -> idcliente = $_POST["idcobranza"];
+	$mostrarCo -> idcobranza = $_POST["idcobranza"];
 	$mostrarCo -> ajaxMostrarDetCobranza();
 }
 
@@ -52,9 +45,3 @@ if(isset($_POST["idservicio"])){
 	$agregarCo -> ajaxAgregarDetCobranza();
 }
 
-/* Mostrar Detalle Cobranza*/
-if(isset($_POST["idcobranza"])){
-	$mostrar = new AjaxDetCobranza();
-	$mostrar -> idcobranza = $_POST["idcobranza"];
-	$mostrar -> ajaxMostrarDetalleCobranza();
-}

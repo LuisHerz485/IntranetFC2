@@ -26,7 +26,7 @@
             </div>
             <div class="card-body panel-body" id="listadoGC">
               <div id="tbllistadoCobranza">
-                <table id="" class="table table-striped tablaDataTableC dt-responsive">
+                <table id="" class="table table-striped tablaDataTableC dt-responsive text-center">
                   <thead>
                     <th>Opciones</th>
                     <th>RUC</th>
@@ -40,7 +40,7 @@
                       $clientes = ControladorClientes::ctrMostrarCliente($item,$valor);
                       foreach($clientes as $key => $value){
                         echo '<tr>
-                          <th scope="row" class="text-center"><button class="btn btn-success btn-xs btnListarLocal" onclick="mostrarformDC(true)" idcliente="'.$value['idcliente'].'"><i class="fas fa-donate"></i></button></th>';
+                          <th scope="row" class="text-center"><abbr title="Generar Cobranza"><button class="btn btn-success btn-s btnListarLocal" onclick="mostrarformDC(true)" idcliente="'.$value['idcliente'].'"><i class="fas fa-donate"></i></button></abbr></th>';
                           echo '<td>'.$value['ruc'].'</td>
                           <td>'.$value['razonsocial'].'</td>';
                           if($value["imagen"]!=""){
@@ -86,7 +86,7 @@
                 </div>
                 <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <label>Fecha Vencimiento(*):</label>
-                  <input type="date" class="form-control" name="fecha_vencimiento" id="fecha_vencimiento">
+                  <input type="date" class="form-control" name="fecha_vencimiento" id="fecha_vencimiento" min=<?php $hoy=date("Y-m-d"); echo $hoy;?>>
                 </div>
                 <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <label>Planes</label>
@@ -116,6 +116,7 @@
                 </div>
               </div>
               <button class="btn btn-success btnAgregarCobranza">Generar Cobranza</button>
+              <button class="btn btn-primary" onclick="limpiarCobranza()" type="button"><i class="fas fa-broom"> Limpiar</i></button>
               <button class="btn btn-danger" onclick="cancelarGC()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
               <br/>
               <br/>
@@ -129,7 +130,6 @@
                     <th>Fecha de Emisión</th>
                     <th>Fecha de Vencimiento</th>
                     <th>Estado</th>
-                    <th>Descripción</th>
                   </thead>
                   <tbody>
                     
@@ -142,7 +142,6 @@
                     <th>Fecha de Emisión</th>
                     <th>Fecha de Vencimiento</th>
                     <th>Estado</th>
-                    <th>Descripción</th>
                   </tfoot>   
                 </table>
               </div>
@@ -243,40 +242,40 @@
               <div class="row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Departamento</label>
-                  <input name="" id="" class="form-control">
+                  <input name="" id="modalDepartamento" class="form-control" disabled>
                   
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Distrito</label>
-                  <input name="" id="" class="form-control">
+                  <input name="" id="modalDistrito" class="form-control" disabled>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Direccion</label>
-                  <input name="direccion" id="direccion" class="form-control">
+                  <input name="direccion" id="modalDireccion" class="form-control" disabled>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Fecha Emision</label>
-                  <input name="" id="" class="form-control">
+                  <input name="" id="modalFechaEmision" class="form-control" disabled>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Fecha Vencimiento</label>
-                  <input name="" id="" class="form-control">
+                  <input name="" id="modelFechaVencimiento" class="form-control" disabled>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Descripcion</label>
-                  <input name="descripcion" id="descripcion" class="form-control">
+                  <input name="descripcion" id="modalDescripcion" class="form-control" disabled>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Plan</label>
-                  <input name="" id="" class="form-control">
+                  <input name="" id="modalPlan" class="form-control" disabled>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Monto</label>
-                  <input name="" id="" class="form-control">
+                  <input name="" id="modalMonto" class="form-control" disabled>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Observación sobre el precio</label>
-                  <input name="" id="" class="form-control">
+                  <input name="" id="modalObservacion" class="form-control" disabled>
                 </div>
               </div>
             </div>
