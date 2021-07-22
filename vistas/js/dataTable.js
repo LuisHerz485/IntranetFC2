@@ -51,7 +51,7 @@ $('.tablaDataTableC').DataTable({
 });
 
 $('.tablaDataPagos').DataTable({
-    dom: 'B<"float-left"i><"float-right"f>t<"float-left"l><"float-right"p><"clearfix">',
+    dom: 'B<"float-left"i><"float-right"f>t<"float-left"l><"float-right"p>',
     buttons: [{
             extend: 'excelHtml5',
             text: '<i class="fas fa-file-excel"> Excel</i> ',

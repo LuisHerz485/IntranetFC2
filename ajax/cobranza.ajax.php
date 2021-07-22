@@ -42,11 +42,13 @@ class AjaxCobranza{
 
 	public function ajaxActivarCobranza(){
 		$tabla = "cobranza";
+		$tabla1 = "detallecobranza";
 		$item1 = "estado";
 		$valor1 = $this -> activarCobranza;
 		$item2 = "idcobranza";
 		$valor2 = $this -> activarId;
 		$respuesta = ModeloCobranza::mdlActualizarCobranza($tabla,$item1,$valor1,$item2,$valor2);
+		$respuesta1 = ModeloDetalleCobranza::mdlActualizarDetalleCobranza($tabla1,$item1,$valor1,$item2,$valor2);
 	}
 }
 

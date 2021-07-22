@@ -38,7 +38,7 @@
             
             <li class="nav-header">GENERAL</li>
             <li class="nav-item">
-                <a href="escritorio" class="nav-link">
+                <a href="escritoriocliente" class="nav-link">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>Escritorio</p>
                 </a>

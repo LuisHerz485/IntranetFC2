@@ -166,6 +166,7 @@
   <script src="vistas/js/clientes.js"></script>
   <script src="vistas/js/agenda.js"></script>
   <script src="vistas/js/archivo.js"></script>
+  <script src="vistas/js/pagosclientes.js"></script>
   <script src="vistas/js/cobranza.js"></script>
   <script src="vistas/js/detallecobranza.js"></script>
   <script src="vistas/js/traduccion.js"></script>

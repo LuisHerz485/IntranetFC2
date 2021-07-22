@@ -32,20 +32,38 @@
             </div>
             <div class="card-body">
                 <div id="tbllistado">
-                  <table id="mostrarArchivo" class="table table-striped tablaDataPagos dt-responsive text-center">
+                  <table id="mostrarPendiente" class="table table-striped tablaDataPagos dt-responsive text-center">
                     <thead>
-                      <th>Estado</th>
-                      <th>Fecha de Pago</th>
-                      <th>Servicio</th>
+                      <th>Fecha de Emisión</th>
+                      <th>Fecha de Vencimiento</th>
+                      <th>Plan</th>
                       <th>Monto Actual</th>
+                      <th>Local</th>
                     </thead>
                     <tbody>
+                      <?php
+                      $valor = $_SESSION['idcliente'];
+                      $cobranza = ModeloCobranza::mdlMostrarCobranza($valor);
+                      foreach($cobranza as $key => $value){
+                        $detCob = ModeloDetalleCobranza::mdlMostrarDetalleCobranza($value['idcobranza']);
+                          if($value['estado']!="1"){
+                            echo '<tr>';
+                            echo '<td>'.$value['fechaemision'].'</td>
+                            <td>'.$value['fechavencimiento'].'</td>
+                            <td>'.$detCob[0]['plan'].'</td>
+                            <td>'.$detCob[0]['monto'].'</td>
+                            <td>'.$value['direccion'].'</td>';
+                            echo'</tr>';
+                          }
+                        }
+                      ?>
                     </tbody>
                     <tfoot>
-                      <th>Estado</th>
-                      <th>Fecha de Pago</th>
-                      <th>Servicio</th>
+                      <th>Fecha de Emisión</th>
+                      <th>Fecha de Vencimiento</th>
+                      <th>Plan</th>
                       <th>Monto Actual</th>
+                      <th>Local</th>
                     </tfoot>   
                   </table>
               </div>

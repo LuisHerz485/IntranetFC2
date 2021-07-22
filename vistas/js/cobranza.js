@@ -13,12 +13,11 @@ function mostrarformDC(flag) {
 }
 
 function limpiarCobranza() {
-    $("#iddepartamento").find('option').remove();
+    $("#iddepartamento").val([]).trigger("change");
     $("#iddistrito").find('option').remove();
     $("#iddireccion").find('option').remove();
     $("#fecha_vencimiento").val("");
     $("#descripcion").val("");
-    $("#idplan").find('option').remove();
     $("#precio").val("");
     $("#nota").val("");
 }
