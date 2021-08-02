@@ -78,8 +78,6 @@
   <script src="vistas/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <!-- AdminLTE App -->
   <script src="vistas/dist/js/adminlte.js"></script>
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="vistas/dist/js/pages/dashboard.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="vistas/dist/js/demo.js"></script>
   <!-- DataTable -->
@@ -112,34 +110,48 @@
 
         if(isset($_SESSION['cliente']) && $_SESSION['cliente']=="no"){
           include "vistas/modulos/templates/menu.php";
+            if(isset($_GET['ruta'])){ 
+              if($_GET['ruta'] == "escritorio" ||
+                  $_GET['ruta'] == "usuarios" ||
+                  $_GET['ruta'] == "tipousuario" ||
+                  $_GET['ruta'] == "departamento" ||
+                  $_GET['ruta'] == "asistencia" ||
+                  $_GET['ruta'] == "clientes" ||
+                  $_GET['ruta'] == "reportes" ||
+                  $_GET['ruta'] == "upload" ||
+                  $_GET['ruta'] == "tributaria" ||
+                  $_GET['ruta'] == "laboral" ||
+                  $_GET['ruta'] == "auditoria" ||
+                  $_GET['ruta'] == "salirC" ||
+                  $_GET['ruta'] == "generarCobranza" ||
+                  $_GET['ruta'] == "seguimiento" ||
+                  $_GET['ruta'] == "salir" ||
+                  $_GET['ruta'] == "pagospendientes" ||
+                  $_GET['ruta'] == "pagosrealizados"){
+                    include "vistas/modulos/paginas/".$_GET['ruta'].".php";
+              }else{
+                include "vistas/modulos/paginas/404.php";
+              }
+            }
         }else{
           include "vistas/modulos/templates/menucliente.php";
-        }
-        
-      
-        if(isset($_GET['ruta'])){ 
-          if($_GET['ruta'] == "escritorio" ||
-              $_GET['ruta'] == "usuarios" ||
-              $_GET['ruta'] == "tipousuario" ||
-              $_GET['ruta'] == "departamento" ||
-              $_GET['ruta'] == "asistencia" ||
-              $_GET['ruta'] == "clientes" ||
-              $_GET['ruta'] == "reportes" ||
-              $_GET['ruta'] == "upload" ||
-              $_GET['ruta'] == "tributaria" ||
-              $_GET['ruta'] == "laboral" ||
-              $_GET['ruta'] == "auditoria" ||
-              $_GET['ruta'] == "salirC" ||
-              $_GET['ruta'] == "generarCobranza" ||
-              $_GET['ruta'] == "seguimiento" ||
-              $_GET['ruta'] == "salir" ||
-              $_GET['ruta'] == "pagospendientes" ||
-              $_GET['ruta'] == "pagosrealizados"){
-                include "vistas/modulos/paginas/".$_GET['ruta'].".php";
-          }else{
-            include "vistas/modulos/paginas/404.php";
+            if(isset($_GET['ruta'])){ 
+              if(//$_GET['ruta'] == "escritoriocliente" ||
+                $_GET['ruta'] == "tributaria" ||                
+                $_GET['ruta'] == "laboral" ||
+                $_GET['ruta'] == "auditoria" ||
+                $_GET['ruta'] == "salirC" ||
+                $_GET['ruta'] == "upload" ||
+                $_GET['ruta'] == "seguimiento" ||
+                $_GET['ruta'] == "pagospendientes" ||
+                $_GET['ruta'] == "pagosrealizados"){
+                  include "vistas/modulos/paginas/".$_GET['ruta'].".php";
+            }else{
+              include "vistas/modulos/paginas/404.php";
+            }
           }
         }
+        
         include "vistas/modulos/templates/footer.php";
       }else{
         echo '<body class="hold-transition login-page">';
@@ -173,6 +185,7 @@
   <script src="vistas/js/dataTable.js"></script>
   <script src="vistas/js/clock.js"></script>
   <script src="vistas/js/select2.js"></script>
+  <script src="vistas/js/menu.js"></script>
   
 
   <!-- Control Sidebar -->

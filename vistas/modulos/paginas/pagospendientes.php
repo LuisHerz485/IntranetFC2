@@ -39,6 +39,7 @@
                       <th>Plan</th>
                       <th>Monto Actual</th>
                       <th>Local</th>
+                      <th>Constnacia</th>
                     </thead>
                     <tbody>
                       <?php
@@ -52,7 +53,8 @@
                             <td>'.$value['fechavencimiento'].'</td>
                             <td>'.$detCob[0]['plan'].'</td>
                             <td>'.$detCob[0]['monto'].'</td>
-                            <td>'.$value['direccion'].'</td>';
+                            <td>'.$value['direccion'].'</td>
+                            <td><abbr title="Constancia"><button class="btn btn-success btn-xs btnConstancia"><i class="fas fa-paste"></i></button></abbr></td>';
                             echo'</tr>';
                           }
                         }
@@ -64,6 +66,7 @@
                       <th>Plan</th>
                       <th>Monto Actual</th>
                       <th>Local</th>
+                      <th>Constnacia</th>
                     </tfoot>   
                   </table>
               </div>

@@ -40,17 +40,14 @@
 								<div class="lockscreen-name">
 									<p></p>
 									<?php 
-
-										echo date('d') . ' / '
-										. date('m') . ' / '
-										. date('Y');
+										echo date('d / m / Y');
 									?>
 
 								</div>
 							</div>
 
 							<!-- Configuracion de reloj -->
-							<div class="text-center" style="font-size:15pt;">
+							<div class="text-center" id="reloj" style="font-size:15pt;">
 								<div class="lockscreen-name">
 									<span id="hours" class="hours"></span> :
 									<span id="minutes" class="minutes"></span> :

@@ -69,11 +69,10 @@ function listarCobranzas(idcliente) {
         success: function(respuesta) {
             $.each(respuesta, function(index, value) {
                 if (value.estado != 1) {
-                    $("#mostrarCobranza").append("<tr><th scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-xs btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-xs btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></th><td>" + value.departamento + "</td><td>" + value.distrito + "</td><td>" + value.direccion + "</td><td>" + value.fechaemision + "</td><td>" + value.fechavencimiento + "</td><td><button class='btn btn-warning btn-xs btnActivarC' idcobranza='" + value.idcobranza + "' estado='1'>Pendiente</button></td></tr>");
-
-                } else {
-                    $("#mostrarCobranza").append("<tr><th scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-xs btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-xs btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></th><td>" + value.departamento + "</td><td>" + value.distrito + "</td><td>" + value.direccion + "</td><td>" + value.fechaemision + "</td><td>" + value.fechavencimiento + "</td><td><button class='btn btn-success btn-xs btnActivarC' idcobranza='" + value.idcobranza + "' estado='0'>Pagado</button></td></tr>");
-                }
+                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-xs btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-xs btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.departamento,value.distrito,value.direccion,value.fechaemision,value.fechavencimiento,"<button class='btn btn-warning btn-xs btnActivarC' idcobranza='" + value.idcobranza + "' estado='1'>Pendiente</button>"]).draw(false)
+                    } else {
+                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-xs btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-xs btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.departamento,value.distrito,value.direccion,value.fechaemision,value.fechavencimiento,"<button class='btn btn-success btn-xs btnActivarC' idcobranza='" + value.idcobranza + "' estado='0'>Pagado</button>"]).draw(false)
+                    }
             });
             $('.btnMostraDetCob').click(function() {
                 var datos = new FormData();
@@ -268,9 +267,5 @@ $(".btnAgregarCobranza").click(function() {
     });
     limpiar();
 })
-
-$(document).ready( function() {
-    $('#fecha_vencimiento').val(new Date().toDateInputValue());
-});
 
 init();

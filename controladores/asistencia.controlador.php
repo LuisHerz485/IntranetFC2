@@ -48,13 +48,13 @@
 			if(isset($_POST['codigopersona'])){
 				$respuesta = ModeloUsuarios::mdlConsultarUsuario($_POST['codigopersona']);
 
-				if($respuesta['idusuario'] != ""){
+				if($respuesta){
 					$respuesta3 = ModeloAsistencia::mdlConsultarAsistencia($respuesta['idusuario']);
 					$tabla = "asistencia";
 
 					$idusuario = $respuesta['idusuario'];
 					
-					if($respuesta3['tipo'] != ""){
+					if($respuesta3){
 						if($respuesta3['tipo'] === "Entrada"){
 							echo "<script>
 							var idusuario = ".$idusuario."

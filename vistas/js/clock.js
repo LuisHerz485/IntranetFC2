@@ -1,60 +1,57 @@
-let udateTime = function() {
-    var currentDate = new Date(),
-        hours = currentDate.getHours(),
-        minutes = currentDate.getMinutes(), 
-        seconds = currentDate.getSeconds(),
-        weekDay = currentDate.getDay(), 
-        day = currentDate.getDay(), 
-        month = currentDate.getMonth(), 
-        year = currentDate.getFullYear();
+const weekDays = [
+  'Domingo',
+  'Lunes',
+  'Martes',
+  'Miércoles',
+  'Jueves',
+  'Viernes',
+  'Sabado',
+];
 
-    
- 
-    const weekDays = [
-        'Domingo',
-        'Lunes',
-        'Martes',
-        'Miércoles',
-        'Jueves',
-        'Viernes',
-        'Sabado'
-    ];
- 	
-    document.getElementById('weekDay').textContent = weekDays[weekDay];
-    document.getElementById('day').textContent = day;
- 
-    const months = [
-        'Enero',
-        'Febrero',
-        'Marzo',
-        'Abril',
-        'Mayo',
-        'Junio',
-        'Julio',
-        'Agosto',
-        'Septiembre',
-        'Octubre',
-        'Noviembre',
-        'Diciembre'
-    ];
- 
-    document.getElementById('month').textContent = months[month];
-    document.getElementById('year').textContent = year;
- 
-    document.getElementById('hours').textContent = hours;
- 
-    if (minutes < 10) {
-        minutes = "0" + minutes
-    }
- 
-    if (seconds < 10) {
-        seconds = "0" + seconds
-    }
- 
-    document.getElementById('minutes').textContent = minutes;
-    document.getElementById('seconds').textContent = seconds;
+const months = [
+  'Enero',
+  'Febrero',
+  'Marzo',
+  'Abril',
+  'Mayo',
+  'Junio',
+  'Julio',
+  'Agosto',
+  'Septiembre',
+  'Octubre',
+  'Noviembre',
+  'Diciembre',
+];
+
+let udateTime = function () {
+  var currentDate = new Date(),
+    hours = currentDate.getHours(),
+    minutes = currentDate.getMinutes(),
+    seconds = currentDate.getSeconds(),
+    weekDay = currentDate.getDay(),
+    day = currentDate.getDay(),
+    month = currentDate.getMonth(),
+    year = currentDate.getFullYear();
+
+  $('#weekDay').text(weekDays[weekDay]);
+  $('#day').text(day);
+  $('#month').text(months[month]);
+  $('#year').text(year);
+  $('#hours').text(hours);
+
+  if (minutes < 10) {
+    minutes = '0' + minutes;
+  }
+
+  if (seconds < 10) {
+    seconds = '0' + seconds;
+  }
+
+  $('#minutes').text(minutes);
+  $('#seconds').text(seconds);
 };
- 
-udateTime();
- 
-setInterval(udateTime, 1000);
+
+$('#reloj').ready(function () {
+  udateTime();
+  setInterval(udateTime, 1000);
+});

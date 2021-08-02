@@ -25,13 +25,14 @@
             </div>
             <div class="card-body">
                 <div id="tbllistado">
-                    <table id="mostrarArchivo" class="table table-striped tablaDataPagos   dt-responsive text-center">
+                  <table id="mostrarArchivo" class="table table-striped tablaDataPagos   dt-responsive text-center">
                         <thead>
-                          <<th>Fecha de Emisión</th>
+                          <th>Fecha de Emisión</th>
                           <th>Fecha de Vencimiento</th>
                           <th>Servicio</th>
                           <th>Monto Actual</th>
                           <th>Local</th>
+                          <th>Constnacia</th>
                         </thead>
                         <tbody>
                           <?php
@@ -45,7 +46,8 @@
                             <td>'.$value['fechavencimiento'].'</td>
                             <td>'.$detCob[0]['monto'].'</td>
                             <td>'.$detCob[0]['plan'].'</td>
-                            <td>'.$value['direccion'].'</td>';
+                            <td>'.$value['direccion'].'</td>
+                            <td><abbr title="Constancia"><button class="btn btn-success btn-xs btnConstancia"><i class="fas fa-paste"></i></button></abbr></td>';
                             echo'</tr>';
                           }
                         }
@@ -57,6 +59,7 @@
                           <th>Servicio</th>
                           <th>Monto Actual</th>
                           <th>Local</th>
+                          <th>Constnacia</th>
                         </tfoot>   
                     </table>
               </div>

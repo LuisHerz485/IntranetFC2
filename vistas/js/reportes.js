@@ -29,7 +29,7 @@ $(".btnMostrar").click(function() {
                 } else {
                     estado = "Correcto";
                 }
-                $("#mostrarReporte").append("<tr><td>" + value.codigo + "</td><td>" + value.nombre + " " + value.apellidos + "</td><td>" + value.area + "</td><td>" + value.fecha + "</td><td>" + value.asistencia + "</td><td>" + estado + "</td><td>" + value.detalle + "</td></tr>");
+                $('#mostrarReporte').DataTable().row.add([value.codigo,value.nombre + " " + value.apellidos,value.area, value.fecha, value.asistencia , estado ,value.detalle]).draw(false)
             });
         },
         error: function(respuesta) {

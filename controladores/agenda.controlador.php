@@ -5,7 +5,6 @@
 			$respuesta = ModeloAgenda::mdlMostrarAgendaCliente($tabla,$item,$valor);
 			return $respuesta;
 		}
-
-    
     }
 
+    

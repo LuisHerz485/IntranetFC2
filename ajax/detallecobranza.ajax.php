@@ -24,7 +24,7 @@ class AjaxDetCobranza{
 		$valor2 = $this -> idservicio;
 		$valor3 = $this -> precio;
 		$valor4 = $this -> nota;
-		$respuesta = ModeloCobranza::mdlAgregarDetCobranza($valor1,$valor2,$valor3,$valor4);
+		$respuesta = ModeloDetalleCobranza::mdlAgregarDetCobranza($valor1,$valor2,$valor3,$valor4);
 	}
 }
 

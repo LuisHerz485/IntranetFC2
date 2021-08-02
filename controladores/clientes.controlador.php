@@ -10,7 +10,7 @@
                     
                     $clavehash=hash("SHA256", $_POST['password']);
 
-                    if($respuesta['logincliente']==$_POST['usuario'] && $respuesta['contrasenacliente']==$clavehash){
+                    if($respuesta && $respuesta['logincliente']==$_POST['usuario'] && $respuesta['contrasenacliente']==$clavehash){
 						if($respuesta['tipocliente'] == "clienteaccess"){
 							if($respuesta['estado']==  1){
 								$_SESSION['iniciarSesion']="ok";
@@ -24,7 +24,7 @@
 								$_SESSION['estado']=$respuesta['estado'];
 								$_SESSION['imagen']= $respuesta['imagen'];				  
 								echo '<script>
-									window.location="escritorio";
+									window.location="escritoriocliente";
 								</script>';
 							}else{
 								echo("<br /><div class='alert alert-danger'>Usuario inactivo, contacte al administrador del sistema</div>");
