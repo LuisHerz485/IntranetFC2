@@ -54,7 +54,7 @@
                             <td>'.$detCob[0]['plan'].'</td>
                             <td>'.$detCob[0]['monto'].'</td>
                             <td>'.$value['direccion'].'</td>
-                            <td><abbr title="Constancia"><button class="btn btn-success btn-xs btnConstancia"><i class="fas fa-paste"></i></button></abbr></td>';
+                            <td><abbr title="Constancia"><button class="btn btn-success btn-s btnConstancia"><i class="fas fa-paste"></i></button></abbr></td>';
                             echo'</tr>';
                           }
                         }

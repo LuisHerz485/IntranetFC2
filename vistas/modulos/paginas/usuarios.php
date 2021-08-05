@@ -44,9 +44,9 @@
                       $usuarios = ControladorUsuarios::ctrMostrarUsuario($item,$valor);
                       foreach($usuarios as $key => $value){
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarUsuario" onclick="mostrarform(true)" login="'.$value['usuario'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-info btn-xs btnContra" login="'.$value['usuario'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
+                          <th scope="row"><button class="btn btn-warning btn-s btnEditarUsuario" onclick="mostrarform(true)" login="'.$value['usuario'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-info btn-s btnContra" login="'.$value['usuario'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
                           if($value['estado']!="1"){
-                            echo'<td><button class="btn btn-danger btn-xs btnActivarUs" login="'.$value["usuario"].'" estado="1">Inactivo</button></td>';
+                            echo'<td><button class="btn btn-danger btn-xs  btnActivarUs" login="'.$value["usuario"].'" estado="1">Inactivo</button></td>';
                           }else{
                             echo'<td><button class="btn btn-success btn-xs btnActivarUs" login="'.$value["usuario"].'" estado="0">Activo</button></td>';
                           }

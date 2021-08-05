@@ -1,15 +1,15 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" id="barra">
     <!-- Brand Logo -->
     <a href="escritoriocliente" class="brand-link">
-      <img src="vistas/dist/img/logo-blanco.png" width="240px" alt="">
+      <img src="vistas/dist/img/logo-blanco.png" width="240px" id="logo" alt="">
     </a>
     
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center;">
-        <div class="image">
+        <div class="image" style="padding-left: 3px; padding-right: 10px;">
             <?php
                 if($_SESSION['imagen']!=""){
                     echo '<img src="'.$_SESSION['imagen'].'" class="img-circle elevation-2" alt="User Image" style="width: 55px;">';
@@ -39,8 +39,8 @@
             <li class="nav-header">GENERAL</li>
             <li class="nav-item">
                 <a href="escritoriocliente" class="nav-link">
-                    <i class="nav-icon fas fa-tachometer-alt"></i>
-                    <p>Escritorio</p>
+                    <i class="fas fa-desktop"></i>
+                    <p class="ml-5">Escritorio</p>
                 </a>
             </li>
             

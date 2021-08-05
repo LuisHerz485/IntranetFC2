@@ -98,7 +98,7 @@
                         <div class="icon">
                             <i class="fas fa-envelope-square"></i>
                         </div>
-                        <a href="https://fccontadores.com:2096/" class="small-box-footer">Ingresar <i
+                        <a href="https://fccontadores.com:2096/" class="small-box-footer" target="_blank">Ingresar <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>

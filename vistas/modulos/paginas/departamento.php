@@ -42,7 +42,7 @@
                       $departamento = ControladorDepartamento::ctrMostrarDepartamento($item,$valor);
                       foreach($departamento as $key => $value){
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarDepartamento" onclick="mostrarformD(true)" nombre="'.$value['nombre'].'"><i class="fas fa-pencil-alt"></i></button></th>';
+                          <th scope="row"><button class="btn btn-warning btn-s btnEditarDepartamento" onclick="mostrarformD(true)" nombre="'.$value['nombre'].'"><i class="fas fa-pencil-alt"></i></button></th>';
                           if($value['estado']!="1"){
                             echo'<td><button class="btn btn-danger btn-xs btnActivarD" nombre="'.$value["nombre"].'" estado="1">Inactivo</button></td>';
                           }else{

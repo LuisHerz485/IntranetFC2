@@ -45,6 +45,7 @@
   <!-- Select2 -->
   <link rel="stylesheet" href="vistas/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="vistas/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <link rel="stylesheet" href="vistas/dist/css/tabla.css">
 
 
 
@@ -136,7 +137,7 @@
         }else{
           include "vistas/modulos/templates/menucliente.php";
             if(isset($_GET['ruta'])){ 
-              if(//$_GET['ruta'] == "escritoriocliente" ||
+              if($_GET['ruta'] == "escritoriocliente" ||
                 $_GET['ruta'] == "tributaria" ||                
                 $_GET['ruta'] == "laboral" ||
                 $_GET['ruta'] == "auditoria" ||

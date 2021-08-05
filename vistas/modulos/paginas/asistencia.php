@@ -44,7 +44,7 @@
                       $asistencia = ControladorAsistencia::ctrMostrarAsistencia($item,$valor);
                       foreach($asistencia as $key => $value){
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarDetalle" fecha="'.$value['fecha'].'" codigo="'.$value['codigo'].'" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-pencil-alt"></i></button></th>
+                          <th scope="row"><button class="btn btn-warning btn-s btnEditarDetalle" fecha="'.$value['fecha'].'" codigo="'.$value['codigo'].'" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-pencil-alt"></i></button></th>
                           <td>'.$value['codigo'].'</td>
                           <td>'.$value['nombre'].' '.$value['apellidos'].'</td>
                           <td>'.$value['area'].'</td>

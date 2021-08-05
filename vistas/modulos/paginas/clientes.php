@@ -43,7 +43,7 @@
                       $clientes = ControladorClientes::ctrMostrarCliente($item,$valor);
                       foreach($clientes as $key => $value){
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarCliente" onclick="mostrarformC(true)" idcliente="'.$value['idcliente'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-secondary btn-xs btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="'.$value['idcliente'].'"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-xs btnContraC" idcliente="'.$value['idcliente'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
+                          <th scope="row"><button class="btn btn-warning btn-s btnEditarCliente" onclick="mostrarformC(true)" idcliente="'.$value['idcliente'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-secondary btn-s btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="'.$value['idcliente'].'"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-s btnContraC" idcliente="'.$value['idcliente'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
                           if($value['estado']!="1"){
                             echo'<td><button class="btn btn-danger btn-xs btnActivarC" idcliente="'.$value["idcliente"].'" estado="1">Inactivo</button></td>';
                           }else{

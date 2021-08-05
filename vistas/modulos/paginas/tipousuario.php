@@ -41,7 +41,7 @@
                       $tipousuario = ControladorTipoUsuario::ctrMostrarTipoUsuario($item,$valor);
                       foreach($tipousuario as $key => $value){
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-xs btnEditarTipoUsuario" onclick="mostrarformTU(true)" nombre="'.$value['nombre'].'"><i class="fas fa-pencil-alt"></i></button></th>';
+                          <th scope="row"><button class="btn btn-warning btn-s btnEditarTipoUsuario" onclick="mostrarformTU(true)" nombre="'.$value['nombre'].'"><i class="fas fa-pencil-alt"></i></button></th>';
                           if($value['estado']!="1"){
                             echo'<td><button class="btn btn-danger btn-xs btnActivarTU" nombre="'.$value["nombre"].'" estado="1">Inactivo</button></td>';
                           }else{
