@@ -22,6 +22,12 @@ function limpiarCobranza() {
     $("#nota").val("");
 }
 
+function limpiarPreConstancia() {
+    $("#fecha_pago").val("");
+    $("#nota_const").val("");
+    $("#monto_const").val("");
+}
+
 function cancelarGC() {
     limpiar();
     mostrarformDC(false);
@@ -53,6 +59,9 @@ function listarLocal(idcliente) {
     });
 }
 
+var btnSeleccion;
+var totalCuota;
+
 function listarCobranzas(idcliente) {
     $("#mostrarCobranza > tbody").empty();
     $("#idcliente").val(idcliente);
@@ -67,12 +76,17 @@ function listarCobranzas(idcliente) {
         processData: false,
         dataType: "json",
         success: function(respuesta) {
+            $('#mostrarCobranza').DataTable().clear().draw();
             $.each(respuesta, function(index, value) {
-                if (value.estado != 1) {
-                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-s btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.departamento,value.distrito,value.direccion,value.fechaemision,value.fechavencimiento,"<button class='btn btn-warning btn-xs btnActivarC' idcobranza='" + value.idcobranza + "' estado='1'>Pendiente</button>"]).draw(false)
-                    } else {
-                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-s btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.departamento,value.distrito,value.direccion,value.fechaemision,value.fechavencimiento,"<button class='btn btn-success btn-xs btnActivarC' idcobranza='" + value.idcobranza + "' estado='0'>Pagado</button>"]).draw(false)
-                    }
+                if (value.estado == 0) {
+                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-s btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.fechaemision,value.direccion,value.plan,value.monto,value.fechavencimiento,"<button class='btn btn-primary btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' estado='0' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>Pendiente</button>"]).draw(false)
+                } else if (value.estado == 1) {
+                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-s btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.fechaemision,value.direccion,value.plan,value.monto,value.fechavencimiento,"<button class='btn btn-success btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' estado='1' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>Pagado</button>"]).draw(false)
+                } else if (value.estado == 2) {
+                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-s btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.fechaemision,value.direccion,value.plan,value.monto,value.fechavencimiento,"<button class='btn btn-warning btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' estado='2' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>A deuda</button>"]).draw(false)
+                } else if (value.estado == 3) {
+                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-s btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.fechaemision,value.direccion,value.plan,value.monto,value.fechavencimiento,"<button class='btn btn-danger btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' estado='3' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>Vencido</button>"]).draw(false)
+                }
             });
             $('.btnMostraDetCob').click(function() {
                 var datos = new FormData();
@@ -92,7 +106,6 @@ function listarCobranzas(idcliente) {
                   dataType: 'json',
                   data: datos,
                   success: function (data) {
-                    console.log(data);
                     $('#modalPlan').val(data[0].plan);
                     $('#modalMonto').val(data[0].monto);
                     $('#modalObservacion').val(data[0].observacion);
@@ -100,40 +113,38 @@ function listarCobranzas(idcliente) {
                 });
             });
             $(".btnActivarC").click(function() {
-                var idcobranza = $(this).attr("idcobranza");
-                var estado = $(this).attr("estado");
-                var datos = new FormData();
-                datos.append("idcobranza", idcobranza);
-                datos.append("estado", estado);
 
                 Swal.fire({
                     title: '¿Seguro que deseas cambiar el estado de cobranza?',
                     showCancelButton: true,
-                    confirmButtonText: `Guardar`,
+                    confirmButtonText: `Continuar`,
                 }).then((result) => {
                     if (result.isConfirmed) {
+                        btnSeleccion = this;
+                        $("#modalConstancia").modal("show");
+                        $("#mostrarSubPagos > tbody").empty();
+                        var datos = new FormData();
+                        datos.append("idcobranza", $(this).attr("idcobranza"));
                         $.ajax({
-                            url: "ajax/cobranza.ajax.php",
+                            url: "ajax/constancia.ajax.php",
                             method: "POST",
                             data: datos,
                             cache: false,
                             contentType: false,
                             processData: false,
-                            success: function(respuesta) {}
-                        })
-                        if (estado == 0) {
-                            $(this).removeClass('btn-success');
-                            $(this).addClass('btn-warning');
-                            $(this).html('Pendiente');
-                            $(this).attr('estado', 1);
-                        } else {    
-                            $(this).removeClass('btn-warning');
-                            $(this).addClass('btn-success');
-                            $(this).html('Pagado');
-                            $(this).attr('estado', 0);
-                            
-                        }
-                        Swal.fire('Cambio Realizado!', '', 'success')
+                            dataType: "json",
+                            success: function(respuesta) {
+                                totalCuota = 0; 
+                                $.each(respuesta, function(index, value){
+                                    $('#mostrarSubPagos > tbody').append("<tr><td>" + value.fecha_pago + "</td><td>" + value.monto_const+ "</td><td><button type=\"button\" class=\"btn btn-warning btn-s btnConstancia\"><i class=\"far fa-file-alt\"></i></button></td></tr>")
+                                    totalCuota += Number.parseFloat(value.monto_const);
+                                });
+                                $("#deuda").val((Number.parseFloat($(btnSeleccion).attr("monto")) - totalCuota).toFixed(2));
+                                if (Number.parseFloat($("#deuda").val()) == 0.00){
+                                    Swal.fire('Cliente no tiene monto pendiente!', '', 'info')
+                                }
+                            }
+                        })                       
                     } else if (result.isDenied) {
                         Swal.fire('Cambios no realizado', '', 'info')
                     }
@@ -145,6 +156,90 @@ function listarCobranzas(idcliente) {
         }
     });
 }
+
+$(".btnPreConstancia").click(function() {
+    var iddetallecobranza = $(btnSeleccion).attr("iddetallecobranza");
+    var idcobranza = $(btnSeleccion).attr("idcobranza");
+    var fecha_pago = $("#fecha_pago").val();
+    var tipo_pago = $("#tipo_pago").val();
+    var monto_const = $("#monto_const").val();
+    var nota_const = $("#nota_const").val();
+    var datos = new FormData();
+    datos.append("iddetallecobranza", iddetallecobranza);
+    datos.append("idcobranza", idcobranza);
+    datos.append("fecha_pago", fecha_pago);
+    datos.append("tipo_pago", tipo_pago);
+    datos.append("monto_const", monto_const);
+    datos.append("nota_const", nota_const);
+
+    if (Number.parseFloat(monto_const) <= Number.parseFloat($("#deuda").val()) && Number.parseFloat(monto_const) > 0.00) {
+        if (fecha_pago) {
+            $.ajax({
+                url: "ajax/constancia.ajax.php",
+                method: "POST",
+                data: datos,
+                cache: false,
+                contentType: false,
+                processData: false,
+                dataType: "json",
+                error: function(respuesta) {
+                    console.log("Error", respuesta);
+                }
+            })
+
+
+            $(btnSeleccion).removeClass('btn-success btn-warning btn-danger btn-primary');
+            var deuda = Number.parseFloat($("#deuda").val());
+            var monto = deuda - Number.parseFloat($("#monto_const").val());
+            if (monto == Number.parseFloat($(btnSeleccion).attr("monto"))) {
+                $(btnSeleccion).addClass('btn-primary');
+                $(btnSeleccion).html('Pendiente');
+                $(btnSeleccion).attr('estado', 0);
+            } else if (monto == 0.00){    
+                $(btnSeleccion).addClass('btn-success');
+                $(btnSeleccion).html('Pagado');
+                $(btnSeleccion).attr('estado', 1);
+            } else if ((monto < Number.parseFloat($(btnSeleccion).attr("monto"))) && monto > 1){    
+                $(btnSeleccion).addClass('btn-warning');
+                $(btnSeleccion).html('A deuda');
+                $(btnSeleccion).attr('estado', 2);
+            } else if (estado == 3){    
+                $(btnSeleccion).addClass('btn-danger');
+                $(btnSeleccion).html('Vencido');
+                $(btnSeleccion).attr('estado', 3);
+            } 
+
+
+            var idcobranza = $(btnSeleccion).attr("idcobranza");
+            var estado = $(btnSeleccion).attr("estado");
+            var datos = new FormData();
+            datos.append("idcobranza", idcobranza);
+            datos.append("estado", estado);
+            $.ajax({
+                url: "ajax/cobranza.ajax.php",
+                method: "POST",
+                data: datos,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(respuesta) {}
+            })
+            
+            
+            $("#modalConstancia").modal("hide"); 
+            Swal.fire('Cambio Realizado!', '', 'success')
+        }
+        else {
+           Swal.fire('Fecha de pago no se ingreso!', '', 'error') 
+        }
+    } else if (!Number.parseFloat(monto_const) ){
+        Swal.fire('Ingrese un monto!', '', 'error')
+    } else if (Number.parseFloat($("#deuda").val()) == 0.00){
+        Swal.fire('Cliente no tiene monto pendiente!', '', 'info')
+    } else {
+        Swal.fire('El monto ingresado es mayor al monto pendiente!', '', 'error')
+    }
+})
 
 $(".btnListarLocal").click(function() {
     var idcliente = $(this).attr("idcliente");
@@ -173,8 +268,6 @@ $("#iddepartamento").change(function() {
             $.each(respuesta, function(index, value) {
                 $("#iddistrito").append('<option value="' + value.idubicacion + '">' + value.distrito + '</option>');
             });
-
-
         },
         error: function(respuesta) {
             console.log("Error", respuesta);

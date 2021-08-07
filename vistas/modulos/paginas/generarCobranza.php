@@ -104,7 +104,7 @@
                 </div>
                 <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <label>Precio</label>
-                  <input name="precio" id="precio" class="form-control">
+                  <input type="number" name="precio" id="precio" class="form-control">
                 </div>
                 <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <label>Nota (Precio)</label>
@@ -121,13 +121,13 @@
               <br/>
               <br/>
               <div id="tbllistadoCobranza">
-                <table id="mostrarCobranza" class="table table-striped tablaDataTableC dt-responsive">
+                <table id="mostrarCobranza" class="table table-striped tablaDataPagos dt-responsive">
                   <thead>
                     <th>Opciones</th>
-                    <th>Departamento</th>
-                    <th>Distrito</th>
-                    <th>Direccion</th>
                     <th>Fecha de Emisión</th>
+                    <th>Direccion</th>
+                    <th>Plan</th>
+                    <th>Monto</th>
                     <th>Fecha de Vencimiento</th>
                     <th>Estado</th>
                   </thead>
@@ -136,86 +136,16 @@
                   </tbody>
                   <tfoot>
                     <th>Opciones</th>
-                    <th>Departamento</th>
-                    <th>Distrito</th>
-                    <th>Direccion</th>
                     <th>Fecha de Emisión</th>
+                    <th>Direccion</th>
+                    <th>Plan</th>
+                    <th>Monto</th>
                     <th>Fecha de Vencimiento</th>
                     <th>Estado</th>
                   </tfoot>   
                 </table>
               </div>
             </div>
-
-            <!--<div class="card-body panel-body" id="formularioS">
-              <div class="row">
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                  <label>Servicio</label>
-                  <select name="idservicio" id="idservicio" class="form-control select2" data-live-search="true" required>
-                    <option value="0">Seleccione Servicio ...</option>
-                    <?php /*
-                      $item = 1;
-                      $valor = null;
-                      $servicio = ControladorDetalleCobranza::ctrMostrarServicio($item,$valor);
-                      foreach($servicio as $key => $value){ 
-                        echo '<option value="'.$value['idservicio'].'">'.$value['nombre'].'</option>';
-                      }*/
-                    ?>
-                    </select>
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                  <label>Planes</label>
-                  <select name="idplanes" id="idplanes" class="form-control select2" data-live-search="true" required>
-                    <option value="0" >Seleccione Plan ...</option>
-                    <?php 
-                      /*$item = 1;
-                      $valor = null;
-                      $servicio = ControladorDetalleCobranza::ctrMostrarPlanes($item,$valor);
-                      foreach($servicio as $key => $value){ 
-                        echo '<option value="'.$value['idplan'].'">'.$value['nombre'].'</option>';
-                      }*/
-                    ?>
-                  </select>
-                </div>
-                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                  <label>Precio</label>
-                  <input name="idprecio" id="idprecio" class="form-control" disabled>
-                </div>
-                <div class="form-group col-lg-9 col-md-9 col-sm-6 col-xs-12">
-                  <label>Observación</label>
-                  <input name="idnota" id="idnota" class="form-control" required>
-                </div>
-              </div>
-              <button class="btn btn-success btnAgregarDetCobranza">Generar Detalle</button>
-              <button class="btn btn-danger" onclick="cancelarDetC()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
-              <br/>
-              <br/>
-              <div id="tbllistadoDetCobranza">
-                <table id="mostrarDetCobranza" class="table table-striped tablaDataTableC dt-responsive text-center">
-                  <thead>
-                    <th>Opciones</th>
-                    <th>Servicio</th>
-                    <th>Plan</th>
-                    <th>Monto</th>
-                    <th>Estado</th>
-                    <th>Observación</th>
-                  </thead>
-                  <tbody>
-                    
-                  </tbody>
-                  <tfoot>
-                    <th>Opciones</th>
-                    <th>Servicio</th>
-                    <th>Plan</th>
-                    <th>Monto</th>
-                    <th>Estado</th>
-                    <th>Observación</th>
-                  </tfoot>   
-                </table>
-              </div>
-            </div> -->
-            </div>
-
           </div>
         </div>           
       </div>
@@ -289,4 +219,69 @@
   </div>
 </div>
 
+
+<!-- Modal Constancia -->
+<div class="modal fade" id="modalConstancia" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <form role="form" method="post" enctype="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><strong>Detalles Constancia</strong></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group">
+              <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Medio de Pago</label>
+                  <input value="Yape" name="tipo_pago" id="tipo_pago" class="form-control" disabled> 
+                  <input type="hidden" name="iddetallecobranza" id="iddetallecobranza" class="form-control"> 
+                  <input type="hidden" name="idcobranza" id="idcobranza" class="form-control"> 
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Fecha de pago</label>
+                  <input type="date" class="form-control" name="fecha_pago" id="fecha_pago">
+                </div>
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <label>Observación</label>
+                  <textarea type="text" class="form-control" name="nota_const" id="nota_const" rows="2"></textarea>
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>Monto a confirmar</label>
+                  <input type="number" class="form-control" name="monto_const" id="monto_const">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                  <label>A deuda</label>
+                  <input type="number" class="form-control" name="deuda" id="deuda" disabled>
+                </div>
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <br/>
+                <h5 style="color: blue;"><strong>Historial de Pagos</strong></h5>
+                
+                <table id="mostrarSubPagos" class="table table-striped dt-responsive text-center">
+                  <thead>
+                    <th>Fecha Pago</th>
+                    <th>Monto Pagado</th>
+                    <th>Opción</th>
+                  </thead>
+                  <tbody>
+                    
+                  </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-info btnPreConstancia">Guardar</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
 <!-- /.content-wrapper -->

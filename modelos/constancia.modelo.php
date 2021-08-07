@@ -1,7 +1,17 @@
 <?php 
 	require_once "conexion.php";
 	class ModeloConstancia{
-		static public function mdlMostrarConstancia($tabla,$item,$valor){
+        static public function mdlMostrarConstancia($valor){
+            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT CO.idconstancia as idconstancia, CO.idcobranza as idcobranza, CO.iddetallecobranza as iddetallecobranza, CO.fechapago as fecha_pago, CO.tipopago as tipo_pago, CO.monto as monto_const, CO.nota as nota_const
+                FROM constancia CO
+                WHERE CO.idcobranza = $valor");
+            $stmt -> execute();
+            return $stmt -> fetchAll();
+            $stmt -> close();
+            $stmt = null;
+        }
+
+		/*static public function mdlMostrarConstancia($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
                     $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by nombre ASC");
@@ -26,15 +36,16 @@
             }
             $stmt -> close();
             $stmt = null;
-		}
-         static public function mdlIngresarConstancia($tabla,$datos){
-            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(idcobranza, iddetallecobranza, fechapago, tipopago, monto, nota) VALUES ( :idcobranza, :iddetallecobranza, :fechapago, :tipopago, :monto, :nota)");
-            $stmt -> bindParam(":idcobranza", $datos["idcobranza"],PDO::PARAM_STR);
-            $stmt -> bindParam(":iddetallecobranza", $datos["iddetallecobranza"],PDO::PARAM_STR);
-            $stmt -> bindParam(":fechapago", $datos["fechapago"],PDO::PARAM_STR);
-            $stmt -> bindParam(":tipopago",$datos['tipopago'],PDO::PARAM_STR);
-            $stmt -> bindParam(":monto", $datos["monto"],PDO::PARAM_STR);
-            $stmt -> bindParam(":nota",$datos['nota'],PDO::PARAM_STR);
+		}*/
+         static public function mdlIngresarConstancia($valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
+            $conexion = Conexion::conectar();
+            $stmt = $conexion->prepare("INSERT INTO constancia(idcobranza, iddetallecobranza, fechapago, tipopago, monto, nota) VALUES ( :idcobranza, :iddetallecobranza, :fechapago, :tipopago, :monto, :nota)");
+            $stmt -> bindParam(":idcobranza", $valor1,PDO::PARAM_STR);
+            $stmt -> bindParam(":iddetallecobranza", $valor2,PDO::PARAM_STR);
+            $stmt -> bindParam(":fechapago", $valor3,PDO::PARAM_STR);
+            $stmt -> bindParam(":tipopago",$valor4,PDO::PARAM_STR);
+            $stmt -> bindParam(":monto", $valor5,PDO::PARAM_STR);
+            $stmt -> bindParam(":nota",$valor6,PDO::PARAM_STR);
             if($stmt -> execute()){
                 return "ok";
             }else{
@@ -44,7 +55,7 @@
             $stmt -> close();
             $stmt = null;
         } 
-
+/*
         static public function mdlActualizarConstancia($tabla,$item1,$valor1,$item2,$valor2){
 			$stmt = conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");
 			$stmt -> bindParam(":".$item1,$valor1,PDO::PARAM_STR);
@@ -65,5 +76,5 @@
             
             $stmt -> close();
             $stmt = null;
-        }
+        }*/
 	}
