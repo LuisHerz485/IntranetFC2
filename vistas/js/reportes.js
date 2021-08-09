@@ -3,9 +3,6 @@ $(".btnMostrar").click(function() {
     var idusuario = $("#idusuario").val();
     var fecha_inicio = $("#fecha_inicio").val();
     var fecha_fin = $("#fecha_fin").val();
-    console.log(idusuario);
-    console.log(fecha_inicio);
-    console.log(fecha_fin);
     var datos = new FormData();
     datos.append("idusuario", idusuario);
     datos.append("fecha_inicio", fecha_inicio);

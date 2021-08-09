@@ -49,7 +49,6 @@ function generarU(longitud) {
 
 $(".nuevaFoto").change(function() {
     var imagen = this.files[0];
-    console.log("imagen", imagen["type"])
 
     if (imagen["type"] != "image/jpeg" && imagen["type"] != "image/png") {
         $(".nuevaFoto").val("");

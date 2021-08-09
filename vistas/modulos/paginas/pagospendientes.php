@@ -35,11 +35,12 @@
                   <table id="mostrarPendiente" class="table table-striped tablaDataPagos dt-responsive text-center">
                     <thead>
                       <th>Fecha de Emisión</th>
-                      <th>Fecha de Vencimiento</th>
-                      <th>Plan</th>
-                      <th>Monto Actual</th>
                       <th>Local</th>
-                      <th>Constnacia</th>
+                      <th>Servicio</th>
+                      <th>Monto</th>
+                      <th>Fecha de Vencimiento</th>
+                      <th>Estado</th>
+                      <th>Constancia</th>
                     </thead>
                     <tbody>
                       <?php
@@ -47,14 +48,37 @@
                       $cobranza = ModeloCobranza::mdlMostrarCobranza($valor);
                       foreach($cobranza as $key => $value){
                         $detCob = ModeloDetalleCobranza::mdlMostrarDetalleCobranza($value['idcobranza']);
-                          if($value['estado']!="1"){
+                          if($value['estado']=="0"){
                             echo '<tr>';
                             echo '<td>'.$value['fechaemision'].'</td>
-                            <td>'.$value['fechavencimiento'].'</td>
+                            <td>'.$value['direccion'].'</td>  
                             <td>'.$detCob[0]['plan'].'</td>
                             <td>'.$detCob[0]['monto'].'</td>
-                            <td>'.$value['direccion'].'</td>
-                            <td><abbr title="Constancia"><button class="btn btn-success btn-s btnConstancia"><i class="fas fa-paste"></i></button></abbr></td>';
+                            <td>'.$value['fechavencimiento'].'</td>
+                            <td><button class="btn btn-primary btn-s">Pendiente</button></td>
+                            <td><abbr title="Constancia"><button class="btn btn-primary btn-s btnConstancia" onclick="Swal.fire(\'Gil Paga!!\', \' atte. Sr Fredy\', \'info\')"><i class="fas fa-paste"></i></button></abbr></td>';
+                            echo'</tr>';
+                          }
+                          else if($value['estado']=="2"){
+                            echo '<tr>';
+                            echo '<td>'.$value['fechaemision'].'</td>
+                            <td>'.$value['direccion'].'</td>  
+                            <td>'.$detCob[0]['plan'].'</td>
+                            <td>'.$detCob[0]['monto'].'</td>
+                            <td>'.$value['fechavencimiento'].'</td>
+                            <td><button class="btn btn-warning btn-s">A deuda</button></td>
+                            <td><abbr title="Constancia"><a href="ajax/generarPDF.php?idcobranza='.$value['idcobranza'].'" class="btn btn-warning btn-s btnConstancia" target="_blank"><i class="fas fa-paste"></i></a></abbr></td>';
+                            echo'</tr>';
+                          }
+                          else if($value['estado']=="3"){
+                            echo '<tr>';
+                            echo '<td>'.$value['fechaemision'].'</td>
+                            <td>'.$value['direccion'].'</td>  
+                            <td>'.$detCob[0]['plan'].'</td>
+                            <td>'.$detCob[0]['monto'].'</td>
+                            <td>'.$value['fechavencimiento'].'</td>
+                            <td><button class="btn btn-danger btn-s">Vencido</button></td>
+                            <td><abbr title="Constancia"><button class="btn btn-danger btn-s btnConstancia" onclick="Swal.fire(\'Servicio vencido, pagar urgente!!\', \' atte. Sr Fredy\', \'warning\')"><i class="fas fa-paste"></i></button></abbr></td>';
                             echo'</tr>';
                           }
                         }
@@ -62,11 +86,12 @@
                     </tbody>
                     <tfoot>
                       <th>Fecha de Emisión</th>
-                      <th>Fecha de Vencimiento</th>
-                      <th>Plan</th>
-                      <th>Monto Actual</th>
                       <th>Local</th>
-                      <th>Constnacia</th>
+                      <th>Monto</th>
+                      <th>Servicio</th>
+                      <th>Fecha de Vencimiento</th>
+                      <th>Estado</th>
+                      <th>Constancia</th>
                     </tfoot>   
                   </table>
               </div>

@@ -159,7 +159,6 @@ function btnEditarDetAgen(idrepresentante) {
 }
 
 function btnEliminarDetAgen(idrepresentante) {
-    console.log("entro");
     var idrepre = idrepresentante;
     var datos = new FormData();
     datos.append("idrepreE", idrepre);

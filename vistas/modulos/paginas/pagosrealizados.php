@@ -28,11 +28,12 @@
                   <table id="mostrarArchivo" class="table table-striped tablaDataPagos   dt-responsive text-center">
                         <thead>
                           <th>Fecha de Emisión</th>
-                          <th>Fecha de Vencimiento</th>
-                          <th>Servicio</th>
-                          <th>Monto Actual</th>
                           <th>Local</th>
-                          <th>Constnacia</th>
+                          <th>Servicio</th>
+                          <th>Monto</th>
+                          <th>Fecha de Vencimiento</th>
+                          <th>Estado</th>
+                          <th>Constancia</th>
                         </thead>
                         <tbody>
                           <?php
@@ -40,14 +41,15 @@
                           $cobranza = ModeloCobranza::mdlMostrarCobranza($valor);
                           foreach($cobranza as $key => $value){
                             $detCob = ModeloDetalleCobranza::mdlMostrarDetalleCobranza($value['idcobranza']);
-                          if($value['estado']!="0"){
+                          if($value['estado'] == "1"){
                             echo '<tr>';
                             echo '<td>'.$value['fechaemision'].'</td>
-                            <td>'.$value['fechavencimiento'].'</td>
-                            <td>'.$detCob[0]['monto'].'</td>
-                            <td>'.$detCob[0]['plan'].'</td>
                             <td>'.$value['direccion'].'</td>
-                            <td><abbr title="Constancia"><button class="btn btn-success btn-s btnConstancia"><i class="fas fa-paste"></i></button></abbr></td>';
+                            <td>'.$detCob[0]['plan'].'</td>
+                            <td>'.$detCob[0]['monto'].'</td>
+                            <td>'.$value['fechavencimiento'].'</td>
+                            <td><button class="btn btn-success btn-s">Pagado</button</td>
+                            <td><abbr title="Constancia"><a href="ajax/generarPDF.php?idcobranza='.$value['idcobranza'].'" class="btn btn-success btn-s btnConstancia" target="_blank"><i class="fas fa-paste"></i></a></abbr></td>';
                             echo'</tr>';
                           }
                         }
@@ -59,6 +61,7 @@
                           <th>Servicio</th>
                           <th>Monto Actual</th>
                           <th>Local</th>
+                          <th>Estado</th>
                           <th>Constnacia</th>
                         </tfoot>   
                     </table>

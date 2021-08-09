@@ -128,8 +128,7 @@
                   $_GET['ruta'] == "seguimiento" ||
                   $_GET['ruta'] == "salir" ||
                   $_GET['ruta'] == "pagospendientes" ||
-                  $_GET['ruta'] == "pagosrealizados" ||
-                  $_GET['ruta'] == "generarPDF"){
+                  $_GET['ruta'] == "pagosrealizados"){
                     include "vistas/modulos/paginas/".$_GET['ruta'].".php";
               }else{
                 include "vistas/modulos/paginas/404.php";

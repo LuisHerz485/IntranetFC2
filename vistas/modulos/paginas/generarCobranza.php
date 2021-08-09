@@ -173,7 +173,6 @@
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Departamento</label>
                   <input name="" id="modalDepartamento" class="form-control" disabled>
-                  
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Distrito</label>
@@ -192,10 +191,6 @@
                   <input name="" id="modelFechaVencimiento" class="form-control" disabled>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                  <label>Descripcion</label>
-                  <input name="descripcion" id="modalDescripcion" class="form-control" disabled>
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Plan</label>
                   <input name="" id="modalPlan" class="form-control" disabled>
                 </div>
@@ -203,10 +198,17 @@
                   <label>Monto</label>
                   <input name="" id="modalMonto" class="form-control" disabled>
                 </div>
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                  <label>Observación sobre el precio</label>
-                  <input name="" id="modalObservacion" class="form-control" disabled>
+                <div class="row col-12">
+                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Descripcion</label>
+                    <textarea name="descripcion" id="modalDescripcion" class="form-control" rows="2" disabled></textarea>
+                  </div>
+                  <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                    <label>Observación sobre el precio</label>
+                    <textarea name="" id="modalObservacion" class="form-control" rows="2" disabled></textarea> 
+                  </div>
                 </div>
+                
               </div>
             </div>
           </div>
@@ -257,20 +259,24 @@
                   <label>A deuda</label>
                   <input type="number" class="form-control" name="deuda" id="deuda" disabled>
                 </div>
+                <div class="col-12">
+                  <button type="button" class="btn btn-success float-sm-right" onclick="limpiarPreConstancia()"><i class="fas fa-broom"> Limpiar</i></button>
+                </div>
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <br/>
-                <h5 style="color: blue;"><strong>Historial de Pagos</strong></h5>
-                
-                <table id="mostrarSubPagos" class="table table-striped dt-responsive text-center">
-                  <thead>
-                    <th>Fecha Pago</th>
-                    <th>Monto Pagado</th>
-                    <th>Opción</th>
-                  </thead>
-                  <tbody>
-                    
-                  </tbody>
-                </table>
+                <h4 style="color: #1561B7;" class="text-center"><strong>Historial de Pagos</strong></h4>
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                  <table id="mostrarSubPagos" class="table table-bordered table-striped dt-responsive text-center table-sm" cellspacing="0"  width="100%">
+                    <thead>
+                      <th>Fecha Pago</th>
+                      <th>Monto Pagado</th>
+                      <th>Opción</th>
+                    </thead>
+                    <tbody>
+                      
+                    </tbody>
+                  </table>
+                </div>
               </div>
               </div>
             </div>

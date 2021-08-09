@@ -18,6 +18,7 @@ function limpiarCobranza() {
     $("#iddireccion").find('option').remove();
     $("#fecha_vencimiento").val("");
     $("#descripcion").val("");
+    $("#idplan").val([]).trigger("change");
     $("#precio").val("");
     $("#nota").val("");
 }
@@ -29,7 +30,7 @@ function limpiarPreConstancia() {
 }
 
 function cancelarGC() {
-    limpiar();
+    limpiarCobranza();
     mostrarformDC(false);
 }
 
@@ -79,13 +80,13 @@ function listarCobranzas(idcliente) {
             $('#mostrarCobranza').DataTable().clear().draw();
             $.each(respuesta, function(index, value) {
                 if (value.estado == 0) {
-                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-s btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.fechaemision,value.direccion,value.plan,value.monto,value.fechavencimiento,"<button class='btn btn-primary btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' estado='0' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>Pendiente</button>"]).draw(false)
+                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button id='btnEstado"+index+"' estado='0' idcobranza="+value.idcobranza+" class=\"btn btn-warning btn-s btnConstancia\" target=\"_blank\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.fechaemision,value.direccion,value.plan,value.monto,value.fechavencimiento,"<button class='btn btn-primary btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' indice="+index+" estado='0' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>Pendiente</button>"]).draw(false)
                 } else if (value.estado == 1) {
-                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-s btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.fechaemision,value.direccion,value.plan,value.monto,value.fechavencimiento,"<button class='btn btn-success btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' estado='1' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>Pagado</button>"]).draw(false)
+                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button id='btnEstado"+index+"' estado='1' idcobranza="+value.idcobranza+" class=\"btn btn-warning btn-s btnConstancia\" target=\"_blank\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.fechaemision,value.direccion,value.plan,value.monto,value.fechavencimiento,"<button class='btn btn-success btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' indice="+index+" estado='1' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>Pagado</button>"]).draw(false)
                 } else if (value.estado == 2) {
-                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-s btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.fechaemision,value.direccion,value.plan,value.monto,value.fechavencimiento,"<button class='btn btn-warning btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' estado='2' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>A deuda</button>"]).draw(false)
+                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button id='btnEstado"+index+"' estado='2' idcobranza="+value.idcobranza+" class=\"btn btn-warning btn-s btnConstancia\" target=\"_blank\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.fechaemision,value.direccion,value.plan,value.monto,value.fechavencimiento,"<button class='btn btn-warning btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' indice="+index+" estado='2' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>A deuda</button>"]).draw(false)
                 } else if (value.estado == 3) {
-                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button class=\"btn btn-success btn-s btnConstancia\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.fechaemision,value.direccion,value.plan,value.monto,value.fechavencimiento,"<button class='btn btn-danger btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' estado='3' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>Vencido</button>"]).draw(false)
+                    $('#mostrarCobranza').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button id='btnEstado"+index+"' estado='3' idcobranza="+value.idcobranza+" class=\"btn btn-warning btn-s btnConstancia\" target=\"_blank\"><i class=\"fas fa-paste\"></i></button></abbr></div>",value.fechaemision,value.direccion,value.plan,value.monto,value.fechavencimiento,"<button class='btn btn-danger btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' indice="+index+" estado='3' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>Vencido</button>"]).draw(false)
                 }
             });
             $('.btnMostraDetCob').click(function() {
@@ -112,6 +113,15 @@ function listarCobranzas(idcliente) {
                   },
                 });
             });
+
+            $(".btnConstancia").click(function() {
+                if ($(this).attr("estado") == 0) {
+                    Swal.fire('Cliente no ha realizado ningun pago!!', '', 'info');
+                } else {
+                window.open("ajax/generarPDF.php?idcobranza="+$(this).attr("idcobranza"));                    
+                }
+            });
+
             $(".btnActivarC").click(function() {
 
                 Swal.fire({
@@ -136,7 +146,7 @@ function listarCobranzas(idcliente) {
                             success: function(respuesta) {
                                 totalCuota = 0; 
                                 $.each(respuesta, function(index, value){
-                                    $('#mostrarSubPagos > tbody').append("<tr><td>" + value.fecha_pago + "</td><td>" + value.monto_const+ "</td><td><button type=\"button\" class=\"btn btn-warning btn-s btnConstancia\"><i class=\"far fa-file-alt\"></i></button></td></tr>")
+                                    $('#mostrarSubPagos > tbody').append("<tr><td>" + value.fecha_pago + "</td><td>" + value.monto_const+ "</td><td><a href=\"ajax/generarPDF.php?idconstancia="+value.idconstancia+"\" class=\"btn btn-warning btn-s\" target=\"_blank\"><i class=\"far fa-file-alt\"></i></a></td></tr>")
                                     totalCuota += Number.parseFloat(value.monto_const);
                                 });
                                 $("#deuda").val((Number.parseFloat($(btnSeleccion).attr("monto")) - totalCuota).toFixed(2));
@@ -195,18 +205,22 @@ $(".btnPreConstancia").click(function() {
                 $(btnSeleccion).addClass('btn-primary');
                 $(btnSeleccion).html('Pendiente');
                 $(btnSeleccion).attr('estado', 0);
+                $("#btnEstado"+$(btnSeleccion).attr('indice')).attr("estado", 0);
             } else if (monto == 0.00){    
                 $(btnSeleccion).addClass('btn-success');
                 $(btnSeleccion).html('Pagado');
                 $(btnSeleccion).attr('estado', 1);
+                $("#btnEstado"+$(btnSeleccion).attr('indice')).attr("estado", 1);
             } else if ((monto < Number.parseFloat($(btnSeleccion).attr("monto"))) && monto > 1){    
                 $(btnSeleccion).addClass('btn-warning');
                 $(btnSeleccion).html('A deuda');
                 $(btnSeleccion).attr('estado', 2);
+                $("#btnEstado"+$(btnSeleccion).attr('indice')).attr("estado", 2);
             } else if (estado == 3){    
                 $(btnSeleccion).addClass('btn-danger');
                 $(btnSeleccion).html('Vencido');
                 $(btnSeleccion).attr('estado', 3);
+                $("#btnEstado"+$(btnSeleccion).attr('indice')).attr("estado", 3);
             } 
 
 
