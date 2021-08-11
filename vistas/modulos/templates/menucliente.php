@@ -22,9 +22,9 @@
         <div class="info">
             <?php
                 if($_SESSION['nombre']!=""){
-                    echo '<a class="d-block">'.$_SESSION['nombre']. '</a>';
+                    echo '<a id="username" class="d-block">'.$_SESSION['nombre']. '</a>';
                 }else{
-                    echo '<a class="d-block">Nombre de empresa</a>';
+                    echo '<a id="username" class="d-block">Nombre de empresa</a>';
                 }
             ?>
         </div>

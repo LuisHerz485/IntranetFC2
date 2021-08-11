@@ -26,14 +26,13 @@
             </div>
             <div class="card-body panel-body" id="listadoregistrosD">
               <div id="tbllistado">
-                <table  class="table table-striped tablaDataTable dt-responsive">
+                <table  class="table table-striped tablaDataAreas dt-responsive">
                   <thead>
-                    <th>Opciones</th>
+                    <th class="no-exportar">Opciones</th>
                     <th>Estado</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Fecha/registro</th>
-                    
                   </thead>
                   <tbody>
                   <?php

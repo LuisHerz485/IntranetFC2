@@ -19,9 +19,9 @@ $(".btnMostrar").click(function() {
             $.each(respuesta, function(index, value) {
                 /* Vamos agregando a nuestra tabla las filas necesarias */
                 var estado = "";
-                if (value.codigo == "0") {
+                if (value.estado == "0") {
                     estado = "Injustificado";
-                } else if (value.codigo == "1") {
+                } else if (value.estado == "1") {
                     estado = "Justificado";
                 } else {
                     estado = "Correcto";

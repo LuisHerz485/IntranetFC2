@@ -121,9 +121,9 @@
               <br/>
               <br/>
               <div id="tbllistadoCobranza">
-                <table id="mostrarCobranza" class="table table-striped tablaDataPagos dt-responsive">
+                <table id="mostrarCobranza" class="table table-striped tablaDataCobranza dt-responsive">
                   <thead>
-                    <th>Opciones</th>
+                    <th class="no-exportar">Opciones</th>
                     <th>Fecha de Emisión</th>
                     <th>Direccion</th>
                     <th>Plan</th>
@@ -223,7 +223,7 @@
 
 
 <!-- Modal Constancia -->
-<div class="modal fade" id="modalConstancia" role="dialog">
+<div class="modal fade" id="modalConstancia" role="document">
   <div class="modal-dialog modal-lg">
     <form role="form" method="post" enctype="multipart/form-data">
       <div class="modal-content">
@@ -232,7 +232,7 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
+        </div>  
         <div class="modal-body">
           <div class="form-group">
             <div class="input-group">
@@ -263,10 +263,9 @@
                   <button type="button" class="btn btn-success float-sm-right" onclick="limpiarPreConstancia()"><i class="fas fa-broom"> Limpiar</i></button>
                 </div>
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <br/>
                 <h4 style="color: #1561B7;" class="text-center"><strong>Historial de Pagos</strong></h4>
                 <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                  <table id="mostrarSubPagos" class="table table-bordered table-striped dt-responsive text-center table-sm" cellspacing="0"  width="100%">
+                  <table id="mostrarSubPagos" class="table table-bordered mt-2 table-striped dt-responsive text-center" cellspacing="0"  width="100%">
                     <thead>
                       <th>Fecha Pago</th>
                       <th>Monto Pagado</th>

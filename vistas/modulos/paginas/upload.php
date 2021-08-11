@@ -22,19 +22,20 @@
         <div class="col-md-12">
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Áreas</h3>
+              <h3 class="card-title">Subida de Archivo</h3>
             </div>
-            <div class="card-body panel-body" id="listadoregistrosD">
-              <h1>Sube tus archivos</h1>
+            <div class="card-body panel-body text-center" id="listadoregistrosD">
+              <h1><strong>Sube tus archivos</strong></h1>
               <form name="upload" id="upload" method="POST" enctype="multipart/form-data" >
-                </br>
-                Elige tus archivos: 
+                <br/>
+                <h3>Elige tus archivos:</h3>
                 <input type="file" name="archivos[]" multiple="">	
-                <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Cargar</button>
                 <?php
                   $subirarchivo = new ControladorUpload();
                   $subirarchivo -> ctrSubirArchivo();
                 ?>
+                <br/>
+                <button type="submit" class="btn btn-primary mt-3"><i class="fas fa-save"></i> Subir</button>
               </form>
             </div>
           </div>

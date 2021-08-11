@@ -26,15 +26,15 @@
             </div>
             <div class="card-body panel-body" id="listadoregistrosC">
               <div id="tbllistado">
-                <table id="" class="table table-striped tablaDataTable dt-responsive">
+                <table id="" class="table table-striped tablaDataClientes dt-responsive">
                   <thead>
-                    <th>Opciones</th>
+                    <th class="no-exportar">Opciones</th>
                     <th>Estado</th>
                     <th>RUC</th>
                     <th>Razón Social</th>
                     <th>Login</th>
                     <th>Fecha Creado</th>
-                    <th>Imagen</th>
+                    <th class="no-exportar">Imagen</th>
                   </thead>
                   <tbody>
                   <?php 
@@ -201,7 +201,7 @@
             <div class="input-group">
               <span class="input-group-addon" style="margin:10px 10px 0px 0px;"><i class="fas fa-key"></i></span>
               <input class="form-control" type="hidden" name="idusuario1" id="idusuario1">
-              <input type="password" name="contra" id="contra" class="form-control input-lg" placeholder="Contraseña" required>
+              <input type="password" name="contra" id="contra" class="form-control input-lg" placeholder="Ingrese Nueva Contraseña" required>
             </div>
           </div>
         </div>

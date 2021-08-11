@@ -35,7 +35,7 @@
                         <div class="icon">
                             <i class="fas fa-file-invoice-dollar"></i>
                         </div>
-                        <a href="" class="small-box-footer">Ingresar <i
+                        <a href="https://fccontadores.com/servicios/" class="small-box-footer"  target="_blank">Ingresar <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -50,20 +50,6 @@
                             <i class="fas fa-search-dollar"></i>
                         </div>
                         <a href="pagosrealizados" class="small-box-footer">Ingresar <i
-                                class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-6">
-                    <div class="small-box bg-maroon">
-                        <div class="inner">
-                            <h3>Ofertas</h3>
-
-                            <p>Ofertas FC Contadores y Asociados</p>
-                        </div>
-                        <div class="icon">
-                            <i class="fab fa-shopify"></i>
-                        </div>
-                        <a href="" class="small-box-footer">Ingresar <i
                                 class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>

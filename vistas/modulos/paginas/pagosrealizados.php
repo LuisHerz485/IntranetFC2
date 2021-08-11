@@ -25,7 +25,7 @@
             </div>
             <div class="card-body">
                 <div id="tbllistado">
-                  <table id="mostrarArchivo" class="table table-striped tablaDataPagos   dt-responsive text-center">
+                  <table id="mostrarArchivo" class="table table-striped tablaDataClientesPagos dt-responsive text-center">
                         <thead>
                           <th>Fecha de Emisión</th>
                           <th>Local</th>
@@ -33,7 +33,7 @@
                           <th>Monto</th>
                           <th>Fecha de Vencimiento</th>
                           <th>Estado</th>
-                          <th>Constancia</th>
+                          <th class="no-exportar">Constancia</th>
                         </thead>
                         <tbody>
                           <?php
@@ -62,7 +62,7 @@
                           <th>Monto Actual</th>
                           <th>Local</th>
                           <th>Estado</th>
-                          <th>Constnacia</th>
+                          <th class="no-exportar">Constancia</th>
                         </tfoot>   
                     </table>
               </div>

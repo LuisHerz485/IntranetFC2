@@ -140,7 +140,7 @@
 
 		static public function ctrEditarContra(){
 			if(isset($_POST['contra'])){
-				if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ!#$%&\/()=?¡*-_+.]+$/', $_POST['contra'])){
+				if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ!#$%&\/()=?¡*-_+.]+$/',$_POST['contra'])){
 					$tabla = "usuario";
 
 					//Hash SHA256 para la contraseña

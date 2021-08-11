@@ -3,7 +3,7 @@
 	class ModeloCobranza{
         
 		static public function mdlMostrarCobranza($valor){
-            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT C.idcobranza as idcobranza, C.idlocalcliente as idlocalcliente, C.idcliente as idcliente, C.idubicacion as idubicacion, C.fechaemision as fechaemision, C.fechavencimiento as fechavencimiento, C.estado as estado, C.descripcion as descripcion, U.distrito as distrito, U.departamento as departamento, LC.direccion as direccion, DC.precio AS monto, DC.nota AS observacion, P.idplan,P.nombre AS plan, DC.iddetallecobranza AS iddetallecobranza           
+            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT C.idcobranza as idcobranza, C.idlocalcliente as idlocalcliente, C.idcliente as idcliente, C.idubicacion as idubicacion, C.fechaemision as fechaemision, DATE(C.fechavencimiento) as fechavencimiento, C.estado as estado, C.descripcion as descripcion, U.distrito as distrito, U.departamento as departamento, LC.direccion as direccion, DC.precio AS monto, DC.nota AS observacion, P.idplan,P.nombre AS plan, DC.iddetallecobranza AS iddetallecobranza           
             FROM cobranza C 
             JOIN detallecobranza DC ON DC.idcobranza = C.idcobranza
             JOIN plan P ON P.idplan = DC.idplan

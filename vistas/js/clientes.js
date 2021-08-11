@@ -155,7 +155,6 @@ $(".btnContraC").click(function() {
         dataType: "json",
         success: function(respuesta) {
             $("#idusuario1").val(respuesta['idcliente']);
-            $("#contra").val(respuesta['contrasenacliente']);
         },
         error: function(respuesta) {
             console.log("Error", respuesta);

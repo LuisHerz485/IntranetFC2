@@ -38,7 +38,7 @@
                     ?>
                 </select>
                 <br/>
-                <button class="btn btn-success btnMostrarArchivos">Mostrar</button>
+                <button class="btn btn-success btnMostrarArchivos"><strong><i class="far fa-eye"></i> Mostrar</strong></button>
                 <br/><br/>
                 <div id="tbllistado">
                     <table id="mostrarArchivo" class="table table-striped tablaDataTableC dt-responsive">

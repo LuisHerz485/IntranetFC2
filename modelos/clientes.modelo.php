@@ -76,9 +76,9 @@
 		}
 
         static public function mdlEditarContra($tabla,$datos){
-			$stmt = conexion::conectar()->prepare("UPDATE $tabla SET password1=:password1 WHERE idusuario=:idusuario");
-			$stmt -> bindParam(":password1", $datos["password1"],PDO::PARAM_STR);
-            $stmt -> bindParam(":idusuario", $datos["idusuario"],PDO::PARAM_STR);
+			$stmt = conexion::conectar()->prepare("UPDATE $tabla SET contrasenacliente=:contrasenacliente WHERE idcliente=:idcliente");
+			$stmt -> bindParam(":contrasenacliente", $datos["contrasenacliente"],PDO::PARAM_STR);
+            $stmt -> bindParam(":idcliente", $datos["idcliente"],PDO::PARAM_STR);
 			if($stmt->execute()){
 				return "ok";
 			}else{

@@ -48,10 +48,3 @@ if(isset($_POST["idcliente"])){
 	$editar -> idcliente = $_POST["idcliente"];
 	$editar -> ajaxEditarCliente();
 }
-
-/* Mostrar Tabla Cliente */
-if(isset($_POST["idcliente"])){
-	$mostrar = new AjaxClientes();
-	$mostrar -> idcliente = $_POST["idcliente"];
-	$mostrar -> ajaxMostrar();
-}

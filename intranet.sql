@@ -524,7 +524,7 @@ create table constancia(
         idconstancia int primary key auto_increment,
 	idcobranza int,
 	iddetallecobranza int,
-	fechapago tinyint not null,
+	fechapago date not null,
 	tipopago varchar(50) not null,
 	monto double not null,
 	nota varchar(100),

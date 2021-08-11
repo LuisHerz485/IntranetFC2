@@ -138,14 +138,14 @@
         
 		static public function ctrEditarContra(){
 			if(isset($_POST['contra'])){
-				if(preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+$/', $_POST['contra'])){
+				if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ!#$%&\/()=?¡*-_+.]+$/',$_POST['contra'])){
 					$tabla = "cliente";
 
 					//Hash SHA256 para la contraseña
 					$clavehash = hash("SHA256", $_POST['contra']);
 					
-					$datos = array("idusuario" => $_POST['idusuario1'],
-								"password1" => $clavehash);
+					$datos = array("idcliente" => $_POST['idusuario1'],
+								"contrasenacliente" => $clavehash);
 
 					$respuesta = ModeloClientes::mdlEditarContra($tabla,$datos);
 					if($respuesta =="ok"){
@@ -157,7 +157,7 @@
 								confirmButtonText:'Ok'
 								}).then((result)=>{
 									if(result.value){
-										window.location='usuarios';
+										window.location='clientes';
 									}
 								})
 						</script>";

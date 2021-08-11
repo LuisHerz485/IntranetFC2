@@ -167,7 +167,6 @@ $(".btnContra").click(function() {
         dataType: "json",
         success: function(respuesta) {
             $("#idusuario1").val(respuesta['idusuario']);
-            $("#contra").val(respuesta['password1']);
         },
         error: function(respuesta) {
             console.log("Error", respuesta);

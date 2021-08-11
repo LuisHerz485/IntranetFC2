@@ -49,19 +49,19 @@
                   </select>
                 </div>
               </div>
-              <button class="btn btn-success btnMostrar">Mostrar</button>
+              <button class="btn btn-warning btn-s btnMostrar"><strong><i class="far fa-eye"></i> Mostrar</strong></button>
               <br/>
               <br/>
               <div id="tbllistado">
-                <table id="mostrarReporte" class="table table-striped tablaDataTable dt-responsive">
+                <table id="mostrarReporte" class="table table-striped tablaDataAsistencia dt-responsive">
                   <thead>
-                    <th>Código</th>
+                    <th class="no-exportar">Código</th>
                     <th>Nombre Completo</th>
                     <th>Área</th>
                     <th>Fecha</th>
                     <th>Asistencia</th>
                     <th>Estado</th>
-                    <th>Detalle</th>
+                    <th class="no-exportar">Detalle</th>
                   </thead>
                   <tbody>
                   </tbody>

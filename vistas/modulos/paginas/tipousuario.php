@@ -26,9 +26,9 @@
             </div>
             <div class="card-body panel-body" id="listadoregistrosTU">
               <div id="tbllistado">
-                <table  class="table table-striped tablaDataTable dt-responsive">
+                <table  class="table table-striped tablaDataTipoUsuario dt-responsive">
                   <thead>
-                    <th>Opciones</th>
+                    <th  class="no-exportar">Opciones</th>
                     <th>Estado</th>
                     <th>Nombre</th>
                     <th>Descripción</th>

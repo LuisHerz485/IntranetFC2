@@ -26,13 +26,13 @@
                 <h3 class="card-title text-center ">Pagos Pendientes</h3>
                 </div>
                 <div class="col-6">
-                <a href="#" class="btn btn-success float-sm-right"><i class="fas fa-donate"> Pagar</i></a>
+                <a href="https://fccontadores.com/servicios/" class="btn btn-warning float-sm-right" style="color: #000" target="_blank"><i class="fas fa-donate"> Pagar</i></a>
                 </div>
               </div>
             </div>
             <div class="card-body">
                 <div id="tbllistado">
-                  <table id="mostrarPendiente" class="table table-striped tablaDataPagos dt-responsive text-center">
+                  <table id="mostrarPendiente" class="table table-striped tablaDataClientesPagos dt-responsive text-center">
                     <thead>
                       <th>Fecha de Emisión</th>
                       <th>Local</th>
@@ -40,7 +40,7 @@
                       <th>Monto</th>
                       <th>Fecha de Vencimiento</th>
                       <th>Estado</th>
-                      <th>Constancia</th>
+                      <th class="no-exportar">Constancia</th>
                     </thead>
                     <tbody>
                       <?php
