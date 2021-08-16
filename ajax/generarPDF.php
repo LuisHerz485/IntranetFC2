@@ -5,6 +5,14 @@ require_once "../modelos/constancia.modelo.php";
 use Dompdf\Dompdf;
 use Luecano\NumeroALetras\NumeroALetras;
 
+function getCodigoRecibo(string $id = "")
+{
+    $formato = "001-0000000000";
+    $longitud = strlen($id);
+    return substr_replace($formato, $id, -$longitud);
+}
+
+
 session_start();
 if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 
@@ -26,6 +34,8 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
       "cliente" => ["razonsocial" => $dataConstancia['razonsocial'], "ruc" => $dataConstancia['ruc']],
       "totalRecibido" => $dataConstancia['totalRecibido'], "montoTotal" => $dataConstancia['montoTotal'], "concepto" => "POR EL SERVICIO CONTABLE",
     ];
+
+
 
     $dompdf = new Dompdf();
     $formatter = new NumeroALetras();
@@ -71,7 +81,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
                     >
                       <span>RUC: 20600626397</span> <br />
                       <span>RECIBO</span> <br />
-                      <span>001 - 000411</span>
+                      <span>'.(isset($_GET['idcobranza'])?getCodigoRecibo($dataConstancia["idcobranza"]):getCodigoRecibo($dataConstancia["idconstancia"])).'</span>
                     </div>
                   </td>
                 </tr>

@@ -21,7 +21,7 @@
         <div class="info">
             <?php
                 if($_SESSION['nombre']!=""){
-                    echo '<a id="username" class="d-block">'.$_SESSION['nombre'].'<br/>'.$_SESSION['apellidos'].'</a>';
+                    echo '<a id="username" class="d-block">'.$_SESSION['nombre'].' <br/>'.$_SESSION['apellidos'].'</a>';
                 }else{
                     echo '<a id="username" class="d-block">Nombre de usuario</a>';
                 }
@@ -43,7 +43,7 @@
                 </a>
             </li>
 
-            <li class="nav-header">ASISTENCIA</li>
+            <li class="nav-header">ADMINISTRACIÓN</li>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="fas fa-folder"></i>

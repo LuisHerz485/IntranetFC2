@@ -27,6 +27,7 @@ function limpiarPreConstancia() {
     $("#fecha_pago").val("");
     $("#nota_const").val("");
     $("#monto_const").val("");
+    $("#tipo_pago").val([]).trigger("change");
 }
 
 function cancelarGC() {
@@ -184,7 +185,8 @@ $(".btnPreConstancia").click(function() {
 
     if (Number.parseFloat(monto_const) <= Number.parseFloat($("#deuda").val()) && Number.parseFloat(monto_const) > 0.00) {
         if (fecha_pago) {
-            $.ajax({
+            if (tipo_pago) {
+                $.ajax({
                 url: "ajax/constancia.ajax.php",
                 method: "POST",
                 data: datos,
@@ -196,7 +198,6 @@ $(".btnPreConstancia").click(function() {
                     console.log("Error", respuesta);
                 }
             })
-
 
             $(btnSeleccion).removeClass('btn-success btn-warning btn-danger btn-primary');
             var deuda = Number.parseFloat($("#deuda").val());
@@ -223,7 +224,6 @@ $(".btnPreConstancia").click(function() {
                 $("#btnEstado"+$(btnSeleccion).attr('indice')).attr("estado", 3);
             } 
 
-
             var idcobranza = $(btnSeleccion).attr("idcobranza");
             var estado = $(btnSeleccion).attr("estado");
             var datos = new FormData();
@@ -238,12 +238,13 @@ $(".btnPreConstancia").click(function() {
                 processData: false,
                 success: function(respuesta) {}
             })
-            
-            
             $("#modalConstancia").modal("hide"); 
             Swal.fire('Cambio Realizado!', '', 'success')
-        }
-        else {
+            } else {
+                Swal.fire('Seleccion medio de pago!', '', 'error') 
+            }
+            
+        }else {
            Swal.fire('Fecha de pago no se ingreso!', '', 'error') 
         }
     } else if (!Number.parseFloat(monto_const) ){
@@ -348,7 +349,8 @@ $(".btnAgregarCobranza").click(function() {
     datos.append("idplan", idplan);
     datos.append("precio", precio);
     datos.append("nota", nota);
-    $.ajax({
+    if (idlocalcliente && idubicacion && fecha_vencimiento && idplan && precio) {
+        $.ajax({
         url: "ajax/cobranza.ajax.php",
         method: "POST",
         data: datos,
@@ -364,6 +366,7 @@ $(".btnAgregarCobranza").click(function() {
                 confirmButtonText: 'Ok'
             }).then((result) => {
                 if (result.value) {
+                    limpiarCobranza();
                     listarCobranzas(idcliente);
                 }
             })
@@ -372,7 +375,11 @@ $(".btnAgregarCobranza").click(function() {
             console.log("Error", respuesta);
         }
     });
-    limpiar();
+    } else {
+        Swal.fire('Ingresar Datos en el fomrulario!!', '', 'error')
+        listarCobranzas(idcliente)
+    }
+    
 })
 
 init();

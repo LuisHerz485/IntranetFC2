@@ -10,9 +10,9 @@ class AjaxAsistencia{
 
 	public function ajaxEditarDetalleAsistencia(){
 		$tabla = "asistencia";
-		$item1 = "u.codigopersona";
+		$item1 = "U.codigopersona";
 		$valor1 = $this -> codigo;
-		$item2 = "a.fechahora";
+		$item2 = "A.fechahora";
 		$valor2 = $this -> fecha;
 		$respuesta = ModeloAsistencia::mdlMostrarDetalleAsistencia($tabla,$item1,$valor1,$item2,$valor2);
 		echo json_encode($respuesta);

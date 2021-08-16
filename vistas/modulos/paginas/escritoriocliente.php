@@ -26,7 +26,7 @@
                 <!-- ./col -->
                 <div class="col-lg-6 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-lightblue">
+                    <a  href="https://fccontadores.com/servicios/" class="small-box bg-lightblue" target="_blank">
                         <div class="inner">
                             <h3>Pagar</h3>
 
@@ -35,12 +35,12 @@
                         <div class="icon">
                             <i class="fas fa-file-invoice-dollar"></i>
                         </div>
-                        <a href="https://fccontadores.com/servicios/" class="small-box-footer"  target="_blank">Ingresar <i
-                                class="fas fa-arrow-circle-right"></i></a>
-                    </div>
+                        <p class="small-box-footer">Ingresar <i
+                                class="fas fa-arrow-circle-right"></i></p>
+                    </a>
                 </div>
                 <div class="col-lg-6 col-6">
-                    <div class="small-box bg-purple">
+                    <a href="pagosrealizados" class="small-box bg-purple">
                         <div class="inner">
                             <h3>Mis Pagos</h3>
 
@@ -49,9 +49,9 @@
                         <div class="icon">
                             <i class="fas fa-search-dollar"></i>
                         </div>
-                        <a href="pagosrealizados" class="small-box-footer">Ingresar <i
-                                class="fas fa-arrow-circle-right"></i></a>
-                    </div>
+                        <p class="small-box-footer">Ingresar <i
+                                class="fas fa-arrow-circle-right"></i></p>
+                    </a>
                 </div>
                 <!-- ./col -->
             </div>

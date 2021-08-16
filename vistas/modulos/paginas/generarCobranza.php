@@ -222,7 +222,7 @@
 </div>
 
 
-<!-- Modal Constancia -->
+<!-- Modal estado de pago de cobranza -->
 <div class="modal fade" id="modalConstancia" role="document">
   <div class="modal-dialog modal-lg">
     <form role="form" method="post" enctype="multipart/form-data">
@@ -239,9 +239,19 @@
               <div class="row">
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Medio de Pago</label>
-                  <input value="Yape" name="tipo_pago" id="tipo_pago" class="form-control" disabled> 
-                  <input type="hidden" name="iddetallecobranza" id="iddetallecobranza" class="form-control"> 
-                  <input type="hidden" name="idcobranza" id="idcobranza" class="form-control"> 
+                  <select name="tipo_pago" id="tipo_pago" class="form-control">
+                    <option>NÚMERO DE CTA DE AHORROS (BCP)</option>
+                    <option>NÚMERO DE CTA DE AHORROS (BANBIF)</option>
+                    <option>NÚMERO DE CTA DE AHORROS (SCOTIABANK)</option>
+                    <option>NÚMERO DE CTA DE AHORROS (BBVA)</option>
+                    <option>NÚMERO DE CTA DE AHORROS (INTERBANK)</option>
+                    <option>NÚMERO DE CTA DE INTERBANCARIA (INTERBANK)</option>
+                    <option>EFECTIVO</option>
+                    <option>YAPE</option>
+                    <input type="hidden" name="iddetallecobranza" id="iddetallecobranza" class="form-control"> 
+                    <input type="hidden" name="idcobranza" id="idcobranza" class="form-control"> 
+                  </select>
+                  
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Fecha de pago</label>

@@ -8,7 +8,7 @@
 
 		static public function ctrCrearConstancia(){
 			if(isset($_POST['nota'])){
-			    if(preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+$/', $_POST['nota'])){
+			    if(preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ ]+$/', $_POST['nota'])){
 
 					$tabla = "constancia";
 				    $datos = array("idcotizacion" => $_POST['idcotizacion'],

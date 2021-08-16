@@ -8,7 +8,7 @@
 
 		static public function ctrEditarDetalleAsistencia(){
 			if(isset($_POST['idasistencia'])){
-			    if(preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+|(^$)/', $_POST['detalle'])){
+			    if(preg_match('/^[a-zA-Z0-9ñÑaÁáéÉíÍóÓúÚ ]+|(^$)/', $_POST['detalle'])){
 
 					$tabla = "asistencia";
 

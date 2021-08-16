@@ -8,8 +8,8 @@
 
 		static public function ctrCrearTipoUsuario(){
 			if(isset($_POST['nombre'])){
-			    if(preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+$/', $_POST['nombre'])&&
-			    preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+$/', $_POST['descripcion'])){
+			    if(preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ ]+$/', $_POST['nombre'])&&
+			    preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ ]+$/', $_POST['descripcion'])){
 
 					$tabla = "tipousuario";
 

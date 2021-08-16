@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b886368c0316488a7fb8a966051377aa04a4f106',
+        'reference' => '0cbfdad8d94bfb33baf91744eaf174a89ca33eac',
         'name' => 'google/apiclient',
         'dev' => true,
     ),
@@ -97,7 +97,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b886368c0316488a7fb8a966051377aa04a4f106',
+            'reference' => '0cbfdad8d94bfb33baf91744eaf174a89ca33eac',
             'dev_requirement' => false,
         ),
         'google/apiclient-services' => array(

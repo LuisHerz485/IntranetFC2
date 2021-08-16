@@ -2,7 +2,7 @@
     class ControladorClientes{
 		static public function ctrIngresar(){
             if(isset($_POST['usuario'])){
-                if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/',$_POST['usuario']) && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ!#$%&\/()=?¡*-_+.]+$/',$_POST['password'])){
+                if(preg_match('/^[a-zA-Z0-9ñÑáÁéíóúÁÉÍÓÚ]+$/',$_POST['usuario']) && preg_match('/^[a-zA-Z0-9ñÑáÁéíóúÁÉÍÓÚ!#$%&\/()=?¡*-_+.]+$/',$_POST['password'])){
                     $tabla = "cliente";
                     $item = "logincliente";
                     $valor = $_POST['usuario'];
@@ -49,7 +49,7 @@
 
         static public function ctrCrearCliente(){
 			if(isset($_POST['ruc'])){
-			    if(preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ -.\/]+$/', $_POST['razonsocial'])){
+			    if(preg_match('/^[a-zA-Z0-9ñÑaÁáéÉíÍóÓúÚ -.\/]+$/', $_POST['razonsocial'])){
 					$ruta="";
 					if(isset($_FILES['nuevaFoto']['tmp_name'])&&!empty($_FILES['nuevaFoto']['tmp_name'])){
 						list($ancho, $alto) = getimagesize($_FILES['nuevaFoto']['tmp_name']);
@@ -138,7 +138,7 @@
         
 		static public function ctrEditarContra(){
 			if(isset($_POST['contra'])){
-				if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ!#$%&\/()=?¡*-_+.]+$/',$_POST['contra'])){
+				if(preg_match('/^[a-zA-Z0-9ñÑáÁéíóúÁÉÍÓÚ!#$%&\/()=?¡*-_+.]+$/',$_POST['contra'])){
 					$tabla = "cliente";
 
 					//Hash SHA256 para la contraseña

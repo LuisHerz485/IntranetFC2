@@ -2,7 +2,7 @@
     class ControladorUsuarios{
         static public function ctrIngresar(){
 	            if(isset($_POST['usuario'])){
-	                if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ]+$/',$_POST['usuario']) && preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ!#$%&\/()=?¡*-_+.]+$/',$_POST['password'])){
+	                if(preg_match('/^[a-zA-Z0-9ñÑáÁéíóúÁÉÍÓÚ]+$/',$_POST['usuario']) && preg_match('/^[a-zA-Z0-9ñÑáÁéíóúÁÉÍÓÚ!#$%&\/()=?¡*-_+.]+$/',$_POST['password'])){
 	                    $tabla = "usuario";
 	                    $item = "login";
 	                    $valor = $_POST['usuario'];
@@ -47,8 +47,8 @@
 
         static public function ctrCrearUsuario(){
 			if(isset($_POST['nombre'])){
-			    if(preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+$/', $_POST['nombre'])&&
-			    preg_match('/^[a-zA-Z0-9ñÑaáéÉíÍóÓúÚ ]+$/', $_POST['apellidos'])){
+			    if(preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ ]+$/', $_POST['nombre'])&&
+			    preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ ]+$/', $_POST['apellidos'])){
 
 					$ruta="";
 					if(isset($_FILES['nuevaFoto']['tmp_name'])&&!empty($_FILES['nuevaFoto']['tmp_name'])){

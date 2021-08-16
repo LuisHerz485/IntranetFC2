@@ -25,7 +25,7 @@
             <div class="row ml-5 mr-5">
                 <div class="col-lg-6 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-primary">
+                    <a href="usuarios" class="small-box bg-primary">
                         <div class="inner">
                             <h3>Colaboradores</h3>
 
@@ -34,14 +34,14 @@
                         <div class="icon">
                             <i class="fas fa-users"></i>
                         </div>
-                        <a href="usuarios" class="small-box-footer">Ingresar <i
-                                class="fas fa-arrow-circle-right"></i></a>
-                    </div>
+                        <p class="small-box-footer">Ingresar <i
+                                class="fas fa-arrow-circle-right"></i></p>
+                    </a>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-6 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-success">
+                    <a href="asistencia" class="small-box bg-success">
                         <div class="inner">
                             <h3>Asistencia</h3>
 
@@ -50,14 +50,14 @@
                         <div class="icon">
                             <i class="fas fa-tasks"></i>
                         </div>
-                        <a href="asistencia" class="small-box-footer">Ingresar <i
-                                class="fas fa-arrow-circle-right"></i></a>
-                    </div>
+                        <p class="small-box-footer">Ingresar <i
+                                class="fas fa-arrow-circle-right"></i></p>
+                    </a>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-6 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-info">
+                    <a href="clientes" class="small-box bg-info">
                         <div class="inner">
                             <h3>Clientes</h3>
 
@@ -66,14 +66,14 @@
                         <div class="icon">
                             <i class="fas fa-handshake"></i>
                         </div>
-                        <a href="clientes" class="small-box-footer">Ingresar <i
-                                class="fas fa-arrow-circle-right"></i></a>
-                    </div>
+                        <p class="small-box-footer">Ingresar <i
+                                class="fas fa-arrow-circle-right"></i></p>
+                    </a>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-6 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-danger">
+                    <a href="generarCobranza" class="small-box bg-danger">
                         <div class="inner">
                             <h3>Cobranzas</h3>
 
@@ -82,14 +82,14 @@
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="generarCobranza" class="small-box-footer">Ingresar <i
-                                class="fas fa-arrow-circle-right"></i></a>
-                    </div>
+                        <p class="small-box-footer">Ingresar <i
+                                class="fas fa-arrow-circle-right"></i></p>
+                    </a>
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-12 col-12">
                     <!-- small box -->
-                    <div class="small-box bg-orange">
+                    <a href="https://fccontadores.com:2096/" class="small-box bg-orange" target="_blank">
                         <div class="inner">
                             <h3>Webmail</h3>
 
@@ -98,9 +98,9 @@
                         <div class="icon">
                             <i class="fas fa-envelope-square"></i>
                         </div>
-                        <a href="https://fccontadores.com:2096/" class="small-box-footer" target="_blank">Ingresar <i
-                                class="fas fa-arrow-circle-right"></i></a>
-                    </div>
+                        <p class="small-box-footer">Ingresar <i
+                                class="fas fa-arrow-circle-right"></i></p>
+                    </a>
                 </div>
                 <!-- ./col -->
             </div>

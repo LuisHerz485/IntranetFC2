@@ -32,7 +32,7 @@
                     <th>Estado</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
-                    <th>Fecha/registro</th>
+                    <th>Fecha de registro</th>
                   </thead>
                   <tbody>
                   <?php
