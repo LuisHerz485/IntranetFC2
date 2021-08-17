@@ -86,10 +86,10 @@
                 </div>
                 <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                   <label>Fecha Vencimiento(*):</label>
-                  <input type="date" class="form-control" name="fecha_vencimiento" id="fecha_vencimiento" min=<?php $hoy=date("Y-m-d"); echo $hoy;?>>
+                  <input type="date" class="form-control" name="fecha_vencimiento" id="fecha_vencimiento">
                 </div>
                 <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                  <label>Planes</label>
+                  <label>Planes / Servicio</label>
                   <select name="idplan" id="idplan" class="form-control select2" data-live-search="true" required>
                     <option value="0" >Seleccione Plan ...</option>
                     <?php 
@@ -110,7 +110,7 @@
                   <label>Nota (Precio)</label>
                   <input name="nota" id="nota" class="form-control">
                 </div>
-                <div class="form-group col-lg-6 col-md-3 col-sm-6 col-xs-12">
+                <div class="form-group col-lg-8 col-md-4 col-sm-6 col-xs-12">
                   <label>Descripción:</label>
                   <input type="text" class="form-control" name="descripcion" id="descripcion">
                 </div>

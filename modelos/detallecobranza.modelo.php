@@ -54,7 +54,7 @@
         static public function mdlMostrarServicio($tabla,$item,$valor){
             if($item!= null){
                 if($item === 1){
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE idservicio != 1");
                     $stmt -> execute();
                     return $stmt -> fetchAll();
                 }else{

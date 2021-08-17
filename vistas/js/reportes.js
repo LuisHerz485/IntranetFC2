@@ -1,5 +1,5 @@
 $(".btnMostrar").click(function() {
-    $("#mostrarReporte > tbody").empty();
+    $('#mostrarReporte').DataTable().clear().draw(false);
     var idusuario = $("#idusuario").val();
     var fecha_inicio = $("#fecha_inicio").val();
     var fecha_fin = $("#fecha_fin").val();

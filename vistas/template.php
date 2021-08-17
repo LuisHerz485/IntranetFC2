@@ -103,73 +103,62 @@
 
 </head>
 <?php
-      if(isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion']=="ok"){
-        echo '<body class="hold-transition sidebar-mini layout-fixed">';
-        echo '<div class="wrapper">';
-            
-        include "vistas/modulos/templates/encabezado.php";
+if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
+  echo '<body class="hold-transition sidebar-mini layout-fixed">';
+  echo '<div class="wrapper">';
+  include "vistas/modulos/templates/encabezado.php";
 
-        if(isset($_SESSION['cliente']) && $_SESSION['cliente']=="no"){
+  if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
+    switch ($_SESSION['idtipousuario']) {
+      case 1: {
+          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "salir"];
           include "vistas/modulos/templates/menu.php";
-            if(isset($_GET['ruta'])){ 
-              if($_GET['ruta'] == "escritorio" ||
-                  $_GET['ruta'] == "usuarios" ||
-                  $_GET['ruta'] == "tipousuario" ||
-                  $_GET['ruta'] == "departamento" ||
-                  $_GET['ruta'] == "asistencia" ||
-                  $_GET['ruta'] == "clientes" ||
-                  $_GET['ruta'] == "reportes" ||
-                  $_GET['ruta'] == "upload" ||
-                  $_GET['ruta'] == "tributaria" ||
-                  $_GET['ruta'] == "laboral" ||
-                  $_GET['ruta'] == "auditoria" ||
-                  $_GET['ruta'] == "salirC" ||
-                  $_GET['ruta'] == "generarCobranza" ||
-                  $_GET['ruta'] == "seguimiento" ||
-                  $_GET['ruta'] == "salir" ||
-                  $_GET['ruta'] == "pagospendientes" ||
-                  $_GET['ruta'] == "pagosrealizados"){
-                    include "vistas/modulos/paginas/".$_GET['ruta'].".php";
-              }else{
-                include "vistas/modulos/paginas/404.php";
-              }
-            }
-        }else{
-          include "vistas/modulos/templates/menucliente.php";
-            if(isset($_GET['ruta'])){ 
-              if($_GET['ruta'] == "escritoriocliente" ||
-                $_GET['ruta'] == "tributaria" ||                
-                $_GET['ruta'] == "laboral" ||
-                $_GET['ruta'] == "auditoria" ||
-                $_GET['ruta'] == "salirC" ||
-                $_GET['ruta'] == "upload" ||
-                $_GET['ruta'] == "seguimiento" ||
-                $_GET['ruta'] == "pagospendientes" ||
-                $_GET['ruta'] == "pagosrealizados"){
-                  include "vistas/modulos/paginas/".$_GET['ruta'].".php";
-            }else{
-              include "vistas/modulos/paginas/404.php";
-            }
-          }
-        }
-        
-        include "vistas/modulos/templates/footer.php";
-      }else{
-        echo '<body class="hold-transition login-page">';
-        if(isset($_GET['ruta'])){
-          if($_GET['ruta'] == "marcarasistencia" ||
-              $_GET['ruta'] == "login" ||
-              $_GET['ruta'] == "loginCliente" ||
-              $_GET['ruta'] == "inicio"){
-                include "vistas/modulos/paginas/".$_GET['ruta'].".php";
-          }else{
+          if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
+            include "vistas/modulos/paginas/" . $_GET['ruta'] . ".php";
+          } else {
             include "vistas/modulos/paginas/404.php";
           }
-        }else{
-          include "vistas/modulos/paginas/inicio.php";
+          break;
         }
+      case 2: {
+          $colaboradorRutas = ["escritorio", "asistencia", "salir"];
+          include "vistas/modulos/templates/menu-colaborador.php";
+          if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
+            include "vistas/modulos/paginas/" . $_GET['ruta'] . "-colaborador.php";
+          } else {
+            include "vistas/modulos/paginas/404.php";
+          }
+          break;
+        }
+      default: {
+        include "vistas/modulos/paginas/salir.php";
       }
-  ?>
+    }
+    } else {
+      $clienteRutas = ["escritoriocliente", "tributaria", "laboral", "auditoria", "salirC", "upload",  "pagospendientes", "pagosrealizados"];
+      include "vistas/modulos/templates/menucliente.php";
+      if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
+        include "vistas/modulos/paginas/" . $_GET['ruta'] . ".php";
+      } else {
+        include "vistas/modulos/paginas/404.php";
+      }
+    }
+
+    include "vistas/modulos/templates/footer.php";
+  } else {
+      echo '<body class="hold-transition login-page">';
+      $visitanteRutas = ["marcarasistencia", "login", "loginCliente", "inicio"];
+    if (isset($_GET['ruta'])) {
+      if (in_array($_GET['ruta'], $visitanteRutas)) {
+        include "vistas/modulos/paginas/" . $_GET['ruta'] . ".php";
+      } else {
+        include "vistas/modulos/paginas/404.php";
+      }
+    } else {
+      include "vistas/modulos/paginas/inicio.php";
+    }
+  }
+?>
 
   <script src="vistas/js/usuario.js"></script>
   <script src="vistas/js/tipousuario.js"></script>
@@ -187,6 +176,7 @@
   <script src="vistas/js/clock.js"></script>
   <script src="vistas/js/select2.js"></script>
   <script src="vistas/js/menu.js"></script>
+  <script src="vistas/js/servicio.js"></script>
   
 
   <!-- Control Sidebar -->

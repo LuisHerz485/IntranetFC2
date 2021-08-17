@@ -360,7 +360,7 @@ $(".btnAgregarCobranza").click(function() {
         dataType: "json",
         success: function(respuesta) {
             Swal.fire({
-                title: 'Success!',
+                title: 'Cobranza Generada!',
                 text: '¡La cobranza se agregado correctamente!',
                 icon: 'success',
                 confirmButtonText: 'Ok'
@@ -376,7 +376,7 @@ $(".btnAgregarCobranza").click(function() {
         }
     });
     } else {
-        Swal.fire('Ingresar Datos en el fomrulario!!', '', 'error')
+        Swal.fire('Ingresar Datos en el formulario!!', '', 'error')
         listarCobranzas(idcliente)
     }
     
