@@ -349,7 +349,7 @@ $(".btnAgregarCobranza").click(function() {
     datos.append("idplan", idplan);
     datos.append("precio", precio);
     datos.append("nota", nota);
-    if (idlocalcliente && idubicacion && fecha_vencimiento && idplan && precio) {
+    if (idlocalcliente && idubicacion && fecha_vencimiento && idplan && precio > 0) {
         $.ajax({
         url: "ajax/cobranza.ajax.php",
         method: "POST",
