@@ -130,6 +130,16 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           }
           break;
         }
+      case 3: {
+          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes","salir"];
+          include "vistas/modulos/templates/menu.php";
+          if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
+            include "vistas/modulos/paginas/" . $_GET['ruta'] . ".php";
+          } else {
+            include "vistas/modulos/paginas/404.php";
+          }
+          break;
+        }
       default: {
         include "vistas/modulos/paginas/salir.php";
       }

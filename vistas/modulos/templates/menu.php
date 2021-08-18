@@ -114,6 +114,8 @@
                     </li>
                 </ul>
             </li>
+        <?php
+        if ($_SESSION['idtipousuario'] == 1) {?>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="fas fa-folder"></i>
@@ -127,7 +129,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>  
+            </li> <?php } ?>
 
             <li class="nav-header">AYUDA</li>
             <li class="nav-item">

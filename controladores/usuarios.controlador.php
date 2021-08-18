@@ -11,7 +11,7 @@
 	                    $clavehash=hash("SHA256", $_POST['password']);
 
 	                    if($respuesta && $respuesta['usuario']==$_POST['usuario'] && $respuesta['password1']==$clavehash){
-							if($respuesta['idtipousuario'] == 1 || $respuesta['idtipousuario'] == 2){
+							if($respuesta['idtipousuario'] == 1 || $respuesta['idtipousuario'] == 2 || $respuesta['idtipousuario'] == 3){
 								if($respuesta['estado']== 1){
 									$_SESSION['iniciarSesion']="ok";
 									$_SESSION['cliente']="no";
