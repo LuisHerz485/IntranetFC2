@@ -1,3 +1,5 @@
+
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -22,7 +24,42 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
+
+
+
             <div class="row ml-5 mr-5">
+
+                <div class="row-lg-6 col-6">
+                        <!-- small box -->
+                        <a   class="small-box bg-lightblue" target="_blank">
+                            <div class="inner">
+                                
+                            <h3><?php echo tipodecambio()["precio_compra"] ; ?></h3>
+                            <p>Precio Compra</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <p class="small-box-footer">Ingresar <i
+                                    class="fas fa-arrow-circle-right"></i></p>
+                        </a>
+                </div>
+                
+                <div class="row-lg-6 col-6">
+                        <!-- small box -->
+                        <a   class="small-box bg-lightblue" target="_blank">
+                            <div class="inner">
+                                
+                            <h3><?php echo tipodecambio()["precio_venta"] ; ?></h3>
+                            <p>Precio Venta</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <p class="small-box-footer">Ingresar <i
+                                    class="fas fa-arrow-circle-right"></i></p>
+                        </a>
+                </div>
                 <!-- ./col -->
                 <div class="col-lg-6 col-6">
                     <!-- small box -->
