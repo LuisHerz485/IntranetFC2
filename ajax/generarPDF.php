@@ -2,14 +2,13 @@
 require_once "../google-api-php-client-2.9.1/vendor/autoload.php";
 require_once "../modelos/constancia.modelo.php";
 
-use Dompdf\Dompdf;
 use Luecano\NumeroALetras\NumeroALetras;
 
 function getCodigoRecibo(string $id = "")
 {
-    $formato = "001-0000000000";
-    $longitud = strlen($id);
-    return substr_replace($formato, $id, -$longitud);
+  $formato = "001-0000000000";
+  $longitud = strlen($id);
+  return substr_replace($formato, $id, -$longitud);
 }
 
 
@@ -26,170 +25,160 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   if ($dataConstancia && isset($dataConstancia['iddetallecobranza'])) {
     $meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
-    $firmaSVG = file_get_contents('../vistas/img/sello/sello.svg');
-
     $info = [
       "fechaEmision" => date_parse_from_format("Y-m-d", $dataConstancia['fechaEmision']),
       "fechaPago" => date_parse_from_format("Y-m-d", $dataConstancia['fechaPago']),
       "cliente" => ["razonsocial" => $dataConstancia['razonsocial'], "ruc" => $dataConstancia['ruc']],
-      "totalRecibido" => $dataConstancia['totalRecibido'], "montoTotal" => $dataConstancia['montoTotal'], "concepto" => "POR EL SERVICIO CONTABLE",
+      "totalRecibido" => floatval($dataConstancia['totalRecibido']), "montoTotal" => floatval($dataConstancia['montoTotal']), "concepto" => "POR EL SERVICIO CONTABLE",
     ];
 
 
-
-    $dompdf = new Dompdf();
+    $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A5-L']);
     $formatter = new NumeroALetras();
 
-    $dompdf->loadHtml('
-      <!DOCTYPE html>
-      <html lang="es">
-        <head>
-          <meta charset="UTF-8" />
-          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>Constancia de Pago</title>
-          <style>
-            td {
-              padding-bottom: 5px;
-              padding-top: 7px;
-            }
-          </style>
-        </head>
-        <body style="font-family: Arial, Helvetica, sans-serif">
-          <div>
-            <table style="border: 2px solid; text-align: center; margin: 0 auto">
-              <tbody>
-                <tr>
-                  <td>
-                    <div style="margin-left: 50px">
-                      <p style="margin-bottom: 5px">
-                        <b>FREDY JUNIOR SOLANO FERNANDEZ</b>
-                      </p>
-                      <p style="margin-top: 5px"><small>Contador & Auditor</small></p>
-                    </div>
-                  </td>
-                  <td>
-                    <div
-                      style="
-                        border: 5px solid;
-                        border-color: #0063d9;
-                        color: black;
-                        margin-right: 50px;
-                        margin-left: 50px;
-                        width: 180px;
-                      "
-                    >
-                      <span>RUC: 20600626397</span> <br />
-                      <span>RECIBO</span> <br />
-                      <span>'.(isset($_GET['idcobranza'])?getCodigoRecibo($dataConstancia["idcobranza"]):getCodigoRecibo($dataConstancia["idconstancia"])).'</span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <div style="text-align: left; margin-left: 50px">
-                      Lima,
-                      <span style="margin-left: 25px; margin-right: 25px">
-                        <u> ' . $info["fechaPago"]["day"] . ' </u>
-                      </span>
-                      de
-                      <span style="margin-left: 25px; margin-right: 25px">
-                        <u> ' . $meses[$info["fechaPago"]["month"] - 1] . ' </u>
-                      </span>
-                      del
-                      <span style="margin-left: 25px; margin-right: 25px">
-                        <u> ' . $info["fechaPago"]["year"] . ' </u>
-                      </span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <div style="text-align: left; margin-left: 50px">
-                      <span style="margin-right: 48px">Recibi de: </span>
-                      <span><u> ' . $info["cliente"]["razonsocial"]  . ' </u></span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <div style="text-align: left; margin-left: 50px">
-                      <span style="margin-right: 53px">con RUC </span>
-                      <span><u> ' . $info["cliente"]["ruc"] . ' </u></span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <div style="text-align: left; margin-left: 50px">
-                      <span style="margin-right: 30px">La suma de: </span>
-                      <span><u> ' .  $formatter->toMoney($info["totalRecibido"], 2, 'SOLES', 'CENTIMOS') . ' </u></span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <div style="text-align: left; margin-left: 50px">
-                      <span style="margin-right: 50px">Por concepto de:</span>
-                      <span><u> ' . $info["concepto"] . ' - ' . strtoupper($meses[$info["fechaEmision"]["month"] - 1]) . ' ' . $info["fechaEmision"]["year"] . ' </u></span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td colspan="2">
-                    <div
-                      style="text-align: left; margin-left: 50px; margin-right: 50px"
-                    >
-                      <span
-                        >________________________________________________________________</span
+    $css = '
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        #tablaEncabezado{
+            text-align: center; 
+            margin: 0 auto;
+            border-spacing: 20px;
+        }
+        #ruc{
+            border: 2px solid black;
+            padding: 10px;
+            border-radius: 3mm/3mm;
+        
+        }
+        .td-background{
+            background-color: #EBEBEB;
+        }';
+
+    $plantilla = '
+    <body>
+        <div style="padding: 40px 0px 0px 0px;">
+          <table id="tablaEncabezado">
+            <tr>
+              <td>
+                <div>
+                  <p>
+                    <b>FREDY JUNIOR SOLANO FERNANDEZ</b>
+                  </p>
+                  <p><b>Contador & Auditor</b></p>
+                  <p>
+                    <small>
+                      Urb. Brisas de Sta. Rosa Mz J Lt. 2 - SMP - LIMA
+                    </small>
+                  </p>
+                  <p><small>Telefono 933 159 089/ 942 601 274</small></p>
+                </div>
+              </td>
+              <td></td>
+              <td>
+                <div>
+                  <table id="ruc">
+                    <tr>
+                      <td>
+                        <p>RUC: 20600626397</p>
+                        <p>RECIBO</p>
+                        <p>' . ((isset($_GET["idcobranza"])) ? getCodigoRecibo($_GET["idcobranza"]) : getCodigoRecibo($_GET["idconstancia"])) . '</p>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </table>
+    
+          <table style="margin: 0 auto">
+            <tr>
+              <td width="150" class="td-background">
+                <span><b>Recibí de: </b></span>
+              </td>
+              <td width="300" class="td-background">' . $info["cliente"]["razonsocial"]  . ' </td>
+            </tr>
+            <tr>
+              <td class="td-background">
+                <span><b>Identificado con: </b></span>
+              </td>
+              <td class="td-background"> RUC </td>
+            </tr>
+            <tr>
+              <td class="td-background">
+                <span><b>Número: </b></span>
+              </td>
+              <td class="td-background">' . $info["cliente"]["ruc"] . '</td>
+            </tr>
+            <tr>
+              <td class="td-background">
+                <span><b>La suma neta de: </b></span>
+              </td>
+              <td class="td-background">' .  $formatter->toMoney($info["totalRecibido"], 2, 'SOLES', 'CENTIMOS') . '</td>
+            </tr>
+            <tr>
+              <td class="td-background">
+                <span> <b>Por concepto de: </b> </span>
+              </td>
+              <td class="td-background">' . $info["concepto"] . ' - ' . strtoupper($meses[$info["fechaEmision"]["month"] - 1]) . ' ' . $info["fechaEmision"]["year"] . '</td>
+            </tr>
+          </table>
+          <br />
+          <table style="margin: 0 auto">
+            <tr>
+              <td colspan="2">
+                <b>Lima, ' . $info["fechaPago"]["day"] . ' de ' . $meses[$info["fechaPago"]["month"] - 1] . ' ' . $info["fechaPago"]["year"] . '</b>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="3">
+                <div>
+                  <img
+                    style="width: 120px; height: auto"
+                    src="../vistas/img/sello/logo.png"
+                    alt="firma"
+                  /> 
+                </div>
+              </td>
+              <td>
+                <div>
+                  <table>
+                    <tr>
+                      <td
+                        class="td-background"
+                        style="text-align: right"
+                        width="200"
                       >
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <div>
-                      <p style="margin-bottom: 0px; margin-top: 10px">
-                        __
-                        <span style="margin-left: 15px; margin-right: 15px">
-                          <img
-                            style="width: 200px; height: auto"
-                            src="data:image/svg+xml;base64,' . base64_encode($firmaSVG) . '"
-                            alt="firma"
-                          />
-                        </span>
-                        __
-                      </p>
-                      <p style="margin-top: 0px">Pagado</p>
-                    </div>
-                  </td>
-                  <td>
-                    <div
-                      style="
-                        text-align: right;
-                        margin-right: 50px;
-                        margin-bottom: 10px;
-                      "
-                    >
-                      <p style="margin-top: 0px; margin-bottom: 0px">
-                        Total Recibo: <u> S/. ' . $info["totalRecibido"] . ' </u>
-                      </p> 
-                      <p style="margin-top: 10px; margin-bottom: 0px">
-                        Monto Total A Pagar: <u> S/. ' . $info["montoTotal"] . ' </u>
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </body>
-      </html> 
-      ');
-    $nombreArchivo = 'CONSTANCIA ' . $info["cliente"]["razonsocial"] . ' - ' . $info["fechaPago"]["month"] . ' ' . $info["fechaPago"]["year"] . '.pdf';
-    $dompdf->setPaper('A4', 'landscape');
-    $dompdf->render();
-    $dompdf->stream($nombreArchivo,array('Attachment'=>0));
+                        <b>Total Recibo:</b>
+                      </td>
+                      <td class="td-background" style="text-align: left" width="90">
+                        <b>S/.' . $info["totalRecibido"] . '</b>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td class="td-background" style="text-align: right">
+                        <b>Monto Total A Pagar:</b>
+                      </td>
+                      <td class="td-background" style="text-align: left">
+                        <b>S/.' . $info["montoTotal"] . '</b>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </body>';
+    if (($info["montoTotal"] - $info["totalRecibido"]) == 0) {
+      $mpdf->SetWatermarkImage('../vistas/img/sello/watermark_cancelado.png', 1);
+    } else{
+      $mpdf->SetWatermarkImage('../vistas/img/sello/watermark.png', 1);
+    }
+    $mpdf->showWatermarkImage = true;
+    $mpdf->writeHtml($css, \Mpdf\HTMLParserMode::HEADER_CSS);
+    $mpdf->writeHtml($plantilla, \Mpdf\HTMLParserMode::HTML_BODY);
+    $mpdf->Output();
   } else {
     http_response_code(400);
   }

@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '0cbfdad8d94bfb33baf91744eaf174a89ca33eac',
+        'reference' => 'b43eeb2e3b368818a88b1bfaea457cc004e95feb',
         'name' => 'google/apiclient',
         'dev' => true,
     ),
@@ -97,7 +97,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '0cbfdad8d94bfb33baf91744eaf174a89ca33eac',
+            'reference' => 'b43eeb2e3b368818a88b1bfaea457cc004e95feb',
             'dev_requirement' => false,
         ),
         'google/apiclient-services' => array(
@@ -172,6 +172,15 @@
             'reference' => '71312564759a7db5b789296369c1a264efc43aad',
             'dev_requirement' => false,
         ),
+        'mpdf/mpdf' => array(
+            'pretty_version' => 'dev-php8-support',
+            'version' => 'dev-php8-support',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../mpdf/mpdf',
+            'aliases' => array(),
+            'reference' => '4dff53e7f6714c88ae1803cf89d92941e6d29702',
+            'dev_requirement' => false,
+        ),
         'myclabs/deep-copy' => array(
             'pretty_version' => '1.10.2',
             'version' => '1.10.2.0',
@@ -179,7 +188,7 @@
             'install_path' => __DIR__ . '/../myclabs/deep-copy',
             'aliases' => array(),
             'reference' => '776f831124e9c62e1a2c601ecc52e776d8bb7220',
-            'dev_requirement' => true,
+            'dev_requirement' => false,
             'replaced' => array(
                 0 => '1.10.2',
             ),
@@ -553,6 +562,15 @@
             'aliases' => array(),
             'reference' => '8674b1d84ffb47cc59a101f5d5a3b61e87d23796',
             'dev_requirement' => true,
+        ),
+        'setasign/fpdi' => array(
+            'pretty_version' => 'v2.3.6',
+            'version' => '2.3.6.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../setasign/fpdi',
+            'aliases' => array(),
+            'reference' => '6231e315f73e4f62d72b73f3d6d78ff0eed93c31',
+            'dev_requirement' => false,
         ),
         'squizlabs/php_codesniffer' => array(
             'pretty_version' => '2.9.2',

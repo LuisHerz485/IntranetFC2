@@ -116,11 +116,7 @@ function listarCobranzas(idcliente) {
             });
 
             $(".btnConstancia").click(function() {
-                if ($(this).attr("estado") == 0) {
-                    Swal.fire('Cliente no ha realizado ningun pago!!', '', 'info');
-                } else {
                 window.open("ajax/generarPDF.php?idcobranza="+$(this).attr("idcobranza"));                    
-                }
             });
 
             $(".btnActivarC").click(function() {

@@ -32,7 +32,7 @@
 
         static public function mdlDataConstancia($valor){
             $conexion = Conexion::conectar();
-            $stmt = $conexion->prepare("SELECT co.idcobranza, detco.iddetallecobranza, cli.razonsocial, cli.ruc, DATE(co.fechaemision) AS fechaEmision, IFNULL(MAX(const.fechapago),'0000-00-00') AS fechaPago, IFNULL(SUM(const.monto), 0) AS totalRecibido, detco.precio AS montoTotal FROM cobranza AS co INNER JOIN cliente AS cli ON cli.idcliente = co.idcliente INNER JOIN detallecobranza AS detco ON detco.idcobranza = co.idcobranza INNER JOIN constancia AS const ON const.idcobranza = co.idcobranza AND const.iddetallecobranza = detco.iddetallecobranza WHERE co.idcobranza = $valor LIMIT 1");
+            $stmt = $conexion->prepare("SELECT co.idcobranza, detco.iddetallecobranza, cli.razonsocial, cli.ruc, DATE(co.fechaemision) AS fechaEmision, IFNULL(DATE(const.fechapago),DATE(co.fechaemision)) AS fechaPago, IFNULL(SUM(const.monto),0) totalRecibido, detco.precio AS montoTotal FROM cobranza AS co INNER JOIN cliente AS cli ON cli.idcliente = co.idcliente INNER JOIN detallecobranza AS detco ON detco.idcobranza = co.idcobranza LEFT JOIN constancia AS const ON const.idcobranza = co.idcobranza AND const.iddetallecobranza = detco.iddetallecobranza WHERE co.idcobranza = $valor LIMIT 1");
             if($stmt -> execute()){
                 return $stmt -> fetch(PDO::FETCH_ASSOC);
             }else{

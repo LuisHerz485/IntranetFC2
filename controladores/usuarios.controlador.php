@@ -114,7 +114,7 @@
 						if($respuesta =="ok"){
 							echo"<script>
 								Swal.fire({ 
-									title: 'Success!',
+									title: 'Actualizado!',
 									text: '¡El usuario se modificó correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'
@@ -154,7 +154,7 @@
 					if($respuesta =="ok"){
 						echo"<script>
 							Swal.fire({ 
-								title: 'Success!',
+								title: 'Actualizado!',
 								text: '¡La contraseña fue modificada correctamente!',
 								icon: 'success',
 								confirmButtonText:'Ok'

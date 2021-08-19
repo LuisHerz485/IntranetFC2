@@ -56,7 +56,7 @@
                             <td>'.$detCob[0]['monto'].'</td>
                             <td>'.$value['fechavencimiento'].'</td>
                             <td><button class="btn btn-primary btn-s">Pendiente</button></td>
-                            <td><abbr title="Constancia"><button class="btn btn-primary btn-s btnConstancia" onclick="Swal.fire(\'No hay ningun pago!!\', \'\', \'info\')"><i class="fas fa-paste"></i></button></abbr></td>';
+                            <td><abbr title="Constancia"><a href="ajax/generarPDF.php?idcobranza='.$value['idcobranza'].'" class="btn btn-primary btn-s btnConstancia" target="_blank"><i class="fas fa-paste"></i></a></abbr></td>';
                             echo'</tr>';
                           }
                           else if($value['estado']=="2"){
