@@ -16,7 +16,7 @@ $(".btnMostrarArchivos").click(function() {
         success: function(respuesta) {
             $.each(respuesta, function(index, value) {
                 /* Vamos agregando a nuestra tabla las filas necesarias */
-                $("#mostrarArchivo").append("<tr><td><a class=\"btn btn-primary btn-xs\" href=\"https://drive.google.com/file/d/" + value.ruta + "\" target=\"_blank\">Ver Documento</a></td><td>" + value.nombre + "</td><td>" + value.fechacreado + "</td></tr>");
+                $("#mostrarArchivo").DataTable().row.add(["<a class=\"btn btn-primary btn-xs\" href=\"https://drive.google.com/file/d/" + value.ruta + "\" target=\"_blank\">Ver Documento</a>", value.nombre,value.fechacreado]).draw(false);
             });
         },
         error: function(respuesta) {

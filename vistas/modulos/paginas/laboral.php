@@ -26,7 +26,7 @@
             <div class="card-body">
                 <input class="form-control" type="hidden" name="idcliente" id="idcliente" value="<?php echo $_SESSION['idcliente']; ?>">
                 <label for="">Tipo de archivos(*):</label>
-                <select name="idtipoarchivo" id="idtipoarchivo" class="form-control select-picker" required>
+                <select name="idtipoarchivo" id="idtipoarchivo" class="form-control select-picker select2" required>
                     <option value="0">Seleccione ...</option>
                     <?php
                         $item = 2;

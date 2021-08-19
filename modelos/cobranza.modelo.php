@@ -32,7 +32,6 @@
             }else{
                 return "error";
             }
-    
             $stmt -> close();
             $stmt = null;
         } 
