@@ -121,7 +121,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 2: {
-          $colaboradorRutas = ["escritoriocolaborador", "asistencia", " salir"];
+          $colaboradorRutas = ["escritoriocolaborador" ,"asistencia", " salir"];
           include "vistas/modulos/templates/menucolaborador.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
             include "vistas/modulos/paginas/colaborador/" . $_GET['ruta'] . ".php";
@@ -157,7 +157,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     include "vistas/modulos/templates/footer.php";
   } else {
       echo '<body class="hold-transition login-page">';
-      $visitanteRutas = ["marcarasistencia", "login", "loginCliente", "inicio"];
+      $visitanteRutas = ["marcarasistencia", "restringido","login", "loginCliente", "inicio"];
     if (isset($_GET['ruta'])) {
       if (in_array($_GET['ruta'], $visitanteRutas)) {
         include "vistas/modulos/paginas/" . $_GET['ruta'] . ".php";
