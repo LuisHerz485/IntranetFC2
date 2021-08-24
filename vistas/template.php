@@ -111,7 +111,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "salir"];
+          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "salir", "consultadni", "consultaruc"];
           include "vistas/modulos/templates/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -131,7 +131,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 3: {
-          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes","salir"];
+          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes","salir", "consultaruc", "consultadni"];
           include "vistas/modulos/templates/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -145,7 +145,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
       }
     }
     } else {
-      $clienteRutas = ["escritoriocliente", "tributaria", "laboral", "auditoria", "./salirC", "upload",  "pagospendientes", "pagosrealizados", "consulta"];
+      $clienteRutas = ["escritoriocliente", "tributaria", "laboral", "auditoria", "salirC", "upload",  "pagospendientes", "pagosrealizados", "consultaruc", "consultadni"];
       include "vistas/modulos/templates/menucliente.php";
       if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
         include "vistas/modulos/paginas/cliente/" . $_GET['ruta'] . ".php";
