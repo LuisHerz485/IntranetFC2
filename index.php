@@ -14,6 +14,7 @@
     require_once "controladores/cobranza.controlador.php";
     require_once "controladores/detallecobranza.controlador.php";
     require_once "controladores/consultamigo.controlador.php";
+    require_once "controladores/consultaruc.controlador.php";
 
 
     require_once "modelos/usuarios.modelo.php";

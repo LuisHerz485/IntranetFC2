@@ -145,7 +145,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
       }
     }
     } else {
-      $clienteRutas = ["escritoriocliente", "tributaria", "laboral", "auditoria", "./salirC", "upload",  "pagospendientes", "pagosrealizados"];
+      $clienteRutas = ["escritoriocliente", "tributaria", "laboral", "auditoria", "./salirC", "upload",  "pagospendientes", "pagosrealizados", "consulta"];
       include "vistas/modulos/templates/menucliente.php";
       if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
         include "vistas/modulos/paginas/cliente/" . $_GET['ruta'] . ".php";

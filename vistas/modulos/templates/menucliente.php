@@ -93,6 +93,13 @@
                 </ul>
             </li>
 
+            <li class="nav-header">HERRAMIENTAS</li>
+            <li class="nav-item" >
+                <a href="consulta" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Consulta RUC</p>
+            </li>
+
             <li class="nav-header">AYUDA</li>
             <li class="nav-item">
                 <a href="https://www.youtube.com/watch?v=VwHqLrttPJo&amp;ab_channel=FCCONTADORESYASOCIADOS" target="_blank" class="nav-link">
