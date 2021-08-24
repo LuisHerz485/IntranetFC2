@@ -41,7 +41,7 @@
                   
                     echo"<script>
                         Swal.fire({ 
-                            title:	'Success!',
+                            title:	'Correcto!',
                             text:	'¡Subida de archivo exitoso!',
                             icon:	'success',
                             confirmButtonText:	'Ok'

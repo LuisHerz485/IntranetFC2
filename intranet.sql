@@ -314,7 +314,7 @@ INSERT INTO `ubicacion` (`idubicacion`, `distrito`, `departamento`) VALUES
 
 create table localcliente(
 	idlocalcliente int auto_increment,
-        idcliente int,
+    idcliente int,
 	idubicacion int,
 	direccion varchar(150) not null,
 	CONSTRAINT fk_lc_c FOREIGN KEY (idcliente) REFERENCES cliente(idcliente),
@@ -530,6 +530,37 @@ create table constancia(
 	nota varchar(100),
 	CONSTRAINT fk_c_cob FOREIGN KEY (idcobranza) REFERENCES cobranza(idcobranza),
 	CONSTRAINT fk_c_dc FOREIGN KEY (iddetallecobranza) REFERENCES detallecobranza(iddetallecobranza)
+);
+
+
+/*=========================Modulo Check List================================*/
+
+CREATE TABLE checklist(
+	idchecklist int auto_incremet,
+	idtipousuario int,
+	iddepartamento int,
+	idusuario int,
+	fecha date not null,
+	CONSTRAINT fk_cl_tu FOREIGN KEY (idtipousuario) REFERENCES tipousuario(idtipousuario),
+	CONSTRAINT fk_cl_d FOREIGN KEY (iddepartamento) REFERENCES departamento(iddepartamento),
+	CONSTRAINT fk_cl_u FOREIGN KEY (idusuario) REFERENCES usuario(idusuario),
+	CONSTRAINT pk_lc PRIMARY KEY (idchecklist,idtipousuario,iddepartamento,idusuario)
+);
+
+CREATE TABLE estadochecklist(
+	idestadocheck int auto_incremet primary key,
+	nombre varchar(30) not null
+);
+
+CREATE TABLE detallechecklist(
+	iddetallechecklist int auto_incremet primary key,
+	idchecklist int not null,
+	idestadocheck int not null,
+	detalle varchar(200) not null,
+	horaInicio timestamp not null,
+	horaFin timestamp not null,
+	CONSTRAINT fk_dcl_cl FOREIGN KEY (idchecklist) REFERENCES checklist(idchecklist),
+	CONSTRAINT fk_dcl_ecl FOREIGN KEY (idestadocheck) REFERENCES estadochecklist(idestadocheck)
 );
 
 

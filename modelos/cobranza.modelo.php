@@ -17,14 +17,15 @@
             $stmt = null;
 		}
         
-        static public function mdlAgregarCobranza($valor1,$valor2,$valor3,$valor4,$valor5){
+        static public function mdlAgregarCobranza($valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
             $estado = "0";
             $conexion = Conexion::conectar();
-            $stmt = $conexion->prepare("INSERT INTO cobranza(idlocalcliente, idcliente, idubicacion, fechavencimiento, estado, descripcion) VALUES (:idlocalcliente, :idcliente, :idubicacion, :fechavencimiento, :estado, :descripcion)");
+            $stmt = $conexion->prepare("INSERT INTO cobranza(idlocalcliente, idcliente, idubicacion, fechavencimiento, fechaemision, estado, descripcion) VALUES (:idlocalcliente, :idcliente, :idubicacion, :fechavencimiento, :fechaemision, :estado, :descripcion)");
             $stmt -> bindParam(":idlocalcliente", $valor1,PDO::PARAM_STR);
             $stmt -> bindParam(":idcliente", $valor2,PDO::PARAM_STR);
             $stmt -> bindParam(":idubicacion", $valor3,PDO::PARAM_STR);
             $stmt -> bindParam(":fechavencimiento", $valor4,PDO::PARAM_STR);
+            $stmt -> bindParam(":fechaemision", $valor6, PDO::PARAM_STR);
             $stmt -> bindParam(":estado",$estado,PDO::PARAM_STR);
             $stmt -> bindParam(":descripcion",$valor5,PDO::PARAM_STR);
             if($stmt -> execute()){
