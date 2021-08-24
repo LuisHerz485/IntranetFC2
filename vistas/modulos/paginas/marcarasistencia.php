@@ -5,9 +5,9 @@
 	}	
 
 	if(isMobile()){
-?>
-<meta http-equiv="refresh" content="0; URL='https://fccontadores.com'"/>	
-<?php
+
+	echo "<script>windows.location='restringido'</script>";
+
 	}else{
 ?>
 	<div class="lockscreen-wrapper">
