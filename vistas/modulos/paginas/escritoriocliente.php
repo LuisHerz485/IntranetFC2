@@ -40,8 +40,6 @@
                             <div class="icon">
                                 <i class="fas fa-dollar-sign"></i>
                             </div>
-                            <p class="small-box-footer">Ingresar <i
-                                    class="fas fa-arrow-circle-right"></i></p>
                         </a>
                 </div>
                 
@@ -56,8 +54,6 @@
                             <div class="icon">
                                 <i class="fas fa-dollar-sign"></i>
                             </div>
-                            <p class="small-box-footer">Ingresar <i
-                                    class="fas fa-arrow-circle-right"></i></p>
                         </a>
                 </div>
                 <!-- ./col -->
