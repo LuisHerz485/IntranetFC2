@@ -6,7 +6,7 @@
 
 	if(isMobile()){
 
-	echo "<script>windows.location='restringido'</script>";
+	echo "<script>window.location='restringido'</script>";
 
 	}else{
 ?>
