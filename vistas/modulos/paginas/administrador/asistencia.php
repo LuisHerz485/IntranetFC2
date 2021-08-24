@@ -30,10 +30,10 @@
                   <thead>
                     <th class="no-exportar">Opciones</th>
                     <th class="no-exportar">Código</th>
-                    <th>Nombre Completo</th>
                     <th>Área</th>
-                    <th>Fecha</th>
+                    <th>Nombre Completo</th>
                     <th>Asistencia</th>
+                    <th>Fecha</th>
                     <th>Estado</th>
                     <th class="no-exportar">Detalle</th>
                   </thead>
@@ -46,10 +46,10 @@
                         echo '<tr>
                           <th scope="row"><button class="btn btn-warning btn-s btnEditarDetalle" fecha="'.$value['fecha'].'" codigo="'.$value['codigo'].'" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-pencil-alt"></i></button></th>
                           <td>'.$value['codigo'].'</td>
-                          <td>'.$value['nombre'].' '.$value['apellidos'].'</td>
                           <td>'.$value['area'].'</td>
-                          <td>'.$value['fecha'].'</td>
-                          <td>'.$value['asistencia'].'</td>';
+                          <td>'.$value['nombre'].' '.$value['apellidos'].'</td>
+                          <td>'.$value['asistencia'].'</td>
+                          <td>'.$value['fecha'].'</td>';
                           if($value['estado']=="0"){
                             echo'<td>Injustificado</td>';
                           }else if($value['estado']=="1"){
@@ -64,10 +64,10 @@
                   <tfoot>
                     <th>Opciones</th>
                     <th>Código</th>
-                    <th>Nombre Completo</th>
                     <th>Área</th>
-                    <th>Fecha</th>
+                    <th>Nombre Completo</th>
                     <th>Asistencia</th>
+                    <th>Fecha</th>
                     <th>Estado</th>
                     <th>Detalle</th>
                   </tfoot>   

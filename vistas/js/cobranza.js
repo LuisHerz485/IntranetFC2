@@ -17,6 +17,7 @@ function limpiarCobranza() {
     $("#iddistrito").find('option').remove();
     $("#iddireccion").find('option').remove();
     $("#fecha_vencimiento").val("");
+    $("#fecha_emision").val("");
     $("#descripcion").val("");
     $("#idplan").val([]).trigger("change");
     $("#precio").val("");
@@ -59,6 +60,27 @@ function listarLocal(idcliente) {
             console.log("Error", respuesta);
         }
     });
+}
+
+function getFechaActual() {
+    let fecha = new Date();
+    let mes = fecha.getMonth() + 1;
+    let dia = fecha.getDate();
+    let anho = fecha.getFullYear();
+    if (dia < 10)
+        dia = '0' + dia;
+    if (mes < 10)
+        mes = '0' + mes
+    return anho + "-" + mes + "-" + dia;
+}
+
+function getFechaMes() {
+    let fecha = new Date();
+    let mes = fecha.getMonth() + 1;
+    let anho = fecha.getFullYear();
+    if (mes < 10)
+        mes = '0' + mes
+    return anho + "-" + mes;
 }
 
 var btnSeleccion;
@@ -326,12 +348,16 @@ $("#idplan").change(function(){
     $('#precio').val($('#plan'+this.value).attr('precio'));
 });
 
+$('#fecha_emision').val(getFechaActual());
+$('#fecha_busquedaC').val(getFechaMes());
+
 $(".btnAgregarCobranza").click(function() {
     $("#mostrarCobranza > tbody").empty();
     var idlocalcliente = $("#idlocalcliente").val();
     var idcliente = $("#idcliente").val();
     var idubicacion = $("#idubicacion").val();
     var fecha_vencimiento = $("#fecha_vencimiento").val();
+    var fecha_emision = $("#fecha_emision").val();
     var descripcion = $("#descripcion").val();
     var idplan = $("#idplan").val();
     var precio = $('#precio').val();
@@ -341,11 +367,12 @@ $(".btnAgregarCobranza").click(function() {
     datos.append("idcliente", idcliente);
     datos.append("idubicacion", idubicacion);
     datos.append("fecha_vencimiento", fecha_vencimiento);
+    datos.append("fecha_emision", fecha_emision);
     datos.append("descripcion", descripcion);
     datos.append("idplan", idplan);
     datos.append("precio", precio);
     datos.append("nota", nota);
-    if (idlocalcliente && idubicacion && fecha_vencimiento && idplan && precio > 0) {
+    if (idlocalcliente && idubicacion && fecha_vencimiento && fecha_emision && idplan && precio > 0) {
         $.ajax({
         url: "ajax/cobranza.ajax.php",
         method: "POST",
@@ -376,6 +403,10 @@ $(".btnAgregarCobranza").click(function() {
         listarCobranzas(idcliente)
     }
     
+})
+
+$(".btnFiltro").click(function() {
+
 })
 
 init();

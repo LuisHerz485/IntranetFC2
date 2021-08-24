@@ -37,107 +37,43 @@
             
             <li class="nav-header">GENERAL</li>
             <li class="nav-item">
-                <a href="escritorio" class="nav-link">
+                <a href="escritoriocolaborador" class="nav-link">
                     <i class="fas fa-desktop"></i>
                     <p class="ml-5">Escritorio</p>
                 </a>
             </li>
 
-            <li class="nav-header">ADMINISTRACIÓN</li>
-            <li class="nav-item has-treeview">
+            <li class="nav-header">MI PERFIL</li>
+            <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="fas fa-folder"></i>
-                    <p style="font-size: 14px;">Administración de Usuarios<i class="right fas fa-angle-left"></i></p>
+                    <i class="fas fa-user"></i>
+                    <p class="ml-1"> Datos</p>
                 </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="usuarios" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Usuarios</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="tipousuario" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Tipo Usuario</p>
-                        </a>
-                    </li>
-                </ul>
             </li>
+            
+            <li class="nav-header">ADMINISTRACION</li>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                     <i class="fas fa-folder"></i>
-                    <p>Administración de Áreas<i class="right fas fa-angle-left"></i></p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="departamento" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Áreas</p>
-                        </a>
-                    </li>
-                </ul>
-            </li> 
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-folder"></i>
-                    <p>Asistencia<i class="right fas fa-angle-left"></i></p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="asistencia" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Registro de Asistencia</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="reportes" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Reportes</p>
-                        </a>
-                    </li>
-                </ul>
-            </li>    
-
-            <li class="nav-header">SEGUIMIENTO CLIENTES</li>
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-folder"></i>
-                    <p style="font-size: 14px;">Administración de Clientes<i class="right fas fa-angle-left"></i></p>
+                    <p style="font-size: 15px;" class="ml-1">Administración Personal<i class="right fas fa-angle-left"></i></p>
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="clientes" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Clientes</p>
+                            <p>Asistencia</p>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="clientes" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Check List</p>
                         </a>
                     </li>
                 </ul>
             </li>
-        <?php
-        if ($_SESSION['idtipousuario'] == 1) {?>
-            <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                    <i class="fas fa-folder"></i>
-                    <p>Cobranzas<i class="right fas fa-angle-left"></i></p>
-                </a>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="generarCobranza" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Generar Cobranza</p>
-                        </a>
-                    </li>
-                </ul>
-                <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                        <a href="mostrarcobranza" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Mostar Cobranza</p>
-                        </a>
-                    </li>
-                </ul>
-            </li> <?php } ?>
 
             <li class="nav-header">AYUDA</li>
             <li class="nav-item">

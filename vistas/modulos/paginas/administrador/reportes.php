@@ -56,10 +56,10 @@
                 <table id="mostrarReporte" class="table table-striped tablaDataAsistencia dt-responsive">
                   <thead>
                     <th class="no-exportar">Código</th>
-                    <th>Nombre Completo</th>
                     <th>Área</th>
-                    <th>Fecha</th>
+                    <th>Nombre Completo</th>
                     <th>Asistencia</th>
+                    <th>Fecha</th>
                     <th>Estado</th>
                     <th class="no-exportar">Detalle</th>
                   </thead>
@@ -67,10 +67,10 @@
                   </tbody>
                   <tfoot>
                     <th>Código</th>
-                    <th>Nombre Completo</th>
                     <th>Área</th>
-                    <th>Fecha</th>
+                    <th>Nombre Completo</th>
                     <th>Asistencia</th>
+                    <th>Fecha</th>
                     <th>Estado</th>
                     <th>Detalle</th>
                   </tfoot>   

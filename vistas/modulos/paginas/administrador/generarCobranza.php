@@ -84,11 +84,15 @@
                     
                   </select>
                 </div>
-                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                  <label>Fecha Emisión(*):</label>
+                  <input type="date" class="form-control" name="fecha_emision" id="fecha_emision">
+                </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
                   <label>Fecha Vencimiento(*):</label>
                   <input type="date" class="form-control" name="fecha_vencimiento" id="fecha_vencimiento">
                 </div>
-                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
                   <label>Planes / Servicio</label>
                   <select name="idplan" id="idplan" class="form-control select2" data-live-search="true" required>
                     <option value="0" >Seleccione Plan ...</option>
@@ -102,7 +106,7 @@
                     ?>
                   </select>
                 </div>
-                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
                   <label>Precio</label>
                   <input type="number" name="precio" id="precio" class="form-control">
                 </div>

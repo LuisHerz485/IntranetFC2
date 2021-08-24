@@ -111,20 +111,20 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "salir"];
+          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "salir"];
           include "vistas/modulos/templates/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
-            include "vistas/modulos/paginas/" . $_GET['ruta'] . ".php";
+            include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
           } else {
             include "vistas/modulos/paginas/404.php";
           }
           break;
         }
       case 2: {
-          $colaboradorRutas = ["escritorio", "asistencia", "salir"];
-          include "vistas/modulos/templates/menu-colaborador.php";
+          $colaboradorRutas = ["escritoriocolaborador", "asistencia", " salir"];
+          include "vistas/modulos/templates/menucolaborador.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
-            include "vistas/modulos/paginas/" . $_GET['ruta'] . "-colaborador.php";
+            include "vistas/modulos/paginas/colaborador/" . $_GET['ruta'] . ".php";
           } else {
             include "vistas/modulos/paginas/404.php";
           }
@@ -134,7 +134,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes","salir"];
           include "vistas/modulos/templates/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
-            include "vistas/modulos/paginas/" . $_GET['ruta'] . ".php";
+            include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
           } else {
             include "vistas/modulos/paginas/404.php";
           }
@@ -145,10 +145,10 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
       }
     }
     } else {
-      $clienteRutas = ["escritoriocliente", "tributaria", "laboral", "auditoria", "salirC", "upload",  "pagospendientes", "pagosrealizados"];
+      $clienteRutas = ["escritoriocliente", "tributaria", "laboral", "auditoria", "./salirC", "upload",  "pagospendientes", "pagosrealizados"];
       include "vistas/modulos/templates/menucliente.php";
       if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
-        include "vistas/modulos/paginas/" . $_GET['ruta'] . ".php";
+        include "vistas/modulos/paginas/cliente/" . $_GET['ruta'] . ".php";
       } else {
         include "vistas/modulos/paginas/404.php";
       }
