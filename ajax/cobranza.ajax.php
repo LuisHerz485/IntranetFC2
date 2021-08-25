@@ -14,6 +14,7 @@ class AjaxCobranza{
 		echo json_encode($respuesta);
 	}
 
+
 	public $idlocalcliente;
 	public $idcliente1;
 	public $idubicacion;
@@ -52,13 +53,30 @@ class AjaxCobranza{
 		$respuesta = ModeloCobranza::mdlActualizarCobranza($tabla,$item1,$valor1,$item2,$valor2);
 		$respuesta1 = ModeloDetalleCobranza::mdlActualizarDetalleCobranza($tabla1,$item1,$valor1,$item2,$valor2);
 	}
+
+	
+	public $fecha_busqueda;
+
+	public function ajaxMostrarPagosPendientes(){
+		$valor10 = $this->fecha_busqueda;
+		$respuesta = ControladorCobranza::ctrMostrarPagos($valor10);
+		echo json_encode($respuesta);
+	}
 }
+
 
 /* Mostrar Cobranza */
 if(isset($_POST["idcliente"])){
 	$mostrarCo = new AjaxCobranza();
 	$mostrarCo -> idcliente = $_POST["idcliente"];
 	$mostrarCo -> ajaxMostrarCobranza();
+}
+
+/* Mostrar Pagos Pendientes de Cobranza */
+if(isset($_POST["fecha_busqueda"])){
+	$mostrarPP = new AjaxCobranza();
+	$mostrarPP -> fecha_busqueda = $_POST["fecha_busqueda"];
+	$mostrarPP -> ajaxMostrarPagosPendientes();
 }
 
 /* Agregar Cobranza */

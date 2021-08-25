@@ -12,6 +12,14 @@ class AjaxConstancia{
 		echo json_encode($respuesta);
 	}
 
+	public $idconstancia;
+
+	public function ajaxMostrarHistorialPago(){
+		$valor = $this -> idconstancia;
+		$respuesta = ModeloConstancia::mdlMostrarHistorialPago($valor);
+		echo json_encode($respuesta);
+	}
+
 	public $iddetallecobranza;
 	public $fecha_pago;
 	public $tipo_pago;
@@ -35,6 +43,13 @@ if(isset($_POST["idcobranza"])){
 	$mostrarConst = new AjaxConstancia();
 	$mostrarConst -> idcobranza = $_POST["idcobranza"];
 	$mostrarConst -> ajaxMostrarConstancia();
+}
+
+/* Mostrar Historial de pagos de cobranza */
+if(isset($_POST["idconstancia"])){
+	$mostrarHis = new AjaxConstancia();
+	$mostrarHis -> idconstancia = $_POST["idconstancia"];
+	$mostrarHis -> ajaxMostrarHistorialPago();
 }
 
 /* Agregar Constancia*/

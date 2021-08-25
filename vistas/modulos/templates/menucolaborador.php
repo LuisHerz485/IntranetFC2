@@ -45,7 +45,7 @@
 
             <li class="nav-header">MI PERFIL</li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="perfil" class="nav-link btnEditarUsuario" onclick="mostrarform(true)" login="'.$value['usuario'].'">
                     <i class="fas fa-user"></i>
                     <p class="ml-1"> Datos</p>
                 </a>

@@ -1,5 +1,12 @@
 <?php 
 	class ControladorCobranza{
+
+			static public function ctrMostrarPagos($valor){
+				$tabla = "cobranza";
+				$respuesta = ModeloCobranza::mdlMostrarPagosPendientes($tabla,$valor);
+				return $respuesta;
+			}
+			
 		/*
 		static public function ctrCrearCobranza(){
 			if(isset($_POST['descripcion'])){

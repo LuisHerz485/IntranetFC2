@@ -121,7 +121,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 2: {
-          $colaboradorRutas = ["escritoriocolaborador" ,"asistencia", " salir"];
+          $colaboradorRutas = ["escritoriocolaborador" ,"asistencia", "salir", "perfil"];
           include "vistas/modulos/templates/menucolaborador.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
             include "vistas/modulos/paginas/colaborador/" . $_GET['ruta'] . ".php";

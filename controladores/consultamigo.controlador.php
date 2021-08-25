@@ -1,5 +1,5 @@
 <?php
-    define('codigo', 'jvmpi55cxYXITezZ6p1DHvgFNupBf7gauXGwp06ox1oIXRNdTbdz0sk2GesY');
+    define('codigo', 'vD9L90MFecktKQVRruIBfpg2Vfif4K7Szmq9inCFep3fWA6YTMjFfSVn5oNz');
 
 
     function tipodecambio(){
@@ -73,14 +73,14 @@
             Swal.fire({ 
                 title:	'Datos SUNAT:',
                 html: '<strong>RUC: </strong>' + '".$resultado['ruc']."' + '<br>' +
-                        '<strong>Nombre o Razon Social: </strong>' + '".$resultado['nombre_o_razon_social']."' + '<br>' +
+                        '<strong>Nombre o Razón Social: </strong>' + '".$resultado['nombre_o_razon_social']."' + '<br>' +
                         '<strong>Estado de Contribuyente: </strong>' + '".$resultado['estado_del_contribuyente']."' + '<br>' +
-                        '<strong>Condicion de Domicilio: </strong>' + '".$resultado['condicion_de_domicilio']."' + '<br>' + 
-                        '<strong>Direccion: </strong>' + '".$resultado['direccion']."' + '<br>' +
+                        '<strong>Condición de Domicilio: </strong>' + '".$resultado['condicion_de_domicilio']."' + '<br>' + 
+                        '<strong>Dirección: </strong>' + '".$resultado['direccion']."' + '<br>' +
                         '<strong>Distrito: </strong>' + '".$resultado['distrito']."' + '<br>' +
                         '<strong>Provincia: </strong>' + '".$resultado['provincia']."' + '<br>' +
                         '<strong>Departamento: </strong>' + '".$resultado['departamento']."' + '<br>' +
-                        '<strong>Fecha de Actualizacion: </strong>' + '".$resultado['actualizado_en']."' + '<br>' ,
+                        '<strong>Fecha de Actualización: </strong>' + '".$resultado['actualizado_en']."' + '<br>' ,
                 
                 icon:	'success',
                 confirmButtonText:	'Ok'

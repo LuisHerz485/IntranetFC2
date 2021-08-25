@@ -11,6 +11,16 @@
             $stmt = null;
         }
 
+        static public function mdlMostrarHistorialPago($valor){
+            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT CO.idconstancia as idconstancia, CO.idcobranza as idcobranza, CO.iddetallecobranza as iddetallecobranza, CO.fechapago as fecha_pago, CO.tipopago as tipo_pago, CO.monto as monto_const, CO.nota as nota_const
+                FROM constancia CO
+                WHERE CO.idconstancia = $valor");
+            $stmt -> execute();
+            return $stmt -> fetchAll();
+            $stmt -> close();
+            $stmt = null;
+        }
+
 		
         static public function mdlIngresarConstancia($valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
             $conexion = Conexion::conectar();

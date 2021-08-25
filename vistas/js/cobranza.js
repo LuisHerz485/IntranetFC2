@@ -86,6 +86,8 @@ function getFechaMes() {
 var btnSeleccion;
 var totalCuota;
 
+/* Lista de Cobranza principales por cliente*/
+
 function listarCobranzas(idcliente) {
     $("#mostrarCobranza > tbody").empty();
     $("#idcliente").val(idcliente);
@@ -142,7 +144,6 @@ function listarCobranzas(idcliente) {
             });
 
             $(".btnActivarC").click(function() {
-
                 Swal.fire({
                     title: '¿Seguro que deseas cambiar el estado de cobranza?',
                     showCancelButton: true,
@@ -165,8 +166,27 @@ function listarCobranzas(idcliente) {
                             success: function(respuesta) {
                                 totalCuota = 0; 
                                 $.each(respuesta, function(index, value){
-                                    $('#mostrarSubPagos > tbody').append("<tr><td>" + value.fecha_pago + "</td><td>" + value.monto_const+ "</td><td><a href=\"ajax/generarPDF.php?idconstancia="+value.idconstancia+"\" class=\"btn btn-warning btn-s\" target=\"_blank\"><i class=\"far fa-file-alt\"></i></a></td></tr>")
+                                    $('#mostrarSubPagos > tbody').append("<tr><td>" + value.fecha_pago + "</td><td>" + value.monto_const+ "</td><td><a href=\"ajax/generarPDF.php?idconstancia="+value.idconstancia+"\" class=\"btn btn-warning btn-s\" target=\"_blank\"><i class=\"far fa-file-alt\"></i></a> <button class=\"btn btn-info btn-s btnMostrarHisCob\" idconstancia="+ value.idconstancia +" value='"+ index +"' data-dismiss=\"modal\" data-toggle=\"modal\" href=\"#modalDetHisCob\"><i class=\"far fa-eye\"></i></button></td></tr>")
                                     totalCuota += Number.parseFloat(value.monto_const);
+                                });
+                                $('.btnMostrarHisCob').click(function() {
+                                    var datos = new FormData();
+                                    datos.append('idconstancia', $(this).attr('idconstancia'));
+                                    $.ajax({
+                                      url: 'ajax/constancia.ajax.php',
+                                      method: 'POST',
+                                      cache: false,
+                                      contentType: false,
+                                      processData: false,
+                                      dataType: 'json',
+                                      data: datos,
+                                      success: function (data) {
+                                        $('#modalmediopago').val(data[0].tipo_pago);
+                                        $('#modalfechapago').val(data[0].fecha_pago);
+                                        $('#modalobservacion').val(data[0].nota_const);
+                                        $('#modalmontopagado').val(data[0].monto_const);
+                                      },
+                                    });
                                 });
                                 $("#deuda").val((Number.parseFloat($(btnSeleccion).attr("monto")) - totalCuota).toFixed(2));
                                 if (Number.parseFloat($("#deuda").val()) == 0.00){
@@ -178,13 +198,14 @@ function listarCobranzas(idcliente) {
                         Swal.fire('Cambios no realizado', '', 'info')
                     }
                 })
-            })
+            });
         },
         error: function(respuesta) {
             console.log("Error", respuesta);
         }
     });
 }
+
 
 $(".btnPreConstancia").click(function() {
     var iddetallecobranza = $(btnSeleccion).attr("iddetallecobranza");
@@ -349,7 +370,7 @@ $("#idplan").change(function(){
 });
 
 $('#fecha_emision').val(getFechaActual());
-$('#fecha_busquedaC').val(getFechaMes());
+$('#fecha_busqueda').val(getFechaMes());
 
 $(".btnAgregarCobranza").click(function() {
     $("#mostrarCobranza > tbody").empty();
@@ -405,8 +426,119 @@ $(".btnAgregarCobranza").click(function() {
     
 })
 
-$(".btnFiltro").click(function() {
+$(".btnFiltroMes").click(function() {
+    $('#mostrarPendiente').DataTable().clear().draw(false);
+    var fecha_busqueda = $("#fecha_busqueda").val();
+    var datos = new FormData();
+    datos.append("fecha_busqueda", fecha_busqueda);
+    $.ajax({
+        url: "ajax/cobranza.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
+            $('#mostrarPendiente').DataTable().clear().draw();
+            $.each(respuesta, function(index, value) {
+                if (value.estado == 0) {
+                    $('#mostrarPendiente').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button id='btnEstado"+index+"' estado='0' idcobranza="+value.idcobranza+" class=\"btn btn-warning btn-s btnConstancia\" target=\"_blank\"><i class=\"fas fa-paste\"></i></button></abbr></div>", value.ruc,value.razonsocial, value.plan,value.monto, value.fechavencimiento, "<button class='btn btn-primary btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' indice="+index+" estado='0' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>Pendiente</button>"]).draw(false)
+                } else if (value.estado == 2) {
+                    $('#mostrarPendiente').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button id='btnEstado"+index+"' estado='0' idcobranza="+value.idcobranza+" class=\"btn btn-warning btn-s btnConstancia\" target=\"_blank\"><i class=\"fas fa-paste\"></i></button></abbr></div>", value.ruc,value.razonsocial, value.plan,value.monto, value.fechavencimiento, "<button class='btn btn-warning btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' indice="+index+" estado='2' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>A deuda</button>"]).draw(false)
+                }
+            });
+            $('.btnMostraDetCob').click(function() {
+                var datos = new FormData();
+                datos.append('idcobranza', $(this).attr('idcobranza'));
+                $('#modalDepartamento').val(respuesta[this.value].departamento);
+                $('#modalDistrito').val(respuesta[this.value].distrito);
+                $('#modalDireccion').val(respuesta[this.value].direccion);
+                $('#modalFechaEmision').val(respuesta[this.value].fechaemision);
+                $('#modelFechaVencimiento').val(respuesta[this.value].fechavencimiento);
+                $('#modalDescripcion').val(respuesta[this.value].descripcion);
+                $.ajax({
+                  url: 'ajax/detallecobranza.ajax.php',
+                  method: 'POST',
+                  cache: false,
+                  contentType: false,
+                  processData: false,
+                  dataType: 'json',
+                  data: datos,
+                  success: function (data) {
+                    $('#modalPlan').val(data[0].plan);
+                    $('#modalMonto').val(data[0].monto);
+                    $('#modalObservacion').val(data[0].observacion);
+                  },
+                });
+            });
 
+            $(".btnConstancia").click(function() {
+                window.open("ajax/generarPDF.php?idcobranza="+$(this).attr("idcobranza"));                    
+            });
+
+            $(".btnActivarC").click(function() {
+                Swal.fire({
+                    title: '¿Seguro que deseas cambiar el estado de cobranza?',
+                    showCancelButton: true,
+                    confirmButtonText: `Continuar`,
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        btnSeleccion = this;
+                        $("#modalConstancia").modal("show");
+                        $("#mostrarSubPagos > tbody").empty();
+                        var datos = new FormData();
+                        datos.append("idcobranza", $(this).attr("idcobranza"));
+                        $.ajax({
+                            url: "ajax/constancia.ajax.php",
+                            method: "POST",
+                            data: datos,
+                            cache: false,
+                            contentType: false,
+                            processData: false,
+                            dataType: "json",
+                            success: function(respuesta) {
+                                totalCuota = 0; 
+                                $.each(respuesta, function(index, value){
+                                    $('#mostrarSubPagos > tbody').append("<tr><td>" + value.fecha_pago + "</td><td>" + value.monto_const+ "</td><td><a href=\"ajax/generarPDF.php?idconstancia="+value.idconstancia+"\" class=\"btn btn-warning btn-s\" target=\"_blank\"><i class=\"far fa-file-alt\"></i></a> <button class=\"btn btn-info btn-s btnMostrarHisCob\" idconstancia="+ value.idconstancia +" value='"+ index +"' data-dismiss=\"modal\" data-toggle=\"modal\" href=\"#modalDetHisCob\"><i class=\"far fa-eye\"></i></button></td></tr>")
+                                    totalCuota += Number.parseFloat(value.monto_const);
+                                });
+                                $('.btnMostrarHisCob').click(function() {
+                                    var datos = new FormData();
+                                    datos.append('idconstancia', $(this).attr('idconstancia'));
+                                    $.ajax({
+                                      url: 'ajax/constancia.ajax.php',
+                                      method: 'POST',
+                                      cache: false,
+                                      contentType: false,
+                                      processData: false,
+                                      dataType: 'json',
+                                      data: datos,
+                                      success: function (data) {
+                                        $('#modalmediopago').val(data[0].tipo_pago);
+                                        $('#modalfechapago').val(data[0].fecha_pago);
+                                        $('#modalobservacion').val(data[0].nota_const);
+                                        $('#modalmontopagado').val(data[0].monto_const);
+                                      },
+                                    });
+                                });
+                                $("#deuda").val((Number.parseFloat($(btnSeleccion).attr("monto")) - totalCuota).toFixed(2));
+                                if (Number.parseFloat($("#deuda").val()) == 0.00){
+                                    Swal.fire('Cliente no tiene monto pendiente!', '', 'info')
+                                }
+                            }
+                        })                       
+                    } else if (result.isDenied) {
+                        Swal.fire('Cambios no realizado', '', 'info')
+                    }
+                })
+            });
+           
+        },
+        error: function(respuesta) {
+            console.log("Error", respuesta);
+        }
+    });
 })
 
 init();
