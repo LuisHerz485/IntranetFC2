@@ -26,8 +26,8 @@
             FROM constancia C 
             JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza
             JOIN cobranza Co ON C.idcobranza = Co.idcobranza
-            WHERE (DC.estado=1 OR DC.estado=2) AND YEAR(fechapago) = $valor
-            GROUP BY mes");
+            WHERE (DC.estado=1 OR DC.estado=2) AND YEAR(fechapago) = $valor 
+            GROUP BY mes ORDER BY fechapago");
             $stmt -> execute();
             return $stmt -> fetchAll();
             $stmt -> close();

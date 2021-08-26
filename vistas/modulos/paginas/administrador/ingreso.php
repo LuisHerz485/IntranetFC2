@@ -50,7 +50,7 @@
                   </div>
                 </div>
                 <div class="col-8">
-                  <table id="tablaIngresoMes" class="table table-striped tablaDataPIngreso dt-responsive">
+                  <table id="tablaIngresoMes" class="table table-striped tablaDataIngreso dt-responsive">
                     <thead>
                       <th>MES</th>
                       <th>MONTO</th>

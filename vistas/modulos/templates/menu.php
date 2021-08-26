@@ -143,8 +143,7 @@
                         </a>
                     </li>
                 </ul>
-            </li> <?php } ?>
-
+            </li> 
             <li class="nav-header">ECONOMÍA</li>
             <li class="nav-item">
                 <a href="ingreso" class="nav-link">
@@ -152,6 +151,10 @@
                     <p>Ingresos</p>
                 </a>
             </li>
+
+        <?php } ?>
+
+            
 
 
             <li class="nav-header">HERRAMIENTAS</li>
