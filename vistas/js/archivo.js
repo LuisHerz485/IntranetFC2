@@ -1,5 +1,5 @@
 $(".btnMostrarArchivos").click(function() {
-    $("#mostrarArchivo > tbody").empty();
+    $("#mostrarArchivo").DataTable().clear().draw(false);
     var idtipoarchivo = $("#idtipoarchivo").val();
     var idcliente = $("#idcliente").val();
     var datos = new FormData();

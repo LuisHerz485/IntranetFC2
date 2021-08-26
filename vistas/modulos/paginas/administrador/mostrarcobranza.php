@@ -9,8 +9,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Asistencia</a></li>
-              <li class="breadcrumb-item active">Reportes</li>
+              <li class="breadcrumb-item"><a href="#">Cobranza</a></li>
+              <li class="breadcrumb-item active">Relación de pagos pendientes</li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -69,7 +69,7 @@
 
 <!-- Modal Detalle Cobranza -->
 <div class="modal fade" id="modalDetCob" role="dialog">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form role="form" method="post" enctype="multipart/form-data">
       <div class="modal-content">
         <div class="modal-header">
@@ -136,7 +136,7 @@
 
 <!-- Modal estado de pago de cobranza -->
 <div class="modal fade" id="modalConstancia" role="document">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form role="form" method="post" enctype="multipart/form-data">
       <div class="modal-content">
         <div class="modal-header">
@@ -214,7 +214,7 @@
 
 <!-- Modal Detalle Historial de Pagos -->
 <div class="modal fade" id="modalDetHisCob" role="dialog">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form role="form" method="post" enctype="multipart/form-data">
       <div class="modal-content">
         <div class="modal-header">

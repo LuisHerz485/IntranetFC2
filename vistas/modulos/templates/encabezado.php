@@ -25,7 +25,7 @@
             <div class="dropdown-divider"></div>
             <?php
             if($_SESSION["cliente"] == "si"){
-              echo '<a href="salirC" class="dropdown-item">';
+              echo '<a href="salir" class="dropdown-item">';
             }else{
               echo '<a href="salir" class="dropdown-item">';
             }

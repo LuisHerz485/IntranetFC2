@@ -107,11 +107,13 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   echo '<body class="hold-transition sidebar-mini layout-fixed">';
   echo '<div class="wrapper">';
   include "vistas/modulos/templates/encabezado.php";
-
+  if(isset($_GET['ruta']) && $_GET['ruta']=="salir"){
+    include "vistas/modulos/paginas/salir.php";
+ }else 
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "salir", "consultadni", "consultaruc"];
+          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza" , "mostrarpagado", "consultadni", "consultaruc", "ingreso"];
           include "vistas/modulos/templates/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -121,7 +123,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 2: {
-          $colaboradorRutas = ["escritoriocolaborador" ,"asistencia", "salir", "perfil"];
+          $colaboradorRutas = ["escritoriocolaborador" ,"asistencia",  "perfil"];
           include "vistas/modulos/templates/menucolaborador.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
             include "vistas/modulos/paginas/colaborador/" . $_GET['ruta'] . ".php";
@@ -131,7 +133,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 3: {
-          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes","salir", "consultaruc", "consultadni"];
+          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "consultaruc", "consultadni"];
           include "vistas/modulos/templates/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -145,7 +147,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
       }
     }
     } else {
-      $clienteRutas = ["escritoriocliente", "tributaria", "laboral", "auditoria", "salirC", "upload",  "pagospendientes", "pagosrealizados", "consultaruc", "consultadni"];
+      $clienteRutas = ["escritoriocliente", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados", "consultaruc", "consultadni"];
       include "vistas/modulos/templates/menucliente.php";
       if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
         include "vistas/modulos/paginas/cliente/" . $_GET['ruta'] . ".php";
@@ -187,7 +189,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   <script src="vistas/js/select2.js"></script>
   <script src="vistas/js/menu.js"></script>
   <script src="vistas/js/servicio.js"></script>
-  
+  <script src="vistas/js/economia.js"></script>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

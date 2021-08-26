@@ -21,6 +21,19 @@
             $stmt = null;
         }
 
+        static public function mdlMostrarIngresoMes($valor){
+            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT SUM(C.monto) as monto, ELT(MONTH(C.fechapago), 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre') as mes
+            FROM constancia C 
+            JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza
+            JOIN cobranza Co ON C.idcobranza = Co.idcobranza
+            WHERE (DC.estado=1 OR DC.estado=2) AND YEAR(fechapago) = $valor
+            GROUP BY mes");
+            $stmt -> execute();
+            return $stmt -> fetchAll();
+            $stmt -> close();
+            $stmt = null;
+        }
+
 		
         static public function mdlIngresarConstancia($valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
             $conexion = Conexion::conectar();

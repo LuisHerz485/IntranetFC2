@@ -4,7 +4,7 @@
     session_destroy();
 
     echo "<script>
-        window.location = 'login';
+        window.location = './';
     </script>";
 
     

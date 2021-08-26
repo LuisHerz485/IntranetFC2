@@ -133,11 +133,26 @@
                     <li class="nav-item">
                         <a href="mostrarcobranza" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Mostar Cobranza</p>
+                            <p>Mostrar Cobranza</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="mostrarpagado" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Mostrar Pagados</p>
                         </a>
                     </li>
                 </ul>
             </li> <?php } ?>
+
+            <li class="nav-header">ECONOMÍA</li>
+            <li class="nav-item">
+                <a href="ingreso" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Ingresos</p>
+                </a>
+            </li>
+
 
             <li class="nav-header">HERRAMIENTAS</li>
             <li class="nav-item">
@@ -161,6 +176,7 @@
                 </ul>
             </li>
 
+            
             <li class="nav-header">AYUDA</li>
             <li class="nav-item">
                 <a href="https://www.youtube.com/watch?v=VwHqLrttPJo&amp;ab_channel=FCCONTADORESYASOCIADOS" target="_blank" class="nav-link">

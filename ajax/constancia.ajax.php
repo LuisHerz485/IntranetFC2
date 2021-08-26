@@ -20,6 +20,13 @@ class AjaxConstancia{
 		echo json_encode($respuesta);
 	}
 
+	public $fecha_ingreso;
+	public function ajaxMostrarIngresoMes(){
+		$valor = $this -> fecha_ingreso;
+		$respuesta = ModeloConstancia::mdlMostrarIngresoMes($valor);
+		echo json_encode($respuesta);
+	}
+
 	public $iddetallecobranza;
 	public $fecha_pago;
 	public $tipo_pago;
@@ -33,7 +40,6 @@ class AjaxConstancia{
 		$valor4 = $this -> tipo_pago;
 		$valor5 = $this -> monto_const;
 		$valor6 = $this -> nota_const;
-
 		$respuesta1 = ModeloConstancia::mdlIngresarConstancia($valor1,$valor2,$valor3,$valor4,$valor5,$valor6);
 	}
 }
@@ -50,6 +56,13 @@ if(isset($_POST["idconstancia"])){
 	$mostrarHis = new AjaxConstancia();
 	$mostrarHis -> idconstancia = $_POST["idconstancia"];
 	$mostrarHis -> ajaxMostrarHistorialPago();
+}
+
+/* Mostrar Ingreso general de pagos por mes */
+if(isset($_POST["fecha_ingreso"])){
+	$mostrarHis = new AjaxConstancia();
+	$mostrarHis -> fecha_ingreso = $_POST["fecha_ingreso"];
+	$mostrarHis -> ajaxMostrarIngresoMes();
 }
 
 /* Agregar Constancia*/

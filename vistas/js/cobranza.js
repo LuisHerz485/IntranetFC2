@@ -5,7 +5,8 @@ function init() {
 function mostrarformDC(flag) {
     if (flag) {
         $("#listadoGC").hide();
-        $("#formularioGC").show();  
+        $("#formularioGC").show();
+        $("#fecha_emision").val(getFechaActual());
     } else {
         $("#listadoGC").show();
         $("#formularioGC").hide();
@@ -369,7 +370,6 @@ $("#idplan").change(function(){
     $('#precio').val($('#plan'+this.value).attr('precio'));
 });
 
-$('#fecha_emision').val(getFechaActual());
 $('#fecha_busqueda').val(getFechaMes());
 
 $(".btnAgregarCobranza").click(function() {
@@ -428,6 +428,7 @@ $(".btnAgregarCobranza").click(function() {
 
 $(".btnFiltroMes").click(function() {
     $('#mostrarPendiente').DataTable().clear().draw(false);
+    $('#mostrarPagado').DataTable().clear().draw(false);
     var fecha_busqueda = $("#fecha_busqueda").val();
     var datos = new FormData();
     datos.append("fecha_busqueda", fecha_busqueda);
@@ -441,11 +442,14 @@ $(".btnFiltroMes").click(function() {
         dataType: "json",
         success: function(respuesta) {
             $('#mostrarPendiente').DataTable().clear().draw();
+            $('#mostrarPagado').DataTable().clear().draw();
             $.each(respuesta, function(index, value) {
                 if (value.estado == 0) {
                     $('#mostrarPendiente').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button id='btnEstado"+index+"' estado='0' idcobranza="+value.idcobranza+" class=\"btn btn-warning btn-s btnConstancia\" target=\"_blank\"><i class=\"fas fa-paste\"></i></button></abbr></div>", value.ruc,value.razonsocial, value.plan,value.monto, value.fechavencimiento, "<button class='btn btn-primary btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' indice="+index+" estado='0' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>Pendiente</button>"]).draw(false)
                 } else if (value.estado == 2) {
                     $('#mostrarPendiente').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button id='btnEstado"+index+"' estado='0' idcobranza="+value.idcobranza+" class=\"btn btn-warning btn-s btnConstancia\" target=\"_blank\"><i class=\"fas fa-paste\"></i></button></abbr></div>", value.ruc,value.razonsocial, value.plan,value.monto, value.fechavencimiento, "<button class='btn btn-warning btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' indice="+index+" estado='2' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>A deuda</button>"]).draw(false)
+                } else if (value.estado == 1) {
+                    $('#mostrarPagado').DataTable().row.add(["<div scope=\"row\" class=\"text-center\"><abbr title=\"Ver Detalles\"><button class=\"btn btn-info btn-s btnMostraDetCob\" idcobranza="+ value.idcobranza +" value='"+ index +"' data-toggle=\"modal\" data-target=\"#modalDetCob\"><i class=\"far fa-eye\"></i></button></abbr> <abbr title=\"Constancia\"><button id='btnEstado"+index+"' estado='0' idcobranza="+value.idcobranza+" class=\"btn btn-warning btn-s btnConstancia\" target=\"_blank\"><i class=\"fas fa-paste\"></i></button></abbr></div>", value.ruc,value.razonsocial, value.plan,value.monto, value.fechavencimiento, "<button class='btn btn-success btn-xs btnActivarC' iddetallecobranza='" + value.iddetallecobranza + "' idcobranza='" + value.idcobranza + "' indice="+index+" estado='1' onclick=\"limpiarPreConstancia()\" monto='" + value.monto + "'>Pagado</button>"]).draw(false)
                 }
             });
             $('.btnMostraDetCob').click(function() {
