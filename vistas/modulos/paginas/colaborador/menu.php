@@ -43,13 +43,7 @@
                 </a>
             </li>
 
-            <li class="nav-header">MI PERFIL</li>
-            <li class="nav-item">
-                <a href="perfil" class="nav-link btnEditarUsuario" onclick="mostrarform(true)" login="'.$value['usuario'].'">
-                    <i class="fas fa-user"></i>
-                    <p class="ml-1"> Datos</p>
-                </a>
-            </li>
+            
             
             <li class="nav-header">ADMINISTRACION</li>
             <li class="nav-item has-treeview">
@@ -67,7 +61,7 @@
                 </ul>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="clientes" class="nav-link">
+                        <a href="checklist" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Check List</p>
                         </a>

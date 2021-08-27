@@ -38,7 +38,7 @@
             
             <li class="nav-header">GENERAL</li>
             <li class="nav-item">
-                <a href="escritoriocliente" class="nav-link">
+                <a href="escritorio" class="nav-link">
                     <i class="fas fa-desktop"></i>
                     <p class="ml-5">Escritorio</p>
                 </a>

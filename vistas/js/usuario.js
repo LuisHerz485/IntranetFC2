@@ -2,7 +2,7 @@ function init() {
     mostrarform(false);
 }
 
-function limpiar() {
+function limpiarUsuario() {
     $("#editar").val("no");
     $("#iddepartamento option:selected").removeAttr("selected");
     $("#iddepartamento option[value=0]").attr("selected", true);
@@ -34,7 +34,7 @@ function mostrarform(flag) {
 }
 
 function cancelarform() {
-    limpiar();
+    limpiarUsuario();
     $("#claves").css("display", "none");
     mostrarform(false);
 }
@@ -76,7 +76,7 @@ $(".nuevaFoto").change(function() {
     }
 })
 
-$(".btnActivarUs").click(function() {
+$(".btnActivarUs").click(function() { 
     var login = $(this).attr("login");
     var estado = $(this).attr("estado");
     var datos = new FormData();

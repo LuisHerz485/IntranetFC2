@@ -24,7 +24,7 @@
 								$_SESSION['estado']=$respuesta['estado'];
 								$_SESSION['imagen']= $respuesta['imagen'];				  
 								echo '<script>
-									window.location="escritoriocliente";
+									window.location="escritorio";
 								</script>';
 							}else{
 								echo("<br /><div class='alert alert-danger'>Usuario inactivo, contacte al administrador del sistema</div>");
