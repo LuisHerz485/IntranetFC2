@@ -142,6 +142,16 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           }
           break;
         }
+      case 4: {
+          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "reportes", "consultaruc", "consultadni"];
+          include "vistas/modulos/paginas/administrador/menu.php";
+          if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
+            include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
+          } else {
+            include "vistas/modulos/paginas/404.php";
+          }
+          break;
+        }
       default: {
         include "vistas/modulos/paginas/salir.php";
       }
@@ -190,6 +200,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   <script src="vistas/js/menu.js"></script>
   <script src="vistas/js/servicio.js"></script>
   <script src="vistas/js/economia.js"></script>
+  <script src="vistas/js/checklist.js"></script>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

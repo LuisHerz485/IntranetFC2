@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row ml-5 mr-5">
-                <div class="col-lg-6 col-6">
+                <div class="col-lg-3 col-3">
                     <!-- small box -->
                     <a href="usuarios" class="small-box bg-primary">
                         <div class="inner">
@@ -39,9 +39,9 @@
                     </a>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-6 col-6">
+                <div class="col-lg-3 col-3">
                     <!-- small box -->
-                    <a href="asistencia" class="small-box bg-success">
+                    <a href="asistencia" class="small-box bg-primary">
                         <div class="inner">
                             <h3>Asistencia</h3>
 
@@ -54,10 +54,13 @@
                                 class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
+                
+                <?php 
+                if ($_SESSION['idtipousuario'] != 4) {?>
                 <!-- ./col -->
-                <div class="col-lg-6 col-6">
+                <div class="col-lg-3 col-3">
                     <!-- small box -->
-                    <a href="clientes" class="small-box bg-info">
+                    <a href="clientes" class="small-box bg-primary">
                         <div class="inner">
                             <h3>Clientes</h3>
 
@@ -71,9 +74,9 @@
                     </a>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-6 col-6">
+                <div class="col-lg-3 col-3">
                     <!-- small box -->
-                    <a href="generarCobranza" class="small-box bg-danger">
+                    <a href="generarCobranza" class="small-box bg-primary">
                         <div class="inner">
                             <h3>Cobranzas</h3>
 
@@ -86,9 +89,10 @@
                                 class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
+            <?php } ?>
                 <!-- ./col -->
-                <div class="col-lg-12 col-12">
-                    <!-- small box -->
+                <!--<div class="col-lg-12 col-12">
+                    small box
                     <a href="https://fccontadores.com:2096/" class="small-box bg-orange" target="_blank">
                         <div class="inner">
                             <h3>Webmail</h3>
@@ -101,7 +105,7 @@
                         <p class="small-box-footer">Ingresar <i
                                 class="fas fa-arrow-circle-right"></i></p>
                     </a>
-                </div>
+                </div>-->
                 <!-- ./col -->
             </div>
         </div><!-- /.container-fluid -->

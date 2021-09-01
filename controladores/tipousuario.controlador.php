@@ -23,7 +23,7 @@
 						if($respuesta =="ok"){
 							echo"<script>
 								Swal.fire({ 
-									title: 'Success!',
+									title: 'Correcto!',
 									text: '¡Tipo Usuario creado correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'
@@ -39,7 +39,7 @@
 						if($respuesta =="ok"){
 							echo"<script>
 								Swal.fire({ 
-									title: 'Success!',
+									title: 'Actualizado!',
 									text: '¡El Tipo Usuario se modificó correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'

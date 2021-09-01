@@ -11,7 +11,7 @@
 	                    $clavehash=hash("SHA256", $_POST['password']);
 
 	                    if($respuesta && $respuesta['usuario']==$_POST['usuario'] && $respuesta['password1']==$clavehash){
-							if($respuesta['idtipousuario'] == 1 || $respuesta['idtipousuario'] == 2|| $respuesta['idtipousuario'] == 3){
+							if($respuesta['idtipousuario'] == 1 || $respuesta['idtipousuario'] == 2|| $respuesta['idtipousuario'] == 3 || $respuesta['idtipousuario'] == 4){
 								if($respuesta['estado']== 1){
 									$_SESSION['iniciarSesion']="ok";
 									$_SESSION['cliente']="no";
@@ -98,7 +98,7 @@
 						if($respuesta =="ok"){
 							echo"<script>
 								Swal.fire({ 
-									title: 'Success!',
+									title: 'Correcto!',
 									text: '¡El usuario se creo correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'
@@ -116,7 +116,7 @@
 								Swal.fire({ 
 									title: 'Actualizado!',
 									text: '¡El usuario se modificó correctamente!',
-									icon: 'success',
+									icon: 'Actualiazado',
 									confirmButtonText:'Ok'
 									}).then((result)=>{
 										if(result.value){

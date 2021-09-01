@@ -6,9 +6,7 @@
                 FROM constancia CO
                 WHERE CO.idcobranza = $valor");
             $stmt -> execute();
-            return $stmt -> fetchAll();
-            $stmt -> close();
-            $stmt = null;
+            return $stmt -> fetchAll(); 
         }
 
         static public function mdlMostrarHistorialPago($valor){
@@ -16,9 +14,7 @@
                 FROM constancia CO
                 WHERE CO.idconstancia = $valor");
             $stmt -> execute();
-            return $stmt -> fetchAll();
-            $stmt -> close();
-            $stmt = null;
+            return $stmt -> fetchAll(); 
         }
 
         static public function mdlMostrarIngresoMes($valor){
@@ -29,11 +25,20 @@
             WHERE (DC.estado=1 OR DC.estado=2) AND YEAR(fechapago) = $valor 
             GROUP BY mes ORDER BY fechapago");
             $stmt -> execute();
-            return $stmt -> fetchAll();
-            $stmt -> close();
-            $stmt = null;
+            return $stmt -> fetchAll(); 
         }
 
+        static public function mdlMostrarIngresoAnualCliente($anho, $idcliente){
+            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT SUM(C.monto) AS monto, ELT( MONTH(C.fechapago), 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ) AS mes, Cli.razonsocial FROM constancia C JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza JOIN cobranza Co ON C.idcobranza = Co.idcobranza JOIN cliente Cli ON Cli.idcliente = Co.idcliente WHERE (DC.estado = 1 OR DC.estado = 2) AND YEAR(fechapago) = $anho AND Cli.idcliente = $idcliente GROUP BY mes ORDER BY fechapago");
+            $stmt -> execute();
+            return $stmt -> fetchAll(); 
+        }
+
+        static public function mdlMostrarIngresoCliente($anho){
+            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT SUM(C.monto) AS monto, Cli.razonsocial as cliente FROM constancia C JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza JOIN cobranza Co ON C.idcobranza = Co.idcobranza JOIN cliente Cli ON Cli.idcliente = Co.idcliente WHERE (DC.estado = 1 OR DC.estado = 2) AND YEAR(fechapago) = $anho GROUP BY cliente ORDER BY monto DESC");
+            $stmt -> execute();
+            return $stmt -> fetchAll(); 
+        }
 		
         static public function mdlIngresarConstancia($valor1,$valor2,$valor3,$valor4,$valor5,$valor6){
             $conexion = Conexion::conectar();
@@ -48,9 +53,7 @@
                 return "ok";
             }else{
                 return "error";
-            }
-            $stmt -> close();
-            $stmt = null;
+            } 
         } 
 
         static public function mdlDataConstancia($valor){
@@ -60,9 +63,7 @@
                 return $stmt -> fetch(PDO::FETCH_ASSOC);
             }else{
                 return null;
-            }
-            $stmt -> close();
-            $stmt = null;
+            } 
         }
 
         static public function mdlDataPreConstancia($valor){
@@ -72,9 +73,7 @@
                 return $stmt -> fetch(PDO::FETCH_ASSOC);
             }else{
                 return null;
-            }
-            $stmt -> close();
-            $stmt = null;
+            } 
         }
 /*
         static public function mdlActualizarConstancia($tabla,$item1,$valor1,$item2,$valor2){

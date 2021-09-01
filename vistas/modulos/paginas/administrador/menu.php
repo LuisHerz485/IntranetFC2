@@ -99,6 +99,8 @@
                 </ul>
             </li>    
 
+            <?php 
+                if ($_SESSION['idtipousuario'] != 4) {?>
             <li class="nav-header">SEGUIMIENTO CLIENTES</li>
             <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
@@ -114,6 +116,7 @@
                     </li>
                 </ul>
             </li>
+            <?php } ?>
         <?php
         if ($_SESSION['idtipousuario'] == 1) {?>
             <li class="nav-item has-treeview">
