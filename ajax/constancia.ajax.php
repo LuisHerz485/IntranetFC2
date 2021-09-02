@@ -27,6 +27,22 @@ class AjaxConstancia{
 		echo json_encode($respuesta);
 	}
 
+	public $fecha_anho;
+	public $idcliente;
+	public function ajaxMsotrarIngresoCliente(){
+		$valor = $this -> fecha_anho;
+		$valor1 = $this -> idcliente;
+		$respuesta = ModeloConstancia::mdlMostrarIngresoAnualCliente($valor,$valor1);
+		echo json_encode($respuesta);
+	}
+
+	public $fecha_ranking;
+	public function ajaxMostrarIngresoRanking(){
+		$valor = $this -> fecha_ranking;
+		$respuesta = ModeloConstancia::mdlMostrarIngresoCliente($valor);
+		echo json_encode($respuesta);
+	}
+
 	public $iddetallecobranza;
 	public $fecha_pago;
 	public $tipo_pago;
@@ -60,9 +76,24 @@ if(isset($_POST["idconstancia"])){
 
 /* Mostrar Ingreso general de pagos por mes */
 if(isset($_POST["fecha_ingreso"])){
-	$mostrarHis = new AjaxConstancia();
-	$mostrarHis -> fecha_ingreso = $_POST["fecha_ingreso"];
-	$mostrarHis -> ajaxMostrarIngresoMes();
+	$mostrarIngEmp = new AjaxConstancia();
+	$mostrarIngEmp -> fecha_ingreso = $_POST["fecha_ingreso"];
+	$mostrarIngEmp -> ajaxMostrarIngresoMes();
+}
+
+/* Mostrar Ingreso de clientes*/
+if(isset($_POST["idcliente"])){
+	$mostrarIngCli = new AjaxConstancia();
+	$mostrarIngCli -> idcliente = $_POST["idcliente"];
+	$mostrarIngCli -> fecha_anho = $_POST["fecha_anho"];
+	$mostrarIngCli -> ajaxMsotrarIngresoCliente();
+}
+
+/* Mostrar Ingreso de clientes - ranking*/ 
+if(isset($_POST["fecha_ranking"])){
+	$mostrarIngRan = new AjaxConstancia();
+	$mostrarIngRan -> fecha_ranking = $_POST["fecha_ranking"];
+	$mostrarIngRan -> ajaxMostrarIngresoRanking();
 }
 
 /* Agregar Constancia*/

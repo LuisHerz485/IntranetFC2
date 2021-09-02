@@ -131,8 +131,6 @@
                             <p>Generar Cobranza</p>
                         </a>
                     </li>
-                </ul>
-                <ul class="nav nav-treeview">
                     <li class="nav-item">
                         <a href="mostrarcobranza" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
@@ -149,10 +147,30 @@
             </li> 
             <li class="nav-header">ECONOMÍA</li>
             <li class="nav-item">
-                <a href="ingreso" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Ingresos</p>
+                <a href="#" class="nav-link">
+                    <i class="fas fa-folder"></i>
+                    <p>Ingresos<i class="right fas fa-angle-left"></i></p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="ingreso" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Empresa</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ingresocliente" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Clientes</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="ingresoanualcliente" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Ranking</p>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
         <?php } ?>

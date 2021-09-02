@@ -113,7 +113,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza" , "mostrarpagado", "consultadni", "consultaruc", "ingreso"];
+          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza" , "mostrarpagado", "consultadni", "consultaruc", "ingreso", "ingresocliente", "ingresoanualcliente"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";

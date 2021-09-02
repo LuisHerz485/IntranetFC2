@@ -26,3 +26,66 @@ $(".btnIngreso").click(function() {
     });
     }
 );
+
+$(".btnIngresoCliente").click(function() {
+    $("#tablaIngresoCliente").DataTable().clear().draw(false);
+    var idcliente = $("#idcliente").val();
+    var fecha_anho = $("#fecha_anho").val();
+    var datos = new FormData();
+    datos.append("idcliente", idcliente);
+    datos.append("fecha_anho", fecha_anho);
+    $.ajax({
+        url: "ajax/constancia.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) {
+            let ingresoAnual = 0;
+            $.each(respuesta, function(index, value) {
+                /* Vamos agregando a nuestra tabla las filas necesarias */
+                ingresoAnual += parseFloat(value.monto);
+                $("#tablaIngresoCliente").DataTable().row.add([value.mes, value.monto]).draw(false);
+            });
+            $('#TotalAnyo').text(ingresoAnual);
+        },
+        error: function(respuesta) {
+            console.log("Error", respuesta);
+        }
+    });
+    }
+);
+
+$(".btnIngresoRanking").click(function() {
+    $("#tablaIngresoRanking").DataTable().clear().draw(false);
+    var fecha_ranking = $("#fecha_ranking").val();
+    var datos = new FormData();
+    datos.append("fecha_ranking", fecha_ranking);
+    $.ajax({
+        url: "ajax/constancia.ajax.php",
+        method: "POST",
+        data: datos,
+        cache: false,
+        contentType: false,
+        processData: false,
+        dataType: "json",
+        success: function(respuesta) { 
+            let min = {monto: Infinity,razonsocial: ""};
+            let max = {monto: 0,razonsocial: ""};
+            $.each(respuesta, function(index, value) { 
+                let monto = parseFloat(value.monto) ;
+                if(min.monto > monto) { min.monto = monto; min.razonsocial = value.razonsocial}
+                if(max.monto < monto) { max.monto = monto; max.razonsocial = value.razonsocial}
+                $("#tablaIngresoRanking").DataTable().row.add([value.razonsocial, monto]).draw(false);
+            });
+            $('#montomayor').text(max.razonsocial+" - S/."+max.monto);
+            $('#montomenor').text(min.razonsocial+" - S/."+min.monto); 
+        },
+        error: function(respuesta) {
+            console.log("Error", respuesta);
+        }
+    });
+    }
+);

@@ -22,20 +22,20 @@
             FROM constancia C 
             JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza
             JOIN cobranza Co ON C.idcobranza = Co.idcobranza
-            WHERE (DC.estado=1 OR DC.estado=2) AND YEAR(fechapago) = $valor 
+            WHERE (DC.estado = 1 OR DC.estado = 2) AND YEAR(fechapago) = $valor 
             GROUP BY mes ORDER BY fechapago");
             $stmt -> execute();
             return $stmt -> fetchAll(); 
         }
 
         static public function mdlMostrarIngresoAnualCliente($anho, $idcliente){
-            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT SUM(C.monto) AS monto, ELT( MONTH(C.fechapago), 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre' ) AS mes, Cli.razonsocial FROM constancia C JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza JOIN cobranza Co ON C.idcobranza = Co.idcobranza JOIN cliente Cli ON Cli.idcliente = Co.idcliente WHERE (DC.estado = 1 OR DC.estado = 2) AND YEAR(fechapago) = $anho AND Cli.idcliente = $idcliente GROUP BY mes ORDER BY fechapago");
+            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT SUM(C.monto) AS monto, ELT( MONTH(C.fechapago), 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre') AS mes FROM constancia C JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza JOIN cobranza Co ON C.idcobranza = Co.idcobranza JOIN cliente Cli ON Cli.idcliente = Co.idcliente WHERE (DC.estado = 1 OR DC.estado = 2) AND YEAR(fechapago) = $anho AND Cli.idcliente = $idcliente GROUP BY mes ORDER BY fechapago");
             $stmt -> execute();
             return $stmt -> fetchAll(); 
         }
 
         static public function mdlMostrarIngresoCliente($anho){
-            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT SUM(C.monto) AS monto, Cli.razonsocial as cliente FROM constancia C JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza JOIN cobranza Co ON C.idcobranza = Co.idcobranza JOIN cliente Cli ON Cli.idcliente = Co.idcliente WHERE (DC.estado = 1 OR DC.estado = 2) AND YEAR(fechapago) = $anho GROUP BY cliente ORDER BY monto DESC");
+            $stmt = Conexion::conectar()->prepare("SELECT DISTINCT SUM(C.monto) AS monto, Cli.razonsocial as razonsocial FROM constancia C JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza JOIN cobranza Co ON C.idcobranza = Co.idcobranza JOIN cliente Cli ON Cli.idcliente = Co.idcliente WHERE (DC.estado = 1 OR DC.estado = 2) AND YEAR(fechapago) = $anho GROUP BY razonsocial ORDER BY monto DESC");
             $stmt -> execute();
             return $stmt -> fetchAll(); 
         }
