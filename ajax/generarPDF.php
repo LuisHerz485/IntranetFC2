@@ -17,9 +17,10 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 
   $dataConstancia = null;
   if (isset($_GET["idcobranza"])) {
-    $dataConstancia = ModeloConstancia::mdlDataConstancia($_GET["idcobranza"]);
+
+    $dataConstancia = ModeloConstancia::mdlDataConstancia(intval($_GET["idcobranza"]));
   } else if (isset($_GET["idconstancia"])) {
-    $dataConstancia = ModeloConstancia::mdlDataPreConstancia($_GET["idconstancia"]);
+    $dataConstancia = ModeloConstancia::mdlDataPreConstancia(intval($_GET["idconstancia"]));
   }
 
   if ($dataConstancia && isset($dataConstancia['iddetallecobranza'])) {
@@ -172,7 +173,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
       </body>';
     if (($info["montoTotal"] - $info["totalRecibido"]) == 0) {
       $mpdf->SetWatermarkImage('../vistas/img/sello/watermark_cancelado.png', 1);
-    } else{
+    } else {
       $mpdf->SetWatermarkImage('../vistas/img/sello/watermark.png', 1);
     }
     $mpdf->showWatermarkImage = true;

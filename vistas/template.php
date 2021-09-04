@@ -1,6 +1,7 @@
 <?php session_start() ?>
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +10,7 @@
   <meta property="og:title" content="Intranet FC Contadores" />
   <meta property="og:url" content="https://intranet.fccontadores.com/" />
   <meta property="og:description" content="Sistema de Control de FC Contadores & Asociados S.A.C.">
-  <meta property="og:image" itemprop="image" content="vistas/dist/img/url.jpg"/>
+  <meta property="og:image" itemprop="image" content="vistas/dist/img/url.jpg" />
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="en_GB" />
 
@@ -55,7 +56,7 @@
   <script src="vistas/plugins/jquery-ui/jquery-ui.min.js"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
-  $.widget.bridge('uibutton', $.ui.button)
+    $.widget.bridge('uibutton', $.ui.button)
   </script>
   <!-- Bootstrap 4 -->
   <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -107,15 +108,15 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   echo '<body class="hold-transition sidebar-mini layout-fixed">';
   echo '<div class="wrapper">';
   include "vistas/modulos/templates/encabezado.php";
-  if(isset($_GET['ruta']) && $_GET['ruta']=="salir"){
+  if (isset($_GET['ruta']) && $_GET['ruta'] == "salir") {
     include "vistas/modulos/paginas/salir.php";
- }else 
+  } else 
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza" , "mostrarpagado", "consultadni", "consultaruc", "ingreso", "ingresocliente", "ingresoanualcliente"];
+          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "consultadni", "consultaruc", "ingreso", "ingresocliente", "ingresoanualcliente"];
           include "vistas/modulos/paginas/administrador/menu.php";
-          if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
+          if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorGeneralRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
           } else {
             include "vistas/modulos/paginas/404.php";
@@ -123,7 +124,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 2: {
-          $colaboradorRutas = ["escritorio" ,"asistencia", "checklist"];
+          $colaboradorRutas = ["escritorio", "asistencia", "checklist", "permisos"];
           include "vistas/modulos/paginas/colaborador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
             include "vistas/modulos/paginas/colaborador/" . $_GET['ruta'] . ".php";
@@ -153,63 +154,66 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       default: {
-        include "vistas/modulos/paginas/salir.php";
-      }
+          include "vistas/modulos/paginas/salir.php";
+        }
     }
-    } else {
-      $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados", "consultaruc", "consultadni"];
-      include "vistas/modulos/paginas/cliente/menu.php";
-      if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
-        include "vistas/modulos/paginas/cliente/" . $_GET['ruta'] . ".php";
-      } else {
-        include "vistas/modulos/paginas/404.php";
-      }
-    }
-
-    include "vistas/modulos/templates/footer.php";
   } else {
-      echo '<body class="hold-transition login-page">';
-      $visitanteRutas = ["marcarasistencia", "restringido","login", "loginCliente", "inicio"];
-    if (isset($_GET['ruta'])) {
-      if (in_array($_GET['ruta'], $visitanteRutas)) {
-        include "vistas/modulos/paginas/" . $_GET['ruta'] . ".php";
-      } else {
-        include "vistas/modulos/paginas/404.php";
-      }
+    $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados", "consultaruc", "consultadni"];
+    include "vistas/modulos/paginas/cliente/menu.php";
+    if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
+      include "vistas/modulos/paginas/cliente/" . $_GET['ruta'] . ".php";
     } else {
-      include "vistas/modulos/paginas/inicio.php";
+      include "vistas/modulos/paginas/404.php";
     }
   }
+
+  include "vistas/modulos/templates/footer.php";
+} else {
+  echo '<body class="hold-transition login-page">';
+  $visitanteRutas = ["marcarasistencia", "restringido", "login", "loginCliente", "inicio"];
+  if (isset($_GET['ruta'])) {
+    if (in_array($_GET['ruta'], $visitanteRutas)) {
+      include "vistas/modulos/paginas/" . $_GET['ruta'] . ".php";
+    } else {
+      include "vistas/modulos/paginas/404.php";
+    }
+  } else {
+    include "vistas/modulos/paginas/inicio.php";
+  }
+}
 ?>
 
-  <script src="vistas/js/usuario.js"></script>
-  <script src="vistas/js/tipousuario.js"></script>
-  <script src="vistas/js/departamento.js"></script>
-  <script src="vistas/js/asistencia.js"></script>
-  <script src="vistas/js/reportes.js"></script>
-  <script src="vistas/js/clientes.js"></script>
-  <script src="vistas/js/agenda.js"></script>
-  <script src="vistas/js/archivo.js"></script>
-  <script src="vistas/js/pagosclientes.js"></script>
-  <script src="vistas/js/cobranza.js"></script>
-  <script src="vistas/js/detallecobranza.js"></script>
-  <script src="vistas/js/traduccion.js"></script>
-  <script src="vistas/js/dataTable.js"></script>
-  <script src="vistas/js/clock.js"></script>
-  <script src="vistas/js/select2.js"></script>
-  <script src="vistas/js/menu.js"></script>
-  <script src="vistas/js/servicio.js"></script>
-  <script src="vistas/js/economia.js"></script>
-  <script src="vistas/js/checklist.js"></script>
+<script src="vistas/js/usuario.js"></script>
+<script src="vistas/js/tipousuario.js"></script>
+<script src="vistas/js/departamento.js"></script>
+<script src="vistas/js/asistencia.js"></script>
+<script src="vistas/js/reportes.js"></script>
+<script src="vistas/js/clientes.js"></script>
+<script src="vistas/js/agenda.js"></script>
+<script src="vistas/js/archivo.js"></script>
+<script src="vistas/js/pagosclientes.js"></script>
+<script src="vistas/js/cobranza.js"></script>
+<script src="vistas/js/detallecobranza.js"></script>
+<script src="vistas/js/traduccion.js"></script>
+<script src="vistas/js/dataTable.js"></script>
+<script src="vistas/js/clock.js"></script>
+<script src="vistas/js/select2.js"></script>
+<script src="vistas/js/menu.js"></script>
+<script src="vistas/js/servicio.js"></script>
+<script src="vistas/js/economia.js"></script>
+<script src="vistas/js/checklist.js"></script>
+<script src="vistas/js/tiposervicio.js"></script>
+<script src="vistas/js/permiso.js"></script>
 
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+<!-- Control Sidebar -->
+<aside class="control-sidebar control-sidebar-dark">
+  <!-- Control sidebar content goes here -->
+</aside>
+<!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
 
 
 </body>
+
 </html>

@@ -2,12 +2,8 @@ function init() {
   mostrarformCL(false);
 }
 
-function limpiarCheckList(){
-  $("#modalActividad").val("");
-  $("#modalFecha").val("");
-  $("#modalEstado").val("");
-  $("#modalHoraInicio").val("");
-  $("#modalHoraFin").val("");
+function limpiarCheckList() {
+  $('#frmChecklist')[0].reset();
 }
 
 function mostrarformCL(flag) {
@@ -26,48 +22,49 @@ function cancelarCL() {
 }
 
 $('.btnListarCheckList').click(function () {
-  $('#mostrarCheckList').DataTable().clear().draw(flase);
-  var idusuario = $('#idusuario').val();
-  datos.append('idusuario', idusuario);
-  $.ajax({
-    url: 'ajax/checklist.ajax.php',
-    method: 'POST',
-    data: datos,
-    cache: false,
-    contentType: false,
-    processData: false,
-    dataType: 'json',
-    success: function (respuesta) {
-      $.each(respuesta, function (index, value) {
-        $('#mostrarCheckList').DataTable().row.add([value.nombre,value.apellidos]).draw(false);
-      });
-    },
-    error: function (respuesta) {
-      console.log('Error', respuesta);
-    },
-  });
+  let btn = $(this);
+  $('#idusuario').val(btn.attr('idusuario'));
+  $('#idtipousuario').val(btn.attr('idtipousuario'));
+  $('#iddepartamento').val(btn.attr('iddepartamento'));
 });
 
+const sectionActividad = $('#modalBodyActividades').html();
+$('.btnAgregarActividad').on('click', function () {
+  $('#modalBodyActividades').append(sectionActividad);
+});
 
-$('.btnAgregarActividad').click(function () {
-  $('#mostrarCheckList').DataTable().clear().draw(flase);
-  var idusuario = $('#idusuario').val();
-  datos.append('idusuario', idusuario);
+$(document).on('click', '.btn-eliminar-actividad', function () {
+  $(this).closest('section').remove();
+});
+
+$('#btnGuardarActividades').on('click', function () {
+  let formularioCheckList = new FormData($('#frmChecklist')[0]);
+  formularioCheckList.append('opcion', 'registrar');
   $.ajax({
-    url: 'ajax/checklist.ajax.php',
     method: 'POST',
-    data: datos,
+    url: 'ajax/checklist.ajax.php',
     cache: false,
     contentType: false,
     processData: false,
+    data: formularioCheckList,
     dataType: 'json',
-    success: function (respuesta) {
-      $.each(respuesta, function (index, value) {
-        $('#mostrarCheckList').DataTable().row.add([value.nombre,value.apellidos]).draw(false);
-      });
-    },
-    error: function (respuesta) {
-      console.log('Error', respuesta);
+    success: function ({ registrado }) {
+      if (registrado) {
+        limpiarCheckList();
+        Swal.fire({
+          title: 'Registrado!',
+          text: '¡Se registro el checklist correctamente!',
+          icon: 'success',
+          confirmButtonText: 'Ok',
+        });
+      } else {
+        Swal.fire({
+          title: 'Error!',
+          text: '¡No se pudo registrar el checklist!',
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+      }
     },
   });
 });

@@ -30,37 +30,38 @@
                 <div class="col-5">
                   <h4><strong>Seleccione cliente:</strong></h4>
                   <div class="container">
-                  <div class="row justify-content-center">
-                    <div class="col-3 mb-2">
-                    <select class="form-control select2" id="fecha_anho" name="fecha_anho">
-                        <?php $cont = date('Y');
-                        while ($cont >= 2016) { ?>
-                        <option><?php echo($cont); ?></option>
-                        <?php $cont = ($cont-1); } ?>
-                    </select>
+                    <div class="row justify-content-center">
+                      <div class="col-3 mb-2">
+                        <select class="form-control select2" id="fecha_anho" name="fecha_anho">
+                          <?php $cont = date('Y');
+                          while ($cont >= 2016) { ?>
+                            <option><?php echo ($cont); ?></option>
+                          <?php $cont = ($cont - 1);
+                          } ?>
+                        </select>
+                      </div>
+                      <div class="col-12">
+                        <select class="form-control col-11 select2" id="idcliente" name="idcliente">
+                          <?php
+                          $item = 1;
+                          $valor = null;
+                          $usuario = ControladorClientes::ctrMostrarCliente($item, $valor);
+                          foreach ($usuario as $key => $value) {
+                            echo '<option value="' . $value['idcliente'] . '">' . $value['razonsocial'] . '</option>';
+                          }
+                          ?>
+                        </select>
+                      </div>
                     </div>
-                    <div class="col-12">
-                      <select class="form-control col-11 select2" id="idcliente" name="idcliente">
-                        <?php 
-                        $item = 1;
-                        $valor = null;
-                        $usuario = ControladorClientes::ctrMostrarCliente($item,$valor);
-                        foreach($usuario as $key => $value){ 
-                            echo '<option value="'.$value['idcliente'].'">'.$value['razonsocial'].'</option>';
-                        }
-                        ?>
-                    </select>
-                  </div>
-                </div>
                   </div>
 
-                      <button class="btn btn-success btnIngresoCliente mt-2"><i class="fas fa-search-dollar"> Buscar</i></button>
+                  <button class="btn btn-success btnIngresoCliente mt-2"><i class="fas fa-search-dollar"> Buscar</i></button>
                   <div class="row justify-content-center mt-2">
                     <div class="info-box bg-secondary col-9">
-                    <span class="info-box-icon bg-warning"><i class="fas fa-coins"></i></span>
+                      <span class="info-box-icon bg-warning"><i class="fas fa-coins"></i></span>
                       <div class="info-box-content">
                         <span class="info-box-text">Monto generado por año</span>
-                        <span class="info-box-number">S/.<span  id="TotalAnyo">0</span></span>
+                        <span class="info-box-number"><span id="TotalAnyo">S/.0</span></span>
                       </div>
                     </div>
                   </div>
@@ -80,13 +81,13 @@
                   </table>
                 </div>
               </div>
-            </div> 
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- /.content-wrapper -->

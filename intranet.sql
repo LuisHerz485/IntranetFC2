@@ -535,8 +535,9 @@ create table constancia(
 
 /*=========================Modulo Check List================================*/
 
+
 CREATE TABLE checklist(
-	idchecklist int auto_incremet,
+	idchecklist int auto_increment,
 	idtipousuario int,
 	iddepartamento int,
 	idusuario int,
@@ -544,24 +545,69 @@ CREATE TABLE checklist(
 	CONSTRAINT fk_cl_tu FOREIGN KEY (idtipousuario) REFERENCES tipousuario(idtipousuario),
 	CONSTRAINT fk_cl_d FOREIGN KEY (iddepartamento) REFERENCES departamento(iddepartamento),
 	CONSTRAINT fk_cl_u FOREIGN KEY (idusuario) REFERENCES usuario(idusuario),
-	CONSTRAINT pk_lc PRIMARY KEY (idchecklist,idtipousuario,iddepartamento,idusuario)
+	CONSTRAINT pk_lc PRIMARY KEY (idchecklist)
 );
 
 CREATE TABLE estadochecklist(
-	idestadocheck int auto_incremet primary key,
+	idestadochecklist int auto_increment primary key,
 	nombre varchar(30) not null
 );
 
 CREATE TABLE detallechecklist(
-	iddetallechecklist int auto_incremet primary key,
+	iddetallechecklist int auto_increment primary key,
 	idchecklist int not null,
-	idestadocheck int not null,
+	idestadochecklist int not null,
 	detalle varchar(200) not null,
-	horaInicio timestamp not null,
-	horaFin timestamp not null,
+	horainicio time not null,
+	horafin time not null,
 	CONSTRAINT fk_dcl_cl FOREIGN KEY (idchecklist) REFERENCES checklist(idchecklist),
-	CONSTRAINT fk_dcl_ecl FOREIGN KEY (idestadocheck) REFERENCES estadochecklist(idestadocheck)
+	CONSTRAINT fk_dcl_ecl FOREIGN KEY (idestadochecklist) REFERENCES estadochecklist(idestadochecklist)
 );
+
+INSERT INTO `estadochecklist`(`nombre`) VALUES ('Pendiente');
+INSERT INTO `estadochecklist`(`nombre`) VALUES ('Realizado');
+INSERT INTO `estadochecklist`(`nombre`) VALUES ('Cancelado');
+INSERT INTO `estadochecklist`(`nombre`) VALUES ('Suspendido');
+
+CREATE TABLE tipopermiso(
+	idtipopermiso int auto_increment primary key,
+	nombrepermiso varchar(50) not null
+);
+CREATE TABLE estadopermiso(
+	idestadopermiso int auto_increment primary key,
+	nombreestadopermiso varchar(50) not null
+);
+
+CREATE TABLE permiso(
+	idpermiso int auto_increment primary key,
+	idusuario int not null,
+	idtipopermiso int not null,
+	idestadopermiso int not null,
+	detalle varchar(500) not null,
+	fechacreacion datetime not null DEFAULT current_timestamp(),
+	fechainicio datetime not null,
+	fechafin datetime not null,
+	fecharevision datetime,
+	CONSTRAINT fk_pe_us FOREIGN KEY (idusuario) REFERENCES usuario(idusuario),
+	CONSTRAINT fk_pe_tp FOREIGN KEY (idtipopermiso) REFERENCES tipopermiso(idtipopermiso),
+	CONSTRAINT fk_pe_etp FOREIGN KEY (idestadopermiso) REFERENCES estadopermiso(idestadopermiso)
+);
+INSERT INTO `tipopermiso`(`nombrepermiso`) VALUES ('Por Motivos Familiares');
+INSERT INTO `tipopermiso`(`nombrepermiso`) VALUES ('Por Matrimonio');
+INSERT INTO `tipopermiso`(`nombrepermiso`) VALUES ('Por Mudanza');
+INSERT INTO `tipopermiso`(`nombrepermiso`) VALUES ('Por deberes publicos');
+INSERT INTO `tipopermiso`(`nombrepermiso`) VALUES ('Por Salud');
+INSERT INTO `tipopermiso`(`nombrepermiso`) VALUES ('Por Examenes');
+INSERT INTO `tipopermiso`(`nombrepermiso`) VALUES ('Por Viajes');
+INSERT INTO `tipopermiso`(`nombrepermiso`) VALUES ('Por Motivos Personales');
+INSERT INTO `tipopermiso`(`nombrepermiso`) VALUES ('Por otros motivos');
+
+INSERT INTO `estadopermiso`(`nombreestadopermiso`) VALUES ('Pendiente');
+INSERT INTO `estadopermiso`(`nombreestadopermiso`) VALUES ('Aprobado');
+INSERT INTO `estadopermiso`(`nombreestadopermiso`) VALUES ('No Aprobado');
+
+
+
 
 
 /*=================================================================================*/

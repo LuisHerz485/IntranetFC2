@@ -1,13 +1,13 @@
 <?php
 
-require_once "../controladores/checklist.controlador.php";
-require_once "../modelos/checklist.modelo.php";
+require_once "../controladores/permiso.controlador.php";
+require_once "../modelos/permiso.modelo.php";
 
 
 if (isset($_POST["opcion"])) {
     switch ($_POST["opcion"]) {
         case "registrar": {
-                $respuesta = ["registrado" => ControladorChecklist::registrarChecklist()];
+                $respuesta = ["registrado" => ControladorPermiso::registrarPermiso()];
                 echo json_encode($respuesta);
                 break;
             }

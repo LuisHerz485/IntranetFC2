@@ -3,13 +3,15 @@
 require_once "../controladores/reportes.controlador.php";
 require_once "../modelos/reportes.modelo.php";
 
-class AjaxReportes{
+class AjaxReportes
+{
 
 	public $idusuario;
-    public $fecha_inicio;
-    public $fecha_fin;
+	public $fecha_inicio;
+	public $fecha_fin;
 
-	public function ajaxMostrarReporte(){
+	public function ajaxMostrarReporte()
+	{
 		$valor1 = $this->idusuario;
 		$valor2 = $this->fecha_inicio;
 		$valor3 = $this->fecha_fin;
@@ -20,10 +22,10 @@ class AjaxReportes{
 
 
 /* Mostrar Tabla */
-if(isset($_POST["idusuario"])){
+if (isset($_POST["idusuario"])) {
 	$mostrar = new AjaxReportes();
-	$mostrar -> idusuario = $_POST["idusuario"];
-    $mostrar -> fecha_inicio = $_POST["fecha_inicio"];
-    $mostrar -> fecha_fin = $_POST["fecha_fin"];
-	$mostrar -> ajaxMostrarReporte();
+	$mostrar->idusuario = $_POST["idusuario"];
+	$mostrar->fecha_inicio = $_POST["fecha_inicio"];
+	$mostrar->fecha_fin = $_POST["fecha_fin"];
+	$mostrar->ajaxMostrarReporte();
 }

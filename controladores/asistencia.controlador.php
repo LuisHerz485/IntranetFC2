@@ -1,24 +1,29 @@
 <?php
-    class ControladorAsistencia{
-        static public function ctrMostrarAsistencia($item,$valor){
-			$tabla = "asistencia";
-			$respuesta = ModeloAsistencia::mdlMostrarAsistencia($tabla,$item,$valor);
-			return $respuesta;
-		}
+class ControladorAsistencia
+{
+	static public function ctrMostrarAsistencia($item, $valor)
+	{
+		$tabla = "asistencia";
+		$respuesta = ModeloAsistencia::mdlMostrarAsistencia($tabla, $item, $valor);
+		return $respuesta;
+	}
 
-		static public function ctrEditarDetalleAsistencia(){
-			if(isset($_POST['idasistencia'])){
-			    if(preg_match('/^[a-zA-Z0-9ñÑaÁáéÉíÍóÓúÚ ]+|(^$)/', $_POST['detalle'])){
+	static public function ctrEditarDetalleAsistencia()
+	{
+		if (isset($_POST['idasistencia'])) {
+			if (preg_match('/^[a-zA-Z0-9ñÑaÁáéÉíÍóÓúÚ ]+|(^$)/', $_POST['detalle'])) {
 
-					$tabla = "asistencia";
+				$tabla = "asistencia";
 
-				    $datos = array("idasistencia" => $_POST['idasistencia'],
-                                "detalle" => $_POST['detalle'],
-								"estado" => $_POST['estado']);
+				$datos = array(
+					"idasistencia" => $_POST['idasistencia'],
+					"detalle" => $_POST['detalle'],
+					"estado" => $_POST['estado']
+				);
 
-					$respuesta = ModeloAsistencia::mdlIngresarDetalleAsitencia($tabla,$datos);
-					if($respuesta =="ok"){
-						echo"<script>
+				$respuesta = ModeloAsistencia::mdlIngresarDetalleAsitencia($tabla, $datos);
+				if ($respuesta == "ok") {
+					echo "<script>
 							Swal.fire({ 
 								title:	'Success!',
 								text:	'¡Detalle agregado correctamente!',
@@ -30,9 +35,9 @@
 									}
 								})
 							</script>";
-					} 
-                }else{
-                    echo ("<script>
+				}
+			} else {
+				echo ("<script>
 					Swal.fire({
 		            title: 'Error!',
         			text: '¡No puedes usar caracteres especiales!',
@@ -40,24 +45,25 @@
 					confirmButtonText: 'Ok'
 					});
 				</script>");
-			    }
 			}
 		}
+	}
 
-		static public function ctrMarcarAsistencia(){
-			if(isset($_POST['codigopersona'])){
-				$respuesta = ModeloUsuarios::mdlConsultarUsuario($_POST['codigopersona']);
+	static public function ctrMarcarAsistencia()
+	{
+		if (isset($_POST['codigopersona'])) {
+			$respuesta = ModeloUsuarios::mdlConsultarUsuario($_POST['codigopersona']);
 
-				if($respuesta){
-					$respuesta3 = ModeloAsistencia::mdlConsultarAsistencia($respuesta['idusuario']);
-					$tabla = "asistencia";
+			if ($respuesta) {
+				$respuesta3 = ModeloAsistencia::mdlConsultarAsistencia($respuesta['idusuario']);
+				$tabla = "asistencia";
 
-					$idusuario = $respuesta['idusuario'];
-					
-					if($respuesta3){
-						if($respuesta3['tipo'] === "Entrada"){
-							echo "<script>
-							var idusuario = ".$idusuario."
+				$idusuario = $respuesta['idusuario'];
+
+				if ($respuesta3) {
+					if ($respuesta3['tipo'] === "Entrada") {
+						echo "<script>
+							var idusuario = " . $idusuario . "
 							var tipo = 'Salida'
 							var datos = new FormData();
 							datos.append('idusuario', idusuario);
@@ -80,7 +86,7 @@
 											contentType: false,
 											processData: false,
 											success: function(respuesta) {
-												Swal.fire('Tu salida ha sido registrada ".$respuesta['nombre']." ".$respuesta['apellidos']."!', '', 'success')
+												Swal.fire('Tu salida ha sido registrada " . $respuesta['nombre'] . " " . $respuesta['apellidos'] . "!', '', 'success')
 											}
 										})
 									}else{
@@ -88,10 +94,10 @@
 									}
 								})
 							</script>";
-						}
-						if($respuesta3['tipo'] === "Salida"){
-							echo "<script>
-							var idusuario = ".$idusuario."
+					}
+					if ($respuesta3['tipo'] === "Salida") {
+						echo "<script>
+							var idusuario = " . $idusuario . "
 							var tipo = 'Entrada'
 							var datos = new FormData();
 							datos.append('idusuario', idusuario);
@@ -114,18 +120,18 @@
 											contentType: false,
 											processData: false,
 											success: function(respuesta) {
-												Swal.fire('Tu entrada ha sido registrada ".$respuesta['nombre']." ".$respuesta['apellidos']."!', '', 'success')
+												Swal.fire('Tu entrada ha sido registrada " . $respuesta['nombre'] . " " . $respuesta['apellidos'] . "!', '', 'success')
 											}
 										})
 									}else{
 										Swal.fire('Asistencia no marcada', '', 'info')
 									}
 								})
-							</script>";			
-						}
-					}else{
-						echo "<script>
-							var idusuario = ".$idusuario."
+							</script>";
+					}
+				} else {
+					echo "<script>
+							var idusuario = " . $idusuario . "
 							var tipo = 'Entrada'
 							var datos = new FormData();
 							datos.append('idusuario', idusuario);
@@ -148,17 +154,17 @@
 											contentType: false,
 											processData: false,
 											success: function(respuesta) {
-												Swal.fire('Tu entrada ha sido registrada ".$respuesta['nombre']." ".$respuesta['apellidos']."!', '', 'success')
+												Swal.fire('Tu entrada ha sido registrada " . $respuesta['nombre'] . " " . $respuesta['apellidos'] . "!', '', 'success')
 											}
 										})
 									}else{
 										Swal.fire('Asistencia no marcada', '', 'info')
 									}
 								})
-						</script>";	
-					}
-				}else{
-					echo ("<script>
+						</script>";
+				}
+			} else {
+				echo ("<script>
 						Swal.fire({
 						title: 'Error!',
 						text: '¡No existe ningun colaboradores con ese codigo!',
@@ -166,9 +172,7 @@
 						confirmButtonText: 'Ok'
 						});
 					</script>");
-				}
 			}
-			
 		}
-		
-    }
+	}
+}
