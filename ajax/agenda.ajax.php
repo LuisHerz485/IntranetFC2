@@ -1,5 +1,7 @@
 <?php
 
+require_once "./validarsesion.php";
+require_once "../controladores/validacion.controlador.php";
 require_once "../controladores/agenda.controlador.php";
 require_once "../modelos/agenda.modelo.php";
 require_once "../modelos/representante.modelo.php";
@@ -107,7 +109,7 @@ if (isset($_POST["idrepre"])) {
 	$editar->ajaxEditarRepresentante();
 }
 
-/* Elimnar agenda*/
+/* Eliminar agenda*/
 if (isset($_POST["idrepreE"])) {
 	$eliminar = new AjaxAgenda();
 	$eliminar->idrepreE = $_POST["idrepreE"];

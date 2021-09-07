@@ -1,5 +1,7 @@
 <?php
 
+require_once "./validarsesion.php";
+require_once "../controladores/validacion.controlador.php";
 require_once "../controladores/archivo.controlador.php";
 require_once "../modelos/archivo.modelo.php";
 

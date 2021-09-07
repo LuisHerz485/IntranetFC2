@@ -606,8 +606,7 @@ INSERT INTO `estadopermiso`(`nombreestadopermiso`) VALUES ('Pendiente');
 INSERT INTO `estadopermiso`(`nombreestadopermiso`) VALUES ('Aprobado');
 INSERT INTO `estadopermiso`(`nombreestadopermiso`) VALUES ('No Aprobado');
 
-
-
+ 
 
 
 /*=================================================================================*/

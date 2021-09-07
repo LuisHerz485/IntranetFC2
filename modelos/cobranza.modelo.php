@@ -45,6 +45,7 @@ class ModeloCobranza
         $stmt->bindParam(":fechaemision", $valor6, PDO::PARAM_STR);
         $stmt->bindParam(":estado", $estado, PDO::PARAM_STR);
         $stmt->bindParam(":descripcion", $valor5, PDO::PARAM_STR);
+        //$stmt->bindParam(":idusuario", $_SESSION['idusuario'], PDO::PARAM_STR); 
         if ($stmt->execute()) {
             return $conexion->lastInsertId();
         } else {

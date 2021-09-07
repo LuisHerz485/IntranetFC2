@@ -1,6 +1,7 @@
 <?php
 class ControladorAsistencia
 {
+
 	static public function ctrMostrarAsistencia($item, $valor)
 	{
 		$tabla = "asistencia";
@@ -10,6 +11,7 @@ class ControladorAsistencia
 
 	static public function ctrEditarDetalleAsistencia()
 	{
+		$detalle = ControladorValidacion::longitud($_POST['detalle'], 200, 10);
 		if (isset($_POST['idasistencia'])) {
 			if (preg_match('/^[a-zA-Z0-9ñÑaÁáéÉíÍóÓúÚ ]+|(^$)/', $_POST['detalle'])) {
 
@@ -17,7 +19,7 @@ class ControladorAsistencia
 
 				$datos = array(
 					"idasistencia" => $_POST['idasistencia'],
-					"detalle" => $_POST['detalle'],
+					"detalle" => $detalle,
 					"estado" => $_POST['estado']
 				);
 

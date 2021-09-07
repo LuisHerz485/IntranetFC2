@@ -1,4 +1,7 @@
 <?php
+
+require_once "./validarsesion.php";
+require_once "../controladores/validacion.controlador.php";
 require_once "../google-api-php-client-2.9.1/vendor/autoload.php";
 require_once "../modelos/constancia.modelo.php";
 
@@ -12,32 +15,29 @@ function getCodigoRecibo(string $id = "")
 }
 
 
-session_start();
-if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
+$dataConstancia = null;
+if (isset($_POST["idcobranza"])) {
 
-  $dataConstancia = null;
-  if (isset($_GET["idcobranza"])) {
+  $dataConstancia = ModeloConstancia::mdlDataConstancia(intval($_POST["idcobranza"]));
+} else if (isset($_POST["idconstancia"])) {
+  $dataConstancia = ModeloConstancia::mdlDataPreConstancia(intval($_POST["idconstancia"]));
+}
 
-    $dataConstancia = ModeloConstancia::mdlDataConstancia(intval($_GET["idcobranza"]));
-  } else if (isset($_GET["idconstancia"])) {
-    $dataConstancia = ModeloConstancia::mdlDataPreConstancia(intval($_GET["idconstancia"]));
-  }
+if ($dataConstancia && isset($dataConstancia['iddetallecobranza'])) {
+  $meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 
-  if ($dataConstancia && isset($dataConstancia['iddetallecobranza'])) {
-    $meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
-
-    $info = [
-      "fechaEmision" => date_parse_from_format("Y-m-d", $dataConstancia['fechaEmision']),
-      "fechaPago" => date_parse_from_format("Y-m-d", $dataConstancia['fechaPago']),
-      "cliente" => ["razonsocial" => $dataConstancia['razonsocial'], "ruc" => $dataConstancia['ruc']],
-      "totalRecibido" => floatval($dataConstancia['totalRecibido']), "montoTotal" => floatval($dataConstancia['montoTotal']), "concepto" => "POR EL SERVICIO CONTABLE",
-    ];
+  $info = [
+    "fechaEmision" => date_parse_from_format("Y-m-d", $dataConstancia['fechaEmision']),
+    "fechaPago" => date_parse_from_format("Y-m-d", $dataConstancia['fechaPago']),
+    "cliente" => ["razonsocial" => $dataConstancia['razonsocial'], "ruc" => $dataConstancia['ruc']],
+    "totalRecibido" => floatval($dataConstancia['totalRecibido']), "montoTotal" => floatval($dataConstancia['montoTotal']), "concepto" => "POR EL SERVICIO CONTABLE",
+  ];
 
 
-    $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A5-L']);
-    $formatter = new NumeroALetras();
+  $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A5-L']);
+  $formatter = new NumeroALetras();
 
-    $css = '
+  $css = '
         body {
             font-family: Arial, Helvetica, sans-serif;
         }
@@ -56,7 +56,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
             background-color: #EBEBEB;
         }';
 
-    $plantilla = '
+  $plantilla = '
     <body>
         <div style="padding: 40px 0px 0px 0px;">
           <table id="tablaEncabezado">
@@ -83,7 +83,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
                       <td>
                         <p>RUC: 20600626397</p>
                         <p>RECIBO</p>
-                        <p>' . ((isset($_GET["idcobranza"])) ? getCodigoRecibo($_GET["idcobranza"]) : getCodigoRecibo($_GET["idconstancia"])) . '</p>
+                        <p>' . ((isset($_POST["idcobranza"])) ? getCodigoRecibo($_POST["idcobranza"]) : getCodigoRecibo($_POST["idconstancia"])) . '</p>
                       </td>
                     </tr>
                   </table>
@@ -171,18 +171,15 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           </table>
         </div>
       </body>';
-    if (($info["montoTotal"] - $info["totalRecibido"]) == 0) {
-      $mpdf->SetWatermarkImage('../vistas/img/sello/watermark_cancelado.png', 1);
-    } else {
-      $mpdf->SetWatermarkImage('../vistas/img/sello/watermark.png', 1);
-    }
-    $mpdf->showWatermarkImage = true;
-    $mpdf->writeHtml($css, \Mpdf\HTMLParserMode::HEADER_CSS);
-    $mpdf->writeHtml($plantilla, \Mpdf\HTMLParserMode::HTML_BODY);
-    $mpdf->Output();
+  if (($info["montoTotal"] - $info["totalRecibido"]) == 0) {
+    $mpdf->SetWatermarkImage('../vistas/img/sello/watermark_cancelado.png', 1);
   } else {
-    http_response_code(400);
+    $mpdf->SetWatermarkImage('../vistas/img/sello/watermark.png', 1);
   }
+  $mpdf->showWatermarkImage = true;
+  $mpdf->writeHtml($css, \Mpdf\HTMLParserMode::HEADER_CSS);
+  $mpdf->writeHtml($plantilla, \Mpdf\HTMLParserMode::HTML_BODY);
+  $mpdf->Output();
 } else {
-  http_response_code(401);
+  http_response_code(400);
 }

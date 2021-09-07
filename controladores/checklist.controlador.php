@@ -2,28 +2,53 @@
 
 class ControladorChecklist
 {
-    public static function registrarChecklist(): bool
+    public static function ctrRegistrarChecklist(): bool
     {
-        if (isset($_POST["idtipousuario"], $_POST["iddepartamento"], $_POST["idusuario"], $_POST["fecha"], $_POST["detalle"], $_POST["horainicio"], $_POST["horafin"])) {
-            $idtipousuario = intval($_POST["idtipousuario"]);
-            $iddepartamento = intval($_POST["iddepartamento"]);
-            $idusuario = intval($_POST["idusuario"]);
+        if (isset($_POST["idtipousuario"], $_POST["iddepartamento"], $_POST["idusuario"], $_POST["fecha"],  $_POST["idestadochecklist"], $_POST["detalle"], $_POST["horainicio"], $_POST["horafin"])) {
+            $idtipousuario = ControladorValidacion::validarID($_POST["idtipousuario"]);
+            $iddepartamento = ControladorValidacion::validarID($_POST["iddepartamento"]);
+            $idusuario = ControladorValidacion::validarID($_POST["idusuario"]);
             $fecha = $_POST["fecha"];
-            if (!empty($fecha) && $idtipousuario && $iddepartamento && $idusuario) {
-                $idchecklist = ChecklistModelo::registrarChecklist($idtipousuario, $iddepartamento, $idusuario, $fecha);
-                if ($idchecklist) {
-                    $cantidad = count($_POST["detalle"]);
-                    if ($cantidad > 0) {
-                        $actividades = [];
-                        for ($i = 0; $i < $cantidad; $i++) {
-                            $actividades[] = "( $idchecklist, " . $_POST["idestadochecklist"][$i] . ",'" . $_POST["detalle"][$i] . "','" . $_POST["horainicio"][$i] . "','" . $_POST["horafin"][$i] . "')";
-                        }
-                        $respuesta = ChecklistModelo::registrarDetalleChecklist($actividades);
-                        if ($respuesta) {
-                            return $respuesta;
-                        }
-                    }
+            $cantidad = count($_POST["detalle"]);
+            $actividades = [];
+            for ($i = 0; $i < $cantidad; $i++) {
+                if (
+                    ControladorValidacion::longitud($_POST["detalle"][$i], 200, 10)
+                    && ControladorValidacion::formatoHoraMinutos($_POST["horainicio"][$i])
+                    && ControladorValidacion::formatoHoraMinutos($_POST["horafin"][$i])
+                ) {
+                    $actividades[] = "( ?, " . $_POST["idestadochecklist"][$i] . ",'" . $_POST["detalle"][$i] . "','" . $_POST["horainicio"][$i] . "','" . $_POST["horafin"][$i] . "')";
+                } else {
+                    return false;
                 }
+            }
+            if (ControladorValidacion::formatoFecha($fecha) && $idtipousuario && $iddepartamento && $idusuario && $cantidad) {
+                $idchecklist = ChecklistModelo::mdlRegistrarChecklist($idtipousuario, $iddepartamento, $idusuario, $fecha);
+                if ($idchecklist) {
+                    return  ChecklistModelo::mdlRegistrarDetalleChecklist(
+                        $actividades,
+                        str_split(str_repeat($idchecklist, $cantidad), strlen($idchecklist))
+                    );
+                }
+            }
+        }
+        return false;
+    }
+    public static function ctrEditarDetalleChecklist(): bool
+    {
+        if (isset($_POST["iddetallechecklist"], $_POST["idestadochecklist"], $_POST["detalle"], $_POST["horainicio"], $_POST["horafin"])) {
+            $iddetallechecklist = ControladorValidacion::validarID($_POST["iddetallechecklist"]);
+            $idestadochecklist = ControladorValidacion::validarID($_POST["idestadochecklist"]);
+            $detalle = $_POST["detalle"];
+            $horainicio = $_POST["horainicio"];
+            $horafin = $_POST["horafin"];
+            if (
+                $iddetallechecklist   && $idestadochecklist
+                && ControladorValidacion::longitud($detalle, 200, 10)
+                && ControladorValidacion::formatoHoraMinutos($horainicio)
+                && ControladorValidacion::formatoHoraMinutos($horafin)
+            ) {
+                return ChecklistModelo::mdlEditarDetalleChecklist($idestadochecklist, $detalle, $horainicio, $horafin, $iddetallechecklist);
             }
         }
         return false;
