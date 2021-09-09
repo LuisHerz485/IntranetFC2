@@ -100,7 +100,7 @@ class ControladorTipoServicio
 			if (
 				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ.\/ ]+$/', $_POST['nombreS']) &&
 				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ.\/ ]+$/', $_POST['descripcionS']) &&
-				$idservicio && $idcategoriaservicio
+				$idservicio && $idcategoriaservicio && $precio
 			) {
 
 				$tabla = "servicio";

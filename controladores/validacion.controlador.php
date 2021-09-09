@@ -51,6 +51,6 @@ class ControladorValidacion
     public static function validarPrecio(string $numero): float|bool
     {
         $num = floatval($numero);
-        return ($num >= 0) ? $num : false;
+        return ($num >= 0 && strlen($numero) == strlen($num)) ? $num : false;
     }
 }

@@ -90,7 +90,7 @@
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="">Precio(*):</label>
-                  <input class="form-control" type="text" name="precio" id="precio" maxlength="12" placeholder="Precio" required>
+                  <input class="form-control" type="number" name="precio" id="precio" maxlength="12" placeholder="Precio" required>
                 </div>
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>

@@ -29,23 +29,19 @@
               <thead>
                 <th>Nombre</th>
                 <th>Correo</th>
-                <th>Área</th>
+                <th>Área <?php echo $_SESSION["iddepartamento"]; ?></th>
                 <th>Opción</th>
               </thead>
               <tbody>
                 <?php
-                $item = null;
-                $valor = null;
-                $usuarios = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
-                foreach ($usuarios as $key => $value) {
-                  if ($value['estado'] == 1) {
-                    echo '<tr> 
-                    <td>' . $value['nombre'] . ' ' . $value['apellidos'] . '</td>
-                    <td>' . $value['email'] . '</td>
-                    <td>' . $value['departamento'] . '</td>
-                    <td><button class="btn btn-s btn-warning btnListarCheckList" idusuario="' . $value["idusuario"] . '" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button></td>
+                $usuarios = ModeloUsuarios::mdlListarUsuariosPorDepartamento($_SESSION["iddepartamento"]);
+                foreach ($usuarios as $usuario) {
+                  echo '<tr> 
+                    <td>' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</td>
+                    <td>' . $usuario['email'] . '</td>
+                    <td>' . $usuario['departamento'] . '</td>
+                    <td><button class="btn btn-s btn-warning btnListarCheckList" idusuario="' . $usuario["idusuario"] . '" iddepartamento="' . $usuario["iddepartamento"] . '" idtipousuario="' . $usuario["idtipousuario"] . '" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button></td>
                     </tr>';
-                  }
                 }
                 ?>
               </tbody>
@@ -86,7 +82,7 @@
 <!-- MODAL DE AGREGAR ACTIVIDAD AL CHECKLIST -->
 <div class="modal fade" id="modalCheckList" role="dialog">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
-    <form role="form" method="post" enctype="multipart/form-data">
+    <form id="frmChecklist" method="post" enctype="multipart/form-data">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel"><strong>Check List</strong></h5>
@@ -100,33 +96,51 @@
               <div class="row">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <label>Actividades del día: </label>
-                  <input type="date" name="modalFecha" class="form-control-fc" id="modalFecha">
-                  <button class="btn btn-warning float-sm-right btnAgregarActividad"><i class="fas fa-plus"></i> Agregar</button>
+                  <input type="date" name="fecha" class="form-control-fc">
+                  <input class="form-control" type="hidden" name="idusuario" id="idusuario">
+                  <input class="form-control" type="hidden" name="idtipousuario" id="idtipousuario">
+                  <input class="form-control" type="hidden" name="iddepartamento" id="iddepartamento">
+                  <button class="btn btn-warning float-sm-right btnAgregarActividad" type="button"><i class="fas fa-plus"></i>Agregar</button>
                 </div>
-                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <label>Actividad</label>
-                  <textarea name="modalActividad" id="modalActividad" class="form-control"></textarea> 
+                <div class="container-fluid" id="modalBodyActividades">
+                  <section class="row">
+                    <hr class="col-10">
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                      <label>Actividad</label>
+                      <textarea name="detalle[]" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                      <label>Estado</label>
+                      <select name="idestadochecklist[]" class="custom-select select-estado-actividad" data-live-search="true" required>
+                        <?php
+                        $estadosChecklist = ChecklistModelo::mdlListarEstadoCheckList();
+                        foreach ($estadosChecklist as $estadoChecklist) {
+                          echo '<option value="' . $estadoChecklist["idestadochecklist"] . '">' . $estadoChecklist["nombre"] . '</option>';
+                        }
+                        ?>
+                      </select>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                      <label>Hora Inicio</label>
+                      <input type="time" name="horainicio[]" class="form-control" min="8:00">
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                      <label>Hora Fin</label>
+                      <input type="time" name="horafin[]" class="form-control">
+                    </div>
+                    <div class="form-group col-lg-2 col-md-2 col-sm-4 col-xs-12">
+                      <label>Opciones</label>
+                      <button class="form-control btn btn-danger float-sm-right btn-eliminar-actividad" type="button"><i class="fas fa-trash-alt"></i>Eliminar</button>
+                    </div>
+                  </section>
                 </div>
-                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <label>Estado</label>
-                  <select></select>
-                  <input name="modalEstado" id="modalEstado" class="form-control">
-                </div>  
-                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <label>Hora Inicio</label>
-                  <input type="time" name="modalHoraInicio" id="modalHoraInicio" class="form-control" min="8:00" >
-                </div>
-                  <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                  <label>Hora Fin</label>
-                  <input type="time" name="modalHoraFin" id="modalHoraFin" class="form-control" >
-                </div>           
               </div>
             </div>
           </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-info">Guardar</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+          <button id="btnGuardarActividades" type="button" class="btn btn-info">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
         </div>
       </div>
     </form>

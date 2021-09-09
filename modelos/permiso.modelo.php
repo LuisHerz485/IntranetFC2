@@ -27,13 +27,13 @@ class ModeloPermiso
     /**
      * Actualiza el permiso por su id
      */
-    public static function mdlEditarPermiso(int $idpermiso, int $idtipopermiso, int $idestadopermiso, string $detalle, string $fechainicio, string $fechafin): int|false
+    public static function mdlEditarPermiso(int $idpermiso, int $idtipopermiso, string $detalle, string $fechainicio, string $fechafin): int|false
     {
         $filasActualizadas = false;
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $filasActualizadas = $conexion->updateOrDelete("UPDATE permiso SET idtipopermiso =?,idestadopermiso=?,detalle=?,fechainicio=?,fechafin=? WHERE idpermiso=?", [$idtipopermiso, $idestadopermiso, $detalle, $fechainicio, $fechafin, $idpermiso]);
+            $filasActualizadas = $conexion->updateOrDelete("UPDATE permiso SET idtipopermiso =?,detalle=?,fechainicio=?,fechafin=? WHERE idpermiso=?", [$idtipopermiso, $detalle, $fechainicio, $fechafin, $idpermiso]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -109,8 +109,8 @@ class ModeloPermiso
     }
 
     /**
-     * Retorna una lista general de permisos con los campos: 
-     * "nombre", "apellido","tipopermiso","detalle","fechacreacion","fechainicio","fechafin","estadopermiso"
+     * Retorna una lista de permisos pendientes con los campos: 
+     * "idpermiso","idestadopermiso","nombre", "apellido","tipopermiso","detalle","fechacreacion","fechainicio","fechafin","estadopermiso"
      */
     public static function mdlListarPermisos(): mixed
     {
@@ -118,12 +118,67 @@ class ModeloPermiso
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $permisos = $conexion->getData("SELECT U.nombre as nombre,U.apellidos as apellido,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,
-            P.fechafin as fechafin, EP.nombreestadopermiso as estadopermiso 
+            $permisos = $conexion->getData("SELECT P.idpermiso as idpermiso, P.idestadopermiso as idestadopermiso,U.nombre as nombre,U.apellidos as apellidos,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,
+            P.fechafin as fechafin, EP.nombreestadopermiso as estadopermiso, P.fecharevision as fecharevision 
             FROM permiso P
             JOIN tipopermiso TP ON P.idtipopermiso=TP.idtipopermiso
             JOIN estadopermiso EP ON P.idestadopermiso=EP.idestadopermiso
-            JOIN usuario U ON P.idusuario=U.idusuario");
+            JOIN usuario U ON P.idusuario=U.idusuario
+            WHERE P.idestadopermiso = 1");
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $permisos;
+    }
+
+
+    public static function mdlListarPermisosFiltros(string $fechadesde, string $fechahasta, int $idestadopermiso): mixed
+    {
+        $permisos = null;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $permisos = $conexion->getData(
+                "SELECT P.idpermiso as idpermiso, P.idestadopermiso as idestadopermiso,U.nombre as nombre,U.apellidos as apellidos,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,
+            P.fechafin as fechafin, EP.nombreestadopermiso as estadopermiso, P.fecharevision as fecharevision 
+            FROM permiso P
+            JOIN tipopermiso TP ON P.idtipopermiso=TP.idtipopermiso
+            JOIN estadopermiso EP ON P.idestadopermiso=EP.idestadopermiso
+            JOIN usuario U ON P.idusuario=U.idusuario
+            WHERE (DATE(P.fechacreacion) BETWEEN ? AND ?) AND P.idestadopermiso=?",
+                [$fechadesde, $fechahasta, $idestadopermiso]
+            );
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $permisos;
+    }
+    public static function mdlListarPermisosFiltrarRangoFecha(string $fechadesde, string $fechahasta): mixed
+    {
+        $permisos = null;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $permisos = $conexion->getData(
+                "SELECT P.idpermiso as idpermiso, P.idestadopermiso as idestadopermiso,U.nombre as nombre,U.apellidos as apellidos,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,
+            P.fechafin as fechafin, EP.nombreestadopermiso as estadopermiso, P.fecharevision as fecharevision 
+            FROM permiso P
+            JOIN tipopermiso TP ON P.idtipopermiso=TP.idtipopermiso
+            JOIN estadopermiso EP ON P.idestadopermiso=EP.idestadopermiso
+            JOIN usuario U ON P.idusuario=U.idusuario
+            WHERE (DATE(P.fechacreacion) BETWEEN ? AND ?) ",
+                [$fechadesde, $fechahasta]
+            );
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -145,7 +200,7 @@ class ModeloPermiso
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $permisosUsuarios = $conexion->getData("SELECT TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,P.fechafin as fechafin,EP.nombreestadopermiso as estadopermiso,P.fecharevision as fecharevision
+            $permisosUsuarios = $conexion->getData("SELECT P.idpermiso as idpermiso,P.idtipopermiso as idtipopermiso,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,P.fechafin as fechafin,EP.nombreestadopermiso as estadopermiso,P.fecharevision as fecharevision
             FROM permiso P
             JOIN tipopermiso TP ON P.idtipopermiso=TP.idtipopermiso
             JOIN estadopermiso EP ON P.idestadopermiso=EP.idestadopermiso
@@ -204,5 +259,28 @@ class ModeloPermiso
             }
         }
         return $isPendiente;
+    }
+
+    public static function mdlListarPermisoPorId(int $idpermiso): mixed
+    {
+        $unPermiso = null;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $unPermiso = $conexion->getDataSingle("SELECT P.idpermiso as idpermiso,P.idtipopermiso as idtipopermiso,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,P.fechafin as fechafin,EP.nombreestadopermiso as estadopermiso,P.fecharevision as fecharevision
+            FROM permiso P
+            JOIN tipopermiso TP ON P.idtipopermiso=TP.idtipopermiso
+            JOIN estadopermiso EP ON P.idestadopermiso=EP.idestadopermiso
+            JOIN usuario U ON P.idusuario=U.idusuario
+            WHERE P.idpermiso = ?", [$idpermiso]);
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $unPermiso;
     }
 }

@@ -20,10 +20,10 @@
             </div>
             <div class="info">
                 <?php
-                if ($_SESSION['nombre'] != "") {
-                    echo '<a id="username" class="d-block">' . $_SESSION['nombre'] . ' <br/>' . $_SESSION['apellidos'] . '</a>';
-                } else {
+                if (empty($_SESSION['nombre'])) {
                     echo '<a id="username" class="d-block">Nombre de usuario</a>';
+                } else {
+                    echo '<a id="username" class="d-block">' . $_SESSION['nombre'] . ' <br/>' . $_SESSION['apellidos'] . '</a>';
                 }
                 ?>
             </div>
@@ -42,7 +42,6 @@
                         <p class="ml-5">Escritorio</p>
                     </a>
                 </li>
-
                 <li class="nav-header">ADMINISTRACIÓN</li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -60,6 +59,12 @@
                             <a href="tipousuario" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Tipo Usuario</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="permisos-pendientes" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Permisos</p>
                             </a>
                         </li>
                     </ul>
@@ -188,10 +193,6 @@
                     </li>
 
                 <?php } ?>
-
-
-
-
                 <li class="nav-header">HERRAMIENTAS</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">

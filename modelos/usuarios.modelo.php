@@ -103,7 +103,7 @@ class ModeloUsuarios
         return $stmt->fetch();
     }
 
-    public static function listarUsuariosPorDepartamento(string $iddepartamento): array
+    public static function mdlListarUsuariosPorDepartamento(string $iddepartamento): array
     {
         $usuarios = [];
         $conexion = null;

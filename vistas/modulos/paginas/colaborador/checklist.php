@@ -34,7 +34,7 @@
               </thead>
               <tbody>
                 <?php
-                $usuarios = ModeloUsuarios::listarUsuariosPorDepartamento($_SESSION["iddepartamento"]);
+                $usuarios = ModeloUsuarios::mdlListarUsuariosPorDepartamento($_SESSION["iddepartamento"]);
                 foreach ($usuarios as $usuario) {
                   echo '<tr> 
                     <td>' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</td>
@@ -113,7 +113,7 @@
                       <label>Estado</label>
                       <select name="idestadochecklist[]" class="custom-select select-estado-actividad" data-live-search="true" required>
                         <?php
-                        $estadosChecklist = ChecklistModelo::listarEstadoCheckList();
+                        $estadosChecklist = ChecklistModelo::mdlListarEstadoCheckList();
                         foreach ($estadosChecklist as $estadoChecklist) {
                           echo '<option value="' . $estadoChecklist["idestadochecklist"] . '">' . $estadoChecklist["nombre"] . '</option>';
                         }

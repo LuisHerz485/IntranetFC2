@@ -20,10 +20,10 @@
             </div>
             <div class="info">
                 <?php
-                if ($_SESSION['nombre'] != "") {
-                    echo '<a id="username" class="d-block">' . $_SESSION['nombre'] . ' <br/>' . $_SESSION['apellidos'] . '</a>';
-                } else {
+                if (empty($_SESSION['nombre'])) {
                     echo '<a id="username" class="d-block">Nombre de usuario</a>';
+                } else {
+                    echo '<a id="username" class="d-block">' . $_SESSION['nombre'] . ' <br/>' . $_SESSION['apellidos'] . '</a>';
                 }
                 ?>
             </div>

@@ -11,8 +11,8 @@ class ControladorAsistencia
 
 	static public function ctrEditarDetalleAsistencia()
 	{
-		$detalle = ControladorValidacion::longitud($_POST['detalle'], 200, 10);
 		if (isset($_POST['idasistencia'])) {
+			$detalle = ControladorValidacion::longitud($_POST['detalle'], 200, 10);
 			if (preg_match('/^[a-zA-Z0-9ñÑaÁáéÉíÍóÓúÚ ]+|(^$)/', $_POST['detalle'])) {
 
 				$tabla = "asistencia";
