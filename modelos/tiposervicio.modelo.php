@@ -17,6 +17,16 @@ class ModeloTipoServicio
     }
 
     /**
+     * Retorna un array con todos los servicios excepto el servicio auxiliar
+     */
+    static public function mdlMostrarServicios()
+    {
+        $stmt = Conexion::conectar()->prepare("SELECT idservicio, idcategoriaservicio, nombre, descripcion, precio FROM servicio WHERE idservicio != 1");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    /**
      * Retorna un array de un servicio con sus detalles
      */
     static public function mdlMostrarServicio($tabla, $valor)

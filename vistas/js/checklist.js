@@ -29,9 +29,16 @@ $('.btnListarCheckList').click(function () {
 });
 
 const sectionActividad = $('#modalBodyActividades').html();
+
 $('.btnAgregarActividad').on('click', function () {
   $('#modalBodyActividades').append(sectionActividad);
 });
+
+$('#btnSalirActividad').on('click', function () {
+  $('#modalBodyActividades').html("");
+  $('#modalBodyActividades').append(sectionActividad);
+});
+
 
 $(document).on('click', '.btn-eliminar-actividad', function () {
   $(this).closest('section').remove();

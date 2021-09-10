@@ -53,4 +53,21 @@ class ControladorChecklist
         }
         return false;
     }
+
+    public static function ctrCheckListActividades():mixed
+    {
+        if(isset($_POST["idestadochecklist"],$_POST["idusuario"],$_POST["fechadesde"],$_POST["fechahasta"])){
+            $idusuario = ControladorValidacion::validarID($_POST["idusuario"]);
+            $idestadochecklist = ControladorValidacion::validarID($_POST["idestadochecklist"]);
+            $fechadesde=$_POST["fechadesde"];
+            $fechahasta=$_POST["fechahasta"];
+            if($idusuario && $idestadochecklist
+             && ControladorValidacion::formatoFecha($fechadesde) 
+             && ControladorValidacion::formatoFecha($fechahasta))
+             {
+               return ChecklistModelo::mdlListarCheckListActividades($idusuario,$idestadochecklist,$fechadesde,$fechahasta);
+             }
+        }
+        return false;
+    }
 }

@@ -37,12 +37,13 @@
                   echo '<option value="' . $value['idcategoriaservicio'] . '">' . $value['nombre'] . '</option>';
                 }
                 ?>
+                ?>
               </select>
               <br />
               <button class="btn btn-warning btnMostrarArchivosS"><strong><i class="far fa-eye"></i> Mostrar</strong></button>
             </div>
             <div id="tbllistado">
-              <table id="mostrarArchivoS" class="table table-striped tablaDataTipoUsuario dt-responsive">
+              <table id="mostrarArchivoS" class="table table-striped tablaDataTipoServicio dt-responsive">
                 <thead>
                   <th class="no-exportar">Opciones</th>
                   <th>Nombre</th>
@@ -50,7 +51,12 @@
                   <th>Precio</th>
                 </thead>
                 <tbody>
-
+                  <?php
+                  $servicios = ModeloTipoServicio::mdlMostrarServicios();
+                  foreach ($servicios as $servicio) {
+                    echo "<tr><td><button class='btn btn-warning btnEditarTS' idservicio='" . $servicio["idservicio"] . "'><i class='fas fa-pencil-alt'></i></button></td><td>" . $servicio["nombre"] . "</td><td>" . $servicio["descripcion"] . "</td><td>" . $servicio["precio"] . "</td></tr>";
+                  }
+                  ?>
                 </tbody>
                 <tfoot>
                   <th>Opciones</th>
@@ -71,9 +77,9 @@
                     <?php
                     $item = 1;
                     $valor = null;
-                    $departamento = ControladorTipoServicio::ctrMostrarCategoriaServicio($item, $valor);
-                    foreach ($servicio as $key => $value) {
-                      echo '<option value="' . $value['idcategoriaservicio'] . '">' . $value['nombre'] . '</option>';
+                    $categoriasServicios = ControladorTipoServicio::ctrMostrarCategoriaServicio($item, $valor);
+                    foreach ($categoriasServicios as $categoriaServicio) {
+                      echo '<option value="' . $categoriaServicio['idcategoriaservicio'] . '">' . $categoriaServicio['nombre'] . '</option>';
                     }
                     ?>
                   </select>
@@ -86,11 +92,11 @@
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="">Descripción(*):</label>
-                  <input class="form-control" type="text" name="descripcion" id="descripcion" maxlength="100" placeholder="Descripción" required>
+                  <textarea class="form-control" name="descripcion" rows="5" id="descripcion" placeholder="Descripción" required></textarea>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="">Precio(*):</label>
-                  <input class="form-control" type="number" name="precio" id="precio" maxlength="12" placeholder="Precio" required>
+                  <input class="form-control" type="number" name="precio" step="0.01" id="precio" placeholder="Precio" required>
                 </div>
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
@@ -113,7 +119,7 @@
 
 <!-- /.content-wrapper -->
 <div class="modal fade" id="modalservicio" role="dialog">
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog ">
     <form role="form" method="post" enctype="multipart/form-data">
       <div class="modal-content">
         <div class="modal-header">
@@ -131,42 +137,47 @@
                   <select name="idcategoriaservicioS" id="idcategoriaservicioS" class="form-control select-picker" required>
                     <option value="0">Seleccione Categoria ...</option>
                     <?php
-                    $item = 1;
-                    $valor = null;
-                    $departamento = ControladorTipoServicio::ctrMostrarCategoriaServicio($item, $valor);
-                    foreach ($servicio as $key => $value) {
-                      echo '<option value="' . $value['idcategoriaservicio'] . '">' . $value['nombre'] . '</option>';
+                    foreach ($categoriasServicios as $categoriaServicio) {
+                      echo '<option value="' . $categoriaServicio['idcategoriaservicio'] . '">' . $categoriaServicio['nombre'] . '</option>';
                     }
                     ?>
                   </select>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="">Precio(*):</label>
+                  <input class="form-control" type="number" step="0.01" name="precioS" id="precioS" placeholder="Precio" required>
+                </div>
+                <div class="form-group col-lg-12 col-md-12 col-xs-12">
                   <label for="">Nombre(*):</label>
                   <input class="form-control" type="hidden" name="editarS" id="editarS" value="no">
                   <input class="form-control" type="hidden" name="idservicioS" id="idservicioS">
                   <input class="form-control" type="text" name="nombreS" id="nombreS" maxlength="100" placeholder="Nombre" required>
                 </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                <div class="form-group col-lg-12 col-md-12 col-xs-12">
                   <label for="">Descripción(*):</label>
-                  <input class="form-control" type="text" name="descripcionS" id="descripcionS" maxlength="100" placeholder="Descripción" required>
+                  <textarea class="form-control" rows="5" name="descripcionS" id="descripcionS" maxlength="200" placeholder="Descripción" required></textarea>
                 </div>
-                <div class="form-group col-lg-6 col-md-6 col-xs-12">
-                  <label for="">Precio(*):</label>
-                  <input class="form-control" type="number" name="precioS" id="precioS" maxlength="12" placeholder="Precio" required>
-                </div>
-                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <button class="btn btn-danger" data-dismiss="modal" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
-                  <button class="btn btn-primary" type="submit" id="btnGuardarS"><i class="fa fa-save"></i> Guardar</button>
-                </div>
-                <?php
-                $servicioeditar = new ControladorTipoServicio();
-                $servicioeditar->ctrEditarTipoServicio();
-                ?>
 
               </div>
             </div>
           </div>
+          <div class="modal-footer">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col">
+                  <button type="button" class="btn btn-danger btn-block" data-dismiss="modal"> <i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+                </div>
+                <div class="col">
+                  <button type="submit" class="btn btn-primary btn-block"> <i class="fa fa-save"></i> Guardar</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+        <?php
+        $servicioeditar = new ControladorTipoServicio();
+        $servicioeditar->ctrEditarTipoServicio();
+        ?>
       </div>
     </form>
   </div>

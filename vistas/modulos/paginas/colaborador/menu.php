@@ -37,7 +37,7 @@
 
                 <li class="nav-header">GENERAL</li>
                 <li class="nav-item">
-                    <a href="escritoriocolaborador" class="nav-link">
+                    <a href="escritorio" class="nav-link">
                         <i class="fas fa-desktop"></i>
                         <p class="ml-5">Escritorio</p>
                     </a>
@@ -53,17 +53,17 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="clientes" class="nav-link">
+                            <a href="asistencia" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Asistencia</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!--<li class="nav-item">
                             <a href="checklist" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Check List</p>
                             </a>
-                        </li>
+                        </li>-->
                         <li class="nav-item">
                             <a href="permisos" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>

@@ -24,7 +24,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row ml-5 mr-5">
                 <!-- ./col -->
-                <div class="col-lg-6 col-6">
+                <div class="col-lg-12 col-12">
                     <!-- small box -->
                     <a href="asistencia" class="small-box bg-success">
                         <div class="inner">
@@ -39,9 +39,8 @@
                                 class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
-                <!-- ./col -->
-                <div class="col-lg-6 col-6">
-                    <!-- small box -->
+                <!-- ./col 
+                <div class="col-lg-6 col-6"> 
                     <a href="asistencia" class="small-box bg-primary">
                         <div class="inner">
                             <h3>Check List</h3>
@@ -54,7 +53,7 @@
                         <p class="small-box-footer">Ingresar <i
                                 class="fas fa-arrow-circle-right"></i></p>
                     </a>
-                </div>
+                </div>-->
                 <!-- ./col -->
                 <div class="col-lg-12 col-12">
                     <!-- small box -->

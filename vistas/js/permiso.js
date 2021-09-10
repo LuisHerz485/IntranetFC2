@@ -4,30 +4,17 @@ function limpiarpermiso() {
 
 $(document).on('click', '.btn-editar-permiso', function () {
   limpiarpermiso();
-  var idpermiso = $(this).attr('idpermiso');
-  var datos = new FormData();
-  datos.append('opcion', 'buscar');
-  datos.append('idpermiso', idpermiso);
-  $.ajax({
-    url: 'ajax/permiso.ajax.php',
-    method: 'POST',
-    data: datos,
-    cache: false,
-    contentType: false,
-    processData: false,
-    dataType: 'json',
-    success: function (respuesta) {
-      $('#idpermiso').val(respuesta['idpermiso']);
-      $('#idtipopermiso').val(respuesta['idtipopermiso']).trigger('change');
-      $('#fechainicio').val(
-        respuesta['fechainicio'].replace(' ', 'T').slice(0, -3)
-      );
-      $('#fechafin').val(respuesta['fechafin'].replace(' ', 'T').slice(0, -3));
-      $('#detalle').val(respuesta['detalle']);
-      $('#opcionesEditarPermiso').removeClass('d-none');
-      $('#opcionesRegistrarPermiso').addClass('d-none');
-    },
-  });
+  var tabla=$('.tablaDataPermisos').DataTable();
+  const datos=tabla.row($(this).closest("tr")).data();
+  if(datos){
+    $('#idpermiso').val(datos[0]);
+    $('#idtipopermiso').val(datos[1]).trigger('change');
+    $('#fechainicio').val(datos[4].replace(' ', 'T').slice(0, -3));
+    $('#fechafin').val(datos[5].replace(' ', 'T').slice(0, -3));
+    $('#detalle').val(datos[6]);
+    $('#opcionesEditarPermiso').removeClass('d-none');
+    $('#opcionesRegistrarPermiso').addClass('d-none');
+  }
 });
 
 $('#btnCancelarEditarPermiso').on('click', function () {
@@ -52,8 +39,8 @@ $(document).on('click', '.btn-actualizar-estado-permiso', function () {
 
 $(document).on('click', '.btn-mostrar-detalles', function () {
   let btn = $(this);
-  $('#fechainicio').val(new Date(btn.attr('fechainicio')).replace(' ', 'T'));
-  $('#fechafin').val(new Date(btn.attr('fechafin')).replace(' ', 'T'));
+  $('#fechainicio').val(btn.attr('fechainicio').replace(' ', 'T').slice(0, -3));
+  $('#fechafin').val(btn.attr('fechafin').replace(' ', 'T').slice(0, -3));
   $('#detalle').val(btn.attr('detalles'));
   $('#modalPermisoDetalles').modal('show');
 });

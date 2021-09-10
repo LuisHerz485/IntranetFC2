@@ -25,26 +25,23 @@ class ControladorTipoServicio
 
 	static public function ctrCrearTipoServicio()
 	{
-		if (isset($_POST['nombre'])) {
-			$idservicio = ControladorValidacion::validarID($_POST['idservicio']);
+		if (isset($_POST['nombre'],$_POST['idcategoriaservicio'],$_POST['descripcion'],$_POST['precio'])) {
 			$idcategoriaservicio = ControladorValidacion::validarID($_POST['idcategoriaservicio']);
 			$precio = ControladorValidacion::validarPrecio($_POST['precio']);
 			if (
 				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ.\/ ]+$/', $_POST['nombre']) &&
-				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ.\/ ]+$/', $_POST['descripcion']) &&
-				$idservicio && $idcategoriaservicio
+				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ.\/;,!?¡()¿ ]+$/', $_POST['descripcion']) &&
+				 $idcategoriaservicio
 			) {
 
 				$tabla = "servicio";
 
 				$datos = array(
-					"idservicio" => $idservicio,
 					"idcategoriaservicio" => $idcategoriaservicio,
 					"nombre" => $_POST['nombre'],
 					"descripcion" => $_POST['descripcion'],
 					"precio" => $precio
 				);
-
 				if ($_POST['editar'] === "no") {
 					$respuesta = ModeloTipoServicio::mdlIngresarTipoServicio($tabla, $datos);
 					if ($respuesta == "ok") {
@@ -52,22 +49,6 @@ class ControladorTipoServicio
 								Swal.fire({ 
 									title: 'Success!',
 									text: '¡Tipo Servicio creado correctamente!',
-									icon: 'success',
-									confirmButtonText:'Ok'
-									}).then((result)=>{
-										if(result.value){
-											window.location='servicios';
-										}
-									})
-							</script>";
-					}
-				} else {
-					$respuesta = ModeloTipoServicio::mdlEditarTipoServicio($tabla, $datos);
-					if ($respuesta == "ok") {
-						echo "<script>
-								Swal.fire({ 
-									title: 'Success!',
-									text: '¡El Tipo Servicio se modificó correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'
 									}).then((result)=>{
@@ -93,16 +74,16 @@ class ControladorTipoServicio
 
 	static public function ctrEditarTipoServicio()
 	{
-		if (isset($_POST['nombreS'])) {
+		if (isset($_POST['nombreS'],$_POST['idservicioS'],$_POST['idcategoriaservicioS'],$_POST['precioS'],$_POST['descripcionS'])) {
 			$idservicio = ControladorValidacion::validarID($_POST['idservicioS']);
 			$idcategoriaservicio = ControladorValidacion::validarID($_POST['idcategoriaservicioS']);
 			$precio = ControladorValidacion::validarPrecio($_POST['precioS']);
 			if (
 				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ.\/ ]+$/', $_POST['nombreS']) &&
-				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ.\/ ]+$/', $_POST['descripcionS']) &&
+				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ.\/;,!?¡()¿ ]+$/', $_POST['descripcionS']) &&
 				$idservicio && $idcategoriaservicio && $precio
 			) {
-
+				
 				$tabla = "servicio";
 
 				$datos = array(

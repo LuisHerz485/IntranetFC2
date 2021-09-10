@@ -117,8 +117,10 @@
                         </form>
                         <br />
                         <div>
-                            <table id="" class="table table-striped tablaDataPermisos dt-responsive">
+                            <table id="tablaPermisos" class="table table-striped tablaDataPermisos dt-responsive">
                                 <thead>
+                                    <th class="no-exportar">id</th>
+                                    <th class="no-exportar">idTipoPermiso</th>
                                     <th class="no-exportar">Opciones</th>
                                     <th>Tipo Permiso</th>
                                     <th>Fecha Inicio</th>
@@ -132,6 +134,8 @@
                                     if ($permisos) {
                                         foreach ($permisos as $permiso) {
                                             echo '<tr> 
+                                        <td>'.$permiso['idpermiso'] .'</td>  
+                                        <td>'.$permiso['idtipopermiso'] .'</td>   
                                         <td><a href="#form" class="btn btn-s btn-warning btn-editar-permiso" idpermiso="' . $permiso["idpermiso"] . '" ><i class="fas fa-pencil-alt"></i> </a></td> 
                                         <td>' . $permiso['tipopermiso'] . ' </td>
                                         <td>' . $permiso['fechainicio'] . '</td>
@@ -144,6 +148,8 @@
                                     ?>
                                 </tbody>
                                 <tfoot>
+                                    <th class="no-exportar">id</th>
+                                    <th class="no-exportar">idTipoPermiso</th>
                                     <th class="no-exportar">Opciones</th>
                                     <th>Tipo Permiso</th>
                                     <th>Fecha Inicio</th>
@@ -155,26 +161,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="modalEditarPermiso" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Editar Permiso</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Guardar Cambio</button>
             </div>
         </div>
     </div>

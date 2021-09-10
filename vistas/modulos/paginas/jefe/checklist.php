@@ -29,7 +29,7 @@
               <thead>
                 <th>Nombre</th>
                 <th>Correo</th>
-                <th>Área <?php echo $_SESSION["iddepartamento"]; ?></th>
+                <th>Área</th>
                 <th>Opción</th>
               </thead>
               <tbody>
@@ -55,11 +55,44 @@
           </div>
 
           <div class="card-body panel-body" id="formularioCheckList">
+            <form method=POST id="frmFiltroChecklist">
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-3">
+                    <label>Seleccione el estado:</label>
+                    <select name="idestadochecklist" id="idestadochecklist" class="form-control select2" required>
+                      <?php
+                      $estadosChecklist = ChecklistModelo::mdlListarEstadoCheckList();
+                      if ($estadosChecklist) {
+                        foreach ($estadosChecklist as $estadoChecklist) {
+                          echo '<option value="' . $estadoChecklist["idestadochecklist"] . '">' . $estadoChecklist["nombre"] . '</option>';
+                        }
+                      }
+                      ?>
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <label>Seleccione Fecha Desde</label>
+                    <input type="date" class="form-control" name="fechadesde" id="fechadesde" required>
+                  </div>
+                  <div class="col-3">
+                    <label>Seleccione Fecha Hasta</label>
+                    <input type="date" class="form-control" name="fechahasta" id="fechahasta" required>
+                  </div>
+                  <div class="col-3">
+                    <label>Opciones</label>
+                    <button type="button" value="filtrar" class="btn btn-primary  btn-block" id="btnFiltrarChecklist" name="btnFiltrarChecklist"><i class="fas fa-search"></i> Filtrar</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+            <hr>
             <table id="mostrarCheckList" class="table table-striped tablaDataCheckList dt-responsive">
               <thead>
                 <th>Actividad</th>
                 <th>Fecha</th>
-                <th>Tiempo</th>
+                <th>Hora Inicio</th>
+                <th>Hora Fin</th>
                 <th>Estado</th>
               </thead>
               <tbody>
@@ -102,9 +135,9 @@
                   <input class="form-control" type="hidden" name="iddepartamento" id="iddepartamento">
                   <button class="btn btn-warning float-sm-right btnAgregarActividad" type="button"><i class="fas fa-plus"></i>Agregar</button>
                 </div>
+                <hr class="col-10 bg-dark">
                 <div class="container-fluid" id="modalBodyActividades">
                   <section class="row">
-                    <hr class="col-10">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <label>Actividad</label>
                       <textarea name="detalle[]" class="form-control"></textarea>
@@ -132,6 +165,7 @@
                       <label>Opciones</label>
                       <button class="form-control btn btn-danger float-sm-right btn-eliminar-actividad" type="button"><i class="fas fa-trash-alt"></i>Eliminar</button>
                     </div>
+                    <hr class="col-10 bg-dark">
                   </section>
                 </div>
               </div>
@@ -140,7 +174,7 @@
         </div>
         <div class="modal-footer">
           <button id="btnGuardarActividades" type="button" class="btn btn-info">Guardar</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+          <button id="btnSalirActividad" type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
         </div>
       </div>
     </form>

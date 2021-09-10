@@ -70,7 +70,7 @@ class ModeloAsistencia
      */
     static public function mdlConsultarAsistencia($valor)
     {
-        $stmt = Conexion::conectar()->prepare("SELECT A.fechahora as fechahora, A.tipo as tipo, U.idusuario as idusuario 
+        $stmt = Conexion::conectar()->prepare("SELECT A.fechahora as fechahora, A.tipo as tipo, U.idusuario as idusuario, A.estado as estado, 
                 FROM asistencia A 
                 JOIN usuario U ON U.idusuario = A.idusuario
                 WHERE U.idusuario=$valor ORDER BY A.fechahora DESC LIMIT 1");
@@ -91,4 +91,15 @@ class ModeloAsistencia
             return "error";
         }
     }
+
+    static public function mdlConsultarAsistenciaColaborador($valor)
+    {
+        $stmt = Conexion::conectar()->prepare("SELECT A.fechahora as fechahora, A.tipo as asistencia, A.detalle as detalle, A.estado as estado 
+                FROM asistencia A 
+                JOIN usuario U ON U.idusuario = A.idusuario
+                WHERE U.idusuario=$valor ORDER BY A.fechahora ");
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
 }

@@ -124,7 +124,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 2: {
-          $colaboradorRutas = ["escritorio", "asistencia", "checklist", "permisos"];
+          $colaboradorRutas = ["escritorio", "asistencia", "permisos"];
           include "vistas/modulos/paginas/colaborador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
             include "vistas/modulos/paginas/colaborador/" . $_GET['ruta'] . ".php";
@@ -146,7 +146,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
       case 4: {
           $recursosHumanosRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "reportes", "consultaruc", "consultadni"];
           include "vistas/modulos/paginas/administrador/menu.php";
-          if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
+          if (isset($_GET['ruta']) && in_array($_GET['ruta'], $recursosHumanosRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
           } else {
             include "vistas/modulos/paginas/404.php";
@@ -154,10 +154,10 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 5: {
-          $jefeAreaRutas = ["escritorio", "asistencia", "checklist", "permisos"];
-          include "vistas/modulos/paginas/administrador/menu.php";
-          if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
-            include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
+          $jefeAreaRutas = ["escritorio", "asistencia", "permisos"];
+          include "vistas/modulos/paginas/jefe/menu.php";
+          if (isset($_GET['ruta']) && in_array($_GET['ruta'], $jefeAreaRutas)) {
+            include "vistas/modulos/paginas/jefe/" . $_GET['ruta'] . ".php";
           } else {
             include "vistas/modulos/paginas/404.php";
           }
@@ -211,7 +211,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/menu.js"></script>
 <script src="vistas/js/servicio.js"></script>
 <script src="vistas/js/economia.js"></script>
-<script src="vistas/js/checklist.js"></script>
+<!--<script src="vistas/js/checklist.js"></script>-->
 <script src="vistas/js/tiposervicio.js"></script>
 <script src="vistas/js/permiso.js"></script>
 <script>
@@ -226,8 +226,6 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
-
-
 </body>
 
 </html>

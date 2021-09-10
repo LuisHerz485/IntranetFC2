@@ -592,6 +592,7 @@ CREATE TABLE permiso(
 	CONSTRAINT fk_pe_tp FOREIGN KEY (idtipopermiso) REFERENCES tipopermiso(idtipopermiso),
 	CONSTRAINT fk_pe_etp FOREIGN KEY (idestadopermiso) REFERENCES estadopermiso(idestadopermiso)
 );
+
 INSERT INTO `tipopermiso`(`nombrepermiso`) VALUES ('Por Motivos Familiares');
 INSERT INTO `tipopermiso`(`nombrepermiso`) VALUES ('Por Matrimonio');
 INSERT INTO `tipopermiso`(`nombrepermiso`) VALUES ('Por Mudanza');
