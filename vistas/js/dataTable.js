@@ -1338,13 +1338,14 @@ $('.tablaDataPermisos').DataTable({
     {
       extend: 'pdf',
       download: 'open',
+      orientation: 'landscape',
       text: '<i class="fas fa-file-pdf"> PDF</i> ',
       title: 'Reporte de Permisos',
       titleAttr: 'Exportar a PDF',
       alignment: 'center',
       className: 'btn btn-danger',
       customize: function (doc) {
-        doc.content[1].table.widths = ['20%', '20%', '20%', '40%'];
+        doc.content[1].table.widths = ['20%', '15%', '15%', '50%'];
         doc.watermark = {
           text: 'FC Contadores & Asociados',
           bold: true,
