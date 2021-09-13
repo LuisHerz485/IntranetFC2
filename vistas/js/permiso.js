@@ -6,12 +6,13 @@ $(document).on('click', '.btn-editar-permiso', function () {
   limpiarpermiso();
   var tabla=$('.tablaDataPermisos').DataTable();
   const datos=tabla.row($(this).closest("tr")).data();
+  console.log(datos);
   if(datos){
     $('#idpermiso').val(datos[0]);
     $('#idtipopermiso').val(datos[1]).trigger('change');
-    $('#fechainicio').val(datos[4].replace(' ', 'T').slice(0, -3));
-    $('#fechafin').val(datos[5].replace(' ', 'T').slice(0, -3));
-    $('#detalle').val(datos[6]);
+    $('#fechainicio').val(datos[5].replace(' ', 'T').slice(0, -3));
+    $('#fechafin').val(datos[6].replace(' ', 'T').slice(0, -3));
+    $('#detalle').val(datos[7]);
     $('#opcionesEditarPermiso').removeClass('d-none');
     $('#opcionesRegistrarPermiso').addClass('d-none');
   }

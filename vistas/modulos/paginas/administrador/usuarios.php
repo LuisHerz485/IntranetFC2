@@ -28,7 +28,9 @@
               <div id="tbllistado">
                 <table class="table table-striped tablaDataUsuario dt-responsive">
                   <thead>
-                    <th class="no-exportar">Opciones</th>
+                    <?php
+                        if ($_SESSION['idtipousuario'] == 1) { ?>
+                    <th class="no-exportar">Opciones</th><?php } ?>
                     <th>Estado</th>
                     <th>Área</th>
                     <th>Nombre Completo</th>
@@ -43,8 +45,9 @@
                       $valor = null;
                       $usuarios = ControladorUsuarios::ctrMostrarUsuario($item,$valor);
                       foreach($usuarios as $key => $value){
+                        if($_SESSION['idtipousuario'] == 1){
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-s btnEditarUsuario" onclick="mostrarform(true)" login="'.$value['usuario'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-info btn-s btnContra" login="'.$value['usuario'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
+                          <th scope="row"><button class="btn btn-warning btn-s btnEditarUsuario" onclick="mostrarform(true)" login="'.$value['usuario'].'"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-info btn-s btnContra" login="'.$value['usuario'].'" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';}
                           if($value['estado']!="1"){
                             echo'<td><button class="btn btn-danger btn-xs  btnActivarUs" login="'.$value["usuario"].'" estado="1">Inactivo</button></td>';
                           }else{
@@ -65,7 +68,9 @@
                   ?>
                   </tbody>
                   <tfoot>
-                    <th>Opciones</th>
+                    <?php
+                        if ($_SESSION['idtipousuario'] == 1) { ?>
+                    <th class="no-exportar">Opciones</th><?php } ?>
                     <th>Estado</th>
                     <th>Área</th>
                     <th>Nombre Completo</th>

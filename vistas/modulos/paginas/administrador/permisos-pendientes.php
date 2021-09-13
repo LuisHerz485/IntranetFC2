@@ -51,6 +51,7 @@
                                     <div class="col-3">
                                         <label>Seleccione estado de permiso</label>
                                         <select name="idestadopermiso" class="form-control select2">
+                                            <option value="0">Todos</option>
                                             <?php
                                             $estadosPermisos = ModeloPermiso::mdlListarEstadosPermisos();
                                             if ($estadosPermisos) {
@@ -59,7 +60,7 @@
                                                 }
                                             }
                                             ?>
-                                            <option value="0">Todos</option>
+                                            
                                         </select>
                                     </div>
                                     <div class="col-3">

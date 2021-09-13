@@ -24,7 +24,7 @@
             <!-- Small boxes (Stat box) -->
             <div class="row ml-5 mr-5">
                 <!-- ./col -->
-                <div class="col-lg-12 col-12">
+                <div class="col-lg-3 col-3">
                     <!-- small box -->
                     <a href="asistencia" class="small-box bg-success">
                         <div class="inner">
@@ -55,7 +55,7 @@
                     </a>
                 </div>-->
                 <!-- ./col -->
-                <div class="col-lg-12 col-12">
+                <div class="col-lg-3 col-3">
                     <!-- small box -->
                     <a href="https://fccontadores.com:2096/" class="small-box bg-orange" target="_blank">
                         <div class="inner">

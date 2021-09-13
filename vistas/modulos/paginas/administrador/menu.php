@@ -61,12 +61,15 @@
                                 <p>Tipo Usuario</p>
                             </a>
                         </li>
+                        <?php
+                        if ($_SESSION['idtipousuario'] != 4) { ?>
                         <li class="nav-item">
                             <a href="permisos-pendientes" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Permisos</p>
                             </a>
                         </li>
+                        <?php } ?>
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
@@ -103,6 +106,20 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item has-treeview">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-folder"></i>
+                        <p>Administración personal<i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="permisos" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Solicitud de permiso</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <?php
                 if ($_SESSION['idtipousuario'] != 4) { ?>
@@ -121,11 +138,11 @@
                             </li>
                         </ul>
                     </li>
-                <?php } ?>
+                
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="fas fa-folder"></i>
-                        <p style="font-size: 14px;">Servicios<i class="right fas fa-angle-left"></i></p>
+                        <p>Servicios<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
@@ -136,6 +153,7 @@
                         </li>
                     </ul>
                 </li>
+                <?php } ?>
                 <?php
                 if ($_SESSION['idtipousuario'] == 1) { ?>
                     <li class="nav-item has-treeview">

@@ -26,8 +26,8 @@
             </div>
             <div class="card-body panel-body" id="listadoregistrosA">
               <div id="tbllistado">
-                <table  class="table table-striped tablaDataAsistenciaUsuario dt-responsive">
-                  <thead>
+                <table  class="table table-striped table-secondary tablaDataAsistenciaUsuario dt-responsive">
+                  <thead class="thead-dark">
                     <th>Asistencia</th>
                     <th>Fecha</th>
                     <th>Estado</th>
@@ -51,7 +51,7 @@
                       }
                   ?>
                   </tbody>
-                  <tfoot>                
+                  <tfoot class="thead-dark">                
                     <th>Asistencia</th>
                     <th>Fecha</th>
                     <th>Estado</th>

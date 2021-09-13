@@ -1345,7 +1345,7 @@ $('.tablaDataPermisos').DataTable({
       alignment: 'center',
       className: 'btn btn-danger',
       customize: function (doc) {
-        doc.content[1].table.widths = ['20%', '15%', '15%', '50%'];
+        doc.content[1].table.widths = ['9%', '20%', '12%', '12%', '47%'];
         doc.watermark = {
           text: 'FC Contadores & Asociados',
           bold: true,

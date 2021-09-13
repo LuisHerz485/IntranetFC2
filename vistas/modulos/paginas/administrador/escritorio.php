@@ -73,7 +73,10 @@
                                 class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
+                <?php } ?>
                 <!-- ./col -->
+                <?php 
+                if ($_SESSION['idtipousuario'] == 1) {?>
                 <div class="col-lg-3 col-3">
                     <!-- small box -->
                     <a href="generarCobranza" class="small-box bg-primary">
@@ -89,7 +92,8 @@
                                 class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
-            <?php } ?>
+                <?php } ?>
+            
                 <!-- ./col -->
                 <!--<div class="col-lg-12 col-12">
                     small box

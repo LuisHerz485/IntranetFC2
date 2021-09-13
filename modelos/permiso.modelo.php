@@ -200,7 +200,7 @@ class ModeloPermiso
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $permisosUsuarios = $conexion->getData("SELECT P.idpermiso as idpermiso,P.idtipopermiso as idtipopermiso,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,P.fechafin as fechafin,EP.nombreestadopermiso as estadopermiso,P.fecharevision as fecharevision
+            $permisosUsuarios = $conexion->getData("SELECT P.idpermiso as idpermiso,P.idtipopermiso as idtipopermiso,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,P.fechafin as fechafin, P.idestadopermiso as idestadopermiso,EP.nombreestadopermiso as estadopermiso,P.fecharevision as fecharevision
             FROM permiso P
             JOIN tipopermiso TP ON P.idtipopermiso=TP.idtipopermiso
             JOIN estadopermiso EP ON P.idestadopermiso=EP.idestadopermiso
