@@ -41,10 +41,7 @@
                         <i class="fas fa-desktop"></i>
                         <p class="ml-5">Escritorio</p>
                     </a>
-                </li>
-
-
-
+                </li> 
                 <li class="nav-header">ADMINISTRACION</li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -58,12 +55,12 @@
                                 <p>Asistencia</p>
                             </a>
                         </li>
-                        <!--<li class="nav-item">
+                        <li class="nav-item">
                             <a href="checklist" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Check List</p>
                             </a>
-                        </li>-->
+                        </li>
                         <li class="nav-item">
                             <a href="permisos" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>

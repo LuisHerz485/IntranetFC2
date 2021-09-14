@@ -24,45 +24,13 @@
           <div class="card-header">
             <h3 class="card-title">Check List - Personal</h3>
           </div>
-          <div class="card-body panel-body" id="listadoUserCL">
-            <table class="table table-striped tablaDataTableC dt-responsive text-center">
-              <thead>
-                <th>Nombre</th>
-                <th>Correo</th>
-                <th>Área</th>
-                <th>Opción</th>
-              </thead>
-              <tbody>
-                <?php
-                $usuarios = ModeloUsuarios::mdlListarUsuariosPorDepartamento($_SESSION["iddepartamento"]);
-                if ($usuarios) {
-                  foreach ($usuarios as $usuario) {
-                    echo '<tr> 
-                      <td>' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</td>
-                      <td>' . $usuario['email'] . '</td>
-                      <td>' . $usuario['departamento'] . '</td>
-                      <td><button class="btn btn-s btn-warning btnListarCheckList" idusuario="' . $usuario["idusuario"] . '" iddepartamento="' . $usuario["iddepartamento"] . '" idtipousuario="' . $usuario["idtipousuario"] . '" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button></td>
-                      </tr>';
-                  }
-                }
-                ?>
-              </tbody>
-              <tfoot>
-                <th>Nombre</th>
-                <th>Correo</th>
-                <th>Área</th>
-                <th>Opción</th>
-              </tfoot>
-            </table>
-          </div>
-
-          <div class="card-body panel-body" id="formularioCheckList">
-            <form method=POST id="frmFiltroChecklist" enctype="multipart/form-data">
+          <div class="card-body panel-body" id="formularioCheckListColaborador">
+            <form method=POST id="frmFiltroChecklist">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-3">
+                  <input class="form-control" type="hidden" name="idusuario" id="idusuario" value="<?php echo $_SESSION["idusuario"]; ?>">
                     <label>Seleccione el estado:</label>
-                    <input class="form-control" type="hidden" name="idusuario" id="idusuario2" >
                     <select name="idestadochecklist" id="idestadochecklist" class="form-control select2" required>
                       <?php
                       $estadosChecklist = ChecklistModelo::mdlListarEstadoCheckList();
@@ -92,7 +60,7 @@
             <hr>
             <table id="mostrarCheckList" class="table table-striped tablaDataCheckList dt-responsive">
               <thead>
-                <th class="no-exportar">Opciones</th>
+              <th class="no-exportar">Opciones</th>
                 <th>Actividad</th>
                 <th>Fecha</th>
                 <th>Hora Inicio</th>
@@ -111,18 +79,14 @@
               </tfoot>
             </table>
             <div>
-              <button class="btn btn-danger" id="btnCancelarCheckJefe" type="button"><i class="fa fa-arrow-circle-left"></i>Volver</button>
-              <button class="btn btn-success btnAgregarCL float-sm-right mr-3 mt-2" data-toggle="modal" data-target="#modalCheckList"><i class="far fa-plus-square"></i> Añadir</button>
+            <button class="btn btn-success btnAgregarCL float-sm-right mr-3 mt-2" data-toggle="modal" data-target="#modalCheckList"><i class="far fa-plus-square"></i> Añadir</button>
             </div>
-          </div>
-
+          </div>    
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- /.content-wrapper -->
 
 <!-- MODAL DE AGREGAR ACTIVIDAD AL CHECKLIST -->
 <div class="modal fade" id="modalCheckList" role="dialog">
@@ -142,9 +106,10 @@
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <label>Actividades del día: </label>
                   <input type="date" name="fecha" class="form-control-fc">
-                  <input class="form-control" type="hidden" name="idusuario" id="idusuario">
-                  <input class="form-control" type="hidden" name="idtipousuario" id="idtipousuario">
-                  <input class="form-control" type="hidden" name="iddepartamento" id="iddepartamento">
+
+                  <input class="form-control" type="hidden" name="idusuario" id="idusuario" value="<?php echo $_SESSION['idusuario'];?>">
+                  <input class="form-control" type="hidden" name="idtipousuario" id="idtipousuario" value="<?php echo $_SESSION['idtipousuario'];?>">
+                  <input class="form-control" type="hidden" name="iddepartamento" id="iddepartamento" value="<?php echo $_SESSION['iddepartamento'];?>">
                   <button class="btn btn-warning float-sm-right btnAgregarActividad" type="button"><i class="fas fa-plus"></i>Agregar</button>
                 </div>
                 <hr class="col-10 bg-dark">

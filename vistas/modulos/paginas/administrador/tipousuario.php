@@ -16,6 +16,8 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+    
+    <?php ControladorTipoUsuario::ctrCrearTipoUsuario(); ?>
     <!-- /.content-header -->
     <div class="content">
       <div class="row">
@@ -54,7 +56,7 @@
                   ?>
                   </tbody>
                   <tfoot>
-                    <th>Opciones</th>
+                    <th  class="no-exportar">Opciones</th>
                     <th>Estado</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
@@ -78,12 +80,8 @@
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
-                    <button class="btn btn-danger" onclick="cancelarformTU()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
-                  </div>
-                  <?php
-                    $creartipousuario = new ControladorTipoUsuario();
-                    $creartipousuario -> ctrCrearTipoUsuario();
-                  ?>
+                    <button class="btn btn-danger"  id="btnCancelarFormTU" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+                  </div> 
                 </div>
               </form>
             </div>

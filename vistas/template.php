@@ -114,7 +114,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "consultadni", "consultaruc", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes"];
+          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "consultadni", "consultaruc", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes","checklist","checklist-administrador"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorGeneralRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -124,7 +124,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 2: {
-          $colaboradorRutas = ["escritorio", "asistencia", "permisos"];
+          $colaboradorRutas = ["escritorio", "asistencia", "permisos","checklist"];
           include "vistas/modulos/paginas/colaborador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
             include "vistas/modulos/paginas/colaborador/" . $_GET['ruta'] . ".php";
@@ -134,7 +134,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 3: {
-          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "consultaruc", "consultadni", "permisos", "permisos-pendientes"];
+          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "consultaruc", "consultadni", "permisos", "permisos-pendientes","checklist","checklist-administrador"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -144,7 +144,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 4: {
-          $recursosHumanosRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "reportes", "consultaruc", "consultadni", "permisos"];
+          $recursosHumanosRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "reportes", "consultaruc", "consultadni", "permisos","checklist"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $recursosHumanosRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -153,8 +153,8 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           }
           break;
         }
-      case 5: {
-          $jefeAreaRutas = ["escritorio", "asistencia", "permisos"];
+      case 6: {
+          $jefeAreaRutas = ["escritorio", "asistencia", "permisos","checklist"];
           include "vistas/modulos/paginas/jefe/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $jefeAreaRutas)) {
             include "vistas/modulos/paginas/jefe/" . $_GET['ruta'] . ".php";
@@ -211,7 +211,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/menu.js"></script>
 <script src="vistas/js/servicio.js"></script>
 <script src="vistas/js/economia.js"></script>
-<!--<script src="vistas/js/checklist.js"></script>-->
+<script src="vistas/js/checklist.js"></script>
 <script src="vistas/js/tiposervicio.js"></script>
 <script src="vistas/js/permiso.js"></script>
 <script>

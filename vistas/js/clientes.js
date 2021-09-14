@@ -2,7 +2,7 @@ function init() {
     mostrarformC(false);
 }
 
-function limpiar() {
+function limpiarformClientes() {
     $("#editarDA").val("no");
     $("#ruc").val("");
     $("#idcliente").val("");
@@ -27,11 +27,12 @@ function mostrarformC(flag) {
     }
 }
 
-function cancelarformC() {
-    limpiar();
+$("#btnCancelarformClientes").on("click",function () {
+    limpiarformClientes();
     $("#claves").css("display", "none");
     mostrarformC(false);
-}
+});
+
 
 function generar(longitud) {
     long = parseInt(longitud);

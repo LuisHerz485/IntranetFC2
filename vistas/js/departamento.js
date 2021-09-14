@@ -2,7 +2,7 @@ function init() {
     mostrarformD(false);
 }
 
-function limpiar() {
+function limpiarFormDepartamento() {
     $("#editarD").val("no");
     $("#nombre").val("");
     $("#descripcion").val("");
@@ -21,10 +21,11 @@ function mostrarformD(flag) {
     }
 }
 
-function cancelarformD() {
-    limpiar();
+$("#btnCancelarFormDepartamento").on("click", function () {
+    limpiarFormDepartamento();
     mostrarformD(false);
-}
+    
+}); 
 
 $(".btnEditarDepartamento").click(function() {
     $("#editarD").val("si");

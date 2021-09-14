@@ -16,6 +16,7 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+    <?php ControladorDepartamento::ctrCrearDepartamento(); ?>
     <!-- /.content-header -->
     <div class="content">
       <div class="row">
@@ -78,12 +79,8 @@
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
-                    <button class="btn btn-danger" onclick="cancelarformD()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
-                  </div>
-                  <?php
-                    $creardepartamento = new ControladorDepartamento();
-                    $creardepartamento -> ctrCrearDepartamento();
-                  ?>
+                    <button class="btn btn-danger" id="btnCancelarFormDepartamento" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+                  </div> 
                 </div>
               </form>
             </div>

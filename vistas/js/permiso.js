@@ -50,3 +50,38 @@ $(document).on('click', '.btn-mostrar-detalle', function () {
   $('#detalle2').val(btn.attr('detalles'));
   $('#modalPermisoDetalle').modal('show');
 });
+
+var Toast = Swal.mixin({
+  toast: true,
+  position: 'top-end',
+  showConfirmButton: false,
+  timer: 3000
+});
+
+function notificacionesPermisos() {
+  let permisosPendientes = $('#permisosPendientes');
+  let notificaciones = $('#notificaciones');
+  $.ajax({
+    method: 'POST',
+    url: 'ajax/permiso.ajax.php',
+    data: { opcion: 'pendientes' },
+    dataType: 'json',
+    cache: false,
+    success: function ({ cantidad }) {
+      if (cantidad > permisosPendientes.text()) {
+          Toast.fire({
+            icon: 'info',
+            title: 'Hay Solicitudes de Permisos Pendientes',
+          });
+        permisosPendientes.text(cantidad);
+        notificaciones.text(cantidad);
+      }
+    },
+  });
+} 
+
+$(function () {
+  if ($('#permisosPendientes').length) { 
+    setInterval(notificacionesPermisos, 60000);
+  }
+});

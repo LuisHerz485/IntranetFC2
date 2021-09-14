@@ -16,6 +16,10 @@
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
+    <?php 
+      ControladorClientes::ctrCrearCliente();
+      ControladorClientes::ctrEditarContra(); 
+    ?>
     <!-- /.content-header -->
     <div class="content">
       <div class="row">
@@ -109,12 +113,8 @@
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
-                    <button class="btn btn-danger" onclick="cancelarformC()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+                    <button class="btn btn-danger" id="btnCancelarformClientes" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
                   </div>
-                  <?php
-                    $crearcliente = new ControladorClientes();
-                    $crearcliente -> ctrCrearCliente();
-                  ?>
                 </div>
               </form>
             </div>
@@ -208,11 +208,7 @@
         <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
             <button type="submit" class="btn btn-primary">Guardar</button>
-        </div>
-        <?php
-          $contracliente = new ControladorClientes();
-          $contracliente -> ctrEditarContra();
-        ?>
+        </div> 
       </div>
     </form>
   </div>

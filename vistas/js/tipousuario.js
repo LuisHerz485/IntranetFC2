@@ -1,15 +1,9 @@
 function init() {
     mostrarformTU(false);
-}
-
-function limpiar() {
-    $("#editarTU").val("no");
-    $("#nombre").val("");
-    $("#descripcion").val("");
-}
+} 
 
 function mostrarformTU(flag) {
-    if (flag) {
+    if (flag) { 
         $("#listadoregistrosTU").hide();
         $("#formularioregistrosTU").show();
         $("#btnGuardar").prop("disabled", false);
@@ -21,10 +15,12 @@ function mostrarformTU(flag) {
     }
 }
 
-function cancelarformTU() {
-    limpiar();
+$("#btnCancelarFormTU").on("click", function () {  
+    $("#editarTU").val("no"); 
+    $("#nombre").val("");
+    $("#descripcion").val("");
     mostrarformTU(false);
-}
+}); 
 
 $(".btnEditarTipoUsuario").click(function() {
     $("#editarTU").val("si");

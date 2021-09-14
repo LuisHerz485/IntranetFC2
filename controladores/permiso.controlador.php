@@ -53,6 +53,7 @@ class ControladorPermiso
         }
         return false;
     }
+
     public static function ctrFiltroPermiso(): mixed
     {
         if (isset($_POST["idestadopermiso"], $_POST["fechadesde"], $_POST["fechahasta"])) {
@@ -69,6 +70,7 @@ class ControladorPermiso
         }
         return false;
     }
+
     public static function ctrEditarEstado(): bool
     {
         if (isset($_POST["idpermiso"], $_POST["idestadopermiso"])) {
@@ -79,5 +81,10 @@ class ControladorPermiso
             }
         }
         return false;
+    }
+
+    public static function ctrCantidadPermisosPendientes(): ?int
+    {
+        return ModeloPermiso::mdlCantidadPermisosPendientes();
     }
 }

@@ -105,11 +105,7 @@ class ControladorClientes
 									text: '¡El cliente se creo correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'
-									}).then((result)=>{
-										if(result.value){
-											window.location='clientes';
-										}
-									})
+									});
 							</script>";
 					}
 				} else {
@@ -121,11 +117,7 @@ class ControladorClientes
 									text: '¡El cliente se modificó correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'
-									}).then((result)=>{
-										if(result.value){
-											window.location='clientes';
-										}
-									})
+									});
 							</script>";
 					}
 				}
@@ -164,11 +156,7 @@ class ControladorClientes
 								text: '¡La contraseña fue modificada correctamente!',
 								icon: 'success',
 								confirmButtonText:'Ok'
-								}).then((result)=>{
-									if(result.value){
-										window.location='clientes';
-									}
-								})
+								});
 						</script>";
 				}
 			} else {

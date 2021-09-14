@@ -13,7 +13,7 @@ class ControladorUsuarios
 				$clavehash = hash("SHA256", $_POST['password']);
 
 				if ($respuesta && $respuesta['usuario'] == $_POST['usuario'] && $respuesta['password1'] == $clavehash) {
-					if ($respuesta['idtipousuario'] == 1 || $respuesta['idtipousuario'] == 2 || $respuesta['idtipousuario'] == 3 || $respuesta['idtipousuario'] == 4 || $respuesta['idtipousuario'] == 5) {
+					if ($respuesta['idtipousuario'] == 1 || $respuesta['idtipousuario'] == 2 || $respuesta['idtipousuario'] == 3 || $respuesta['idtipousuario'] == 4 || $respuesta['idtipousuario'] == 6) {
 						if ($respuesta['estado'] == 1) {
 							$_SESSION['iniciarSesion'] = "ok";
 							$_SESSION['cliente'] = "no";
@@ -112,11 +112,7 @@ class ControladorUsuarios
 									text: '¡El usuario se creo correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'
-									}).then((result)=>{
-										if(result.value){
-											window.location='usuarios';
-										}
-									})
+									});
 							</script>";
 					}
 				} else {
@@ -128,11 +124,7 @@ class ControladorUsuarios
 									text: '¡El usuario se modificó correctamente!',
 									icon: 'Actualiazado',
 									confirmButtonText:'Ok'
-									}).then((result)=>{
-										if(result.value){
-											window.location='usuarios';
-										}
-									})
+									});
 							</script>";
 					}
 				}

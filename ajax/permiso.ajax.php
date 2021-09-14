@@ -9,27 +9,11 @@ require_once "../modelos/permiso.modelo.php";
 http_response_code(400);
 if (isset($_POST["opcion"])) {
     switch ($_POST["opcion"]) {
-        case "registrar": {
-                $respuesta =  ControladorPermiso::ctrRegistrarPermiso();
-                if ($respuesta) {
+        case "pendientes": {
+                $respuesta =  ControladorPermiso::ctrCantidadPermisosPendientes();
+                if ($respuesta !== null) {
                     http_response_code(200);
-                    echo json_encode($respuesta);
-                }
-                break;
-            }
-        case "buscar": {
-                $respuesta =  ControladorPermiso::ctrBuscarPermiso();
-                if ($respuesta) {
-                    http_response_code(200);
-                    echo json_encode($respuesta);
-                }
-                break;
-            }
-        case "filtrar": {
-                $respuesta =  ControladorPermiso::ctrFiltroPermiso();
-                if ($respuesta) {
-                    http_response_code(200);
-                    echo json_encode($respuesta);
+                    echo json_encode(["cantidad" => $respuesta]);
                 }
                 break;
             }

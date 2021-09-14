@@ -2,7 +2,7 @@ function init() {
     mostrarform(false);
 }
 
-function limpiarUsuario() {
+function limpiarFormUsuarios() {
     $("#editar").val("no");
     $("#iddepartamento option:selected").removeAttr("selected");
     $("#iddepartamento option[value=0]").attr("selected", true);
@@ -33,11 +33,12 @@ function mostrarform(flag) {
     }
 }
 
-function cancelarform() {
-    limpiarUsuario();
+$("#btnCancelarFormUsuarios").on("click", function () {
+    limpiarFormUsuarios();
     $("#claves").css("display", "none");
     mostrarform(false);
-}
+    
+}); 
 
 function generarU(longitud) {
     long = parseInt(longitud);

@@ -34,11 +34,7 @@ class ControladorTipoUsuario
 									text: '¡Tipo Usuario creado correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'
-									}).then((result)=>{
-										if(result.value){
-											window.location='tipousuario';
-										}
-									})
+									});
 							</script>";
 					}
 				} else {
@@ -50,11 +46,7 @@ class ControladorTipoUsuario
 									text: '¡El Tipo Usuario se modificó correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'
-									}).then((result)=>{
-										if(result.value){
-											window.location='tipousuario';
-										}
-									})
+									});
 							</script>";
 					}
 				}

@@ -34,11 +34,7 @@ class ControladorDepartamento
 									text: '¡Tipo Área se creo correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'
-									}).then((result)=>{
-										if(result.value){
-											window.location='departamento';
-										}
-									})
+									});
 							</script>";
 					}
 				} else {
@@ -50,11 +46,7 @@ class ControladorDepartamento
 									text: '¡El Área se modificó correctamente!',
 									icon: 'success',
 									confirmButtonText:'Ok'
-									}).then((result)=>{
-										if(result.value){
-											window.location='departamento';
-										}
-									})
+									});
 							</script>";
 					}
 				}
