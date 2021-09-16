@@ -1323,7 +1323,7 @@ $(".tablaDataPermisos").DataTable({
   dom: 'B<"float-left"i><"float-right"f>t<"float-left"l><"float-right"p><"clearfix">',
   columnDefs: [
     {
-      targets: [0, 1, 6],
+      targets: [0, 1, 7],
       visible: false,
       searchable: false,
     },

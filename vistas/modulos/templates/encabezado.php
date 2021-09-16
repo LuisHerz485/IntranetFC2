@@ -22,6 +22,7 @@
           <a href="permisos-pendientes" class="dropdown-item">
             <i class="fas fa-envelope mr-2"></i> <span id="permisosPendientes">0</span> Permisos Pendientes
           </a>
+          <audio id="audio" preload="auto" src="sounds/notificacion.mp3">
         </div>
       </li>
     <?php } ?>
@@ -52,4 +53,5 @@
     </li>
   </ul>
 </nav>
+
 <!-- /.navbar -->

@@ -37,115 +37,115 @@
         }
     }
     ?>
-    <div class="content">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card card-primary">
-                    <div class="card-header">
-                        <h3 class="card-title">Permisos Pendientes&emsp;</h3>
-                    </div>
-                    <div class="card-body panel-body">
-                        <form method=POST id="frmFiltroPermiso">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-12 col-lg-3">
-                                        <label>Seleccione Estado del Permiso</label>
-                                        <select name="idestadopermiso" class="form-control select2">
-                                            <option value="0">Todos</option>
-                                            <?php
-                                            $estadosPermisos = ModeloPermiso::mdlListarEstadosPermisos();
-                                            if ($estadosPermisos) {
-                                                foreach ($estadosPermisos as $estadoPermiso) {
-                                                    echo '<option value="' . $estadoPermiso["idestadopermiso"] . '">' . $estadoPermiso["nombreestadopermiso"] . '</option>';
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Permisos Pendientes&emsp;</h3>
+                        </div>
+                        <div class="card-body panel-body">
+                            <form method=POST id="frmFiltroPermiso">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-3">
+                                            <label>Seleccione Estado del Permiso</label>
+                                            <select name="idestadopermiso" class="form-control select2">
+                                                <option value="0">Todos</option>
+                                                <?php
+                                                $estadosPermisos = ModeloPermiso::mdlListarEstadosPermisos();
+                                                if ($estadosPermisos) {
+                                                    foreach ($estadosPermisos as $estadoPermiso) {
+                                                        echo '<option value="' . $estadoPermiso["idestadopermiso"] . '">' . $estadoPermiso["nombreestadopermiso"] . '</option>';
+                                                    }
                                                 }
-                                            }
-                                            ?>
-                                        </select>
-                                    </div>
-                                    <div class="col-12 col-lg-3">
-                                        <label>Seleccione Fecha Desde</label>
-                                        <input type="date" class="form-control" name="fechadesde" id="fechadesde">
-                                    </div>
-                                    <div class="col-12 col-lg-3">
-                                        <label>Seleccione Fecha Hasta</label>
-                                        <input type="date" class="form-control" name="fechahasta" id="fechahasta">
-                                    </div>
-                                    <div class="col-12 col-lg-3">
-                                        <label>Opciones</label>
-                                        <button type="submit" value="filtrar" class="btn btn-primary  btn-block" id="btnFiltrar" name="btnFiltrar"><i class="fas fa-search"></i> Filtrar</button>
+                                                ?>
+                                            </select>
+                                        </div>
+                                        <div class="col-12 col-lg-3">
+                                            <label>Seleccione Fecha Desde</label>
+                                            <input type="date" class="form-control" name="fechadesde" id="fechadesde">
+                                        </div>
+                                        <div class="col-12 col-lg-3">
+                                            <label>Seleccione Fecha Hasta</label>
+                                            <input type="date" class="form-control" name="fechahasta" id="fechahasta">
+                                        </div>
+                                        <div class="col-12 col-lg-3">
+                                            <label>Opciones</label>
+                                            <button type="submit" value="filtrar" class="btn btn-primary  btn-block" id="btnFiltrar" name="btnFiltrar"><i class="fas fa-search"></i> Filtrar</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
-                        <div class="mt-3">
-                            <table id="tblPermisosPendientes" class="table table-striped dt-responsive tablaDataPermisosPendientes">
-                                <thead>
-                                    <th>Estado</th>
-                                    <th>Nombres y Apellidos</th>
-                                    <th>Tipo Permiso</th>
-                                    <th>Fecha Creacion</th>
-                                    <th>Fecha Inicio</th>
-                                    <th>Fecha Fin</th>
-                                    <th>Detalles</th>
-                                    <th class="no-exportar">Ver mas</th>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    if (isset($_POST["btnFiltrar"])) {
-                                        $permisos = ControladorPermiso::ctrFiltroPermiso();
-                                    } else {
-                                        $permisos = ModeloPermiso::mdlListarPermisos();
-                                    }
-                                    if (isset($permisos)) {
-                                        foreach ($permisos as $permiso) {
-                                            switch ($permiso['idestadopermiso']) {
-                                                case "1":
-                                                    echo '<tr><td><button class="btn btn-warning btn-xs btn-actualizar-estado-permiso" idpermiso="' . $permiso['idpermiso'] . '" idestadopermiso="1">' . $permiso['estadopermiso'] . '</button></td>';
-                                                    break;
-                                                case "2":
-                                                    echo '<tr><td><button class="btn btn-success btn-xs btn-actualizar-estado-permiso" idpermiso="' . $permiso['idpermiso'] . '" idestadopermiso="2">' . $permiso['estadopermiso'] . '</button></td>';
-                                                    break;
-                                                case "3":
-                                                    echo '<tr><td><button class="btn btn-danger btn-xs btn-actualizar-estado-permiso" idpermiso="' . $permiso['idpermiso'] . '" idestadopermiso="3">' . $permiso['estadopermiso'] . '</button></td>';
-                                                    break;
-                                                default:
-                                                    break;
-                                            }
-                                            echo '<td>' . $permiso['nombre'] . ' ' . $permiso['apellidos'] . '</td>
+                            </form>
+                            <div class="mt-3">
+                                <table id="tblPermisosPendientes" class="table table-striped dt-responsive tablaDataPermisosPendientes">
+                                    <thead>
+                                        <th>Estado</th>
+                                        <th>Nombres y Apellidos</th>
+                                        <th>Tipo Permiso</th>
+                                        <th>Fecha Creacion</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Fin</th>
+                                        <th>Detalles</th>
+                                        <th class="no-exportar">Ver mas</th>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        if (isset($_POST["btnFiltrar"])) {
+                                            $permisos = ControladorPermiso::ctrFiltroPermiso();
+                                        } else {
+                                            $permisos = ModeloPermiso::mdlListarPermisos();
+                                        }
+                                        if (isset($permisos)) {
+                                            foreach ($permisos as $permiso) {
+                                                switch ($permiso['idestadopermiso']) {
+                                                    case "1":
+                                                        echo '<tr><td><button class="btn btn-warning btn-xs btn-actualizar-estado-permiso" idpermiso="' . $permiso['idpermiso'] . '" idestadopermiso="1">' . $permiso['estadopermiso'] . '</button></td>';
+                                                        break;
+                                                    case "2":
+                                                        echo '<tr><td><button class="btn btn-success btn-xs btn-actualizar-estado-permiso" idpermiso="' . $permiso['idpermiso'] . '" idestadopermiso="2">' . $permiso['estadopermiso'] . '</button></td>';
+                                                        break;
+                                                    case "3":
+                                                        echo '<tr><td><button class="btn btn-danger btn-xs btn-actualizar-estado-permiso" idpermiso="' . $permiso['idpermiso'] . '" idestadopermiso="3">' . $permiso['estadopermiso'] . '</button></td>';
+                                                        break;
+                                                    default:
+                                                        break;
+                                                }
+                                                echo '<td>' . $permiso['nombre'] . ' ' . $permiso['apellidos'] . '</td>
                                                     <td>' . $permiso['tipopermiso'] . '</td>
                                                     <td>' . $permiso['fechacreacion'] . '</td>
                                                     <td>' . $permiso['fechainicio'] . '</td>
                                                     <td>' . $permiso['fechafin'] . '</td>
                                                     <td>' . $permiso['detalle'] . '</td>
                                                     <td> <button class="btn btn-secondary btn-mostrar-detalles" detalles="' . $permiso['detalle'] . '" fechainicio="' . $permiso['fechainicio'] . '" fechafin="' . $permiso['fechafin'] . '" ><i class="far fa-eye"></i></button></td> </tr>';
-                                        }
-                                    } else {
-                                        echo "<script>Swal.fire({
+                                            }
+                                        } else {
+                                            echo "<script>Swal.fire({
                                             title: 'Advertencia!',
                                             text: '¡Campos mal Ingresados o Ningun resultado!',
                                             icon: 'warning',
                                             confirmButtonText: 'Ok',
                                           });</script>";
-                                    }
-                                    ?>
-                                </tbody>
-                                <tfoot>
-                                    <th>Estado</th>
-                                    <th>Nombres y Apellidos</th>
-                                    <th>Tipo Permiso</th>
-                                    <th>Fecha Creacion</th>
-                                    <th>Fecha Inicio</th>
-                                    <th>Fecha Fin</th>
-                                    <th>Detalles</th>
-                                    <th>Ver mas</th>
-                                </tfoot>
-                            </table>
+                                        }
+                                        ?>
+                                    </tbody>
+                                    <tfoot>
+                                        <th>Estado</th>
+                                        <th>Nombres y Apellidos</th>
+                                        <th>Tipo Permiso</th>
+                                        <th>Fecha Creacion</th>
+                                        <th>Fecha Inicio</th>
+                                        <th>Fecha Fin</th>
+                                        <th>Detalles</th>
+                                        <th>Ver mas</th>
+                                    </tfoot>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </div>
 <!-- Modal Estado Pendiente -->
 <div class="modal fade" id="modalPermisoCambio" role="dialog">
