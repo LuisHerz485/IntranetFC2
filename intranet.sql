@@ -533,42 +533,9 @@ create table constancia(
 );
 
 
-/*=========================Modulo Check List================================*/
+/*=========================Modulo Permisos================================*/
 
-
-CREATE TABLE checklist(
-	idchecklist int auto_increment,
-	idtipousuario int,
-	iddepartamento int,
-	idusuario int,
-	fecha date not null,
-	CONSTRAINT fk_cl_tu FOREIGN KEY (idtipousuario) REFERENCES tipousuario(idtipousuario),
-	CONSTRAINT fk_cl_d FOREIGN KEY (iddepartamento) REFERENCES departamento(iddepartamento),
-	CONSTRAINT fk_cl_u FOREIGN KEY (idusuario) REFERENCES usuario(idusuario),
-	CONSTRAINT pk_lc PRIMARY KEY (idchecklist)
-);
-
-CREATE TABLE estadochecklist(
-	idestadochecklist int auto_increment primary key,
-	nombre varchar(30) not null
-);
-
-CREATE TABLE detallechecklist(
-	iddetallechecklist int auto_increment primary key,
-	idchecklist int not null,
-	idestadochecklist int not null,
-	detalle varchar(200) not null,
-	horainicio time not null,
-	horafin time not null,
-	CONSTRAINT fk_dcl_cl FOREIGN KEY (idchecklist) REFERENCES checklist(idchecklist),
-	CONSTRAINT fk_dcl_ecl FOREIGN KEY (idestadochecklist) REFERENCES estadochecklist(idestadochecklist)
-);
-
-INSERT INTO `estadochecklist`(`nombre`) VALUES ('Pendiente');
-INSERT INTO `estadochecklist`(`nombre`) VALUES ('Realizado');
-INSERT INTO `estadochecklist`(`nombre`) VALUES ('Cancelado');
-INSERT INTO `estadochecklist`(`nombre`) VALUES ('Suspendido');
-
+ 
 CREATE TABLE tipopermiso(
 	idtipopermiso int auto_increment primary key,
 	nombrepermiso varchar(50) not null
@@ -607,8 +574,44 @@ INSERT INTO `estadopermiso`(`nombreestadopermiso`) VALUES ('Pendiente');
 INSERT INTO `estadopermiso`(`nombreestadopermiso`) VALUES ('Aprobado');
 INSERT INTO `estadopermiso`(`nombreestadopermiso`) VALUES ('No Aprobado');
 
- 
 
+/*=========================Modulo Check List================================*/
+
+
+CREATE TABLE checklist(
+	idchecklist int auto_increment primary key,
+	idtipousuario int not null,
+	iddepartamento int not null,
+	idusuario int not null,
+	fecha date not null,
+	CONSTRAINT fk_cl_tu FOREIGN KEY (idtipousuario) REFERENCES tipousuario(idtipousuario),
+	CONSTRAINT fk_cl_d FOREIGN KEY (iddepartamento) REFERENCES departamento(iddepartamento),
+	CONSTRAINT fk_cl_u FOREIGN KEY (idusuario) REFERENCES usuario(idusuario)
+);
+
+CREATE TABLE estadochecklist(
+	idestadochecklist int auto_increment primary key,
+	nombre varchar(30) not null
+);
+
+CREATE TABLE detallechecklist(
+	iddetallechecklist int auto_increment primary key,
+	idchecklist int not null,
+	idestadochecklist int not null,
+	detalle varchar(200) not null,
+	horainicio time not null,
+	horafin time not null,
+	CONSTRAINT fk_dcl_cl FOREIGN KEY (idchecklist) REFERENCES checklist(idchecklist),
+	CONSTRAINT fk_dcl_ecl FOREIGN KEY (idestadochecklist) REFERENCES estadochecklist(idestadochecklist)
+);
+
+INSERT INTO `estadochecklist`(`nombre`) VALUES ('Pendiente');
+INSERT INTO `estadochecklist`(`nombre`) VALUES ('Realizado');
+INSERT INTO `estadochecklist`(`nombre`) VALUES ('Cancelado');
+INSERT INTO `estadochecklist`(`nombre`) VALUES ('Suspendido');
+
+ALTER TABLE permiso ADD idrevisor INT NULL DEFAULT NULL AFTER idestadopermiso;
+ALTER TABLE permiso ADD CONSTRAINT fk_pe_rev FOREIGN KEY (idrevisor) REFERENCES usuario(idusuario) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 /*=================================================================================*/
 

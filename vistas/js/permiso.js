@@ -4,10 +4,10 @@ function limpiarpermiso() {
 
 $(document).on('click', '.btn-editar-permiso', function () {
   limpiarpermiso();
-  var tabla=$('.tablaDataPermisos').DataTable();
-  const datos=tabla.row($(this).closest("tr")).data();
+  var tabla = $('.tablaDataPermisos').DataTable();
+  const datos = tabla.row($(this).closest('tr')).data();
   console.log(datos);
-  if(datos){
+  if (datos) {
     $('#idpermiso').val(datos[0]);
     $('#idtipopermiso').val(datos[1]).trigger('change');
     $('#fechainicio').val(datos[5].replace(' ', 'T').slice(0, -3));
@@ -33,7 +33,7 @@ $('#fechahasta').val(getFechaActual());
 
 $(document).on('click', '.btn-actualizar-estado-permiso', function () {
   let btn = $(this);
-  $('#idestadopermiso').val(btn.attr('idestadopermiso'));
+  $('#idestadopermiso').val(btn.attr('idestadopermiso')).trigger('change');
   $('#idpermiso').val(btn.attr('idpermiso'));
   $('#modalPermisoCambio').modal('show');
 });
@@ -55,10 +55,30 @@ var Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
   showConfirmButton: false,
-  timer: 3000
+  timer: 3000,
 });
 
-function notificacionesPermisos() {
+(function ($) {
+  $.extend({
+    playSound: function () {
+      return $(
+        '<audio class="sound-player" autoplay="autoplay" style="display:none;">' +
+          '<source src="' +
+          arguments[0] +
+          '" />' +
+          '<embed src="' +
+          arguments[0] +
+          '" hidden="true" autostart="true" loop="false"/>' +
+          '</audio>'
+      ).appendTo('body');
+    },
+    stopSound: function () {
+      $('.sound-player').remove();
+    },
+  });
+})(jQuery);
+
+function notificacionesPermisos(notificar) {
   let permisosPendientes = $('#permisosPendientes');
   let notificaciones = $('#notificaciones');
   $.ajax({
@@ -69,19 +89,30 @@ function notificacionesPermisos() {
     cache: false,
     success: function ({ cantidad }) {
       if (cantidad > permisosPendientes.text()) {
+        if (notificar) {
+          $.playSound('sounds/notificacion.mp3');
+          var sound = new Howl({
+            src: ['sounds/notificacion.mp3'],
+            autoplay: true,
+            loop: true,
+          });
+
+          sound.play();
           Toast.fire({
             icon: 'info',
             title: 'Hay Solicitudes de Permisos Pendientes',
           });
+        }
         permisosPendientes.text(cantidad);
         notificaciones.text(cantidad);
       }
     },
   });
-} 
+}
 
 $(function () {
-  if ($('#permisosPendientes').length) { 
-    setInterval(notificacionesPermisos, 60000);
+  if ($('#permisosPendientes').length) {
+    notificacionesPermisos(false);
+    setInterval(notificacionesPermisos, 60000, true);
   }
 });

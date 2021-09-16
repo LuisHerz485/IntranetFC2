@@ -73,11 +73,12 @@ class ControladorPermiso
 
     public static function ctrEditarEstado(): bool
     {
-        if (isset($_POST["idpermiso"], $_POST["idestadopermiso"])) {
+        if (isset($_POST["idpermiso"], $_POST["idestadopermiso"], $_SESSION["idusuario"])) {
+            $idrevisor = ControladorValidacion::validarID($_SESSION["idusuario"]);
             $idpermiso = ControladorValidacion::validarID($_POST["idpermiso"]);
             $idestadopermiso = ControladorValidacion::validarID($_POST["idestadopermiso"]);
-            if ($idpermiso && $idestadopermiso) {
-                return ModeloPermiso::mdlEditarEstadoPermiso($idpermiso, $idestadopermiso);
+            if ($idpermiso && $idrevisor && $idestadopermiso) {
+                return ModeloPermiso::mdlEditarEstadoPermiso($idpermiso, $idestadopermiso, $idrevisor);
             }
         }
         return false;

@@ -29,14 +29,12 @@
                     <a href="asistencia" class="small-box bg-success">
                         <div class="inner">
                             <h3>Asistencia</h3>
-
                             <p>Lista de asistencia</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-tasks"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i
-                                class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <!-- ./col -->
@@ -45,14 +43,12 @@
                     <a href="asistencia" class="small-box bg-primary">
                         <div class="inner">
                             <h3>Check List</h3>
-
                             <p>Lista de actividades a realizar</p>
                         </div>
                         <div class="icon">
                             <i class="far fa-file-word"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i
-                                class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <!-- ./col -->
@@ -61,14 +57,12 @@
                     <a href="https://fccontadores.com:2096/" class="small-box bg-orange" target="_blank">
                         <div class="inner">
                             <h3>Webmail</h3>
-
                             <p>Ir al correo de la empresa</p>
                         </div>
                         <div class="icon">
                             <i class="fas fa-envelope-square"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i
-                                class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <!-- ./col -->

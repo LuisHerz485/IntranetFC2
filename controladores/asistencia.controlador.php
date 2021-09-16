@@ -12,14 +12,13 @@ class ControladorAsistencia
 	static public function ctrEditarDetalleAsistencia()
 	{
 		if (isset($_POST['idasistencia'])) {
-			$detalle = ControladorValidacion::longitud($_POST['detalle'], 200, 10);
 			if (preg_match('/^[a-zA-Z0-9ñÑaÁáéÉíÍóÓúÚ ]+|(^$)/', $_POST['detalle'])) {
 
 				$tabla = "asistencia";
 
 				$datos = array(
 					"idasistencia" => $_POST['idasistencia'],
-					"detalle" => $detalle,
+					"detalle" => $_POST['detalle'],
 					"estado" => $_POST['estado']
 				);
 
@@ -31,11 +30,7 @@ class ControladorAsistencia
 								text:	'¡Detalle agregado correctamente!',
 								icon:	'success',
 								confirmButtonText:	'Ok'
-								}).then((result)=>{
-									if(result.value){
-										window.location='asistencia';
-									}
-								})
+								});
 							</script>";
 				}
 			} else {

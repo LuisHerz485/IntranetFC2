@@ -66,6 +66,12 @@
                                 <p>Check List</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="permisos" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Solicitud de permiso</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

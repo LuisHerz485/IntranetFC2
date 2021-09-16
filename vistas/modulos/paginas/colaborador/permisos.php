@@ -78,11 +78,11 @@
                                         ?>
                                     </select>
                                 </div>
-                                <div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <label>Fecha Inicio:</label>
                                     <input type="datetime-local" class="form-control" name="fechainicio" id="fechainicio" required>
                                 </div>
-                                <div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                                <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <label>Fecha Fin:</label>
                                     <input type="datetime-local" class="form-control" name="fechafin" id="fechafin" required>
                                 </div>
@@ -135,22 +135,22 @@
                                     if ($permisos) {
                                         foreach ($permisos as $permiso) {
                                             echo '<tr> 
-                                        <td>'.$permiso['idpermiso'] .'</td>  
-                                        <td>'.$permiso['idtipopermiso'] .'</td>';
-                                        if($permiso['idestadopermiso'] != 1){
-                                            echo'<td><button href="#form" class="btn btn-s btn-warning btn-editar-permiso" idpermiso="' . $permiso["idpermiso"] . '" disabled><i class="fas fa-pencil-alt"></i> </button></td>';
-                                        } else {
-                                            echo'<td><a href="#form" class="btn btn-s btn-warning btn-editar-permiso" idpermiso="' . $permiso["idpermiso"] . '"><i class="fas fa-pencil-alt"></i> </a></td>';
-                                        }
-                                        
-                                        if ($permiso['idestadopermiso']=="1") {
-                                            echo '<td><h4><span class="badge badge-warning">Pendiente</h4></td>';
-                                        } else if ($permiso['idestadopermiso']=="2") {
-                                            echo '<td><h4><span class="badge badge-success">Aprobado</h4></td>';
-                                        } else if ($permiso['idestadopermiso']=="3") {
-                                            echo '<td><h4><span class="badge badge-danger">No Aprobado</h4></td>';
-                                        }
-                                        echo '<td>' . $permiso['tipopermiso'] . ' </td>
+                                        <td>' . $permiso['idpermiso'] . '</td>  
+                                        <td>' . $permiso['idtipopermiso'] . '</td>';
+                                            if ($permiso['idestadopermiso'] != 1) {
+                                                echo '<td><button href="#form" class="btn btn-s btn-warning btn-editar-permiso" idpermiso="' . $permiso["idpermiso"] . '" disabled><i class="fas fa-pencil-alt"></i> </button></td>';
+                                            } else {
+                                                echo '<td><a href="#form" class="btn btn-s btn-warning btn-editar-permiso" idpermiso="' . $permiso["idpermiso"] . '"><i class="fas fa-pencil-alt"></i> </a></td>';
+                                            }
+
+                                            if ($permiso['idestadopermiso'] == "1") {
+                                                echo '<td><h4><span class="badge badge-warning">Pendiente</h4></td>';
+                                            } else if ($permiso['idestadopermiso'] == "2") {
+                                                echo '<td><h4><span class="badge badge-success">Aprobado</h4></td>';
+                                            } else if ($permiso['idestadopermiso'] == "3") {
+                                                echo '<td><h4><span class="badge badge-danger">No Aprobado</h4></td>';
+                                            }
+                                            echo '<td>' . $permiso['tipopermiso'] . ' </td>
                                         <td>' . $permiso['fechainicio'] . '</td>
                                         <td>' . $permiso['fechafin'] . '</td>
                                         <td>' . $permiso['detalle'] . '</td>

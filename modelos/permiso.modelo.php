@@ -48,13 +48,13 @@ class ModeloPermiso
     /**
      * Actualiza solo estado de los permisos
      */
-    public static function mdlEditarEstadoPermiso(int $idpermiso, int $idestadopermiso): int|false
+    public static function mdlEditarEstadoPermiso(int $idpermiso, int $idestadopermiso, int $idrevisor): int|false
     {
         $filasActualizadas = false;
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $filasActualizadas = $conexion->updateOrDelete("UPDATE permiso SET idestadopermiso=? WHERE idpermiso=?", [$idestadopermiso, $idpermiso]);
+            $filasActualizadas = $conexion->updateOrDelete("UPDATE permiso SET idestadopermiso=?,fecharevision=NOW(),idrevisor=? WHERE idpermiso=?", [$idestadopermiso, $idrevisor, $idpermiso]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {

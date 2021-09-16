@@ -14,13 +14,12 @@ function mostrarformCL(flag) {
     $('#listadoUserCL').show();
     $('#formularioCheckList').hide();
   }
-} 
+}
 
-$("#btnCancelarCheckJefe").on("click", function () {
+$('#btnCancelarCheckJefe').on('click', function () {
   limpiarCheckList();
   mostrarformCL(false);
-  }
-); 
+});
 
 $('.btnListarCheckList').click(function () {
   let btn = $(this);
@@ -37,10 +36,9 @@ $('.btnAgregarActividad').on('click', function () {
 });
 
 $('#btnSalirActividad').on('click', function () {
-  $('#modalBodyActividades').html("");
+  $('#modalBodyActividades').html('');
   $('#modalBodyActividades').append(sectionActividad);
 });
-
 
 $(document).on('click', '.btn-eliminar-actividad', function () {
   $(this).closest('section').remove();
@@ -59,9 +57,9 @@ $('#btnGuardarActividades').on('click', function () {
     dataType: 'json',
     success: function ({ respuesta }) {
       if (respuesta) {
-        $("#modalCheckList").modal('hide');
+        $('#modalCheckList').modal('hide');
         limpiarCheckList();
-        $("#btnFiltrarChecklist").click();
+        $('#btnFiltrarChecklist').click();
         Swal.fire({
           title: 'Registrado!',
           text: '¡Se registro el checklist correctamente!',
@@ -80,9 +78,8 @@ $('#btnGuardarActividades').on('click', function () {
   });
 });
 
-
 $('#btnFiltrarChecklist').on('click', function () {
-  let formulariofiltroChecklist = new FormData($('#frmFiltroChecklist')[0]); 
+  let formulariofiltroChecklist = new FormData($('#frmFiltroChecklist')[0]);
   formulariofiltroChecklist.append('opcion', 'consulta');
   $.ajax({
     method: 'POST',
@@ -92,22 +89,24 @@ $('#btnFiltrarChecklist').on('click', function () {
     processData: false,
     data: formulariofiltroChecklist,
     dataType: 'json',
-    success: function (respuesta ) {
+    success: function (respuesta) {
       let tabla = $('#mostrarCheckList').DataTable();
       if (respuesta) {
         tabla.clear().draw();
         $.each(respuesta, function (index, value) {
-          tabla.row.add([
-            `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
+          tabla.row
+            .add([
+              `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
             <button class='btn btn-warning btn-editar-detalle-checklist' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
-            value.detalle,
-            value.fecha,
-             value.horainicio,
-             value.horafin, 
-             value.nombreestado
-          ]).draw(false);
+              value.detalle,
+              value.fecha,
+              value.horainicio,
+              value.horafin,
+              value.nombreestado,
+            ])
+            .draw(false);
         });
-      } else{
+      } else {
         console.log(respuesta);
       }
     },
@@ -115,7 +114,9 @@ $('#btnFiltrarChecklist').on('click', function () {
 });
 
 $('#btnFiltrarChecklistAdmin').on('click', function () {
-  let formulariofiltroChecklist = new FormData($('#frmFiltroChecklistAdmin')[0]); 
+  let formulariofiltroChecklist = new FormData(
+    $('#frmFiltroChecklistAdmin')[0]
+  );
   formulariofiltroChecklist.append('opcion', 'consultaUsuarios');
   $.ajax({
     method: 'POST',
@@ -125,52 +126,52 @@ $('#btnFiltrarChecklistAdmin').on('click', function () {
     processData: false,
     data: formulariofiltroChecklist,
     dataType: 'json',
-    success: function (respuesta ) {
+    success: function (respuesta) {
       let tabla = $('#mostrarCheckList').DataTable();
       if (respuesta) {
         tabla.clear().draw();
         $.each(respuesta, function (index, value) {
-          tabla.row.add([
-            `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
-            <button class='btn btn-warning btn-editar-detalle-checklist' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
-            value.detalle,
-            value.fecha,
-             value.horainicio,
-             value.horafin, 
-             value.nombreestado
-          ]).draw(false);
+          tabla.row
+            .add([
+              `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
+              value.detalle,
+              value.fecha,
+              value.horainicio,
+              value.horafin,
+              value.nombreestado,
+            ])
+            .draw(false);
         });
-      } else{
+      } else {
         console.log(respuesta);
       }
     },
   });
 });
 
-$(document).on("click",".btn-ver-detalle-checklist", function () { 
+$(document).on('click', '.btn-ver-detalle-checklist', function () {
   let btn = $(this);
-    $("#detalle2").val(btn.attr("detalle"));
-    $("#modalVerActividad").modal("show");
-  
+  $('#detalle2').val(btn.attr('detalle'));
+  $('#modalVerActividad').modal('show');
 });
 
-
-
-$(document).on("click",".btn-editar-detalle-checklist", function () { 
+$(document).on('click', '.btn-editar-detalle-checklist', function () {
   let btn = $(this);
-  const datos=$('#mostrarCheckList').DataTable().row(btn.closest("tr")).data(); 
-  if(datos){
-    $("#iddetallechecklist").val(btn.attr("iddetallechecklist"));
-    $("#idestadochecklist2").val(btn.attr("idestadochecklist"));
-    $("#detalle").val(datos[1]);
-    $("#horainicio").val(datos[3].slice(0,-3));
-    $("#horafin").val(datos[4].slice(0,-3));
-    $("#modalEditarActividad").modal("show");
-
+  const datos = $('#mostrarCheckList')
+    .DataTable()
+    .row(btn.closest('tr'))
+    .data();
+  if (datos) {
+    $('#iddetallechecklist').val(btn.attr('iddetallechecklist'));
+    $('#idestadochecklist2').val(btn.attr('idestadochecklist'));
+    $('#detalle').val(datos[1]);
+    $('#horainicio').val(datos[3].slice(0, -3));
+    $('#horafin').val(datos[4].slice(0, -3));
+    $('#modalEditarActividad').modal('show');
   }
 });
 
-$(document).on("click", ".btnEditarActividad",function() {
+$(document).on('click', '.btnEditarActividad', function () {
   let formularioCheckList = new FormData($('#frmEditarChecklist')[0]);
   formularioCheckList.append('opcion', 'editar');
   $.ajax({
@@ -183,9 +184,9 @@ $(document).on("click", ".btnEditarActividad",function() {
     dataType: 'json',
     success: function ({ respuesta }) {
       if (respuesta) {
-        $("#btnFiltrarChecklist").click();
-        $("#btnFiltrarChecklistAdmin").click();
-        $("#modalEditarActividad").modal('hide');
+        $('#btnFiltrarChecklist').click();
+        $('#btnFiltrarChecklistAdmin').click();
+        $('#modalEditarActividad').modal('hide');
         Swal.fire({
           title: 'Editado!',
           text: '¡Se Edito el checklist correctamente!',
@@ -193,7 +194,7 @@ $(document).on("click", ".btnEditarActividad",function() {
           confirmButtonText: 'Ok',
         });
       } else {
-        $("#modalEditarActividad").modal('hide');
+        $('#modalEditarActividad').modal('hide');
         Swal.fire({
           title: 'Error!',
           text: '¡No se pudo editar el checklist!',
@@ -203,7 +204,6 @@ $(document).on("click", ".btnEditarActividad",function() {
       }
     },
   });
-
 });
 
 init();

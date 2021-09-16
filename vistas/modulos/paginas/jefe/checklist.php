@@ -62,7 +62,7 @@
                 <div class="row">
                   <div class="col-3">
                     <label>Seleccione el estado:</label>
-                    <input class="form-control" type="hidden" name="idusuario" id="idusuario2" >
+                    <input class="form-control" type="hidden" name="idusuario" id="idusuario2">
                     <select name="idestadochecklist" id="idestadochecklist" class="form-control select2" required>
                       <?php
                       $estadosChecklist = ChecklistModelo::mdlListarEstadoCheckList();
@@ -151,7 +151,7 @@
                 <div class="container-fluid" id="modalBodyActividades">
                   <section class="row">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <label>Actividad</label>
+                      <label>Actividad </label>
                       <textarea name="detalle[]" class="form-control"></textarea>
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
@@ -207,30 +207,30 @@
         <div class="modal-body">
           <div class="form-group">
             <div class="input-group">
-              <div class="row"> 
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <label>Actividad</label>
-                      <input class="form-control" type="hidden" name="iddetallechecklist" id="iddetallechecklist">
-                      <textarea id="detalle" name="detalle" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <label>Estado</label>
-                      <select id="idestadochecklist2" name="idestadochecklist" class="custom-select select-estado-actividad" data-live-search="true" required>
-                      <?php 
-                        foreach ($estadosChecklist as $estadoChecklist) {
-                          echo '<option value="' . $estadoChecklist["idestadochecklist"] . '">' . $estadoChecklist["nombre"] . '</option>';
-                        }
-                        ?>
-                      </select>
-                    </div>
-                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <label>Hora Inicio</label>
-                      <input type="time" id="horainicio" name="horainicio" class="form-control" min="8:00">
-                    </div>
-                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <label>Hora Fin</label>
-                      <input type="time" id="horafin" name="horafin" class="form-control">
-                    </div> 
+              <div class="row">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <label>Actividad</label>
+                  <input class="form-control" type="hidden" name="iddetallechecklist" id="iddetallechecklist">
+                  <textarea id="detalle" name="detalle" class="form-control"></textarea>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                  <label>Estado</label>
+                  <select id="idestadochecklist2" name="idestadochecklist" class="custom-select select-estado-actividad" data-live-search="true" required>
+                    <?php
+                    foreach ($estadosChecklist as $estadoChecklist) {
+                      echo '<option value="' . $estadoChecklist["idestadochecklist"] . '">' . $estadoChecklist["nombre"] . '</option>';
+                    }
+                    ?>
+                  </select>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                  <label>Hora Inicio</label>
+                  <input type="time" id="horainicio" name="horainicio" class="form-control" min="8:00">
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                  <label>Hora Fin</label>
+                  <input type="time" id="horafin" name="horafin" class="form-control">
+                </div>
               </div>
             </div>
           </div>

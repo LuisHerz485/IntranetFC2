@@ -29,7 +29,7 @@
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-3">
-                  <input class="form-control" type="hidden" name="idusuario" id="idusuario" value="<?php echo $_SESSION["idusuario"]; ?>">
+                    <input class="form-control" type="hidden" name="idusuario" value="<?php echo $_SESSION["idusuario"]; ?>">
                     <label>Seleccione el estado:</label>
                     <select name="idestadochecklist" id="idestadochecklist" class="form-control select2" required>
                       <?php
@@ -60,7 +60,7 @@
             <hr>
             <table id="mostrarCheckList" class="table table-striped tablaDataCheckList dt-responsive">
               <thead>
-              <th class="no-exportar">Opciones</th>
+                <th class="no-exportar">Opciones</th>
                 <th>Actividad</th>
                 <th>Fecha</th>
                 <th>Hora Inicio</th>
@@ -79,9 +79,9 @@
               </tfoot>
             </table>
             <div>
-            <button class="btn btn-success btnAgregarCL float-sm-right mr-3 mt-2" data-toggle="modal" data-target="#modalCheckList"><i class="far fa-plus-square"></i> Añadir</button>
+              <button class="btn btn-success btnAgregarCL float-sm-right mr-3 mt-2" data-toggle="modal" data-target="#modalCheckList"><i class="far fa-plus-square"></i> Añadir</button>
             </div>
-          </div>    
+          </div>
         </div>
       </div>
     </div>
@@ -107,9 +107,9 @@
                   <label>Actividades del día: </label>
                   <input type="date" name="fecha" class="form-control-fc">
 
-                  <input class="form-control" type="hidden" name="idusuario" id="idusuario" value="<?php echo $_SESSION['idusuario'];?>">
-                  <input class="form-control" type="hidden" name="idtipousuario" id="idtipousuario" value="<?php echo $_SESSION['idtipousuario'];?>">
-                  <input class="form-control" type="hidden" name="iddepartamento" id="iddepartamento" value="<?php echo $_SESSION['iddepartamento'];?>">
+                  <input class="form-control" type="hidden" name="idusuario" value="<?php echo $_SESSION['idusuario']; ?>">
+                  <input class="form-control" type="hidden" name="idtipousuario" id="idtipousuario" value="<?php echo $_SESSION['idtipousuario']; ?>">
+                  <input class="form-control" type="hidden" name="iddepartamento" id="iddepartamento" value="<?php echo $_SESSION['iddepartamento']; ?>">
                   <button class="btn btn-warning float-sm-right btnAgregarActividad" type="button"><i class="fas fa-plus"></i>Agregar</button>
                 </div>
                 <hr class="col-10 bg-dark">
@@ -172,30 +172,30 @@
         <div class="modal-body">
           <div class="form-group">
             <div class="input-group">
-              <div class="row"> 
-                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <label>Actividad</label>
-                      <input class="form-control" type="hidden" name="iddetallechecklist" id="iddetallechecklist">
-                      <textarea id="detalle" name="detalle" class="form-control"></textarea>
-                    </div>
-                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <label>Estado</label>
-                      <select id="idestadochecklist2" name="idestadochecklist" class="custom-select select-estado-actividad" data-live-search="true" required>
-                      <?php 
-                        foreach ($estadosChecklist as $estadoChecklist) {
-                          echo '<option value="' . $estadoChecklist["idestadochecklist"] . '">' . $estadoChecklist["nombre"] . '</option>';
-                        }
-                        ?>
-                      </select>
-                    </div>
-                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <label>Hora Inicio</label>
-                      <input type="time" id="horainicio" name="horainicio" class="form-control" min="8:00">
-                    </div>
-                    <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                      <label>Hora Fin</label>
-                      <input type="time" id="horafin" name="horafin" class="form-control">
-                    </div> 
+              <div class="row">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <label>Actividad</label>
+                  <input class="form-control" type="hidden" name="iddetallechecklist" id="iddetallechecklist">
+                  <textarea id="detalle" name="detalle" class="form-control"></textarea>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                  <label>Estado</label>
+                  <select id="idestadochecklist2" name="idestadochecklist" class="custom-select select-estado-actividad" data-live-search="true" required>
+                    <?php
+                    foreach ($estadosChecklist as $estadoChecklist) {
+                      echo '<option value="' . $estadoChecklist["idestadochecklist"] . '">' . $estadoChecklist["nombre"] . '</option>';
+                    }
+                    ?>
+                  </select>
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                  <label>Hora Inicio</label>
+                  <input type="time" id="horainicio" name="horainicio" class="form-control" min="8:00">
+                </div>
+                <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                  <label>Hora Fin</label>
+                  <input type="time" id="horafin" name="horafin" class="form-control">
+                </div>
               </div>
             </div>
           </div>

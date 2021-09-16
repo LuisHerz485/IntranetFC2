@@ -48,8 +48,8 @@
                         <form method=POST id="frmFiltroPermiso">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-3">
-                                        <label>Seleccione estado de permiso</label>
+                                    <div class="col-12 col-lg-3">
+                                        <label>Seleccione Estado del Permiso</label>
                                         <select name="idestadopermiso" class="form-control select2">
                                             <option value="0">Todos</option>
                                             <?php
@@ -60,18 +60,17 @@
                                                 }
                                             }
                                             ?>
-                                            
                                         </select>
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-12 col-lg-3">
                                         <label>Seleccione Fecha Desde</label>
                                         <input type="date" class="form-control" name="fechadesde" id="fechadesde">
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-12 col-lg-3">
                                         <label>Seleccione Fecha Hasta</label>
                                         <input type="date" class="form-control" name="fechahasta" id="fechahasta">
                                     </div>
-                                    <div class="col-3">
+                                    <div class="col-12 col-lg-3">
                                         <label>Opciones</label>
                                         <button type="submit" value="filtrar" class="btn btn-primary  btn-block" id="btnFiltrar" name="btnFiltrar"><i class="fas fa-search"></i> Filtrar</button>
                                     </div>
@@ -218,7 +217,7 @@
                             </div>
                             <div class="col-12">
                                 <label>Detalle (Tamaño Max. 500):</label>
-                                <textarea name="detalle" class="form-control" id="detalle" rows="3" disabled></textarea>
+                                <textarea name="detalle" class="form-control" id="detalle" rows="7" disabled></textarea>
                             </div>
                         </div>
                     </div>

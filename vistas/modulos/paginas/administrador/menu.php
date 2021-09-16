@@ -63,12 +63,12 @@
                         </li>
                         <?php
                         if ($_SESSION['idtipousuario'] != 4) { ?>
-                        <li class="nav-item">
-                            <a href="permisos-pendientes" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Permisos</p>
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a href="permisos-pendientes" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Permisos</p>
+                                </a>
+                            </li>
                         <?php } ?>
                     </ul>
                 </li>
@@ -159,21 +159,21 @@
                             </li>
                         </ul>
                     </li>
-                
-                <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-folder"></i>
-                        <p>Servicios<i class="right fas fa-angle-left"></i></p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="servicios" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Tipo de Servicio</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+
+                    <li class="nav-item has-treeview">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-folder"></i>
+                            <p>Servicios<i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="servicios" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Tipo de Servicio</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 <?php } ?>
                 <?php
                 if ($_SESSION['idtipousuario'] == 1) { ?>
@@ -253,8 +253,6 @@
                         </li>
                     </ul>
                 </li>
-
-
                 <li class="nav-header">AYUDA</li>
                 <li class="nav-item">
                     <a href="https://www.youtube.com/watch?v=VwHqLrttPJo&amp;ab_channel=FCCONTADORESYASOCIADOS" target="_blank" class="nav-link">

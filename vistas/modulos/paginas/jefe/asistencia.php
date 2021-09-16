@@ -1,84 +1,85 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark"></h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Asistencia</a></li>
-              <li class="breadcrumb-item active">Registro de Asistencia</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-    <div class="content">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card card-primary">
-            <div class="card-header">
-              <h3 class="card-title">Registro de Asistencia</h3>
-            </div>
-            <div class="card-body panel-body" id="listadoregistrosA">
-              <div id="tbllistado">
-                <table  class="table table-striped tablaDataAsistencia dt-responsive">
-                  <thead>
-                    <th class="no-exportar">Opciones</th>
-                    <th class="no-exportar">Código</th>
-                    <th>Área</th>
-                    <th>Nombre Completo</th>
-                    <th>Asistencia</th>
-                    <th>Fecha</th>
-                    <th>Estado</th>
-                    <th class="no-exportar">Detalle</th>
-                  </thead>
-                  <tbody>
+  <!-- Content Header (Page header) -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0 text-dark"></h1>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Asistencia</a></li>
+            <li class="breadcrumb-item active">Registro de Asistencia</li>
+          </ol>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <?php ControladorAsistencia::ctrEditarDetalleAsistencia(); ?>
+  <!-- /.content-header -->
+  <div class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card card-primary">
+          <div class="card-header">
+            <h3 class="card-title">Registro de Asistencia</h3>
+          </div>
+          <div class="card-body panel-body" id="listadoregistrosA">
+            <div id="tbllistado">
+              <table class="table table-striped dt-responsive tablaDataAsistencia">
+                <thead>
+                  <th class="no-exportar">Opciones</th>
+                  <th class="no-exportar">Código</th>
+                  <th>Área</th>
+                  <th>Nombre Completo</th>
+                  <th>Asistencia</th>
+                  <th>Fecha</th>
+                  <th>Estado</th>
+                  <th class="no-exportar">Detalle</th>
+                </thead>
+                <tbody>
                   <?php
-                      $item = null;
-                      $valor = null;
-                      $asistencia = ControladorAsistencia::ctrMostrarAsistencia($item,$valor);
-                      foreach($asistencia as $key => $value){
-                        echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-s btnEditarDetalle" fecha="'.$value['fecha'].'" codigo="'.$value['codigo'].'" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-pencil-alt"></i></button></th>
-                          <td>'.$value['codigo'].'</td>
-                          <td>'.$value['area'].'</td>
-                          <td>'.$value['nombre'].' '.$value['apellidos'].'</td>
-                          <td>'.$value['asistencia'].'</td>
-                          <td>'.$value['fecha'].'</td>';
-                          if($value['estado']=="0"){
-                            echo'<td>Injustificado</td>';
-                          }else if($value['estado']=="1"){
-                            echo'<td>Justificado</td>';
-                          }else{
-                            echo'<td>Correcto</td>';
-                          }
-                        echo'<td>'.$value['detalle'].'</td></tr>';
-                      }
+                  $item = null;
+                  $valor = null;
+                  $asistencia = ControladorAsistencia::ctrMostrarAsistencia($item, $valor);
+                  foreach ($asistencia as $key => $value) {
+                    echo '<tr>
+                          <th scope="row"><button class="btn btn-warning btn-s btnEditarDetalle" fecha="' . $value['fecha'] . '" codigo="' . $value['codigo'] . '" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-pencil-alt"></i></button></th>
+                          <td>' . $value['codigo'] . '</td>
+                          <td>' . $value['area'] . '</td>
+                          <td>' . $value['nombre'] . ' ' . $value['apellidos'] . '</td>
+                          <td>' . $value['asistencia'] . '</td>
+                          <td>' . $value['fecha'] . '</td>';
+                    if ($value['estado'] == "0") {
+                      echo '<td>Injustificado</td>';
+                    } else if ($value['estado'] == "1") {
+                      echo '<td>Justificado</td>';
+                    } else {
+                      echo '<td>Correcto</td>';
+                    }
+                    echo '<td>' . $value['detalle'] . '</td></tr>';
+                  }
                   ?>
-                  </tbody>
-                  <tfoot>
-                    <th>Opciones</th>
-                    <th>Código</th>
-                    <th>Área</th>
-                    <th>Nombre Completo</th>
-                    <th>Asistencia</th>
-                    <th>Fecha</th>
-                    <th>Estado</th>
-                    <th>Detalle</th>
-                  </tfoot>   
-                </table>
-              </div>
+                </tbody>
+                <tfoot>
+                  <th>Opciones</th>
+                  <th>Código</th>
+                  <th>Área</th>
+                  <th>Nombre Completo</th>
+                  <th>Asistencia</th>
+                  <th>Fecha</th>
+                  <th>Estado</th>
+                  <th>Detalle</th>
+                </tfoot>
+              </table>
             </div>
           </div>
-        </div>           
+        </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- Modal Contraseña -->
@@ -113,13 +114,9 @@
           </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
-            <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
         </div>
-        <?php
-          $ingresarDetalle = new ControladorAsistencia();
-          $ingresarDetalle -> ctrEditarDetalleAsistencia();
-        ?>
       </div>
     </form>
   </div>
