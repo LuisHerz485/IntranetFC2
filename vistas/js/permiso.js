@@ -54,15 +54,13 @@ $(document).on('click', '.btn-mostrar-detalle', function () {
 var Toast = Swal.mixin({
   toast: true,
   position: 'top-end',
-  showConfirmButton: false,
-  timer: 3000,
+  showConfirmButton: true,
 });
-
-
 
 function notificacionesPermisos(notificar) {
   let permisosPendientes = $('#permisosPendientes');
   let notificaciones = $('#notificaciones');
+  let dashboardPermisos = $('#dashboardPermisos');
   $.ajax({
     method: 'POST',
     url: 'ajax/permiso.ajax.php',
@@ -72,12 +70,13 @@ function notificacionesPermisos(notificar) {
     success: function ({ cantidad }) {
       if (cantidad > permisosPendientes.text()) {
         if (notificar) {
-          $("#audio")[0].play();
+          $('#audio')[0].play();
           Toast.fire({
             icon: 'info',
             title: 'Hay Solicitudes de Permisos Pendientes',
           });
         }
+        dashboardPermisos.text(cantidad);
         permisosPendientes.text(cantidad);
         notificaciones.text(cantidad);
       }

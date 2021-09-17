@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0 text-black"><strong>Dashboard</strong></h1>
+                    <h1 class="text-black ml-5"><strong>Dashboard</strong></h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -22,9 +22,9 @@
     <section class="content">
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
-            <div class="row ml-5 mr-5">
+            <div class="row mx-5">
                 <!-- ./col -->
-                <div class="col-lg-6 col-6">
+                <div class="col-12 col-lg-6">
                     <!-- small box -->
                     <a href="asistencia" class="small-box bg-success">
                         <div class="inner">
@@ -38,7 +38,7 @@
                     </a>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-6 col-6">
+                <div class="col-12 col-lg-6">
                     <!-- small box -->
                     <a href="asistencia" class="small-box bg-primary">
                         <div class="inner">
@@ -52,7 +52,7 @@
                     </a>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-12 col-12">
+                <div class="col-12 col-lg-6">
                     <!-- small box -->
                     <a href="https://fccontadores.com:2096/" class="small-box bg-orange" target="_blank">
                         <div class="inner">

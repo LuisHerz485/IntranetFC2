@@ -22,7 +22,7 @@
       <div class="col-md-12">
         <div class="card card-primary">
           <div class="card-header">
-            <h3 class="card-title">Check List - Personal</h3>
+            <h3 class="card-title">Check List</h3>
           </div>
           <div class="card-body panel-body" id="listadoUserCL">
             <table class="table table-striped tablaDataTableC dt-responsive text-center">

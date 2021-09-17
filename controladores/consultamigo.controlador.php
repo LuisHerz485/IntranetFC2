@@ -2,15 +2,13 @@
 define('codigo', 'vD9L90MFecktKQVRruIBfpg2Vfif4K7Szmq9inCFep3fWA6YTMjFfSVn5oNz');
 
 
-function tipodecambio()
+function tipodecambio(): mixed
 {
 
     $curl = curl_init();
-
     $data = [
         'token' => codigo
     ];
-
     $post_data = http_build_query($data);
 
     curl_setopt_array($curl, array(
@@ -28,13 +26,11 @@ function tipodecambio()
     if ($err) {
         echo "cURL Error #:" . $err;
     } else {
-        //var_dump($response, true);
-        $resultado = json_decode($response, true);
-        return $resultado;
+        return json_decode($response, true);
     }
 }
 
-function consultaruc($numeroruc)
+function consultaruc($numeroruc): void
 {
 
     $curl = curl_init();
@@ -65,28 +61,30 @@ function consultaruc($numeroruc)
         $resultado = json_decode($response, true);
         //var_dump($resultado);
 
-        if ($resultado) {
-            echo  "<script>
-            Swal.fire({ 
-                title:	'Datos SUNAT:',
-                html: '<strong>RUC: </strong>' + '" . $resultado['ruc'] . "' + '<br>' +
-                        '<strong>Nombre o Razón Social: </strong>' + '" . $resultado['nombre_o_razon_social'] . "' + '<br>' +
-                        '<strong>Estado de Contribuyente: </strong>' + '" . $resultado['estado_del_contribuyente'] . "' + '<br>' +
-                        '<strong>Condición de Domicilio: </strong>' + '" . $resultado['condicion_de_domicilio'] . "' + '<br>' + 
-                        '<strong>Dirección: </strong>' + '" . $resultado['direccion'] . "' + '<br>' +
-                        '<strong>Distrito: </strong>' + '" . $resultado['distrito'] . "' + '<br>' +
-                        '<strong>Provincia: </strong>' + '" . $resultado['provincia'] . "' + '<br>' +
-                        '<strong>Departamento: </strong>' + '" . $resultado['departamento'] . "' + '<br>' +
-                        '<strong>Fecha de Actualización: </strong>' + '" . $resultado['actualizado_en'] . "' + '<br>' ,
-                
-                icon:	'success',
-                confirmButtonText:	'Ok'
-                }).then((result)=>{
-                    if(result.value){
-                        window.location='consultaruc';
-                    }
-                })
-            </script>";
+        if ($resultado && $resultado["success"]) {
+            if ($resultado["success"]) {
+                echo  "<script>
+                        Swal.fire({ 
+                            title:	'Datos SUNAT:',
+                            html: '<strong>RUC: </strong>' + '" . $resultado['ruc'] . "' + '<br>' +
+                                    '<strong>Nombre o Razón Social: </strong>' + '" . $resultado['nombre_o_razon_social'] . "' + '<br>' +
+                                    '<strong>Estado de Contribuyente: </strong>' + '" . $resultado['estado_del_contribuyente'] . "' + '<br>' +
+                                    '<strong>Condición de Domicilio: </strong>' + '" . $resultado['condicion_de_domicilio'] . "' + '<br>' + 
+                                    '<strong>Dirección: </strong>' + '" . $resultado['direccion'] . "' + '<br>' +
+                                    '<strong>Distrito: </strong>' + '" . $resultado['distrito'] . "' + '<br>' +
+                                    '<strong>Provincia: </strong>' + '" . $resultado['provincia'] . "' + '<br>' +
+                                    '<strong>Departamento: </strong>' + '" . $resultado['departamento'] . "' + '<br>' +
+                                    '<strong>Fecha de Actualización: </strong>' + '" . $resultado['actualizado_en'] . "' + '<br>' ,
+                            
+                            icon:	'success',
+                            confirmButtonText:	'Ok'
+                            }).then((result)=>{
+                                if(result.value){
+                                    window.location='consultaruc';
+                                }
+                            })
+                        </script>";
+            }
         } else {
             echo  "<script>
             Swal.fire({
@@ -101,7 +99,7 @@ function consultaruc($numeroruc)
 }
 
 
-function consultadni($numerodni)
+function consultadni($numerodni): void
 {
     $curl = curl_init();
 
@@ -128,13 +126,13 @@ function consultadni($numerodni)
         echo "cURL Error #:" . $err;
     } else {
         //echo $response;
-        $resultado = json_decode($response, true);
-
+        $resultado = json_decode($response, true);;
         if ($resultado) {
-            echo  "<script>
+            if ($resultado["success"]) {
+                echo  "<script>
                 Swal.fire({ 
                 title:	'Datos RENIEC:',
-                html: '<strong>DNI: </strong>' + '" . $resultado['dni'] . "' + '<br>' +
+                html: '<strong>DNI: </strong>' + '" . $resultado['dni'] . var_dump($resultado) . "' + '<br>' +
                       '<strong>Nombre: </strong>' + '" . $resultado['nombre'] . "',
                 
                 icon:	'success',
@@ -145,6 +143,7 @@ function consultadni($numerodni)
                     }
                 })
             </script>";
+            }
         } else {
             echo  "<script>
                 Swal.fire({

@@ -1,15 +1,15 @@
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#" id="ocultar" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
+  <!-- Left navbar links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#" id="ocultar" role="button"><i class="fas fa-bars"></i></a>
+    </li>
+  </ul>
 
-     <!-- Right navbar links -->
+  <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
-    <?php if ($_SESSION['idtipousuario'] == 1) { ?>
+    <?php if (isset($_SESSION['idtipousuario']) && in_array($_SESSION['idtipousuario'], [1, 3])) { ?>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -40,15 +40,9 @@
         }
         ?>
         <div class="dropdown-divider"></div>
-        <?php
-        if ($_SESSION["cliente"] == "si") {
-          echo '<a href="salir" class="dropdown-item">';
-        } else {
-          echo '<a href="salir" class="dropdown-item">';
-        }
-        ?>
-        <i class="fas fa-user-times mr-2"></i> Cerrar Sesión
-        <span class="float-right text-muted text-sm">Activa</span>
+        <a href="salir" class="dropdown-item">
+          <i class="fas fa-user-times mr-2"></i> Cerrar Sesión
+          <span class="float-right text-muted text-sm">Activa</span>
         </a>
     </li>
   </ul>
