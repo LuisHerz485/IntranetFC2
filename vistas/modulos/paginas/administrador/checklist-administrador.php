@@ -114,7 +114,7 @@
                   <section class="row">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <label>Actividad</label>
-                      <textarea name="detalle[]" class="form-control"></textarea>
+                      <textarea name="detalle[]" class="form-control" maxlength="200" required></textarea>
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                       <label>Estado</label>

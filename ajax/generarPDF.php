@@ -17,7 +17,6 @@ function getCodigoRecibo(string $id = "")
 
 $dataConstancia = null;
 if (isset($_POST["idcobranza"])) {
-
   $dataConstancia = ModeloConstancia::mdlDataConstancia(intval($_POST["idcobranza"]));
 } else if (isset($_POST["idconstancia"])) {
   $dataConstancia = ModeloConstancia::mdlDataPreConstancia(intval($_POST["idconstancia"]));
@@ -34,7 +33,7 @@ if ($dataConstancia && isset($dataConstancia['iddetallecobranza'])) {
   ];
 
 
-  $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A5-L']);
+  $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
   $formatter = new NumeroALetras();
 
   $css = '
@@ -58,7 +57,7 @@ if ($dataConstancia && isset($dataConstancia['iddetallecobranza'])) {
 
   $plantilla = '
     <body>
-        <div style="padding: 40px 0px 0px 0px;">
+        <div style="padding: 0px 0px 0px 0px; padding-top: 100px">
           <table id="tablaEncabezado">
             <tr>
               <td>
@@ -97,7 +96,7 @@ if ($dataConstancia && isset($dataConstancia['iddetallecobranza'])) {
               <td width="150" class="td-background">
                 <span><b>Recibí de: </b></span>
               </td>
-              <td width="300" class="td-background">' . $info["cliente"]["razonsocial"]  . ' </td>
+              <td width="300" class="td-background">' . $info["cliente"]["razonsocial"]  . '</td>
             </tr>
             <tr>
               <td class="td-background">
@@ -172,9 +171,9 @@ if ($dataConstancia && isset($dataConstancia['iddetallecobranza'])) {
         </div>
       </body>';
   if (($info["montoTotal"] - $info["totalRecibido"]) == 0) {
-    $mpdf->SetWatermarkImage('../vistas/img/sello/watermark_cancelado.png', 1);
+    $mpdf->SetWatermarkImage('../vistas/img/sello/watermark_cancelado.png', 1, "P");
   } else {
-    $mpdf->SetWatermarkImage('../vistas/img/sello/watermark.png', 1);
+    $mpdf->SetWatermarkImage('../vistas/img/sello/watermark.png', 1, "P");
   }
   $mpdf->showWatermarkImage = true;
   $mpdf->writeHtml($css, \Mpdf\HTMLParserMode::HEADER_CSS);
