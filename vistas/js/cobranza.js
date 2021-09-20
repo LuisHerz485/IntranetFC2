@@ -112,7 +112,7 @@ function listarCobranzas(idcliente) {
           $('#mostrarCobranza')
             .DataTable()
             .row.add([
-              '<div scope="row" class="text-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob" idcobranza=' +
+              '<div class="row justify-content-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob mx-1" idcobranza=' +
                 value.idcobranza +
                 " value='" +
                 index +
@@ -143,7 +143,7 @@ function listarCobranzas(idcliente) {
           $('#mostrarCobranza')
             .DataTable()
             .row.add([
-              '<div scope="row" class="text-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob" idcobranza=' +
+              '<div class="row justify-content-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob mx-1" idcobranza=' +
                 value.idcobranza +
                 " value='" +
                 index +
@@ -174,7 +174,7 @@ function listarCobranzas(idcliente) {
           $('#mostrarCobranza')
             .DataTable()
             .row.add([
-              '<div scope="row" class="text-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob" idcobranza=' +
+              '<div class="row justify-content-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob mx-1" idcobranza=' +
                 value.idcobranza +
                 " value='" +
                 index +
@@ -205,7 +205,7 @@ function listarCobranzas(idcliente) {
           $('#mostrarCobranza')
             .DataTable()
             .row.add([
-              '<div scope="row" class="text-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob" idcobranza=' +
+              '<div class="row justify-content-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob mx-1" idcobranza=' +
                 value.idcobranza +
                 " value='" +
                 index +
@@ -601,7 +601,7 @@ $('.btnFiltroMes').click(function () {
           $('#mostrarPendiente')
             .DataTable()
             .row.add([
-              '<div scope="row" class="text-center"><abbr title="Ver Detalles"> <button class="btn btn-info btn-s btnMostraDetCob" idcobranza=' +
+              '<div class="row justify-content-center" ><abbr title="Ver Detalles"> <button class="btn btn-info btn-s btnMostraDetCob mx-1" idcobranza=' +
                 value.idcobranza +
                 " value='" +
                 index +
@@ -632,7 +632,7 @@ $('.btnFiltroMes').click(function () {
           $('#mostrarPendiente')
             .DataTable()
             .row.add([
-              '<div scope="row" class="text-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob" idcobranza=' +
+              '<div class="row justify-content-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob mx-1" idcobranza=' +
               value.idcobranza +
               " value='" +
               index +
@@ -663,7 +663,7 @@ $('.btnFiltroMes').click(function () {
           $('#mostrarPendiente')
             .DataTable()
             .row.add([
-              '<div scope="row" class="text-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob" idcobranza=' +
+              '<div class="row justify-content-center" class="text-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob mx-1" idcobranza=' +
                 value.idcobranza +
                 " value='" +
                 index +
@@ -694,7 +694,7 @@ $('.btnFiltroMes').click(function () {
           $('#mostrarPagado')
             .DataTable()
             .row.add([
-              '<div scope="row" class="text-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob" idcobranza=' +
+              '<div class="row justify-content-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob mx-1" idcobranza=' +
               value.idcobranza +
               " value='" +
               index +
