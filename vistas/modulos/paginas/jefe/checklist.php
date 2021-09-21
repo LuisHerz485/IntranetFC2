@@ -64,6 +64,7 @@
                     <label>Seleccione el estado:</label>
                     <input class="form-control" type="hidden" name="idusuario" id="idusuario2">
                     <select name="idestadochecklist" id="idestadochecklist" class="form-control select2" required>
+                      <option value="0">Todos</option>
                       <?php
                       $estadosChecklist = ChecklistModelo::mdlListarEstadoCheckList();
                       if ($estadosChecklist) {

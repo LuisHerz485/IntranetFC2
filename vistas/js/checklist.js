@@ -3,94 +3,94 @@ function init() {
 }
 
 function limpiarCheckList() {
-  $('#frmChecklist')[0].reset();
+  $("#frmChecklist")[0].reset();
 }
 
 function mostrarformCL(flag) {
   if (flag) {
-    $('#listadoUserCL').hide();
-    $('#formularioCheckList').show();
+    $("#listadoUserCL").hide();
+    $("#formularioCheckList").show();
   } else {
-    $('#listadoUserCL').show();
-    $('#formularioCheckList').hide();
+    $("#listadoUserCL").show();
+    $("#formularioCheckList").hide();
   }
 }
 
-$('#btnCancelarCheckJefe').on('click', function () {
+$("#btnCancelarCheckJefe").on("click", function () {
   limpiarCheckList();
   mostrarformCL(false);
 });
 
-$('.btnListarCheckList').click(function () {
+$(".btnListarCheckList").click(function () {
   let btn = $(this);
-  $('#idusuario').val(btn.attr('idusuario'));
-  $('#idusuario2').val(btn.attr('idusuario'));
-  $('#idtipousuario').val(btn.attr('idtipousuario'));
-  $('#iddepartamento').val(btn.attr('iddepartamento'));
+  $("#idusuario").val(btn.attr("idusuario"));
+  $("#idusuario2").val(btn.attr("idusuario"));
+  $("#idtipousuario").val(btn.attr("idtipousuario"));
+  $("#iddepartamento").val(btn.attr("iddepartamento"));
 });
 
-const sectionActividad = $('#modalBodyActividades').html();
+const sectionActividad = $("#modalBodyActividades").html();
 
-$('.btnAgregarActividad').on('click', function () {
-  $('#modalBodyActividades').append(sectionActividad);
+$(".btnAgregarActividad").on("click", function () {
+  $("#modalBodyActividades").append(sectionActividad);
 });
 
-$('#btnSalirActividad').on('click', function () {
-  $('#modalBodyActividades').html('');
-  $('#modalBodyActividades').append(sectionActividad);
+$("#btnSalirActividad").on("click", function () {
+  $("#modalBodyActividades").html("");
+  $("#modalBodyActividades").append(sectionActividad);
 });
 
-$(document).on('click', '.btn-eliminar-actividad', function () {
-  $(this).closest('section').remove();
+$(document).on("click", ".btn-eliminar-actividad", function () {
+  $(this).closest("section").remove();
 });
 
-$('#btnGuardarActividades').on('click', function () {
-  let formularioCheckList = new FormData($('#frmChecklist')[0]);
-  formularioCheckList.append('opcion', 'registrar');
+$("#btnGuardarActividades").on("click", function () {
+  let formularioCheckList = new FormData($("#frmChecklist")[0]);
+  formularioCheckList.append("opcion", "registrar");
   $.ajax({
-    method: 'POST',
-    url: 'ajax/checklist.ajax.php',
+    method: "POST",
+    url: "ajax/checklist.ajax.php",
     cache: false,
     contentType: false,
     processData: false,
     data: formularioCheckList,
-    dataType: 'json',
+    dataType: "json",
     success: function ({ respuesta }) {
       if (respuesta) {
-        $('#modalCheckList').modal('hide');
+        $("#modalCheckList").modal("hide");
         limpiarCheckList();
-        $('#btnFiltrarChecklist').click();
+        $("#btnFiltrarChecklist").click();
         Swal.fire({
-          title: 'Registrado!',
-          text: '¡Se registro el checklist correctamente!',
-          icon: 'success',
-          confirmButtonText: 'Ok',
+          title: "Registrado!",
+          text: "¡Se registro el checklist correctamente!",
+          icon: "success",
+          confirmButtonText: "Ok",
         });
       } else {
         Swal.fire({
-          title: 'Error!',
-          text: '¡No se pudo registrar el checklist!',
-          icon: 'error',
-          confirmButtonText: 'Ok',
+          title: "Error!",
+          text: "¡No se pudo registrar el checklist!",
+          icon: "error",
+          confirmButtonText: "Ok",
         });
       }
     },
   });
 });
 
-$('#btnFiltrarChecklist').on('click', function () {
-  let formulariofiltroChecklist = new FormData($('#frmFiltroChecklist')[0]);
-  formulariofiltroChecklist.append('opcion', 'consulta');
+$("#btnFiltrarChecklist").on("click", function () {
+  let formulariofiltroChecklist = new FormData($("#frmFiltroChecklist")[0]);
+  formulariofiltroChecklist.append("opcion", "consulta");
   $.ajax({
-    method: 'POST',
-    url: 'ajax/checklist.ajax.php',
+    method: "POST",
+    url: "ajax/checklist.ajax.php",
     cache: false,
     contentType: false,
     processData: false,
     data: formulariofiltroChecklist,
-    dataType: 'json',
+    dataType: "json",
     success: function (respuesta) {
-      let tabla = $('#mostrarCheckList').DataTable();
+      let tabla = $("#mostrarCheckList").DataTable();
       if (respuesta) {
         tabla.clear().draw();
         $.each(respuesta, function (index, value) {
@@ -113,21 +113,21 @@ $('#btnFiltrarChecklist').on('click', function () {
   });
 });
 
-$('#btnFiltrarChecklistAdmin').on('click', function () {
+$("#btnFiltrarChecklistAdmin").on("click", function () {
   let formulariofiltroChecklist = new FormData(
-    $('#frmFiltroChecklistAdmin')[0]
+    $("#frmFiltroChecklistAdmin")[0]
   );
-  formulariofiltroChecklist.append('opcion', 'consultaUsuarios');
+  formulariofiltroChecklist.append("opcion", "consultaUsuarios");
   $.ajax({
-    method: 'POST',
-    url: 'ajax/checklist.ajax.php',
+    method: "POST",
+    url: "ajax/checklist.ajax.php",
     cache: false,
     contentType: false,
     processData: false,
     data: formulariofiltroChecklist,
-    dataType: 'json',
+    dataType: "json",
     success: function (respuesta) {
-      let tabla = $('#mostrarCheckList').DataTable();
+      let tabla = $("#mostrarCheckList").DataTable();
       if (respuesta) {
         tabla.clear().draw();
         $.each(respuesta, function (index, value) {
@@ -149,57 +149,57 @@ $('#btnFiltrarChecklistAdmin').on('click', function () {
   });
 });
 
-$(document).on('click', '.btn-ver-detalle-checklist', function () {
+$(document).on("click", ".btn-ver-detalle-checklist", function () {
   let btn = $(this);
-  $('#detalle2').val(btn.attr('detalle'));
-  $('#modalVerActividad').modal('show');
+  $("#detalle2").val(btn.attr("detalle"));
+  $("#modalVerActividad").modal("show");
 });
 
-$(document).on('click', '.btn-editar-detalle-checklist', function () {
+$(document).on("click", ".btn-editar-detalle-checklist", function () {
   let btn = $(this);
-  const datos = $('#mostrarCheckList')
+  const datos = $("#mostrarCheckList")
     .DataTable()
-    .row(btn.closest('tr'))
+    .row(btn.closest("tr"))
     .data();
   if (datos) {
-    $('#iddetallechecklist').val(btn.attr('iddetallechecklist'));
-    $('#idestadochecklist2').val(btn.attr('idestadochecklist'));
-    $('#detalle').val(datos[1]);
-    $('#horainicio').val(datos[3].slice(0, -3));
-    $('#horafin').val(datos[4].slice(0, -3));
-    $('#modalEditarActividad').modal('show');
+    $("#iddetallechecklist").val(btn.attr("iddetallechecklist"));
+    $("#idestadochecklist2").val(btn.attr("idestadochecklist"));
+    $("#detalle").val(datos[1]);
+    $("#horainicio").val(datos[3].slice(0, -3));
+    $("#horafin").val(datos[4].slice(0, -3));
+    $("#modalEditarActividad").modal("show");
   }
 });
 
-$(document).on('click', '.btnEditarActividad', function () {
-  let formularioCheckList = new FormData($('#frmEditarChecklist')[0]);
-  formularioCheckList.append('opcion', 'editar');
+$(document).on("click", ".btnEditarActividad", function () {
+  let formularioCheckList = new FormData($("#frmEditarChecklist")[0]);
+  formularioCheckList.append("opcion", "editar");
   $.ajax({
-    method: 'POST',
-    url: 'ajax/checklist.ajax.php',
+    method: "POST",
+    url: "ajax/checklist.ajax.php",
     cache: false,
     contentType: false,
     processData: false,
     data: formularioCheckList,
-    dataType: 'json',
+    dataType: "json",
     success: function ({ respuesta }) {
       if (respuesta) {
-        $('#btnFiltrarChecklist').click();
-        $('#btnFiltrarChecklistAdmin').click();
-        $('#modalEditarActividad').modal('hide');
+        $("#btnFiltrarChecklist").click();
+        $("#btnFiltrarChecklistAdmin").click();
+        $("#modalEditarActividad").modal("hide");
         Swal.fire({
-          title: 'Editado!',
-          text: '¡Se Edito el checklist correctamente!',
-          icon: 'success',
-          confirmButtonText: 'Ok',
+          title: "Editado!",
+          text: "¡Se Edito el checklist correctamente!",
+          icon: "success",
+          confirmButtonText: "Ok",
         });
       } else {
-        $('#modalEditarActividad').modal('hide');
+        $("#modalEditarActividad").modal("hide");
         Swal.fire({
-          title: 'Error!',
-          text: '¡No se pudo editar el checklist!',
-          icon: 'error',
-          confirmButtonText: 'Ok',
+          title: "Error!",
+          text: "¡No se pudo editar el checklist!",
+          icon: "error",
+          confirmButtonText: "Ok",
         });
       }
     },

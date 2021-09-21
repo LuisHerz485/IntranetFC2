@@ -116,7 +116,7 @@ class ChecklistModelo
              FROM checklist ch 
              JOIN detallechecklist dch ON ch.idchecklist=dch.idchecklist 
              JOIN estadochecklist ech ON dch.idestadochecklist=ech.idestadochecklist 
-             WHERE ch.idusuario=? AND dch.idestadochecklist=1",[$idusuario]);
+             WHERE ch.idusuario=? AND dch.idestadochecklist=1", [$idusuario]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -128,13 +128,17 @@ class ChecklistModelo
         return $actividades;
     }
 
-    public static function mdlListarCheckListActividades(int $idusuario,int $idestadochecklist,string $fechadesde, string $fechahasta): mixed
+    public static function mdlListarCheckListActividades(int $idusuario, int $idestadochecklist, string $fechadesde, string $fechahasta): mixed
     {
         $actividades = null;
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $actividades = $conexion->getData("SELECT dch.iddetallechecklist AS iddetallechecklist, ch.idusuario AS idusuario,ch.idchecklist as idchecklist, dch.idestadochecklist AS idestadochecklist, dch.detalle AS detalle, ch.fecha AS fecha, dch.horainicio AS horainicio, dch.horafin AS horafin, ech.nombre AS nombreestado FROM checklist ch JOIN detallechecklist dch ON ch.idchecklist = dch.idchecklist JOIN estadochecklist ech ON dch.idestadochecklist = ech.idestadochecklist WHERE (ch.idusuario = ? AND dch.idestadochecklist=?) AND ch.fecha BETWEEN ? AND ? ", [$idusuario,$idestadochecklist,$fechadesde,$fechahasta]);
+            if ($idestadochecklist == 0) {
+                $actividades = $conexion->getData("SELECT dch.iddetallechecklist AS iddetallechecklist, ch.idusuario AS idusuario,ch.idchecklist as idchecklist, dch.idestadochecklist AS idestadochecklist, dch.detalle AS detalle, ch.fecha AS fecha, dch.horainicio AS horainicio, dch.horafin AS horafin, ech.nombre AS nombreestado FROM checklist ch JOIN detallechecklist dch ON ch.idchecklist = dch.idchecklist JOIN estadochecklist ech ON dch.idestadochecklist = ech.idestadochecklist WHERE (ch.idusuario = ?) AND ch.fecha BETWEEN ? AND ? ", [$idusuario, $fechadesde, $fechahasta]);
+            } else {
+                $actividades = $conexion->getData("SELECT dch.iddetallechecklist AS iddetallechecklist, ch.idusuario AS idusuario,ch.idchecklist as idchecklist, dch.idestadochecklist AS idestadochecklist, dch.detalle AS detalle, ch.fecha AS fecha, dch.horainicio AS horainicio, dch.horafin AS horafin, ech.nombre AS nombreestado FROM checklist ch JOIN detallechecklist dch ON ch.idchecklist = dch.idchecklist JOIN estadochecklist ech ON dch.idestadochecklist = ech.idestadochecklist WHERE (ch.idusuario = ? AND dch.idestadochecklist=?) AND ch.fecha BETWEEN ? AND ? ", [$idusuario, $idestadochecklist, $fechadesde, $fechahasta]);
+            }
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -146,13 +150,13 @@ class ChecklistModelo
         return $actividades;
     }
 
-    public static function mdlListarCheckListActividadesUsuario(int $idusuario,string $fechadesde, string $fechahasta): mixed
+    public static function mdlListarCheckListActividadesUsuario(int $idusuario, string $fechadesde, string $fechahasta): mixed
     {
         $actividades = null;
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $actividades = $conexion->getData("SELECT dch.iddetallechecklist AS iddetallechecklist, ch.idusuario AS idusuario,ch.idchecklist as idchecklist, dch.idestadochecklist AS idestadochecklist, dch.detalle AS detalle, ch.fecha AS fecha, dch.horainicio AS horainicio, dch.horafin AS horafin, ech.nombre AS nombreestado FROM checklist ch JOIN detallechecklist dch ON ch.idchecklist = dch.idchecklist JOIN estadochecklist ech ON dch.idestadochecklist = ech.idestadochecklist WHERE (ch.idusuario = ?) AND ch.fecha BETWEEN ? AND ? ", [$idusuario,$fechadesde,$fechahasta]);
+            $actividades = $conexion->getData("SELECT dch.iddetallechecklist AS iddetallechecklist, ch.idusuario AS idusuario,ch.idchecklist as idchecklist, dch.idestadochecklist AS idestadochecklist, dch.detalle AS detalle, ch.fecha AS fecha, dch.horainicio AS horainicio, dch.horafin AS horafin, ech.nombre AS nombreestado FROM checklist ch JOIN detallechecklist dch ON ch.idchecklist = dch.idchecklist JOIN estadochecklist ech ON dch.idestadochecklist = ech.idestadochecklist WHERE (ch.idusuario = ?) AND ch.fecha BETWEEN ? AND ? ", [$idusuario, $fechadesde, $fechahasta]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -163,6 +167,4 @@ class ChecklistModelo
         }
         return $actividades;
     }
-
-
 }

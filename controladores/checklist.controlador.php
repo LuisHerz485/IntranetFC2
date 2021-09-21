@@ -41,7 +41,7 @@ class ControladorChecklist
             $idestadochecklist = ControladorValidacion::validarID($_POST["idestadochecklist"]);
             $detalle = $_POST["detalle"];
             $horainicio = $_POST["horainicio"];
-            $horafin = $_POST["horafin"]; 
+            $horafin = $_POST["horafin"];
             if (
                 $iddetallechecklist   && $idestadochecklist
                 && ControladorValidacion::longitud($detalle, 200, 10)
@@ -54,35 +54,37 @@ class ControladorChecklist
         return false;
     }
 
-    public static function ctrCheckListActividades():mixed
+    public static function ctrCheckListActividades(): mixed
     {
-        if(isset($_POST["idestadochecklist"],$_POST["idusuario"],$_POST["fechadesde"],$_POST["fechahasta"])){
+        if (isset($_POST["idestadochecklist"], $_POST["idusuario"], $_POST["fechadesde"], $_POST["fechahasta"])) {
             $idusuario = ControladorValidacion::validarID($_POST["idusuario"]);
-            $idestadochecklist = ControladorValidacion::validarID($_POST["idestadochecklist"]);
-            $fechadesde=$_POST["fechadesde"];
-            $fechahasta=$_POST["fechahasta"];
-            if($idusuario && $idestadochecklist
-             && ControladorValidacion::formatoFecha($fechadesde) 
-             && ControladorValidacion::formatoFecha($fechahasta))
-             {
-               return ChecklistModelo::mdlListarCheckListActividades($idusuario,$idestadochecklist,$fechadesde,$fechahasta);
-             }
+            $idestadochecklist = $_POST["idestadochecklist"];
+            $fechadesde = $_POST["fechadesde"];
+            $fechahasta = $_POST["fechahasta"];
+            if (
+                $idusuario
+                && ControladorValidacion::formatoFecha($fechadesde)
+                && ControladorValidacion::formatoFecha($fechahasta)
+            ) {
+                return ChecklistModelo::mdlListarCheckListActividades($idusuario, $idestadochecklist, $fechadesde, $fechahasta);
+            }
         }
         return false;
     }
 
-    public static function ctrCheckListActividadesUsuario():mixed
+    public static function ctrCheckListActividadesUsuario(): mixed
     {
-        if(isset($_POST["idusuario"],$_POST["fechadesde"],$_POST["fechahasta"])){
+        if (isset($_POST["idusuario"], $_POST["fechadesde"], $_POST["fechahasta"])) {
             $idusuario = ControladorValidacion::validarID($_POST["idusuario"]);
-            $fechadesde=$_POST["fechadesde"];
-            $fechahasta=$_POST["fechahasta"];
-            if($idusuario 
-             && ControladorValidacion::formatoFecha($fechadesde) 
-             && ControladorValidacion::formatoFecha($fechahasta))
-             {
-               return ChecklistModelo::mdlListarCheckListActividadesUsuario($idusuario,$fechadesde,$fechahasta);
-             }
+            $fechadesde = $_POST["fechadesde"];
+            $fechahasta = $_POST["fechahasta"];
+            if (
+                $idusuario
+                && ControladorValidacion::formatoFecha($fechadesde)
+                && ControladorValidacion::formatoFecha($fechahasta)
+            ) {
+                return ChecklistModelo::mdlListarCheckListActividadesUsuario($idusuario, $fechadesde, $fechahasta);
+            }
         }
         return false;
     }
