@@ -48,13 +48,13 @@ class ModeloPermiso
     /**
      * Actualiza solo estado de los permisos
      */
-    public static function mdlEditarEstadoPermiso(int $idpermiso, int $idestadopermiso, int $idrevisor): int|false
+    public static function mdlEditarEstadoPermiso(int $idpermiso, int $idestadopermiso, int $idrevisor, string $observacion): int|false
     {
         $filasActualizadas = false;
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $filasActualizadas = $conexion->updateOrDelete("UPDATE permiso SET idestadopermiso=?,fecharevision=NOW(),idrevisor=? WHERE idpermiso=?", [$idestadopermiso, $idrevisor, $idpermiso]);
+            $filasActualizadas = $conexion->updateOrDelete("UPDATE permiso SET idestadopermiso=?,fecharevision=NOW(),idrevisor=?, observacion=? WHERE idpermiso=?", [$idestadopermiso, $idrevisor, $observacion, $idpermiso]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -119,7 +119,7 @@ class ModeloPermiso
         try {
             $conexion = new ConexionV2();
             $permisos = $conexion->getData("SELECT P.idpermiso as idpermiso, P.idestadopermiso as idestadopermiso,U.nombre as nombre,U.apellidos as apellidos,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,
-            P.fechafin as fechafin, EP.nombreestadopermiso as estadopermiso, P.fecharevision as fecharevision 
+            P.fechafin as fechafin, EP.nombreestadopermiso as estadopermiso, P.fecharevision as fecharevision, P.observacion as observacion 
             FROM permiso P
             JOIN tipopermiso TP ON P.idtipopermiso=TP.idtipopermiso
             JOIN estadopermiso EP ON P.idestadopermiso=EP.idestadopermiso
@@ -171,7 +171,7 @@ class ModeloPermiso
             $conexion = new ConexionV2();
             $permisos = $conexion->getData(
                 "SELECT P.idpermiso as idpermiso, P.idestadopermiso as idestadopermiso,U.nombre as nombre,U.apellidos as apellidos,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,
-            P.fechafin as fechafin, EP.nombreestadopermiso as estadopermiso, P.fecharevision as fecharevision 
+            P.fechafin as fechafin, EP.nombreestadopermiso as estadopermiso, P.fecharevision as fecharevision, P.observacion as observacion 
             FROM permiso P
             JOIN tipopermiso TP ON P.idtipopermiso=TP.idtipopermiso
             JOIN estadopermiso EP ON P.idestadopermiso=EP.idestadopermiso
@@ -200,7 +200,7 @@ class ModeloPermiso
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $permisosUsuarios = $conexion->getData("SELECT P.idpermiso as idpermiso,P.idtipopermiso as idtipopermiso,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,P.fechafin as fechafin, P.idestadopermiso as idestadopermiso,EP.nombreestadopermiso as estadopermiso,P.fecharevision as fecharevision
+            $permisosUsuarios = $conexion->getData("SELECT P.idpermiso as idpermiso,P.idtipopermiso as idtipopermiso,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,P.fechafin as fechafin, P.idestadopermiso as idestadopermiso,EP.nombreestadopermiso as estadopermiso,P.fecharevision as fecharevision, P.observacion as observacion
             FROM permiso P
             JOIN tipopermiso TP ON P.idtipopermiso=TP.idtipopermiso
             JOIN estadopermiso EP ON P.idestadopermiso=EP.idestadopermiso

@@ -127,6 +127,7 @@
                                     <th>Fecha Inicio</th>
                                     <th>Fecha Fin</th>
                                     <th>Detalle</th>
+                                    <th>Observacion</th>
                                     <th class="no-exportar">Ver mas</th>
                                 </thead>
                                 <tbody>
@@ -154,7 +155,8 @@
                                         <td>' . $permiso['fechainicio'] . '</td>
                                         <td>' . $permiso['fechafin'] . '</td>
                                         <td>' . $permiso['detalle'] . '</td>
-                                        <td> <button class="btn btn-secondary btn-mostrar-detalle" detalles="' . $permiso['detalle'] . '" ><i class="far fa-eye"></i></button></td> 
+                                        <td>' . $permiso['observacion'] . '</td>
+                                        <td> <button class="btn btn-secondary btn-mostrar-detalle" detalles="' . $permiso['detalle'] . '" observacion="' . $permiso['observacion'] . '" ><i class="far fa-eye"></i></button></td> 
                                         </tr>';
                                         }
                                     }
@@ -169,6 +171,7 @@
                                     <th>Fecha Inicio</th>
                                     <th>Fecha Fin</th>
                                     <th>Detalle</th>
+                                    <th>Observacion</th>
                                     <th class="no-exportar">Ver mas</th>
                                 </tfoot>
                             </table>
@@ -197,6 +200,10 @@
                             <div class="col-12">
                                 <label>Detalle (Tamaño Max. 500):</label>
                                 <textarea name="detalle2" class="form-control" id="detalle2" rows="7" disabled></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label>Observacion:</label>
+                                <textarea name="observacion2" class="form-control" id="observacion2" rows="7" disabled></textarea>
                             </div>
                         </div>
                     </div>
