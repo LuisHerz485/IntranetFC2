@@ -14,8 +14,8 @@ class ControladorChecklist
             for ($i = 0; $i < $cantidad; $i++) {
                 if (
                     ControladorValidacion::longitud($_POST["detalle"][$i], 200, 10)
-                    && ControladorValidacion::formatoHoraMinutos($_POST["horainicio"][$i])
-                    && ControladorValidacion::formatoHoraMinutos($_POST["horafin"][$i])
+                    && (empty($_POST["horainicio"][$i]) || ControladorValidacion::formatoHoraMinutos($_POST["horainicio"][$i]))
+                    && (empty($_POST["horafin"][$i]) || ControladorValidacion::formatoHoraMinutos($_POST["horafin"][$i]))
                 ) {
                     $actividades[] = "( ?, " . $_POST["idestadochecklist"][$i] . ",'" . $_POST["detalle"][$i] . "','" . $_POST["horainicio"][$i] . "','" . $_POST["horafin"][$i] . "')";
                 } else {
