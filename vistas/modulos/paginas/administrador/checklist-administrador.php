@@ -34,7 +34,7 @@
                       <?php
                       $item = 1;
                       $valor = null;
-                      $usuarios = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
+                      $usuarios = ModeloUsuarios::mdlMostrarUsuariosActivo($item, $valor);
                       if ($usuarios) {
                         foreach ($usuarios as $usuario) {
                           echo '<option value="' . $usuario['idusuario'] . '">' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</option>';

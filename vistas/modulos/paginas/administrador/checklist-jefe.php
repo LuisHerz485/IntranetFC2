@@ -24,40 +24,81 @@
           <div class="card-header">
             <h3 class="card-title">Check List</h3>
           </div>
-          <div class="card-body panel-body" id="listadoUserCL">
-            <table class="table table-striped tablaDataTableC dt-responsive text-center">
-              <thead>
-                <th>Nombre</th>
-                <th>Correo</th>
-                <th>Área</th>
-                <th>Opción</th>
-              </thead>
-              <tbody>
-                <?php
-                $usuarios = ModeloUsuarios::mdlListarUsuariosPorDepartamento($_SESSION["iddepartamento"]);
-                if ($usuarios) {
-                  foreach ($usuarios as $usuario) {
-                    echo '<tr> 
-                      <td>' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</td>
-                      <td>' . $usuario['email'] . '</td>
-                      <td>' . $usuario['departamento'] . '</td>
-                      <td><button class="btn btn-s btn-warning btnListarCheckList" idusuario="' . $usuario["idusuario"] . '" iddepartamento="' . $usuario["iddepartamento"] . '" idtipousuario="' . $usuario["idtipousuario"] . '" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button></td>
-                      </tr>';
-                  }
-                }
-                ?>
-              </tbody>
-              <tfoot>
-                <th>Nombre</th>
-                <th>Correo</th>
-                <th>Área</th>
-                <th>Opción</th>
-              </tfoot>
-            </table>
+          <div id="listadoUserCL" class="card-body panel-body">
+            <?php if($_SESSION['iddepartamento'] == 9){ ?>
+            <div class="row">
+              <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-10">
+                <label class="h5">Consultar por área:</label>
+                <select name="idarea" id="idarea" class="form-control select-picker select2" required>
+                  <option value="0">Seleccione departamento...</option>
+                    <?php 
+                      $item = 1;
+                      $valor = null;
+                      $departamento = ControladorDepartamento::ctrMostrarDepartamento($item,$valor);
+                      foreach($departamento as $key => $value){ 
+                        echo '<option value="'.$value['iddepartamento'].'">'.$value['nombre'].'</option>';
+                      }
+                    ?>
+                </select>
+              </div>
+              <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top: 30px;">
+                  <button class="btn btn-warning btnCheckArea"><strong><i class="far fas fa-search"></i> Mostrar</strong></button>
+              </div>
+            </div>
+            <?php } ?>
+            <div >
+              <table id="listaCheckUser" class="table table-striped tablaDataTableC dt-responsive text-center">
+                <thead>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Área</th>
+                  <th>Opción</th>
+                </thead>
+                <tbody>
+                  <?php
+                  if($_SESSION['iddepartamento'] != 9) {
+                    $usuarios = ModeloUsuarios::mdlListarUsuariosPorDepartamento($_SESSION["iddepartamento"]);
+                    if ($usuarios) {
+                      foreach ($usuarios as $usuario) {
+                        echo '<tr> 
+                          <td>' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</td>
+                          <td>' . $usuario['email'] . '</td>
+                          <td>' . $usuario['departamento'] . '</td>
+                          <td><button class="btn btn-s btn-warning btnListarCheckList" idusuario="' . $usuario["idusuario"] . '" iddepartamento="' . $usuario["iddepartamento"] . '" idtipousuario="' . $usuario["idtipousuario"] . '" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button></td>
+                          </tr>';
+                      }
+                    }
+                  } else if ($_SESSION['iddepartamento'] == 9) {
+                    $item = null;
+                    $valor = null;
+                    $usergeneral = ControladorUsuarios::ctrMostrarUsuario($item,$valor);
+                    if ($usergeneral) {
+                      foreach ($usergeneral as $usuario) {
+                        if ($usuario['estado'] == 1) {
+                          echo '<tr> 
+                          <td>' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</td>
+                          <td>' . $usuario['email'] . '</td>
+                          <td>' . $usuario['departamento'] . '</td>
+                          <td><button class="btn btn-s btn-warning btnListarCheckList" idusuario="' . $usuario["idusuario"] . '" iddepartamento="' . $usuario["iddepartamento"] . '" idtipousuario="' . $usuario["idtipousuario"] . '" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button></td>
+                          </tr>';
+                        }
+                        
+                      }
+                    }
+                  }  
+                  ?>
+                </tbody>
+                <tfoot>
+                  <th>Nombre</th>
+                  <th>Correo</th>
+                  <th>Área</th>
+                  <th>Opción</th>
+                </tfoot>
+              </table>
+            </div>
           </div>
-
           <div class="card-body panel-body" id="formularioCheckList">
-            <form method=POST id="frmFiltroChecklist" enctype="multipart/form-data">
+            <form  id="frmFiltroChecklist"  >
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-3">

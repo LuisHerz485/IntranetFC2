@@ -51,6 +51,13 @@ class ControladorUsuarios
 		return $respuesta;
 	}
 
+	static public function ctrMostrarUsuarioContabilidad($item, $valor)
+	{
+		$tabla = "usuario";
+		$respuesta = ModeloUsuarios::mdlMostrarUsuariosContabilidad($tabla, $item, $valor);
+		return $respuesta;
+	}
+
 	static public function ctrCrearUsuario()
 	{
 		if (isset($_POST['nombre'])) {

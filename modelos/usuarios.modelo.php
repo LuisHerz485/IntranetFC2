@@ -30,6 +30,48 @@ class ModeloUsuarios
         }
     }
 
+
+    public static function mdlMostrarUsuariosActivo(): mixed
+    {
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $estadoschecklist = $conexion->getData("SELECT U.idusuario as idusuario, D.iddepartamento as iddepartamento, TU.idtipousuario as idtipousuario, U.estado as estado, U.nombre AS nombre, U.apellidos AS apellidos, U.login AS usuario, U.password1 as password1, U.imagen as imagen, TU.nombre as tipousuario, D.nombre as departamento, U.email as email, U.codigopersona as codigopersona
+                    FROM usuario U
+                    JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario
+                    JOIN departamento D ON U.iddepartamento = D.iddepartamento WHERE U.estado = 1");
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $estadoschecklist;
+    }
+
+
+    public static function mdlMostrarUsuariosContabilidad(): mixed
+    {
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $estadoschecklist = $conexion->getData("SELECT U.idusuario as idusuario, D.iddepartamento as iddepartamento, TU.idtipousuario as idtipousuario, U.estado as estado, U.nombre AS nombre, U.apellidos AS apellidos, U.login AS usuario, U.password1 as password1, U.imagen as imagen, TU.nombre as tipousuario, D.nombre as departamento, U.email as email, U.codigopersona as codigopersona
+                    FROM usuario U
+                    JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario
+                    JOIN departamento D ON U.iddepartamento = D.iddepartamento WHERE U.estado = 1 AND D.nombre=\"Laboral\" OR D.nombre=\"Contabilidad\" OR D.nombre=\"Área Legal\" OR D.nombre=\"Tributaria\" OR D.nombre=\"Área de Auditoria\" OR D.nombre=\"Requerimiento\" OR D.nombre=\"Facturación Electronica\" OR D.nombre=\"Practicante\" ");
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $estadoschecklist;
+    }
+
     static public function mdlIngresarUsuario($tabla, $datos)
     {
         $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(iddepartamento,idtipousuario,nombre,apellidos,login,email,password1,imagen,estado,codigopersona) VALUES (:iddepartamento,:idtipousuario,:nombre,:apellidos,:login,:email,:password1,:imagen,:estado,:codigopersona)");
@@ -103,13 +145,14 @@ class ModeloUsuarios
         return $stmt->fetch();
     }
 
+
     public static function mdlListarUsuariosPorDepartamento(string $iddepartamento): array
     {
         $usuarios = [];
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $usuarios = $conexion->getData("SELECT U.idusuario AS idusuario, D.iddepartamento AS iddepartamento, TU.idtipousuario AS idtipousuario, U.email AS email,  U.nombre AS nombre, U.apellidos AS apellidos, TU.nombre AS tipousuario, D.nombre AS departamento FROM usuario U JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario JOIN departamento D ON U.iddepartamento = D.iddepartamento WHERE U.estado = 1 AND D.iddepartamento = ?", [$iddepartamento]);
+            $usuarios = $conexion->getData("SELECT U.idusuario AS idusuario, D.iddepartamento AS iddepartamento, TU.idtipousuario AS idtipousuario, U.email AS email,  U.nombre AS nombre, U.apellidos AS apellidos, TU.nombre AS tipousuario, D.nombre AS departamento FROM usuario U JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario JOIN departamento D ON U.iddepartamento = D.iddepartamento WHERE U.estado = 1 AND U.iddepartamento = ?", [$iddepartamento]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -120,4 +163,5 @@ class ModeloUsuarios
         }
         return $usuarios;
     }
+
 }

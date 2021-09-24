@@ -8,6 +8,14 @@ class ControladorDepartamento
 		return $respuesta;
 	}
 
+
+	static public function ctrMostrarDepUser($valor)
+	{
+		$tabla = "usuario";
+		$respuesta = ModeloDepartamento::mdlMostrarDepUser($tabla, $valor);
+		return $respuesta;
+	}
+
 	static public function ctrCrearDepartamento()
 	{
 		if (isset($_POST['nombre'])) {

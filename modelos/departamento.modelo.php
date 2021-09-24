@@ -23,6 +23,14 @@ class ModeloDepartamento
         }
     }
 
+    static public function mdlMostrarDepUser($tabla, $valor)
+    {
+        $stmt = Conexion::conectar()->prepare("SELECT U.idusuario AS idusuario, U.estado as estado, D.iddepartamento AS iddepartamento, TU.idtipousuario AS idtipousuario, U.email AS email,  U.nombre AS nombre, U.apellidos AS apellidos, TU.nombre AS tipousuario, D.nombre AS departamento FROM $tabla U JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario JOIN departamento D ON D.iddepartamento = U.iddepartamento WHERE U.iddepartamento = $valor");
+
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
     static public function mdlIngresarDepartamento($tabla, $datos)
     {
         $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,descripcion,estado) VALUES (:nombre,:descripcion,:estado)");
@@ -61,5 +69,23 @@ class ModeloDepartamento
         } else {
             return "error";
         }
+    }
+
+
+    public static function mdlMostrarAreasContabilidad(): mixed
+    {
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $estadoschecklist = $conexion->getData("SELECT * FROM departamento D WHERE D.nombre=\"Laboral\" OR D.nombre=\"Contabilidad\" OR D.nombre=\"Tributaria\" OR D.nombre=\"Área de Auditoria\" OR D.nombre=\"Requerimiento\" OR D.nombre=\"Facturación Electronica\" OR D.nombre=\"Practicante\"");
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $estadoschecklist;
     }
 }

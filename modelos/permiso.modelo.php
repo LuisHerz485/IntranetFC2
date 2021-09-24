@@ -110,7 +110,7 @@ class ModeloPermiso
 
     /**
      * Retorna una lista de permisos pendientes con los campos: 
-     * "idpermiso","idestadopermiso","nombre", "apellido","tipopermiso","detalle","fechacreacion","fechainicio","fechafin","estadopermiso"
+     * "idpermiso","idestadopermiso","nombre", "apellido","tipopermiso","detalle","fechacreacion","fechainicio","fechafin","estadopermiso","fecharevision","observacion"
      */
     public static function mdlListarPermisos(): mixed
     {
@@ -119,7 +119,7 @@ class ModeloPermiso
         try {
             $conexion = new ConexionV2();
             $permisos = $conexion->getData("SELECT P.idpermiso as idpermiso, P.idestadopermiso as idestadopermiso,U.nombre as nombre,U.apellidos as apellidos,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,
-            P.fechafin as fechafin, EP.nombreestadopermiso as estadopermiso, P.fecharevision as fecharevision, P.observacion as observacion 
+            P.fechafin as fechafin, EP.nombreestadopermiso as estadopermiso, P.fecharevision as fecharevision, P.observacion as observacion
             FROM permiso P
             JOIN tipopermiso TP ON P.idtipopermiso=TP.idtipopermiso
             JOIN estadopermiso EP ON P.idestadopermiso=EP.idestadopermiso
@@ -145,7 +145,7 @@ class ModeloPermiso
             $conexion = new ConexionV2();
             $permisos = $conexion->getData(
                 "SELECT P.idpermiso as idpermiso, P.idestadopermiso as idestadopermiso,U.nombre as nombre,U.apellidos as apellidos,TP.nombrepermiso as tipopermiso,P.detalle as detalle,P.fechacreacion as fechacreacion,P.fechainicio as fechainicio,
-            P.fechafin as fechafin, EP.nombreestadopermiso as estadopermiso, P.fecharevision as fecharevision 
+            P.fechafin as fechafin, EP.nombreestadopermiso as estadopermiso, P.fecharevision as fecharevision, P.observacion as observacion 
             FROM permiso P
             JOIN tipopermiso TP ON P.idtipopermiso=TP.idtipopermiso
             JOIN estadopermiso EP ON P.idestadopermiso=EP.idestadopermiso

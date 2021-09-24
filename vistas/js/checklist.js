@@ -18,16 +18,18 @@ function mostrarformCL(flag) {
 
 $("#btnCancelarCheckJefe").on("click", function () {
   limpiarCheckList();
+  $('#mostrarCheckList').DataTable().clear().draw();
   mostrarformCL(false);
 });
 
-$(".btnListarCheckList").click(function () {
+$(document).on("click",".btnListarCheckList", function () {
   let btn = $(this);
   $("#idusuario").val(btn.attr("idusuario"));
   $("#idusuario2").val(btn.attr("idusuario"));
   $("#idtipousuario").val(btn.attr("idtipousuario"));
   $("#iddepartamento").val(btn.attr("iddepartamento"));
-});
+  
+}); 
 
 const sectionActividad = $("#modalBodyActividades").html();
 
@@ -94,7 +96,8 @@ $("#btnFiltrarChecklist").on("click", function () {
       if (respuesta) {
         tabla.clear().draw();
         $.each(respuesta, function (index, value) {
-          tabla.row
+          if (value.idestadochecklist == 1) {
+            tabla.row
             .add([
               `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
             <button class='btn btn-warning btn-editar-detalle-checklist' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
@@ -102,9 +105,47 @@ $("#btnFiltrarChecklist").on("click", function () {
               value.fecha,
               value.horainicio,
               value.horafin,
-              value.nombreestado,
+              '<h4><span class="badge badge-primary">Pendiente</h4>'
             ])
             .draw(false);
+          } else if (value.idestadochecklist == 2) {
+            tabla.row
+            .add([
+              `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
+            <button class='btn btn-warning btn-editar-detalle-checklist' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
+              value.detalle,
+              value.fecha,
+              value.horainicio,
+              value.horafin,
+              '<h4><span class="badge badge-success">Realizado</h4>'
+            ])
+            .draw(false);
+          } else if (value.idestadochecklist == 3) {
+            tabla.row
+            .add([
+              `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
+            <button class='btn btn-warning btn-editar-detalle-checklist' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
+              value.detalle,
+              value.fecha,
+              value.horainicio,
+              value.horafin,
+              '<h4><span class="badge badge-danger">Cancelado</h4>'
+            ])
+            .draw(false);
+          } else if (value.idestadochecklist == 4) {
+            tabla.row
+            .add([
+              `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
+            <button class='btn btn-warning btn-editar-detalle-checklist' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
+              value.detalle,
+              value.fecha,
+              value.horainicio,
+              value.horafin,
+              '<h4><span class="badge badge-warning">Suspendido</h4>'
+            ])
+            .draw(false);
+          }
+          
         });
       } else {
         console.log(respuesta);
@@ -131,20 +172,92 @@ $("#btnFiltrarChecklistAdmin").on("click", function () {
       if (respuesta) {
         tabla.clear().draw();
         $.each(respuesta, function (index, value) {
-          tabla.row
+          if (value.idestadochecklist == 1) {
+            tabla.row
             .add([
               `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
               value.detalle,
               value.fecha,
               value.horainicio,
               value.horafin,
-              value.nombreestado,
+              '<h4><span class="badge badge-primary">Pendiente</h4>'
             ])
             .draw(false);
+          } else if (value.idestadochecklist == 2) {
+            tabla.row
+            .add([
+              `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
+              value.detalle,
+              value.fecha,
+              value.horainicio,
+              value.horafin,
+              '<h4><span class="badge badge-success">Realizado</h4>'
+            ])
+            .draw(false);
+          } else if (value.idestadochecklist == 3) {
+            tabla.row
+            .add([
+              `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
+              value.detalle,
+              value.fecha,
+              value.horainicio,
+              value.horafin,
+              '<h4><span class="badge badge-danger">Cancelado</h4>'
+            ])
+            .draw(false);
+          } else if (value.idestadochecklist == 4) {
+            tabla.row
+            .add([
+              `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
+              value.detalle,
+              value.fecha,
+              value.horainicio,
+              value.horafin,
+              '<h4><span class="badge badge-warning">Suspendido</h4>'
+            ])
+            .draw(false);
+          }
+          
         });
       } else {
         console.log(respuesta);
       }
+    },
+  });
+});
+
+$('.btnCheckArea').click(function () {
+  var idarea = $('#idarea').val();
+  var datos = new FormData();
+  datos.append('idarea', idarea);
+  $.ajax({
+    url: 'ajax/departamento.ajax.php',
+    method: 'POST',
+    data: datos,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: 'json',
+    success: function (respuesta) {
+      $('#listaCheckUser').DataTable().clear().draw();
+      $.each(respuesta, function (index, value) {
+        /* Vamos agregando a nuestra tabla las filas necesarias */
+        if (value.estado == 1) {
+          $('#listaCheckUser')
+          .DataTable()
+          .row.add([
+            value.nombre,
+            value.email,
+            value.departamento,
+            '<button class="btn btn-s btn-warning btnListarCheckList" idusuario="'+value.idusuario+'" iddepartamento="'+value.iddepartamento+'" idtipousuario="'+value.idtipousuario+'" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button>'
+          ])
+          .draw(false);
+        }
+        
+      });
+    },
+    error: function (respuesta) {
+      console.log('Error', respuesta);
     },
   });
 });
@@ -170,6 +283,8 @@ $(document).on("click", ".btn-editar-detalle-checklist", function () {
     $("#modalEditarActividad").modal("show");
   }
 });
+
+
 
 $(document).on("click", ".btnEditarActividad", function () {
   let formularioCheckList = new FormData($("#frmEditarChecklist")[0]);
@@ -205,5 +320,8 @@ $(document).on("click", ".btnEditarActividad", function () {
     },
   });
 });
+
+
+
 
 init();

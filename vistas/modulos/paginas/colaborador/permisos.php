@@ -199,11 +199,11 @@
                         <div class="form-row">
                             <div class="col-12">
                                 <label>Detalle (Tamaño Max. 500):</label>
-                                <textarea name="detalle2" class="form-control" id="detalle2" rows="7" disabled></textarea>
+                                <textarea name="detalle2" class="form-control" id="detalle2" rows="5" disabled></textarea>
                             </div>
                             <div class="col-12">
                                 <label>Observacion:</label>
-                                <textarea name="observacion2" class="form-control" id="observacion2" rows="7" disabled></textarea>
+                                <textarea name="observacion2" class="form-control" id="observacion2" rows="3" disabled></textarea>
                             </div>
                         </div>
                     </div>

@@ -30,6 +30,14 @@ class AjaxDepartamento
 		$valor2 = $this->nombreEdit;
 		$respuesta = ModeloDepartamento::mdlActualizarDepartamento($tabla, $item1, $valor1, $item2, $valor2);
 	}
+
+	public $idarea;
+	public function ajaxMostrarDepartamento()
+	{
+		$valor = $this->idarea;
+		$respuesta = ControladorDepartamento::ctrMostrarDepUser($valor);
+		echo json_encode($respuesta);
+	}
 }
 
 
@@ -46,4 +54,11 @@ if (isset($_POST['estado'])) {
 	$estado->estadoEdit = $_POST['estado'];
 	$estado->nombreEdit = $_POST['nombre'];
 	$estado->ajaxActivarDepartamento();
+}
+
+/* Mostrar */
+if (isset($_POST["idarea"])) {
+	$mostrar = new AjaxDepartamento();
+	$mostrar->idarea = $_POST["idarea"];
+	$mostrar->ajaxMostrarDepartamento();
 }

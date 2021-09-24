@@ -127,8 +127,7 @@
                     </ul>
                 </li>
 
-                <?php
-                if ($_SESSION['idtipousuario'] != 4) { ?>
+                
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="fas fa-folder"></i>
@@ -141,9 +140,19 @@
                                     <p>Consulta Checklist</p>
                                 </a>
                             </li>
+                            <?php
+                            if ($_SESSION['idtipousuario'] == 4 || $_SESSION['idtipousuario'] == 1) {?>
+                                <li class="nav-item">
+                                <a href="checklist-jefe" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Asignar Checklist</p>
+                                </a>
+                            </li>
+                            <?php } ?>
                         </ul>
                     </li>
-
+                    <?php
+                    if ($_SESSION['idtipousuario'] != 4) { ?>
                     <li class="nav-header">SEGUIMIENTO CLIENTES</li>
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">

@@ -610,10 +610,11 @@ INSERT INTO `estadochecklist`(`nombre`) VALUES ('Realizado');
 INSERT INTO `estadochecklist`(`nombre`) VALUES ('Cancelado');
 INSERT INTO `estadochecklist`(`nombre`) VALUES ('Suspendido');
 
+/*===============================ALTER======================================*/
+
 ALTER TABLE permiso ADD idrevisor INT NULL DEFAULT NULL AFTER idestadopermiso;
 ALTER TABLE permiso ADD CONSTRAINT fk_pe_rev FOREIGN KEY (idrevisor) REFERENCES usuario(idusuario) ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE permiso ADD observacion VARCHAR(300) NULL DEFAULT NULL AFTER fecharevision;
-/*=================================================================================*/
 
 
 /*=============tabla usuario========================
