@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'b43eeb2e3b368818a88b1bfaea457cc004e95feb',
+        'reference' => 'c82473f7db246f3adab43c24b6cf02e21d575167',
         'name' => 'google/apiclient',
         'dev' => true,
     ),
@@ -97,7 +97,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'b43eeb2e3b368818a88b1bfaea457cc004e95feb',
+            'reference' => 'c82473f7db246f3adab43c24b6cf02e21d575167',
             'dev_requirement' => false,
         ),
         'google/apiclient-services' => array(
@@ -282,6 +282,15 @@
             'aliases' => array(),
             'reference' => '6a467b8989322d92aa1c8bf2bebcc6e5c2ba55c0',
             'dev_requirement' => true,
+        ),
+        'phpmailer/phpmailer' => array(
+            'pretty_version' => 'v6.5.1',
+            'version' => '6.5.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../phpmailer/phpmailer',
+            'aliases' => array(),
+            'reference' => 'dd803df5ad7492e1b40637f7ebd258fee5ca7355',
+            'dev_requirement' => false,
         ),
         'phpseclib/phpseclib' => array(
             'pretty_version' => '3.0.9',
