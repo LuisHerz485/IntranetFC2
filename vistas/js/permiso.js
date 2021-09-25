@@ -18,6 +18,11 @@ $(document).on("click", ".btn-editar-permiso", function () {
   }
 });
 
+$("#idtipopermiso").val(null).trigger("change");
+$(document).on("change", "#idtipopermiso", function () {
+  $("#tipopermiso").val($("#idtipopermiso option:selected").html());
+});
+
 $("#btnCancelarEditarPermiso").on("click", function () {
   $("#opcionesRegistrarPermiso").removeClass("d-none");
   $("#opcionesEditarPermiso").addClass("d-none");

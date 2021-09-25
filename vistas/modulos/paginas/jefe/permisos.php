@@ -61,7 +61,7 @@
                         <h3 class="card-title">Permisos&emsp;</h3>
                     </div>
                     <div class="card-body panel-body">
-                        <form method="POST" id="frmRegistrarPermiso" class="container-fluid">
+                        <form method="POST" id="frmRegistrarPermiso" class="container-fluid" enctype="multipart/form-data">
                             <div class="row">
                                 <input class="form-control" type="hidden" name="idusuario" id="idusuario" value="<?php echo $_SESSION['idusuario']; ?>">
                                 <input class="form-control" type="hidden" name="idpermiso" id="idpermiso">
@@ -112,6 +112,10 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="form-group col-lg-9 col-md-9 col-sm-6 col-xs-12">
+                                    <label>Subir Evidencia (opcional)</label>
+                                    <input type="file" class="form-control" name="evidenciaPermiso">
                                 </div>
                             </div>
                         </form>

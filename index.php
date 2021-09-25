@@ -18,7 +18,7 @@ require_once "controladores/consultamigo.controlador.php";
 require_once "controladores/checklist.controlador.php";
 require_once "controladores/tiposervicio.controlador.php";
 require_once "controladores/permiso.controlador.php";
-
+require_once "controladores/email.controlador.php";
 
 
 require_once "modelos/usuarios.modelo.php";

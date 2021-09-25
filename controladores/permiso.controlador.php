@@ -4,20 +4,32 @@ class ControladorPermiso
 {
     public static function ctrRegistrarPermiso(): bool
     {
-        if (isset($_POST["idusuario"], $_POST["idtipopermiso"], $_POST["detalle"], $_POST["fechainicio"], $_POST["fechafin"])) {
+        if (isset($_POST["idusuario"], $_POST["idtipopermiso"], $_POST["detalle"], $_POST["fechainicio"], $_POST["fechafin"], $_POST["tipopermiso"])) {
 
             $idusuario = ControladorValidacion::validarID($_POST["idusuario"]);
             $idtipopermiso = ControladorValidacion::validarID($_POST["idtipopermiso"]);
             $detalle = $_POST["detalle"];
             $fechainicio = $_POST["fechainicio"];
             $fechafin = $_POST["fechafin"];
+            $nombre = $_SESSION["nombre"];
+            $apellidos = $_SESSION["apellidos"];
+            $tipopermiso = $_POST["tipopermiso"];
+            $file_path = $_FILES['evidenciaPermiso']['tmp_name'];
+            $file_name = $_FILES['evidenciaPermiso']['name'];
             if (
                 $idusuario && $idtipopermiso
                 && ControladorValidacion::longitud($detalle, 500, 10)
                 && ControladorValidacion::formatoFechaHoraMinutos($fechainicio)
                 && ControladorValidacion::formatoFechaHoraMinutos($fechafin)
             ) {
-                return ModeloPermiso::mdlRegistrarPermiso($idusuario, $idtipopermiso, $detalle, $fechainicio, $fechafin);
+                if (ModeloPermiso::mdlRegistrarPermiso($idusuario, $idtipopermiso, $detalle, $fechainicio, $fechafin)) {
+                    if (isset($$file_path) && !empty($file_path)) {
+                        //cambiar correo
+                        return ControladorEmail::ctrEnviarMail(self::ctrMensajeEnvio($detalle, $tipopermiso, str_replace("T", " ", $fechainicio), str_replace("T", " ", $fechafin)),  $nombre . " " . $apellidos . " solicita un permiso ", "enoc.aguirre@fccontadores.com", $file_path, $file_name);
+                    } else {
+                        return ControladorEmail::ctrEnviarMail(self::ctrMensajeEnvio($detalle, $tipopermiso, str_replace("T", " ", $fechainicio), str_replace("T", " ", $fechafin)),  $nombre . " " . $apellidos . " solicita un permiso ", "enoc.aguirre@fccontadores.com");
+                    }
+                }
             }
         }
         return false;
@@ -89,5 +101,36 @@ class ControladorPermiso
     public static function ctrCantidadPermisosPendientes(): ?int
     {
         return ModeloPermiso::mdlCantidadPermisosPendientes();
+    }
+    private static function ctrMensajeEnvio($detalle, $tipopermiso, $fechainicio, $fechafin)
+    {
+        $html = '
+        <html >
+        <head>
+        <style type="text/css">
+            body{background-image: url(https://ia601500.us.archive.org/34/items/watermark_202109/watermark.png);  padding: 2% 5% 2% 5%;}
+            centrado{width: 100%; height: 100%;}
+            img{width: 20%; height:20%; padding-top:6%;padding-bottom:2%;}
+            h1{font-size: 20px; margin-botton: 5px;}
+            p{font-size: 18px; color: #292929;}
+            button{width:150px; font-size: 17px; background: #1565C0;}
+            button:hover{background-color: #000080; text-decoration: none;}
+            a{color: white; text-decoration: none;}
+        </style>
+        </head>
+        <body>
+        <div class = "centrado">
+            <img src="https://ia601403.us.archive.org/12/items/logo_20210924_20210924_1644/logo.png" alt="logo">
+            <h1><b>TIPO DE PERMISO: ' . $tipopermiso . '</b></h1>
+            <p><b>FECHA INICIO: </b>' . $fechainicio . '</p>
+            <p><b>FECHA FIN: </b>' . $fechafin . '</p><br>
+            <p><b>MENSAJE: </b></p><p>' . $detalle . '</p><br>
+            <button role="button" kind="primary"><a href="http://localhost/intranetfc2/permisos-pendientes">Ir a la Intranet</button>
+        </div>
+        </body>
+        </html>
+        ';
+
+        return $html;
     }
 }
