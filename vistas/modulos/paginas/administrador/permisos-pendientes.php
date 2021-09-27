@@ -222,11 +222,11 @@
                             </div>
                             <div class="col-12">
                                 <label>Detalle (Tamaño Max. 500):</label>
-                                <textarea name="detalle" class="form-control" id="detalle" rows="5" disabled></textarea>
+                                <textarea name="detalle" class="form-control" id="detalle" rows="5" maxlength="500" disabled></textarea>
                             </div>
                             <div class="col-12">
                                 <label>Observacion:</label>
-                                <textarea name="observacion" class="form-control" id="observacion" rows="3" disabled></textarea>
+                                <textarea name="observacion" class="form-control" id="observacion" rows="3" maxlength="300" disabled></textarea>
                             </div>
                         </div>
                     </div>

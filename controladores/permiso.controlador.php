@@ -23,11 +23,11 @@ class ControladorPermiso
                 && ControladorValidacion::formatoFechaHoraMinutos($fechafin)
             ) {
                 if (ModeloPermiso::mdlRegistrarPermiso($idusuario, $idtipopermiso, $detalle, $fechainicio, $fechafin)) {
-                    if (isset($$file_path) && !empty($file_path)) {
+                    if (isset($file_path) && !empty($file_path)) {
                         //cambiar correo
-                        return ControladorEmail::ctrEnviarMail(self::ctrMensajeEnvio($detalle, $tipopermiso, str_replace("T", " ", $fechainicio), str_replace("T", " ", $fechafin)),  $nombre . " " . $apellidos . " solicita un permiso ", "enoc.aguirre@fccontadores.com", $file_path, $file_name);
+                        return ControladorEmail::ctrEnviarMail(self::ctrMensajeEnvio($detalle, $tipopermiso, str_replace("T", " ", $fechainicio), str_replace("T", " ", $fechafin)),  $nombre . " " . $apellidos . " solicita un permiso ", "luiggui.ynga@fccontadores.com", $file_path, $file_name);
                     } else {
-                        return ControladorEmail::ctrEnviarMail(self::ctrMensajeEnvio($detalle, $tipopermiso, str_replace("T", " ", $fechainicio), str_replace("T", " ", $fechafin)),  $nombre . " " . $apellidos . " solicita un permiso ", "enoc.aguirre@fccontadores.com");
+                        return ControladorEmail::ctrEnviarMail(self::ctrMensajeEnvio($detalle, $tipopermiso, str_replace("T", " ", $fechainicio), str_replace("T", " ", $fechafin)),  $nombre . " " . $apellidos . " solicita un permiso ", "luiggui.ynga@fccontadores.com");
                     }
                 }
             }
