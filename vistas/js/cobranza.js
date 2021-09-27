@@ -93,7 +93,6 @@ var totalCuota;
 /* Lista de Cobranza principales por cliente*/
 
 function listarCobranzas(idcliente) {
-  $('#mostrarCobranza > tbody').empty();
   $('#idcliente').val(idcliente);
   var datos = new FormData();
   datos.append('idcliente', idcliente);
@@ -633,30 +632,30 @@ $('.btnFiltroMes').click(function () {
             .DataTable()
             .row.add([
               '<div class="row justify-content-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob mx-1" idcobranza=' +
-              value.idcobranza +
-              " value='" +
-              index +
-              '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"> <form action="ajax/generarPDF.php" method="POST" target="_blank"><input type="hidden" name=idcobranza value="'+
-              value.idcobranza +
+                value.idcobranza +
+                " value='" +
+                index +
+                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"> <form action="ajax/generarPDF.php" method="POST" target="_blank"><input type="hidden" name=idcobranza value="' +
+                value.idcobranza +
                 '"><button type="submit" id=\'btnEstado' +
                 index +
                 "' estado='2' idcobranza=" +
                 value.idcobranza +
                 ' class="btn btn-warning btn-s btnConstancia" target="_blank"><i class="fas fa-paste"></i></button></form></abbr></div>',
-            value.ruc,
-            value.razonsocial,
-            value.plan,
-            value.monto,
-            value.fechavencimiento,
-            "<button class='btn btn-warning btn-xs btnActivarC' iddetallecobranza='" +
-              value.iddetallecobranza +
-              "' idcobranza='" +
-              value.idcobranza +
-              "' indice=" +
-              index +
-              " estado='2' onclick=\"limpiarPreConstancia()\" monto='" +
-              value.monto +
-              "'>A deuda</button>",
+              value.ruc,
+              value.razonsocial,
+              value.plan,
+              value.monto,
+              value.fechavencimiento,
+              "<button class='btn btn-warning btn-xs btnActivarC' iddetallecobranza='" +
+                value.iddetallecobranza +
+                "' idcobranza='" +
+                value.idcobranza +
+                "' indice=" +
+                index +
+                " estado='2' onclick=\"limpiarPreConstancia()\" monto='" +
+                value.monto +
+                "'>A deuda</button>",
             ])
             .draw(false);
         } else if (value.estado == 3) {
@@ -667,7 +666,7 @@ $('.btnFiltroMes').click(function () {
                 value.idcobranza +
                 " value='" +
                 index +
-                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"> <form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name=idcobranza value="'+
+                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"> <form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name=idcobranza value="' +
                 value.idcobranza +
                 '"><button type="submit" id=\'btnEstado' +
                 index +
@@ -695,30 +694,30 @@ $('.btnFiltroMes').click(function () {
             .DataTable()
             .row.add([
               '<div class="row justify-content-center"><abbr title="Ver Detalles"><button class="btn btn-info btn-s btnMostraDetCob mx-1" idcobranza=' +
-              value.idcobranza +
-              " value='" +
-              index +
-              '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name=idcobranza value="'+
-              value.idcobranza +
+                value.idcobranza +
+                " value='" +
+                index +
+                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name=idcobranza value="' +
+                value.idcobranza +
                 '"><button type="submit" id=\'btnEstado' +
                 index +
                 "' estado='1' idcobranza=" +
                 value.idcobranza +
                 ' class="btn btn-warning btn-s btnConstancia" target="_blank"><i class="fas fa-paste"></i></button></form></abbr></div>',
-            value.ruc,
-            value.razonsocial,
-            value.plan,
-            value.monto,
-            value.fechavencimiento,
-            "<button class='btn btn-success btn-xs btnActivarC' iddetallecobranza='" +
-              value.iddetallecobranza +
-              "' idcobranza='" +
-              value.idcobranza +
-              "' indice=" +
-              index +
-              " estado='1' onclick=\"limpiarPreConstancia()\" monto='" +
-              value.monto +
-              "'>Pagado</button>",
+              value.ruc,
+              value.razonsocial,
+              value.plan,
+              value.monto,
+              value.fechavencimiento,
+              "<button class='btn btn-success btn-xs btnActivarC' iddetallecobranza='" +
+                value.iddetallecobranza +
+                "' idcobranza='" +
+                value.idcobranza +
+                "' indice=" +
+                index +
+                " estado='1' onclick=\"limpiarPreConstancia()\" monto='" +
+                value.monto +
+                "'>Pagado</button>",
             ])
             .draw(false);
         }
