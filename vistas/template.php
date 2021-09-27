@@ -14,6 +14,11 @@
   <meta property="og:type" content="article" />
   <meta property="og:locale" content="en_GB" />
 
+  <?php
+  header("Cache-Control: no-cache, must-revalidate"); // HTTP/1.1
+  header("Expires: Sat, 1 Jul 2000 05:00:00 GMT"); // Fecha en el pasado
+  ?>
+
   <!-- Icono del sistema -->
   <link rel="shortcut icon" href="vistas/dist/img/favicon.ico">
   <!-- Tell the browser to be responsive to screen width -->
@@ -103,6 +108,7 @@
   <script src="vistas/plugins/select2/js/select2.full.min.js"></script>
 
 </head>
+
 <?php
 if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   echo '<body class="hold-transition sidebar-mini layout-fixed">';
