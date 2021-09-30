@@ -65,6 +65,7 @@
                             <div class="row">
                                 <input class="form-control" type="hidden" name="idusuario" id="idusuario" value="<?php echo $_SESSION['idusuario']; ?>">
                                 <input class="form-control" type="hidden" name="idpermiso" id="idpermiso">
+                                <input class="form-control" type="hidden" name="tipopermiso" id="tipopermiso">
                                 <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <label>Seleccione tipo de permiso:</label>
                                     <select name="idtipopermiso" id="idtipopermiso" class="form-control select2" required>

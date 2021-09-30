@@ -25,9 +25,9 @@ class ControladorPermiso
                 if (ModeloPermiso::mdlRegistrarPermiso($idusuario, $idtipopermiso, $detalle, $fechainicio, $fechafin)) {
                     if (isset($file_path) && !empty($file_path)) {
                         //cambiar correo
-                        return ControladorEmail::ctrEnviarMail(self::ctrMensajeEnvio($detalle, $tipopermiso, str_replace("T", " ", $fechainicio), str_replace("T", " ", $fechafin)),  $nombre . " " . $apellidos . " solicita un permiso ", "luiggui.ynga@fccontadores.com", $file_path, $file_name);
+                        return ControladorEmail::ctrEnviarMail(self::ctrMensajeEnvio($detalle, $tipopermiso, str_replace("T", " ", $fechainicio), str_replace("T", " ", $fechafin)),  $nombre . " " . $apellidos . " solicita un permiso ", "recursoshumanos@fccontadores.com", $file_path, $file_name);
                     } else {
-                        return ControladorEmail::ctrEnviarMail(self::ctrMensajeEnvio($detalle, $tipopermiso, str_replace("T", " ", $fechainicio), str_replace("T", " ", $fechafin)),  $nombre . " " . $apellidos . " solicita un permiso ", "luiggui.ynga@fccontadores.com");
+                        return ControladorEmail::ctrEnviarMail(self::ctrMensajeEnvio($detalle, $tipopermiso, str_replace("T", " ", $fechainicio), str_replace("T", " ", $fechafin)),  $nombre . " " . $apellidos . " solicita un permiso ", "recursoshumanos@fccontadores.com");
                     }
                 }
             }
@@ -125,7 +125,7 @@ class ControladorPermiso
             <p><b>FECHA INICIO: </b>' . $fechainicio . '</p>
             <p><b>FECHA FIN: </b>' . $fechafin . '</p><br>
             <p><b>MENSAJE: </b></p><p>' . $detalle . '</p><br>
-            <button role="button" kind="primary"><a href="http://localhost/intranetfc2/permisos-pendientes">Ir a la Intranet</button>
+            <button role="button" kind="primary"><a href="https://intranet.fccontadores.com/permisos-pendientes">Ir a la Intranet</button>
         </div>
         </body>
         </html>
