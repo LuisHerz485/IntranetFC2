@@ -90,7 +90,7 @@ class ControladorUsuarios
 						imagepng($destino, $ruta);
 					}
 				} else {
-					$ruta = $_POST['fotoaux'];
+					$ruta = (empty($_POST['fotoaux'])) ? "vistas/img/usuarios/default-user.png" : $_POST['fotoaux'];
 				}
 
 				$tabla = "usuario";
