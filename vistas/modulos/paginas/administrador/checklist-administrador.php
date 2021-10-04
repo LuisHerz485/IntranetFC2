@@ -32,10 +32,7 @@
                     <label>Seleccione el Colaborador:</label>
                     <select name="idusuario" class="form-control select2" required>
                       <?php
-                      $item = 1;
-                      $valor = null;
-                      $usuarios = ModeloUsuarios::mdlMostrarUsuariosActivo($item, $valor);
-                      if ($usuarios) {
+                      if ($usuarios = ModeloUsuarios::mdlMostrarUsuariosNombre()) {
                         foreach ($usuarios as $usuario) {
                           echo '<option value="' . $usuario['idusuario'] . '">' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</option>';
                         }
@@ -114,7 +111,7 @@
                   <section class="row">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <label>Actividad</label>
-                      <textarea name="detalle[]" class="form-control" maxlength="200" required></textarea>
+                      <textarea name="detalle[]" class="form-control" maxlength="500" required></textarea>
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                       <label>Estado</label>

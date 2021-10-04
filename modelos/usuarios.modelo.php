@@ -52,6 +52,24 @@ class ModeloUsuarios
     }
 
 
+    public static function mdlMostrarUsuariosNombre(): mixed
+    {
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $estadoschecklist = $conexion->getData("SELECT idusuario, nombre , apellidos FROM usuario");
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $estadoschecklist;
+    }
+
+
     public static function mdlMostrarUsuariosContabilidad(): mixed
     {
         $conexion = null;
@@ -163,5 +181,4 @@ class ModeloUsuarios
         }
         return $usuarios;
     }
-
 }

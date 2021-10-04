@@ -25,26 +25,26 @@
             <h3 class="card-title">Check List</h3>
           </div>
           <div class="card-body panel-body" id="listadoUserCL">
-             <?php if($_SESSION['iddepartamento'] == 3 && $_SESSION['idtipousuario'] == 6){ ?>
-            <div class="row">
-              <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-10">
-                <label class="h5">Consultar por área:</label>
-                <select name="idarea" id="idarea" class="form-control select-picker select2" required>
-                  <option value="0">Seleccione departamento...</option>
-                    <?php 
-                      $item = 1;
-                      $valor = null;
-                      $departamento = ModeloDepartamento::mdlMostrarAreasContabilidad();
-                      foreach($departamento as $key => $value){ 
-                        echo '<option value="'.$value['iddepartamento'].'">'.$value['nombre'].'</option>';
-                      }
+            <?php if ($_SESSION['iddepartamento'] == 3 && $_SESSION['idtipousuario'] == 6) { ?>
+              <div class="row">
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-10">
+                  <label class="h5">Consultar por área:</label>
+                  <select name="idarea" id="idarea" class="form-control select-picker select2" required>
+                    <option value="0">Seleccione departamento...</option>
+                    <?php
+                    $item = 1;
+                    $valor = null;
+                    $departamento = ModeloDepartamento::mdlMostrarAreasContabilidad();
+                    foreach ($departamento as $key => $value) {
+                      echo '<option value="' . $value['iddepartamento'] . '">' . $value['nombre'] . '</option>';
+                    }
                     ?>
-                </select>
-              </div>
-              <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top: 30px;">
+                  </select>
+                </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top: 30px;">
                   <button class="btn btn-warning btnCheckArea"><strong><i class="far fas fa-search"></i> Mostrar</strong></button>
+                </div>
               </div>
-            </div>
             <?php } ?>
             <table id="listaCheckUser" class="table table-striped tablaDataTableC dt-responsive text-center">
               <thead>
@@ -56,24 +56,24 @@
               <tbody>
                 <?php
                 if ($_SESSION['iddepartamento'] == 3 && $_SESSION['idtipousuario'] == 6) {
-                    $item = null;
-                    $valor = null;
-                    $usergeneral = ControladorUsuarios::ctrMostrarUsuarioContabilidad($item,$valor);
-                    if ($usergeneral) {
-                      foreach ($usergeneral as $usuario) {
-                        echo '<tr> 
+                  $item = null;
+                  $valor = null;
+                  $usergeneral = ControladorUsuarios::ctrMostrarUsuarioContabilidad($item, $valor);
+                  if ($usergeneral) {
+                    foreach ($usergeneral as $usuario) {
+                      echo '<tr> 
                           <td>' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</td>
                           <td>' . $usuario['email'] . '</td>
                           <td>' . $usuario['departamento'] . '</td>
                           <td><button class="btn btn-s btn-warning btnListarCheckList" idusuario="' . $usuario["idusuario"] . '" iddepartamento="' . $usuario["iddepartamento"] . '" idtipousuario="' . $usuario["idtipousuario"] . '" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button></td>
                           </tr>';
-                      }
                     }
+                  }
                 } else {
                   $usuarios = ModeloUsuarios::mdlListarUsuariosPorDepartamento($_SESSION["iddepartamento"]);
                   if ($usuarios) {
-                  foreach ($usuarios as $usuario) {
-                    echo '<tr> 
+                    foreach ($usuarios as $usuario) {
+                      echo '<tr> 
                       <td>' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</td>
                       <td>' . $usuario['email'] . '</td>
                       <td>' . $usuario['departamento'] . '</td>
@@ -82,8 +82,8 @@
                     }
                   }
                 }
-                
-                
+
+
                 ?>
               </tbody>
               <tfoot>
@@ -192,7 +192,7 @@
                   <section class="row">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <label>Actividad </label>
-                      <textarea name="detalle[]" class="form-control"></textarea>
+                      <textarea name="detalle[]" class="form-control" maxlength="500"></textarea>
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                       <label>Estado</label>
@@ -251,7 +251,7 @@
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <label>Actividad</label>
                   <input class="form-control" type="hidden" name="iddetallechecklist" id="iddetallechecklist">
-                  <textarea id="detalle" name="detalle" class="form-control"></textarea>
+                  <textarea id="detalle" name="detalle" class="form-control" maxlength="500"></textarea>
                 </div>
                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                   <label>Estado</label>

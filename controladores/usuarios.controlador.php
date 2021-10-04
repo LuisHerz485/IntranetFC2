@@ -30,16 +30,16 @@ class ControladorUsuarios
 										window.location="escritorio";
 									</script>';
 						} else {
-							echo ("<br /><div class='alert alert-danger'>Usuario inactivo, contacte al administrador del sistema</div>");
+							echo "<br /><div class='alert alert-danger'>Usuario inactivo, contacte al administrador del sistema</div>";
 						}
 					} else {
-						echo ("<br /><div class='alert alert-danger'>Usuario sin acceso al sistema, contacte al administrador del sistema</div>");
+						echo "<br /><div class='alert alert-danger'>Usuario sin acceso al sistema, contacte al administrador del sistema</div>";
 					}
 				} else {
-					echo ("<br /><div class='alert alert-danger'>Usuario y/o contraseña incorrecta</div>");
+					echo "<br /><div class='alert alert-danger'>Usuario y/o contraseña incorrecta</div>";
 				}
 			} else {
-				echo ("<br /><div class='alert alert-danger'>Caracteres especiales no permitidos por el sistema</div>");
+				echo "<br /><div class='alert alert-danger'>Caracteres especiales no permitidos por el sistema</div>";
 			}
 		}
 	}
@@ -47,23 +47,21 @@ class ControladorUsuarios
 	static public function ctrMostrarUsuario($item, $valor)
 	{
 		$tabla = "usuario";
-		$respuesta = ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
-		return $respuesta;
+		return ModeloUsuarios::mdlMostrarUsuarios($tabla, $item, $valor);
 	}
 
 	static public function ctrMostrarUsuarioContabilidad($item, $valor)
 	{
 		$tabla = "usuario";
-		$respuesta = ModeloUsuarios::mdlMostrarUsuariosContabilidad($tabla, $item, $valor);
-		return $respuesta;
+		return ModeloUsuarios::mdlMostrarUsuariosContabilidad($tabla, $item, $valor);
 	}
 
 	static public function ctrCrearUsuario()
 	{
 		if (isset($_POST['nombre'])) {
 			if (
-				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ ]+$/', $_POST['nombre']) &&
-				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ ]+$/', $_POST['apellidos'])
+				preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ ]+$/', $_POST['nombre']) &&
+				preg_match('/^[a-zA-Z0-9ñÑáÁéÉíÍóÓúÚ ]+$/', $_POST['apellidos'])
 			) {
 
 				$ruta = "";
@@ -136,14 +134,14 @@ class ControladorUsuarios
 					}
 				}
 			} else {
-				echo ("<script>
+				echo "<script>
 					Swal.fire({
 		            title: 'Error!',
         			text: '¡No puedes usar caracteres especiales!',
 					icon: 'error',
 					confirmButtonText: 'Ok'
 					});
-				</script>");
+				</script>";
 			}
 		}
 	}
@@ -178,14 +176,14 @@ class ControladorUsuarios
 						</script>";
 				}
 			} else {
-				echo ("<script>
+				echo "<script>
 					Swal.fire({
 					title: 'Error!',
 					text: '¡No puedes usar caracteres especiales!',
 					icon: 'error',
 					confirmButtonText: 'Ok'
 					});
-				</script>");
+				</script>";
 			}
 		}
 	}

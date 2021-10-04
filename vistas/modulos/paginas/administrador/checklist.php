@@ -117,8 +117,8 @@
                 <div class="container-fluid" id="modalBodyActividades">
                   <section class="row">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                      <label>Actividad</label>
-                      <textarea name="detalle[]" class="form-control" maxlength="200" required></textarea>
+                      <label>Actividad (MAX. 500)</label>
+                      <textarea name="detalle[]" class="form-control" maxlength="500" required></textarea>
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                       <label>Estado</label>
@@ -159,7 +159,7 @@
   </div>
 </div>
 
-<!-- MODAL DE AGREGAR ACTIVIDAD AL CHECKLIST --->
+<!-- MODAL DE EDITAR ACTIVIDAD AL CHECKLIST --->
 <div class="modal fade" id="modalEditarActividad" role="dialog">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form id="frmEditarChecklist" method="post" enctype="multipart/form-data">
@@ -177,7 +177,7 @@
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <label>Actividad</label>
                   <input class="form-control" type="hidden" name="iddetallechecklist" id="iddetallechecklist">
-                  <textarea id="detalle" name="detalle" class="form-control"></textarea>
+                  <textarea id="detalle" name="detalle" class="form-control" maxlength="500"></textarea>
                 </div>
                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                   <label>Estado</label>

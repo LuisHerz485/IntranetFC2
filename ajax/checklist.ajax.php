@@ -20,22 +20,30 @@ if (isset($_POST["opcion"])) {
                 echo json_encode(["respuesta" => ControladorChecklist::ctrEditarDetalleChecklist()]);
                 break;
             }
-        case "consulta":{
-            $respuesta = ControladorChecklist::ctrCheckListActividades();
-            if($respuesta !== null){
-                http_response_code(200);
-                echo json_encode($respuesta); 
-            } 
-            break;
-        }
-        case "consultaUsuarios":{
-            $respuesta = ControladorChecklist::ctrCheckListActividadesUsuario();
-            if($respuesta !== null){
-                http_response_code(200);
-                echo json_encode($respuesta); 
-            } 
-            break;
-        }
+        case "consulta": {
+                $respuesta = ControladorChecklist::ctrCheckListActividades();
+                if ($respuesta !== null) {
+                    http_response_code(200);
+                    echo json_encode($respuesta);
+                }
+                break;
+            }
+        case "consultaUsuarios": {
+                $respuesta = ControladorChecklist::ctrCheckListActividadesUsuario();
+                if ($respuesta !== null) {
+                    http_response_code(200);
+                    echo json_encode($respuesta);
+                }
+                break;
+            }
+        case "consultaAsignador": {
+                $respuesta = ControladorChecklist::ctrListarCheckListSegunAsignador();
+                if ($respuesta !== null) {
+                    http_response_code(200);
+                    echo json_encode($respuesta);
+                }
+                break;
+            }
         default: {
                 break;
             }

@@ -27,40 +27,39 @@
           <div class="card-body panel-body" id="listadoMostrarRanking">
             <div class="container-fluid">
               <div class="row text-center justify-content-center align-items-center">
-                <div class="col-4">
+                <div class="col-12 col-lg-4">
                   <h4><strong>Seleccione año:</strong></h4>
                   <div class="row justify-content-center">
-                    <select class="form-control col-3 select2" id="fecha_ranking" name="fecha_ranking">
-                    <?php $cont = date('Y');
+                    <select class="form-control col-3 select2" id="fecha_ingreso" name="fecha_ranking">
+                      <?php $cont = date('Y');
                       while ($cont >= 2016) { ?>
-                      <option><?php echo($cont); ?></option>
-                    <?php $cont = ($cont-1); } ?>
+                        <option><?php echo ($cont); ?></option>
+                      <?php $cont = ($cont - 1);
+                      } ?>
                     </select>
-                      </div>
-
-                      <button class="btn btn-warning btnIngresoRanking mt-2"><i class="fas fa-search-dollar"> Buscar</i></button>
+                  </div>
+                  <button class="btn btn-warning btnIngresoRanking mt-2"><i class="fas fa-search-dollar"> Buscar</i></button>
                   <div class="row justify-content-center mt-2">
                     <div class="info-box bg-success col-9">
-                    <span class="info-box-icon bg-default"><i class="fas fa-thumbs-up"></i></span>
+                      <span class="info-box-icon bg-default"><i class="fas fa-thumbs-up"></i></span>
                       <div class="info-box-content">
-                        <span class="info-box-text">Cliente que genera más ingreso: </span>
-                        <span id=""></span>
-                        <span class="info-box-number"><span  id="montomayor"></span></span>
+                        <div class="info-box-text">Cliente que genera más ingreso: </div>
+                        <div class="info-box-number"><span id="montomayor"></span></div>
                       </div>
                     </div>
                   </div>
                   <div class="row justify-content-center mt-2">
                     <div class="info-box bg-danger col-9">
-                    <span class="info-box-icon bg-default"><i class="fas fa-thumbs-down"></i></span>
+                      <span class="info-box-icon bg-default"><i class="fas fa-thumbs-down"></i></span>
                       <div class="info-box-content">
-                        <span class="info-box-text">Cliente que genera menos ingreso: </span>
-                        <span class="info-box-number"><span  id="montomenor"></span></span>
+                        <div class="info-box-text">Cliente que genera menos ingreso: </div>
+                        <div class="info-box-number"><span id="montomenor"></span></div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div class="col-8">
-                  <table id="tablaIngresoRanking" class="table table-striped tablaDataIngreso dt-responsive">
+                <div class="col-12 col-lg-8">
+                  <table id="tablaIngresoRanking" class="table table-striped tablaDataIngresoAnualCliente dt-responsive">
                     <thead>
                       <th>CLIENTE</th>
                       <th>MONTO</th>
@@ -74,13 +73,13 @@
                   </table>
                 </div>
               </div>
-            </div> 
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- /.content-wrapper -->

@@ -8,12 +8,13 @@ class ControladorChecklist
             $idtipousuario = ControladorValidacion::validarID($_POST["idtipousuario"]);
             $iddepartamento = ControladorValidacion::validarID($_POST["iddepartamento"]);
             $idusuario = ControladorValidacion::validarID($_POST["idusuario"]);
+            $idasignador = ControladorValidacion::validarID($_SESSION["idusuario"]);
             $fecha = $_POST["fecha"];
             $cantidad = count($_POST["detalle"]);
             $actividades = [];
             for ($i = 0; $i < $cantidad; $i++) {
                 if (
-                    ControladorValidacion::longitud($_POST["detalle"][$i], 200, 10)
+                    ControladorValidacion::longitud($_POST["detalle"][$i], 500, 10)
                     && (empty($_POST["horainicio"][$i]) || ControladorValidacion::formatoHoraMinutos($_POST["horainicio"][$i]))
                     && (empty($_POST["horafin"][$i]) || ControladorValidacion::formatoHoraMinutos($_POST["horafin"][$i]))
                 ) {
@@ -22,8 +23,8 @@ class ControladorChecklist
                     return false;
                 }
             }
-            if (ControladorValidacion::formatoFecha($fecha) && $idtipousuario && $iddepartamento && $idusuario && $cantidad) {
-                $idchecklist = ChecklistModelo::mdlRegistrarChecklist($idtipousuario, $iddepartamento, $idusuario, $fecha);
+            if (ControladorValidacion::formatoFecha($fecha) && $idtipousuario && $iddepartamento && $idusuario && $idasignador && $cantidad) {
+                $idchecklist = ChecklistModelo::mdlRegistrarChecklist($idtipousuario, $iddepartamento, $idusuario, $idasignador, $fecha);
                 if ($idchecklist) {
                     return  ChecklistModelo::mdlRegistrarDetalleChecklist(
                         $actividades,
@@ -44,7 +45,7 @@ class ControladorChecklist
             $horafin = $_POST["horafin"];
             if (
                 $iddetallechecklist   && $idestadochecklist
-                && ControladorValidacion::longitud($detalle, 200, 10)
+                && ControladorValidacion::longitud($detalle, 500, 10)
                 && ControladorValidacion::formatoHoraMinutos($horainicio)
                 && ControladorValidacion::formatoHoraMinutos($horafin)
             ) {
@@ -84,6 +85,23 @@ class ControladorChecklist
                 && ControladorValidacion::formatoFecha($fechahasta)
             ) {
                 return ChecklistModelo::mdlListarCheckListActividadesUsuario($idusuario, $fechadesde, $fechahasta);
+            }
+        }
+        return false;
+    }
+
+    public static function ctrListarCheckListSegunAsignador(): mixed
+    {
+        if (isset($_POST["idasignador"], $_POST["fechadesde"], $_POST["fechahasta"])) {
+            $idasignador = ControladorValidacion::validarID($_POST["idasignador"]);
+            $fechadesde = $_POST["fechadesde"];
+            $fechahasta = $_POST["fechahasta"];
+            if (
+                $idasignador
+                && ControladorValidacion::formatoFecha($fechadesde)
+                && ControladorValidacion::formatoFecha($fechahasta)
+            ) {
+                return ChecklistModelo::mdlListarCheckListSegunAsignador($idasignador, $fechadesde, $fechahasta);
             }
         }
         return false;

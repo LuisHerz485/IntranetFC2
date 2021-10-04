@@ -616,6 +616,17 @@ ALTER TABLE permiso ADD idrevisor INT NULL DEFAULT NULL AFTER idestadopermiso;
 ALTER TABLE permiso ADD CONSTRAINT fk_pe_rev FOREIGN KEY (idrevisor) REFERENCES usuario(idusuario) ON DELETE RESTRICT ON UPDATE RESTRICT;
 ALTER TABLE permiso ADD observacion VARCHAR(300) NULL DEFAULT NULL AFTER fecharevision;
 
+/*========================Cambios solicitados por señor Fredy 4/10/2021===================================**/
+
+ALTER TABLE checklist ADD idasignador INT NULL AFTER idusuario;
+
+ALTER TABLE checklist ADD CONSTRAINT fk_cl_ch FOREIGN KEY (idasignador) REFERENCES usuario(idusuario) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+UPDATE checklist SET idasignador=idusuario;
+
+ALTER TABLE checklist CHANGE idasignador idasignador INT(11) NOT NULL;
+
+ALTER TABLE detallechecklist CHANGE detalle detalle VARCHAR(500) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
 
 /*=============tabla usuario========================
 CREATE TABLE auditoria_usuario(

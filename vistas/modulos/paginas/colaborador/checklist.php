@@ -118,7 +118,7 @@
                   <section class="row">
                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                       <label>Actividad (Max. 200)</label>
-                      <textarea name="detalle[]" minlength="10" maxlength="200" class="form-control"></textarea>
+                      <textarea name="detalle[]" minlength="10" maxlength="500" class="form-control"></textarea>
                     </div>
                     <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                       <label>Estado</label>
@@ -177,7 +177,7 @@
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <label>Actividad</label>
                   <input class="form-control" type="hidden" name="iddetallechecklist" id="iddetallechecklist">
-                  <textarea id="detalle" name="detalle" class="form-control"></textarea>
+                  <textarea id="detalle" name="detalle" class="form-control" maxlength="500"></textarea>
                 </div>
                 <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-12">
                   <label>Estado</label>
