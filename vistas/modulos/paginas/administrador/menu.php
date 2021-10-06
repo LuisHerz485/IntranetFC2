@@ -154,10 +154,14 @@
                                     <p>Ver Checklist Asignado</p>
                                 </a>
                             </li>
-
                         <?php } ?>
-
                     </ul>
+                </li>
+                <li class="nav-item has-treeview">
+                    <a href="admindrive" class="nav-link">
+                        <i class="fas fa-folder"></i>
+                        <p>Administración del Drive</p>
+                    </a>
                 </li>
                 <?php
                 if ($_SESSION['idtipousuario'] != 4) { ?>

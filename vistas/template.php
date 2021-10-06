@@ -67,6 +67,8 @@
   <script src="vistas/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- ChartJS -->
   <script src="vistas/plugins/chart.js/Chart.min.js"></script>
+  <!-- BS Custom File Input -->
+  <script src="vistas/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
   <!-- Sparkline -->
   <script src="vistas/plugins/sparklines/sparkline.js"></script>
   <!-- JQVMap -->
@@ -120,7 +122,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "consultadni", "consultaruc", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado"];
+          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "consultadni", "consultaruc", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorGeneralRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -220,6 +222,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/checklist.js"></script>
 <script src="vistas/js/tiposervicio.js"></script>
 <script src="vistas/js/permiso.js"></script>
+<script src="vistas/js/subida.js"></script>
 <script>
   if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);

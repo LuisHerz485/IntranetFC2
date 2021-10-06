@@ -29,6 +29,7 @@ class ControladorValidacion
 
     /**
      * Valida la longitud del texto
+     * @param string $texto
      * @param int $hasta El Maximo de longitud del texto
      * @param int $desde El Minimo de longitud del texto por defecto es 0
      */

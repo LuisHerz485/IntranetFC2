@@ -1904,3 +1904,14 @@ $('.tablaDataCheckListAsignado').DataTable({
   autoWidth: false,
   language: language,
 });
+
+$('.tablaDataArchivos').DataTable({
+  columnDefs: [
+    {
+      width: '250px',
+      targets: [0, 2],
+    },
+  ],
+  autoWidth: false,
+  language: language,
+});

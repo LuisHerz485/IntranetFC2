@@ -91,7 +91,7 @@ class ControladorPermiso
             $idestadopermiso = ControladorValidacion::validarID($_POST["idestadopermiso"]);
             $observacion = $_POST["observacion"];
 
-            if ($idpermiso && $idrevisor && $idestadopermiso && ControladorValidacion::longitud($observacion, 300, 10)) {
+            if ($idpermiso && $idrevisor && $idestadopermiso && ControladorValidacion::longitud($observacion, 300)) {
                 return ModeloPermiso::mdlEditarEstadoPermiso($idpermiso, $idestadopermiso, $idrevisor, $observacion);
             }
         }
