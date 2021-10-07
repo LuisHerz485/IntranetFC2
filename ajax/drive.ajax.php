@@ -5,7 +5,7 @@ require_once "../controladores/drive.controlador.php";
 http_response_code(400);
 
 if (isset($_POST["opcion"])) {
-    $driverApi = new ControladorDrive();
+    $driverApi = new ControladorDrive($_SESSION['iddrive'] ?? null);
     switch ($_POST["opcion"]) {
         case "listar": {
                 $respuesta = $driverApi->listarTodo(false);
@@ -46,4 +46,5 @@ if (isset($_POST["opcion"])) {
                 break;
             }
     }
+    unset($driverApi);
 }

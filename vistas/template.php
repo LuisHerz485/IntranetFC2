@@ -176,7 +176,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         }
     }
   } else {
-    $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados", "consultaruc", "consultadni"];
+    $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados", "consultaruc", "consultadni", "drivecliente"];
     include "vistas/modulos/paginas/cliente/menu.php";
     if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
       include "vistas/modulos/paginas/cliente/" . $_GET['ruta'] . ".php";
@@ -184,7 +184,6 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
       include "vistas/modulos/paginas/404.php";
     }
   }
-
   include "vistas/modulos/templates/footer.php";
 } else {
   echo '<body class="hold-transition login-page">';

@@ -157,10 +157,11 @@
                         <?php } ?>
                     </ul>
                 </li>
+                <li class="nav-header">Drive</li>
                 <li class="nav-item has-treeview">
                     <a href="admindrive" class="nav-link">
                         <i class="fas fa-folder"></i>
-                        <p>Administración del Drive</p>
+                        <p>Administración del Clientes</p>
                     </a>
                 </li>
                 <?php

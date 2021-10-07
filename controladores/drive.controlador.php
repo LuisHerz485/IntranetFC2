@@ -3,14 +3,15 @@ include '../google-api-php-client-2.9.1/vendor/autoload.php';
 
 class ControladorDrive
 {
-    private string $carpetaId = '1dlcPzK81o4H_g6m4X9uI3S4ZTD2RgG03'; //'1Dd0k0uXMLA6e_CMSKDzvFKlHGJoeMrXQ'; //1pA-CdnWwmnklSSjCguzOacWEAhy50DG2
-    private string $pathJSON = 'intranet-fc-contadores-3acb957285e8.json'; //'intranet-fc-contadores-3acb957285e8.json'; //drive-php-327514-f48c28322772.json
+    private string $carpetaId = '';
+    private string $pathJSON = '';
     private ?Google_Client $client = null;
     private ?Google_Service_Drive $service = null;
 
-    public function __construct()
+    public function __construct(?string $carpetaId = null)
     {
         try {
+            if ($carpetaId) $this->carpetaId = $carpetaId;
             putenv('GOOGLE_APPLICATION_CREDENTIALS=' . $this->pathJSON);
             $this->client = new Google_Client();
             $this->client->useApplicationDefaultCredentials();
@@ -107,11 +108,13 @@ class ControladorDrive
         try {
             $carpetaPadreId = $this->validarID(htmlspecialchars($_POST["carpetaPadreId"] ?? ""));
             if ($flag) {
-                $file = $this->service->files->get($carpetaPadreId, array("fields" => 'parents'));
-                return $this->service->files->listFiles([
-                    'q' => "'" . $file["parents"][0] . "' in parents",
-                    'fields' => 'files(id, webViewLink, parents, webContentLink, name, mimeType, createdTime)',
-                ])->getFiles();
+                if (strcmp($carpetaPadreId,  $this->carpetaId) !== 0) {
+                    $file = $this->service->files->get($carpetaPadreId, array("fields" => 'parents'));
+                    return $this->service->files->listFiles([
+                        'q' => "'" . $file["parents"][0] . "' in parents",
+                        'fields' => 'files(id, webViewLink, parents, webContentLink, name, mimeType, createdTime)',
+                    ])->getFiles();
+                }
             } else {
                 return $this->service->files->listFiles([
                     'q' => "'" . $carpetaPadreId . "' in parents",

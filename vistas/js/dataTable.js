@@ -1330,6 +1330,13 @@ $('.tablaDataPagosPendientes').DataTable({
             },
           ],
         });
+        doc.content.splice(1, 0, {
+          margin: [0, 0, 0, -40],
+          alignment: 'left',
+          color: '#000000',
+          bold: true,
+          text: 'Sumatoria de los Montos: ' + $('#txtTotal').text(),
+        });
       },
       exportOptions: {
         columns: ':not(.no-exportar)', //exportar toda columna que no tenga la clase no-exportar
@@ -1913,5 +1920,6 @@ $('.tablaDataArchivos').DataTable({
     },
   ],
   autoWidth: false,
+  order: [[1, 'asc']],
   language: language,
 });

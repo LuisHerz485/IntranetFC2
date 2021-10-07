@@ -27,12 +27,12 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col">
-                                    <button type="button" class="btn btn-primary btn-block" id="btnListarArchivos" carpetaPadreId="">
+                                    <button type="button" class="btn btn-primary btn-block" id="btnListarArchivosCliente" carpetaPadreId="">
                                         <div class="h4 mb-0"><i class="fas fa-list"></i> Listar</div>
                                     </button>
                                 </div>
-                                <div class="col">
-                                    <button type="button" class="btn btn-success btn-block" id="btnFormSubirArchivo">
+                                <div class="col recibido d-none">
+                                    <button type="button" class="btn btn-success btn-block" id="btnFormSubirArchivoCliente">
                                         <div class="h4 mb-0">
                                             <i class="fas fa-cloud-upload-alt"></i>
                                             Subir Archivo
@@ -40,15 +40,15 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <button type="button" class="btn btn-warning btn-block" id="btnVolverAlInicio">
+                                    <button type="button" class="btn btn-warning btn-block" id="btnVolverAlInicioCliente">
                                         <div class="h4 mb-0">
                                             <i class="fas fa-home"></i>
                                             Volver al Inicio
                                         </div>
                                     </button>
                                 </div>
-                                <div class="col">
-                                    <button type="button" class="btn btn-secondary btn-block" id="btnFormCrearCarpeta">
+                                <div class="col recibido d-none">
+                                    <button type="button" class="btn btn-secondary btn-block" id="btnFormCrearCarpetaCliente">
                                         <div class="h4 mb-0">
                                             <i class="fas fa-folder-plus"></i>
                                             Crear Carpeta
@@ -57,12 +57,11 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <button type="button" class="btn btn-info btn-block" id="btnSubirNivel" carpetaPadreId="">
+                                    <button type="button" class="btn btn-info btn-block" id="btnSubirNivelCliente" carpetaPadreId="">
                                         <div class="h4 mb-0">
                                             <i class="fas fa-level-up-alt"></i>
                                             Subir de Nivel
                                         </div>
-
                                     </button>
                                 </div>
                             </div>
@@ -130,7 +129,7 @@
                                         <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Salir</button>
                                     </div>
                                     <div class="col">
-                                        <button type="button" class="btn btn-success btn-block" name="btnSubirArchivos" id="btnSubirArchivos">Aceptar</button>
+                                        <button type="button" class="btn btn-success btn-block" name="btnSubirArchivos" id="btnSubirArchivosCliente">Aceptar</button>
                                     </div>
                                 </div>
                             </div>
@@ -169,7 +168,7 @@
                                         <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Salir</button>
                                     </div>
                                     <div class="col">
-                                        <button type="button" class="btn btn-secondary btn-block" id="btnCrearCarpeta">Crear Carpeta</button>
+                                        <button type="button" class="btn btn-secondary btn-block" id="btnCrearCarpetaCliente">Crear Carpeta</button>
                                     </div>
                                 </div>
                             </div>

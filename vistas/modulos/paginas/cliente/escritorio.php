@@ -17,10 +17,10 @@
         </div><!-- /.container-fluid -->
     </div>
 
-    <section class="content ml-5">
+    <section class="content ">
         <div class="container-fluid">
-            <h4><strong>Tipo de cambio</strong></h4>
-            <div class="row">
+            <h4 class="ml-5"><strong>Tipo de cambio</strong></h4>
+            <div class="row mx-5">
                 <div class="col-12 col-lg-6">
                     <?php $tipoDeCambio = tipodecambio(); ?>
                     <a class="small-box bg-success" target="_blank">
@@ -50,7 +50,7 @@
 
     <section class="content">
         <div class="container-fluid">
-            <h4><strong>Cobranzas</strong></h4>
+            <h4 class="ml-5"><strong>Cobranzas</strong></h4>
             <div class="row mx-5">
                 <div class="col-12 col-lg-6">
                     <a href="https://fccontadores.com/servicios/" class="small-box bg-lightblue" target="_blank">

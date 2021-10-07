@@ -581,8 +581,10 @@ $('.btnAgregarCobranza').click(function () {
 });
 
 $('.btnFiltroMes').click(function () {
-  var fecha_busqueda = $('#fecha_busqueda').val();
-  var datos = new FormData();
+  let sumaPendiente = 0;
+  let sumaPagado = 0;
+  let fecha_busqueda = $('#fecha_busqueda').val();
+  let datos = new FormData();
   datos.append('fecha_busqueda', fecha_busqueda);
   $.ajax({
     url: 'ajax/cobranza.ajax.php',
@@ -597,6 +599,7 @@ $('.btnFiltroMes').click(function () {
       $('#mostrarPagado').DataTable().clear().draw();
       $.each(respuesta, function (index, value) {
         if (value.estado == 0) {
+          sumaPendiente += parseFloat(value.monto);
           $('#mostrarPendiente')
             .DataTable()
             .row.add([
@@ -628,6 +631,7 @@ $('.btnFiltroMes').click(function () {
             ])
             .draw(false);
         } else if (value.estado == 2) {
+          sumaPendiente += parseFloat(value.monto);
           $('#mostrarPendiente')
             .DataTable()
             .row.add([
@@ -659,6 +663,7 @@ $('.btnFiltroMes').click(function () {
             ])
             .draw(false);
         } else if (value.estado == 3) {
+          sumaPendiente += parseFloat(value.monto);
           $('#mostrarPendiente')
             .DataTable()
             .row.add([
@@ -690,6 +695,7 @@ $('.btnFiltroMes').click(function () {
             ])
             .draw(false);
         } else if (value.estado == 1) {
+          sumaPagado += parseFloat(value.monto);
           $('#mostrarPagado')
             .DataTable()
             .row.add([
@@ -722,6 +728,9 @@ $('.btnFiltroMes').click(function () {
             .draw(false);
         }
       });
+      $('#txtTotal').text(
+        montoFormato($('#mostrarPendiente').length ? sumaPendiente : sumaPagado)
+      );
       $('.btnMostraDetCob').click(function () {
         var datos = new FormData();
         datos.append('idcobranza', $(this).attr('idcobranza'));
@@ -746,12 +755,6 @@ $('.btnFiltroMes').click(function () {
           },
         });
       });
-      /*
-      $('.btnConstancia').click(function () {
-        window.open(
-          'ajax/generarPDF.php?idcobranza=' + $(this).attr('idcobranza')
-        );
-      });*/
 
       $('.btnActivarC').click(function () {
         Swal.fire({

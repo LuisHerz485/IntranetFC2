@@ -44,30 +44,10 @@
                     </a>
                 </li>
 
-                <li class="nav-header">MIS ARCHIVOS</li>
                 <li class="nav-item">
-                    <a href="tributaria" class="nav-link">
+                    <a href="drivecliente" class="nav-link">
                         <i class="fas fa-folder nav-icon"></i>
-                        <p>Área Tributaria</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="laboral" class="nav-link">
-                        <i class="fas fa-folder nav-icon"></i>
-                        <p>Área Laboral</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="auditoria" class="nav-link">
-                        <i class="fas fa-folder nav-icon"></i>
-                        <p>Auditorias</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="upload" class="nav-link">
-                        <i class="nav-icon fas fa-upload"></i>
-                        <p>Subir archivos</p>
+                        <p>Mis Archivos</p>
                     </a>
                 </li>
 
