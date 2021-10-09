@@ -214,7 +214,7 @@
                             <li class="nav-item">
                                 <a href="mostrarcobranza" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Mostrar Cobranza</p>
+                                    <p>Mostrar Adeudados</p>
                                 </a>
                             </li>
                             <li class="nav-item">

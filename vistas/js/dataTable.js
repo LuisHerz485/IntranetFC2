@@ -583,7 +583,7 @@ $('.tablaDataClientes').DataTable({
       titleAttr: 'Exportar a PDF',
       className: 'btn btn-danger',
       customize: function (doc) {
-        doc.content[1].table.widths = ['10%', '10%', '56%', '12%', '12%'];
+        doc.content[1].table.widths = ['30%', '30%', '40%'];
         doc.watermark = {
           text: 'FC Contadores & Asociados',
           bold: true,

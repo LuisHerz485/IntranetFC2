@@ -1,5 +1,13 @@
 bsCustomFileInput.init();
 
+$('#archivos').on('change', function (e) {
+  var files = [];
+  for (var i = 0; i < $(this)[0].files.length; i++) {
+    files.push($(this)[0].files[i].name);
+  }
+  $('#txtArchivos').html(files.join(', '));
+});
+
 function getArchivoInfo(mimeType) {
   switch (mimeType) {
     case 'application/pdf': {
@@ -753,3 +761,6 @@ $(document).on('click', '.btn-eliminar-archivo-cliente', function () {
     }
   });
 });
+
+$('#btnListarArchivos').click();
+$('#btnListarArchivosCliente').click();

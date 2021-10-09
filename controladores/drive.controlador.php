@@ -3,8 +3,8 @@ include '../google-api-php-client-2.9.1/vendor/autoload.php';
 
 class ControladorDrive
 {
-    private string $carpetaId = '';
-    private string $pathJSON = '';
+    private string $carpetaId = '1dlcPzK81o4H_g6m4X9uI3S4ZTD2RgG03';
+    private string $pathJSON = 'intranet-fc-contadores-3acb957285e8.json';
     private ?Google_Client $client = null;
     private ?Google_Service_Drive $service = null;
 

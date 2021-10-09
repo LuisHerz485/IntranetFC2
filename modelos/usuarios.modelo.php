@@ -57,7 +57,7 @@ class ModeloUsuarios
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $estadoschecklist = $conexion->getData("SELECT idusuario, nombre , apellidos FROM usuario");
+            $estadoschecklist = $conexion->getData("SELECT idusuario, nombre , apellidos FROM usuario WHERE estado=1");
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {

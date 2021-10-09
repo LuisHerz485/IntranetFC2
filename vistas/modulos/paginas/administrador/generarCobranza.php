@@ -50,9 +50,9 @@
                       echo '<td><img src="vistas/dist/img/avatar.png" width="50px"></td>';
                     }
                     if ($value["estado"] == 1) {
-                      echo '<td> <button class="btn btn-success btn-sm" disabled>Activo</button></td>';
+                      echo '<td><h5><span class="badge badge-success">Activo</h5></td>';
                     } else {
-                      echo '<td> <button class="btn btn-danger btn-sm" disabled>Inactivo</button></td>';
+                      echo '<td><h5><span class="badge badge-danger">Inactivo</h5></td>';
                     }
 
                     echo '</tr>';

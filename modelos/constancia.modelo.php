@@ -22,12 +22,7 @@ class ModeloConstancia
 
     static public function mdlMostrarIngresoMes($valor)
     {
-        $stmt = Conexion::conectar()->prepare("SELECT DISTINCT SUM(C.monto) as monto, ELT(MONTH(C.fechapago), 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre') as mes
-            FROM constancia C 
-            JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza
-            JOIN cobranza Co ON C.idcobranza = Co.idcobranza
-            WHERE (DC.estado = 1 OR DC.estado = 2) AND YEAR(fechapago) = $valor 
-            GROUP BY mes ORDER BY fechapago");
+        $stmt = Conexion::conectar()->prepare("SELECT DISTINCT SUM(C.monto) as monto, ELT(MONTH(Co.fechavencimiento), 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre') as mes FROM constancia C JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza JOIN cobranza Co ON C.idcobranza = Co.idcobranza WHERE (DC.estado = 1 OR DC.estado = 2) AND YEAR(Co.fechavencimiento) = $valor GROUP BY mes ORDER BY Co.fechavencimiento");
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -84,52 +79,4 @@ class ModeloConstancia
             return null;
         }
     }
-    /*
-        static public function mdlActualizarConstancia($tabla,$item1,$valor1,$item2,$valor2){
-			$stmt = conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");
-			$stmt -> bindParam(":".$item1,$valor1,PDO::PARAM_STR);
-			$stmt -> bindParam(":".$item2,$valor2,PDO::PARAM_STR);
-			if($stmt->execute()){
-				return "ok";
-			}else{
-				return "error";
-			}
-			$stmt ->close();
-			$stmt = null;
-		}
-
-		static public function mdlConsultarConstancia($idconstacia){ 
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM constancia WHERE idconstacia = \"$idconstacia\"");
-            $stmt -> execute();
-            return $stmt -> fetch();
-            
-            $stmt -> close();
-            $stmt = null;
-        }
-        static public function mdlMostrarConstancia($tabla,$item,$valor){
-            if($item!= null){
-                if($item === 1){
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by nombre ASC");
-                    $stmt -> execute();
-                    return $stmt -> fetchAll();
-                }else{
-                    $stmt = Conexion::conectar()->prepare("SELECT CS.idconstancia as idconstancia, C.idcobranza as idcobranza, DC.iddetallecobranza as iddetallecobranza, CS.fechapago as fechapago, CS.tipopago as tipopago, CS.monto as monto, CS.nota as nota
-                    FROM $tabla CS
-                    JOIN cobranza C ON CS.idcobranza = C.idcobranza
-                    JOIN detalleconstancia DC ON CS.iddetallecobranza = DC.iddetallecobranza WHERE $item = :$item");
-                    $stmt -> bindParam(":".$item,$valor,PDO::PARAM_STR);
-                    $stmt -> execute();
-                    return $stmt -> fetch();
-                }
-            }else{
-                $stmt = Conexion::conectar()->prepare("SELECT CS.idconstancia as idconstancia, C.idcobranza as idcobranza, DC.iddetallecobranza as iddetallecobranza, CS.fechapago as fechapago, CS.tipopago as tipopago, CS.monto as monto, CS.nota as nota
-                    FROM $tabla CS
-                    JOIN cobranza C ON CS.idcobranza = C.idcobranza
-                    JOIN detalleconstancia DC ON CS.iddetallecobranza = DC.iddetallecobranza");
-                $stmt -> execute();
-                return $stmt -> fetchAll();
-            }
-            $stmt -> close();
-            $stmt = null;
-        }*/
 }

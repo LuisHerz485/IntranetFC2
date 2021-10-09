@@ -108,29 +108,25 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <div class="form-row">
+                    <div class="container-fluid">
+                        <div class="row mb-3">
+                            <div class="col">
+                                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Salir</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-success btn-block" name="btnSubirArchivos" id="btnSubirArchivos">Aceptar</button>
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="col-12">
                                 <label>Subir Archivo:</label>
-                                <div class="input-group mb-3">
+                                <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Subir</span>
                                     </div>
                                     <div class="custom-file">
                                         <input type="file" class="custom-file-input" id="archivos" name="archivos[]" multiple>
-                                        <label class="custom-file-label" for="archivos">Seleccionar Archivo</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col">
-                                        <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Salir</button>
-                                    </div>
-                                    <div class="col">
-                                        <button type="button" class="btn btn-success btn-block" name="btnSubirArchivos" id="btnSubirArchivos">Aceptar</button>
+                                        <div class="custom-file-label">Seleccionar Archivo</div>
                                     </div>
                                 </div>
                             </div>
@@ -162,16 +158,16 @@
                                 <input type="text" class="form-control" name="carpetaNombre" id="carpetaNombre">
                             </div>
                         </div>
-                        <div class="modal-footer">
-                            <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col">
-                                        <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Salir</button>
-                                    </div>
-                                    <div class="col">
-                                        <button type="button" class="btn btn-secondary btn-block" id="btnCrearCarpeta">Crear Carpeta</button>
-                                    </div>
-                                </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col">
+                                <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Salir</button>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-secondary btn-block" id="btnCrearCarpeta">Crear Carpeta</button>
                             </div>
                         </div>
                     </div>

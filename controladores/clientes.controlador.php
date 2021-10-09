@@ -78,7 +78,7 @@ class ControladorClientes
 						imagepng($destino, $ruta);
 					}
 				} else {
-					$ruta = $_POST['fotoaux'];
+					$ruta = (empty($_POST['fotoaux'])) ? "vistas/img/clientes/default-cliente.png" : $_POST['fotoaux'];
 				}
 
 				$tabla = "cliente";
