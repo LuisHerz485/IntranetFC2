@@ -24,40 +24,6 @@ class ControladorContancia
 					"estado" => 1,
 					"descripcion" => $_POST['descripcion']
 				);
-
-				if ($_POST['editar'] === "no") {/*
-					$respuesta = ModeloConstancia::mdlIngresarConstancia($tabla, $datos);
-					if ($respuesta == "ok") {
-						echo "<script>
-								Swal.fire({ 
-									title:	'Success!',
-									text:	'¡Cobranza agregado correctamente!',
-									icon:	'success',
-									confirmButtonText:	'Ok'
-									}).then((result)=>{
-										if(result.value){
-											window.location='generarcobranza';
-										}
-									})
-								</script>";
-					}*/
-				} else {/*
-					$respuesta = ModeloConstancia::mdlEditarConstancia($tabla, $datos);
-					if ($respuesta == "ok") {
-						echo "<script>
-								Swal.fire({ 
-									title: 'Success!',
-									text: '¡La cotizacion se modificó correctamente!',
-									icon: 'success',
-									confirmButtonText:'Ok'
-									}).then((result)=>{
-										if(result.value){
-											window.location='generarCobranza';
-										}
-									})
-							</script>";
-					}*/
-				}
 			}
 		}
 	}

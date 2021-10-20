@@ -7,9 +7,7 @@ require_once "../modelos/tipousuario.modelo.php";
 
 class AjaxTipoUsuario
 {
-
 	public $nombre;
-
 	public function ajaxEditarTipoUsuario()
 	{
 		$item = "nombre";
@@ -20,7 +18,6 @@ class AjaxTipoUsuario
 
 	public $nombreEdit;
 	public $estadoEdit;
-
 	public function ajaxActivarTipoUsuario()
 	{
 		$tabla = "tipousuario";
@@ -32,15 +29,12 @@ class AjaxTipoUsuario
 	}
 }
 
-
-/* Editar usuario*/
 if (isset($_POST["nombre"])) {
 	$editar = new AjaxTipoUsuario();
 	$editar->nombre = $_POST["nombre"];
 	$editar->ajaxEditarTipoUsuario();
 }
 
-/* Activar usuario*/
 if (isset($_POST['estado'])) {
 	$estado = new AjaxTipoUsuario();
 	$estado->estadoEdit = $_POST['estado'];

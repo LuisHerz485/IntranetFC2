@@ -6,18 +6,15 @@ require_once "../modelos/constancia.modelo.php";
 
 class AjaxConstancia
 {
-	//variable que se usa para realizar una constancia de uan cobranza
 	public $idcobranza;
-	//funcion para mostrar la constancia de una cobranza en especifico mediante su id
 	public function ajaxMostrarConstancia()
 	{
 		$valor = $this->idcobranza;
 		$respuesta = ModeloConstancia::mdlMostrarConstancia($valor);
 		echo json_encode($respuesta);
 	}
-	//variable de id cosntancia con respecto a los pagos no completos es decir, cuando el cliente abono un monto y el estado pasa A deuda 
-	public $idconstancia;
 
+	public $idconstancia;
 	public function ajaxMostrarHistorialPago()
 	{
 		$valor = $this->idconstancia;
@@ -56,7 +53,6 @@ class AjaxConstancia
 	public $tipo_pago;
 	public $monto_const;
 	public $nota_const;
-
 	public function ajaxAgregarConstancia()
 	{
 		$valor1 = $this->idcobranza;
@@ -69,28 +65,24 @@ class AjaxConstancia
 	}
 }
 
-/* Mostrar Constancia */
 if (isset($_POST["idcobranza"])) {
 	$mostrarConst = new AjaxConstancia();
 	$mostrarConst->idcobranza = $_POST["idcobranza"];
 	$mostrarConst->ajaxMostrarConstancia();
 }
 
-/* Mostrar Historial de pagos de cobranza */
 if (isset($_POST["idconstancia"])) {
 	$mostrarHis = new AjaxConstancia();
 	$mostrarHis->idconstancia = $_POST["idconstancia"];
 	$mostrarHis->ajaxMostrarHistorialPago();
 }
 
-/* Mostrar Ingreso general de pagos por mes */
 if (isset($_POST["fecha_ingreso"])) {
 	$mostrarIngEmp = new AjaxConstancia();
 	$mostrarIngEmp->fecha_ingreso = $_POST["fecha_ingreso"];
 	$mostrarIngEmp->ajaxMostrarIngresoMes();
 }
 
-/* Mostrar Ingreso de clientes*/
 if (isset($_POST["idcliente"])) {
 	$mostrarIngCli = new AjaxConstancia();
 	$mostrarIngCli->idcliente = $_POST["idcliente"];
@@ -98,14 +90,12 @@ if (isset($_POST["idcliente"])) {
 	$mostrarIngCli->ajaxMsotrarIngresoCliente();
 }
 
-/* Mostrar Ingreso de clientes - ranking*/
 if (isset($_POST["fecha_ranking"])) {
 	$mostrarIngRan = new AjaxConstancia();
 	$mostrarIngRan->fecha_ranking = $_POST["fecha_ranking"];
 	$mostrarIngRan->ajaxMostrarIngresoRanking();
 }
 
-/* Agregar Constancia*/
 if (isset($_POST["iddetallecobranza"])) {
 	$agregarConst = new AjaxConstancia();
 	$agregarConst->idcobranza = $_POST["idcobranza"];

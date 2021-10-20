@@ -9,7 +9,6 @@ class AjaxLocal
 {
 
 	public $idcliente;
-
 	public function ajaxMostrarDepartamento()
 	{
 		$valor = $this->idcliente;
@@ -19,7 +18,6 @@ class AjaxLocal
 
 	public $idcliente1;
 	public $iddepartamento;
-
 	public function ajaxMostrarDistrito()
 	{
 		$valor1 = $this->idcliente1;
@@ -29,15 +27,12 @@ class AjaxLocal
 	}
 }
 
-
-/* Mostrar Departamento */
 if (isset($_POST["idcliente"])) {
 	$mostrarDe = new AjaxLocal();
 	$mostrarDe->idcliente = $_POST["idcliente"];
 	$mostrarDe->ajaxMostrarDepartamento();
 }
 
-/* Mostrar Distrito y direccion */
 if (isset($_POST["iddepartamento"])) {
 	$mostrarDi = new AjaxLocal();
 	$mostrarDi->idcliente1 = $_POST["idcliente1"];

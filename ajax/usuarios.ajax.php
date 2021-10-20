@@ -10,7 +10,6 @@ class AjaxUsuarios
 
 	public $activarUsuario;
 	public $activarLogin;
-
 	public function ajaxActivarUsuario()
 	{
 		$tabla = "usuario";
@@ -22,7 +21,6 @@ class AjaxUsuarios
 	}
 
 	public $login;
-
 	public function ajaxEditarUsuario()
 	{
 		$item = "login";
@@ -32,7 +30,6 @@ class AjaxUsuarios
 	}
 }
 
-/* Activar usuario*/
 if (isset($_POST['estado'])) {
 	$estado = new AjaxUsuarios();
 	$estado->activarUsuario = $_POST['estado'];
@@ -40,7 +37,6 @@ if (isset($_POST['estado'])) {
 	$estado->ajaxActivarUsuario();
 }
 
-/* Editar usuario*/
 if (isset($_POST["login"])) {
 	$editar = new AjaxUsuarios();
 	$editar->login = $_POST["login"];

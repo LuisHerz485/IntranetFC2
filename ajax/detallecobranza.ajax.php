@@ -10,7 +10,6 @@ class AjaxDetCobranza
 {
 
 	public $idcobranza;
-
 	public function ajaxMostrarDetCobranza()
 	{
 		$valor = $this->idcobranza;
@@ -22,7 +21,6 @@ class AjaxDetCobranza
 	public $idservicio;
 	public $precio;
 	public $nota;
-
 	public function ajaxAgregarDetCobranza()
 	{
 		$valor1 = $this->idplan;
@@ -33,14 +31,12 @@ class AjaxDetCobranza
 	}
 }
 
-/* Mostrar Cobranza */
 if (isset($_POST["idcobranza"])) {
 	$mostrarCo = new AjaxDetCobranza();
 	$mostrarCo->idcobranza = $_POST["idcobranza"];
 	$mostrarCo->ajaxMostrarDetCobranza();
 }
 
-/* Agregar Detalle Cobranza */
 if (isset($_POST["idservicio"])) {
 	$agregarCo = new AjaxDetCobranza();
 	$agregarCo->idplan = $_POST["idplan"];
