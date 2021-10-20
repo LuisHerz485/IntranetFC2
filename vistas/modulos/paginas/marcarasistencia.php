@@ -10,15 +10,17 @@
 
 	}else{
 ?>
+	
+	
 	<div class="lockscreen-wrapper">
 		<div class="login-box">
 			<div class="login-logo">
-				<a href="#"><b>Registrar</b> Asistencia</a>
+				<a href="#" class="text-dark"><strong class="h1 text-red">Registrar</strong><b> Asistencia</b></a>
 			</div>
 				<div class="login-box-body">
 					<div class="card">
 						<div class="card-body login-card-body">
-							<p class="login-box-msg">Ingresa tu codigo para marcar tu entrada y salida </p>
+							<p class="login-box-msg">Ingresa tu código para marcar tu entrada y salida </p>
 							<form action="#" method="POST">
 								<div class="form-group">
 						            <div class="input-group-append"> 
@@ -27,7 +29,7 @@
 						            </div>
 						        </div>
 								<div>
-									<button type="submit" class="btn btn-primary btn-block">Marcar</button>
+									<button type="submit" class="btn btn-danger btn-block">Marcar</button>
 								</div>
 									<?php 
 										$marcarAsistencia = new ControladorAsistencia();
@@ -49,23 +51,24 @@
 							<!-- Configuracion de reloj -->
 							<div class="text-center" id="reloj" style="font-size:15pt;">
 								<div class="lockscreen-name">
-									<span id="hours" class="hours"></span> :
-									<span id="minutes" class="minutes"></span> :
-									<span id="seconds" class="seconds"></span>
+									<b id="hours" class="hours"></b> :
+									<b id="minutes" class="minutes"></b> :
+									<b id="seconds" class="seconds"></b>
 								</div>
 							</div>
 
 							<div class="lockscreen-footer text-center">
-								<a href="login">Administrar</a>
+								<a href="login"><strong class="m-3 text-red"><i class="fas fa-user-shield"></i> Administrar</strong></a>
 							</div>
 							<div class="lockscreen-footer text-center">
-								<a href="inicio">Atrás</a>
+								<a href="inicio"><strong class="m-3 text-red"><i class="fas fa-chevron-circle-left"></i> Atrás</strong></a>
 							</div>
 
 						</div>
 					</div>
 				</div>
 			</div>
+		
 <?php
 	}
 ?>

@@ -70,6 +70,16 @@
                     </ul>
                 </li>
 
+                <?php if ($_SESSION['iddepartamento'] == 3 || $_SESSION['iddepartamento'] == 5 || $_SESSION['iddepartamento'] == 8 || $_SESSION['iddepartamento'] == 12 || $_SESSION['iddepartamento'] == 13 || $_SESSION['iddepartamento'] == 14 || $_SESSION['iddepartamento'] == 17) { ?>
+                <li class="nav-header">DRIVE</li>
+                <li class="nav-item has-treeview">
+                    <a href="admindrive" class="nav-link">
+                        <i class="fas fa-folder"></i>
+                        <p style="font-size: 15px;" class="ml-1">Administración Drive</p>
+                    </a>
+                </li>
+                <?php } ?>
+
                 <li class="nav-header">AYUDA</li>
                 <li class="nav-item">
                     <a href="https://www.youtube.com/watch?v=VwHqLrttPJo&amp;ab_channel=FCCONTADORESYASOCIADOS" target="_blank" class="nav-link">

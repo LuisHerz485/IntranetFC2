@@ -52,6 +52,7 @@
   <link rel="stylesheet" href="vistas/plugins/select2/css/select2.min.css">
   <link rel="stylesheet" href="vistas/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <link rel="stylesheet" href="vistas/dist/css/tabla.css">
+  <link rel="stylesheet" href="vistas/css/inicio.css">
 
 
 
@@ -132,7 +133,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 2: {
-          $colaboradorRutas = ["escritorio", "asistencia", "permisos", "checklist"];
+          $colaboradorRutas = ["escritorio", "asistencia", "permisos", "checklist", "admindrive"];
           include "vistas/modulos/paginas/colaborador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
             include "vistas/modulos/paginas/colaborador/" . $_GET['ruta'] . ".php";
@@ -162,7 +163,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 6: {
-          $jefeAreaRutas = ["escritorio", "asistencia", "permisos", "checklist-jefe"];
+          $jefeAreaRutas = ["escritorio", "asistencia", "permisos", "checklist-jefe", "admindrive"];
           include "vistas/modulos/paginas/jefe/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $jefeAreaRutas)) {
             include "vistas/modulos/paginas/jefe/" . $_GET['ruta'] . ".php";

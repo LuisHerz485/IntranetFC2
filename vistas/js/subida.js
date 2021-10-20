@@ -130,7 +130,7 @@ $('#btnListarArchivos').on('click', function () {
         if (item['mimeType'] == 'application/vnd.google-apps.folder') {
           tabla.row
             .add([
-              `<button class="btn btn-warning mx-1 btn-ingresar-archivo" carpetaPadreId="${item['id']}"><i class="fas fa-sign-in-alt"></i></button><button class="btn btn-danger mx-1 btn-eliminar-archivo" archivoID="${item['id']}" ><i class="fas fa-trash-alt"></button>`,
+              `<button class="btn btn-warning mx-1 btn-ingresar-archivo" carpetaPadreId="${item['id']}"><i class="fas fa-sign-in-alt"></i></button>`,
               `${archivo.icono} ${item['name']}`,
               archivo.tipo,
               new Date(item['createdTime']).toLocaleString(),
@@ -193,7 +193,7 @@ $('#btnSubirNivel').on('click', function () {
         if (item['mimeType'] == 'application/vnd.google-apps.folder') {
           tabla.row
             .add([
-              `<button class="btn btn-warning mx-1 btn-ingresar-archivo" carpetaPadreId="${item['id']}"><i class="fas fa-sign-in-alt"></i></button><button class="btn btn-danger mx-1 btn-eliminar-archivo" archivoID="${item['id']}" ><i class="fas fa-trash-alt"></button>`,
+              `<button class="btn btn-warning mx-1 btn-ingresar-archivo" carpetaPadreId="${item['id']}"><i class="fas fa-sign-in-alt"></i></button>`,
               `${archivo.icono} ${item['name']}`,
               archivo.tipo,
               new Date(item['createdTime']).toLocaleString(),

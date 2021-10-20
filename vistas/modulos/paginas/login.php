@@ -1,6 +1,7 @@
-<div class="login-box">
-  <div class="login-logo">
-    <a href="#"><b>Login</b> Administradores</a>
+<div class="login-box"> 
+    <div class="login-logo">
+      <img src="vistas/img/sello/logo.png" alt="" class="" width="60%"><br>
+    <a href="#" class="text-dark"><strong class="h1 text-red">Login</strong><b> Administradores</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -9,19 +10,16 @@
 
       <form action="#" method="post">
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Usuario" name="usuario">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-user"></span>
-            </div>
+          <div class="input-group-text border-0">
+            <span class="fas fa-user text-dark"></span>
           </div>
+          <input type="text" class="form-control border-start" placeholder="Usuario" name="usuario">
         </div>
+
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
+          <input type="password" class="form-control border" placeholder="Password" name="password">
+          <div class="input-group-text border-0">
+            <span class="fas fa-lock text-dark"></span>
           </div>
         </div>
         <div class="row">
@@ -29,7 +27,7 @@
           </div>
           <!-- /.col -->
           <div class="col-6">
-            <button type="submit" class="btn btn-primary btn-block">Iniciar Sesión</button>
+            <button type="submit" class="btn btn-danger btn-block"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
           </div>
           <!-- /.col -->
         </div>
@@ -42,7 +40,7 @@
       </form>
       <br />
       <div class="lockscreen-footer text-center">
-				<a href="marcarasistencia">Atrás</a>
+				<a href="marcarasistencia" class="text-red"><strong><i class="fas fa-chevron-circle-left"></i> Atrás</strong></a>
       </div>
     <!-- /.login-card-body -->
   </div>

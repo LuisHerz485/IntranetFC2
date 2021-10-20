@@ -1,0 +1,12 @@
+{
+    "type": "service_account",
+    "project_id": "intranet-fc-contadores",
+    "private_key_id": "3acb957285e84d979bf9700a2a445149c4f87229",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC1cPmUFo1SoqSc\npHBuU7g0OBR3RyGwwL1bhMHfAheG1JsWuKZxYsE58tlCchOI+6uzl9TEp6ffxihi\n/N/rGD6xWkjM9kOWH0lN49uvvuZKQP85VIAXKm2EmkoR7+KiydwbSrh1wjShdB9L\n8pjscNVbLeGHBwPKzASCrfkD+OcBO1JwSsaRXRciqDnbiSyH0+2yUUgexsy2kC2B\nlzOZsH0ssrOGIi+suNkzp95inDLPC9cvbwResCDpQ2q84Gzh+NczkVVOoToc6FYS\nZ2YTTfe208Hym7imBMfVCzxzhQw+xanspgsI6d16UL8q/BKVcQE3ArBI4HhzWrFs\ntfa6ObPTAgMBAAECggEAAS78+cnR3y2fbEQoVZfnNjP9ci+9GQWQ1qV9jEJbu+3s\nGxBWSZwOzZ13bFcJKJYXryK46RV841lMDyU+Iq70Tbzch7W9iB+pH0BywOk6YFaf\nM5UJBt2ofDpzbD2H2W7+qBDrNh1vsXPr9lddRwGParpYY8SYcjy1dNLEspFvlFL3\naWHF7t5PiL3KbzgIOyAmp2IdwHx/F1upPAPfB90TXil9Hnk3HvtBkyMwCh4j6lrT\ngbLSZ+1P1hDU1e/0Wm4pQXXaIDpKssAjslyqyPoy0clJE+ZHraxGTy0Qs/V+UdYv\n2K2/SuwnprDuwAQluvJYqwJrCTxAkXLUPXM+NsDlHQKBgQDvg4UzrZSw2eH5E97M\ntVW87wS8t3SsiFnHwZLNJiDTjo30ybeI1bsHZrtwtn7u+tlXlf4A4zkpOfEnX8cJ\n2hJAx/3oX3D0d4PzLCIy0VuGFSjia9GMpZCIzBiEbrudb6Mhvk31WWATj+b0PgOQ\n9r3vUmrDHuX+lYGXe/L/nXJDbwKBgQDB7ih92I74XiNEEVd3Ya8gku5yfaDTUWRz\nt5H/Azd+9Vv38mkZGTxdF57GHcjPW/yvyllMF1Rgja+9XTmMt/LAkKOK0/23GVzu\nub0te3HRJ3F3hMduM2H+F2Uq+sndZSNSET6mzOmOuUJOGaUfDlXiEqbeszzDs7Eq\nil8pao/T3QKBgEqwk9gyuBySRXKb7K2fmrYJP0vuVbb76ittxO6uhiwS11fPk6lb\nJTDAq5ERh/HUTfSPNJ9oPEoL5JTnvDTpSSnkc9yD7sB9iKtLRvrb6JOeg5pgDv+y\nHalbJAYgVedZieCa7Mqm7VwMUvQ1Zn1NRJud8ucX+pbyXnAz2eo2WgyHAoGAAow7\ncfPPZQnvkqxbptDcuSPVCCIIY95U4IRP4bbMGtnkXGyN3uuK9Hoj9txbUAYYWsLg\ny3QfAqm53lYENIoSIV+FFoTUd3xY0TYVeyx9AU9wWS6gZB0+s1ThWmAzGLqEbUaW\nuSBGDT731QjXN4I7tJ2kHZbjPHr23+UzfNrOiu0CgYEAgMUNL5CDssdIw+75IyAD\nhDruRRgtEq1vLImzC3km3MX/CdqydIxZkiRmT9IbZw9gBV+u3HnmSeJFRlvlBffs\nbWWn1wRcomPb55WSgMaqard+8J6iBvS3evvrooxkugV/20LHoWXJAv6tjoGBqMaa\n8vKhKBd5fKRWc03nicV4fsk=\n-----END PRIVATE KEY-----\n",
+    "client_email": "fcintranet@intranet-fc-contadores.iam.gserviceaccount.com",
+    "client_id": "116729479791149948884",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/fcintranet%40intranet-fc-contadores.iam.gserviceaccount.com"
+}
