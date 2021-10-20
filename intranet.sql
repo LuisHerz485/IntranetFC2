@@ -112,6 +112,7 @@ CREATE TABLE asistencia(
 	estado int not null,
 	detalle varchar(100) not null,
 	CONSTRAINT fk_as_us FOREIGN KEY (idusuario) REFERENCES usuario(idusuario)
+	CONSTRAINT fk_as_horario FOREIGN KEY (idhorario) REFERENCES horario(idhorario)
 ); 
 
 CREATE TABLE cliente(
@@ -609,6 +610,17 @@ INSERT INTO `estadochecklist`(`nombre`) VALUES ('Pendiente');
 INSERT INTO `estadochecklist`(`nombre`) VALUES ('Realizado');
 INSERT INTO `estadochecklist`(`nombre`) VALUES ('Cancelado');
 INSERT INTO `estadochecklist`(`nombre`) VALUES ('Suspendido');
+
+
+CREATE TABLE horario (
+  idhorario int auto_increment primary key,
+  horaInicio time NOT NULL,
+  horafin time NOT NULL,
+  estado int NOT NULL,
+);
+INSERT INTO (horaInicio, horafin) VALUES('8:30:00', '16:30:00');
+
+ALTER TABLE asistencia ADD CONSTRAINT fk_as_hor FOREIGN KEY (idhorario) REFERENCES horario(idhorario) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 /*===============================ALTER======================================*/
 

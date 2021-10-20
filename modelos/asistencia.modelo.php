@@ -81,9 +81,9 @@ class ModeloAsistencia
     /**
      * Registra la asistencia de cada usuario
      */
-    static public function mdlMarcarAsistencia($tabla, $idusuario, $tipo)
+    static public function mdlMarcarAsistencia($tabla, $idusuario, $tipo, $idhorario)
     {
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (idusuario, tipo, estado, detalle) VALUES ($idusuario, \"$tipo\", 2, \"\")");
+        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla (idusuario, tipo, estado, detalle,idhorario) VALUES ($idusuario, \"$tipo\", 2, \"\",$idhorario)");
 
         if ($stmt->execute()) {
             return "ok";
@@ -101,5 +101,4 @@ class ModeloAsistencia
         $stmt->execute();
         return $stmt->fetchAll();
     }
-
 }

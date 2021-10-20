@@ -49,21 +49,23 @@ class ControladorAsistencia
 	{
 		if (isset($_POST['codigopersona'])) {
 			$respuesta = ModeloUsuarios::mdlConsultarUsuario($_POST['codigopersona']);
-
+			$respuesta2 = ModeloHorario::mdlConsultarHorario();
 			if ($respuesta) {
 				$respuesta3 = ModeloAsistencia::mdlConsultarAsistencia($respuesta['idusuario']);
 				$tabla = "asistencia";
 
 				$idusuario = $respuesta['idusuario'];
-
+				$idhorario = $respuesta2['idhorario'];
 				if ($respuesta3) {
 					if ($respuesta3['tipo'] === "Entrada") {
 						echo "<script>
 							var idusuario = " . $idusuario . "
 							var tipo = 'Salida'
+							var idhorario=" . $idhorario . "
 							var datos = new FormData();
 							datos.append('idusuario', idusuario);
 							datos.append('tipo', tipo);
+							datos.append('idhorario', idhorario);
 								Swal.fire({
 									title: '¿Estas seguro?',
 									text: 'Usted va a marcar su salida!',
@@ -95,9 +97,11 @@ class ControladorAsistencia
 						echo "<script>
 							var idusuario = " . $idusuario . "
 							var tipo = 'Entrada'
+							var idhorario=" . $idhorario . "
 							var datos = new FormData();
 							datos.append('idusuario', idusuario);
 							datos.append('tipo', tipo);
+							datos.append('idhorario', idhorario);
 								Swal.fire({
 									title: '¿Estas seguro?',
 									text: 'Usted va a marcar su entrada!',
@@ -129,9 +133,11 @@ class ControladorAsistencia
 					echo "<script>
 							var idusuario = " . $idusuario . "
 							var tipo = 'Entrada'
+							var idhorario=" . $idhorario . "
 							var datos = new FormData();
 							datos.append('idusuario', idusuario);
 							datos.append('tipo', tipo);
+							datos.append('idhorario', idhorario);
 								Swal.fire({
 									title: '¿Estas seguro?',
 									text: 'Usted va a marcar su primera entrada!',
