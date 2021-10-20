@@ -24,13 +24,15 @@ class AjaxAsistencia
 	//variable usada para editar - marcar asistencia
 	public $idusuario;
 	public $tipo;
+	public $idhorario;
 	//funcion para ditar - marcar asistencia
 	public function ajaxMarcarAsistencia()
 	{
 		$tabla = "asistencia";
 		$valor1 = $this->idusuario;
 		$valor2 = $this->tipo;
-		$respuesta = ModeloAsistencia::mdlMarcarAsistencia($tabla, $valor1, $valor2);
+		$valor3 = $this->idhorario;
+		$respuesta = ModeloAsistencia::mdlMarcarAsistencia($tabla, $valor1, $valor2, $valor3);
 		echo json_encode($respuesta);
 	}
 }
@@ -49,5 +51,6 @@ if (isset($_POST["idusuario"])) {
 	$editar = new AjaxAsistencia();
 	$editar->idusuario = $_POST["idusuario"];
 	$editar->tipo = $_POST["tipo"];
+	$editar->idhorario = $_POST["idhorario"];
 	$editar->ajaxMarcarAsistencia();
 }

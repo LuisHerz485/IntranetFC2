@@ -26,3 +26,36 @@ $(".btnEditarDetalle").click(function () {
     },
   });
 });
+
+$("#btnguardarHorario").on("click", function () {
+  let formularioHorario = new FormData($("#formCambiarHorario")[0]);
+  formularioHorario.append("opcion", "registrar");
+  $.ajax({
+    method: "POST",
+    url: "ajax/horario.ajax.php",
+    cache: false,
+    contentType: false,
+    processData: false,
+    data: formularioHorario,
+    dataType: "json",
+    success: function ({ respuesta }) {
+      if (respuesta) {
+        $("#horainicio").attr("disabled", true);
+        $("#horafin").attr("disabled", true);
+        Swal.fire({
+          title: "Registrado!",
+          text: "¡Se cambio a un Nuevo Horario!",
+          icon: "success",
+          confirmButtonText: "Ok",
+        });
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: "¡No se pudo cambiar el Horario!",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
+      }
+    },
+  });
+});
