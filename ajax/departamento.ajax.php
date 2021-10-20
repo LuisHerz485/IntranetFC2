@@ -9,7 +9,6 @@ class AjaxDepartamento
 {
 
 	public $nombre;
-
 	public function ajaxEditarDepartamento()
 	{
 		$item = "nombre";
@@ -20,7 +19,6 @@ class AjaxDepartamento
 
 	public $nombreEdit;
 	public $estadoEdit;
-
 	public function ajaxActivarDepartamento()
 	{
 		$tabla = "departamento";
@@ -40,15 +38,12 @@ class AjaxDepartamento
 	}
 }
 
-
-/* Editar usuario*/
 if (isset($_POST["nombre"])) {
 	$editar = new AjaxDepartamento();
 	$editar->nombre = $_POST["nombre"];
 	$editar->ajaxEditarDepartamento();
 }
 
-/* Activar usuario*/
 if (isset($_POST['estado'])) {
 	$estado = new AjaxDepartamento();
 	$estado->estadoEdit = $_POST['estado'];
@@ -56,7 +51,6 @@ if (isset($_POST['estado'])) {
 	$estado->ajaxActivarDepartamento();
 }
 
-/* Mostrar */
 if (isset($_POST["idarea"])) {
 	$mostrar = new AjaxDepartamento();
 	$mostrar->idarea = $_POST["idarea"];

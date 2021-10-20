@@ -11,7 +11,6 @@ class AjaxReportes
 	public $idusuario;
 	public $fecha_inicio;
 	public $fecha_fin;
-
 	public function ajaxMostrarReporte()
 	{
 		$valor1 = $this->idusuario;
@@ -22,8 +21,6 @@ class AjaxReportes
 	}
 }
 
-
-/* Mostrar Tabla */
 if (isset($_POST["idusuario"])) {
 	$mostrar = new AjaxReportes();
 	$mostrar->idusuario = $_POST["idusuario"];

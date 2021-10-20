@@ -7,7 +7,6 @@ require_once "../modelos/detallecobranza.modelo.php";
 
 class AjaxServicio
 {
-
 	public function ajaxMostrarServicio()
 	{
 		$valor = null;

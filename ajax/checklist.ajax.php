@@ -5,8 +5,6 @@ require_once "../controladores/validacion.controlador.php";
 require_once "../controladores/checklist.controlador.php";
 require_once "../modelos/checklist.modelo.php";
 
-
-
 http_response_code(400);
 if (isset($_POST["opcion"])) {
     switch ($_POST["opcion"]) {

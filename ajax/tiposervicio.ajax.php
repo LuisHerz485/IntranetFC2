@@ -10,7 +10,6 @@ class AjaxTipoServicio
 
 	public $idcategoriaservicio;
 	public $idservicio;
-
 	public function ajaxMostrarTipoServicio()
 	{
 		$valor = $this->idcategoriaservicio;
@@ -26,17 +25,14 @@ class AjaxTipoServicio
 	}
 }
 
-
-/* Editar usuario*/
 if (isset($_POST["idservicio"])) {
 	$editar = new AjaxTipoServicio();
 	$editar->idservicio = $_POST["idservicio"];
 	$editar->ajaxMostrarServicio();
 }
-/* Mostrar */
+
 if (isset($_POST["idcategoriaservicio"])) {
 	$mostrar = new AjaxTipoServicio();
 	$mostrar->idcategoriaservicio = $_POST["idcategoriaservicio"];
 	$mostrar->ajaxMostrarTipoServicio();
 }
-/* Activar usuario*/

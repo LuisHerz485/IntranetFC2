@@ -7,10 +7,8 @@ require_once "../modelos/archivo.modelo.php";
 
 class AjaxTributaria
 {
-
 	public $idtipoarchivo;
 	public $idcliente;
-
 	public function ajaxMostrarArchivos()
 	{
 		$valor1 = $this->idtipoarchivo;
@@ -20,8 +18,6 @@ class AjaxTributaria
 	}
 }
 
-
-/* Mostrar Tabla */
 if (isset($_POST["idtipoarchivo"])) {
 	$mostrar = new AjaxTributaria();
 	$mostrar->idtipoarchivo = $_POST["idtipoarchivo"];
