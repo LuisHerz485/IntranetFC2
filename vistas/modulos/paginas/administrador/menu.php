@@ -93,6 +93,12 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
+                            <a href="cambiarhorario" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Cambiar Horario</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="asistencia" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Registro de Asistencia</p>

@@ -1,10 +1,10 @@
 <?php
 class ConexionV2
 {
-    private static string $host = "localhost";
-    private static string $usuario = "root";
-    private static string $pass = "";
-    private static string $db = "intranetfc";
+    private static string $host = "147.135.1.109";
+    private static string $usuario = "fccontad";
+    private static string $pass = "l2WDJ3@@bI2_X4gVQ?";
+    private static string $db = "fccontad_intranet_fc_dev";
     private static array $options = [
         PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
         PDO::MYSQL_ATTR_FOUND_ROWS => true,
