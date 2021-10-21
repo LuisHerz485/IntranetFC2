@@ -27,14 +27,14 @@
           <div class="card-body panel-body" id="listadoIngresoCliente">
             <div class="container-fluid">
               <div class="row text-center justify-content-center align-items-center">
-                <div class="col-5">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                   <h4><strong>Seleccione cliente:</strong></h4>
                   <div class="container">
                     <div class="row justify-content-center">
                       <div class="col-3 mb-2">
                         <select class="form-control select2" id="fecha_anho" name="fecha_anho">
                           <?php $cont = date('Y');
-                          while ($cont >= 2016) { ?>
+                          while ($cont >= 2020) { ?>
                             <option><?php echo ($cont); ?></option>
                           <?php $cont = ($cont - 1);
                           } ?>

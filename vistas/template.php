@@ -123,7 +123,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive", "cambiarhorario"];
+          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive", "cambiarhorario", "tardanzas"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorGeneralRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -223,6 +223,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/tiposervicio.js"></script>
 <script src="vistas/js/permiso.js"></script>
 <script src="vistas/js/subida.js"></script>
+<script src="vistas/js/tardanzas.js"></script>
 <script>
   if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);

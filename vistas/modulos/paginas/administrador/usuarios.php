@@ -35,7 +35,6 @@
                     <th>Estado</th>
                     <th>Área</th>
                     <th>Nombre Completo</th>
-                    <th>Asistencia</th>
                     <th>Email</th>
                     <th class="no-exportar">Foto</th>
                   </thead>
@@ -56,7 +55,6 @@
                       }
                       echo '<td>' . $value['departamento'] . '</td>
                           <td>' . $value['nombre'] . ' ' . $value['apellidos'] . '</td>
-                          <td>' . $value['codigopersona'] . '</td>
                           <td>' . $value['email'] . '</td>';
                       if ($value["imagen"] != "") {
                         echo '<td><img src="' . $value['imagen'] . '" width="50px"></td>';
@@ -74,7 +72,6 @@
                     <th>Estado</th>
                     <th>Área</th>
                     <th>Nombre Completo</th>
-                    <th>Asistencia</th>
                     <th>Email</th>
                     <th>Foto</th>
                   </tfoot>
