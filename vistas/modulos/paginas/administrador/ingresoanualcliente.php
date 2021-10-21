@@ -32,7 +32,7 @@
                   <div class="row justify-content-center">
                     <select class="form-control col-3 select2" id="fecha_ingreso" name="fecha_ranking">
                       <?php $cont = date('Y');
-                      while ($cont >= 2016) { ?>
+                      while ($cont >= 2020) { ?>
                         <option><?php echo ($cont); ?></option>
                       <?php $cont = ($cont - 1);
                       } ?>

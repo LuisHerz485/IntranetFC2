@@ -53,19 +53,23 @@ class ControladorAsistencia
 			if ($respuesta) {
 				$respuesta3 = ModeloAsistencia::mdlConsultarAsistencia($respuesta['idusuario']);
 				$tabla = "asistencia";
-
 				$idusuario = $respuesta['idusuario'];
 				$idhorario = $respuesta2['idhorario'];
+				$horaactual = strtotime(date('H:i:s'));
+				$horainicio = strtotime($respuesta2['horaInicio']);
+				$horafin = strtotime($respuesta2['horafin']);
 				if ($respuesta3) {
 					if ($respuesta3['tipo'] === "Entrada") {
 						echo "<script>
 							var idusuario = " . $idusuario . "
 							var tipo = 'Salida'
 							var idhorario=" . $idhorario . "
+							var estado=2
 							var datos = new FormData();
 							datos.append('idusuario', idusuario);
 							datos.append('tipo', tipo);
 							datos.append('idhorario', idhorario);
+							datos.append('estado', estado);
 								Swal.fire({
 									title: '¿Estas seguro?',
 									text: 'Usted va a marcar su salida!',
@@ -94,14 +98,21 @@ class ControladorAsistencia
 							</script>";
 					}
 					if ($respuesta3['tipo'] === "Salida") {
+						if ($horaactual > $horainicio) {
+							$estado = 5;
+						} else {
+							$estado = 2;
+						}
 						echo "<script>
 							var idusuario = " . $idusuario . "
 							var tipo = 'Entrada'
 							var idhorario=" . $idhorario . "
 							var datos = new FormData();
+							var estado=" . $estado . "
 							datos.append('idusuario', idusuario);
 							datos.append('tipo', tipo);
 							datos.append('idhorario', idhorario);
+							datos.append('estado', estado);
 								Swal.fire({
 									title: '¿Estas seguro?',
 									text: 'Usted va a marcar su entrada!',
@@ -138,6 +149,7 @@ class ControladorAsistencia
 							datos.append('idusuario', idusuario);
 							datos.append('tipo', tipo);
 							datos.append('idhorario', idhorario);
+							datos.append('estado', 2);
 								Swal.fire({
 									title: '¿Estas seguro?',
 									text: 'Usted va a marcar su primera entrada!',

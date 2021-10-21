@@ -3,9 +3,6 @@ require_once "conexion-v2.php";
 
 class ModeloHorario
 {
-    /** 
-     * Registra los permisos de los usuarios 
-     */
     public static function mdlRegistrarHorario(string $horainicio, string $horafin): int|false
     {
         $idhorarioactual = false;
@@ -23,13 +20,30 @@ class ModeloHorario
         }
         return $idhorarioactual;
     }
-    public static function mdlActulizarEstado($idhorario): mixed
+    public static function mdlActulizarEstados($idhorario): mixed
     {
         $filasactualizadas = 0;
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $filasactualizadas = $conexion->updateOrDelete("UPDATE horario SET estado=2 WHERE idhorario=?", [$idhorario]);
+            $filasactualizadas = $conexion->updateOrDelete("UPDATE horario SET estado=2 WHERE not idhorario=?", [$idhorario]);
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $filasactualizadas;
+    }
+    public static function mdlHabilitarHorario($idhorario): mixed
+    {
+        $filasactualizadas = false;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $filasactualizadas = $conexion->updateOrDelete("UPDATE horario SET estado=1 WHERE idhorario=?", [$idhorario]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -56,5 +70,22 @@ class ModeloHorario
             }
         }
         return $idhorario;
+    }
+    public static function mdlExisteHorario($horainicio, $horafin): mixed
+    {
+        $existe = false;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $existe = $conexion->getDataSingle("SELECT idhorario from horario WHERE horaInicio=? AND horafin=?", [$horainicio, $horafin]);
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $existe;
     }
 }

@@ -34,7 +34,6 @@
                             </div>
                         </div>
                         <form method="POST" id="formCambiarHorario">
-                            <input type="hidden" name="idhorario" id="idhorario" value="1">
                             <div class="row justify-content-center">
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                     <label class="label-control">Hora de Inicio</label>
@@ -68,5 +67,4 @@
             </div>
         </div>
     </div>
-</div>
 </div>
