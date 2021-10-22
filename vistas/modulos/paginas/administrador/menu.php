@@ -1,5 +1,10 @@
 <!-- Main Sidebar Container -->
-<aside class="main-sidebar sidebar-dark-primary elevation-4" id="barra">
+<style>
+      .sidebar-dark-blue{
+        background: #001850  !important;
+      }
+ </style>
+<aside class="main-sidebar sidebar-dark-blue elevation-4" id="barra" >
     <!-- Brand Logo -->
     <a href="escritorio" class="brand-link">
         <img src="vistas/dist/img/logo-blanco.png" width="240px" id="logo" alt="">
@@ -268,11 +273,12 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://wa.me/+51932270227?text=Necesito%20ayuda%20con%20la%20intranet%20-%20Admin%20FC%20Contadores" target="_blank" class="nav-link">
+                    <a href="https://wa.me/+51992719812?text=Necesito%20ayuda%20con%20la%20intranet%20-%20Admin%20FC%20Contadores" target="_blank" class="nav-link">
                         <i class="fab fa-whatsapp"></i>
                         <p><span>Solicitar Ayuda</span>&emsp;&ensp;<span class="badge bg-success pull-right">Whatsapp</span></p>
                     </a>
                 </li>
+                <br><br>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

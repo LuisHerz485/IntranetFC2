@@ -53,6 +53,7 @@
   <link rel="stylesheet" href="vistas/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <link rel="stylesheet" href="vistas/dist/css/tabla.css">
   <link rel="stylesheet" href="vistas/css/inicio.css">
+  <link rel="stylesheet" href="vistas/css/menu.css">
 
 
 
