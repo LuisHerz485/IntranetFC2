@@ -1,8 +1,8 @@
 <div class="login-box"> 
     <div class="login-logo">
       <img src="vistas/img/sello/logo.png" alt="" class="" width="60%"><br>
-    <a href="#" class="text-dark"><strong class="h1 text-red">Login</strong><b> Administradores</b></a>
-  </div>
+      <a href="#" class="text-dark"><strong class="h1 text-red">Login</strong><b> Administradores</b></a>
+    </div>
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
@@ -13,7 +13,7 @@
           <div class="input-group-text border-0">
             <span class="fas fa-user text-dark"></span>
           </div>
-          <input type="text" class="form-control border-start" placeholder="Usuario" name="usuario">
+          <input type="text" class="form-control border" placeholder="Usuario" name="usuario">
         </div>
 
         <div class="input-group mb-3">
@@ -23,25 +23,21 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-6">
+          <div class="col-3">
           </div>
-          <!-- /.col -->
           <div class="col-6">
             <button type="submit" class="btn btn-danger btn-block"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
           </div>
-          <!-- /.col -->
         </div>
-
         <?php
-            $login = new ControladorUsuarios();
-            $login -> ctrIngresar();
+        $login = new ControladorUsuarios();
+        $login->ctrIngresar();
         ?>
-        
       </form>
-      <br />
+      
       <div class="lockscreen-footer text-center">
-				<a href="marcarasistencia" class="text-red"><strong><i class="fas fa-chevron-circle-left"></i> Atrás</strong></a>
+        <a href="marcarasistencia" class="text-red"><strong><i class="fas fa-chevron-circle-left"></i> Atrás</strong></a>
       </div>
-    <!-- /.login-card-body -->
+    </div>
   </div>
 </div>

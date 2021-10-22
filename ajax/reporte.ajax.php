@@ -5,26 +5,22 @@ require_once "../controladores/validacion.controlador.php";
 require_once "../controladores/reportes.controlador.php";
 require_once "../modelos/reportes.modelo.php";
 
-class AjaxReportes
-{
+http_response_code(400);
+if (isset($_POST["opcion"])) {
+	switch ($_POST["opcion"]) {
+		case "consultaAsistencia": {
+				http_response_code(200);
+				echo json_encode(["respuesta" => ControladorReporte::ctrMostrarReporte()]);
+				break;
+			}
+		case "consultaTardanza": {
+				http_response_code(200);
+				echo json_encode(["respuesta" => ControladorReporte::ctrMostrarTardanzas()]);
+				break;
+			}
 
-	public $idusuario;
-	public $fecha_inicio;
-	public $fecha_fin;
-	public function ajaxMostrarReporte()
-	{
-		$valor1 = $this->idusuario;
-		$valor2 = $this->fecha_inicio;
-		$valor3 = $this->fecha_fin;
-		$respuesta = ControladorReporte::ctrMostrarReporte($valor1, $valor2, $valor3);
-		echo json_encode($respuesta);
+		default: {
+				break;
+			}
 	}
-}
-
-if (isset($_POST["idusuario"])) {
-	$mostrar = new AjaxReportes();
-	$mostrar->idusuario = $_POST["idusuario"];
-	$mostrar->fecha_inicio = $_POST["fecha_inicio"];
-	$mostrar->fecha_fin = $_POST["fecha_fin"];
-	$mostrar->ajaxMostrarReporte();
 }
