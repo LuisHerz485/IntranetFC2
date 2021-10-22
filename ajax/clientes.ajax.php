@@ -3,6 +3,7 @@
 require_once "./validarsesion.php";
 require_once "../controladores/validacion.controlador.php";
 require_once "../controladores/clientes.controlador.php";
+require_once "../controladores/consultapiperu.controlador.php";
 require_once "../modelos/clientes.modelo.php";
 
 class AjaxClientes
@@ -40,4 +41,18 @@ if (isset($_POST["idcliente"])) {
 	$editar = new AjaxClientes();
 	$editar->idcliente = $_POST["idcliente"];
 	$editar->ajaxEditarCliente();
+}
+
+http_response_code(400);
+if (isset($_POST["opcion"])) {
+	switch ($_POST["opcion"]) {
+		case "ConsultaRazonSocial": {
+				http_response_code(200);
+				echo json_encode(["respuesta" => ConsulraRuc_razonSocial($_POST["ruc"])]);
+				break;
+			}
+		default: {
+				break;
+			}
+	}
 }

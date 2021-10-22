@@ -1,22 +1,19 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0 text-dark"></h1>
-        </div><!-- /.col -->
+        </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Servicios </a></li>
             <li class="breadcrumb-item active">Tipo de servicio</li>
           </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- /.content-header -->
   <div class="content">
     <div class="row">
       <div class="col-md-12">
@@ -25,23 +22,28 @@
             <h3 class="card-title">Tipo de servicios&emsp;<button class="btn btn-success" onclick="mostrarform(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
           </div>
           <div class="card-body" id="listadoregistros">
-            <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-6">
-              <label for="">Categoria de servicio(*):</label>
-              <select name="idcategoriaservicio" id="idcategoriaservicio" class="form-control select-picker select2" required>
-                <option value="0">Seleccione categoria...</option>
-                <?php
-                $item = 1;
-                $valor = null;
-                $servicio = ControladorTipoServicio::ctrMostrarCategoriaServicio($item, $valor);
-                foreach ($servicio as $key => $value) {
-                  echo '<option value="' . $value['idcategoriaservicio'] . '">' . $value['nombre'] . '</option>';
-                }
-                ?>
-                ?>
-              </select>
-              <br />
-              <button class="btn btn-warning btnMostrarArchivosS"><strong><i class="far fa-eye"></i> Mostrar</strong></button>
+            <div class="row justify-content-center">
+              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                <label>Categoria de servicio(*):</label>
+                <select name="idcategoriaservicio" id="idcategoriaservicio" class="form-control select-picker select2" required>
+                  <option value="0">Todos</option>
+                  <?php
+                  $item = 1;
+                  $valor = null;
+                  $servicio = ControladorTipoServicio::ctrMostrarCategoriaServicio($item, $valor);
+                  foreach ($servicio as $key => $value) {
+                    echo '<option value="' . $value['idcategoriaservicio'] . '">' . $value['nombre'] . '</option>';
+                  }
+                  ?>
+                  ?>
+                </select>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <label>Opción:</label>
+                <button class="btn btn-warning btnMostrarArchivosS btn-block"><strong><i class="far fa-eye"></i> Mostrar</strong></button>
+              </div>
             </div>
+            <br>
             <div id="tbllistado">
               <table id="mostrarArchivoS" class="table table-striped tablaDataTipoServicio dt-responsive">
                 <thead>
@@ -106,7 +108,6 @@
                 $creartipousuario = new ControladorTipoServicio();
                 $creartipousuario->ctrCrearTipoServicio();
                 ?>
-
               </div>
             </form>
           </div>
@@ -116,8 +117,6 @@
   </div>
 </div>
 </div>
-
-<!-- /.content-wrapper -->
 <div class="modal fade" id="modalservicio" role="dialog">
   <div class="modal-dialog ">
     <form role="form" method="post" enctype="multipart/form-data">
@@ -157,7 +156,6 @@
                   <label for="">Descripción(*):</label>
                   <textarea class="form-control" rows="5" name="descripcionS" id="descripcionS" maxlength="200" placeholder="Descripción" required></textarea>
                 </div>
-
               </div>
             </div>
           </div>

@@ -22,13 +22,15 @@ class AjaxAsistencia
 	public $idusuario;
 	public $tipo;
 	public $idhorario;
+	public $estado;
 	public function ajaxMarcarAsistencia()
 	{
 		$tabla = "asistencia";
 		$valor1 = $this->idusuario;
 		$valor2 = $this->tipo;
 		$valor3 = $this->idhorario;
-		$respuesta = ModeloAsistencia::mdlMarcarAsistencia($tabla, $valor1, $valor2, $valor3);
+		$valor4 = $this->estado;
+		$respuesta = ModeloAsistencia::mdlMarcarAsistencia($tabla, $valor1, $valor2, $valor3, $valor4);
 		echo json_encode($respuesta);
 	}
 }
@@ -45,5 +47,6 @@ if (isset($_POST["idusuario"])) {
 	$editar->idusuario = $_POST["idusuario"];
 	$editar->tipo = $_POST["tipo"];
 	$editar->idhorario = $_POST["idhorario"];
+	$editar->estado = $_POST["estado"];
 	$editar->ajaxMarcarAsistencia();
 }

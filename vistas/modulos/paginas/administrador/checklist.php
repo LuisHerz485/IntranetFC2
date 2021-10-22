@@ -1,22 +1,19 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0 text-dark"></h1>
-        </div><!-- /.col -->
+        </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Administración</a></li>
             <li class="breadcrumb-item active">Check List</li>
           </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- /.content-header -->
   <div class="content">
     <div class="row">
       <div class="col-md-12">
@@ -88,8 +85,6 @@
     </div>
   </div>
 </div>
-
-<!-- MODAL DE AGREGAR ACTIVIDAD AL CHECKLIST -->
 <div class="modal fade" id="modalCheckList" role="dialog">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form id="frmChecklist" method="post" enctype="multipart/form-data">
@@ -107,7 +102,6 @@
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                   <label>Actividades del día: </label>
                   <input type="date" name="fecha" class="form-control-fc">
-
                   <input class="form-control" type="hidden" name="idusuario" value="<?php echo $_SESSION['idusuario']; ?>">
                   <input class="form-control" type="hidden" name="idtipousuario" id="idtipousuario" value="<?php echo $_SESSION['idtipousuario']; ?>">
                   <input class="form-control" type="hidden" name="iddepartamento" id="iddepartamento" value="<?php echo $_SESSION['iddepartamento']; ?>">
@@ -158,8 +152,6 @@
     </form>
   </div>
 </div>
-
-<!-- MODAL DE EDITAR ACTIVIDAD AL CHECKLIST --->
 <div class="modal fade" id="modalEditarActividad" role="dialog">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form id="frmEditarChecklist" method="post" enctype="multipart/form-data">
@@ -209,8 +201,6 @@
     </form>
   </div>
 </div>
-
-<!-- MODAL DE VER ACTIVIDAD--->
 <div class="modal fade" id="modalVerActividad" role="dialog">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
@@ -228,7 +218,6 @@
             </div>
           </div>
         </div>
-
       </div>
       <div class="modal-footer">
         <button id="btnSalirVerActividad" type="button" class="btn btn-danger btn-block" data-dismiss="modal">Cancelar</button>

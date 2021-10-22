@@ -7,11 +7,16 @@ class ControladorHorario
         if (isset($_POST["horainicio"], $_POST["horafin"], $_POST["idhorario"])) {
             $horainicio = date("H:i", strtotime($_POST["horainicio"]));
             $horafin = date("H:i", strtotime($_POST["horafin"]));
-            $idhorario = ControladorValidacion::validarID($_POST["idhorario"]);
             if (ControladorValidacion::formatoHoraMinutos($horainicio) && ControladorValidacion::formatoHoraMinutos($horafin)) {
-
-                if (ModeloHorario::mdlRegistrarHorario($horainicio, $horafin) && $idhorario) {
-                    return ModeloHorario::mdlActulizarEstado($idhorario);
+                $idhorarioexistente = ModeloHorario::mdlExisteHorario($horainicio, $horafin);
+                if ($idhorarioexistente["idhorario"]) {
+                    ModeloHorario::mdlHabilitarHorario($idhorarioexistente["idhorario"]);
+                    return ModeloHorario::mdlActulizarEstados($idhorarioexistente["idhorario"]);
+                } else {
+                    $idhorariocreado = ModeloHorario::mdlRegistrarHorario($horainicio, $horafin);
+                    if ($idhorariocreado) {
+                        return ModeloHorario::mdlActulizarEstados($idhorariocreado);
+                    }
                 }
             }
         }

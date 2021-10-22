@@ -1,22 +1,19 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark"></h1>
-                </div><!-- /.col -->
+                </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Administración</a></li>
                         <li class="breadcrumb-item active">Check List Asignados</li>
                     </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.content-header -->
     <div class="content">
         <div class="row">
             <div class="col-md-12">
@@ -86,8 +83,6 @@
         </div>
     </div>
 </div>
-
-<!-- MODAL DE VER ACTIVIDAD--->
 <div class="modal fade" id="modalVerActividad" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
@@ -105,7 +100,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="modal-footer">
                 <button id="btnSalirVerActividad" type="button" class="btn btn-danger btn-block" data-dismiss="modal">Cancelar</button>
