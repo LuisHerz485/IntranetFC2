@@ -63,7 +63,6 @@
 							<div class="lockscreen-footer text-center">
 								<a href="inicio"><strong class="m-3 text-red"><i class="fas fa-chevron-circle-left"></i> Atrás</strong></a>
 							</div>
-
 						</div>
 					</div>
 				</div>
