@@ -1,22 +1,19 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0 text-dark"></h1>
-        </div><!-- /.col -->
+        </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Ingresos</a></li>
             <li class="breadcrumb-item active">Presupuesto de Ingresos</li>
           </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- /.content-header -->
   <div class="content">
     <div class="row">
       <div class="col-md-12">
@@ -27,14 +24,14 @@
           <div class="card-body panel-body" id="listadoIngresoCliente">
             <div class="container-fluid">
               <div class="row text-center justify-content-center align-items-center">
-                <div class="col-5">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                   <h4><strong>Seleccione cliente:</strong></h4>
                   <div class="container">
                     <div class="row justify-content-center">
                       <div class="col-3 mb-2">
                         <select class="form-control select2" id="fecha_anho" name="fecha_anho">
                           <?php $cont = date('Y');
-                          while ($cont >= 2016) { ?>
+                          while ($cont >= 2020) { ?>
                             <option><?php echo ($cont); ?></option>
                           <?php $cont = ($cont - 1);
                           } ?>
@@ -54,7 +51,6 @@
                       </div>
                     </div>
                   </div>
-
                   <button class="btn btn-success btnIngresoCliente mt-2"><i class="fas fa-search-dollar"> Buscar</i></button>
                   <div class="row justify-content-center mt-2">
                     <div class="info-box bg-secondary col-9">
@@ -88,6 +84,3 @@
     </div>
   </div>
 </div>
-</div>
-
-<!-- /.content-wrapper -->

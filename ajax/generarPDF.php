@@ -14,7 +14,6 @@ function getCodigoRecibo(string $id = "")
   return substr_replace($formato, $id, -$longitud);
 }
 
-
 $dataConstancia = null;
 if (isset($_POST["idcobranza"])) {
   $dataConstancia = ModeloConstancia::mdlDataConstancia(intval($_POST["idcobranza"]));
@@ -31,7 +30,6 @@ if ($dataConstancia && isset($dataConstancia['iddetallecobranza'])) {
     "cliente" => ["razonsocial" => $dataConstancia['razonsocial'], "ruc" => $dataConstancia['ruc']],
     "totalRecibido" => floatval($dataConstancia['totalRecibido']), "montoTotal" => floatval($dataConstancia['montoTotal']), "concepto" => "POR EL SERVICIO CONTABLE",
   ];
-
 
   $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);
   $formatter = new NumeroALetras();

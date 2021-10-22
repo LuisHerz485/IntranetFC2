@@ -8,9 +8,7 @@ require_once "../modelos/representante.modelo.php";
 
 class AjaxAgenda
 {
-	//variable enviada para Mostrar la agenda de un cliente en especifico
 	public $idclienteA;
-	//funcion para mostrar agenda de un cliente en especifico
 	public function ajaxMostrarAgenda()
 	{
 		$item = "idcliente";
@@ -19,7 +17,6 @@ class AjaxAgenda
 		echo json_encode($respuesta);
 	}
 
-	//variables para agregar atributos a la tabla agenda
 	public $idclienteAg;
 	public $nombrecompleto;
 	public $detallecargo;
@@ -29,7 +26,6 @@ class AjaxAgenda
 	public $correo2;
 	public $editarAg;
 	public $idrepresentante;
-	//funcion donde se agrega agenda/representante de un cliente o en caso contrario editarlo mdiante la variable accion
 	public function ajaxEditarAgregarAgenda()
 	{
 		$accion = $this->editarAg;
@@ -57,9 +53,8 @@ class AjaxAgenda
 		}
 		echo json_encode($respuesta);
 	}
-	// variable para editar represntante
+	
 	public $idrepre;
-	//funcion que busca representate para poider editar
 	public function ajaxEditarRepresentante()
 	{
 		$tabla = "agenda";
@@ -70,7 +65,6 @@ class AjaxAgenda
 	}
 
 	public $idrepreE;
-	//funcion que eliminar representate y agenda
 	public function ajaxEliminarRepresentante()
 	{
 		$valor = $this->idrepreE;
@@ -79,15 +73,12 @@ class AjaxAgenda
 	}
 }
 
-/* Mostrar agenda*/
 if (isset($_POST["idclienteA"])) {
 	$mostrarA = new AjaxAgenda();
 	$mostrarA->idclienteA = $_POST["idclienteA"];
 	$mostrarA->ajaxMostrarAgenda();
 }
 
-
-/* Agregar/Editar agenda*/
 if (isset($_POST["idclienteAg"])) {
 	$agregarA = new AjaxAgenda();
 	$agregarA->idclienteAg = $_POST["idclienteAg"];
@@ -102,14 +93,12 @@ if (isset($_POST["idclienteAg"])) {
 	$agregarA->ajaxEditarAgregarAgenda();
 }
 
-/* Editar agenda*/
 if (isset($_POST["idrepre"])) {
 	$editar = new AjaxAgenda();
 	$editar->idrepre = $_POST["idrepre"];
 	$editar->ajaxEditarRepresentante();
 }
 
-/* Eliminar agenda*/
 if (isset($_POST["idrepreE"])) {
 	$eliminar = new AjaxAgenda();
 	$eliminar->idrepreE = $_POST["idrepreE"];

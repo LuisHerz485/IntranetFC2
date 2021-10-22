@@ -12,7 +12,11 @@ class ControladorTipoServicio
 	static public function ctrMostrarTipoServicio($valor)
 	{
 		$tabla = "servicio";
-		$respuesta = ModeloTipoServicio::mdlMostrarTipoServicio($tabla, $valor);
+		if ($valor == 0) {
+			$respuesta = ModeloTipoServicio::mdlMostrarServicios();
+		} else {
+			$respuesta = ModeloTipoServicio::mdlMostrarTipoServicio($tabla, $valor);
+		}
 		return $respuesta;
 	}
 
@@ -25,13 +29,13 @@ class ControladorTipoServicio
 
 	static public function ctrCrearTipoServicio()
 	{
-		if (isset($_POST['nombre'],$_POST['idcategoriaservicio'],$_POST['descripcion'],$_POST['precio'])) {
+		if (isset($_POST['nombre'], $_POST['idcategoriaservicio'], $_POST['descripcion'], $_POST['precio'])) {
 			$idcategoriaservicio = ControladorValidacion::validarID($_POST['idcategoriaservicio']);
 			$precio = ControladorValidacion::validarPrecio($_POST['precio']);
 			if (
 				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ.\/ ]+$/', $_POST['nombre']) &&
 				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ.\/;,!?¡()¿ ]+$/', $_POST['descripcion']) &&
-				 $idcategoriaservicio
+				$idcategoriaservicio
 			) {
 
 				$tabla = "servicio";
@@ -74,7 +78,7 @@ class ControladorTipoServicio
 
 	static public function ctrEditarTipoServicio()
 	{
-		if (isset($_POST['nombreS'],$_POST['idservicioS'],$_POST['idcategoriaservicioS'],$_POST['precioS'],$_POST['descripcionS'])) {
+		if (isset($_POST['nombreS'], $_POST['idservicioS'], $_POST['idcategoriaservicioS'], $_POST['precioS'], $_POST['descripcionS'])) {
 			$idservicio = ControladorValidacion::validarID($_POST['idservicioS']);
 			$idcategoriaservicio = ControladorValidacion::validarID($_POST['idcategoriaservicioS']);
 			$precio = ControladorValidacion::validarPrecio($_POST['precioS']);
@@ -83,7 +87,7 @@ class ControladorTipoServicio
 				preg_match('/^[a-zA-Z0-9ñÑaáÁéÉíÍóÓúÚ.\/;,!?¡()¿ ]+$/', $_POST['descripcionS']) &&
 				$idservicio && $idcategoriaservicio && $precio
 			) {
-				
+
 				$tabla = "servicio";
 
 				$datos = array(

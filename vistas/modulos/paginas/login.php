@@ -25,23 +25,19 @@
         <div class="row">
           <div class="col-3">
           </div>
-          <!-- /.col -->
           <div class="col-6">
             <button type="submit" class="btn btn-danger btn-block"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
           </div>
-          <!-- /.col -->
         </div>
-
         <?php
-            $login = new ControladorUsuarios();
-            $login -> ctrIngresar();
+        $login = new ControladorUsuarios();
+        $login->ctrIngresar();
         ?>
-        
       </form>
       
       <div class="lockscreen-footer text-center">
-				<a href="marcarasistencia" class="text-red"><strong><i class="fas fa-chevron-circle-left"></i> Atrás</strong></a>
+        <a href="marcarasistencia" class="text-red"><strong><i class="fas fa-chevron-circle-left"></i> Atrás</strong></a>
       </div>
-    <!-- /.login-card-body -->
+    </div>
   </div>
 </div>

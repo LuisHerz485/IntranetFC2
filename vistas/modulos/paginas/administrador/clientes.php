@@ -1,26 +1,23 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0 text-dark"></h1>
-        </div><!-- /.col -->
+        </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Administración de Clientes</a></li>
             <li class="breadcrumb-item active">Clientes</li>
           </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+        </div>
+      </div>
+    </div>
   </div>
   <?php
   ControladorClientes::ctrCrearCliente();
   ControladorClientes::ctrEditarContra();
   ?>
-  <!-- /.content-header -->
   <div class="content">
     <div class="row">
       <div class="col-md-12">
@@ -79,7 +76,12 @@
                   <label for="">RUC(*):</label>
                   <input class="form-control" type="hidden" name="editarDA" id="editarDA" value="no">
                   <input class="form-control" type="hidden" name="idcliente" id="idcliente">
-                  <input class="form-control" type="text" name="ruc" id="ruc" maxlength="12" placeholder="RUC" required>
+                  <div class="input-group mb-3">
+                    <input class="form-control" type="text" name="ruc" id="ruc" maxlength="12" placeholder="RUC" required>
+                    <div class="input-group-append">
+                      <button class="btn btn-success" id="btnBuscarRazon" type="button"><i class="fas fa-search"></i> Buscar</button>
+                    </div>
+                  </div>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="">Razón Social(*):</label>
@@ -96,7 +98,7 @@
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="">Identificador Google Drive(*):</label>
-                  <input class="form-control" type="text" name="iddrive" id="iddrive" maxlength="20" placeholder="ID Google Drive" required>
+                  <input class="form-control" type="text" name="iddrive" id="iddrive" placeholder="ID Google Drive" required>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label class="panel" for="">Imagen:</label>
@@ -177,9 +179,6 @@
     </div>
   </div>
 </div>
-</div>
-
-<!-- Modal Contraseña -->
 <div class="modal fade" id="modalContra" role="dialog">
   <div class="modal-dialog">
     <form role="form" method="post" enctype="multipart/form-data">
@@ -207,5 +206,3 @@
     </form>
   </div>
 </div>
-
-<!-- /.content-wrapper -->

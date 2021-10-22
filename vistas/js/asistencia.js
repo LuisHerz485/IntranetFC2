@@ -42,6 +42,7 @@ $("#btnguardarHorario").on("click", function () {
       if (respuesta) {
         $("#horainicio").attr("disabled", true);
         $("#horafin").attr("disabled", true);
+        $("#btnCambiarHorario").removeAttr("disabled");
         Swal.fire({
           title: "Registrado!",
           text: "¡Se cambio a un Nuevo Horario!",

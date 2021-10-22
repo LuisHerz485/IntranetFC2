@@ -1,23 +1,20 @@
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 text-dark"></h1>
-          </div><!-- /.col -->
+          </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Administración de Usuarios</a></li>
               <li class="breadcrumb-item active">Usuarios</li>
             </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+          </div>
+        </div>
+      </div>
     </div>
     <?php ControladorUsuarios::ctrCrearUsuario(); ?>
-    <!-- /.content-header -->
     <div class="content">
       <div class="row">
         <div class="col-md-12">
@@ -35,7 +32,6 @@
                     <th>Estado</th>
                     <th>Área</th>
                     <th>Nombre Completo</th>
-                    <th>Asistencia</th>
                     <th>Email</th>
                     <th class="no-exportar">Foto</th>
                   </thead>
@@ -56,7 +52,6 @@
                       }
                       echo '<td>' . $value['departamento'] . '</td>
                           <td>' . $value['nombre'] . ' ' . $value['apellidos'] . '</td>
-                          <td>' . $value['codigopersona'] . '</td>
                           <td>' . $value['email'] . '</td>';
                       if ($value["imagen"] != "") {
                         echo '<td><img src="' . $value['imagen'] . '" width="50px"></td>';
@@ -74,7 +69,6 @@
                     <th>Estado</th>
                     <th>Área</th>
                     <th>Nombre Completo</th>
-                    <th>Asistencia</th>
                     <th>Email</th>
                     <th>Foto</th>
                   </tfoot>
@@ -158,9 +152,6 @@
       </div>
     </div>
   </div>
-  </div>
-
-  <!-- Modal Contraseña -->
   <div class="modal fade" id="modalContra" role="dialog">
     <div class="modal-dialog">
       <form role="form" method="post" enctype="multipart/form-data">

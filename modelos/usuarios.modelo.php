@@ -15,7 +15,7 @@ class ModeloUsuarios
                 $stmt = Conexion::conectar()->prepare("SELECT U.idusuario as idusuario, D.iddepartamento as iddepartamento, TU.idtipousuario as idtipousuario, U.estado as estado, U.nombre AS nombre, U.apellidos AS apellidos, U.login AS usuario, U.password1 as password1, U.imagen as imagen, TU.nombre as tipousuario, D.nombre as departamento, U.email as email, U.codigopersona as codigopersona
                     FROM $tabla U
                     JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario
-                    JOIN departamento D ON U.iddepartamento = D.iddepartamento WHERE $item = :$item ORDER BY estado DESC");
+                    JOIN departamento D ON U.iddepartamento = D.iddepartamento WHERE $item = :$item ORDER BY estado asc, departamento desc");
                 $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
                 $stmt->execute();
                 return $stmt->fetch();
@@ -24,7 +24,7 @@ class ModeloUsuarios
             $stmt = Conexion::conectar()->prepare("SELECT U.idusuario as idusuario, D.iddepartamento as iddepartamento, TU.idtipousuario as idtipousuario, U.estado as estado, U.nombre AS nombre, U.apellidos AS apellidos, U.login AS usuario, U.password1 as password1, U.imagen as imagen, TU.nombre as tipousuario, D.nombre as departamento, U.email as email, U.codigopersona as codigopersona
                 FROM $tabla U
                 JOIN tipousuario TU ON U.idtipousuario = TU.idtipousuario
-                JOIN departamento D ON U.iddepartamento = D.iddepartamento ORDER BY estado DESC");
+                JOIN departamento D ON U.iddepartamento = D.iddepartamento ORDER BY estado desc, departamento asc");
             $stmt->execute();
             return $stmt->fetchAll();
         }

@@ -78,7 +78,6 @@ function CargarHorario() {
     dataType: "json",
     success: function ({ respuesta }) {
       if (respuesta) {
-        $("#idhorario").val(respuesta["idhorario"]);
         $("#horainicio").val(respuesta["horaInicio"]);
         $("#horafin").val(respuesta["horafin"]);
       }

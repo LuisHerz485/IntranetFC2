@@ -3,14 +3,13 @@
 require_once "./validarsesion.php";
 require_once "../controladores/validacion.controlador.php";
 require_once "../controladores/clientes.controlador.php";
+require_once "../controladores/consultapiperu.controlador.php";
 require_once "../modelos/clientes.modelo.php";
 
 class AjaxClientes
 {
-	//variables para saber si esta activo el cliente y saber id activo
 	public $activarEstado;
 	public $activarIdCliente;
-	//funcion para activar el usuario cliente mediante el estado
 	public function ajaxActivarCliente()
 	{
 		$tabla = "cliente";
@@ -20,9 +19,8 @@ class AjaxClientes
 		$valor2 = $this->activarIdCliente;
 		$respuesta = ModeloClientes::mdlActualizarCliente($tabla, $item1, $valor1, $item2, $valor2);
 	}
-	//variable para obtener el idcliente
+
 	public $idcliente;
-	//funcion para editar cliente mediante su id
 	public function ajaxEditarCliente()
 	{
 		$item = "idcliente";
@@ -32,7 +30,6 @@ class AjaxClientes
 	}
 }
 
-/* Activar cliente*/
 if (isset($_POST['estado'])) {
 	$estado = new AjaxClientes();
 	$estado->activarEstado = $_POST['estado'];
@@ -40,9 +37,22 @@ if (isset($_POST['estado'])) {
 	$estado->ajaxActivarCliente();
 }
 
-/* Editar cliente*/
 if (isset($_POST["idcliente"])) {
 	$editar = new AjaxClientes();
 	$editar->idcliente = $_POST["idcliente"];
 	$editar->ajaxEditarCliente();
+}
+
+http_response_code(400);
+if (isset($_POST["opcion"])) {
+	switch ($_POST["opcion"]) {
+		case "ConsultaRazonSocial": {
+				http_response_code(200);
+				echo json_encode(["respuesta" => ConsulraRuc_razonSocial($_POST["ruc"])]);
+				break;
+			}
+		default: {
+				break;
+			}
+	}
 }

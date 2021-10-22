@@ -36,7 +36,7 @@ class ModeloConstancia
 
     static public function mdlMostrarIngresoCliente($anho)
     {
-        $stmt = Conexion::conectar()->prepare("SELECT DISTINCT SUM(C.monto) AS monto, Cli.razonsocial as razonsocial FROM constancia C JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza JOIN cobranza Co ON C.idcobranza = Co.idcobranza JOIN cliente Cli ON Cli.idcliente = Co.idcliente WHERE (DC.estado = 1 OR DC.estado = 2) AND YEAR(fechapago) = $anho GROUP BY razonsocial ORDER BY monto DESC");
+        $stmt = Conexion::conectar()->prepare("SELECT DISTINCT SUM(C.monto) AS monto, Cli.razonsocial as razonsocial, Cli.estado as estado FROM constancia C JOIN detallecobranza DC ON C.iddetallecobranza = DC.iddetallecobranza JOIN cobranza Co ON C.idcobranza = Co.idcobranza JOIN cliente Cli ON Cli.idcliente = Co.idcliente WHERE (DC.estado = 1 OR DC.estado = 2) AND YEAR(fechapago) = $anho GROUP BY razonsocial ORDER BY estado asc, monto desc");
         $stmt->execute();
         return $stmt->fetchAll();
     }

@@ -1,16 +1,13 @@
 <?php
 
-
 require_once "../controladores/validacion.controlador.php";
 require_once "../controladores/asistencia.controlador.php";
 require_once "../modelos/asistencia.modelo.php";
 
 class AjaxAsistencia
 {
-	//variables usadas para editar detalle de asistencia
 	public $codigo;
 	public $fecha;
-	//funcion para editar detalle de asistenccia
 	public function ajaxEditarDetalleAsistencia()
 	{
 		$tabla = "asistencia";
@@ -21,24 +18,23 @@ class AjaxAsistencia
 		$respuesta = ModeloAsistencia::mdlMostrarDetalleAsistencia($tabla, $item1, $valor1, $item2, $valor2);
 		echo json_encode($respuesta);
 	}
-	//variable usada para editar - marcar asistencia
+
 	public $idusuario;
 	public $tipo;
 	public $idhorario;
-	//funcion para ditar - marcar asistencia
+	public $estado;
 	public function ajaxMarcarAsistencia()
 	{
 		$tabla = "asistencia";
 		$valor1 = $this->idusuario;
 		$valor2 = $this->tipo;
 		$valor3 = $this->idhorario;
-		$respuesta = ModeloAsistencia::mdlMarcarAsistencia($tabla, $valor1, $valor2, $valor3);
+		$valor4 = $this->estado;
+		$respuesta = ModeloAsistencia::mdlMarcarAsistencia($tabla, $valor1, $valor2, $valor3, $valor4);
 		echo json_encode($respuesta);
 	}
 }
 
-
-/* Editar detalle asistencia */
 if (isset($_POST["codigo"])) {
 	$editar = new AjaxAsistencia();
 	$editar->codigo = $_POST["codigo"];
@@ -46,11 +42,11 @@ if (isset($_POST["codigo"])) {
 	$editar->ajaxEditarDetalleAsistencia();
 }
 
-/* Editar marcar asistencia */
 if (isset($_POST["idusuario"])) {
 	$editar = new AjaxAsistencia();
 	$editar->idusuario = $_POST["idusuario"];
 	$editar->tipo = $_POST["tipo"];
 	$editar->idhorario = $_POST["idhorario"];
+	$editar->estado = $_POST["estado"];
 	$editar->ajaxMarcarAsistencia();
 }

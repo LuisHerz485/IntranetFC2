@@ -1,13 +1,8 @@
-<!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4" id="barra">
-    <!-- Brand Logo -->
     <a href="escritorio" class="brand-link">
         <img src="vistas/dist/img/logo-blanco.png" width="240px" id="logo" alt="">
     </a>
-
-    <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center;">
             <div class="image" style="padding-left: 3px; padding-right: 10px;">
                 <?php
@@ -28,13 +23,8 @@
                 ?>
             </div>
         </div>
-
-        <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
                 <li class="nav-header">GENERAL</li>
                 <li class="nav-item">
                     <a href="escritorio" class="nav-link">
@@ -110,6 +100,12 @@
                                 <p>Reportes</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="tardanzas" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Tardanzas</p>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item has-treeview">
@@ -132,8 +128,6 @@
                         </li>
                     </ul>
                 </li>
-
-
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="fas fa-folder"></i>
@@ -187,7 +181,6 @@
                             </li>
                         </ul>
                     </li>
-
                     <li class="nav-item has-treeview">
                         <a href="#" class="nav-link">
                             <i class="fas fa-folder"></i>
@@ -258,25 +251,18 @@
                             </li>
                         </ul>
                     </li>
-
                 <?php } ?>
-                <li class="nav-header">HERRAMIENTAS</li>
+                <li class="nav-header">API PERU</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-folder"></i>
-                        <p>Consultas<i class="fas fa-angle-left right"></i></p>
+                        <i class="fas fa-folder"></i>
+                        <p>Consultas<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
                             <a href="consultaruc" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Consulta RUC</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="consultadni" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Consulta DNI</p>
+                                <p>Consulta Ruc</p>
                             </a>
                         </li>
                     </ul>
@@ -296,7 +282,5 @@
                 </li>
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>
