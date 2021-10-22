@@ -3,7 +3,7 @@ class ConexionV2
 {
     private static string $host = "147.135.1.109";
     private static string $usuario = "fccontad";
-    private static string $pass = "l2WDJ3@@bI2_X4gVQ?";
+    private static string $pass = "l2WDJ3@@bI2_X4gVQ?1121";
     private static string $db = "fccontad_intranet_fc_dev";
     private static array $options = [
         PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8",
