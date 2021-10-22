@@ -1,22 +1,19 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0 text-dark"></h1>
-        </div><!-- /.col -->
+        </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Administración</a></li>
             <li class="breadcrumb-item active">Check List</li>
           </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- /.content-header -->
   <div class="content">
     <div class="row">
       <div class="col-md-12">
@@ -25,28 +22,28 @@
             <h3 class="card-title">Check List</h3>
           </div>
           <div id="listadoUserCL" class="card-body panel-body">
-            <?php if($_SESSION['iddepartamento'] == 9){ ?>
-            <div class="row">
-              <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-10">
-                <label class="h5">Consultar por área:</label>
-                <select name="idarea" id="idarea" class="form-control select-picker select2" required>
-                  <option value="0">Seleccione departamento...</option>
-                    <?php 
-                      $item = 1;
-                      $valor = null;
-                      $departamento = ControladorDepartamento::ctrMostrarDepartamento($item,$valor);
-                      foreach($departamento as $key => $value){ 
-                        echo '<option value="'.$value['iddepartamento'].'">'.$value['nombre'].'</option>';
-                      }
+            <?php if ($_SESSION['iddepartamento'] == 9) { ?>
+              <div class="row">
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-10">
+                  <label class="h5">Consultar por área:</label>
+                  <select name="idarea" id="idarea" class="form-control select-picker select2" required>
+                    <option value="0">Seleccione departamento...</option>
+                    <?php
+                    $item = 1;
+                    $valor = null;
+                    $departamento = ControladorDepartamento::ctrMostrarDepartamento($item, $valor);
+                    foreach ($departamento as $key => $value) {
+                      echo '<option value="' . $value['iddepartamento'] . '">' . $value['nombre'] . '</option>';
+                    }
                     ?>
-                </select>
-              </div>
-              <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top: 30px;">
+                  </select>
+                </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top: 30px;">
                   <button class="btn btn-warning btnCheckArea"><strong><i class="far fas fa-search"></i> Mostrar</strong></button>
+                </div>
               </div>
-            </div>
             <?php } ?>
-            <div >
+            <div>
               <table id="listaCheckUser" class="table table-striped tablaDataTableC dt-responsive text-center">
                 <thead>
                   <th>Nombre</th>
@@ -56,7 +53,7 @@
                 </thead>
                 <tbody>
                   <?php
-                  if($_SESSION['iddepartamento'] != 9) {
+                  if ($_SESSION['iddepartamento'] != 9) {
                     $usuarios = ModeloUsuarios::mdlListarUsuariosPorDepartamento($_SESSION["iddepartamento"]);
                     if ($usuarios) {
                       foreach ($usuarios as $usuario) {
@@ -71,7 +68,7 @@
                   } else if ($_SESSION['iddepartamento'] == 9) {
                     $item = null;
                     $valor = null;
-                    $usergeneral = ControladorUsuarios::ctrMostrarUsuario($item,$valor);
+                    $usergeneral = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
                     if ($usergeneral) {
                       foreach ($usergeneral as $usuario) {
                         if ($usuario['estado'] == 1) {
@@ -82,10 +79,9 @@
                           <td><button class="btn btn-s btn-warning btnListarCheckList" idusuario="' . $usuario["idusuario"] . '" iddepartamento="' . $usuario["iddepartamento"] . '" idtipousuario="' . $usuario["idtipousuario"] . '" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button></td>
                           </tr>';
                         }
-                        
                       }
                     }
-                  }  
+                  }
                   ?>
                 </tbody>
                 <tfoot>
@@ -98,7 +94,7 @@
             </div>
           </div>
           <div class="card-body panel-body" id="formularioCheckList">
-            <form  id="frmFiltroChecklist"  >
+            <form id="frmFiltroChecklist">
               <div class="container-fluid">
                 <div class="row">
                   <div class="col-3">
@@ -157,16 +153,11 @@
               <button class="btn btn-success btnAgregarCL float-sm-right mr-3 mt-2" data-toggle="modal" data-target="#modalCheckList"><i class="far fa-plus-square"></i> Añadir</button>
             </div>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<!-- /.content-wrapper -->
-
-<!-- MODAL DE AGREGAR ACTIVIDAD AL CHECKLIST -->
 <div class="modal fade" id="modalCheckList" role="dialog">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form id="frmChecklist" method="post" enctype="multipart/form-data">
@@ -234,8 +225,6 @@
     </form>
   </div>
 </div>
-
-<!-- MODAL DE AGREGAR ACTIVIDAD AL CHECKLIST --->
 <div class="modal fade" id="modalEditarActividad" role="dialog">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form id="frmEditarChecklist" method="post" enctype="multipart/form-data">
@@ -285,8 +274,6 @@
     </form>
   </div>
 </div>
-
-<!-- MODAL DE VER ACTIVIDAD--->
 <div class="modal fade" id="modalVerActividad" role="dialog">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
@@ -304,7 +291,6 @@
             </div>
           </div>
         </div>
-
       </div>
       <div class="modal-footer">
         <button id="btnSalirVerActividad" type="button" class="btn btn-danger btn-block" data-dismiss="modal">Cancelar</button>

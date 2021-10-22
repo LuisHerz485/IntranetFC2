@@ -1,21 +1,18 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark"></h1>
-                </div><!-- /.col -->
+                </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Administarcion del Drive</a></li>
                     </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.content-header -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -27,7 +24,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col">
-                                    <button type="button" class="btn btn-primary btn-block" id="btnListarArchivosCliente" carpetaPadreId="">
+                                    <button type="button" class="btn btn-primary btn-block" id="btnListarArchivosCliente" carpetaPadreId="<?php echo $_SESSION["iddrive"]; ?>">
                                         <div class="h4 mb-0"><i class="fas fa-list"></i> Listar</div>
                                     </button>
                                 </div>
@@ -40,7 +37,7 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <button type="button" class="btn btn-warning btn-block" id="btnVolverAlInicioCliente">
+                                    <button type="button" class="btn btn-warning btn-block" id="btnVolverAlInicioCliente" carpetaPadreId="<?php echo $_SESSION["iddrive"]; ?>">
                                         <div class="h4 mb-0">
                                             <i class="fas fa-home"></i>
                                             Volver al Inicio
@@ -57,7 +54,7 @@
                                     </button>
                                 </div>
                                 <div class="col">
-                                    <button type="button" class="btn btn-info btn-block" id="btnSubirNivelCliente" carpetaPadreId="">
+                                    <button type="button" class="btn btn-info btn-block" id="btnSubirNivelCliente" carpetaPadreId="<?php echo $_SESSION["iddrive"]; ?>">
                                         <div class="h4 mb-0">
                                             <i class="fas fa-level-up-alt"></i>
                                             Subir de Nivel
@@ -66,6 +63,13 @@
                                 </div>
                             </div>
                             <hr>
+                            <div class="row">
+                                <div class="col-12">
+                                    <ol class="breadcrumb" id="direcciones">
+                                        <li class="breadcrumb-item"><a><?php echo $_SESSION["razonsocial"]; ?></a></li>
+                                    </ol>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col">
                                     <table id="mostrarArchivos" class="table table-striped tablaDataArchivos dt-responsive">
@@ -76,7 +80,6 @@
                                             <th>Fecha de Creacion</th>
                                         </thead>
                                         <tbody style="font-size: 20px">
-
                                         </tbody>
                                         <tfoot>
                                             <th>Opciones</th>
@@ -94,8 +97,6 @@
         </div>
     </div>
 </div>
-
-<!-- Modal de subir archivo -->
 <div class="modal fade" id="modalSubirArchivo" role="dialog">
     <div class="modal-dialog">
         <form id="frmSubirArchivo">
@@ -136,8 +137,6 @@
         </form>
     </div>
 </div>
-
-<!-- Modal de crear carpeta -->
 <div class="modal fade" id="modalCrearCarpeta" role="dialog">
     <div class="modal-dialog">
         <form id="frmCrearCarpeta">

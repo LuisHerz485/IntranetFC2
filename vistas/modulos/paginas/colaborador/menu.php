@@ -1,13 +1,8 @@
-<!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4" id="barra">
-    <!-- Brand Logo -->
     <a href="escritorio" class="brand-link">
         <img src="vistas/dist/img/logo-blanco.png" width="240px" id="logo" alt="">
     </a>
-
-    <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center;">
             <div class="image" style="padding-left: 3px; padding-right: 10px;">
                 <?php
@@ -28,20 +23,15 @@
                 ?>
             </div>
         </div>
-
-        <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
                 <li class="nav-header">GENERAL</li>
                 <li class="nav-item">
                     <a href="escritorio" class="nav-link">
                         <i class="fas fa-desktop"></i>
                         <p class="ml-5">Escritorio</p>
                     </a>
-                </li> 
+                </li>
                 <li class="nav-header">ADMINISTRACION</li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
@@ -69,17 +59,15 @@
                         </li>
                     </ul>
                 </li>
-
                 <?php if ($_SESSION['iddepartamento'] == 3 || $_SESSION['iddepartamento'] == 5 || $_SESSION['iddepartamento'] == 8 || $_SESSION['iddepartamento'] == 12 || $_SESSION['iddepartamento'] == 13 || $_SESSION['iddepartamento'] == 14 || $_SESSION['iddepartamento'] == 17) { ?>
-                <li class="nav-header">DRIVE</li>
-                <li class="nav-item has-treeview">
-                    <a href="admindrive" class="nav-link">
-                        <i class="fas fa-folder"></i>
-                        <p style="font-size: 15px;" class="ml-1">Administración Drive</p>
-                    </a>
-                </li>
+                    <li class="nav-header">DRIVE</li>
+                    <li class="nav-item has-treeview">
+                        <a href="admindrive" class="nav-link">
+                            <i class="fas fa-folder"></i>
+                            <p style="font-size: 15px;" class="ml-1">Administración Drive</p>
+                        </a>
+                    </li>
                 <?php } ?>
-
                 <li class="nav-header">AYUDA</li>
                 <li class="nav-item">
                     <a href="https://www.youtube.com/watch?v=VwHqLrttPJo&amp;ab_channel=FCCONTADORESYASOCIADOS" target="_blank" class="nav-link">
@@ -95,7 +83,5 @@
                 </li>
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>
