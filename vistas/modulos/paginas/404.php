@@ -1,6 +1,4 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
@@ -14,26 +12,17 @@
           </ol>
         </div>
       </div>
-    </div><!-- /.container-fluid -->
+    </div>
   </section>
-
-  <!-- Main content -->
   <section class="content">
     <div class="error-page">
       <h2 class="headline text-warning"> 404</h2>
-
       <div class="error-content">
         <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Pagina no encontrada.</h3>
         <p>
           Podrias volver a la navegacion dando clic en <a href="<?php echo (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") ? "escritorio" : "./"; ?>">volver al inicio</a>
         </p>
-
-
       </div>
-      <!-- /.error-content -->
     </div>
-    <!-- /.error-page -->
   </section>
-  <!-- /.content -->
 </div>
-<!-- /.content-wrapper -->

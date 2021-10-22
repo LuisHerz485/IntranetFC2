@@ -1,21 +1,18 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark"></h1>
-                </div><!-- /.col -->
+                </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Administarcion del Drive</a></li>
                     </ol>
-                </div><!-- /.col -->
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.content-header -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
@@ -53,7 +50,6 @@
                                             <i class="fas fa-folder-plus"></i>
                                             Crear Carpeta
                                         </div>
-
                                     </button>
                                 </div>
                                 <div class="col">
@@ -62,7 +58,6 @@
                                             <i class="fas fa-level-up-alt"></i>
                                             Subir de Nivel
                                         </div>
-
                                     </button>
                                 </div>
                             </div>
@@ -77,7 +72,6 @@
                                             <th>Fecha de Creacion</th>
                                         </thead>
                                         <tbody style="font-size: 20px">
-
                                         </tbody>
                                         <tfoot>
                                             <th>Opciones</th>
@@ -95,8 +89,6 @@
         </div>
     </div>
 </div>
-
-<!-- Modal de subir archivo -->
 <div class="modal fade" id="modalSubirArchivo" role="dialog">
     <div class="modal-dialog">
         <form id="frmSubirArchivo">
@@ -137,8 +129,6 @@
         </form>
     </div>
 </div>
-
-<!-- Modal de crear carpeta -->
 <div class="modal fade" id="modalCrearCarpeta" role="dialog">
     <div class="modal-dialog">
         <form id="frmCrearCarpeta">

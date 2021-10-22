@@ -1,16 +1,11 @@
-<!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-  <!-- Left navbar links -->
   <ul class="navbar-nav">
     <li class="nav-item">
       <a class="nav-link" data-widget="pushmenu" href="#" id="ocultar" role="button"><i class="fas fa-bars"></i></a>
     </li>
   </ul>
-
-  <!-- Right navbar links -->
   <ul class="navbar-nav ml-auto">
     <?php if (isset($_SESSION['idtipousuario']) && in_array($_SESSION['idtipousuario'], [1, 3])) { ?>
-      <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
           <i class="far fa-bell"></i>
@@ -26,7 +21,6 @@
         </div>
       </li>
     <?php } ?>
-    <!-- User Dropdown Menu -->
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
         <i class="fas fa-user-times"></i>
@@ -47,5 +41,3 @@
     </li>
   </ul>
 </nav>
-
-<!-- /.navbar -->

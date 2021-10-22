@@ -1,24 +1,20 @@
-<!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
             <h1 class="m-0 text-dark"></h1>
-          </div><!-- /.col -->
+          </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Administración de Usuarios</a></li>
               <li class="breadcrumb-item active">Tipo de usuarios</li>
             </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+          </div>
+        </div>
+      </div>
     </div>
-    
     <?php ControladorTipoUsuario::ctrCrearTipoUsuario(); ?>
-    <!-- /.content-header -->
     <div class="content">
       <div class="row">
         <div class="col-md-12">
@@ -28,40 +24,40 @@
             </div>
             <div class="card-body panel-body" id="listadoregistrosTU">
               <div id="tbllistado">
-                <table  class="table table-striped tablaDataTipoUsuario dt-responsive">
+                <table class="table table-striped tablaDataTipoUsuario dt-responsive">
                   <thead>
-                    <th  class="no-exportar">Opciones</th>
+                    <th class="no-exportar">Opciones</th>
                     <th>Estado</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Fecha/registro</th>
                   </thead>
                   <tbody>
-                  <?php
-                      $item = null;
-                      $valor = null;
-                      $tipousuario = ControladorTipoUsuario::ctrMostrarTipoUsuario($item,$valor);
-                      foreach($tipousuario as $key => $value){
-                        echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-s btnEditarTipoUsuario" onclick="mostrarformTU(true)" nombre="'.$value['nombre'].'"><i class="fas fa-pencil-alt"></i></button></th>';
-                          if($value['estado']!="1"){
-                            echo'<td><button class="btn btn-danger btn-xs btnActivarTU" nombre="'.$value["nombre"].'" estado="1">Inactivo</button></td>';
-                          }else{
-                            echo'<td><button class="btn btn-success btn-xs btnActivarTU" nombre="'.$value["nombre"].'" estado="0">Activo</button></td>';
-                          }
-                          echo '<td>'.$value['nombre'].'</td>
-                          <td>'.$value['descripcion'].'</td>
-                          <td>'.$value['fechaCreada'].'</td></tr>';
+                    <?php
+                    $item = null;
+                    $valor = null;
+                    $tipousuario = ControladorTipoUsuario::ctrMostrarTipoUsuario($item, $valor);
+                    foreach ($tipousuario as $key => $value) {
+                      echo '<tr>
+                          <th scope="row"><button class="btn btn-warning btn-s btnEditarTipoUsuario" onclick="mostrarformTU(true)" nombre="' . $value['nombre'] . '"><i class="fas fa-pencil-alt"></i></button></th>';
+                      if ($value['estado'] != "1") {
+                        echo '<td><button class="btn btn-danger btn-xs btnActivarTU" nombre="' . $value["nombre"] . '" estado="1">Inactivo</button></td>';
+                      } else {
+                        echo '<td><button class="btn btn-success btn-xs btnActivarTU" nombre="' . $value["nombre"] . '" estado="0">Activo</button></td>';
                       }
-                  ?>
+                      echo '<td>' . $value['nombre'] . '</td>
+                          <td>' . $value['descripcion'] . '</td>
+                          <td>' . $value['fechaCreada'] . '</td></tr>';
+                    }
+                    ?>
                   </tbody>
                   <tfoot>
-                    <th  class="no-exportar">Opciones</th>
+                    <th class="no-exportar">Opciones</th>
                     <th>Estado</th>
                     <th>Nombre</th>
                     <th>Descripción</th>
                     <th>Fecha/registro</th>
-                  </tfoot>   
+                  </tfoot>
                 </table>
               </div>
             </div>
@@ -80,16 +76,13 @@
                   </div>
                   <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <button class="btn btn-primary" type="submit" id="btnGuardar"><i class="fa fa-save"></i> Guardar</button>
-                    <button class="btn btn-danger"  id="btnCancelarFormTU" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
-                  </div> 
+                    <button class="btn btn-danger" id="btnCancelarFormTU" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+                  </div>
                 </div>
               </form>
             </div>
           </div>
-        </div>           
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-<!-- /.content-wrapper -->

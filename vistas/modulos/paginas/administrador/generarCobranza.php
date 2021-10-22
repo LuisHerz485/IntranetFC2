@@ -1,22 +1,19 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0 text-dark"></h1>
-        </div><!-- /.col -->
+        </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Cobranzas</a></li>
             <li class="breadcrumb-item active">Generar Cobranza</li>
           </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- /.content-header -->
   <div class="content">
     <div class="row">
       <div class="col-md-12">
@@ -54,7 +51,6 @@
                     } else {
                       echo '<td><h5><span class="badge badge-danger">Inactivo</h5></td>';
                     }
-
                     echo '</tr>';
                   }
                   ?>
@@ -77,19 +73,16 @@
                 <input class="form-control" type="hidden" name="idubicacion" id="idubicacion">
                 <input class="form-control" type="hidden" name="idcliente" id="idcliente">
                 <select name="iddepartamento" id="iddepartamento" class="form-control select2" data-live-search="true" required>
-
                 </select>
               </div>
               <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <label>Distrito(*):</label>
                 <select name="iddistrito" id="iddistrito" class="form-control select2" data-live-search="true" required>
-
                 </select>
               </div>
               <div class="form-group col-lg-4 col-md-4 col-sm-6 col-xs-12">
                 <label for="">Local(*):</label>
                 <select name="iddireccion" id="iddireccion" class="form-control select2" data-live-search="true" required>
-
                 </select>
               </div>
               <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -144,7 +137,6 @@
                   <th>Estado</th>
                 </thead>
                 <tbody>
-
                 </tbody>
                 <tfoot>
                   <th>Opciones</th>
@@ -163,11 +155,6 @@
     </div>
   </div>
 </div>
-</div>
-
-</div>
-
-<!-- Modal Detalle Cobranza -->
 <div class="modal fade" id="modalDetCob" role="dialog">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form role="form" method="post" enctype="multipart/form-data">
@@ -232,9 +219,6 @@
     </form>
   </div>
 </div>
-
-
-<!-- Modal estado de pago de cobranza -->
 <div class="modal fade" id="modalConstancia" role="document">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form role="form" method="post" enctype="multipart/form-data">
@@ -263,7 +247,6 @@
                     <input type="hidden" name="iddetallecobranza" id="iddetallecobranza" class="form-control">
                     <input type="hidden" name="idcobranza" id="idcobranza" class="form-control">
                   </select>
-
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                   <label>Fecha de pago</label>
@@ -294,7 +277,6 @@
                         <th>Opción</th>
                       </thead>
                       <tbody>
-
                       </tbody>
                     </table>
                   </div>
@@ -311,8 +293,6 @@
     </form>
   </div>
 </div>
-
-<!-- Modal Detalle Historial de Pagos -->
 <div class="modal fade" id="modalDetHisCob" role="dialog">
   <div class="modal-dialog modal-lg">
     <form role="form" method="post" enctype="multipart/form-data">
@@ -355,4 +335,3 @@
     </form>
   </div>
 </div>
-<!-- /.content-wrapper -->

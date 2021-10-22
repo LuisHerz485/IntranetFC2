@@ -1,22 +1,19 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
           <h1 class="m-0 text-dark"></h1>
-        </div><!-- /.col -->
+        </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Cobranza</a></li>
             <li class="breadcrumb-item active">Relación de pagos pendientes</li>
           </ol>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-    </div><!-- /.container-fluid -->
+        </div>
+      </div>
+    </div>
   </div>
-  <!-- /.content-header -->
   <div class="content">
     <div class="row">
       <div class="col-md-12">
@@ -59,7 +56,6 @@
                   <th>Estado</th>
                 </thead>
                 <tbody>
-
                 </tbody>
                 <tfoot>
                   <th>Opciones</th>
@@ -79,8 +75,6 @@
   </div>
 </div>
 </div>
-
-<!-- Modal Detalle Cobranza -->
 <div class="modal fade" id="modalDetCob" role="dialog">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form role="form" method="post" enctype="multipart/form-data">
@@ -133,7 +127,6 @@
                     <textarea name="" id="modalObservacion" class="form-control" rows="2" disabled></textarea>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
@@ -145,9 +138,6 @@
     </form>
   </div>
 </div>
-
-
-<!-- Modal estado de pago de cobranza -->
 <div class="modal fade" id="modalConstancia" role="document">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form role="form" method="post" enctype="multipart/form-data">
@@ -224,8 +214,6 @@
     </form>
   </div>
 </div>
-
-<!-- Modal Detalle Historial de Pagos -->
 <div class="modal fade" id="modalDetHisCob" role="dialog">
   <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <form role="form" method="post" enctype="multipart/form-data">
@@ -268,6 +256,3 @@
     </form>
   </div>
 </div>
-
-
-<!-- /.content-wrapper -->
