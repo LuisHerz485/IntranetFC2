@@ -1133,7 +1133,6 @@ $('.tablaDataIngresoCliente').DataTable({
 
 //TABLA REPORTE DE INGRESOS EN LA EMPRESA
 $('.tablaDataIngresoAnualCliente').DataTable({
-  pageLength: 12,
   dom: 'B<"float-left"i><"float-right"f>t<"float-right"p><"clearfix">',
   ordering: false,
   buttons: [

@@ -10,7 +10,7 @@ class ModeloClientes
     {
         if ($item != null) {
             if ($item === 1) {
-                $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by razonsocial ASC");
+                $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
                 $stmt->execute();
                 return $stmt->fetchAll();
             } else {
@@ -20,7 +20,7 @@ class ModeloClientes
                 return $stmt->fetch();
             }
         } else {
-            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
+            $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla ORDER by estado desc, razonsocial asc");
             $stmt->execute();
             return $stmt->fetchAll();
         }
