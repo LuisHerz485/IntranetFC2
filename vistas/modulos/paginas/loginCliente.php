@@ -9,22 +9,22 @@
       <form action="#" method="post" class="pt-4">
         <div class="input-group mb-3">
           <div class="input-group-append">
-            <div class="input-group-text">
+            <div class="input-group-text border-0">
               <span class="fas fa-user text-dark"></span>
             </div>
-          </div>
-          <input type="text" class="form-control" placeholder="Usuario" name="usuario">
+          </div> 
+          <input type="text" class="form-control border" placeholder="Usuario" name="usuario">
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password" name="password">
+          <input type="password" class="form-control border" placeholder="Password" name="password">
           <div class="input-group-append">
-            <div class="input-group-text">
+            <div class="input-group-text border-0">
               <span class="fas fa-lock text-dark"></span>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-6">
+          <div class="col-3">
           </div>
           <div class="col-6">
             <button type="submit" class="btn btn-danger btn-block"><i class="fas fa-sign-in-alt"></i> Iniciar Sesión</button>
@@ -35,9 +35,8 @@
         $login->ctrIngresar();
         ?>
       </form>
-      <br />
-      <div class="lockscreen-footer text-center">
-        <a href="inicio" class="text-red"><strong><i class="fas fa-chevron-circle-left"></i> Atrás</strong></a>
+      <div class="lockscreen-footer text-center mb-1">
+				<a href="inicio" class="text-red"><strong><i class="fas fa-chevron-circle-left"></i> Atrás</strong></a>
       </div>
     </div>
   </div>

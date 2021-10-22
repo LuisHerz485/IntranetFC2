@@ -7,6 +7,12 @@
 
 .cel-spc-bot {
     margin-bottom: 12%;
+    height: 100%;
+    width: 100px;
+}
+
+.ajuste{
+    width: 250px;
 }
 
 .modulo-cliente {
