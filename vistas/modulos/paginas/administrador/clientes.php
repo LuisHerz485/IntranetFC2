@@ -98,7 +98,7 @@
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label for="">Identificador Google Drive(*):</label>
-                  <input class="form-control" type="text" name="iddrive" id="iddrive" maxlength="20" placeholder="ID Google Drive" required>
+                  <input class="form-control" type="text" name="iddrive" id="iddrive" placeholder="ID Google Drive" required>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label class="panel" for="">Imagen:</label>

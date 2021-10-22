@@ -84,7 +84,7 @@ $('.btnIngresoRanking').click(function () {
     processData: false,
     dataType: 'json',
     success: function (respuesta) {
-      let min = { monto: Infinity, razonsocial: '' };
+      let min = { monto: Infinity, razonsocial: ''};
       let max = { monto: 0, razonsocial: '' };
       $.each(respuesta, function (index, value) {
         let monto = parseFloat(value.monto);
@@ -96,10 +96,21 @@ $('.btnIngresoRanking').click(function () {
           max.monto = monto;
           max.razonsocial = value.razonsocial;
         }
-        $('#tablaIngresoRanking')
+        
+        if (value.estado == 1) {
+          $('#tablaIngresoRanking')
           .DataTable()
-          .row.add([value.razonsocial, montoFormato(monto)])
+          .row.add([value.razonsocial, montoFormato(monto), '<h4><span class="badge badge-danger">Inactivo</h4>'])
           .draw(false);
+        } else if (value.estado == 0) {
+          $('#tablaIngresoRanking')
+          .DataTable()
+          .row.add([value.razonsocial, montoFormato(monto), '<h4><span class="badge badge-success">Activo</h4>'])
+          .draw(false);
+        }
+          
+        
+          
       });
       $('#montomayor').text(max.razonsocial + ' - ' + montoFormato(max.monto));
       $('#montomenor').text(min.razonsocial + ' - ' + montoFormato(min.monto));
