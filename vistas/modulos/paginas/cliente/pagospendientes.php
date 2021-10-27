@@ -7,7 +7,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Seguimiento de Pagos</a></li>
+          <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Seguimiento de pagos</b></a></li>
           </ol>
         </div>
       </div>
@@ -16,17 +16,13 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <div class="row">
-              <div class="col-6 d-flex justify-content-between align-items-center">
-                <h3 class="card-title text-center ">Pagos Pendientes</h3>
-              </div>
-              <div class="col-6">
-                <a href="https://fccontadores.com/servicios/" class="btn btn-warning float-sm-right" style="color: #000" target="_blank"><i class="fas fa-donate"> Pagar</i></a>
-              </div>
-            </div>
+              <b class="h4">Pagos pendiendes</b>
           </div>
+          <div class="mt-4 ml-5 h2">
+              <a href="https://fccontadores.com/servicios/" class="btn btn-outline-danger centro"><i class="fas fa-donate"> Seleccione este botón para Pagar</i></a>
+            </div>
           <div class="card-body">
             <div id="tbllistado">
               <table id="mostrarPendiente" class="table table-striped tablaDataClientesPagos dt-responsive text-center">
@@ -52,8 +48,8 @@
                             <td>' . $detCob[0]['plan'] . '</td>
                             <td>' . $detCob[0]['monto'] . '</td>
                             <td>' . $value['fechavencimiento'] . '</td>
-                            <td><button class="btn btn-primary btn-s">Pendiente</button></td>
-                            <td><abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza"  value="' . $value['idcobranza'] . '" /><button type="submit" class="btn btn-primary btn-s"><i class="fas fa-paste"></i></button></form></abbr></td>';
+                            <td><button class="btn btn-primary btn-sm">Pendiente</button></td>
+                            <td><abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza"  value="' . $value['idcobranza'] . '" /><button type="submit" class="btn btn-primary btn-circle btn-xl"><i class="fas fa-paste"></i></button></form></abbr></td>';
                       echo '</tr>';
                     } else if ($value['estado'] == "2") {
                       echo '<tr>';
@@ -62,8 +58,8 @@
                             <td>' . $detCob[0]['plan'] . '</td>
                             <td>' . $detCob[0]['monto'] . '</td>
                             <td>' . $value['fechavencimiento'] . '</td>
-                            <td><button class="btn btn-warning btn-s">A deuda</button></td>
-                            <td><abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza"  value="' . $value['idcobranza'] . '" /><button type="submit" class="btn btn-warning btn-s"><i class="fas fa-paste"></i></button></form></abbr></td>';
+                            <td><button class="btn btn-warning btn-sm">A deuda</button></td>
+                            <td><abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza"  value="' . $value['idcobranza'] . '" /><button type="submit" class="btn btn-warning btn-circle btn-xl"><i class="fas fa-paste"></i></button></form></abbr></td>';
                       echo '</tr>';
                     } else if ($value['estado'] == "3") {
                       echo '<tr>';
@@ -72,8 +68,8 @@
                             <td>' . $detCob[0]['plan'] . '</td>
                             <td>' . $detCob[0]['monto'] . '</td>
                             <td>' . $value['fechavencimiento'] . '</td>
-                            <td><button class="btn btn-danger btn-s">Vencido</button></td>
-                            <td><abbr title="Constancia"><button class="btn btn-danger btn-s btnConstancia" onclick="Swal.fire(\'Servicio vencido, pagar urgente!!\', \' atte. Sr. Fredy\', \'warning\')"><i class="fas fa-paste"></i></button></abbr></td>';
+                            <td><button class="btn btn-danger btn-sm">Vencido</button></td>
+                            <td><abbr title="Constancia"><button type="submit" class="btn btn-danger btn-circle btn-xl" btnConstancia" onclick="Swal.fire(\'Servicio vencido, pagar urgente!!\', \' atte. Sr. Fredy\', \'warning\')"><i class="fas fa-paste"></i></button></abbr></td>';
                       echo '</tr>';
                     }
                   }

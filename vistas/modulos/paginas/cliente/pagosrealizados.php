@@ -7,7 +7,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Seguimiento de Pagos</a></li>
+          <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Seguimiento de Pagos</b></a></li>
           </ol>
         </div>
       </div>
@@ -16,9 +16,9 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Pagos Realizados</h3>
+              <b class="h4">Pagos pendiendes</b>
           </div>
           <div class="card-body">
             <div id="tbllistado">
@@ -45,8 +45,8 @@
                             <td>' . $detCob[0]['plan'] . '</td>
                             <td>' . $detCob[0]['monto'] . '</td>
                             <td>' . $value['fechavencimiento'] . '</td>
-                            <td><button class="btn btn-success btn-s">Pagado</button</td>
-                            <td><abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza"  value="' . $value['idcobranza'] . '" /><button type="submit" class="btn btn-success btn-s"><i class="fas fa-paste"></i></button></form></abbr></td>';
+                            <td><button class="btn btn-success btn-sm">Pagado</button</td>
+                            <td><abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza"  value="' . $value['idcobranza'] . '" /><button type="submit" class="btn btn-success btn-circle btn-xl"><i class="fas fa-paste"></i></button></form></abbr></td>';
                       echo '</tr>';
                     }
                   }

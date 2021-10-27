@@ -27,9 +27,10 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">GENERAL</li>
                 <li class="nav-item">
-                    <a href="escritorio" class="nav-link">
-                        <i class="fas fa-desktop"></i>
+                        <a href="escritorio" class="nav-link">
+                        <h5><i class="fas fa-desktop"></i>
                         <p class="ml-5">Escritorio</p>
+                        </h5>
                     </a>
                 </li>
                 <li class="nav-header">MIS ARCHIVOS</li>
@@ -48,14 +49,14 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pagospendientes" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <a href="pagospendientes" class="nav-link ml-4">
+                                <i class="fas fa-forward"></i>
                                 <p>Pagos Pendientes</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="pagosrealizados" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <a href="pagosrealizados" class="nav-link ml-4">
+                                <i class="fas fa-forward"></i>
                                 <p>Pagos Realizados</p>
                             </a>
                         </li>
