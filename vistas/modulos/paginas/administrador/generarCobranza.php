@@ -7,8 +7,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Cobranzas</a></li>
-            <li class="breadcrumb-item active">Generar Cobranza</li>
+            <li class="breadcrumb-item h4"><a href="menuCobranza"><b class="text-red">Administración de Cobranza</b></a></li>
+            <li class="breadcrumb-item active h4">Generar Cobranza</li></b>
           </ol>
         </div>
       </div>
@@ -17,9 +17,9 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Generar Cobranza</h3>
+            <b class="h3">Generar Cobranza</b>
           </div>
           <div class="card-body panel-body" id="listadoGC">
             <div id="tbllistadoCobranza">
@@ -38,7 +38,7 @@
                   $clientes = ControladorClientes::ctrMostrarCliente($item, $valor);
                   foreach ($clientes as $key => $value) {
                     echo '<tr>
-                          <th scope="row" class="text-center"><abbr title="Generar Cobranza"><button class="btn btn-success btn-s btnListarLocal" onclick="mostrarformDC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-donate"></i></button></abbr></th>';
+                          <th scope="row" class="text-center"><abbr title="Generar Cobranza"><button class="btn btn-success btnListarLocal btn-circle btn-xl" onclick="mostrarformDC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-donate"></i></button></abbr></th>';
                     echo '<td>' . $value['ruc'] . '</td>
                           <td>' . $value['razonsocial'] . '</td>';
                     if ($value["imagen"] != "") {

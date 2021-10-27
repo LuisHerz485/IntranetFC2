@@ -7,8 +7,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Administración</a></li>
-            <li class="breadcrumb-item active">Check List</li>
+            <li class="breadcrumb-item h5"><a href="menuChecklist"><b class="text-red">Administración de CheckList</b></a></li>
+            <li class="breadcrumb-item active h5">Consulta</li></b>
           </ol>
         </div>
       </div>
@@ -17,15 +17,22 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Check List - Consulta</h3>
+            <div class="row">
+              <div>
+                <b class="h4">Consulta - Checklist</b>
+              </div>
+              <div class="col" align="right">
+                <abbr title="Ayuda"><button class="btn btn-warning btn-circle" data-toggle="modal" data-target="#modalAyudaCheckAdmi"><i class="fas fa-question-circle"></i></button></abbr>
+              </div>
+            </div>
           </div>
           <div class="card-body panel-body" id="formularioCheckListColaborador">
             <form method=POST id="frmFiltroChecklistAdmin">
               <div class="container-fluid">
                 <div class="row">
-                  <div class="col-3">
+                  <div class="col-12 col-lg-3">
                     <label>Seleccione el Colaborador:</label>
                     <select name="idusuario" class="form-control select2" required>
                       <?php
@@ -37,17 +44,16 @@
                       ?>
                     </select>
                   </div>
-                  <div class="col-3">
+                  <div class="col-12 col-lg-3">
                     <label>Seleccione Fecha Desde</label>
                     <input type="date" class="form-control" name="fechadesde" id="fechadesde" required>
                   </div>
-                  <div class="col-3">
+                  <div class="col-12 col-lg-3">
                     <label>Seleccione Fecha Hasta</label>
                     <input type="date" class="form-control" name="fechahasta" id="fechahasta" required>
                   </div>
-                  <div class="col-3">
-                    <label>Opciones</label>
-                    <button type="button" value="filtrar" class="btn btn-primary  btn-block" id="btnFiltrarChecklistAdmin" name="btnFiltrarChecklistAdmin"><i class="fas fa-search"></i> Filtrar</button>
+                  <div class="col-12 col-lg-3 mt-2" align="right">
+                    <button type="button" value="filtrar" class="btn btn-outline-danger" id="btnFiltrarChecklistAdmin" name="btnFiltrarChecklistAdmin"><i class="fas fa-search"></i> Buscar Checklist</button>
                   </div>
                 </div>
               </div>
@@ -146,6 +152,7 @@
     </form>
   </div>
 </div>
+
 <div class="modal fade" id="modalVerActividad" role="dialog">
   <div class="modal-dialog modal-dialog-scrollable">
     <div class="modal-content">
@@ -166,6 +173,39 @@
       </div>
       <div class="modal-footer">
         <button id="btnSalirVerActividad" type="button" class="btn btn-danger btn-block" data-dismiss="modal">Cancelar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalAyudaCheckAdmi" role="dialog">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header bg-light">
+        <h4 class="modal-title text-yellow"><strong>Sección Ayuda <i class="far fa-question-circle"></i></strong></h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <strong class="">Bienvenido a la sección ayuda de "Consulta CheckList"</strong>
+              <ul>
+                <li>Esta sección nos brindará información sobre los checklist de un colaborador en especifico de la empresa. </li>
+                <ol type="I">
+                  <li> Se debe buscar el nombre del colaborador del cual se desea saber el checklist.</li>
+                  <li> Se busca un rango en especifico de fechas para generar la lista de checklist.</li>
+                  <li> Luego se selecciona el botón "Buscar checklis" (se encuentra en la parte extrema superior derecha).</li>
+                </ol>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer bg-yellow" al>
+        <b><i class="fas fa-info-circle"></i> Para más orientación ir a la sección "Ayuda" del menú principal</b>
       </div>
     </div>
   </div>

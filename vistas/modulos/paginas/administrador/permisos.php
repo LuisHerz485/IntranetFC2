@@ -7,8 +7,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Administración de Permisos</a></li>
-                        <li class="breadcrumb-item active">Permisos</li>
+                        <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Administración de Personal</b></a></li>
+                        <li class="breadcrumb-item active h5">Permisos</li></b>
                     </ol>
                 </div>
             </div>
@@ -52,9 +52,9 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-primary" id="form">
+                <div class="card card-danger" id="form">
                     <div class="card-header">
-                        <h3 class="card-title">Permisos&emsp;</h3>
+                        <b class="h4">Solicitud de permisos</b>
                     </div>
                     <div class="card-body panel-body">
                         <form method="POST" id="frmRegistrarPermiso" class="container-fluid" enctype="multipart/form-data">
@@ -87,15 +87,15 @@
                                     <label>Detalle (Tamaño Max. 500):</label>
                                     <textarea name="detalle" class="form-control" id="detalle" rows="3" minlength="10" maxlength="500" required></textarea>
                                 </div>
-                                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12" align="center">
                                     <label> Opciones </label>
-                                    <div class="container-fluid" id="opcionesRegistrarPermiso">
+                                    <div class="container-fluid" id="opcionesRegistrarPermiso" align="center">
                                         <div class="input-group row">
                                             <div class="col-12">
-                                                <button class="btn btn-primary btn-block" name="btnRegistrarPermiso" value="btnRegistrarPermiso" type="submit"><i class="fas fa-lg fa-save"></i> Registrar</button>
+                                                <button class="btn btn-primary" name="btnRegistrarPermiso" value="btnRegistrarPermiso" type="submit"><i class="fas fa-lg fa-save"></i> Registrar</button>
                                             </div>
                                             <div class="col-12 mt-2">
-                                                <button class="btn btn-secondary btn-block" id="btnLimpiarFormPermiso" type="button"><i class="fas fa-lg fa-broom"></i> Limpiar</button>
+                                                <button class="btn btn-secondary" id="btnLimpiarFormPermiso" type="button"><i class="fas fa-lg fa-broom"></i> Limpiar</button>
                                             </div>
                                         </div>
                                     </div>

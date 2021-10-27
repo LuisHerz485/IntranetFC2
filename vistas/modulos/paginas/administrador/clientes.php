@@ -7,8 +7,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Administración de Clientes</a></li>
-            <li class="breadcrumb-item active">Clientes</li>
+            <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Administración de Clientes</b></a></li>
+            <li class="breadcrumb-item active h5">Clientes</li></b>
           </ol>
         </div>
       </div>
@@ -21,9 +21,12 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Clientes&emsp;<button class="btn btn-success" onclick="mostrarformC(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
+            <b class="h4">Clientes</b>
+          </div>
+          <div class="mt-4 ml-5 h2">
+            <b><button button class="btn btn-outline-danger centro"  onclick="mostrarformC(true)" id="btnagregar"><i class=" fas fa-plus-circle"> Seleccione este botón para añadir cliente</button></b></i>
           </div>
           <div class="card-body panel-body" id="listadoregistrosC">
             <div id="tbllistado">
@@ -42,7 +45,7 @@
                   $clientes = ControladorClientes::ctrMostrarCliente($item, $valor);
                   foreach ($clientes as $key => $value) {
                     echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-s btnEditarCliente" onclick="mostrarformC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-secondary btn-s btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-s btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
+                          <th scope="row"><button class="btn btn-warning btn-circle btn-xl btnEditarCliente" onclick="mostrarformC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
                     if ($value['estado'] != "1") {
                       echo '<td><button class="btn btn-danger btn-xs btnActivarC" idcliente="' . $value["idcliente"] . '" estado="1">Inactivo</button></td>';
                     } else {
@@ -79,7 +82,7 @@
                   <div class="input-group mb-3">
                     <input class="form-control" type="text" name="ruc" id="ruc" maxlength="12" placeholder="RUC" required>
                     <div class="input-group-append">
-                      <button class="btn btn-success" id="btnBuscarRazon" type="button"><i class="fas fa-search"></i> Buscar</button>
+                      <button class="btn btn-outline-success" id="btnBuscarRazon" type="button"><i class="fas fa-search"></i> Buscar</button>
                     </div>
                   </div>
                 </div>
@@ -93,7 +96,7 @@
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12" id="claves">
                   <label for="">Contraseña(*):</label>
-                  <button class="btn btn-info" type="button" onclick="generar(10);">Generar</button>
+                  <button class="btn btn-info btn-xs" type="button" onclick="generar(10);">Generar</button>
                   <input class="form-control" type="text" name="contrasenacliente" id="contrasenacliente" maxlength="64" placeholder="Contraseña">
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
@@ -144,9 +147,10 @@
                 <input type="text" class="form-control" name="correo2" id="correo2">
               </div>
             </div>
-            <button class="btn btn-success btnAgregarAgenda">Agregar</button>
-            <button class="btn btn-primary" onclick="limpiarAgenda()" type="button">Limpiar</button>
             <button class="btn btn-danger" onclick="cancelarDetformC()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
+            <button class="btn btn-success btnAgregarAgenda"><i class="fas fa-save"></i> Agregar</button>
+            <button class="btn btn-outline-primary" onclick="limpiarAgenda()" type="button">Limpiar</button>
+            
             <br />
             <br />
             <div id="tbllistado">

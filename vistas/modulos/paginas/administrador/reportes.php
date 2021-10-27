@@ -7,8 +7,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Asistencia</a></li>
-            <li class="breadcrumb-item active">Reportes</li>
+          <li class="breadcrumb-item h5"><a href="menuAsistencia"><b class="text-red">Administración de Asistencia</b></a></li>
+          <li class="breadcrumb-item active h5">Reportes</li></b>
           </ol>
         </div>
       </div>
@@ -17,9 +17,9 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Consulta de Asistencia por Fecha</h3>
+          <b class="h4">Consulta de Asistencia por Fecha</b>
           </div>
           <div class="card-body panel-body" id="listadoregistrosR">
             <div class="row">
@@ -45,7 +45,7 @@
                 </select>
               </div>
             </div>
-            <button class="btn btn-warning btn-s btnMostrar"><strong><i class="far fa-eye"></i> Mostrar</strong></button>
+            <button class="btn btn-outline-danger  btn-s btnMostrar"><strong><i class="far fa-eye"></i> Mostrar</strong></button>
             <br />
             <br />
             <div id="tbllistado">

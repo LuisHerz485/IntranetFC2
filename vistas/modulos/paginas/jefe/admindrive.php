@@ -9,7 +9,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Administarcion del Drive</a></li>
+                        <li class="breadcrumb-item h5"><a href="menuChecklist"><b class="text-red">Administración de Drive</b></a></li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -19,9 +19,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-primary">
+                <div class="card card-danger">
                     <div class="card-header">
-                        <h3 class="card-title">Administarcion de Google Drive</h3>
+                        <b class="h3">Administarcion de Google Drive</b>
                     </div>
                     <div class="card-body">
                         <div class="container-fluid">

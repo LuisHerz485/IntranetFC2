@@ -1,6 +1,6 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" id="barra">
-    <a href="escritorio" class="brand-link">
-        <img src="vistas/dist/img/logo-blanco.png" width="240px" id="logo" alt="">
+    <a href="escritorio" class="brand-link" align="center">
+        <img src="vistas/dist/img/logo-blanco.png" width="180px" width="75px" id="logo" alt="">
     </a>
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center;">
@@ -35,25 +35,25 @@
                 <li class="nav-header">ADMINISTRACION</li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-folder"></i>
-                        <p style="font-size: 15px;" class="ml-1">Administración Personal<i class="right fas fa-angle-left"></i></p>
+                        <i class="fas fa-user-cog"></i>
+                        <p style="font-size: 14px;" class="ml-1">ADMINISTRACIÓN PERSONAL<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="asistencia" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <a href="asistencia" class="nav-link ml-4">
+                                <i class="fas fa-forward"></i>
                                 <p>Asistencia</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="checklist" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <a href="checklist" class="nav-link ml-4">
+                                <i class="fas fa-forward"></i>
                                 <p>Check List</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="permisos" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
+                            <a href="permisos" class="nav-link ml-4">
+                                <i class="fas fa-forward"></i>
                                 <p>Solicitud de permiso</p>
                             </a>
                         </li>
@@ -63,8 +63,8 @@
                     <li class="nav-header">DRIVE</li>
                     <li class="nav-item has-treeview">
                         <a href="admindrive" class="nav-link">
-                            <i class="fas fa-folder"></i>
-                            <p style="font-size: 15px;" class="ml-1">Administración Drive</p>
+                            <i class="fab fa-google-drive"></i>
+                            <p style="font-size: 15px;" class="ml-1">ADMINISTRACIÓN DEL DRIVE</p>
                         </a>
                     </li>
                 <?php } ?>

@@ -7,8 +7,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Administración de Usuarios</a></li>
-              <li class="breadcrumb-item active">Tipo de usuarios</li>
+              <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Administración de Usuario</b></a></li>
+              <li class="breadcrumb-item active h5">Tipo de usuario</li></b>
             </ol>
           </div>
         </div>
@@ -18,9 +18,12 @@
     <div class="content">
       <div class="row">
         <div class="col-md-12">
-          <div class="card card-primary">
+          <div class="card card-danger">
             <div class="card-header">
-              <h3 class="card-title">Tipo de usuarios&emsp;<button class="btn btn-success" onclick="mostrarformTU(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
+              <b class="h4">Tipo de Usuario</b>
+            </div>
+            <div class="mt-4 ml-5 h2">
+              <b><button button class="btn btn-outline-danger centro" onclick="mostrarformTU(true)" id="btnagregar"><i class=" fas fa-plus-circle"> Seleccione este botón para añadir tipo de usuario</button></b></i>
             </div>
             <div class="card-body panel-body" id="listadoregistrosTU">
               <div id="tbllistado">

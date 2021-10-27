@@ -7,8 +7,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Servicios </a></li>
-            <li class="breadcrumb-item active">Tipo de servicio</li>
+            <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Administración de Servicios</b></a></li>
+            <li class="breadcrumb-item active h5">Tipo de Servicio</li></b>
           </ol>
         </div>
       </div>
@@ -17,9 +17,9 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Tipo de servicios&emsp;<button class="btn btn-success" onclick="mostrarform(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
+            <h3 class="card-title">Tipo de servicios&emsp;<button class="btn btn-light" onclick="mostrarform(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
           </div>
           <div class="card-body" id="listadoregistros">
             <div class="row justify-content-center">
@@ -56,7 +56,7 @@
                   <?php
                   $servicios = ModeloTipoServicio::mdlMostrarServicios();
                   foreach ($servicios as $servicio) {
-                    echo "<tr><td><button class='btn btn-warning btnEditarTS' idservicio='" . $servicio["idservicio"] . "'><i class='fas fa-pencil-alt'></i></button></td><td>" . $servicio["nombre"] . "</td><td>" . $servicio["descripcion"] . "</td><td>" . $servicio["precio"] . "</td></tr>";
+                    echo "<tr><td><button class='btn btn-warning btnEditarTS btn-circle btn-xl' idservicio='" . $servicio["idservicio"] . "'><i class='fas fa-pencil-alt'></i></button></td><td>" . $servicio["nombre"] . "</td><td>" . $servicio["descripcion"] . "</td><td>" . $servicio["precio"] . "</td></tr>";
                   }
                   ?>
                 </tbody>

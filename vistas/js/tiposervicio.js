@@ -74,7 +74,7 @@ $(".btnMostrarArchivosS").click(function () {
         $("#mostrarArchivoS")
           .DataTable()
           .row.add([
-            '<button class="btn btn-warning btnEditarTS" idservicio=' +
+            '<button class="btn btn-warning btnEditarTS btn-circle btn-xl" idservicio=' +
               value.idservicio +
               '><i class="fas fa-pencil-alt"></i></button>',
             value.nombre,

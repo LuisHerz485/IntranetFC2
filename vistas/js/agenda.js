@@ -47,7 +47,7 @@ function listarAgenda() {
         success: function(respuesta) {
             $.each(respuesta, function(index, value) {
                 /* Vamos agregando a nuestra tabla las filas necesarias */
-                $("#mostrarAgenda").append("<tr><th scope=\"row\"><button class=\"btn btn-warning btn-xs\" onclick=\"btnEditarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-pencil-alt\"></i></button> <button class=\"btn btn-danger btn-xs\" onclick=\"btnEliminarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-times-circle\"></i></button></th><td>" + value.cargo + "</td><td>" + value.nombrecompleto + "</td><td>" + value.telefono1 + "</td><td>" + value.telefono2 + "</td><td>" + value.correo1 + "</td><td>" + value.correo2 + "</td></tr>");
+                $("#mostrarAgenda").append("<tr><th scope=\"row\"><abbr title=\"Editar Contacto\"><button class=\"btn btn-warning\" onclick=\"btnEditarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-pencil-alt\"></i></button></abbr> <abbr title=\"Eliminar Contacto\"><button class=\"btn btn-danger\" onclick=\"btnEliminarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-times-circle\"></i></button></abbr></th><td>" + value.cargo + "</td><td>" + value.nombrecompleto + "</td><td>" + value.telefono1 + "</td><td>" + value.telefono2 + "</td><td>" + value.correo1 + "</td><td>" + value.correo2 + "</td></tr>");
             });
         },
         error: function(respuesta) {
@@ -73,7 +73,7 @@ $(".btnEditarDetalleCliente").click(function() {
         success: function(respuesta) {
             $.each(respuesta, function(index, value) {
                 /* Vamos agregando a nuestra tabla las filas necesarias */
-                $("#mostrarAgenda").append("<tr><th scope=\"row\"><button class=\"btn btn-warning btn-xs\" onclick=\"btnEditarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-pencil-alt\"></i></button> <button class=\"btn btn-danger btn-xs\" onclick=\"btnEliminarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-times-circle\"></i></button></th><td>" + value.cargo + "</td><td>" + value.nombrecompleto + "</td><td>" + value.telefono1 + "</td><td>" + value.telefono2 + "</td><td>" + value.correo1 + "</td><td>" + value.correo2 + "</td></tr>");
+                $("#mostrarAgenda").append("<tr><th scope=\"row\"><abbr title=\"Editar Contacto\"<button class=\"btn btn-warning\" onclick=\"btnEditarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-pencil-alt\"></i></button></abbr> <abbr title=\"Eliminar Contacto\"<button class=\"btn btn-danger\" onclick=\"btnEliminarDetAgen(" + value.idrepresentante + ")\"><i class=\"fas fa-times\"></i></button></abbr></th><td>" + value.cargo + "</td><td>" + value.nombrecompleto + "</td><td>" + value.telefono1 + "</td><td>" + value.telefono2 + "</td><td>" + value.correo1 + "</td><td>" + value.correo2 + "</td></tr>");
             });
         },
         error: function(respuesta) {

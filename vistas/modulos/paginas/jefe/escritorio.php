@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="text-black ml-5"><strong>Dashboard</strong></h1>
+                    <b class="text-black ml-5 h1"><strong>Dashboard</strong></b>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -26,29 +26,29 @@
                 <!-- ./col -->
                 <div class="col-12 col-lg-6">
                     <!-- small box -->
-                    <a href="asistencia" class="small-box bg-success">
+                    <a href="asistencia" class="small-box bg-danger">
                         <div class="inner">
                             <h3>Asistencia</h3>
                             <p>Lista de asistencia</p>
                         </div>
-                        <div class="icon">
+                        <div class="icon text-white">
                             <i class="fas fa-tasks"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <!-- ./col -->
                 <div class="col-12 col-lg-6">
                     <!-- small box -->
-                    <a href="checklist-jefe" class="small-box bg-primary">
+                    <a href="checklist-jefe" class="small-box bg-danger">
                         <div class="inner">
                             <h3>Check List</h3>
                             <p>Lista de actividades a realizar</p>
                         </div>
-                        <div class="icon">
-                            <i class="far fa-file-word"></i>
+                        <div class="icon text-white">
+                            <i class="fas fa-tasks"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <!-- ./col -->
@@ -59,10 +59,10 @@
                             <h3>Webmail</h3>
                             <p>Ir al correo de la empresa</p>
                         </div>
-                        <div class="icon">
+                        <div class="icon text-white">
                             <i class="fas fa-envelope-square"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <!-- ./col -->

@@ -35,6 +35,10 @@
   <link rel="stylesheet" href="vistas/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
   <link rel="stylesheet" href="vistas/dist/css/tabla.css">
   <link rel="stylesheet" href="vistas/css/inicio.css">
+  <link rel="stylesheet" href="vistas/css/boton.css">
+  <link rel="stylesheet" href="vistas/css/centro.css">
+  <link rel="stylesheet" href="vistas/css/font.css">
+  <link rel="stylesheet" href="vistas/css/color.css">
 
   <script src="vistas/plugins/jquery/jquery.min.js"></script>
   <script src="vistas/plugins/jquery-ui/jquery-ui.min.js"></script>
@@ -80,7 +84,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive", "cambiarhorario", "tardanzas", "consultaruc", "consultadni"];
+          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive", "cambiarhorario", "tardanzas", "consultaruc", "consultadni", "menuAsistencia", "menuChecklist", "menuCobranza", "menuIngreso"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorGeneralRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";

@@ -9,8 +9,8 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Asistencia</a></li>
-            <li class="breadcrumb-item active">Registro de Asistencia</li>
+            <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Administración de Personal</b></a></li>
+            <li class="breadcrumb-item active h5">Asistencia</li></b>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -20,9 +20,9 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Registro de Asistencia del Usuario</h3>
+            <b class="h4">Registro de Asistencia</b>
           </div>
           <div class="card-body panel-body" id="listadoregistrosA">
             <div id="tbllistado">

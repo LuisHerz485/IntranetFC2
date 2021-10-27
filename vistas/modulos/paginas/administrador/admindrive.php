@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Administarcion del Drive</a></li>
+                        <li class="breadcrumb-item h5"><a href="menuChecklist"><b class="text-red">Administración de Clientes</b></a></li>
                     </ol>
                 </div>
             </div>
@@ -16,49 +16,24 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-primary">
+                <div class="card card-danger">
                     <div class="card-header">
-                        <h3 class="card-title">Administarcion de Google Drive</h3>
+                        <b class="h4">Administración de Google Drive - Clientes</b>
                     </div>
                     <div class="card-body">
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col">
-                                    <button type="button" class="btn btn-primary btn-block" id="btnListarArchivos" carpetaPadreId="">
-                                        <div class="h4 mb-0"><i class="fas fa-list"></i> Listar</div>
-                                    </button>
-                                </div>
-                                <div class="col">
-                                    <button type="button" class="btn btn-success btn-block" id="btnFormSubirArchivo">
-                                        <div class="h4 mb-0">
-                                            <i class="fas fa-cloud-upload-alt"></i>
-                                            Subir Archivo
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="col">
-                                    <button type="button" class="btn btn-warning btn-block" id="btnVolverAlInicio">
-                                        <div class="h4 mb-0">
-                                            <i class="fas fa-home"></i>
-                                            Volver al Inicio
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="col">
-                                    <button type="button" class="btn btn-secondary btn-block" id="btnFormCrearCarpeta">
-                                        <div class="h4 mb-0">
-                                            <i class="fas fa-folder-plus"></i>
-                                            Crear Carpeta
-                                        </div>
-                                    </button>
-                                </div>
-                                <div class="col">
-                                    <button type="button" class="btn btn-info btn-block" id="btnSubirNivel" carpetaPadreId="">
-                                        <div class="h4 mb-0">
-                                            <i class="fas fa-level-up-alt"></i>
-                                            Subir de Nivel
-                                        </div>
-                                    </button>
+                                <div class="col" align="center">
+                                    <abbr title="Listar"><button type="button" class="btn btn-primary btn-circle btn-xxl" id="btnListarArchivos" carpetaPadreId="">
+                                            <i class="fas fa-list"></i></button></abbr>
+                                    <abbr title="Subir Archivo"><button type="button" class="btn btn-success btn-circle btn-xxl ml-2" id="btnFormSubirArchivo">
+                                            <i class="fas fa-cloud-upload-alt"></i></button></abbr>
+                                    <abbr title="Volver al Inicio"><button type="button" class="btn btn-warning btn-circle btn-xxl ml-2" id="btnVolverAlInicio">
+                                            <i class="fas fa-home"></i></button></abbr>
+                                    <abbr title="Crear Carpeta"><button type="button" class="btn btn-secondary btn-circle btn-xxl ml-2" id="btnFormCrearCarpeta">
+                                            <i class="fas fa-folder-plus"></i></button></abbr>
+                                    <abbr title="Subir Nivel"><button type="button" class="btn btn-info btn-circle btn-xxl ml-2" id="btnSubirNivel" carpetaPadreId="">
+                                            <i class="fas fa-level-up-alt"></i></button></abbr>
                                 </div>
                             </div>
                             <hr>
