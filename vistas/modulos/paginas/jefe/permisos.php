@@ -9,8 +9,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Administración de Permisos</a></li>
-                        <li class="breadcrumb-item active">Permisos</li>
+                        <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Administración de Personal</b></a></li>
+                        <li class="breadcrumb-item active h5">Permisos</li></b>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -56,9 +56,9 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-primary" id="form">
+                <div class="card card-danger" id="form">
                     <div class="card-header">
-                        <h3 class="card-title">Permisos&emsp;</h3>
+                        <b class="h3">Permisos</b>
                     </div>
                     <div class="card-body panel-body">
                         <form method="POST" id="frmRegistrarPermiso" class="container-fluid" enctype="multipart/form-data">

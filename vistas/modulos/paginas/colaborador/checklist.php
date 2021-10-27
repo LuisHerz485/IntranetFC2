@@ -7,8 +7,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Administración</a></li>
-            <li class="breadcrumb-item active">Check List</li>
+            <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Administración de Personal</b></a></li>
+            <li class="breadcrumb-item active h5">Checklist</li></b>
           </ol>
         </div>
       </div>
@@ -17,9 +17,9 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Check List - Personal</h3>
+            <b class="h3">Check List - Personal</b>
           </div>
           <div class="card-body panel-body" id="formularioCheckListColaborador">
             <form method=POST id="frmFiltroChecklist">

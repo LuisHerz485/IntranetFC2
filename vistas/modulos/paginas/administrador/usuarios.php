@@ -7,8 +7,8 @@
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Administración de Usuarios</a></li>
-              <li class="breadcrumb-item active">Usuarios</li>
+              <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Administración de Usuarios</b></a></li>
+              <li class="breadcrumb-item active h5">Usuarios</li></b>
             </ol>
           </div>
         </div>
@@ -18,9 +18,12 @@
     <div class="content">
       <div class="row">
         <div class="col-md-12">
-          <div class="card card-primary">
+          <div class="card card-danger">
             <div class="card-header">
-              <h3 class="card-title">Usuarios&emsp;<button class="btn btn-success" onclick="mostrarform(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
+              <b class="h4">Colaboradores de la empresa</b>
+            </div>
+            <div class="mt-4 ml-5 h2">
+              <b><button button class="btn btn-outline-danger centro" onclick="mostrarform(true)" id="btnagregar"><i class="fas fa-user-plus"> Seleccione este botón para añadir usuario</button></b></i>
             </div>
             <div class="card-body panel-body" id="listadoregistros">
               <div id="tbllistado">
@@ -43,7 +46,7 @@
                     foreach ($usuarios as $key => $value) {
                       if ($_SESSION['idtipousuario'] == 1) {
                         echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-s btnEditarUsuario" onclick="mostrarform(true)" login="' . $value['usuario'] . '"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-info btn-s btnContra" login="' . $value['usuario'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
+                          <th scope="row"><abbr title="Editar Usuario"><button class="btn btn-warning btn-circle btn-xl btnEditarUsuario" onclick="mostrarform(true)" login="' . $value['usuario'] . '"><i class="fas fa-pencil-alt"></i></button></abbr> <abbr title="Cambiar Contraseña"><button class="btn btn-info btn-circle btn-xl btnContra" login="' . $value['usuario'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></abbr></th>';
                       }
                       if ($value['estado'] != "1") {
                         echo '<td><button class="btn btn-danger btn-xs  btnActivarUs" login="' . $value["usuario"] . '" estado="1">Inactivo</button></td>';
@@ -130,7 +133,7 @@
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-xs-12" id="claves1">
                     <label for="">Clave de asistencia(*):</label>
-                    <button class="btn btn-info" type="button" onclick="generarU  (6)">Generar</button>
+                    <abbr title="Genera código automático"><button class="btn btn-info   btn-xs" type="button" onclick="generarU(6)"></abbr>Generar</button>
                     <input class="form-control" type="text" name="codigo_persona" id="codigo_persona" maxlength="64" placeholder="Clave">
                   </div>
                   <div class="form-group col-lg-6 col-md-6 col-xs-12">

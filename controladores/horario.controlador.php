@@ -4,7 +4,7 @@ class ControladorHorario
 {
     public static function ctrRegistrarHorario(): bool
     {
-        if (isset($_POST["horainicio"], $_POST["horafin"], $_POST["idhorario"])) {
+        if (isset($_POST["horainicio"], $_POST["horafin"])) {
             $horainicio = date("H:i", strtotime($_POST["horainicio"]));
             $horafin = date("H:i", strtotime($_POST["horafin"]));
             if (ControladorValidacion::formatoHoraMinutos($horainicio) && ControladorValidacion::formatoHoraMinutos($horafin)) {

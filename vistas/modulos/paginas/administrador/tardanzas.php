@@ -7,8 +7,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Asistencia</a></li>
-                        <li class="breadcrumb-item active">Reportes</li>
+                        <li class="breadcrumb-item h5"><a href="menuAsistencia"><b class="text-red">Administración de Asistencia</b></a></li>
+                        <li class="breadcrumb-item active h5">Tardanzas</li></b>
                     </ol>
                 </div>
             </div>
@@ -17,9 +17,9 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-primary">
+                <div class="card card-danger">
                     <div class="card-header">
-                        <h3 class="card-title">Consulta de Tardanzas por Fecha</h3>
+                        <b class="h4">Consulta de Tardanzas por Fecha</b>
                     </div>
                     <div class="card-body panel-body">
                         <form id="frmlistarTardanzas">
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                                     <label>Opciones</label>
-                                    <button type="button" id="btnMostrar" class="btn btn-warning btn-block"><strong><i class="far fa-eye"></i> Mostrar</strong></button>
+                                    <button type="button" id="btnMostrar" class="btn btn-outline-danger btn-block"><strong><i class="far fa-eye"></i> Mostrar</strong></button>
                                 </div>
                             </div>
                         </form>

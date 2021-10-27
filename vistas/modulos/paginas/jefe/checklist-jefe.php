@@ -9,8 +9,8 @@
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Administración</a></li>
-            <li class="breadcrumb-item active">Check List</li>
+            <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Administración de Personal</b></a></li>
+            <li class="breadcrumb-item active h5">CheckList</li></b>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -20,11 +20,12 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Check List</h3>
+            <b class="h4">Check List</b>
           </div>
           <div class="card-body panel-body" id="listadoUserCL">
+            <label class="text-primary h2" align="center">Este es tu equipo <i class="fas fa-users"></i></label>
             <?php if ($_SESSION['iddepartamento'] == 3 && $_SESSION['idtipousuario'] == 6) { ?>
               <div class="row">
                 <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-10">
@@ -65,7 +66,7 @@
                           <td>' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</td>
                           <td>' . $usuario['email'] . '</td>
                           <td>' . $usuario['departamento'] . '</td>
-                          <td><button class="btn btn-s btn-warning btnListarCheckList" idusuario="' . $usuario["idusuario"] . '" iddepartamento="' . $usuario["iddepartamento"] . '" idtipousuario="' . $usuario["idtipousuario"] . '" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button></td>
+                          <td><button class="btn btn-s btn-outline-danger btnListarCheckList" idusuario="' . $usuario["idusuario"] . '" iddepartamento="' . $usuario["iddepartamento"] . '" idtipousuario="' . $usuario["idtipousuario"] . '" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button></td>
                           </tr>';
                     }
                   }
@@ -77,7 +78,7 @@
                       <td>' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</td>
                       <td>' . $usuario['email'] . '</td>
                       <td>' . $usuario['departamento'] . '</td>
-                      <td><button class="btn btn-s btn-warning btnListarCheckList" idusuario="' . $usuario["idusuario"] . '" iddepartamento="' . $usuario["iddepartamento"] . '" idtipousuario="' . $usuario["idtipousuario"] . '" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button></td>
+                      <td><button class="btn btn-s btn-outline-danger btnListarCheckList" idusuario="' . $usuario["idusuario"] . '" iddepartamento="' . $usuario["iddepartamento"] . '" idtipousuario="' . $usuario["idtipousuario"] . '" onclick="mostrarformCL(true)"><i class="far fa-list-alt"></i></button></td>
                       </tr>';
                     }
                   }
@@ -114,17 +115,17 @@
                       ?>
                     </select>
                   </div>
-                  <div class="col-3">
+                  <div class="col-12 col-lg-3">
                     <label>Seleccione Fecha Desde</label>
                     <input type="date" class="form-control" name="fechadesde" id="fechadesde" required>
                   </div>
-                  <div class="col-3">
+                  <div class="col-12 col-lg-3">
                     <label>Seleccione Fecha Hasta</label>
                     <input type="date" class="form-control" name="fechahasta" id="fechahasta" required>
                   </div>
-                  <div class="col-3">
-                    <label>Opciones</label>
-                    <button type="button" value="filtrar" class="btn btn-primary  btn-block" id="btnFiltrarChecklist" name="btnFiltrarChecklist"><i class="fas fa-search"></i> Filtrar</button>
+                  <div class="col-12 col-lg-3 mt-1" align="center">
+                    <button type="button" value="filtrar" class="btn btn-outline-danger" id="btnFiltrarChecklist" name="btnFiltrarChecklist"><i class="fas fa-search"></i> Buscar Checklist</button>
+                    <button type="button" class="btn btn-outline-success btnAgregarCL" data-toggle="modal" data-target="#modalCheckList"><i class="far fa-plus-square"></i> Añadir</button>
                   </div>
                 </div>
               </div>
@@ -151,8 +152,7 @@
               </tfoot>
             </table>
             <div>
-              <button class="btn btn-danger" id="btnCancelarCheckJefe" type="button"><i class="fa fa-arrow-circle-left"></i>Volver</button>
-              <button class="btn btn-success btnAgregarCL float-sm-right mr-3 mt-2" data-toggle="modal" data-target="#modalCheckList"><i class="far fa-plus-square"></i> Añadir</button>
+              <button class="btn btn-danger" id="btnCancelarCheckJefe" type="button"><i class="fa fa-arrow-circle-left"></i> Volver</button>
             </div>
           </div>
 
@@ -185,7 +185,7 @@
                   <input class="form-control" type="hidden" name="idusuario" id="idusuario">
                   <input class="form-control" type="hidden" name="idtipousuario" id="idtipousuario">
                   <input class="form-control" type="hidden" name="iddepartamento" id="iddepartamento">
-                  <button class="btn btn-warning float-sm-right btnAgregarActividad" type="button"><i class="fas fa-plus"></i>Agregar</button>
+                  <button class="btn btn-warning float-sm-right btnAgregarActividad" type="button"><i class="fas fa-check-double"></i> Agregar</button>
                 </div>
                 <hr class="col-10 bg-dark">
                 <div class="container-fluid" id="modalBodyActividades">
@@ -215,7 +215,7 @@
                     </div>
                     <div class="form-group col-lg-2 col-md-2 col-sm-4 col-xs-12">
                       <label>Opciones</label>
-                      <button class="form-control btn btn-danger float-sm-right btn-eliminar-actividad" type="button"><i class="fas fa-trash-alt"></i>Eliminar</button>
+                      <button class="form-control btn btn-danger float-sm-right btn-eliminar-actividad" type="button"><i class="fas fa-trash-alt"></i> Eliminar</button>
                     </div>
                     <hr class="col-10 bg-dark">
                   </section>
@@ -225,8 +225,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button id="btnGuardarActividades" type="button" class="btn btn-info">Guardar</button>
-          <button id="btnSalirActividad" type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+          <button id="btnGuardarActividades" type="button" class="btn btn-primary"><i class="fas fa-lg fa-save"></i> Guardar</button>
+          <button id="btnSalirActividad" type="button" class="btn btn-light border" data-dismiss="modal"><i class="far fa-times-circle"></i> Salir</button>
         </div>
       </div>
     </form>

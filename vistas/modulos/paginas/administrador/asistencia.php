@@ -7,8 +7,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Asistencia</a></li>
-            <li class="breadcrumb-item active">Registro de Asistencia</li>
+          <li class="breadcrumb-item h5"><a href="menuAsistencia"><b class="text-red">Administración de Asistencia</b></a></li>
+          <li class="breadcrumb-item active h5">Control Asistencia</li></b>
           </ol>
         </div>
       </div>
@@ -18,9 +18,9 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Registro de Asistencia</h3>
+          <b class="h4">Control de Asistencia</b>
           </div>
           <div class="card-body panel-body" id="listadoregistrosA">
             <div id="tbllistado">
@@ -42,7 +42,7 @@
                   $asistencia = ControladorAsistencia::ctrMostrarAsistencia($item, $valor);
                   foreach ($asistencia as $key => $value) {
                     echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-s btnEditarDetalle" fecha="' . $value['fecha'] . '" codigo="' . $value['codigo'] . '" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-pencil-alt"></i></button></th>
+                          <th scope="row"><abbr title="Cambio de estado"><button class="btn btn-warning btn-xl btn-circle btnEditarDetalle" fecha="' . $value['fecha'] . '" codigo="' . $value['codigo'] . '" data-toggle="modal" data-target="#modalDetalle"><i class="fas fa-pencil-alt"></i></button></abbr></th>
                           <td>' . $value['codigo'] . '</td>
                           <td>' . $value['area'] . '</td>
                           <td>' . $value['nombre'] . ' ' . $value['apellidos'] . '</td>

@@ -7,8 +7,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Consultas</a></li>
-            <li class="breadcrumb-item active">Consulta RUC</li>
+          <li class="breadcrumb-item h4"><a href="#"><b class="text-red">Consulta</b></a></li>
+            <li class="breadcrumb-item active h4">Consulta RUC</li></b>
           </ol>
         </div>
       </div>
@@ -17,9 +17,9 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Consulta la informacion RUC</h3>
+            <b class="h3">Consulta la informacion RUC</b>
           </div>
           <div class="card-body panel-body text-center" id="listadoregistrosD">
             <h1><strong>Consulta RUC</strong></h1>
@@ -34,7 +34,7 @@
               }
               ?>
               <br />
-              <button id="" type="submit" class="btn btn-primary mt-3 btn-lg"><i class="fas fa-search"> Consultar</i></button>
+              <button id="" type="submit" class="btn btn-outline-danger mt-3 btn-lg"><i class="fas fa-search"> Consultar</i></button>
             </form>
           </div>
         </div>

@@ -98,8 +98,8 @@ $('#btnFiltrarChecklist').on('click', function () {
           if (value.idestadochecklist == 1) {
             tabla.row
               .add([
-                `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
-            <button class='btn btn-warning btn-editar-detalle-checklist' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
+                `<button class='btn btn-primary btn-ver-detalle-checklist btn-circle btn-xl' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
+            <button class='btn btn-warning btn-editar-detalle-checklist btn-circle btn-xl' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
                 value.detalle,
                 value.fecha,
                 value.horainicio,
@@ -110,8 +110,8 @@ $('#btnFiltrarChecklist').on('click', function () {
           } else if (value.idestadochecklist == 2) {
             tabla.row
               .add([
-                `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
-            <button class='btn btn-warning btn-editar-detalle-checklist' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
+                `<button class='btn btn-primary btn-ver-detalle-checklist btn-circle btn-xl' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
+            <button class='btn btn-warning btn-editar-detalle-checklist btn-circle btn-xl' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
                 value.detalle,
                 value.fecha,
                 value.horainicio,
@@ -122,8 +122,8 @@ $('#btnFiltrarChecklist').on('click', function () {
           } else if (value.idestadochecklist == 3) {
             tabla.row
               .add([
-                `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
-            <button class='btn btn-warning btn-editar-detalle-checklist' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
+                `<abbr title=""><button class='btn btn-primary btn-ver-detalle-checklist btn-circle btn-xl' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
+            <button class='btn btn-warning btn-editar-detalle-checklist btn-circle btn-xl' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
                 value.detalle,
                 value.fecha,
                 value.horainicio,
@@ -134,8 +134,8 @@ $('#btnFiltrarChecklist').on('click', function () {
           } else if (value.idestadochecklist == 4) {
             tabla.row
               .add([
-                `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
-            <button class='btn btn-warning btn-editar-detalle-checklist' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
+                `<button class='btn btn-primary btn-ver-detalle-checklist btn-circle btn-xl' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>
+            <button class='btn btn-warning btn-editar-detalle-checklist btn-circle btn-xl' iddetallechecklist="${value.iddetallechecklist}" idestadochecklist="${value.idestadochecklist}"> <i class="fas fa-pencil-alt"></i> </button>`,
                 value.detalle,
                 value.fecha,
                 value.horainicio,
@@ -173,7 +173,7 @@ $('#btnFiltrarChecklistAdmin').on('click', function () {
           if (value.idestadochecklist == 1) {
             tabla.row
               .add([
-                `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
+                `<button class='btn btn-primary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
                 value.detalle,
                 value.fecha,
                 value.horainicio,
@@ -184,7 +184,7 @@ $('#btnFiltrarChecklistAdmin').on('click', function () {
           } else if (value.idestadochecklist == 2) {
             tabla.row
               .add([
-                `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
+                `<button class='btn btn-outline-light btn-ver-detalle-checklist btn-circle btn-xl' detalle="${value.detalle}"> <i class="fas fa-eye"></i></button>`,
                 value.detalle,
                 value.fecha,
                 value.horainicio,
@@ -195,7 +195,7 @@ $('#btnFiltrarChecklistAdmin').on('click', function () {
           } else if (value.idestadochecklist == 3) {
             tabla.row
               .add([
-                `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
+                `<button class='btn btn-primary btn-ver-detalle-checklist btn-circle btn-xl' detalle="${value.detalle}"> <i class="fas fa-eye"></i></button>`,
                 value.detalle,
                 value.fecha,
                 value.horainicio,
@@ -206,7 +206,7 @@ $('#btnFiltrarChecklistAdmin').on('click', function () {
           } else if (value.idestadochecklist == 4) {
             tabla.row
               .add([
-                `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
+                `<button class='btn btn-primary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
                 value.detalle,
                 value.fecha,
                 value.horainicio,
@@ -244,7 +244,7 @@ $('#btnFiltrarChecklistAsignado').on('click', function () {
           if (value.idestadochecklist == 1) {
             tabla.row
               .add([
-                `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
+                `<button class='btn btn-primary btn-ver-detalle-checklist btn-circle btn-xl' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
                 value.detalle,
                 value.nombre + ' ' + value.apellidos,
                 value.fecha,
@@ -256,7 +256,7 @@ $('#btnFiltrarChecklistAsignado').on('click', function () {
           } else if (value.idestadochecklist == 2) {
             tabla.row
               .add([
-                `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
+                `<button class='btn btn-primary btn-ver-detalle-checklist btn-circle btn-xl' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
                 value.detalle,
                 value.nombre + ' ' + value.apellidos,
                 value.fecha,
@@ -268,7 +268,7 @@ $('#btnFiltrarChecklistAsignado').on('click', function () {
           } else if (value.idestadochecklist == 3) {
             tabla.row
               .add([
-                `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
+                `<button class='btn btn-primary btn-ver-detalle-checklist btn-circle btn-xl' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
                 value.detalle,
                 value.nombre + ' ' + value.apellidos,
                 value.fecha,
@@ -280,7 +280,7 @@ $('#btnFiltrarChecklistAsignado').on('click', function () {
           } else if (value.idestadochecklist == 4) {
             tabla.row
               .add([
-                `<button class='btn btn-secondary btn-ver-detalle-checklist' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
+                `<button class='btn btn-primary btn-ver-detalle-checklist btn-circle btn-xl' detalle="${value.detalle}"> <i class="far fa-eye"></i></button>`,
                 value.detalle,
                 value.nombre + ' ' + value.apellidos,
                 value.fecha,
@@ -313,7 +313,6 @@ $('.btnCheckArea').click(function () {
     success: function (respuesta) {
       $('#listaCheckUser').DataTable().clear().draw();
       $.each(respuesta, function (index, value) {
-        /* Vamos agregando a nuestra tabla las filas necesarias */
         if (value.estado == 1) {
           $('#listaCheckUser')
             .DataTable()

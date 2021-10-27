@@ -7,8 +7,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Economía</a></li>
-            <li class="breadcrumb-item active">Presupuesto de Ingresos</li>
+            <li class="breadcrumb-item h4"><a href="menuIngreso"><b class="text-red">Administración de Ingreso</b></a></li>
+            <li class="breadcrumb-item active h4">Ingreso General</li></b>
           </ol>
         </div>
       </div>
@@ -17,9 +17,9 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Ingreso Económico</h3>
+            <b class="h3">Ingreso General de la Empresa</b>
           </div>
           <div class="card-body panel-body" id="listadoregistrosD">
             <div class="container-fluid">

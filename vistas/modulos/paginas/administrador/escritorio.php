@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="text-black ml-5"><strong>Dashboard</strong></h1>
+                    <b class="text-black ml-5 h1"><strong>Dashboard</strong></b>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -17,73 +17,81 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row mx-5">
-                <div class="col-12 col-lg-6">
-                    <a href="usuarios" class="small-box bg-primary">
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <a href="usuarios" class="small-box bg-danger">
                         <div class="inner">
                             <h3>Colaboradores</h3>
                             <p>Lista de colaboradores</p>
                         </div>
-                        <div class="icon">
+                        <div class="icon text-white">
                             <i class="fas fa-users"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
-                <div class="col-12 col-lg-6">
-                    <a href="asistencia" class="small-box bg-orange">
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <a href="menuAsistencia" class="small-box bg-danger">
                         <div class="inner">
-                            <h3>Asistencia</h3>
-                            <p>Lista de asistencia</p>
+                            <h3><span>Gestión de</span></br><span>Asistencia</span></h3>
                         </div>
-                        <div class="icon">
+                        <div class="icon text-white">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <a href="menuChecklist" class="small-box bg-danger">
+                        <div class="inner">
+                            <h3><span>Gestión de</span></br><span>checklist</span></h3>
+                        </div>
+                        <div class="icon text-white">
                             <i class="fas fa-tasks"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <a href="permisos-pendientes" class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>Permisos</h3>
+                            <p>Permisos Pendientes: <span id="dashboardPermisos">0</span></p>
+                        </div>
+                        <div class="icon text-white">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <?php
                 if ($_SESSION['idtipousuario'] != 4) { ?>
-                    <div class="col-12 col-lg-6">
-                        <a href="clientes" class="small-box bg-info">
+                    <div class="col-lg-4 col-md-6 col-xs-12">
+                        <a href="clientes" class="small-box bg-danger">
                             <div class="inner">
                                 <h3>Clientes</h3>
                                 <p>Lista de clientes</p>
                             </div>
-                            <div class="icon">
+                            <div class="icon text-white">
                                 <i class="fas fa-handshake"></i>
                             </div>
-                            <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                         </a>
                     </div>
                 <?php } ?>
                 <?php
                 if ($_SESSION['idtipousuario'] == 1) { ?>
-                    <div class="col-12 col-lg-6">
-                        <a href="generarCobranza" class="small-box bg-success">
+                    <div class="col-lg-4 col-md-6 col-xs-12">
+                        <a href="menuCobranza" class="small-box bg-danger">
                             <div class="inner">
-                                <h3>Cobranzas</h3>
-                                <p>Lista de Cobranzas</p>
+                            <h3><span>Gestión de</span></br><span>Cobranza</span></h3>
                             </div>
-                            <div class="icon">
-                                <i class="ion ion-pie-graph"></i>
+                            <div class="icon text-white">
+                                <i class="fas fa-hand-holding-usd"></i>
                             </div>
-                            <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                         </a>
                     </div>
                 <?php } ?>
-                <div class="col-12 col-lg-6">
-                    <a href="permisos-pendientes" class="small-box bg-danger">
-                        <div class="inner">
-                            <h3>Permisos</h3>
-
-                            <p>Cantidad de Permisos Pendientes: <span id="dashboardPermisos">0</span></p>
-                        </div>
-                        <div class="icon">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
-                    </a>
-                </div>
             </div>
         </div>
     </section>

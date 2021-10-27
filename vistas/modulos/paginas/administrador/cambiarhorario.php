@@ -7,8 +7,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Asistencias</a></li>
-                        <li class="breadcrumb-item active">Cambio de Horario General</li>
+                        <li class="breadcrumb-item h5"><a href="menuAsistencia"><b class="text-red">Administración de Asistencia</b></a></li>
+                        <li class="breadcrumb-item active h5">Cambio Horario</li></b>
                     </ol>
                 </div>
             </div>
@@ -17,9 +17,9 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-primary">
+                <div class="card card-danger">
                     <div class="card-header">
-                        <h3 class="card-title">Cambiar Horario General</h3>
+                        <b class="h4">Cambiar Horario General</b>
                     </div>
                     <div class="card-body panel-body text-center" id="listadoregistrosD">
                         <h1><strong>HORARIO GENERAL</strong></h1>
@@ -55,7 +55,7 @@
                         <hr>
                         <div class="row justify-content-center">
                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                <button type="button" id="btnguardarHorario" class="btn btn-success btn-block">Guardar Nuevo Horario</button>
+                                <button type="button" id="btnguardarHorario" class="btn btn-success"><i class="fas fa-stopwatch"> Guardar Nuevo Horario</i></button>
                             </div>
                         </div>
                     </div>

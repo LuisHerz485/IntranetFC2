@@ -18,27 +18,27 @@
         <div class="container-fluid">
             <div class="row mx-5">
                 <div class="col-12 col-lg-6">
-                    <a href="asistencia" class="small-box bg-success">
+                    <a href="asistencia" class="small-box bg-danger">
                         <div class="inner">
                             <h3>Asistencia</h3>
                             <p>Lista de asistencia</p>
                         </div>
-                        <div class="icon">
+                        <div class="icon text-white">
                             <i class="fas fa-tasks"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <div class="col-lg-6 col-6">
-                    <a href="checklist" class="small-box bg-primary">
+                    <a href="checklist" class="small-box bg-danger">
                         <div class="inner">
                             <h3>Check List</h3>
                             <p>Lista de actividades a realizar</p>
                         </div>
-                        <div class="icon">
+                        <div class="icon text-white">
                             <i class="far fa-file-word"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <div class="col-12 col-lg-6">
@@ -48,10 +48,10 @@
 
                             <p>Ir al correo de la empresa</p>
                         </div>
-                        <div class="icon">
+                        <div class="icon text-white">
                             <i class="fas fa-envelope-square"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <div class="col-12 col-lg-6">
@@ -60,10 +60,10 @@
                             <h3>Permisos</h3>
                             <p>Solicitar Permiso</p>
                         </div>
-                        <div class="icon">
+                        <div class="icon text-white">
                             <i class="fas fa-tasks"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
             </div>

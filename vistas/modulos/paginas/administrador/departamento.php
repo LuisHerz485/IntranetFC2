@@ -7,8 +7,8 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="#">Administración de Áreas</a></li>
-            <li class="breadcrumb-item active">Áreas</li>
+            <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Administración de Áreas</b></a></li>
+            <li class="breadcrumb-item active h5">Áreas</li></b>
           </ol>
         </div>
       </div>
@@ -18,9 +18,12 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-primary">
+        <div class="card card-danger">
           <div class="card-header">
-            <h3 class="card-title">Áreas&emsp;<button class="btn btn-success" onclick="mostrarformD(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
+            <b class="h4">Departamentos de la empresa</b>
+          </div>
+          <div class="mt-4 ml-5 h2">
+            <b><button class="btn btn-outline-danger centro" onclick="mostrarformD(true)" id="btnagregar"><i class="fas fa-plus-circle"> Seleccione este botón para añadir departamento</button></b></i>
           </div>
           <div class="card-body panel-body" id="listadoregistrosD">
             <div id="tbllistado">
@@ -39,7 +42,7 @@
                   $departamento = ControladorDepartamento::ctrMostrarDepartamento($item, $valor);
                   foreach ($departamento as $key => $value) {
                     echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-s btnEditarDepartamento" onclick="mostrarformD(true)" nombre="' . $value['nombre'] . '"><i class="fas fa-pencil-alt"></i></button></th>';
+                          <th scope="row"><abbr title="Editar departamento"><button class="btn btn-warning btn-s btnEditarDepartamento btn-circle btn-xl" onclick="mostrarformD(true)" nombre="' . $value['nombre'] . '"><i class="fas fa-pencil-alt"></i></button></abbr></th>';
                     if ($value['estado'] != "1") {
                       echo '<td><button class="btn btn-danger btn-xs btnActivarD" nombre="' . $value["nombre"] . '" estado="1">Inactivo</button></td>';
                     } else {

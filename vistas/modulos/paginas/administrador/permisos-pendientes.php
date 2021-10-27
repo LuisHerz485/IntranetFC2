@@ -7,8 +7,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Administración de Permisos</a></li>
-                        <li class="breadcrumb-item active">Permisos</li>
+                        <li class="breadcrumb-item h5"><a href="menuChecklist"><b class="text-red">Administración de Permisos</b></a></li>
+                        <li class="breadcrumb-item active h5">Permisos Solicitados</li></b>
                     </ol>
                 </div>
             </div>
@@ -37,9 +37,9 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-primary">
+                <div class="card card-danger">
                     <div class="card-header">
-                        <h3 class="card-title">Permisos Pendientes&emsp;</h3>
+                        <b class="h4">Permisos Pendientes</b>
                     </div>
                     <div class="card-body panel-body">
                         <form method=POST id="frmFiltroPermiso">
@@ -67,9 +67,8 @@
                                         <label>Seleccione Fecha Hasta</label>
                                         <input type="date" class="form-control" name="fechahasta" id="fechahasta">
                                     </div>
-                                    <div class="col-12 col-lg-3">
-                                        <label>Opciones</label>
-                                        <button type="submit" value="filtrar" class="btn btn-primary  btn-block" id="btnFiltrar" name="btnFiltrar"><i class="fas fa-search"></i> Filtrar</button>
+                                    <div class="col-12 col-lg-3 mt-1" align="right">
+                                        <button type="submit" value="filtrar" class="btn btn-outline-danger" id="btnFiltrar" name="btnFiltrar"><i class="fas fa-search"></i> Filtrar</button>
                                     </div>
                                 </div>
                             </div>
