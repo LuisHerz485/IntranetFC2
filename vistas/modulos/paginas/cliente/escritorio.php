@@ -19,7 +19,7 @@
             <h4 class="ml-5"><strong>Cobranzas</strong></h4>
             <div class="row mx-5">
                 <div class="col-12 col-lg-6">
-                    <a href="https://fccontadores.com/servicios/" class="small-box bg-lightblue" target="_blank">
+                    <a href="pagospendientes" class="small-box bg-danger">
                         <div class="inner">
                             <h3>Pagar</h3>
                             <p>Ir a pagar pendientes</p>
@@ -27,11 +27,11 @@
                         <div class="icon">
                             <i class="fas fa-file-invoice-dollar"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <div class="col-12 col-lg-6">
-                    <a href="pagosrealizados" class="small-box bg-purple">
+                    <a href="pagosrealizados" class="small-box bg-danger">
                         <div class="inner">
                             <h3>Mis Pagos</h3>
                             <p>Mis pagos realizados</p>
@@ -39,7 +39,7 @@
                         <div class="icon">
                             <i class="fas fa-search-dollar"></i>
                         </div>
-                        <p class="small-box-footer">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
             </div>
