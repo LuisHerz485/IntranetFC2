@@ -19,6 +19,7 @@ require_once "controladores/tiposervicio.controlador.php";
 require_once "controladores/permiso.controlador.php";
 require_once "controladores/email.controlador.php";
 require_once "controladores/consultapiperu.controlador.php";
+require_once "controladores/DeclaracionSunat.controlador.php";
 
 require_once "modelos/usuarios.modelo.php";
 require_once "modelos/departamento.modelo.php";
@@ -37,6 +38,8 @@ require_once "modelos/checklist.modelo.php";
 require_once "modelos/tiposervicio.modelo.php";
 require_once "modelos/permiso.modelo.php";
 require_once "modelos/horario.modelo.php";
+require_once "modelos/cronogramaSunat.modelo.php";
+require_once "modelos/declaracionSunat.modelo.php";
 
 $template = new ControladorTemplate();
 $template->ctrTemplate();

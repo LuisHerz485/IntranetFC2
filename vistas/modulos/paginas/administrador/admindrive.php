@@ -36,6 +36,14 @@
                                             <i class="fas fa-level-up-alt"></i></button></abbr>
                                 </div>
                             </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-12">
+                                    <ol class="breadcrumb" id="direcciones">
+                                        <li class="breadcrumb-item">Clientes</li>
+                                    </ol>
+                                </div>
+                            </div>
                             <hr>
                             <div class="row">
                                 <div class="col">

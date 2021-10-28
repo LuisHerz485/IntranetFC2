@@ -230,12 +230,24 @@ $(document).on("click", ".btn-ingresar-archivo", function () {
     .attr("carpetaPadreId", $(this).attr("carpetaPadreId"))
     .attr("carpetanombre", $(this).attr("carpetanombre"))
     .click();
-
   $("#direcciones").append(
-    '<li class="breadcrumb-item active"><a>' +
+    '<li class="breadcrumb-item"><a carpetaPadreId="' +
+      $(this).attr("carpetaPadreId") +
+      '" carpetanombre="' +
+      $(this).attr("carpetanombre") +
+      '" type="button" class="btnIrCarpeta">' +
       $(this).attr("carpetanombre") +
       "</a></li>"
   );
+});
+$(document).on("click", ".btnIrCarpeta", function () {
+  $("#btnListarArchivos")
+    .attr("carpetaPadreId", $(this).attr("carpetaPadreId"))
+    .attr("carpetanombre", $(this).attr("carpetanombre"))
+    .click();
+});
+$(document).on("click", ".breadcrumb-item", function () {
+  $(this).nextAll().remove();
 });
 
 $("#btnCrearCarpeta").on("click", function () {
@@ -447,8 +459,8 @@ $("#btnListarArchivosCliente").on("click", function () {
             .add([
               `<button class="btn btn-warning mx-1 btn-ingresar-archivo-cliente" recibido="${
                 item["name"] == "Recibidos" ? "true" : "false"
-              }"" carpetaPadreId="${
-                item["id"]
+              }"" carpetaPadreId="${item["id"]}" carpetanombre="${
+                item["name"]
               }"><i class="fas fa-sign-in-alt"></i></button>${
                 recibo
                   ? `<button class="btn btn-danger mx-1 btn-eliminar-archivo-cliente" archivoID="${item["id"]}"><i class="fas fa-trash-alt"></button>`
@@ -493,6 +505,7 @@ $("#btnListarArchivosCliente").on("click", function () {
 
 $("#btnVolverAlInicioCliente").on("click", function () {
   $(".recibido").addClass("d-none");
+  $("#direcciones li:not(:first-child)").remove();
 });
 
 $(document).on("click", ".btn-ingresar-archivo-cliente", function () {
@@ -501,11 +514,33 @@ $(document).on("click", ".btn-ingresar-archivo-cliente", function () {
   } else {
     $(".recibido").addClass("d-none");
   }
+
   $("#btnListarArchivosCliente")
     .attr("carpetaPadreId", $(this).attr("carpetaPadreId"))
+    .attr("carpetaPadreId", $(this).attr("carpetanombre"))
+    .click();
+
+  $("#direcciones").append(
+    '<li class="breadcrumb-item active"><a carpetaPadreId="' +
+      $(this).attr("carpetaPadreId") +
+      '" carpetanombre="' +
+      $(this).attr("carpetanombre") +
+      '" type="button" class="btnIrCarpeta">' +
+      $(this).attr("carpetanombre") +
+      "</a></li>"
+  );
+});
+$(document).on("click", ".btnIrCarpeta", function () {
+  if ((recibo = $(this).attr("recibido") === "true")) {
+    $(".recibido").removeClass("d-none");
+  } else {
+    $(".recibido").addClass("d-none");
+  }
+  $("#btnListarArchivos")
+    .attr("carpetaPadreId", $(this).attr("carpetaPadreId"))
+    .attr("carpetanombre", $(this).attr("carpetanombre"))
     .click();
 });
-
 $("#btnSubirNivelCliente").on("click", function () {
   Swal.fire({
     title: "Subiendo de carpeta",
@@ -516,6 +551,7 @@ $("#btnSubirNivelCliente").on("click", function () {
     },
   });
   carpetaPadreIds = $("#btnListarArchivosCliente").attr("carpetaPadreId");
+  $("#direcciones li:last-child").remove();
   $.ajax({
     method: "POST",
     url: "ajax/drive.ajax.php",
@@ -542,8 +578,8 @@ $("#btnSubirNivelCliente").on("click", function () {
             .add([
               `<button class="btn btn-warning mx-1 btn-ingresar-archivo-cliente" recibido="${
                 item["name"] == "Recibidos" ? "true" : "false"
-              }"" carpetaPadreId="${
-                item["id"]
+              }"" carpetaPadreId="${item["id"]}" carpetanombre="${
+                item["name"]
               }"><i class="fas fa-sign-in-alt"></i></button>${
                 recibo
                   ? `<button class="btn btn-danger mx-1 btn-eliminar-archivo-cliente" archivoID="${item["id"]}" ><i class="fas fa-trash-alt"></button>`

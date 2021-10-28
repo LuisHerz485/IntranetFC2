@@ -180,10 +180,10 @@
           </ul>
         </li>
       <?php } ?>
-      <li class="nav-header">API PERU</li>
+      <li class="nav-header">SUNAT</li>
       <li class="nav-item">
         <a href="#" class="nav-link">
-          <i class="fas fa-ethernet"></i>
+          <i class="fas fa-atlas"></i>
           <p>Consultas<i class="right fas fa-angle-left"></i></p>
         </a>
         <ul class="nav nav-treeview">
@@ -191,6 +191,34 @@
             <a href="consultaruc" class="nav-link ml-4">
               <i class="fas fa-forward"></i>
               <p>Consulta Ruc</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="fas fa-calendar-alt"></i>
+          <p>Cronograma<i class="right fas fa-angle-left"></i></p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="cronogramaSunat" class="nav-link ml-4">
+              <i class="fas fa-forward"></i>
+              <p>Cronograma Mensual</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="fas fa-folder"></i>
+          <p>Declaraciones Tributarias<i class="right fas fa-angle-left"></i></p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="declaracionSunat" class="nav-link">
+              <i class="fas fa-forward"></i>
+              <p>Mensuales</p>
             </a>
           </li>
         </ul>
