@@ -34,7 +34,7 @@ class ModeloReportes
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $reporteAsistencia = $conexion->getData("SELECT u.codigopersona AS codigo, CONCAT(u.nombre, ' ', u.apellidos) AS colaborador, d.nombre AS area, COUNT(a.idasistencia) as numeroTardanzas FROM asistencia a JOIN horario h ON h.idhorario = a.idhorario JOIN usuario u ON u.idusuario = a.idusuario JOIN departamento d ON d.iddepartamento = u.iddepartamento WHERE ( u.idusuario NOT IN(5)) AND ( a.tipo = 'Entrada' AND a.estado = 5) AND ( DATE(a.fechahora) BETWEEN ? AND ? ) GROUP BY colaborador", [$fechadesde, $fechahasta]);
+            $reporteAsistencia = $conexion->getData("SELECT u.codigopersona AS codigo, CONCAT(u.nombre, ' ', u.apellidos) AS colaborador, d.nombre AS area, COUNT(a.idasistencia) as numeroTardanzas FROM asistencia a JOIN horario h ON h.idhorario = a.idhorario JOIN usuario u ON u.idusuario = a.idusuario JOIN departamento d ON d.iddepartamento = u.iddepartamento WHERE ( a.tipo = 'Entrada' AND a.estado = 5) AND ( DATE(a.fechahora) BETWEEN ? AND ? ) GROUP BY colaborador", [$fechadesde, $fechahasta]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {

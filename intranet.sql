@@ -619,7 +619,7 @@ CREATE TABLE horario (
   estado int NOT NULL,
 );
 INSERT INTO (horaInicio, horafin,idhorario) VALUES('8:30:00', '16:30:00',1);
-UPDATE asistencia SET idhorario=1
+ALTER TABLE asistencia ADD idhorario INT NULL DEFAULT 1 AFTER detalle;
 ALTER TABLE asistencia ADD CONSTRAINT fk_as_hor FOREIGN KEY (idhorario) REFERENCES horario(idhorario) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
 /*===============================ALTER======================================*/

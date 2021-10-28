@@ -19,6 +19,12 @@ class ControladorValidacion
         return self::formatoFechaHoraMinutos($fecha, 'H:i');
     }
 
+
+    public static function formatoFechaMes(string $fecha): bool
+    {
+        return self::formatoFechaHoraMinutos($fecha, 'Y-m');
+    }
+
     /**
      * Valida que el parametro tenga el formato Y-m-d  Ejemplo: 2021-09-17
      */
