@@ -12,18 +12,46 @@ $("#btnfiltrar").on("click", function () {
     success: function ({ respuesta }) {
       $("#tblDeclaracionSunat").DataTable().clear().draw();
       $.each(respuesta, function (index, value) {
-        $("#tblDeclaracionSunat")
+        if (value.estado == "Pendiente"){
+          $("#tblDeclaracionSunat")
           .DataTable()
           .row.add([
             `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnEditarDeclaracion" iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}"><i class="far fa-calendar-check"></i></button></abbr>`,
             value.ruc,
             value.clientes,
             value.fechavencimiento,
-            value.estado,
+            `<h3><span class="badge badge-primary">Pendiente</span></h3>`,
             value.fechadeclarada,
             value.numOrden,
           ])
           .draw(false);
+        } else if (value.estado == "Dentro de plazo"){
+          $("#tblDeclaracionSunat")
+          .DataTable()
+          .row.add([
+            `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnEditarDeclaracion" iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}" disabled><i class="far fa-calendar-check"></i></button></abbr>`,
+            value.ruc,
+            value.clientes,
+            value.fechavencimiento,
+            `<h3><span class="badge badge-success">Dentro de plazo</span></h3>`,
+            value.fechadeclarada,
+            value.numOrden,
+          ])
+          .draw(false);
+        } else if (value.estado == "Fuera de plazo"){
+          $("#tblDeclaracionSunat")
+          .DataTable()
+          .row.add([
+            `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnEditarDeclaracion" iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}" disabled><i class="far fa-calendar-check"></i></button></abbr>`,
+            value.ruc,
+            value.clientes,
+            value.fechavencimiento,
+            `<h3><span class="badge badge-danger">Fuera de plazo</span></h3>`,
+            value.fechadeclarada,
+            value.numOrden,
+          ])
+          .draw(false);
+        }          
       });
     },
     error: function ({ respuesta }) {

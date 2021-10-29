@@ -1,13 +1,9 @@
-<!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4" id="barra">
-    <!-- Brand Logo -->
     <a href="escritorio" class="brand-link" align="center">
         <img src="vistas/dist/img/logo-blanco.png" width="180px" width="75px" id="logo" alt="">
     </a>
 
-    <!-- Sidebar -->
     <div class="sidebar">
-        <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center;">
             <div class="image" style="padding-left: 3px; padding-right: 10px;">
                 <?php
@@ -29,12 +25,8 @@
             </div>
         </div>
 
-        <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-
                 <li class="nav-header">GENERAL</li>
                 <li class="nav-item">
                     <a href="escritorio" class="nav-link">
@@ -80,6 +72,50 @@
                             <p style="font-size: 15px;" class="ml-1">ADMINISTRACIÓN DEL DRIVE</p>
                         </a>
                     </li>
+
+                    <li class="nav-header">SUNAT</li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-atlas"></i>
+                            <p>Consultas<i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="consultaruc" class="nav-link ml-4">
+                                    <i class="fas fa-forward"></i>
+                                    <p>Consulta Ruc</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-calendar-alt"></i>
+                            <p>Cronograma<i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="cronogramaSunat" class="nav-link ml-4">
+                                    <i class="fas fa-forward"></i>
+                                    <p>Cronograma Mensual</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-file-invoice"></i>
+                            <p>Declaraciones Tributarias<i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="declaracionSunat" class="nav-link ml-4">
+                                    <i class="fas fa-forward"></i>
+                                    <p>Mensuales</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 <?php } ?>
 
                 <li class="nav-header">AYUDA</li>
@@ -97,7 +133,5 @@
                 </li>
             </ul>
         </nav>
-        <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
 </aside>
