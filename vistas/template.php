@@ -94,7 +94,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 2: {
-          $colaboradorRutas = ["escritorio", "asistencia", "permisos", "checklist", "admindrive"];
+          $colaboradorRutas = ["escritorio", "asistencia", "permisos", "checklist", "admindrive", "declaracionSunat", "cronogramaSunat", "consultaruc"];
           include "vistas/modulos/paginas/colaborador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
             include "vistas/modulos/paginas/colaborador/" . $_GET['ruta'] . ".php";
@@ -124,7 +124,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 6: {
-          $jefeAreaRutas = ["escritorio", "asistencia", "permisos", "checklist-jefe", "admindrive"];
+          $jefeAreaRutas = ["escritorio", "asistencia", "permisos", "checklist-jefe", "admindrive", "declaracionSunat", "cronogramaSunat", "consultaruc"];
           include "vistas/modulos/paginas/jefe/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $jefeAreaRutas)) {
             include "vistas/modulos/paginas/jefe/" . $_GET['ruta'] . ".php";
