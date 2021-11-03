@@ -94,7 +94,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 2: {
-          $colaboradorRutas = ["escritorio", "asistencia", "permisos", "checklist", "admindrive", "declaracionSunat", "cronogramaSunat", "consultaruc"];
+          $colaboradorRutas = ["escritorio", "asistencia", "permisos", "checklist", "admindrive", "cronogramaSunat", "consultaruc", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion"];
           include "vistas/modulos/paginas/colaborador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
             include "vistas/modulos/paginas/colaborador/" . $_GET['ruta'] . ".php";
@@ -104,7 +104,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 3: {
-          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "consultaruc", "consultadni", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "menuAsistencia", "menuChecklist"];
+          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "consultaruc", "consultadni", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "menuAsistencia", "menuChecklist", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -124,7 +124,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 6: {
-          $jefeAreaRutas = ["escritorio", "asistencia", "permisos", "checklist-jefe", "admindrive", "declaracionSunat", "cronogramaSunat", "consultaruc"];
+          $jefeAreaRutas = ["escritorio", "asistencia", "permisos", "checklist-jefe", "admindrive", "declaracionSunat",  "consultaruc", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion"];
           include "vistas/modulos/paginas/jefe/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $jefeAreaRutas)) {
             include "vistas/modulos/paginas/jefe/" . $_GET['ruta'] . ".php";

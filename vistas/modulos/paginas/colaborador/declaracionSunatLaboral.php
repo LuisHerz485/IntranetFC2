@@ -20,7 +20,7 @@
                 <div class="card card-danger">
                     <div class="card-header">
                         <div class="row">
-                            <b class="h4">Registro de Declaraciones</b>
+                            <b class="h4">Registro de Declaraciones Mensuales Laboral</b>
                             <div class="col" align="right">
                                 <abbr title="Ayuda"><button class="btn btn-warning btn-circle" data-toggle="modal" data-target="#modalAyuda"><i class="fas fa-question-circle"></i></button></abbr>
                             </div>
@@ -30,6 +30,7 @@
                         <div class="container-fluid">
                             <form id="fomularioFiltroDeclaracion">
                                 <div class="row">
+                                    <input type="hidden" name="idtipodeclaracion" id="idtipodeclaracion" value="2">
                                     <div class="col-12 col-lg-3">
                                         <label>Seleccione Mes</label>
                                         <input type="month" class="form-control" name="mesanyo" id="mesanyo">
@@ -100,6 +101,7 @@
                 <div class="container">
                     <form id="formEditarDeclaracionSunat">
                         <div class="row">
+                            <input type="hidden" name="idtipodeclaracion" id="idtipodeclaracion" value="2">
                             <input type="hidden" name="iddeclaracionS" id="iddeclaracionS">
                             <input type="hidden" name="fechavencimiento" id="fechavencimiento">
                             <div class="col-12">
