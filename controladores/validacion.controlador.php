@@ -8,11 +8,11 @@ class ControladorValidacion
     public static function formatoFechaHoraMinutos(string $fecha, string $formato = 'Y-m-d\TH:i'): bool
     {
         $d = DateTime::createFromFormat($formato, $fecha);
-        return $d && $d->format($formato) == $fecha;
+        return boolval($d);
     }
 
     /**
-     * Valida que el parametro tenga el formato H:i  Ejemplo: 10:18
+     * Valida que el parametro tenga el formato H:i  Ejemplo: 10:18 
      */
     public static function formatoHoraMinutos(string $fecha): bool
     {

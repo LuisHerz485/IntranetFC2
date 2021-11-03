@@ -11,47 +11,27 @@ $("#btnfiltrar").on("click", function () {
     dataType: "json",
     success: function ({ respuesta }) {
       $("#tblDeclaracionSunat").DataTable().clear().draw();
+      let rowestado;
       $.each(respuesta, function (index, value) {
-        if (value.estado == "Pendiente"){
-          $("#tblDeclaracionSunat")
+        if (value.estado === null) {
+          rowestado = `<h3><span class="badge badge-primary">Pendiente</span></h3>`;
+        } else if (value.estado == "Dentro de plazo") {
+          rowestado = `<h3><span class="badge badge-success">${value.estado}</span></h3>`;
+        } else if (value.estado == "Fuera de plazo") {
+          rowestado = `<h3><span class="badge badge-danger">${value.estado}</span></h3>`;
+        }
+        $("#tblDeclaracionSunat")
           .DataTable()
           .row.add([
             `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnEditarDeclaracion" iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}"><i class="far fa-calendar-check"></i></button></abbr>`,
             value.ruc,
             value.clientes,
             value.fechavencimiento,
-            `<h3><span class="badge badge-primary">Pendiente</span></h3>`,
+            rowestado,
             value.fechadeclarada,
             value.numOrden,
           ])
           .draw(false);
-        } else if (value.estado == "Dentro de plazo"){
-          $("#tblDeclaracionSunat")
-          .DataTable()
-          .row.add([
-            `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnEditarDeclaracion" iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}" disabled><i class="far fa-calendar-check"></i></button></abbr>`,
-            value.ruc,
-            value.clientes,
-            value.fechavencimiento,
-            `<h3><span class="badge badge-success">Dentro de plazo</span></h3>`,
-            value.fechadeclarada,
-            value.numOrden,
-          ])
-          .draw(false);
-        } else if (value.estado == "Fuera de plazo"){
-          $("#tblDeclaracionSunat")
-          .DataTable()
-          .row.add([
-            `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnEditarDeclaracion" iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}" disabled><i class="far fa-calendar-check"></i></button></abbr>`,
-            value.ruc,
-            value.clientes,
-            value.fechavencimiento,
-            `<h3><span class="badge badge-danger">Fuera de plazo</span></h3>`,
-            value.fechadeclarada,
-            value.numOrden,
-          ])
-          .draw(false);
-        }          
       });
     },
     error: function ({ respuesta }) {
@@ -81,6 +61,7 @@ $("#btnRegistrarDeclaracion").on("click", function () {
       if (respuesta) {
         $("#modalFechaDeclara").modal("hide");
         $("#btnfiltrar").click();
+        $("#formEditarDeclaracionSunat")[0].reset();
         Swal.fire({
           title: "Registrado!",
           text: "¡Se registro la declaracion correctamente!",
@@ -95,6 +76,46 @@ $("#btnRegistrarDeclaracion").on("click", function () {
           confirmButtonText: "Ok",
         });
       }
+    },
+  });
+});
+$("#btnfiltrarCliente").on("click", function () {
+  let formularioDeclaracioncliente = new FormData(
+    $("#fomularioFiltroDeclaracionClientes")[0]
+  );
+  formularioDeclaracioncliente.append("opcion", "ConsultarDeclaracionClientes");
+  $.ajax({
+    url: "ajax/declaracionSunat.ajax.php",
+    method: "POST",
+    data: formularioDeclaracioncliente,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function ({ respuesta }) {
+      $("#tblReporteDeclaracionSunat").DataTable().clear().draw();
+      $.each(respuesta, function (index, value) {
+        if (value.estado === null) {
+          rowestado = `<h3><span class="badge badge-primary">Pendiente</span></h3>`;
+        } else if (value.estado == "Dentro de plazo") {
+          rowestado = `<h3><span class="badge badge-success">${value.estado}</span></h3>`;
+        } else if (value.estado == "Fuera de plazo") {
+          rowestado = `<h3><span class="badge badge-danger">${value.estado}</span></h3>`;
+        }
+        $("#tblReporteDeclaracionSunat")
+          .DataTable()
+          .row.add([
+            value.mes,
+            value.fechavencimiento,
+            rowestado,
+            value.fechadeclarada,
+            value.numOrden,
+          ])
+          .draw(false);
+      });
+    },
+    error: function ({ respuesta }) {
+      console.log("Error", respuesta);
     },
   });
 });

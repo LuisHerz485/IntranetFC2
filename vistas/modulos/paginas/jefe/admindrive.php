@@ -40,7 +40,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <ol class="breadcrumb" id="direcciones">
-                                        <li class="breadcrumb-item">Clientes</li>
+                                        <li class="breadcrumb-item" style="pointer-events: none;">Clientes</li>
                                     </ol>
                                 </div>
                             </div>

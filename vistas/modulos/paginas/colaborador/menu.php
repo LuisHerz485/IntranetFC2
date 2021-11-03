@@ -96,6 +96,8 @@
                             </li>
                         </ul>
                     </li>
+                <?php } ?>
+                <?php if ($_SESSION['idusuario'] == 52 && $_SESSION['idusuario'] == 87) { ?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
@@ -111,6 +113,7 @@
                         </ul>
                     </li>
                 <?php } ?>
+
                 <li class="nav-header">AYUDA</li>
                 <li class="nav-item">
                     <a href="https://www.youtube.com/watch?v=VwHqLrttPJo&amp;ab_channel=FCCONTADORESYASOCIADOS" target="_blank" class="nav-link">
