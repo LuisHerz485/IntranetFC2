@@ -87,7 +87,7 @@ class ModeloDeclaracionSunat
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $declaracion = $conexion->getData("SELECT idestadodeclaracion, estado FROM estadodeclaracion");
+            $declaracion = $conexion->getData("SELECT idestadodeclaracion, estado FROM estadodeclaracion WHERE idestadodeclaracion <> 1");
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
