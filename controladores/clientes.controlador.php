@@ -99,6 +99,7 @@ class ControladorClientes
 				if ($_POST['editarDA'] === "no") {
 					$respuesta = ModeloClientes::mdlIngresarCliente($tabla, $datos);
 					if ($respuesta == "ok") {
+
 						echo "<script>
 								Swal.fire({ 
 									title: 'Success!',

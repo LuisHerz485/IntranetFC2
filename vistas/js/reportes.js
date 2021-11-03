@@ -31,8 +31,8 @@ $(".btnMostrar").click(function () {
           .DataTable()
           .row.add([
             value.codigo,
-            value.nombre + " " + value.apellidos,
             value.area,
+            value.nombre + " " + value.apellidos,
             value.fecha,
             value.asistencia,
             estado,

@@ -622,6 +622,35 @@ INSERT INTO (horaInicio, horafin,idhorario) VALUES('8:30:00', '16:30:00',1);
 ALTER TABLE asistencia ADD idhorario INT NULL DEFAULT 1 AFTER detalle;
 ALTER TABLE asistencia ADD CONSTRAINT fk_as_hor FOREIGN KEY (idhorario) REFERENCES horario(idhorario) ON DELETE RESTRICT ON UPDATE RESTRICT;
 
+CREATE TABLE cronogramafechas (
+  idcronogramafecha int AUTO_INCREMENT primary key,
+  mesano date NOT NULL,
+  digitoruc int unsigned NOT NULL,
+  fechavencimiento date NOT NULL,
+);
+
+CREATE TABLE estadodeclaracion (
+  idestadodeclaracion int AUTO_INCREMENT primary key,
+  estado varchar(50) NOT NULL,
+);
+
+CREATE TABLE declaracionsunat (
+  iddeclaracionsunat int AUTO_INCREMENT primary key,
+  idcliente int NOT NULL,
+  idusuario int DEFAULT NULL,
+  idcronogramafecha int NOT NULL,
+  fechadeclarada date DEFAULT NULL,
+  numOrden varchar(100) DEFAULT NULL,
+  idestado int DEFAULT 1,
+  fecharegistro timestamp NULL DEFAULT NULL ON UPDATE current_timestamp(),
+);
+
+
+ALTER TABLE declaracionsunat ADD CONSTRAINT fk_ds_cl FOREIGN KEY (idcliente) REFERENCES cliente (idcliente) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE declaracionsunat ADD CONSTRAINT fk_ds_us  FOREIGN KEY (idusuario) REFERENCES usuario (idusuario) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE declaracionsunat ADD CONSTRAINT fk_ds_cf FOREIGN KEY (idcronogramafecha) REFERENCES cronogramafechas (idcronogramafecha) ON DELETE RESTRICT ON UPDATE RESTRICT;
+ALTER TABLE declaracionsunat ADD CONSTRAINT fk_ds_ed FOREIGN KEY (idestado) REFERENCES estadodeclaracion (idestadodeclaracion) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
 /*===============================ALTER======================================*/
 
 ALTER TABLE permiso ADD idrevisor INT NULL DEFAULT NULL AFTER idestadopermiso;
