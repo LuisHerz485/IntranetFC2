@@ -64,7 +64,7 @@
                                     <th>Clientes </th>
                                     <th>Fecha Vencimiento</th>
                                     <th>Estado</th>
-                                    <th>fechaDeclarada</th>
+                                    <th>Fecha Declarada</th>
                                     <th>N° de orden</th>
                                 </thead>
                                 <tbody>
@@ -75,7 +75,7 @@
                                     <th>Clientes </th>
                                     <th>Fecha Vencimiento</th>
                                     <th>Estado</th>
-                                    <th>fechaDeclarada</th>
+                                    <th>Fecha Declarada</th>
                                     <th>N° de orden</th>
                                 </tfoot>
                             </table>
@@ -92,7 +92,43 @@
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h4 class="modal-title text-red"><strong>Fecha declara cliente</strong></h4>
+                <h4 class="modal-title text-red"><strong>Fecha declaracion cliente</strong></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <form id="formRegistrarDeclaracionSunat">
+                        <div class="row">
+                            <input type="hidden" name="idtipodeclaracion" id="idtipodeclaracion" value="1">
+                            <input type="hidden" name="iddeclaracionS" id="iddeclaracionS">
+                            <input type="hidden" name="fechavencimiento" id="fechavencimiento">
+                            <div class="col-12">
+                                <label>Ingrese fecha en la que se declaro en SUNAT</label>
+                                <input type="date" name="fechadeclarada" class="form-control">
+                            </div>
+                            <div class="col-12">
+                                <label>Numero de Orden:</label>
+                                <input type="number" name="numOrden" maxlength="20" class="form-control" required>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" id="btnRegistrarDeclaracion"><i class="fas fa-save"></i> Guardar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> Salir</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalEditarDeclara" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h4 class="modal-title text-red"><strong>Editar declaracion</strong></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -101,22 +137,23 @@
                 <div class="container">
                     <form id="formEditarDeclaracionSunat">
                         <div class="row">
-                            <input type="hidden" name="idtipodeclaracion" id="idtipodeclaracion" value="1">
-                            <input type="hidden" name="iddeclaracionS" id="iddeclaracionS">
-                            <input type="hidden" name="fechavencimiento" id="fechavencimiento">
+                            <input type="hidden" name="idtipodeclaracion" id="idtipodeclaracionEditar" value="1">
+                            <input type="hidden" name="iddetalledeclaracion" id="iddetalledeclaracionEditar">
+                            <input type="hidden" name="iddeclaracionS" id="iddeclaracionEditar">
+                            <input type="hidden" name="fechavencimiento" id="fechavencimientoEditar">
                             <div class="col-12">
                                 <label>Ingrese fecha en la que se declaro en SUNAT</label>
-                                <input type="date" name="fechadeclarada" class="form-control" id="fechadeclarada">
+                                <input type="date" name="fechadeclarada" class="form-control" id="fechadeclaradaEditar">
                             </div>
                             <div class="col-12">
                                 <label>Numero de Orden:</label>
-                                <input type="number" name="numOrden" maxlength="20" class="form-control" id="numOrden" required>
+                                <input type="number" name="numOrden" maxlength="20" class="form-control" id="numOrdenEditar" required>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" id="btnRegistrarDeclaracion"><i class="fas fa-save"></i> Guardar</button>
+                    <button type="button" class="btn btn-info" id="btnEditarDeclaracion"><i class="fas fa-save"></i> Guardar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> Salir</button>
                 </div>
             </div>
