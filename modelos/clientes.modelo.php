@@ -1,5 +1,6 @@
 <?php
 require_once "conexion.php";
+require_once "conexion-v2.php";
 
 class ModeloClientes
 {
@@ -10,6 +11,7 @@ class ModeloClientes
     {
         if ($item != null) {
             if ($item === 1) {
+
                 $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
                 $stmt->execute();
                 return $stmt->fetchAll();
@@ -29,22 +31,23 @@ class ModeloClientes
     /**
      * Registra los clientes
      */
-    static public function mdlIngresarCliente($tabla, $datos)
+    static public function mdlIngresarCliente($tabla, $datos): int|bool
     {
-        $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(ruc,razonsocial,logincliente,contrasenacliente,iddrive,imagen,tipocliente,estado) VALUES (:ruc,:razonsocial,:logincliente,:contrasenacliente,:iddrive,:imagen,:tipocliente,:estado)");
-        $stmt->bindParam(":ruc", $datos["ruc"], PDO::PARAM_STR);
-        $stmt->bindParam(":razonsocial", $datos["razonsocial"], PDO::PARAM_STR);
-        $stmt->bindParam(":logincliente", $datos["logincliente"], PDO::PARAM_STR);
-        $stmt->bindParam(":contrasenacliente", $datos["contrasenacliente"], PDO::PARAM_STR);
-        $stmt->bindParam(":iddrive", $datos['iddrive'], PDO::PARAM_STR);
-        $stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
-        $stmt->bindParam(":tipocliente", $datos['tipocliente'], PDO::PARAM_STR);
-        $stmt->bindParam(":estado", $datos['estado'], PDO::PARAM_STR);
-
-        if ($stmt->execute()) {
-            return "ok";
-        } else {
-            return "error";
+        $insertar = false;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $insertar = $conexion->insert(
+                "INSERT INTO $tabla(ruc,razonsocial,logincliente,contrasenacliente,iddrive,imagen,tipocliente,estado) VALUES (?,?,?,?,?,?,?,?)",
+                [$datos["ruc"], $datos["razonsocial"], $datos["logincliente"], $datos["contrasenacliente"], $datos["iddrive"], $datos["imagen"], $datos["tipocliente"], $datos["estado"]]
+            );
+        } catch (PDOException $e) {
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+            return $insertar;
         }
     }
 

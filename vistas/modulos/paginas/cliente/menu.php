@@ -27,9 +27,9 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">GENERAL</li>
                 <li class="nav-item">
-                        <a href="escritorio" class="nav-link">
+                    <a href="escritorio" class="nav-link">
                         <h5><i class="fas fa-desktop"></i>
-                        <p class="ml-5">Escritorio</p>
+                            <p class="ml-5">Escritorio</p>
                         </h5>
                     </a>
                 </li>
@@ -52,6 +52,27 @@
                             <a href="pagospendientes" class="nav-link ml-4">
                                 <i class="fas fa-forward"></i>
                                 <p>Pagos Pendientes</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="pagosrealizados" class="nav-link ml-4">
+                                <i class="fas fa-forward"></i>
+                                <p>Pagos Realizados</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-header">SUNAT</li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-folder"></i>
+                        <p>Consulta<i class="fas fa-angle-left right"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="pagospendientes" class="nav-link ml-4">
+                                <i class="fas fa-forward"></i>
+                                <p>Consulta Ruc</p>
                             </a>
                         </li>
                         <li class="nav-item">

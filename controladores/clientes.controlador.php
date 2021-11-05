@@ -98,7 +98,8 @@ class ControladorClientes
 
 				if ($_POST['editarDA'] === "no") {
 					$respuesta = ModeloClientes::mdlIngresarCliente($tabla, $datos);
-					if ($respuesta == "ok") {
+					ModeloDeclaracionSunat::mdlRegistrarDeclaracionSunat($respuesta);
+					if ($respuesta) {
 
 						echo "<script>
 								Swal.fire({ 
