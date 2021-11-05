@@ -3,7 +3,7 @@ require_once "conexion-v2.php";
 
 class ModeloDeclaracionSunat
 {
-    public static function mdlRegistrarDeclaracionSunat($mesyano): int|false
+    public static function mdlRegistrarDeclaracionSunatBloque($mesyano): int|false
     {
         $insertar = false;
         $conexion = null;
@@ -21,6 +21,24 @@ class ModeloDeclaracionSunat
         }
         return  $insertar;
     }
+
+    public static function mdlRegistrarDeclaracionSunat($idcliente): int|false
+    {
+        $insertar = false;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $insertar = $conexion->insert("INSERT INTO declaracionsunat (idcliente, idcronogramafecha) VALUES(?, (SELECT SUBSTRING(ruc, LENGTH(ruc))FROM cliente WHERE idcliente=?))", [$idcliente, $idcliente]);
+        } catch (PDOException $e) {
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return  $insertar;
+    }
+
 
 
     public static function mdlConsularDeclaracionSunat(string $mesyano, int $idestado, int $idtipodeclaracion): mixed
@@ -48,8 +66,8 @@ class ModeloDeclaracionSunat
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $declaracion = $conexion->getData("SELECT DS.iddeclaracionsunat AS iddeclaracionsunat, CL.ruc AS ruc, CL.razonsocial AS clientes, CF.fechavencimiento AS fechavencimiento,B.estado AS estado,B.fechadeclarada AS fechadeclarada,B.numOrden AS numOrden FROM declaracionsunat DS JOIN cliente CL ON DS.idcliente = CL.idcliente JOIN cronogramafechas CF ON DS.idcronogramafecha = CF.idcronogramafecha 
-            LEFT JOIN (SELECT D.iddeclaracionsunat as iddeclaracionsunat,D.fechadeclarada as fechadeclarada,numeroOrden as numOrden,E.estado as estado FROM detalledeclaracionsunat D JOIN estadodeclaracion E ON D.idestado=E.idestadodeclaracion JOIN tipodeclaracion T ON D.idtipodeclaracionsunat=T.idtipodeclaracion WHERE T.idtipodeclaracion=?)  B ON DS.iddeclaracionsunat =B.iddeclaracionsunat
+            $declaracion = $conexion->getData("SELECT DS.iddeclaracionsunat AS iddeclaracionsunat, CL.ruc AS ruc, CL.razonsocial AS clientes, CF.fechavencimiento AS fechavencimiento,B.estado AS estado,B.fechadeclarada AS fechadeclarada,B.numOrden AS numOrden,B.iddetalledeclaracionsunat FROM declaracionsunat DS JOIN cliente CL ON DS.idcliente = CL.idcliente JOIN cronogramafechas CF ON DS.idcronogramafecha = CF.idcronogramafecha 
+            LEFT JOIN (SELECT D.iddetalledeclaracionsunat as iddetalledeclaracionsunat,D.iddeclaracionsunat as iddeclaracionsunat,D.fechadeclarada as fechadeclarada,numeroOrden as numOrden,E.estado as estado FROM detalledeclaracionsunat D JOIN estadodeclaracion E ON D.idestado=E.idestadodeclaracion JOIN tipodeclaracion T ON D.idtipodeclaracionsunat=T.idtipodeclaracion WHERE T.idtipodeclaracion=?)  B ON DS.iddeclaracionsunat =B.iddeclaracionsunat
              WHERE ( DATE_FORMAT(CF.mesano, \"%Y-%m\") = ? )", [$idtipodeclaracion, $mesyano]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
@@ -99,13 +117,30 @@ class ModeloDeclaracionSunat
         return $declaracion;
     }
 
-    public static function mdlEditarDeclaracionSunat(int $iddeclaracionSunat, int $estado, string $fechadeclarada, string $numerorden, string $idusuario, int $tipodeclaracion): int|bool
+    public static function mdlRegistrarDetalleDeclaracionSunat(int $iddeclaracionSunat, int $estado, string $fechadeclarada, string $numerorden, string $idusuario, int $tipodeclaracion): int|bool
     {
         $filasActualizadas = false;
         $conexion = null;
         try {
             $conexion = new ConexionV2();
             $filasActualizadas = $conexion->updateOrDelete("INSERT INTO detalledeclaracionsunat (iddeclaracionsunat, fechadeclarada, numeroOrden, idusuario, idtipodeclaracionsunat, idestado) VALUES(?,?,?,?,?, ?)", [$iddeclaracionSunat, $fechadeclarada, $numerorden, $idusuario, $tipodeclaracion, $estado]);
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return  $filasActualizadas;
+    }
+    public static function mdlActualizarDeclaracionSunat(int $iddetalledeclaracionSunat, int $estado, string $fechadeclarada, string $numerorden, string $idusuario, int $tipodeclaracion): int|bool
+    {
+        $filasActualizadas = false;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $filasActualizadas = $conexion->updateOrDelete("UPDATE detalledeclaracionsunat SET fechadeclarada=?, numeroOrden=?, idusuario=?, idtipodeclaracionsunat=?, idestado=? WHERE iddetalledeclaracionsunat=?", [$fechadeclarada, $numerorden, $idusuario, $tipodeclaracion, $estado, $iddetalledeclaracionSunat]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {

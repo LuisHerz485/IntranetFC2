@@ -42,9 +42,9 @@ class ControladorDeclaracionSunat
             $idtipodeclaracion = ControladorValidacion::validarID($_POST["idtipodeclaracion"]);
             if ($iddeclaracion && $idtipodeclaracion && ControladorValidacion::formatoFecha($_POST["fechadeclarada"]) && !empty($numerorden)) {
                 if ($fechavencimiento >= $fechadeclarada) {
-                    return ModeloDeclaracionSunat::mdlEditarDeclaracionSunat($iddeclaracion, 2, $_POST["fechadeclarada"], $numerorden, $idusuario, $idtipodeclaracion);
+                    return ModeloDeclaracionSunat::mdlRegistrarDetalleDeclaracionSunat($iddeclaracion, 2, $_POST["fechadeclarada"], $numerorden, $idusuario, $idtipodeclaracion);
                 } else {
-                    return ModeloDeclaracionSunat::mdlEditarDeclaracionSunat($iddeclaracion, 3, $_POST["fechadeclarada"], $numerorden, $idusuario, $idtipodeclaracion);
+                    return ModeloDeclaracionSunat::mdlRegistrarDetalleDeclaracionSunat($iddeclaracion, 3, $_POST["fechadeclarada"], $numerorden, $idusuario, $idtipodeclaracion);
                 }
             }
         }

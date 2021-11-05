@@ -12,18 +12,22 @@ $("#btnfiltrar").on("click", function () {
     success: function ({ respuesta }) {
       $("#tblDeclaracionSunat").DataTable().clear().draw();
       let rowestado;
+      let rowopcion;
       $.each(respuesta, function (index, value) {
         if (value.estado === null) {
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnEditarDeclaracion"  iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}"><i class="far fa-calendar-check"></i></button></abbr>`;
           rowestado = `<h3><span class="badge badge-primary">Pendiente</span></h3>`;
         } else if (value.estado == "Dentro de plazo") {
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnEditarDeclaracion" iddetalledeclaracion="${value.iddetalledeclaracionsunat}" iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}" disabled><i class="far fa-calendar-check"></i></button></abbr>`;
           rowestado = `<h3><span class="badge badge-success">${value.estado}</span></h3>`;
         } else if (value.estado == "Fuera de plazo") {
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnEditarDeclaracion" iddetalledeclaracion="${value.iddetalledeclaracionsunat}"  iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}" disabled><i class="far fa-calendar-check"></i></button></abbr>`;
           rowestado = `<h3><span class="badge badge-danger">${value.estado}</span></h3>`;
         }
         $("#tblDeclaracionSunat")
           .DataTable()
           .row.add([
-            `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnEditarDeclaracion" iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}"><i class="far fa-calendar-check"></i></button></abbr>`,
+            rowopcion,
             value.ruc,
             value.clientes,
             value.fechavencimiento,
@@ -79,6 +83,7 @@ $("#btnRegistrarDeclaracion").on("click", function () {
     },
   });
 });
+
 $("#btnfiltrarCliente").on("click", function () {
   let formularioDeclaracioncliente = new FormData(
     $("#fomularioFiltroDeclaracionClientes")[0]

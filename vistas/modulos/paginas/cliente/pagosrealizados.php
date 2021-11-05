@@ -7,7 +7,7 @@
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-          <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Seguimiento de Pagos</b></a></li>
+            <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Seguimiento de Pagos</b></a></li>
           </ol>
         </div>
       </div>
@@ -18,7 +18,7 @@
       <div class="col-md-12">
         <div class="card card-danger">
           <div class="card-header">
-              <b class="h4">Pagos pendiendes</b>
+            <b class="h4">Pagos Realizados</b>
           </div>
           <div class="card-body">
             <div id="tbllistado">
