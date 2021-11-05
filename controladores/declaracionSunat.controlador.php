@@ -50,4 +50,25 @@ class ControladorDeclaracionSunat
         }
         return false;
     }
+
+    public static function ctrActualizarDeclaracionSunat(): mixed
+    {
+        if (isset($_POST["iddetalledeclaracion"], $_POST["iddeclaracionS"], $_POST["fechadeclarada"], $_POST["numOrden"], $_SESSION["idusuario"], $_POST["idtipodeclaracion"])) {
+            $iddetalledeclaracionSunat =  ControladorValidacion::validarID($_POST["iddetalledeclaracion"]);
+            $numerorden = $_POST["numOrden"];
+            $idusuario = $_SESSION["idusuario"];
+            $iddeclaracion = ControladorValidacion::validarID($_POST["iddeclaracionS"]);
+            $fechadeclarada = strtotime($_POST["fechadeclarada"]);
+            $fechavencimiento = strtotime($_POST["fechavencimiento"]);
+            $idtipodeclaracion = ControladorValidacion::validarID($_POST["idtipodeclaracion"]);
+            if ($iddetalledeclaracionSunat && $iddeclaracion && $idtipodeclaracion && ControladorValidacion::formatoFecha($_POST["fechadeclarada"]) && !empty($numerorden)) {
+                if ($fechavencimiento >= $fechadeclarada) {
+                    return ModeloDeclaracionSunat::mdlActualizarDeclaracionSunat($iddetalledeclaracionSunat, 2, $_POST["fechadeclarada"], $numerorden, $idusuario, $idtipodeclaracion);
+                } else {
+                    return ModeloDeclaracionSunat::mdlActualizarDeclaracionSunat($iddetalledeclaracionSunat, 3, $_POST["fechadeclarada"], $numerorden, $idusuario, $idtipodeclaracion);
+                }
+            }
+        }
+        return false;
+    }
 }

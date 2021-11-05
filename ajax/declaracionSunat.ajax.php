@@ -22,6 +22,11 @@ if (isset($_POST["opcion"])) {
                 echo json_encode(["respuesta" => ControladorDeclaracionSunat::ctrRegistrarDeclaracionSunat()]);
                 break;
             }
+        case "actualizar": {
+                http_response_code(200);
+                echo json_encode(["respuesta" => ControladorDeclaracionSunat::ctrActualizarDeclaracionSunat()]);
+                break;
+            }
         default: {
                 break;
             }
