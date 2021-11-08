@@ -124,7 +124,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 6: {
-          $jefeAreaRutas = ["escritorio", "asistencia", "permisos", "checklist-jefe", "admindrive", "declaracionSunat",  "consultaruc", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion"];
+          $jefeAreaRutas = ["escritorio", "asistencia", "permisos", "checklist-jefe", "admindrive",   "consultaruc", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion"];
           include "vistas/modulos/paginas/jefe/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $jefeAreaRutas)) {
             include "vistas/modulos/paginas/jefe/" . $_GET['ruta'] . ".php";
