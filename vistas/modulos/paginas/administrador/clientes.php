@@ -32,11 +32,13 @@
             <div id="tbllistado">
               <table id="" class="table table-striped tablaDataClientes dt-responsive">
                 <thead>
-                  <th class="no-exportar">Opciones</th>
+                  <th>Opciones</th>
                   <th>Estado</th>
                   <th>RUC</th>
                   <th>Razón Social</th>
-                  <th class="no-exportar">Imagen</th>
+                  <th>Usuario SUNAT</th>
+                  <th>Clave SOL</th>
+                  <th>Imagen</th>
                 </thead>
                 <tbody>
                   <?php
@@ -52,7 +54,9 @@
                       echo '<td><button class="btn btn-success btn-xs btnActivarC" idcliente="' . $value["idcliente"] . '" estado="0">Activo</button></td>';
                     }
                     echo '<td>' . $value['ruc'] . '</td>
-                          <td>' . $value['razonsocial'] . '</td> ';
+                          <td>' . $value['razonsocial'] . '</td>
+                          <td>' . $value['usuariosunat'] . '</td>
+                          <td>' . $value['clavesunat'] . '</td>';
                     if ($value["imagen"] != "") {
                       echo '<td><img src="' . $value['imagen'] . '" width="50px"></td>';
                     } else {
@@ -67,6 +71,8 @@
                   <th>Estado</th>
                   <th>RUC</th>
                   <th>Razón Social</th>
+                  <th>Usuario</th>
+                  <th>Clave</th>
                   <th>Imagen</th>
                 </tfoot>
               </table>
@@ -104,6 +110,14 @@
                   <input class="form-control" type="text" name="iddrive" id="iddrive" placeholder="ID Google Drive" required>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="">Usuario SUNAT:</label>
+                  <input class="form-control" type="text" name="usuariosunat" id="usuariosunat" placeholder="Usuario SUNAT">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="">Clave SOL:</label>
+                  <input class="form-control" type="text" name="clavesunat" id="clavesunat" placeholder="Clave SOL">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label class="panel" for="">Imagen:</label>
                   <input type="file" class="nuevaFoto center-block" name="nuevaFoto" id="nuevaFoto">
                   <input class="form-control" type="hidden" name="fotoaux" id="fotoaux">
@@ -117,6 +131,7 @@
               </div>
             </form>
           </div>
+          
           <div class="card-body panel-body" id="formulariodetalleC">
             <div class="row">
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

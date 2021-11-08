@@ -207,6 +207,12 @@
               <p>Cronograma Mensual</p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="cronogramaAnualSunat" class="nav-link ml-4">
+              <i class="fas fa-forward"></i>
+              <p>Cronograma Anual</p>
+            </a>
+          </li>
         </ul>
       </li>
       <li class="nav-item">
@@ -225,6 +231,26 @@
             <a href="declaracionSunatLaboral" class="nav-link ml-4">
               <i class="fas fa-forward"></i>
               <p>Laboral</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="reportesDeclaracion" class="nav-link ml-4">
+              <i class="fas fa-forward"></i>
+              <p>Reportes de Clientes</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="fas fa-file-invoice"></i>
+          <p>Declaraciones Anuales<i class="right fas fa-angle-left"></i></p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="declaracionSunatTributaria" class="nav-link ml-4">
+              <i class="fas fa-forward"></i>
+              <p>Declaración</p>
             </a>
           </li>
           <li class="nav-item">

@@ -31,6 +31,7 @@ class AjaxClientes
 }
 
 if (isset($_POST['estado'])) {
+	http_response_code(200);
 	$estado = new AjaxClientes();
 	$estado->activarEstado = $_POST['estado'];
 	$estado->activarIdCliente = $_POST['idcliente'];
@@ -38,12 +39,12 @@ if (isset($_POST['estado'])) {
 }
 
 if (isset($_POST["idcliente"])) {
+	http_response_code(200);
 	$editar = new AjaxClientes();
 	$editar->idcliente = $_POST["idcliente"];
 	$editar->ajaxEditarCliente();
 }
 
-http_response_code(400);
 if (isset($_POST["opcion"])) {
 	switch ($_POST["opcion"]) {
 		case "ConsultaRazonSocial": {

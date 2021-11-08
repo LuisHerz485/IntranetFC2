@@ -20,6 +20,7 @@ class ModeloCronogramaSunat
         }
         return $idcronograma;
     }
+    
     public static function mdlBuscarCronogramaFecha(int $digitoruc): int|bool
     {
         $idcronogramafecha = false;

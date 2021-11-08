@@ -583,7 +583,7 @@ $('.tablaDataClientes').DataTable({
       titleAttr: 'Exportar a PDF',
       className: 'btn btn-danger',
       customize: function (doc) {
-        doc.content[1].table.widths = ['30%', '30%', '40%'];
+        doc.content[1].table.widths = ['10%', '15%', '45%', '15%', '15%'];
         doc.watermark = {
           text: 'FC Contadores & Asociados',
           bold: true,
@@ -2026,8 +2026,9 @@ $('.tablaDataTardanzas').DataTable({
   autoWidth: false,
   language: language,
 });
+
 $('.tablaDataCronogramaSunat').DataTable({
-  dom: 'B<"float-left"i><"float-right"f>t<"float-left"l><"float-right"p><"clearfix">',
+  dom: 'B<"float-left"i><"float-right"f><"clearfix">',
   buttons: [
     {
       extend: 'excelHtml5',
@@ -2142,6 +2143,121 @@ $('.tablaDataCronogramaSunat').DataTable({
     [12, 25, 50, 100, 'All'],
   ],
 });
+
+//TABLA REPORTE DE CRONOGRAMA SUNAT ANUAL
+$('.tablaDataCronogramaAnual').DataTable({
+  pageLength: 10,
+  dom: 'B<"float-left"i><"float-right"f><"clearfix">',
+  buttons: [
+    {
+      extend: 'excelHtml5',
+      download: 'open',
+      text: '<i class="fas fa-file-excel"> Excel</i> ',
+      titleAttr: 'Exportar a Excel',
+      className: 'btn btn-success',
+      exportOptions: {
+        columns: ':not(.no-exportar)', //exportar toda columna que no tenga la clase no-exportar
+      },
+    },
+    {
+      extend: 'pdf',
+      download: 'open',
+      text: '<i class="fas fa-file-pdf"> PDF</i> ',
+      title: 'CRONOGRAMA DE OBLIGACIÓN ANUAL',
+      titleAttr: 'Exportar a PDF',
+      alignment: 'center',
+      orientation: 'landscape',
+      className: 'btn btn-danger',
+      customize: function (doc) {
+        doc.content[1].table.widths = [
+          '50%',
+          '50%',
+        ];
+        doc.watermark = {
+          text: 'FC Contadores & Asociados',
+          bold: true,
+          color: 'gray',
+          opacity: 0.2,
+        };
+        doc.styles.title = {
+          color: '#000000',
+          fontSize: '25',
+          bold: true,
+          alignment: 'center',
+        };
+        doc.styles.tableHeader = {
+          alignment: 'center',
+          fontSize: '9',
+          bold: true,
+          color: '#FFFFFF',
+          fillColor: '#000000',
+        };
+        doc.content[1].layout = {
+          hLineWidth: function (i, node) {
+            return i === 0 || i === node.table.body.length ? 1 : 1;
+          },
+          vLineWidth: function (i, node) {
+            return i === 0 || i === node.table.widths.length ? 1 : 1;
+          },
+          hLineColor: function (i, node) {
+            return i === 0 || i === node.table.body.length ? '#FFF' : '#FFF';
+          },
+          vLineColor: function (i, node) {
+            return i === 0 || i === node.table.widths.length ? '#FFF' : '#FFF';
+          },
+        };
+
+        doc['footer'] = function (page, pages) {
+          let fechaHoy = new Date();
+          return {
+            columns: [
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              {
+                // This is the right column
+                alignment: 'right',
+                text: [
+                  'pagina ',
+                  { text: page.toString() },
+                  ' de ',
+                  { text: pages.toString() },
+                ],
+              },
+            ],
+            margin: [40, 0, 40, 0],
+          };
+        };
+        doc.styles.tableBodyOdd.alignment = 'center';
+        doc.styles.tableBodyEven.alignment = 'center';
+        doc.styles.tableBodyOdd.fillColor = '#e9e9e9';
+        doc.styles.tableBodyEven.fillColor = '#e9e9e9';
+        doc.styles.tableBodyOdd.noWrap = true;
+        doc.styles.tableBodyEven.noWrap = true;
+        doc.styles.tableBodyOdd.fontSize = '9';
+        doc.styles.tableBodyEven.fontSize = '9';
+        doc.content.splice(0, 0, {
+          columns: [
+            {
+              image: imagenFC,
+              width: 150,
+              opacity: 0.9,
+            },
+          ],
+        });
+      },
+      exportOptions: {
+        columns: ':not(.no-exportar)', //exportar toda columna que no tenga la clase no-exportar
+      },
+    },
+  ],
+  autoWidth: false,
+  order: [[1, 'asc']],
+  language: language,
+  lengthMenu: [
+    [12, 25, 50, 100, -1],
+    [12, 25, 50, 100, 'All'],
+  ],
+});
+
 $('.tablaDataDeclaracionSunat').DataTable({
   dom: 'B<"float-left"i><"float-right"f>t<"float-left"l><"float-right"p><"clearfix">',
   buttons: [
@@ -2159,7 +2275,7 @@ $('.tablaDataDeclaracionSunat').DataTable({
       extend: 'pdf',
       download: 'open',
       text: '<i class="fas fa-file-pdf"> PDF</i> ',
-      title: 'DECLARACIONES DE MENSUALES',
+      title: 'REPORTE DE CORNOGRAMA DE OBLIGACIÓN ANUAL',
       titleAttr: 'Exportar a PDF',
       alignment: 'center',
       orientation: 'landscape',
