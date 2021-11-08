@@ -117,7 +117,7 @@
                         </ul>
                     </li>
                 <?php } ?>
-                <?php if ($_SESSION['idusuario'] == 29 || $_SESSION['idusuario'] == 71) { ?>
+                <?php if (in_array($_SESSION['iddepartamento'], [18, 13, 5, 8, 3])) { ?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
