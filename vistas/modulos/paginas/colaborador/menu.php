@@ -101,13 +101,25 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
-                            <p>Declaraciones Tributarias<i class="right fas fa-angle-left"></i></p>
+                            <p>Declaraciones Mensuales<i class="right fas fa-angle-left"></i></p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="declaracionSunat" class="nav-link ml-4">
+                                <a href="declaracionSunatTributaria" class="nav-link ml-4">
                                     <i class="fas fa-forward"></i>
-                                    <p>Mensuales</p>
+                                    <p>Tributaria</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="declaracionSunatLaboral" class="nav-link ml-4">
+                                    <i class="fas fa-forward"></i>
+                                    <p>Laboral</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="reportesDeclaracion" class="nav-link ml-4">
+                                    <i class="fas fa-forward"></i>
+                                    <p>Reportes de Clientes</p>
                                 </a>
                             </li>
                         </ul>

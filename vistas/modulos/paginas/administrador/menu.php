@@ -1,28 +1,3 @@
-<!--<style>
-    /*color de todo el menu*/
-    .sidebar-dark-blue {
-        background-color: #fff !important;
-    }
-
-    /*color cuando pasa el raton*/
-    .nav-sidebar>.nav-item.menu-open>.nav-link,
-    .nav-sidebar>.nav-item:hover>.nav-link,
-    .nav-sidebar>.nav-item>.nav-link:focus {
-        color: #8C2A2A !important;
-        font: bold;
-        te
-    }
-
-    /*color del header nav */
-    .nav-header {
-        color: #000 !important;
-    }
-
-    /*color de texto del menu */
-    .sidebar a {
-        color: black !important;
-    }
-</style>-->
 <aside class="main-sidebar sidebar-dark-blue elevation-4" id="barra">
   <a href="escritorio" class="brand-link" align="center">
     <img src="vistas/dist/img/logo-blanco.png" width="180px" height="75px" id="logo" alt="">

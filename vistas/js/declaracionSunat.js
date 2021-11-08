@@ -15,14 +15,60 @@ $('#btnfiltrar').on('click', function () {
       let rowopcion;
       $.each(respuesta, function (index, value) {
         if (value.estado === null) {
-          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnModalRegistrarDeclaracion"  iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}"><i class="far fa-calendar-check"></i></button></abbr>`;
-          rowestado = `<h3><span class="badge badge-primary">Pendiente</span></h3>`;
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnModalRegistrarDeclaracion" idestado="${value.idestado}" iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}"><i class="far fa-calendar-check"></i></button></abbr>`;
+          rowestado = `<h3><p class="badge badge-primary">Pendiente</p></h3>`;
         } else if (value.estado == 'Dentro de plazo') {
-          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnModalRegistrarDeclaracion" iddetalledeclaracion="${value.iddetalledeclaracionsunat}" iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}" disabled><i class="far fa-calendar-check"></i></button></abbr><abbr title="Editar Declaracion"><button class="btn btn-secondary border btnModalEditarDeclaracion" iddetalledeclaracion="${value.iddetalledeclaracionsunat}" iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}"  numOrden="${value.numOrden}" fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`;
-          rowestado = `<h3><span class="badge badge-success">${value.estado}</span></h3>`;
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnModalRegistrarDeclaracion" iddetalledeclaracion="${
+            value.iddetalledeclaracionsunat
+          }" iddeclaracion="${value.iddeclaracionsunat}"  idestado="${
+            value.idestado
+          }" fecha="${
+            value.fechavencimiento
+          }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
+            canEdit
+              ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border btnModalEditarDeclaracion" iddetalledeclaracion="${value.iddetalledeclaracionsunat}" iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}"  numOrden="${value.numOrden}" fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
+              : ``
+          }`;
+          rowestado = `<h3><p class="badge badge-success">${value.estado}</p></h3>`;
         } else if (value.estado == 'Fuera de plazo') {
-          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnModalRegistrarDeclaracion" iddetalledeclaracion="${value.iddetalledeclaracionsunat}"  iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}" disabled><i class="far fa-calendar-check"></i></button></abbr><abbr title="Editar Declaracion"><button class="btn btn-secondary border btnModalEditarDeclaracion" iddetalledeclaracion="${value.iddetalledeclaracionsunat}"  iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}" numOrden="${value.numOrden}"  fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`;
-          rowestado = `<h3><span class="badge badge-danger">${value.estado}</span></h3>`;
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnModalRegistrarDeclaracion" iddetalledeclaracion="${
+            value.iddetalledeclaracionsunat
+          }"  iddeclaracion="${value.iddeclaracionsunat}"  idestado="${
+            value.idestado
+          }" fecha="${
+            value.fechavencimiento
+          }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
+            canEdit
+              ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border btnModalEditarDeclaracion" iddetalledeclaracion="${value.iddetalledeclaracionsunat}"  iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}" numOrden="${value.numOrden}"  fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
+              : ``
+          }`;
+          rowestado = `<h3><p class="badge badge-danger">${value.estado}</p></h3>`;
+        } else if (value.estado == 'Fuera de plazo por rectificatoria') {
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnModalRegistrarDeclaracion" iddetalledeclaracion="${
+            value.iddetalledeclaracionsunat
+          }"  iddeclaracion="${value.iddeclaracionsunat}"  idestado="${
+            value.idestado
+          }" fecha="${
+            value.fechavencimiento
+          }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
+            canEdit
+              ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border btnModalEditarDeclaracion" iddetalledeclaracion="${value.iddetalledeclaracionsunat}"  iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}" numOrden="${value.numOrden}"  fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
+              : ``
+          }`;
+          rowestado = `<h3><p class="badge badge-danger">Fuera de plazo</br>por rectificatoria</p></h3>`;
+        } else if (value.estado == 'Fuera de plazo por error contador') {
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnModalRegistrarDeclaracion" iddetalledeclaracion="${
+            value.iddetalledeclaracionsunat
+          }"  iddeclaracion="${value.iddeclaracionsunat}"  idestado="${
+            value.idestado
+          }" fecha="${
+            value.fechavencimiento
+          }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
+            canEdit
+              ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border btnModalEditarDeclaracion" iddetalledeclaracion="${value.iddetalledeclaracionsunat}"  iddeclaracion="${value.iddeclaracionsunat}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}" numOrden="${value.numOrden}"  fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
+              : ``
+          }`;
+          rowestado = `<h3><p class="badge badge-danger">Fuera de plazo</br>por error contador</p></h3>`;
         }
         $('#tblDeclaracionSunat')
           .DataTable()
@@ -56,6 +102,7 @@ $(document).on('click', '.btnModalEditarDeclaracion', function () {
   $('#fechavencimientoEditar').val(btn.attr('fecha'));
   $('#fechadeclaradaEditar').val(btn.attr('fechadeclarada'));
   $('#numOrdenEditar').val(btn.attr('numOrden'));
+  $('#idestadoEditar').val(btn.attr('idestado')).trigger('change');
   $('#modalEditarDeclara').modal('show');
 });
 

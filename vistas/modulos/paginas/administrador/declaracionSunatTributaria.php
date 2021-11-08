@@ -1,3 +1,6 @@
+<script>
+    const canEdit = <?php echo in_array($_SESSION["idusuario"], [16, 29, 71]) || $_SESSION["iddepartamento"] == 7 ? "true" : "false" ?>;
+</script>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -148,6 +151,18 @@
                             <div class="col-12">
                                 <label>Numero de Orden:</label>
                                 <input type="number" name="numOrden" maxlength="20" class="form-control" id="numOrdenEditar" required>
+                            </div>
+                            <div class="col-12">
+                                <label>Seleccione un estado</label>
+                                <select name="idestado" id="idestadoEditar" class="form-control select2" required>
+                                    <?php
+                                    if ($estados) {
+                                        foreach ($estados as $estado) {
+                                            echo '<option value="' . $estado["idestadodeclaracion"] . '">' . $estado["estado"] . '</option>';
+                                        }
+                                    }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                     </form>
