@@ -32,13 +32,13 @@
             <div id="tbllistado">
               <table id="" class="table table-striped tablaDataClientes dt-responsive">
                 <thead>
-                  <th>Opciones</th>
+                  <th class="no-exportar">Opciones</th>
                   <th>Estado</th>
                   <th>RUC</th>
                   <th>Razón Social</th>
                   <th>Usuario SUNAT</th>
                   <th>Clave SOL</th>
-                  <th>Imagen</th>
+                  <th class="no-exportar">Imagen</th>
                 </thead>
                 <tbody>
                   <?php
@@ -46,8 +46,13 @@
                   $valor = null;
                   $clientes = ControladorClientes::ctrMostrarCliente($item, $valor);
                   foreach ($clientes as $key => $value) {
+                    if($_SESSION['idtipousuario'] == 1){
                     echo '<tr>
                           <th scope="row"><button class="btn btn-warning btn-circle btn-xl btnEditarCliente" onclick="mostrarformC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
+                    } else {
+                      echo '<tr>
+                          <th scope="row"><button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
+                    }
                     if ($value['estado'] != "1") {
                       echo '<td><button class="btn btn-danger btn-xs btnActivarC" idcliente="' . $value["idcliente"] . '" estado="1">Inactivo</button></td>';
                     } else {
