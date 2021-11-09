@@ -133,6 +133,8 @@ $(".btnEditarCliente").click(function () {
       $("#razonsocial").val(respuesta["razonsocial"]);
       $("#logincliente").val(respuesta["logincliente"]);
       $("#iddrive").val(respuesta["iddrive"]);
+      $("#usuariosunat").val(respuesta["usuariosunat"]);
+      $("#clavesunat").val(respuesta["clavesunat"]);
       $("#fotoaux").val(respuesta["imagen"]);
       if (respuesta["imagen"] != "") {
         $(".previsualizar").attr("src", respuesta["imagen"]);

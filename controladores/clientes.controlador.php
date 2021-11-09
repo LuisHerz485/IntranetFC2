@@ -91,6 +91,8 @@ class ControladorClientes
 					"logincliente" => $_POST['logincliente'],
 					"contrasenacliente" => $clavehash,
 					"iddrive" => $_POST['iddrive'],
+					"usuariosunat" => $_POST['usuariosunat'],
+					"clavesunat" => $_POST['clavesunat'],
 					"imagen" => $ruta,
 					"tipocliente" => "clienteaccess",
 					"estado" => 1

@@ -36,6 +36,8 @@
                   <th>Estado</th>
                   <th>RUC</th>
                   <th>Razón Social</th>
+                  <th>Usuario SUNAT</th>
+                  <th>Clave SOL</th>
                   <th class="no-exportar">Imagen</th>
                 </thead>
                 <tbody>
@@ -44,15 +46,22 @@
                   $valor = null;
                   $clientes = ControladorClientes::ctrMostrarCliente($item, $valor);
                   foreach ($clientes as $key => $value) {
+                    if($_SESSION['idtipousuario'] == 1){
                     echo '<tr>
                           <th scope="row"><button class="btn btn-warning btn-circle btn-xl btnEditarCliente" onclick="mostrarformC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
+                    } else {
+                      echo '<tr>
+                          <th scope="row"><button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
+                    }
                     if ($value['estado'] != "1") {
                       echo '<td><button class="btn btn-danger btn-xs btnActivarC" idcliente="' . $value["idcliente"] . '" estado="1">Inactivo</button></td>';
                     } else {
                       echo '<td><button class="btn btn-success btn-xs btnActivarC" idcliente="' . $value["idcliente"] . '" estado="0">Activo</button></td>';
                     }
                     echo '<td>' . $value['ruc'] . '</td>
-                          <td>' . $value['razonsocial'] . '</td> ';
+                          <td>' . $value['razonsocial'] . '</td>
+                          <td>' . $value['usuariosunat'] . '</td>
+                          <td>' . $value['clavesunat'] . '</td>';
                     if ($value["imagen"] != "") {
                       echo '<td><img src="' . $value['imagen'] . '" width="50px"></td>';
                     } else {
@@ -67,6 +76,8 @@
                   <th>Estado</th>
                   <th>RUC</th>
                   <th>Razón Social</th>
+                  <th>Usuario</th>
+                  <th>Clave</th>
                   <th>Imagen</th>
                 </tfoot>
               </table>
@@ -104,6 +115,14 @@
                   <input class="form-control" type="text" name="iddrive" id="iddrive" placeholder="ID Google Drive" required>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="">Usuario SUNAT:</label>
+                  <input class="form-control" type="text" name="usuariosunat" id="usuariosunat" placeholder="Usuario SUNAT">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="">Clave SOL:</label>
+                  <input class="form-control" type="text" name="clavesunat" id="clavesunat" placeholder="Clave SOL">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label class="panel" for="">Imagen:</label>
                   <input type="file" class="nuevaFoto center-block" name="nuevaFoto" id="nuevaFoto">
                   <input class="form-control" type="hidden" name="fotoaux" id="fotoaux">
@@ -117,6 +136,7 @@
               </div>
             </form>
           </div>
+          
           <div class="card-body panel-body" id="formulariodetalleC">
             <div class="row">
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">

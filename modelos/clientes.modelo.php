@@ -4,14 +4,10 @@ require_once "conexion-v2.php";
 
 class ModeloClientes
 {
-    /**
-     * Retorna un array de los clientes ordenados ascendentemente por su razon social y solo los clientes en general 
-     */
     static public function mdlMostrarClientes($tabla, $item, $valor): mixed
     {
         if ($item != null) {
             if ($item === 1) {
-
                 $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla");
                 $stmt->execute();
                 return $stmt->fetchAll();
@@ -38,8 +34,8 @@ class ModeloClientes
         try {
             $conexion = new ConexionV2();
             $insertar = $conexion->insert(
-                "INSERT INTO $tabla(ruc,razonsocial,logincliente,contrasenacliente,iddrive,imagen,tipocliente,estado) VALUES (?,?,?,?,?,?,?,?)",
-                [$datos["ruc"], $datos["razonsocial"], $datos["logincliente"], $datos["contrasenacliente"], $datos["iddrive"], $datos["imagen"], $datos["tipocliente"], $datos["estado"]]
+                "INSERT INTO $tabla(ruc,razonsocial,logincliente,contrasenacliente,iddrive,imagen,tipocliente,estado,usuariosunat,clavesunat) VALUES (?,?,?,?,?,?,?,?,?,?)",
+                [$datos["ruc"], $datos["razonsocial"], $datos["logincliente"], $datos["contrasenacliente"], $datos["iddrive"], $datos["imagen"], $datos["tipocliente"], $datos["estado"], $datos["usuariosunat"], $datos["clavesunat"]]
             );
         } catch (PDOException $e) {
         } finally {
@@ -71,12 +67,14 @@ class ModeloClientes
      */
     static public function mdlEditarCliente($tabla, $datos)
     {
-        $stmt = conexion::conectar()->prepare("UPDATE $tabla SET ruc=:ruc,razonsocial=:razonsocial,logincliente=:logincliente,iddrive=:iddrive,imagen=:imagen WHERE idcliente=:idcliente");
+        $stmt = conexion::conectar()->prepare("UPDATE $tabla SET ruc=:ruc,razonsocial=:razonsocial,logincliente=:logincliente,iddrive=:iddrive,imagen=:imagen, usuariosunat=:usuariosunat, clavesunat=:clavesunat WHERE idcliente=:idcliente");
         $stmt->bindParam(":ruc", $datos["ruc"], PDO::PARAM_STR);
         $stmt->bindParam(":razonsocial", $datos["razonsocial"], PDO::PARAM_STR);
         $stmt->bindParam(":logincliente", $datos["logincliente"], PDO::PARAM_STR);
         $stmt->bindParam(":iddrive", $datos['iddrive'], PDO::PARAM_STR);
         $stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
+        $stmt->bindParam(":usuariosunat", $datos["usuariosunat"], PDO::PARAM_STR);
+        $stmt->bindParam(":clavesunat", $datos["clavesunat"], PDO::PARAM_STR);
         $stmt->bindParam(":idcliente", $datos['idcliente'], PDO::PARAM_STR);
 
         if ($stmt->execute()) {
