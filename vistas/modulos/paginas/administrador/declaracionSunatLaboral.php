@@ -199,7 +199,7 @@
                                     <li> Se abrirá una ventana emergente el cual deberá llenar el campo de fecha y el número de orden.</li>
                                     <li> Luego seleccina el botón "Guardar"<b class="text-red">*</b>.</li>
                                 </ol><br>
-                                <b class="text-red">* Importante uan vez que guarde, ya no podrá editar la fecha ni el número de orden.</b>
+                                <b class="text-red">* Importante una vez que guarde, ya no podrá editar la fecha ni el número de orden.</b>
                             </ul>
                         </div>
                     </div>
