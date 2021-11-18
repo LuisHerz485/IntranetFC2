@@ -33,8 +33,8 @@ class ModeloClientes
         try {
             $conexion = new ConexionV2();
             $insertar = $conexion->insert(
-                "INSERT INTO $tabla(ruc,razonsocial,logincliente,contrasenacliente,iddrive,imagen,tipocliente,estado,usuariosunat,clavesunat) VALUES (?,?,?,?,?,?,?,?,?,?)",
-                [$datos["ruc"], $datos["razonsocial"], $datos["logincliente"], $datos["contrasenacliente"], $datos["iddrive"], $datos["imagen"], $datos["tipocliente"], $datos["estado"], $datos["usuariosunat"], $datos["clavesunat"]]
+                "INSERT INTO $tabla(ruc,razonsocial,logincliente,contrasenacliente,iddrive,imagen,tipocliente,estado,usuariosunat,clavesunat,idregimen,coeficiente) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)",
+                [$datos["ruc"], $datos["razonsocial"], $datos["logincliente"], $datos["contrasenacliente"], $datos["iddrive"], $datos["imagen"], $datos["tipocliente"], $datos["estado"], $datos["usuariosunat"], $datos["clavesunat"], $datos["idregimen"], $datos["coeficiente"]]
             );
         } catch (PDOException $e) {
         } finally {
@@ -88,7 +88,7 @@ class ModeloClientes
      */
     static public function mdlEditarCliente($tabla, $datos)
     {
-        $stmt = conexion::conectar()->prepare("UPDATE $tabla SET ruc=:ruc,razonsocial=:razonsocial,logincliente=:logincliente,iddrive=:iddrive,imagen=:imagen, usuariosunat=:usuariosunat, clavesunat=:clavesunat WHERE idcliente=:idcliente");
+        $stmt = conexion::conectar()->prepare("UPDATE $tabla SET ruc=:ruc,razonsocial=:razonsocial,logincliente=:logincliente,iddrive=:iddrive,imagen=:imagen, usuariosunat=:usuariosunat, clavesunat=:clavesunat,idregimen=:idregimen,coeficiente=:coeficiente WHERE idcliente=:idcliente");
         $stmt->bindParam(":ruc", $datos["ruc"], PDO::PARAM_STR);
         $stmt->bindParam(":razonsocial", $datos["razonsocial"], PDO::PARAM_STR);
         $stmt->bindParam(":logincliente", $datos["logincliente"], PDO::PARAM_STR);
@@ -96,8 +96,9 @@ class ModeloClientes
         $stmt->bindParam(":imagen", $datos["imagen"], PDO::PARAM_STR);
         $stmt->bindParam(":usuariosunat", $datos["usuariosunat"], PDO::PARAM_STR);
         $stmt->bindParam(":clavesunat", $datos["clavesunat"], PDO::PARAM_STR);
+        $stmt->bindParam(":idregimen", $datos['idregimen'], PDO::PARAM_STR);
         $stmt->bindParam(":idcliente", $datos['idcliente'], PDO::PARAM_STR);
-
+        $stmt->bindParam(":coeficiente", $datos['coeficiente'], PDO::PARAM_STR);
         if ($stmt->execute()) {
             return "ok";
         } else {

@@ -40,7 +40,7 @@
                 <!-- ./col -->
                 <div class="col-12 col-lg-6">
                     <!-- small box -->
-                    <a href="checklist-jefe" class="small-box bg-danger">
+                    <a href="checklist-jefe" class="small-box bg-primary">
                         <div class="inner">
                             <h3>Check List</h3>
                             <p>Lista de actividades a realizar</p>

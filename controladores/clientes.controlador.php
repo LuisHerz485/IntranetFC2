@@ -99,12 +99,12 @@ class ControladorClientes
 					"clavesunat" => $_POST['clavesunat'],
 					"imagen" => $ruta,
 					"tipocliente" => "clienteaccess",
-					"estado" => 1
+					"estado" => 1,
+					"idregimen" => ($_POST['idregimen'] <= 0 ? null : $_POST['idregimen']),
+					"coeficiente" => $_POST['coeficiente'],
 				);
-
 				if ($_POST['editarDA'] === "no") {
 					$respuesta = ModeloClientes::mdlIngresarCliente($tabla, $datos);
-					ModeloDeclaracionSunat::mdlRegistrarDeclaracionSunat($respuesta);
 					if ($respuesta) {
 
 						echo "<script>

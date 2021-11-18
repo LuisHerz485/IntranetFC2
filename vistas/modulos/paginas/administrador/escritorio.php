@@ -30,7 +30,7 @@
                     </a>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-                    <a href="menuAsistencia" class="small-box bg-danger">
+                    <a href="menuAsistencia" class="small-box bg-cyan">
                         <div class="inner">
                             <h3><span>Gestión de</span></br><span>Asistencia</span></h3>
                         </div>
@@ -41,7 +41,7 @@
                     </a>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-                    <a href="menuChecklist" class="small-box bg-danger">
+                    <a href="menuChecklist" class="small-box bg-primary">
                         <div class="inner">
                             <h3><span>Gestión de</span></br><span>checklist</span></h3>
                         </div>
@@ -52,7 +52,7 @@
                     </a>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-                    <a href="permisos-pendientes" class="small-box bg-danger">
+                    <a href="permisos-pendientes" class="small-box bg-success">
                         <div class="inner">
                             <h3>Permisos</h3>
                             <p>Permisos Pendientes: <span id="dashboardPermisos">0</span></p>
@@ -66,7 +66,7 @@
                 <?php
                 if ($_SESSION['idtipousuario'] != 4) { ?>
                     <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-                        <a href="clientes" class="small-box bg-danger">
+                        <a href="clientes" class="small-box bg-indigo">
                             <div class="inner">
                                 <h3>Clientes</h3>
                                 <p>Lista de clientes</p>
@@ -77,32 +77,32 @@
                             <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                         </a>
                     </div>
-                <?php
-                if ($_SESSION['idtipousuario'] == 1) { ?>
+                    <?php
+                    if ($_SESSION['idtipousuario'] == 1) { ?>
+                        <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
+                            <a href="menuCobranza" class="small-box bg-orange">
+                                <div class="inner">
+                                    <h3><span>Gestión de</span></br><span>Cobranza</span></h3>
+                                </div>
+                                <div class="icon text-white">
+                                    <i class="fas fa-hand-holding-usd"></i>
+                                </div>
+                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            </a>
+                        </div>
+                    <?php } ?>
                     <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-                        <a href="menuCobranza" class="small-box bg-danger">
+                        <a href="#" class="small-box bg-info " data-toggle="modal" data-target="#modalDecMen">
                             <div class="inner">
-                                <h3><span>Gestión de</span></br><span>Cobranza</span></h3>
+                                <h3>SUNAT</h3>
+                                <p>Declaraciones</p>
                             </div>
                             <div class="icon text-white">
-                                <i class="fas fa-hand-holding-usd"></i>
+                                <i class="fas fa-landmark"></i>
                             </div>
                             <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                         </a>
                     </div>
-                <?php } ?>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-                    <a href="#" class="small-box bg-info " data-toggle="modal" data-target="#modalDecMen">
-                        <div class="inner">
-                            <h3>SUNAT</h3>
-                            <p>Declaraciones</p>
-                        </div>
-                        <div class="icon text-white">
-                            <i class="fas fa-landmark"></i>
-                        </div>
-                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
-                    </a>
-                </div>
                 <?php } ?>
             </div>
         </div>
@@ -146,7 +146,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="row d-flex justify-content-center"> 
+                    <div class="row d-flex justify-content-center">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
                             <a href="declaracionAnualSunat" class="small-box bg-info">
                                 <div class="inner">

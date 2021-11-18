@@ -10,6 +10,10 @@ function limpiarformClientes() {
   $("#logincliente").val("");
   $("#contrasenacliente").val("");
   $("#iddrive").val("");
+  $("#usuariosunat").val("");
+  $("#clavesunat").val("");
+  $("#idregimen").val(0).trigger("change");
+  $("#coeficiente").val("");
   $(".previsualizar").attr("src", "vistas/dist/img/avatar.png");
 }
 
@@ -135,6 +139,8 @@ $(".btnEditarCliente").click(function () {
       $("#iddrive").val(respuesta["iddrive"]);
       $("#usuariosunat").val(respuesta["usuariosunat"]);
       $("#clavesunat").val(respuesta["clavesunat"]);
+      $("#idregimen").val(respuesta["idregimen"]).trigger("change");
+      $("#coeficiente").val(respuesta["coeficiente"]);
       $("#fotoaux").val(respuesta["imagen"]);
       if (respuesta["imagen"] != "") {
         $(".previsualizar").attr("src", respuesta["imagen"]);
