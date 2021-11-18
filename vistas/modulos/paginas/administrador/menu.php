@@ -227,6 +227,24 @@
           </li>
         </ul>
       </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link">
+          <i class="fas fa-file-invoice"></i>
+          <p>Liquidaciones de Impuestos<i class="right fas fa-angle-left"></i></p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="liquidaciones" class="nav-link ml-4">
+              <i class="fas fa-forward"></i>
+              <p>Liquidaciones Mensuales</p>
+            </a>
+            <a href="listarliquidaciones" class="nav-link ml-4">
+              <i class="fas fa-forward"></i>
+              <p>Mostrar Liquidaciones</p>
+            </a>
+          </li>
+        </ul>
+      </li>
       <?php } ?>
       <li class="nav-header">AYUDA</li>
       <li class="nav-item">

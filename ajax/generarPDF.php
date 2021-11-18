@@ -28,7 +28,7 @@ if ($dataConstancia && isset($dataConstancia['iddetallecobranza'])) {
     "fechaEmision" => date_parse_from_format("Y-m-d", $dataConstancia['fechaEmision']),
     "fechaPago" => date_parse_from_format("Y-m-d", $dataConstancia['fechaPago']),
     "cliente" => ["razonsocial" => $dataConstancia['razonsocial'], "ruc" => $dataConstancia['ruc']],
-    "totalRecibido" => floatval($dataConstancia['totalRecibido']), "montoTotal" => floatval($dataConstancia['montoTotal']), "concepto" => "POR EL SERVICIO CONTABLE",
+    "totalRecibido" => floatval($dataConstancia['totalRecibido']), "montoTotal" => floatval($dataConstancia['montoTotal']), "concepto" => $dataConstancia['concepto'],
   ];
 
   $mpdf = new \Mpdf\Mpdf(['mode' => 'utf-8', 'format' => 'A4-L']);

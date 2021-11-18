@@ -61,7 +61,7 @@ class ModeloConstancia
     static public function mdlDataConstancia($valor)
     {
         $conexion = Conexion::conectar();
-        $stmt = $conexion->prepare("SELECT co.idcobranza, detco.iddetallecobranza, cli.razonsocial, cli.ruc, DATE(co.fechaemision) AS fechaEmision, IFNULL(DATE(const.fechapago),DATE(co.fechaemision)) AS fechaPago, IFNULL(SUM(const.monto),0) totalRecibido, detco.precio AS montoTotal FROM cobranza AS co INNER JOIN cliente AS cli ON cli.idcliente = co.idcliente INNER JOIN detallecobranza AS detco ON detco.idcobranza = co.idcobranza LEFT JOIN constancia AS const ON const.idcobranza = co.idcobranza AND const.iddetallecobranza = detco.iddetallecobranza WHERE co.idcobranza = $valor LIMIT 1");
+        $stmt = $conexion->prepare("SELECT co.idcobranza, detco.iddetallecobranza, cli.razonsocial, UPPER(plan.nombre) AS concepto, cli.ruc, DATE(co.fechaemision) AS fechaEmision, IFNULL(DATE(const.fechapago),DATE(co.fechaemision)) AS fechaPago, IFNULL(SUM(const.monto),0) totalRecibido, detco.precio AS montoTotal FROM cobranza AS co INNER JOIN cliente AS cli ON cli.idcliente = co.idcliente INNER JOIN detallecobranza AS detco ON detco.idcobranza = co.idcobranza INNER JOIN plan ON detco.idplan = plan.idplan LEFT JOIN constancia AS const ON const.idcobranza = co.idcobranza AND const.iddetallecobranza = detco.iddetallecobranza WHERE co.idcobranza = $valor LIMIT 1");
         if ($stmt->execute()) {
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } else {
@@ -72,7 +72,7 @@ class ModeloConstancia
     static public function mdlDataPreConstancia($valor)
     {
         $conexion = Conexion::conectar();
-        $stmt = $conexion->prepare("SELECT const.idconstancia, const.idcobranza, const.iddetallecobranza, cli.razonsocial, cli.ruc, DATE(co.fechaemision) AS fechaEmision, DATE(const.fechapago) AS fechaPago, const.monto AS totalRecibido, detco.precio AS montoTotal FROM constancia AS const INNER JOIN cobranza AS co ON const.idcobranza = co.idcobranza INNER JOIN detallecobranza AS detco ON const.iddetallecobranza = detco.iddetallecobranza INNER JOIN cliente AS cli ON co.idcliente = cli.idcliente WHERE idconstancia = $valor LIMIT 1");
+        $stmt = $conexion->prepare("SELECT const.idconstancia, const.idcobranza, const.iddetallecobranza, cli.razonsocial, UPPER(plan.nombre) AS concepto, cli.ruc, DATE(co.fechaemision) AS fechaEmision, DATE(const.fechapago) AS fechaPago, const.monto AS totalRecibido, detco.precio AS montoTotal FROM constancia AS const INNER JOIN cobranza AS co ON const.idcobranza = co.idcobranza INNER JOIN detallecobranza AS detco ON const.iddetallecobranza = detco.iddetallecobranza INNER JOIN plan ON detco.idplan = plan.idplan INNER JOIN cliente AS cli ON co.idcliente = cli.idcliente WHERE idconstancia = $valor LIMIT 1");
         if ($stmt->execute()) {
             return $stmt->fetch(PDO::FETCH_ASSOC);
         } else {
