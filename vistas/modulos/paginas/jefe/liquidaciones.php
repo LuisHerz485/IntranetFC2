@@ -326,8 +326,6 @@
                                         <div class="text-center">
                                             <button type="button" id="btnRegistrarLiquidacion" class="btn btn-outline-success btn-lg"><i class="fas fa-save fa-4x"></i>Registrar</button>
                                             <button type="button" id="btnEditarLiquidacion" class="btn btn-outline-warning btn-lg d-none"><i class="fas fa-edit fa-4x"></i>Editar</button>
-                                            <button type="button" id="btnExportarLiquidacion" class="btn btn-outline-danger btn-lg"><i class="far fa-file-pdf fa-4x"></i>Generar</button>
-
                                         </div>
                                     </div>
                             </form>

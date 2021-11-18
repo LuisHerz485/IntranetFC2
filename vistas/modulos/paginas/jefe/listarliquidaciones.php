@@ -1,3 +1,6 @@
+<script>
+    const canEdit = <?php echo in_array($_SESSION["idusuario"], [16, 29, 71, 137]) || $_SESSION["iddepartamento"] == 7 ? "true" : "false" ?>;
+</script>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">

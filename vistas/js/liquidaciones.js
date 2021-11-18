@@ -295,9 +295,17 @@ $("#btnBuscarLiquidaciones").on("click", function () {
         $("#tablaLiquidaciones")
           .DataTable()
           .row.add([
-            `<div class="row justify-content-center"><abbr title="Editar"><form method="POST" action="liquidaciones" target="_blank"><input type="hidden" name="id_liquidacion" value="${value.id_liquidacion}" /><button type="submit" class="btn btn-outline-warning mx-1"><i class="fas fa-edit"></i></button></form></abbr>
-            <abbr title="Exportar PDF"><form method="POST" action="ajax/generarLiquidicionPDF.php" target="_blank" ><input type="hidden" name="id_liquidacion" value="${value.id_liquidacion}" /><button type="submit" class="btn btn-outline-danger mx-1"><i class="fas fa-file-pdf"></i></button></form></abbr>
-            <abbr title="Revisión"><button type="button" class="btn btn-outline-primary btn-revisado" idliquidacion="${value.id_liquidacion}"><i class="fas fa-clipboard-check"></i></button></abbr></div>
+            `<div class="row justify-content-center"><abbr title="Editar"><form method="POST" action="liquidaciones" target="_blank"><input type="hidden" name="id_liquidacion" value="${
+              value.id_liquidacion
+            }" /><button type="submit" class="btn btn-outline-warning mx-1"><i class="fas fa-edit"></i></button></form></abbr>
+            <abbr title="Exportar PDF"><form method="POST" action="ajax/generarLiquidicionPDF.php" target="_blank" ><input type="hidden" name="id_liquidacion" value="${
+              value.id_liquidacion
+            }" /><button type="submit" class="btn btn-outline-danger mx-1"><i class="fas fa-file-pdf"></i></button></form></abbr>
+            ${
+              canEdit
+                ? `<abbr title="Revisión"><button type="button" class="btn btn-outline-primary btn-revisado" idliquidacion="${value.id_liquidacion}"><i class="fas fa-clipboard-check"></i></button></abbr>`
+                : ``
+            }</div>
             `,
             value.razonsocial,
             montoRedondeado(
