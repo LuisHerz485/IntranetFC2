@@ -23,7 +23,6 @@ class ModeloClientes
             return $stmt->fetchAll();
         }
     }
-
     /**
      * Registra los clientes
      */
@@ -60,6 +59,28 @@ class ModeloClientes
         } else {
             return "error";
         }
+    }
+
+    /**
+     * 
+     */
+    static public function mdlMostrarClienteParaLiquidacion(): mixed
+    {
+        $clientes = null;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $clientes = $conexion->getData("SELECT C.idcliente, C.razonsocial,C.idregimen,R.nombreregimen,C.coeficiente
+            FROM cliente C JOIN regimentributario R ON C.idregimen=R.idregimen");
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $clientes;
     }
 
     /**

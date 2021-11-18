@@ -44,7 +44,6 @@ class ControladorValidacion
         $longitud = strlen($texto);
         return $longitud >= $desde && $longitud <= $hasta;
     }
-
     /**
      * Valida que el parametro numero sea un entero mayor que cero
      * @return int El parametro numero convertido a int
@@ -55,7 +54,6 @@ class ControladorValidacion
         $num = intval($numero);
         return ($num > 0) ? $num : false;
     }
-
     /**
      * Valida que el parametro numero sea un float mayor igual que cero
      * @return float El parametro numero convertido a float
@@ -65,5 +63,51 @@ class ControladorValidacion
     {
         $num = floatval($numero);
         return ($num >= 0 && strlen($numero) == strlen($num)) ? $num : false;
+    }
+
+    /**
+     * Valida que el parametro numero sea un float mayor igual que cero
+     * @return float El parametro numero convertido a float
+     * @return bool Retorna false si no se pudo convertir correctamente a float
+     */
+    public static function flotante(string $numero): float|bool
+    {
+        return (is_numeric($numero)) ? floatval($numero) : false;
+    }
+
+    public static function entero(string $numero): string|bool
+    {
+        return (is_numeric($numero)) ? intval($numero) : false;
+    }
+
+    public static function enteroPositivo(string $numero): string|bool
+    {
+        $num = intval($numero);
+        return ($num > 0) ? $num : false;
+    }
+
+    public static function fecha(string $fecha): string|bool
+    {
+        return (ControladorValidacion::formatoFecha($fecha)) ? $fecha : false;
+    }
+
+    public static function fechaMes(string $fecha): string|bool
+    {
+        return (ControladorValidacion::formatoFechaMes($fecha)) ? $fecha : false;
+    }
+    /**
+     * @param array $campos Ejemplo:  ["campo1"=>"tipoDeValidacion", "campo2"=>"tipoDeValidacion"]
+     */
+    public static function validar(array $campos): array|bool
+    {
+        $data = [];
+        foreach ($campos as $campo => $tipoValidacion) {
+            if (isset($_POST[$campo])) {
+                $data[] = ControladorValidacion::$tipoValidacion($_POST[$campo]);
+            } else {
+                return false;
+            }
+        }
+        return $data;
     }
 }

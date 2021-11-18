@@ -49,6 +49,10 @@ class ControladorClientes
 		$respuesta = ModeloClientes::mdlMostrarClientes($tabla, $item, $valor);
 		return $respuesta;
 	}
+	public static function  ctrMostrarClienteParaLiquidacion(): mixed
+	{
+		return ModeloClientes::mdlMostrarClienteParaLiquidacion();
+	}
 
 	static public function ctrCrearCliente()
 	{

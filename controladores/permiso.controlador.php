@@ -104,7 +104,7 @@ class ControladorPermiso
     }
     private static function ctrMensajeEnvio($detalle, $tipopermiso, $fechainicio, $fechafin)
     {
-        $html = '
+        return '
         <html >
         <head>
         <style type="text/css">
@@ -130,7 +130,5 @@ class ControladorPermiso
         </body>
         </html>
         ';
-
-        return $html;
     }
 }

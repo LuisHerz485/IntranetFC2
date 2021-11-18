@@ -84,7 +84,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive", "cambiarhorario", "tardanzas", "consultaruc", "menuAsistencia", "menuChecklist", "menuCobranza", "menuIngreso", "cronogramaSunat", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "cronogramaAnualSunat"];
+          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive", "cambiarhorario", "tardanzas", "consultaruc", "menuAsistencia", "menuChecklist", "menuCobranza", "menuIngreso", "cronogramaSunat", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "cronogramaAnualSunat", "liquidaciones", "listarliquidaciones"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorGeneralRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -162,31 +162,32 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 }
 ?>
 
-<script src="vistas/js/usuario.js"></script>
-<script src="vistas/js/tipousuario.js"></script>
-<script src="vistas/js/departamento.js"></script>
-<script src="vistas/js/asistencia.js"></script>
-<script src="vistas/js/reportes.js"></script>
-<script src="vistas/js/clientes.js"></script>
-<script src="vistas/js/agenda.js"></script>
-<script src="vistas/js/archivo.js"></script>
-<script src="vistas/js/pagosclientes.js"></script>
-<script src="vistas/js/cobranza.js"></script>
-<script src="vistas/js/detallecobranza.js"></script>
-<script src="vistas/js/traduccion.js"></script>
-<script src="vistas/js/dataTable.js"></script>
-<script src="vistas/js/clock.js"></script>
-<script src="vistas/js/select2.js"></script>
-<script src="vistas/js/menu.js"></script>
-<script src="vistas/js/servicio.js"></script>
-<script src="vistas/js/economia.js"></script>
-<script src="vistas/js/checklist.js"></script>
-<script src="vistas/js/tiposervicio.js"></script>
-<script src="vistas/js/permiso.js"></script>
-<script src="vistas/js/subida.js"></script>
-<script src="vistas/js/tardanzas.js"></script>
-<script src="vistas/js/cronogramaSunat.js"></script>
-<script src="vistas/js/declaracionSunat.js"></script>
+<script src="vistas/js/usuario.js?v=1"></script>
+<script src="vistas/js/tipousuario.js?v=1"></script>
+<script src="vistas/js/departamento.js?v=1"></script>
+<script src="vistas/js/asistencia.js?v=1"></script>
+<script src="vistas/js/reportes.js?v=1"></script>
+<script src="vistas/js/clientes.js?v=1"></script>
+<script src="vistas/js/agenda.js?v=1"></script>
+<script src="vistas/js/archivo.js?v=1"></script>
+<script src="vistas/js/pagosclientes.js?v=1"></script>
+<script src="vistas/js/cobranza.js?v=1"></script>
+<script src="vistas/js/detallecobranza.js?v=1"></script>
+<script src="vistas/js/traduccion.js?v=1"></script>
+<script src="vistas/js/dataTable.js?v=1"></script>
+<script src="vistas/js/clock.js?v=1"></script>
+<script src="vistas/js/select2.js?v=1"></script>
+<script src="vistas/js/menu.js?v=1"></script>
+<script src="vistas/js/servicio.js?v=1"></script>
+<script src="vistas/js/economia.js?v=1"></script>
+<script src="vistas/js/checklist.js?v=1"></script>
+<script src="vistas/js/tiposervicio.js?v=1"></script>
+<script src="vistas/js/permiso.js?v=1"></script>
+<script src="vistas/js/subida.js?v=1"></script>
+<script src="vistas/js/tardanzas.js?v=1"></script>
+<script src="vistas/js/cronogramaSunat.js?v=1"></script>
+<script src="vistas/js/declaracionSunat.js?v=1"></script>
+<script src="vistas/js/liquidaciones.js?v=1"></script>
 <script>
   if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);
