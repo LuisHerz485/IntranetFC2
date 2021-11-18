@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Obligaciones Mensuales</b></a></li>
+                        <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Declaración Anual</b></a></li>
                         <li class="breadcrumb-item active h5">Registro de Declaraciones</li></b>
                     </ol>
                 </div>
@@ -23,7 +23,7 @@
                 <div class="card card-danger">
                     <div class="card-header">
                         <div class="row">
-                            <b class="h4">Registro de Declaraciones Mensuales Tributario</b>
+                            <b class="h4">Registro de Declaración Anual</b>
                             <div class="col" align="right">
                                 <abbr title="Ayuda"><button class="btn btn-warning btn-circle" data-toggle="modal" data-target="#modalAyuda"><i class="fas fa-question-circle"></i></button></abbr>
                             </div>
@@ -31,12 +31,17 @@
                     </div>
                     <div class="card-body panel-body">
                         <div class="container-fluid">
-                            <form id="fomularioFiltroDeclaracion">
+                            <form id="fomularioFiltroDeclaracionAnual">
                                 <div class="row">
-                                    <input type="hidden" name="idtipodeclaracion" id="idtipodeclaracion" value="1">
                                     <div class="col-12 col-lg-3">
-                                        <label>Seleccione Mes</label>
-                                        <input type="month" class="form-control" name="mesanyo" id="mesanyo">
+                                        <label>Seleccione Año</label>
+                                        <select id="anyo" name="anyo" class="form-control select2">
+                                            <?php $cont = date('Y');
+                                            while ($cont >= 2020) { ?>
+                                                <option><?php echo ($cont); ?></option>
+                                            <?php $cont = ($cont - 1);
+                                            } ?>
+                                        </select>
                                     </div>
                                     <div class="col-12 col-lg-3">
                                         <label>Seleccione Estado:</label>
@@ -54,20 +59,20 @@
                                     </div>
                                     <div class="col-12 col-lg-3">
                                         <label>Opcion:</label>
-                                        <button type="button" class="btn btn-outline-danger  btn-block" id="btnfiltrar" name="btnfiltrar"><i class="fas fa-search"></i> Filtrar</button>
+                                        <button type="button" class="btn btn-outline-danger btn-block" id="btnfiltrarda" name="btnfiltrarda"><i class="fas fa-search"></i> Filtrar</button>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="mt-3">
-                            <table id="tblDeclaracionSunat" class="table table-striped dt-responsive tablaDataDeclaracionSunat">
+                            <table id="tblDeclaracionAnualSunat" class="table table-striped dt-responsive tablaDataDeclaracionSunat">
                                 <thead>
                                     <th class="no-exportar">Opciones</th>
                                     <th>Ruc</th>
                                     <th>Clientes </th>
                                     <th>Fecha Vencimiento</th>
                                     <th>Estado</th>
-                                    <th>Fecha Declarada</th>
+                                    <th>fechaDeclarada</th>
                                     <th>N° de orden</th>
                                 </thead>
                                 <tbody>
@@ -78,7 +83,7 @@
                                     <th>Clientes </th>
                                     <th>Fecha Vencimiento</th>
                                     <th>Estado</th>
-                                    <th>Fecha Declarada</th>
+                                    <th>fechaDeclarada</th>
                                     <th>N° de orden</th>
                                 </tfoot>
                             </table>
@@ -90,21 +95,21 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalFechaDeclara" role="dialog">
+
+<div class="modal fade" id="modalFechaDeclaraAnual" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h4 class="modal-title text-red"><strong>Fecha declaracion cliente</strong></h4>
+                <h4 class="modal-title text-red"><strong>Fecha declaración anual cliente</strong></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <form id="formRegistrarDeclaracionSunat">
+                    <form id="formRegistroDeclaracionAS">
                         <div class="row">
-                            <input type="hidden" name="idtipodeclaracion" id="idtipodeclaracion" value="1">
-                            <input type="hidden" name="iddeclaracionS" id="iddeclaracionS">
+                            <input type="hidden" name="iddeclaracionAS" id="iddeclaracionAS">
                             <input type="hidden" name="fechavencimiento" id="fechavencimiento">
                             <div class="col-12">
                                 <label>Ingrese fecha en la que se declaro en SUNAT</label>
@@ -118,7 +123,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" id="btnRegistrarDeclaracion"><i class="fas fa-save"></i> Guardar</button>
+                    <button type="button" class="btn btn-info" id="btnRegistroAS"><i class="fas fa-save"></i> Guardar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> Salir</button>
                 </div>
             </div>
@@ -130,18 +135,17 @@
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h4 class="modal-title text-red"><strong>Editar declaracion</strong></h4>
+                <h4 class="modal-title text-red"><strong>Editar Declaración Anual</strong></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <div class="container">
-                    <form id="formEditarDeclaracionSunat">
+                    <form id="formEditarDeclaracionAnualSunat">
                         <div class="row">
-                            <input type="hidden" name="idtipodeclaracion" id="idtipodeclaracionEditar" value="1">
-                            <input type="hidden" name="iddetalledeclaracion" id="iddetalledeclaracionEditar">
-                            <input type="hidden" name="iddeclaracionS" id="iddeclaracionEditar">
+                            <input type="hidden" name="iddetalledeclaracionanual" id="iddetalledeclaracionEditar">
+                            <input type="hidden" name="iddeclaracionAS" id="iddeclaracionEditar">
                             <input type="hidden" name="fechavencimiento" id="fechavencimientoEditar">
                             <div class="col-12">
                                 <label>Ingrese fecha en la que se declaro en SUNAT</label>
@@ -167,14 +171,13 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info" id="btnEditarDeclaracion"><i class="fas fa-save"></i> Guardar</button>
+                    <button type="button" class="btn btn-info" id="btnEditarDeclaracionAnual"><i class="fas fa-save"></i> Guardar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-times"></i> Salir</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <div class="modal fade" id="modalAyuda" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
@@ -192,10 +195,10 @@
                             <ul>
                                 <li>Esta sección le brindará información sobre como ingresar la fecha en la que se declara en cada empresa. </li>
                                 <ol type="I">
-                                    <li> Se debe realizar el primer filtro seleccionando el mes que se quiere declarar(obligatorio).</li>
+                                    <li> Se debe realizar el primer filtro seleccionando el año que se quiere declarar(obligatorio).</li>
                                     <li> El segundo filtro es para ver los estados de declaración (opcional).</li>
                                     <li> Se debe seleccionar la opción "Filtrar" para que se liste en la tabla los clientes.</li>
-                                    <li> Cada empresa mostrada en la tabla (filtrada por mes) tiene en la columna "opciones" un botón: <span class="border m-1"><i class="far fa-calendar-check"></i></span> el cual se debe selccionar para declarar la fecha.</li>
+                                    <li> Cada empresa mostrada en la tabla (filtrada por año) tiene en la columna "opciones" un botón: <span class="border m-1"><i class="far fa-calendar-check"></i></span> el cual se debe selccionar para declarar la fecha.</li>
                                     <li> Se abrirá una ventana emergente el cual deberá llenar el campo de fecha y el número de orden.</li>
                                     <li> Luego seleccina el botón "Guardar"<b class="text-red">*</b>.</li>
                                 </ol><br>

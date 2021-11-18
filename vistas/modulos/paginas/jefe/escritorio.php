@@ -51,9 +51,7 @@
                         <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
-                <!-- ./col -->
                 <div class="col-12 col-lg-6">
-                    <!-- small box -->
                     <a href="https://fccontadores.com:2096/" class="small-box bg-orange" target="_blank">
                         <div class="inner">
                             <h3>Webmail</h3>
@@ -65,12 +63,81 @@
                         <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
-                <!-- ./col -->
+                <?php if (in_array($_SESSION['iddepartamento'], [18, 13, 5, 8, 3])) { ?>
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+                        <a href="#" class="small-box bg-info " data-toggle="modal" data-target="#modalDecMen">
+                            <div class="inner">
+                                <h3>SUNAT</h3>
+                                <p>Declaraciones</p>
+                            </div>
+                            <div class="icon text-white">
+                                <i class="fas fa-landmark"></i>
+                            </div>
+                            <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        </a>
+                    </div>
+                <?php } ?>
             </div>
-        </div><!-- /.container-fluid -->
-
+        </div>
     </section>
-
-
 </div>
-<!-- /.content-wrapper -->
+
+<div class="modal fade" id="modalDecMen" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h4 class="modal-title text-info"><strong>Menú Declaraciones SUNAT</strong></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+                            <a href="declaracionSunatTributaria" class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>Tributaria</h3>
+                                    <p>Declaración Mensual</p>
+                                </div>
+                                <div class="icon text-white">
+                                    <i class="fas fa-paste"></i>
+                                </div>
+                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            </a>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+                            <a href="declaracionSunatLaboral" class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>Laboral</h3>
+                                    <p>Declaración Mensual</p>
+                                </div>
+                                <div class="icon text-white">
+                                    <i class="fas fa-paste"></i>
+                                </div>
+                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+                            <a href="declaracionAnualSunat" class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>Anual</h3>
+                                    <p>Declaración Anual</p>
+                                </div>
+                                <div class="icon text-white">
+                                    <i class="fas fa-paste"></i>
+                                </div>
+                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-info" al>
+                <b></b>
+            </div>
+        </div>
+    </div>
+</div>

@@ -95,19 +95,11 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="cronogramaSunat" class="nav-link ml-4">
+                                <a href="cronogramaAnualSunat" class="nav-link ml-4">
                                     <i class="fas fa-forward"></i>
-                                    <p>Cronograma Mensual</p>
+                                    <p>Cronograma Anual</p>
                                 </a>
                             </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="fas fa-calendar-alt"></i>
-                            <p>Cronograma<i class="right fas fa-angle-left"></i></p>
-                        </a>
-                        <ul class="nav nav-treeview">
                             <li class="nav-item">
                                 <a href="cronogramaSunat" class="nav-link ml-4">
                                     <i class="fas fa-forward"></i>
@@ -140,6 +132,20 @@
                                 <a href="reportesDeclaracion" class="nav-link ml-4">
                                     <i class="fas fa-forward"></i>
                                     <p>Reportes de Clientes</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-file-invoice"></i>
+                            <p>Declaraciones Anuales<i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="declaracionAnualSunat" class="nav-link ml-4">
+                                    <i class="fas fa-forward"></i>
+                                    <p>Declaración</p>
                                 </a>
                             </li>
                         </ul>

@@ -7,8 +7,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Escritorio</a></li>
-                        <li class="breadcrumb-item active">Principal</li>
+                        <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Escritorio</b></a></li>
+                        <li class="breadcrumb-item active h5">Principal</li></b>
                     </ol>
                 </div>
             </div>
@@ -16,7 +16,6 @@
     </div>
     <section class="content">
         <div class="container-fluid">
-            <h4 class="ml-5"><strong>Cobranzas</strong></h4>
             <div class="row mx-5">
                 <div class="col-12 col-lg-6">
                     <a href="pagospendientes" class="small-box bg-danger">
@@ -24,7 +23,7 @@
                             <h3>Pagar</h3>
                             <p>Ir a pagar pendientes</p>
                         </div>
-                        <div class="icon">
+                        <div class="icon text-white">
                             <i class="fas fa-file-invoice-dollar"></i>
                         </div>
                         <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
@@ -36,7 +35,7 @@
                             <h3>Mis Pagos</h3>
                             <p>Mis pagos realizados</p>
                         </div>
-                        <div class="icon">
+                        <div class="icon text-white">
                             <i class="fas fa-search-dollar"></i>
                         </div>
                         <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>

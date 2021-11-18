@@ -107,6 +107,7 @@
           </li>
         </ul>
       </li>
+      <?php if ($_SESSION['idtipousuario'] != 4) { ?>
       <li class="nav-header">Drive</li>
       <li class="nav-item has-treeview">
         <a href="admindrive" class="nav-link">
@@ -114,8 +115,6 @@
           <p>Administración del Clientes</p>
         </a>
       </li>
-      <?php
-      if ($_SESSION['idtipousuario'] != 4) { ?>
         <li class="nav-header">SISTEMA EMPRESA</li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
@@ -131,9 +130,7 @@
             </li>
           </ul>
         </li>
-      <?php } ?>
-      <?php
-      if ($_SESSION['idtipousuario'] == 1) { ?>
+      <?php if ($_SESSION['idtipousuario'] == 1) { ?>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-chart-line"></i>
@@ -223,15 +220,9 @@
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
-            <a href="declaracionSunatTributaria" class="nav-link ml-4">
+            <a href="declaracionAnualSunat" class="nav-link ml-4">
               <i class="fas fa-forward"></i>
               <p>Declaración</p>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="reportesDeclaracion" class="nav-link ml-4">
-              <i class="fas fa-forward"></i>
-              <p>Reportes de Clientes</p>
             </a>
           </li>
         </ul>
@@ -254,6 +245,7 @@
           </li>
         </ul>
       </li>
+      <?php } ?>
       <li class="nav-header">AYUDA</li>
       <li class="nav-item">
         <a href="https://www.youtube.com/watch?v=VwHqLrttPJo&amp;ab_channel=FCCONTADORESYASOCIADOS" target="_blank" class="nav-link">

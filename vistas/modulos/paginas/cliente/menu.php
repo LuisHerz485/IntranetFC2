@@ -1,13 +1,13 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" id="barra">
-    <a href="escritoriocliente" class="brand-link">
-        <img src="vistas/dist/img/logo-blanco.png" width="240px" id="logo" alt="">
+    <a href="escritoriocliente" class="brand-link" align="center">
+        <img src="vistas/dist/img/logo-blanco.png" width="180px" height="75px" id="logo" alt="">
     </a>
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center;">
             <div class="image" style="padding-left: 3px; padding-right: 10px;">
                 <?php
                 if ($_SESSION['imagen'] != "") {
-                    echo '<img src="' . $_SESSION['imagen'] . '" class="img-circle elevation-2" alt="User Image" style="width: 55px;">';
+                    echo '<img src="' . $_SESSION['imagen'] . '" class="img-circle elevation-2" alt="User Image" style="width: 45px;">';
                 } else {
                     echo '<img src="vistas/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image" style="width: 55px;">';
                 }
@@ -36,7 +36,7 @@
                 <li class="nav-header">MIS ARCHIVOS</li>
                 <li class="nav-item">
                     <a href="drivecliente" class="nav-link">
-                        <i class="fas fa-folder nav-icon"></i>
+                        <i class="fas fa-folder-open"></i>
                         <p>Mis Archivos</p>
                     </a>
                 </li>
@@ -44,7 +44,7 @@
                 <li class="nav-header">PAGOS</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-folder"></i>
+                        <i class="fas fa-file-invoice-dollar"></i>
                         <p>Seguimiento de Pagos<i class="fas fa-angle-left right"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -65,7 +65,7 @@
                 <li class="nav-header">SUNAT</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-folder"></i>
+                        <i class="fas fa-atlas"></i>
                         <p>Consulta<i class="fas fa-angle-left right"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -73,12 +73,6 @@
                             <a href="pagospendientes" class="nav-link ml-4">
                                 <i class="fas fa-forward"></i>
                                 <p>Consulta Ruc</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pagosrealizados" class="nav-link ml-4">
-                                <i class="fas fa-forward"></i>
-                                <p>Pagos Realizados</p>
                             </a>
                         </li>
                     </ul>

@@ -20,6 +20,7 @@ require_once "controladores/email.controlador.php";
 require_once "controladores/consultapiperu.controlador.php";
 require_once "controladores/declaracionSunat.controlador.php";
 require_once "controladores/liquidaciones.controlador.php";
+require_once "controladores/declaracionAnualSunat.controlador.php";
 
 require_once "modelos/usuarios.modelo.php";
 require_once "modelos/departamento.modelo.php";
@@ -41,5 +42,6 @@ require_once "modelos/horario.modelo.php";
 require_once "modelos/cronogramaSunat.modelo.php";
 require_once "modelos/declaracionSunat.modelo.php";
 require_once "modelos/liquidaciones.modelo.php";
+require_once "modelos/declaracionAnualSunat.modelo.php";
 
 include "vistas/template.php";
