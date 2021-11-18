@@ -30,7 +30,7 @@
                     </a>
                 </div>
                 <div class="col-lg-6 col-6">
-                    <a href="checklist" class="small-box bg-danger">
+                    <a href="checklist" class="small-box bg-primary">
                         <div class="inner">
                             <h3>Check List</h3>
                             <p>Lista de actividades a realizar</p>
@@ -55,7 +55,7 @@
                     </a>
                 </div>
                 <div class="col-12 col-lg-6">
-                    <a href="permisos" class="small-box bg-danger">
+                    <a href="permisos" class="small-box bg-success">
                         <div class="inner">
                             <h3>Permisos</h3>
                             <p>Solicitar Permiso</p>

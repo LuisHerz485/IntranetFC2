@@ -26,7 +26,7 @@
             <b class="h4">Clientes</b>
           </div>
           <div class="mt-4 ml-5 h2">
-            <b><button button class="btn btn-outline-danger centro"  onclick="mostrarformC(true)" id="btnagregar"><i class=" fas fa-plus-circle"> Seleccione este botón para añadir cliente</button></b></i>
+            <b><button button class="btn btn-outline-danger centro" onclick="mostrarformC(true)" id="btnagregar"><i class=" fas fa-plus-circle"> Seleccione este botón para añadir cliente</button></b></i>
           </div>
           <div class="card-body panel-body" id="listadoregistrosC">
             <div id="tbllistado">
@@ -46,8 +46,8 @@
                   $valor = null;
                   $clientes = ControladorClientes::ctrMostrarCliente($item, $valor);
                   foreach ($clientes as $key => $value) {
-                    if($_SESSION['idtipousuario'] == 1){
-                    echo '<tr>
+                    if ($_SESSION['idtipousuario'] == 1) {
+                      echo '<tr>
                           <th scope="row"><button class="btn btn-warning btn-circle btn-xl btnEditarCliente" onclick="mostrarformC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
                     } else {
                       echo '<tr>
@@ -123,6 +123,24 @@
                   <input class="form-control" type="text" name="clavesunat" id="clavesunat" placeholder="Clave SOL">
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="">Regimen Tributario:</label>
+                  <select class="form-control col-3 select2" id="idregimen" name="idregimen">
+                    <?php
+                    $regimenes = ModeloLiquidaciones::mdlListarRegimenesTributario();
+                    if ($regimenes) {
+                      foreach ($regimenes as $regimen) {
+                        echo '<option value="0"> Selecciones Regimen </option>';
+                        echo '<option value="' . $regimen["idregimen"] . '">' . $regimen["nombreregimen"] . '</option>';
+                      }
+                    }
+                    ?>
+                  </select>
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                  <label for="">Coeficiente:</label>
+                  <input class="form-control" type="number" name="coeficiente" id="coeficiente" placeholder="Coeficiente" step="0.001">
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-xs-12">
                   <label class="panel" for="">Imagen:</label>
                   <input type="file" class="nuevaFoto center-block" name="nuevaFoto" id="nuevaFoto">
                   <input class="form-control" type="hidden" name="fotoaux" id="fotoaux">
@@ -136,7 +154,7 @@
               </div>
             </form>
           </div>
-          
+
           <div class="card-body panel-body" id="formulariodetalleC">
             <div class="row">
               <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -170,7 +188,7 @@
             <button class="btn btn-danger" onclick="cancelarDetformC()" type="button"><i class="fa fa-arrow-circle-left"></i> Cancelar</button>
             <button class="btn btn-success btnAgregarAgenda"><i class="fas fa-save"></i> Agregar</button>
             <button class="btn btn-outline-primary" onclick="limpiarAgenda()" type="button">Limpiar</button>
-            
+
             <br />
             <br />
             <div id="tbllistado">

@@ -103,7 +103,7 @@
                         </ul>
                     </li>
                 <?php } ?>
-                <?php if (in_array($_SESSION['iddepartamento'], [18, 13, 5, 8, 3])) { ?>
+                <?php if (in_array($_SESSION['iddepartamento'], [19, 13, 5, 8, 3])) { ?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
@@ -140,6 +140,24 @@
                                 <a href="declaracionAnualSunat" class="nav-link ml-4">
                                     <i class="fas fa-forward"></i>
                                     <p>Declaración</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-file-invoice"></i>
+                            <p>Liquidaciones Impuestos<i class="right fas fa-angle-left"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="liquidaciones" class="nav-link ml-4">
+                                    <i class="fas fa-forward"></i>
+                                    <p>Liquidaciones Mensuales</p>
+                                </a>
+                                <a href="listarliquidaciones" class="nav-link ml-4">
+                                    <i class="fas fa-forward"></i>
+                                    <p>Mostrar Liquidaciones</p>
                                 </a>
                             </li>
                         </ul>
