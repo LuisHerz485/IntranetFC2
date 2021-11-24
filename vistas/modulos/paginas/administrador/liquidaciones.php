@@ -1,5 +1,5 @@
 <script>
-    const idliquidacion_recibido = <?php echo $_POST["id_liquidacion"] ?? "false"; ?>;
+    window.idliquidacion_recibido = <?php echo $_POST["id_liquidacion"] ?? "false"; ?>;
 </script>
 <div class="content-wrapper">
     <div class="content-header">
@@ -31,7 +31,7 @@
                     </div>
                     <div class="card-body panel-body">
                         <div class="container-fluid">
-                            <form id="frmliquidaciones" method="POST">
+                            <form id="frmliquidaciones" method="POST" action="ajax/generarLiquidacionPDF.php" enctype="multipart/form-data" target="_blank">
                                 <div class="row">
                                     <div class="col-12">
                                         <div class="row justify-content-center">
@@ -43,6 +43,10 @@
                                             <div class="col-12 col-md-4 col-lg-4 col-xl-4">
                                                 <label>Seleccione Clientes:</label>
                                                 <input type="hidden" name="id_elaborador" value="<?php echo $_SESSION["idusuario"]; ?>">
+                                                <input type="hidden" name="elaborador" id="elaborador">
+                                                <input type="hidden" name="revisor" id="revisor">
+                                                <input type="hidden" name="razonsocial" id="razonsocial">
+                                                <input type="hidden" name="ruc" id="ruc">
                                                 <select name="idcliente" id="idcliente_liquidacion" class="form-control select2 buscar-meses-anteriores" required>
                                                     <?php
                                                     $clientes = ModeloClientes::mdlMostrarClienteParaLiquidacion();
@@ -56,7 +60,7 @@
                                             </div>
                                             <div class="col-12 col-md-4 col-lg-4 col-xl-3">
                                                 <label>Fecha Vencimiento:</label>
-                                                <input type="date" name="fechavencimiento" id="fechavencimiento" class="form-control">
+                                                <input type="date" name="fechavencimiento" id="fechavencimiento" class="form-control" required>
                                             </div>
                                         </div>
                                         <hr>
@@ -78,138 +82,54 @@
                                                     <tbody>
                                                         <tr>
                                                             <td> VENTAS NETAS</td>
-                                                            <td> <input type="text" ids="#ventas_netas,#ventas_no_gravadas,#exportaciones_facturada,#exportaciones_embarcadas,#nota_debito" idTotal="#ingreso_bruto" name="ventas_netas" id="ventas_netas" class="form-control text-center solo-numeros suma-montos" tieneIGV="true" idIGV="#ventas_netasigv" idNeto="#ventas_netastotal" value="0"></td>
-                                                            <td> <input type="text" id="ventas_netasigv" ids="#ventas_netasigv,#nota_debitoigv" idTotal="#ingreso_brutoigv" class="form-control text-center suma-montos" readonly></td>
-                                                            <td> <input type="text" id="ventas_netastotal" class="form-control text-center" value="0" readonly></td>
+                                                            <td> <input type="number" name="ventas_netas" id="ventas_netas" class="form-control text-center  " value="0" required></td>
+                                                            <td> <input type="text" name="ventas_netas_igv" id="ventas_netas_igv" class="form-control text-center" value="0" readonly></td>
+                                                            <td> <input type="text" name="ventas_netas_total" id="ventas_netas_total" class="form-control text-center" value="0" readonly></td>
                                                         </tr>
                                                         <tr>
                                                             <td>VENTAS NO GRAVADAS</td>
-                                                            <td> <input type="text" ids="#ventas_netas,#ventas_no_gravadas,#exportaciones_facturada,#exportaciones_embarcadas,#nota_debito" idTotal="#ingreso_bruto" name="ventas_no_gravadas" id="ventas_no_gravadas" class="form-control text-center solo-numeros suma-montos" tieneIGV="false" idNeto="#ventas_no_gravadastotal" value="0"></td>
+                                                            <td> <input type="number" name="ventas_no_gravadas" id="ventas_no_gravadas" class="form-control text-center" value="0" required></td>
                                                             <td></td>
-                                                            <td> <input type="text" id="ventas_no_gravadastotal" class="form-control text-center " value="0" readonly></td>
+                                                            <td> <input type="text" name="ventas_no_gravadas_total" id="ventas_no_gravadas_total" class="form-control text-center" value="0" readonly></td>
                                                         </tr>
                                                         <tr>
                                                             <td>EXPORTACIONES FACTURADAS EN EL PERIODO</td>
-                                                            <td> <input type="text" ids="#ventas_netas,#ventas_no_gravadas,#exportaciones_facturada,#exportaciones_embarcadas,#nota_debito" idTotal="#ingreso_bruto" name="exportaciones_facturada" id="exportaciones_facturada" class="form-control text-center solo-numeros suma-montos" value="0" tieneIGV="false" idNeto="#exportaciones_facturadatotal"></td>
+                                                            <td> <input type="number" name="exportaciones_facturada" id="exportaciones_facturada" class="form-control text-center" value="0" required></td>
                                                             <td> </td>
-                                                            <td> <input type="text" id="exportaciones_facturadatotal" class="form-control text-center " value="0" readonly></td>
+                                                            <td> <input type="text" name="exportaciones_facturada_total" id="exportaciones_facturada_total" class="form-control text-center" value="0" readonly></td>
                                                         </tr>
                                                         <tr>
                                                             <td>EXPORTACIONES EMBARCADAS EN EL PERIODO</td>
-                                                            <td> <input type="text" ids="#ventas_netas,#ventas_no_gravadas,#exportaciones_facturada,#exportaciones_embarcadas,#nota_debito" idTotal="#ingreso_bruto" name="exportaciones_embarcadas" id="exportaciones_embarcadas" class="form-control text-center solo-numeros suma-montos" value="0" tieneIGV="false" idNeto="#exportaciones_embarcadastotal"></td>
+                                                            <td> <input type="number" name="exportaciones_embarcadas" id="exportaciones_embarcadas" class="form-control text-center" value="0" required></td>
                                                             <td> </td>
-                                                            <td> <input type="text" id="exportaciones_embarcadastotal" class="form-control text-center" value="0" readonly></td>
+                                                            <td> <input type="text" name="exportaciones_embarcadas_total" id="exportaciones_embarcadas_total" class="form-control text-center" value="0" readonly></td>
                                                         </tr>
                                                         <tr>
                                                             <td>NOTAS DE DEBITO</td>
-                                                            <td> <input type="text" name="nota_debito" id="nota_debito" ids="#ventas_netas,#ventas_no_gravadas,#exportaciones_facturada,#exportaciones_embarcadas,#nota_debito" idTotal="#ingreso_bruto" class="form-control text-center solo-numeros suma-montos" tieneIGV="true" idIGV="#nota_debitoigv" idNeto="#nota_debitototal" value="0"></td>
-                                                            <td> <input type="text" id="nota_debitoigv" ids="#ventas_netasigv,#nota_debitoigv" idTotal="#ingreso_brutoigv" class="form-control text-center suma-montos" value="0" readonly></td>
-                                                            <td> <input type="text" id="nota_debitototal" class="form-control text-center" value="0" readonly></td>
+                                                            <td> <input type="number" name="nota_debito" id="nota_debito" class="form-control text-center  " value="0" required></td>
+                                                            <td> <input type="text" name="nota_debito_igv" id="nota_debito_igv" class="form-control text-center" value="0" readonly></td>
+                                                            <td> <input type="text" name="nota_debito_total" id="nota_debito_total" class="form-control text-center" value="0" readonly></td>
                                                         </tr>
                                                         <tr>
                                                             <td>TOTAL INGRESOS</td>
-                                                            <td> <input type="text" name="ingreso_bruto" id="ingreso_bruto" ids="#ingreso_bruto,#ingreso_brutoigv" idTotal="#ingreso_brutototal" class="form-control bg-warning text-center  resta-dos-numeros suma-montos" value="0" idResultado="#ingreso_neto" idIzq="#ingreso_bruto" idDer="#nota_credito" readonly></td>
-                                                            <td> <input type="text" id="ingreso_brutoigv" ids="#ingreso_bruto,#ingreso_brutoigv" idTotal="#ingreso_brutototal" class="form-control text-center resta-dos-numeros suma-montos bg-warning" value="0" idResultado="#ingreso_netoigv" idIzq="#ingreso_brutoigv" idDer="#nota_credito" readonly></td>
-                                                            <td> <input type="text" id="ingreso_brutototal" class="form-control text-center resta-dos-numeros bg-warning" value="0" idResultado="#ingreso_netototalvalor" idIzq="#ingreso_brutototal" idDer="#nota_creditototal" readonly></td>
+                                                            <td> <input type="text" name="ingreso_bruto" id="ingreso_bruto" class="form-control bg-warning text-center" value="0" readonly></td>
+                                                            <td> <input type="text" name="ingreso_bruto_igv" id="ingreso_bruto_igv" class="form-control text-center bg-warning" value="0" readonly></td>
+                                                            <td> <input type="text" name="ingreso_bruto_total" id="ingreso_bruto_total" class="form-control text-center  bg-warning" value="0" readonly></td>
                                                         </tr>
                                                         <tr>
                                                             <td>NOTAS DE CREDITO</td>
-                                                            <td> <input type="text" name="nota_credito" id="nota_credito" class="form-control text-center solo-numeros resta-dos-numeros" idResultado="#ingreso_neto" idIzq="#ingreso_bruto" idDer="#nota_credito" tieneIGV="true" idIGV="#nota_creditoigv" idNeto="#nota_creditototal" value="0"></td>
-                                                            <td> <input type="text" id="nota_creditoigv" class="form-control text-center resta-dos-numeros" value="0" idResultado="#ingreso_netoigv" idIzq="#ingreso_brutoigv" idDer="#nota_creditoigv" readonly></td>
-                                                            <td> <input type="text" id="nota_creditototal" class="form-control text-center  resta-dos-numeros" value="0" idResultado="#ingreso_netototalvalor" idIzq="#ingreso_brutototal" idDer="#nota_creditototal" readonly></td>
+                                                            <td> <input type="number" name="nota_credito" id="nota_credito" class="form-control text-center" value="0" required></td>
+                                                            <td> <input type="text" name="nota_credito_igv" id="nota_credito_igv" class="form-control text-center" value="0" readonly></td>
+                                                            <td> <input type="text" name="nota_credito_total" id="nota_credito_total" class="form-control text-center" value="0" readonly></td>
                                                         </tr>
                                                         <tr>
                                                             <td>INGRESO NETO</td>
                                                             <td> <input type="text" name="ingreso_neto" id="ingreso_neto" class="form-control text-center bg-success" value="0" readonly></td>
-                                                            <td> <input type="text" id="ingreso_netoigv" class="form-control text-center bg-success resta-dos-numeros" idResultado="#total_impuesto" idIzq="#ingreso_netoigv" idDer="#total_comprasigv" value="0" readonly></td>
+                                                            <td> <input type="text" name="ingreso_neto_igv" id="ingreso_neto_igv" class="form-control text-center bg-success" value="0" readonly></td>
                                                             <td>
-                                                                <input type="hidden" id="ingreso_netototalvalor">
-                                                                <input type="text" id="ingreso_netototal" class="form-control text-center bg-success" value="0" readonly>
+                                                                <input type="hidden" name="ingreso_neto_total" id="ingreso_neto_total" value="0">
+                                                                <input type="text" id="ingreso_neto_formato" class="form-control text-center bg-success" value="S./ 0" readonly>
                                                             </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-xl-6 pt-xl-0 pt-5">
-                                        <div class="card card-secondary">
-                                            <div class="card-header text-center">
-                                                <b class="h4">COMPRAS</b>
-                                            </div>
-                                            <div class="card-body panel-body">
-                                                <table>
-                                                    <thead>
-                                                        <th>Nombres</th>
-                                                        <th>Base</th>
-                                                        <th>IGV</th>
-                                                        <th>Total</th>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>COMPRAS NACIONALES GRAVADAS</td>
-                                                            <td> <input type="text" name="comp_nacion_grava" id="comp_nacion_grava" ids="#comp_nacion_grava,#comp_importa_grava,#comp_nacion_no_grava,#comp_importa_no_grava" idTotal="#total_compras" class="form-control text-center solo-numeros suma-montos" tieneIGV="true" idIGV="#comp_nacion_gravaigv" idNeto="#comp_nacion_gravatotal" value="0"></td>
-                                                            <td> <input type="text" id="comp_nacion_gravaigv" class="form-control text-center suma-montos" ids="#comp_nacion_gravaigv,#comp_importa_gravaigv" idTotal="#total_comprasigv" readonly></td>
-                                                            <td> <input type="text" id="comp_nacion_gravatotal" class="form-control text-center" readonly></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>COMPRAS IMPORTADAS GRAVADAS</td>
-                                                            <td> <input type="text" name="comp_importa_grava" id="comp_importa_grava" ids="#comp_nacion_grava,#comp_importa_grava,#comp_nacion_no_grava,#comp_importa_no_grava" idTotal="#total_compras" class="form-control text-center solo-numeros suma-montos" tieneIGV="true" idIGV="#comp_importa_gravaigv" idNeto="#comp_importa_gravatotal" value="0"></td>
-                                                            <td><input type="text" id="comp_importa_gravaigv" class="form-control text-center suma-montos" ids="#comp_nacion_gravaigv,#comp_importa_gravaigv" idTotal="#total_comprasigv" readonly></td>
-                                                            <td> <input type="text" id="comp_importa_gravatotal" class="form-control text-center" text-center readonly></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>COMPRAS NACIONALES NO GRAVADAS</td>
-                                                            <td> <input type="text" name="comp_nacion_no_grava" id="comp_nacion_no_grava" ids="#comp_nacion_grava,#comp_importa_grava,#comp_nacion_no_grava,#comp_importa_no_grava" idTotal="#total_compras" class="form-control text-center solo-numeros suma-montos" tieneIGV="false" idNeto="#comp_nacion_no_gravatotal" value="0"></td>
-                                                            <td> </td>
-                                                            <td> <input type="text" id="comp_nacion_no_gravatotal" class="form-control text-center" readonly></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>COMPRAS IMPORTADAS NO GRAVADAS</td>
-                                                            <td> <input type="text" name="comp_importa_no_grava" id="comp_importa_no_grava" ids="#comp_nacion_grava,#comp_importa_grava,#comp_nacion_no_grava,#comp_importa_no_grava" idTotal="#total_compras" class="form-control text-center solo-numeros suma-montos" tieneIGV="false" idNeto="#comp_importa_no_gravatotal" value="0"></td>
-                                                            <td> </td>
-                                                            <td> <input type="text" id="comp_importa_no_gravatotal" class="form-control text-center" readonly></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>TOTAL COMPRAS</td>
-                                                            <td> <input type="text" name="total_compras" ids="#total_compras,#total_comprasigv" idTotal="#total_comprastotalvalor" id="total_compras" class="form-control text-center bg-warning suma-montos" value="0" readonly></td>
-                                                            <td> <input type="text" id="total_comprasigv" ids="#total_compras,#total_comprasigv" idTotal="#total_comprastotalvalor" class="form-control text-center bg-warning resta-dos-numeros suma-montos" idResultado="#total_impuesto" idIzq="#ingreso_netoigv" idDer="#total_comprasigv" readonly></td>
-                                                            <td>
-                                                                <input type="hidden" id="total_comprastotalvalor">
-                                                                <input type="text" id="total_comprastotal" class="form-control text-center bg-warning" readonly>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>IMPUESTO RESULTANTE</td>
-                                                            <td></td>
-                                                            <td>
-                                                                <input type="text" id="total_impuestovalor" class="form-control text-center" value="0" readonly>
-                                                                <input type="hidden" name="total_impuesto" id="total_impuesto" class="form-control text-center suma-montos" ids="#total_impuesto,#saldo_afavor_anterior" idTotal="#saldo_afavor">
-
-                                                            </td>
-                                                            <td></td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>SALDO A FAVOR -PERIODO ANTERIOR</td>
-                                                            <td> </td>
-                                                            <td> <input type="text" id="saldo_afavor_anterior" class="form-control text-center suma-montos" ids="#total_impuesto,#saldo_afavor_anterior" idTotal="#saldo_afavor" value="0" readonly></td>
-                                                            <td> </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>TRIBUTO A PAGAR O SALDO A FAVOR</td>
-                                                            <td> </td>
-                                                            <td> <input type="text" name="saldo_afavor" id="saldo_afavor" class="form-control text-center  bg-success" value="0" readonly></td>
-                                                            <td> </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><span class="text-danger h5"><b>IMPORTE A PAGAR</b></span></td>
-                                                            <td> </td>
-                                                            <td>
-                                                                <input type="text" id="importe_apagar2" class="form-control text-center bg-warning">
-                                                                <input type="hidden" id="importe_apagar" value="0" readonly>
-                                                            </td>
-                                                            <td> </td>
                                                         </tr>
                                                     </tbody>
                                                 </table>
@@ -223,7 +143,10 @@
                                             </div>
                                             <div class="card-body panel-body">
                                                 <input type="hidden" id="idregimen" name="idregimen" />
-                                                <span id="nombreRegimen"><b>REGIMEN MYPE TRIBUTARIO</b></span>
+                                                <input type="hidden" id="nombreregimen" name="nombreregimen" />
+                                                <span> Regimen: <b id="nombreregimen_text">
+                                                        < Escoja un cliente>
+                                                    </b></span>
                                                 <hr>
                                                 <table>
                                                     <thead>
@@ -234,31 +157,29 @@
                                                     <tbody>
                                                         <tr>
                                                             <td>INGRESOS NETOS</td>
-                                                            <td> <input type="text" id="ingresos_netos" class="form-control text-center" value="0" readonly></td>
-                                                            <td> <input type="text" name="coeficiente" id="coeficiente" class="form-control text-center solo-numeros"></td>
+                                                            <td> <input type="text" name="ingresos_netos" id="ingresos_netos" class="form-control text-center" value="0" readonly></td>
+                                                            <td> <input type="number" name="coeficiente" id="coeficiente" value="0" class="form-control text-center" required></td>
                                                         </tr>
                                                         <tr>
                                                             <td>IMPUESTO RESULTANTE</td>
-                                                            <td> <input type="text" name="impuesto_resultante" id="ingreso_resultante" class="form-control text-center suma-montos" ids="#ingreso_resultante,#saldo_afavor_renta" idTotal="#tributo_apagar_renta" value="0" readonly></td>
+                                                            <td> <input type="text" name="impuesto_resultante" id="ingreso_resultante" class="form-control text-center" value="0" readonly></td>
                                                             <td></td>
                                                         </tr>
                                                         <tr>
-                                                            <td>SALDO A FAVOR DEL PERIODO ANTERIOR (-)</td>
-                                                            <td> <input type="text" name="saldo_afavor_renta" id="saldo_afavor_renta" class="form-control text-center solo-numeros suma-montos" ids="#ingreso_resultante,#saldo_afavor_renta" idTotal="#tributo_apagar_renta" value="0"></td>
+                                                            <td>SALDO A FAVOR DEL PERIODO ANTERIOR <b>(-)</b></td>
+                                                            <td> <input type="number" name="saldo_afavor_renta" id="saldo_afavor_renta" class="form-control text-center" value="0" required></td>
                                                             <td> </td>
-
                                                         </tr>
                                                         <tr>
                                                             <td>TRIBUTO A PAGAR O SALDO A FAVOR</td>
                                                             <td>
-                                                                <input type="text" name="tributo_apagar_renta" id="tributo_apagar_renta" class="form-control text-center suma-montos" ids="#tributo_apagar_renta,#pagos_previos" idTotal="#impuesto_renta" value="0" readonly>
+                                                                <input type="text" name="tributo_apagar_renta" id="tributo_apagar_renta" class="form-control text-center" value="0" readonly>
                                                             </td>
                                                             <td> </td>
-
                                                         </tr>
                                                         <tr>
-                                                            <td>PAGOS PREVIOS (-)</td>
-                                                            <td> <input type="text" name="pagos_previos" id="pagos_previos" class="form-control text-center solo-numeros suma-montos" ids="#tributo_apagar_renta,#pagos_previos" idTotal="#impuesto_renta" value="0"></td>
+                                                            <td>PAGOS PREVIOS <b>(-)</b></td>
+                                                            <td> <input type="number" name="pagos_previos" id="pagos_previos" class="form-control text-center" value="0" required></td>
                                                             <td> </td>
 
                                                         </tr>
@@ -277,14 +198,152 @@
                                                     </thead>
                                                     <tr>
                                                         <td>IMPUESTO GENERAL A LAS VENTAS - IGV</td>
-                                                        <td><span id="impuesto_general_ventas">S/. 0</span></td>
+                                                        <input type="hidden" name="impuesto_general_ventas" id="impuesto_general_ventas" value="0">
+                                                        <td><span id="impuesto_general_ventas_text">S/. 0</span></td>
                                                     </tr>
                                                     <tr>
                                                         <td>IMPUESTO A LA RENTA MYPE TRIBUTARIO</td>
-                                                        <td><span id="impuesto_rentaTotal">S/. 0</span></td>
+                                                        <input type="hidden" name="impuesto_renta_total" id="impuesto_renta_total" value="0"></td>
+                                                        <td><span id="impuesto_renta_total_text">S/. 0</span></td>
                                                     </tr>
                                                 </table>
 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-xl-6 pt-xl-0 pt-5">
+                                        <div class="card card-secondary">
+                                            <div class="card-header text-center">
+                                                <b class="h4">COMPRAS</b>
+                                            </div>
+                                            <div class="card-body panel-body">
+                                                <table>
+                                                    <thead>
+                                                        <th>Nombres</th>
+                                                        <th>Base</th>
+                                                        <th>IGV</th>
+                                                        <th>Total</th>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td>COMPRAS NACIONALES GRAVADAS</td>
+                                                            <td> <input type="number" name="comp_nacion_grava" id="comp_nacion_grava" class="form-control text-center" value="0"></td>
+                                                            <td> <input type="text" name="comp_nacion_grava_igv" id="comp_nacion_grava_igv" class="form-control text-center" value="0" readonly></td>
+                                                            <td> <input type="text" name="comp_nacion_grava_total" id="comp_nacion_grava_total" class="form-control text-center" value="0" readonly></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>COMPRAS IMPORTADAS GRAVADAS</td>
+                                                            <td> <input type="number" name="comp_importa_grava" id="comp_importa_grava" class="form-control text-center" value="0"></td>
+                                                            <td><input type="text" name="comp_importa_grava_igv" id="comp_importa_grava_igv" class="form-control text-center" value="0" readonly></td>
+                                                            <td> <input type="text" name="comp_importa_grava_total" id="comp_importa_grava_total" class="form-control text-center" value="0" readonly></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>COMPRAS NACIONALES NO GRAVADAS</td>
+                                                            <td> <input type="number" name="comp_nacion_no_grava" id="comp_nacion_no_grava" class="form-control text-center" value="0"></td>
+                                                            <td> </td>
+                                                            <td> <input type="text" name="comp_nacion_no_grava_total" id="comp_nacion_no_grava_total" class="form-control text-center" value="0" readonly></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>COMPRAS IMPORTADAS NO GRAVADAS</td>
+                                                            <td> <input type="number" name="comp_importa_no_grava" id="comp_importa_no_grava" class="form-control text-center" value="0"></td>
+                                                            <td> </td>
+                                                            <td> <input type="text" name="comp_importa_no_grava_total" id="comp_importa_no_grava_total" class="form-control text-center" value="0" readonly></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>TOTAL COMPRAS</td>
+                                                            <td> <input type="text" name="total_compras" id="total_compras" class="form-control text-center bg-warning" value="0" readonly></td>
+                                                            <td> <input type="text" name="total_compras_igv" id="total_compras_igv" class="form-control text-center bg-warning" value="0" readonly></td>
+                                                            <td>
+                                                                <input type="hidden" name="total_compras_total" id="total_compras_total" value="0">
+                                                                <input type="text" id="total_compras_formato" class="form-control text-center bg-warning" value="S./ 0" readonly>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>IMPUESTO RESULTANTE</td>
+                                                            <td></td>
+                                                            <td>
+                                                                <input type="text" id="total_impuesto_formato" class="form-control text-center" value="S./ 0" readonly>
+                                                                <input type="hidden" name="total_impuesto" id="total_impuesto" class="form-control text-center" value="0">
+
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>SALDO A FAVOR - PERIODO ANTERIOR <b>(-)</b></td>
+                                                            <td> </td>
+                                                            <td> <input type="number" name="saldo_afavor_anterior" id="saldo_afavor_anterior" class="form-control text-center" value="0"></td>
+                                                            <td> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>TRIBUTO A PAGAR O SALDO A FAVOR</td>
+                                                            <td> </td>
+                                                            <td> <input type="text" name="saldo_afavor" id="saldo_afavor" class="form-control text-center bg-success" value="0" readonly></td>
+                                                            <td> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td colspan="4">
+                                                                <hr>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PERCEPCIONES DEL PERIODO</td>
+                                                            <td> </td>
+                                                            <td> <input type="number" name="percepciones_periodo" id="percepciones_periodo" class="form-control text-center" value="0" required></td>
+                                                            <td> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PERCEPCIONES DEL PERIODO ANTERIOR </td>
+                                                            <td> </td>
+                                                            <td> <input type="number" name="percepciones_periodo_ant" id="percepciones_periodo_ant" class="form-control text-center" value="0" required></td>
+                                                            <td> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>SALDO DE PERCEPCIONES NO APLICADAS </td>
+                                                            <td> </td>
+                                                            <td> <input type="number" name="saldo_percepciones_no_apl" id="saldo_percepciones_no_apl" class="form-control text-center" value="0" required></td>
+                                                            <td> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>RETENCIONES DECLARADAS EN EL PERIODO</td>
+                                                            <td> </td>
+                                                            <td> <input type="number" name="retenciones_declaradas" id="retenciones_declaradas" class="form-control text-center" value="0" required></td>
+                                                            <td> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>RETENCIONES DECLARADAS EN PERIODO ANTERIORES </td>
+                                                            <td> </td>
+                                                            <td> <input type="number" name="retenciones_declaradas_ant" id="retenciones_declaradas_ant" class="form-control text-center" value="0" required></td>
+                                                            <td> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>SALDO DE RETENCIONES NO APLICADAS </td>
+                                                            <td> </td>
+                                                            <td> <input type="number" name="saldo_retenciones_no_apl" id="saldo_retenciones_no_apl" class="form-control text-center" value="0" required></td>
+                                                            <td> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>PAGOS PREVIOS</td>
+                                                            <td> </td>
+                                                            <td> <input type="number" name="pagos_previos_compras" id="pagos_previos_compras" class="form-control text-center" value="0" required></td>
+                                                            <td> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>IGV A PAGAR</td>
+                                                            <td> </td>
+                                                            <td> <input type="text" name="igv_a_pagar" id="igv_a_pagar" class="form-control text-center" value="0" readonly></td>
+                                                            <td> </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><span class="text-danger h5"><b>IMPORTE A PAGAR</b></span></td>
+                                                            <td> </td>
+                                                            <td>
+                                                                <input type="text" id="importe_apagar_formato" class="form-control text-center bg-warning" value="S./ 0" readonly>
+                                                                <input type="hidden" name="importe_apagar" id="importe_apagar" value="0">
+                                                            </td>
+                                                            <td> </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
@@ -294,38 +353,54 @@
                                                 <b class="h4">RESUMEN DE LIQUIDACIONES</b>
                                             </div>
                                             <div class="card-body panel-body">
-                                                <div class="col-12">
-                                                    Aqui va haber un grafico proximamente
+                                                <div class="chart">
+                                                    <textarea class="d-none" name="grafico" id="grafico"></textarea>
+                                                    <div class="chartjs-size-monitor">
+                                                        <div class="chartjs-size-monitor-expand">
+                                                            <div class=""></div>
+                                                        </div>
+                                                        <div class="chartjs-size-monitor-shrink">
+                                                            <div class=""></div>
+                                                        </div>
+                                                    </div>
+                                                    <canvas id="barChart" style="min-height: 300px; height: 300px; max-height: 300px; max-width: 100%; display: block;" width="453" height="250" class="chartjs-render-monitor"></canvas>
                                                 </div>
                                                 <hr>
                                                 <table class="table table-hover table-bordered" id="tablaResumen">
                                                     <thead class="bg-secondary">
                                                         <th>PERIODO</th>
-                                                        <th id="mesuno">
-                                                        </th>
-                                                        <th id="mesdos">
-                                                        </th>
-                                                        <th id="mestres">
-                                                        </th>
+                                                        <input type="hidden" name="mesPasadoAnterior" id="mesPasadoAnterior" value="-">
+                                                        <th id="mesPasadoAnterior_text"> - </th>
+                                                        <input type="hidden" name="mesAnterior" id="mesAnterior" value="-">
+                                                        <th id="mesAnterior_text"> - </th>
+                                                        <input type="hidden" name="mesActual" id="mesActual" value="-">
+                                                        <th id="mesActual_text"> - </th>
                                                     </thead>
                                                     <tr>
                                                         <td>IMPUESTO GENERAL A LAS VENTAS - IGV</td>
-                                                        <td><span id="mesunoCantidadImpuesto">S/. 0</span></td>
-                                                        <td><span id="mesdosCantidadImpuesto">S/. 0</span></td>
-                                                        <td><span id="mesactualCantidadImpuesto">S/. 0</span></td>
+                                                        <input type="hidden" name="mesPasadoAnteriorImpuesto" id="mesPasadoAnteriorImpuesto" value="S/. 0">
+                                                        <td><span id="mesPasadoAnteriorImpuesto_text">S/. 0</span></td>
+                                                        <input type="hidden" name="mesAnteriorImpuesto" id="mesAnteriorImpuesto" value="S/. 0">
+                                                        <td><span id="mesAnteriorImpuesto_text">S/. 0</span></td>
+                                                        <input type="hidden" name="mesActualImpuesto" id="mesActualImpuesto" value="S/. 0">
+                                                        <td><span id="mesActualImpuesto_text">S/. 0</span></td>
                                                     </tr>
                                                     <tr>
                                                         <td>IMPUESTO A LA RENTA MYPE TRIBUTARIO</td>
-                                                        <td><span id="mesunoCantidadRenta">S/. 0</span></td>
-                                                        <td><span id="mesdosCantidadRenta">S/. 0</span></td>
-                                                        <td><span id="mesactualCantidadRenta">S/. 0</span></td>
+                                                        <input type="hidden" name="mesPasadoAnteriorRenta" id="mesPasadoAnteriorRenta" value="S/. 0">
+                                                        <td><span id="mesPasadoAnteriorRenta_text">S/. 0</span></td>
+                                                        <input type="hidden" name="mesAnteriorRenta" id="mesAnteriorRenta" value="S/. 0">
+                                                        <td><span id="mesAnteriorRenta_text">S/. 0</span></td>
+                                                        <input type="hidden" name="mesActualRenta" id="mesActualRenta" value="S/. 0">
+                                                        <td><span id="mesActualRenta_text">S/. 0</span></td>
                                                     </tr>
                                                 </table>
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button type="button" id="btnRegistrarLiquidacion" class="btn btn-outline-success btn-lg"><i class="fas fa-save fa-4x"></i>Registrar</button>
-                                            <button type="button" id="btnEditarLiquidacion" class="btn btn-outline-warning btn-lg d-none"><i class="fas fa-edit fa-4x"></i>Editar</button>
+                                            <button type="button" id="btnRegistrarLiquidacion" class="btn btn-outline-success btn-lg"><i class="fas fa-save fa-2x"></i>Registrar</button>
+                                            <button type="button" id="btnEditarLiquidacion" class="btn btn-outline-warning btn-lg d-none"><i class="fas fa-edit fa-2x"></i>Editar</button>
+                                            <button type="button" id="btnPDFLiquidacion" class="btn btn-outline-danger btn-lg d-none"><i class="fas fa-file-pdf fa-2x"></i>PDF</button>
                                         </div>
                                     </div>
                             </form>
@@ -335,4 +410,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>

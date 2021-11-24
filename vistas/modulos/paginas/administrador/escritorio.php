@@ -30,28 +30,6 @@
                     </a>
                 </div>
                 <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-                    <a href="menuAsistencia" class="small-box bg-cyan">
-                        <div class="inner">
-                            <h3><span>Gestión de</span></br><span>Asistencia</span></h3>
-                        </div>
-                        <div class="icon text-white">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
-                    </a>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-                    <a href="menuChecklist" class="small-box bg-primary">
-                        <div class="inner">
-                            <h3><span>Gestión de</span></br><span>checklist</span></h3>
-                        </div>
-                        <div class="icon text-white">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
-                    </a>
-                </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
                     <a href="permisos-pendientes" class="small-box bg-success">
                         <div class="inner">
                             <h3>Permisos</h3>
@@ -80,9 +58,10 @@
                     <?php
                     if ($_SESSION['idtipousuario'] == 1) { ?>
                         <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-                            <a href="menuCobranza" class="small-box bg-orange">
+                            <a href="#" class="small-box bg-orange" data-toggle="modal" data-target="#modalCobra">
                                 <div class="inner">
-                                    <h3><span>Gestión de</span></br><span>Cobranza</span></h3>
+                                    <h3>Tesoreria FC</h3>
+                                    <p>Gestión de Cobranza</p>
                                 </div>
                                 <div class="icon text-white">
                                     <i class="fas fa-hand-holding-usd"></i>
@@ -94,7 +73,7 @@
                     <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
                         <a href="#" class="small-box bg-info " data-toggle="modal" data-target="#modalDecMen">
                             <div class="inner">
-                                <h3>SUNAT</h3>
+                                <h3>Sunat</h3>
                                 <p>Declaraciones</p>
                             </div>
                             <div class="icon text-white">
@@ -107,6 +86,63 @@
             </div>
         </div>
     </section>
+</div>
+
+<div class="modal fade" id="modalCobra" role="dialog">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h4 class="modal-title text-orange"><strong>Gestor de Cobranza</strong></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+                            <a href="generarCobranza" class="small-box bg-orange">
+                                <div class="inner">
+                                    <h3><span>Generar</span></br><span>Cobranza</span></h3>
+                                </div>
+                                <div class="icon text-white">
+                                    <i class="fas fa-donate"></i>
+                                </div>
+                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            </a>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+                            <a href="mostrarcobranza" class="small-box bg-orange">
+                                <div class="inner">
+                                    <h3><span>Mostrar</span></br><span>Adeudados</span></h3>
+                                </div>
+                                <div class="icon text-white">
+                                    <i class="fas fa-comments-dollar"></i>
+                                </div>
+                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+                            <a href="mostrarpagado" class="small-box bg-orange">
+                                <div class="inner">
+                                    <h3><span>Mostrar</span></br><span>Pagados</span></h3>
+                                </div>
+                                <div class="icon text-white">
+                                    <i class="fas fa-file-invoice-dollar"></i>
+                                </div>
+                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer bg-orange" al>
+                <b></b>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="modal fade" id="modalDecMen" role="dialog">
@@ -146,7 +182,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="row d-flex justify-content-center">
+                    <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
                             <a href="declaracionAnualSunat" class="small-box bg-info">
                                 <div class="inner">
@@ -155,6 +191,32 @@
                                 </div>
                                 <div class="icon text-white">
                                     <i class="fas fa-paste"></i>
+                                </div>
+                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            </a>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+                            <a href="liquidaciones" class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>Registrar</h3>
+                                    <p>Liquidaciones Mensuales</p>
+                                </div>
+                                <div class="icon text-white">
+                                    <i class="fas fa-money-check-alt"></i>
+                                </div>
+                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+                            <a href="listarliquidaciones" class="small-box bg-info">
+                                <div class="inner">
+                                    <h3>Mostrar</h3>
+                                    <p>Liquidaciones Mensuales</p>
+                                </div>
+                                <div class="icon text-white">
+                                    <i class="fas fa-money-check"></i>
                                 </div>
                                 <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>

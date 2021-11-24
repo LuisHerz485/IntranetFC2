@@ -10,28 +10,30 @@ class ControladorLiquidaciones
             "ventas_no_gravadas" => "flotante",
             "exportaciones_facturada" => "flotante",
             "exportaciones_embarcadas" => "flotante",
-            "ingreso_bruto" => "flotante",
             "nota_credito" => "flotante",
             "nota_debito" => "flotante",
-            "ingreso_neto" => "flotante",
             "comp_nacion_grava" => "flotante",
             "comp_importa_grava" => "flotante",
             "comp_nacion_no_grava" => "flotante",
             "comp_importa_no_grava" => "flotante",
-            "total_compras" => "flotante",
-            "total_impuesto" => "flotante",
-            "saldo_afavor" => "flotante",
-            "impuesto_resultante" => "flotante",
+            "saldo_afavor_anterior" => "flotante",
             "coeficiente" => "flotante",
+            "saldo_afavor_renta" => "flotante",
             "pagos_previos" => "flotante",
-            "impuesto_renta" => "flotante",
             "fechavencimiento" => "fecha",
             "periodo" => "fechaMes",
-            "saldo_afavor_renta" => "flotante",
-            "tributo_apagar_renta" => "flotante",
             "idregimen" => "enteroPositivo",
             "idcliente" => "enteroPositivo",
             "id_elaborador" => "enteroPositivo",
+            "importe_apagar" => "flotante",
+            "impuesto_renta" => "flotante",
+            "percepciones_periodo" => "flotante",
+            "percepciones_periodo_ant" => "flotante",
+            "saldo_percepciones_no_apl" => "flotante",
+            "retenciones_declaradas" => "flotante",
+            "retenciones_declaradas_ant" => "flotante",
+            "saldo_retenciones_no_apl" => "flotante",
+            "pagos_previos_compras" => "flotante",
         ]);
         if (is_array($data) && !in_array(false, $data, true)) {
             if (!ModeloLiquidaciones::mdlExisteLiquidacion($_POST["periodo"], $_POST["idcliente"])) {
@@ -45,30 +47,32 @@ class ControladorLiquidaciones
     {
         $data = ControladorValidacion::validar([
             "ventas_netas" => "flotante",
-            "idregimen" => "enteroPositivo",
             "ventas_no_gravadas" => "flotante",
             "exportaciones_facturada" => "flotante",
             "exportaciones_embarcadas" => "flotante",
-            "ingreso_bruto" => "flotante",
             "nota_credito" => "flotante",
             "nota_debito" => "flotante",
-            "ingreso_neto" => "flotante",
             "comp_nacion_grava" => "flotante",
             "comp_importa_grava" => "flotante",
             "comp_nacion_no_grava" => "flotante",
             "comp_importa_no_grava" => "flotante",
-            "total_compras" => "flotante",
-            "total_impuesto" => "flotante",
-            "saldo_afavor" => "flotante",
-            "impuesto_resultante" => "flotante",
+            "saldo_afavor_anterior" => "flotante",
             "coeficiente" => "flotante",
+            "saldo_afavor_renta" => "flotante",
             "pagos_previos" => "flotante",
-            "impuesto_renta" => "flotante",
             "fechavencimiento" => "fecha",
             "periodo" => "fechaMes",
-            "saldo_afavor_renta" => "flotante",
-            "tributo_apagar_renta" => "flotante",
+            "idregimen" => "enteroPositivo",
             "idcliente" => "enteroPositivo",
+            "importe_apagar" => "flotante",
+            "impuesto_renta" => "flotante",
+            "percepciones_periodo" => "flotante",
+            "percepciones_periodo_ant" => "flotante",
+            "saldo_percepciones_no_apl" => "flotante",
+            "retenciones_declaradas" => "flotante",
+            "retenciones_declaradas_ant" => "flotante",
+            "saldo_retenciones_no_apl" => "flotante",
+            "pagos_previos_compras" => "flotante",
             "id_liquidacion" => "enteroPositivo",
         ]);
         if (is_array($data) && !in_array(false, $data, true)) {
@@ -83,7 +87,6 @@ class ControladorLiquidaciones
         $data = ControladorValidacion::validar([
             "id_revisor" => "enteroPositivo",
             "id_liquidacion" => "enteroPositivo",
-
         ]);
         if (is_array($data) && !in_array(false, $data, true)) {
             return ModeloLiquidaciones::mdlRegistrarRevision($data);
@@ -96,7 +99,7 @@ class ControladorLiquidaciones
     {
         if (isset($_POST["id_liquidacion"])) {
             if ($idliquidaciones = ControladorValidacion::validarID($_POST["id_liquidacion"])) {
-                return ModeloLiquidaciones::mdlBuscarLiquidaciones($idliquidaciones);
+                return ModeloLiquidaciones::mdlBuscarLiquidacion($idliquidaciones);
             }
         }
         return false;

@@ -9,8 +9,7 @@ class ModeloLiquidaciones
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $idliquidaciones = $conexion->insert("INSERT INTO liquidacionimpuestos (ventas_netas, ventas_no_gravadas, exportaciones_facturada, exportaciones_embarcadas, ingreso_bruto, nota_credito, nota_debito, ingreso_neto, comp_nacion_grava, comp_importa_grava, comp_nacion_no_grava, comp_importa_no_grava, total_compras, total_impuesto, saldo_afavor, impuesto_resultante, coeficiente, pagos_previos, impuesto_renta, fechavencimiento, periodo, saldo_afavor_renta, tributo_apagar_renta, idregimen, idcliente, id_elaborador) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CONCAT( ?,'-01'), ?, ?, ?, ?, ?);
-            ", $datos);
+            $idliquidaciones = $conexion->insert("INSERT INTO liquidacionimpuestos (ventas_netas, ventas_no_gravadas, exportaciones_facturada, exportaciones_embarcadas, nota_credito, nota_debito, comp_nacion_grava, comp_importa_grava, comp_nacion_no_grava, comp_importa_no_grava, saldo_afavor_anterior, coeficiente, saldo_afavor_renta, pagos_previos, fechavencimiento, periodo, idregimen, idcliente, id_elaborador, importe_apagar, impuesto_renta, percepciones_periodo, percepciones_periodo_ant, saldo_percepciones_no_apl, retenciones_declaradas, retenciones_declaradas_ant, saldo_retenciones_no_apl, pagos_previos_compras) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CONCAT( ?,'-01'), ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", $datos);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -28,9 +27,9 @@ class ModeloLiquidaciones
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $filasactualizadas = $conexion->updateOrDelete("UPDATE liquidacionimpuestos SET ventas_netas=?, idregimen=?, ventas_no_gravadas=?, exportaciones_facturada=?, exportaciones_embarcadas=?, ingreso_bruto=?, nota_credito=?,nota_debito=?, ingreso_neto=?, comp_nacion_grava=?, comp_importa_grava=?,comp_nacion_no_grava=?, comp_importa_no_grava=?,  total_compras=?, total_impuesto=?, saldo_afavor=?, impuesto_resultante=?, coeficiente=?, pagos_previos=?, impuesto_renta=?, fechavencimiento=?, periodo=CONCAT( ?,'-01'), saldo_afavor_renta=?, tributo_apagar_renta=?, idcliente=? WHERE id_liquidacion=?", $datos);
+            $filasactualizadas = $conexion->updateOrDelete("UPDATE liquidacionimpuestos SET ventas_netas=?, ventas_no_gravadas=?, exportaciones_facturada=?, exportaciones_embarcadas=?, nota_credito=?, nota_debito=?, comp_nacion_grava=?, comp_importa_grava=?, comp_nacion_no_grava=?, comp_importa_no_grava=?, saldo_afavor_anterior=?, coeficiente=?, saldo_afavor_renta=?, pagos_previos=?, fechavencimiento=?, periodo=CONCAT( ?,'-01'), idregimen=?, idcliente=?, importe_apagar=?, impuesto_renta=?, percepciones_periodo=?, percepciones_periodo_ant=?, saldo_percepciones_no_apl=?, retenciones_declaradas=?, retenciones_declaradas_ant=?, saldo_retenciones_no_apl=?, pagos_previos_compras=?  WHERE id_liquidacion=?", $datos);
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            //echo $e->getMessage();
         } finally {
             if ($conexion) {
                 $conexion->close();
@@ -82,13 +81,7 @@ class ModeloLiquidaciones
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $liquidaciones = $conexion->getData("SELECT L.id_liquidacion, L.ventas_netas, L.idregimen,L.ventas_no_gravadas, L.exportaciones_facturada, L.exportaciones_embarcadas,
-            L.ingreso_bruto, L.nota_credito,L.nota_debito, L.ingreso_neto, L.comp_nacion_grava, L.saldo_afavor_renta, L.tributo_apagar_renta, L.comp_importa_grava,L.comp_nacion_no_grava, L.comp_importa_no_grava,L.total_compras, L.impuesto_resultante, L.saldo_afavor, L.impuesto_resultante, L.coeficiente, L.pagos_previos,
-            L.impuesto_renta, L.fechavencimiento, L.periodo, L.idcliente, L.id_elaborador, L.id_revisor FROM liquidacionimpuestos L 
-            INNER JOIN regimentributario R ON L.idregimen=R.idregimen
-            INNER JOIN cliente C ON L.idcliente=C.idcliente 
-            INNER JOIN usuario U ON L.id_elaborador =U.idusuario 
-            LEFT JOIN usuario UR ON L.id_revisor=UR.idusuario");
+            $liquidaciones = $conexion->getData("SELECT L.id_liquidacion, L.ventas_netas, L.ventas_no_gravadas, L.exportaciones_facturada, L.exportaciones_embarcadas, L.nota_credito, L.nota_debito, L.comp_nacion_grava, L.comp_importa_grava, L.comp_nacion_no_grava, L.comp_importa_no_grava, L.saldo_afavor_anterior, L.coeficiente, L.saldo_afavor_renta, L.pagos_previos, L.fechavencimiento, L.periodo, L.idregimen, R.nombreregimen, L.idcliente, C.ruc, C.razonsocial, L.id_elaborador, UPPER(CONCAT(U.nombre,' ',U.apellidos)) as elaborador, L.id_revisor, IF(L.id_revisor is null,'- NO REVISADO -', UPPER(CONCAT( UR.nombre,' ',UR.apellidos))) as revisor, L.fecha_registro, L.fecha_actualizacion, L.importe_apagar, L.impuesto_renta, L.percepciones_periodo, L.percepciones_periodo_ant, L.saldo_percepciones_no_apl, L.retenciones_declaradas, L.retenciones_declaradas_ant, L.saldo_retenciones_no_apl, L.pagos_previos_compras FROM liquidacionimpuestos L INNER JOIN regimentributario R ON L.idregimen = R.idregimen INNER JOIN cliente C ON L.idcliente=C.idcliente INNER JOIN usuario U ON L.id_elaborador = U.idusuario  LEFT JOIN usuario UR ON L.id_revisor=UR.idusuario");
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -100,24 +93,13 @@ class ModeloLiquidaciones
         return $liquidaciones;
     }
 
-    public static function mdlBuscarLiquidaciones(int $idLiquidaciones): mixed
+    public static function mdlBuscarLiquidacion(int $id_liquidacion): mixed
     {
         $liquidaciones = null;
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $liquidaciones = $conexion->getData("SELECT L.id_liquidacion, L.ventas_netas, L.idregimen, C.razonsocial,C.ruc,R.nombreregimen,
-            L.ventas_no_gravadas, L.exportaciones_facturada, L.exportaciones_embarcadas, L.saldo_afavor_renta, L.tributo_apagar_renta, UPPER (CONCAT(U.nombre,' ',U.apellidos)) as elaborador,
-            IF(L.id_revisor is null,'- NO REVISADO -', UPPER(CONCAT( UR.nombre,' ',UR.apellidos))) as revisor,
-            L.ingreso_bruto, L.nota_credito,L.nota_debito, L.ingreso_neto, L.comp_nacion_grava, L.comp_importa_grava,L.comp_nacion_no_grava, L.comp_importa_no_grava,
-            L.total_compras, L.total_impuesto, L.impuesto_resultante, L.saldo_afavor, L.impuesto_resultante, L.coeficiente, L.pagos_previos,
-            L.impuesto_renta, L.fechavencimiento, L.periodo, L.idcliente, L.id_elaborador, L.id_revisor
-            FROM liquidacionimpuestos L 
-            INNER JOIN regimentributario R ON L.idregimen=R.idregimen
-            INNER JOIN cliente C ON L.idcliente=C.idcliente 
-            INNER JOIN usuario U ON L.id_elaborador =U.idusuario 
-            LEFT JOIN usuario UR ON L.id_revisor=UR.idusuario
-            WHERE L.id_liquidacion = ?", [$idLiquidaciones]);
+            $liquidaciones = $conexion->getDataSingle("SELECT L.id_liquidacion, L.ventas_netas, L.ventas_no_gravadas, L.exportaciones_facturada, L.exportaciones_embarcadas, L.nota_credito, L.nota_debito, L.comp_nacion_grava, L.comp_importa_grava, L.comp_nacion_no_grava, L.comp_importa_no_grava, L.saldo_afavor_anterior, L.coeficiente, L.saldo_afavor_renta, L.pagos_previos, L.fechavencimiento, L.periodo, L.idregimen, R.nombreregimen, L.idcliente, C.ruc, C.razonsocial, L.id_elaborador, UPPER(CONCAT(U.nombre,' ',U.apellidos)) as elaborador, L.id_revisor, IF(L.id_revisor is null,'- NO REVISADO -', UPPER(CONCAT( UR.nombre,' ',UR.apellidos))) as revisor, L.fecha_registro, L.fecha_actualizacion, L.importe_apagar, L.impuesto_renta, L.percepciones_periodo, L.percepciones_periodo_ant, L.saldo_percepciones_no_apl, L.retenciones_declaradas, L.retenciones_declaradas_ant, L.saldo_retenciones_no_apl, L.pagos_previos_compras FROM liquidacionimpuestos L INNER JOIN regimentributario R ON L.idregimen = R.idregimen INNER JOIN cliente C ON L.idcliente=C.idcliente INNER JOIN usuario U ON L.id_elaborador = U.idusuario  LEFT JOIN usuario UR ON L.id_revisor=UR.idusuario WHERE L.id_liquidacion = ?", [$id_liquidacion]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -134,17 +116,7 @@ class ModeloLiquidaciones
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $liquidaciones = $conexion->getData("SELECT L.id_liquidacion, L.ventas_netas, L.idregimen, 
-            L.ventas_no_gravadas, L.exportaciones_facturada, L.exportaciones_embarcadas, L.saldo_afavor_renta, L.tributo_apagar_renta, 
-            L.ingreso_bruto, L.nota_credito,L.nota_debito, L.ingreso_neto, L.comp_nacion_grava, L.comp_importa_grava,L.comp_nacion_no_grava, L.comp_importa_no_grava,
-            L.total_compras, L.impuesto_resultante, L.saldo_afavor, L.impuesto_resultante, L.coeficiente, L.pagos_previos,
-            L.impuesto_renta, L.fechavencimiento, L.periodo, L.idcliente, L.id_elaborador, L.id_revisor
-            FROM liquidacionimpuestos L 
-            INNER JOIN regimentributario R ON L.idregimen=R.idregimen
-            INNER JOIN cliente C ON L.idcliente=C.idcliente 
-            INNER JOIN usuario U ON L.id_elaborador =U.idusuario 
-            LEFT JOIN usuario UR ON L.id_revisor=UR.idusuario
-            WHERE C.idcliente = ?", [$idcliente]);
+            $liquidaciones = $conexion->getData("SELECT L.id_liquidacion, L.ventas_netas, L.ventas_no_gravadas, L.exportaciones_facturada, L.exportaciones_embarcadas, L.nota_credito, L.nota_debito, L.comp_nacion_grava, L.comp_importa_grava, L.comp_nacion_no_grava, L.comp_importa_no_grava, L.saldo_afavor_anterior, L.coeficiente, L.saldo_afavor_renta, L.pagos_previos, L.fechavencimiento, L.periodo, L.idregimen, R.nombreregimen, L.idcliente, C.ruc, C.razonsocial, L.id_elaborador, UPPER(CONCAT(U.nombre,' ',U.apellidos)) as elaborador, L.id_revisor, IF(L.id_revisor is null,'- NO REVISADO -', UPPER(CONCAT( UR.nombre,' ',UR.apellidos))) as revisor, L.fecha_registro, L.fecha_actualizacion, L.importe_apagar, L.impuesto_renta, L.percepciones_periodo, L.percepciones_periodo_ant, L.saldo_percepciones_no_apl, L.retenciones_declaradas, L.retenciones_declaradas_ant, L.saldo_retenciones_no_apl, L.pagos_previos_compras FROM liquidacionimpuestos L INNER JOIN regimentributario R ON L.idregimen = R.idregimen INNER JOIN cliente C ON L.idcliente=C.idcliente INNER JOIN usuario U ON L.id_elaborador = U.idusuario  LEFT JOIN usuario UR ON L.id_revisor=UR.idusuario WHERE C.idcliente = ?", [$idcliente]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -161,17 +133,7 @@ class ModeloLiquidaciones
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $liquidaciones = $conexion->getData("SELECT C.razonsocial, L.id_liquidacion, L.ventas_netas, L.idregimen, 
-            L.ventas_no_gravadas, L.exportaciones_facturada, L.exportaciones_embarcadas, L.saldo_afavor_renta, L.tributo_apagar_renta, 
-            L.ingreso_bruto, L.nota_credito,L.nota_debito, L.ingreso_neto, L.comp_nacion_grava, L.comp_importa_grava,L.comp_nacion_no_grava, L.comp_importa_no_grava,
-            L.total_compras, L.impuesto_resultante, L.saldo_afavor, L.impuesto_resultante, L.coeficiente, L.pagos_previos,
-            L.impuesto_renta, L.fechavencimiento, L.periodo, L.idcliente, L.id_elaborador, L.id_revisor,R.nombreregimen
-            FROM liquidacionimpuestos L 
-            INNER JOIN regimentributario R ON L.idregimen=R.idregimen
-            INNER JOIN cliente C ON L.idcliente=C.idcliente 
-            INNER JOIN usuario U ON L.id_elaborador =U.idusuario 
-            LEFT JOIN usuario UR ON L.id_revisor=UR.idusuario
-            WHERE ( DATE_FORMAT(L.periodo, \"%Y-%m\") = ? )", [$mesyanyo]);
+            $liquidaciones = $conexion->getData("SELECT L.id_liquidacion, L.ventas_netas, L.ventas_no_gravadas, L.exportaciones_facturada, L.exportaciones_embarcadas, L.nota_credito, L.nota_debito, L.comp_nacion_grava, L.comp_importa_grava, L.comp_nacion_no_grava, L.comp_importa_no_grava, L.saldo_afavor_anterior, L.coeficiente, L.saldo_afavor_renta, L.pagos_previos, L.fechavencimiento, L.periodo, L.idregimen, R.nombreregimen, L.idcliente, C.ruc, C.razonsocial, L.id_elaborador, UPPER(CONCAT(U.nombre,' ',U.apellidos)) as elaborador, L.id_revisor, IF(L.id_revisor is null,'- NO REVISADO -', UPPER(CONCAT( UR.nombre,' ',UR.apellidos))) as revisor, L.fecha_registro, L.fecha_actualizacion, L.importe_apagar, L.impuesto_renta, L.percepciones_periodo, L.percepciones_periodo_ant, L.saldo_percepciones_no_apl, L.retenciones_declaradas, L.retenciones_declaradas_ant, L.saldo_retenciones_no_apl, L.pagos_previos_compras FROM liquidacionimpuestos L INNER JOIN regimentributario R ON L.idregimen = R.idregimen INNER JOIN cliente C ON L.idcliente=C.idcliente INNER JOIN usuario U ON L.id_elaborador = U.idusuario  LEFT JOIN usuario UR ON L.id_revisor=UR.idusuario WHERE DATE_FORMAT(L.periodo, \"%Y-%m\") = ? ", [$mesyanyo]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -189,9 +151,7 @@ class ModeloLiquidaciones
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $liquidaciones = $conexion->getData("SELECT ELT(MONTH(periodo), 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre') mes, MONTH(periodo) as num_mes, saldo_afavor as impuesto_igv, IF(impuesto_renta<0,0,impuesto_renta) AS impuesto_renta 
-            FROM liquidacionimpuestos WHERE idcliente = ? AND (periodo BETWEEN DATE(DATE_SUB(CONCAT(?,'-01'),INTERVAL 2 MONTH)) AND CONCAT(?,'-01'))
-            GROUP BY mes ORDER BY MONTH(periodo) desc", [$idcliente, $mesyanyo, $mesyanyo]);
+            $liquidaciones = $conexion->getData("SELECT ELT(MONTH(periodo), 'Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre') mes, MONTH(periodo) as num_mes, importe_apagar as impuesto_igv, IF(impuesto_renta<0,0,impuesto_renta) AS impuesto_renta FROM liquidacionimpuestos WHERE idcliente = ? AND (periodo BETWEEN DATE(DATE_SUB(CONCAT(?,'-01'),INTERVAL 2 MONTH)) AND CONCAT(?,'-01')) GROUP BY mes ORDER BY MONTH(periodo) DESC", [$idcliente, $mesyanyo, $mesyanyo]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -209,8 +169,7 @@ class ModeloLiquidaciones
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $liquidaciones = $conexion->getData("SELECT id_liquidacion
-            FROM liquidacionimpuestos WHERE periodo=CONCAT(?,'-01') AND idcliente=? LIMIT 1", [$periodo, $idcliente]);
+            $liquidaciones = $conexion->getData("SELECT id_liquidacion FROM liquidacionimpuestos WHERE periodo=CONCAT(?,'-01') AND idcliente=? LIMIT 1", [$periodo, $idcliente]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {

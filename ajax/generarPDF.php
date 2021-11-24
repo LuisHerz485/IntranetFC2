@@ -58,6 +58,17 @@ if ($dataConstancia && isset($dataConstancia['iddetallecobranza'])) {
         <div style="padding: 0px 0px 0px 0px; padding-top: 100px">
           <table id="tablaEncabezado">
             <tr>
+              <td colspan="3">
+                <div>
+                  <img
+                    style="width: 120px; height: auto"
+                    src="../vistas/img/sello/logo.png"
+                    alt="firma"
+                  /> 
+                </div>
+              </td>
+            </tr>
+            <tr>
               <td>
                 <div>
                   <p>
@@ -124,20 +135,11 @@ if ($dataConstancia && isset($dataConstancia['iddetallecobranza'])) {
           <br />
           <table style="margin: 0 auto">
             <tr>
-              <td colspan="2">
+              <td colspan="2" align="center">
                 <b>Lima, ' . $info["fechaPago"]["day"] . ' de ' . $meses[$info["fechaPago"]["month"] - 1] . ' ' . $info["fechaPago"]["year"] . '</b>
               </td>
             </tr>
             <tr>
-              <td colspan="3">
-                <div>
-                  <img
-                    style="width: 120px; height: auto"
-                    src="../vistas/img/sello/logo.png"
-                    alt="firma"
-                  /> 
-                </div>
-              </td>
               <td>
                 <div>
                   <table>

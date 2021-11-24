@@ -54,13 +54,12 @@
                                                     <thead>
                                                         <th class="no-exportar">Opciones</th>
                                                         <th>Cliente</th>
-                                                        <th>Ingreso Neto Total </th>
                                                         <th>Importe a Pagar</th>
-                                                        <th>Regimen </th>
-                                                        <th>Impuesto Resultante </th>
-                                                        <th>Saldo a Favor</th>
                                                         <th>Renta a Pagar</th>
+                                                        <th>Regimen</th>
+                                                        <th>Periodo</th>
                                                         <th>Fecha Vencimiento</th>
+                                                        <th>Revisor</th>
                                                     </thead>
                                                     <tbody>
 
@@ -68,13 +67,12 @@
                                                     <tfoot>
                                                         <th class="no-exportar">Opciones</th>
                                                         <th>Cliente</th>
-                                                        <th>Ingreso Neto Total </th>
                                                         <th>Importe a Pagar</th>
-                                                        <th>Regimen </th>
-                                                        <th>Impuesto Resultante </th>
-                                                        <th>Saldo a Favor</th>
-                                                        <th>Renta a Paga</th>
+                                                        <th>Renta a Pagar</th>
+                                                        <th>Regimen</th>
+                                                        <th>Periodo</th>
                                                         <th>Fecha Vencimiento</th>
+                                                        <th>Revisor</th>
                                                     </tfoot>
                                                 </table>
                                             </div>
@@ -87,4 +85,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
