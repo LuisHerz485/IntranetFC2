@@ -186,7 +186,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/tardanzas.js?v=1"></script>
 <script src="vistas/js/cronogramaSunat.js?v=2"></script>
 <script src="vistas/js/declaracionSunat.js?v=1"></script>
-<script src="vistas/js/liquidaciones.js?v=3"></script>
+<script src="vistas/js/liquidaciones.js?v=3.2"></script>
 <script src="vistas/js/declaracionAnualSunat.js?v=1"></script>
 <script>
   if (window.history.replaceState) {
