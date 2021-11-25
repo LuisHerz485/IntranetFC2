@@ -1,10 +1,10 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #B31616;" id="barra">
-    <a href="escritorio" class="brand-link" align="center">
+    <a href="escritorio" class="brand-link" align="center" style="border-color: #FFFFFF;">
         <img src="vistas/dist/img/logo-blanco.png" width="180px" width="75px" id="logo" alt="">
     </a>
 
     <div class="sidebar">
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center;">
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center; border-color: #FFFFFF;">
             <div class="image" style="padding-left: 3px; padding-right: 10px;">
                 <?php
                 if ($_SESSION['imagen'] != "") {
