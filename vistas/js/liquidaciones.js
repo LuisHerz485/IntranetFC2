@@ -400,7 +400,7 @@ $('#importe_apagar').on('change', function () {
 
 $('#impuesto_renta').on('change', function () {
   $('#impuesto_renta_total_text').text(formatoMonto(this.value));
-  $('#impuesto_renta_total').text(this.value);
+  $('#impuesto_renta_total').val(this.value);
 });
 
 //
@@ -743,7 +743,6 @@ if (window.idliquidacion_recibido) {
     dataType: 'json',
     success: function ({ respuesta }) {
       if (respuesta) {
-        console.log(respuesta);
         $('#idliquidacion').val(respuesta['id_liquidacion']);
         $('#razonsocial').val(respuesta['razonsocial']);
         $('#ruc').val(respuesta['ruc']);
