@@ -64,7 +64,7 @@ $('.tablaDataUsuario').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -179,7 +179,7 @@ $('.tablaDataTipoServicio').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -282,7 +282,7 @@ $('.tablaDataAreas').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -395,7 +395,7 @@ $('.tablaDataTipoUsuario').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -510,7 +510,7 @@ $('.tablaDataAsistencia').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -622,7 +622,7 @@ $('.tablaDataClientes').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -728,7 +728,7 @@ $('.tablaDataCobranza').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -842,7 +842,7 @@ $('.tablaDataClientesPagos').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -956,7 +956,7 @@ $('.tablaDataIngreso').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -1074,7 +1074,7 @@ $('.tablaDataIngresoCliente').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -1193,7 +1193,7 @@ $('.tablaDataIngresoAnualCliente').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -1296,7 +1296,7 @@ $('.tablaDataPagosPendientes').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -1413,7 +1413,7 @@ $('.tablaDataCheckList').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -1529,7 +1529,7 @@ $('.tablaDataPermisos').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 alignment: 'right',
                 text: [
@@ -1647,7 +1647,7 @@ $('.tablaDataPermisosPendientes').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -1750,7 +1750,7 @@ $('.tablaDataAsistenciaUsuario').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -1862,7 +1862,7 @@ $('.tablaDataCheckListAsignado').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -1985,7 +1985,7 @@ $('.tablaDataTardanzas').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -2097,7 +2097,7 @@ $('.tablaDataCronogramaSunat').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -2208,7 +2208,7 @@ $('.tablaDataCronogramaAnual').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -2324,7 +2324,7 @@ $('.tablaDataDeclaracionSunat').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -2434,7 +2434,7 @@ $('.tablaDataReporteDeclaracionSunat').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',
@@ -2551,7 +2551,7 @@ $('.tablaDataLiquidacionesGeneral').DataTable({
           let fechaHoy = new Date();
           return {
             columns: [
-              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Elaborado por Sistema Contable ${fechaHoy.getFullYear()}`,
+              `Fecha de Creacion: ${fechaHoy.toLocaleString()} - Generado por ${$("#username").text()} ${fechaHoy.getFullYear()}`,
               {
                 // This is the right column
                 alignment: 'right',

@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4" id="barra">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #B31616;" id="barra">
     <a href="escritorio" class="brand-link" align="center">
         <img src="vistas/dist/img/logo-blanco.png" width="180px" width="75px" id="logo" alt="">
     </a>
@@ -18,25 +18,25 @@
                 if (empty($_SESSION['nombre'])) {
                     echo '<a id="username" class="d-block">Nombre de usuario</a>';
                 } else {
-                    echo '<a id="username" class="d-block">' . $_SESSION['nombre'] . ' <br/>' . $_SESSION['apellidos'] . '</a>';
+                    echo '<a id="username" class="d-block">' .'<p style="color: white;">'. $_SESSION['nombre'] . ' <br/>' . $_SESSION['apellidos'] . '</p>'.'</a>';
                 }
                 ?>
             </div>
         </div>
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-header">GENERAL</li>
+                <li class="nav-header" style="color: white;" style="color: white;">GENERAL</li>
                 <li class="nav-item">
                     <a href="escritorio" class="nav-link">
                         <i class="fas fa-desktop"></i>
                         <p class="ml-5">Escritorio</p>
                     </a>
                 </li>
-                <li class="nav-header">ADMINISTRACION</li>
+                <li class="nav-header" style="color: white;">ADMINISTRACION</li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="fas fa-user-cog"></i>
-                        <p style="font-size: 14px;" class="ml-1">ADMINISTRACIÓN PERSONAL<i class="right fas fa-angle-left"></i></p>
+                        <p style="font-size: 14px;" class="ml-1" >ADMINISTRACIÓN PERSONAL<i class="right fas fa-angle-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
@@ -60,14 +60,14 @@
                     </ul>
                 </li>
                 <?php if ($_SESSION['iddepartamento'] == 3 || $_SESSION['iddepartamento'] == 5 || $_SESSION['iddepartamento'] == 8 || $_SESSION['iddepartamento'] == 12 || $_SESSION['iddepartamento'] == 13 || $_SESSION['iddepartamento'] == 14 || $_SESSION['iddepartamento'] == 17) { ?>
-                    <li class="nav-header">DRIVE</li>
+                    <li class="nav-header" style="color: white;">DRIVE</li>
                     <li class="nav-item has-treeview">
                         <a href="admindrive" class="nav-link">
                             <i class="fab fa-google-drive"></i>
                             <p style="font-size: 15px;" class="ml-1">ADMINISTRACIÓN DEL DRIVE</p>
                         </a>
                     </li>
-                    <li class="nav-header">SUNAT</li>
+                    <li class="nav-header" style="color: white;">SUNAT</li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-atlas"></i>
@@ -164,7 +164,7 @@
                     </li>
                 <?php } ?>
 
-                <li class="nav-header">AYUDA</li>
+                <li class="nav-header" style="color: white;">AYUDA</li>
                 <li class="nav-item">
                     <a href="https://www.youtube.com/watch?v=VwHqLrttPJo&amp;ab_channel=FCCONTADORESYASOCIADOS" target="_blank" class="nav-link">
                         <i class="fab fa-youtube"></i>

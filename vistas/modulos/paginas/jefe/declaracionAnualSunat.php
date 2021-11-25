@@ -23,7 +23,7 @@
                 <div class="card card-danger">
                     <div class="card-header">
                         <div class="row">
-                            <b class="h4">Registro de Declaración Anual</b>
+                            <b class="h4">Registro de Declaración Anual SUNAT</b>
                             <div class="col" align="right">
                                 <abbr title="Ayuda"><button class="btn btn-warning btn-circle" data-toggle="modal" data-target="#modalAyuda"><i class="fas fa-question-circle"></i></button></abbr>
                             </div>

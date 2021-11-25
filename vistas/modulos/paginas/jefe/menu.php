@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4" id="barra">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #B31616;" id="barra">
     <a href="escritorio" class="brand-link" align="center">
         <img src="vistas/dist/img/logo-blanco.png" width="180px" width="75px" id="logo" alt="">
     </a>

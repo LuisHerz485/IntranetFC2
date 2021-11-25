@@ -1,9 +1,9 @@
-<aside class="main-sidebar sidebar-dark-blue elevation-4" id="barra">
+<aside class="main-sidebar sidebar-dark-blue elevation-4" style="background-color: #B31616;" id="barra">
   <a href="escritorio" class="brand-link" align="center">
     <img src="vistas/dist/img/logo-blanco.png" width="180px" height="75px" id="logo" alt="">
   </a>
   <div class="sidebar">
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center;">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex" style="align-items: center; color: white;">
       <div class="image" style="padding-left: 3px; padding-right: 10px;">
         <?php
         if ($_SESSION['imagen'] != "") {
@@ -18,7 +18,7 @@
         if (empty($_SESSION['nombre'])) {
           echo '<a id="username" class="d-block">Nombre de usuario</a>';
         } else {
-          echo '<a id="username" class="d-block">' . $_SESSION['nombre'] . ' <br/>' . $_SESSION['apellidos'] . '</a>';
+          echo '<a id="username" class="d-block">'.'<p style="color: white;">' . $_SESSION['nombre']. ' <br/>' . $_SESSION['apellidos'].'</p>'.'</a>';
         }
         ?>
       </div>
@@ -32,11 +32,11 @@
             </h5>
           </a>
         </li>
-        <li class="nav-header">ADMINISTRACIÓN</li>
+        <li class="nav-header" style="color: white;">ADMINISTRACIÓN</li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-building"></i>
-            <p style="font-size: 14px;"> ADMINISTRACIÓN INTRANET<i class="right fas fa-angle-left"></i></p>
+            <p style="font-size: 14px;" > ADMINISTRACIÓN INTRANET<i class="right fas fa-angle-left"></i></p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
@@ -108,14 +108,14 @@
         </ul>
       </li>
       <?php if ($_SESSION['idtipousuario'] != 4) { ?>
-        <li class="nav-header">Drive</li>
+        <li class="nav-header" style="color: white;">Drive</li>
         <li class="nav-item has-treeview">
           <a href="admindrive" class="nav-link">
             <i class="fab fa-google-drive"></i>
             <p>Administración del Clientes</p>
           </a>
         </li>
-        <li class="nav-header">SISTEMA EMPRESA</li>
+        <li class="nav-header" style="color: white;">SISTEMA EMPRESA</li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-fax"></i>
@@ -152,7 +152,7 @@
             </ul>
           </li>
         <?php } ?>
-        <li class="nav-header">SUNAT</li>
+        <li class="nav-header" style="color: white;">SUNAT</li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fas fa-atlas"></i>
@@ -246,7 +246,7 @@
           </ul>
         </li>
       <?php } ?>
-      <li class="nav-header">AYUDA</li>
+      <li class="nav-header" style="color: white;">AYUDA</li>
       <li class="nav-item">
         <a href="https://www.youtube.com/watch?v=VwHqLrttPJo&amp;ab_channel=FCCONTADORESYASOCIADOS" target="_blank" class="nav-link">
           <i class="fab fa-youtube"></i>

@@ -1,4 +1,4 @@
-<aside class="main-sidebar sidebar-dark-primary elevation-4" id="barra">
+<aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #B31616;" id="barra">
     <a href="escritoriocliente" class="brand-link" align="center">
         <img src="vistas/dist/img/logo-blanco.png" width="180px" height="75px" id="logo" alt="">
     </a>
@@ -18,14 +18,14 @@
                 if (empty($_SESSION['nombre'])) {
                     echo '<a id="username" class="d-block">Nombre de usuario</a>';
                 } else {
-                    echo '<a id="username" class="d-block">' . $_SESSION['nombre'] . ' <br/>' . $_SESSION['apellidos'] . '</a>';
+                    echo '<a id="username" class="d-block">' .'<p style="color: white;">'. $_SESSION['nombre'] . ' <br/>' . $_SESSION['apellidos'] . '</p>'.'</a>';
                 }
                 ?>
             </div>
         </div>
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <li class="nav-header">GENERAL</li>
+                <li class="nav-header" style="color: white;">GENERAL</li>
                 <li class="nav-item">
                     <a href="escritorio" class="nav-link">
                         <h5><i class="fas fa-desktop"></i>
@@ -33,7 +33,7 @@
                         </h5>
                     </a>
                 </li>
-                <li class="nav-header">MIS ARCHIVOS</li>
+                <li class="nav-header" style="color: white;">MIS ARCHIVOS</li>
                 <li class="nav-item">
                     <a href="drivecliente" class="nav-link">
                         <i class="fas fa-folder-open"></i>
@@ -41,7 +41,7 @@
                     </a>
                 </li>
 
-                <li class="nav-header">PAGOS</li>
+                <li class="nav-header" style="color: white;">PAGOS</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-file-invoice-dollar"></i>
@@ -62,7 +62,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-header">SUNAT</li>
+                <li class="nav-header" style="color: white;">SUNAT</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-atlas"></i>
@@ -77,7 +77,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-header">AYUDA</li>
+                <li class="nav-header" style="color: white;">AYUDA</li>
                 <li class="nav-item">
                     <a href="https://www.youtube.com/watch?v=VwHqLrttPJo&amp;ab_channel=FCCONTADORESYASOCIADOS" target="_blank" class="nav-link">
                         <i class="fab fa-youtube"></i>
