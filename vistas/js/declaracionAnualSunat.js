@@ -1,94 +1,96 @@
 $('#btnfiltrarda').on('click', function () {
-    let fomularioDeclaracionAnual = new FormData($('#fomularioFiltroDeclaracionAnual')[0]);
-    fomularioDeclaracionAnual.append('opcion', 'ConsultarDeclaracionAnual');
-    $.ajax({
-      url: 'ajax/declaracionAnualSunat.ajax.php',
-      method: 'POST',
-      data: fomularioDeclaracionAnual,
-      cache: false,
-      contentType: false,
-      processData: false,
-      dataType: 'json',
-      success: function ({ respuesta }) {
-        $('#tblDeclaracionAnualSunat').DataTable().clear().draw();
-        let rowestado;
-        let rowopcion;
-        $.each(respuesta, function (index, value) {
-          if (value.estado === null) {
-            rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" idestado="${value.idestado}" iddeclaracionAS="${value.iddeclaracionsunatanual}" fecha="${value.fechavencimiento}"><i class="far fa-calendar-check"></i></button></abbr>`;
-            rowestado = `<h3><p class="badge badge-primary">Pendiente</p></h3>`;
-          } else if (value.estado == 'Dentro de plazo') {
-            rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" iddetalledeclaracionanual="${
-              value.iddetalledeclaracionanualsunat
-            }" iddeclaracionAS="${value.iddeclaracionsunatanual}"  idestado="${
-              value.idestado
-            }" fecha="${
-              value.fechavencimiento
-            }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
-              canEdit
-                ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border ModalEditarDeclaraAnual" iddetalledeclaracionanual="${value.iddetalledeclaracionanualsunat}" iddeclaracionAS="${value.iddeclaracionsunatanual}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}"  numOrden="${value.numOrden}" fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
-                : ``
-            }`;
-            rowestado = `<h3><p class="badge badge-success">${value.estado}</p></h3>`;
-          } else if (value.estado == 'Fuera de plazo') {
-            rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" iddetalledeclaracionanual="${
-              value.iddetalledeclaracionanualsunat
-            }"  iddeclaracionAS="${value.iddeclaracionsunatanual}"  idestado="${
-              value.idestado
-            }" fecha="${
-              value.fechavencimiento
-            }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
-              canEdit
-                ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border ModalEditarDeclaraAnual" iddetalledeclaracionanual="${value.iddetalledeclaracionanualsunat}"  iddeclaracionAS="${value.iddeclaracionsunatanual}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}" numOrden="${value.numOrden}"  fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
-                : ``
-            }`;
-            rowestado = `<h3><p class="badge badge-danger">${value.estado}</p></h3>`;
-          } else if (value.estado == 'Fuera de plazo por rectificatoria') {
-            rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" iddetalledeclaracionanual="${
-              value.iddetalledeclaracionanualsunat
-            }"  iddeclaracionAS="${value.iddeclaracionsunatanual}"  idestado="${
-              value.idestado
-            }" fecha="${
-              value.fechavencimiento
-            }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
-              canEdit
-                ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border ModalEditarDeclaraAnual" iddetalledeclaracionanual="${value.iddetalledeclaracionanualsunat}"  iddeclaracionAS="${value.iddeclaracionsunatanual}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}" numOrden="${value.numOrden}"  fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
-                : ``
-            }`;
-            rowestado = `<h3><p class="badge badge-danger">Fuera de plazo</br>por rectificatoria</p></h3>`;
-          } else if (value.estado == 'Fuera de plazo por error contador') {
-            rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" iddetalledeclaracionanual="${
-              value.iddetalledeclaracionanualsunat
-            }"  iddeclaracionAS="${value.iddeclaracionsunatanual}"  idestado="${
-              value.idestado
-            }" fecha="${
-              value.fechavencimiento
-            }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
-              canEdit
-                ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border ModalEditarDeclaraAnual" iddetalledeclaracionanual="${value.iddetalledeclaracionanualsunat}"  iddeclaracionAS="${value.iddeclaracionsunatanual}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}" numOrden="${value.numOrden}"  fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
-                : ``
-            }`;
-            rowestado = `<h3><p class="badge badge-danger">Fuera de plazo</br>por error contador</p></h3>`;
-          }
-          $('#tblDeclaracionAnualSunat')
-            .DataTable()
-            .row.add([
-              rowopcion,
-              value.ruc,
-              value.clientes,
-              value.fechavencimiento,
-              rowestado,
-              value.fechadeclarada,
-              value.numOrden,
-            ])
-            .draw(false);
-        });
-      },
-      error: function ({ respuesta }) {
-        console.log('Error', respuesta);
-      },
-    });
+  let fomularioDeclaracionAnual = new FormData(
+    $('#fomularioFiltroDeclaracionAnual')[0]
+  );
+  fomularioDeclaracionAnual.append('opcion', 'ConsultarDeclaracionAnual');
+  $.ajax({
+    url: 'ajax/declaracionAnualSunat.ajax.php',
+    method: 'POST',
+    data: fomularioDeclaracionAnual,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: 'json',
+    success: function ({ respuesta }) {
+      $('#tblDeclaracionAnualSunat').DataTable().clear().draw();
+      let rowestado;
+      let rowopcion;
+      $.each(respuesta, function (index, value) {
+        if (value.estado === null) {
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" idestado="${value.idestado}" iddeclaracionAS="${value.iddeclaracionsunatanual}" fecha="${value.fechavencimiento}"><i class="far fa-calendar-check"></i></button></abbr>`;
+          rowestado = `<h3><p class="badge badge-primary">Pendiente</p></h3>`;
+        } else if (value.estado == 'Dentro de plazo') {
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" iddetalledeclaracionanual="${
+            value.iddetalledeclaracionanualsunat
+          }" iddeclaracionAS="${value.iddeclaracionsunatanual}"  idestado="${
+            value.idestado
+          }" fecha="${
+            value.fechavencimiento
+          }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
+            canEdit
+              ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border ModalEditarDeclaraAnual" iddetalledeclaracionanual="${value.iddetalledeclaracionanualsunat}" iddeclaracionAS="${value.iddeclaracionsunatanual}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}"  numOrden="${value.numOrden}" fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
+              : ``
+          }`;
+          rowestado = `<h3><p class="badge badge-success">${value.estado}</p></h3>`;
+        } else if (value.estado == 'Fuera de plazo') {
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" iddetalledeclaracionanual="${
+            value.iddetalledeclaracionanualsunat
+          }"  iddeclaracionAS="${value.iddeclaracionsunatanual}"  idestado="${
+            value.idestado
+          }" fecha="${
+            value.fechavencimiento
+          }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
+            canEdit
+              ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border ModalEditarDeclaraAnual" iddetalledeclaracionanual="${value.iddetalledeclaracionanualsunat}"  iddeclaracionAS="${value.iddeclaracionsunatanual}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}" numOrden="${value.numOrden}"  fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
+              : ``
+          }`;
+          rowestado = `<h3><p class="badge badge-danger">${value.estado}</p></h3>`;
+        } else if (value.estado == 'Fuera de plazo por rectificatoria') {
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" iddetalledeclaracionanual="${
+            value.iddetalledeclaracionanualsunat
+          }"  iddeclaracionAS="${value.iddeclaracionsunatanual}"  idestado="${
+            value.idestado
+          }" fecha="${
+            value.fechavencimiento
+          }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
+            canEdit
+              ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border ModalEditarDeclaraAnual" iddetalledeclaracionanual="${value.iddetalledeclaracionanualsunat}"  iddeclaracionAS="${value.iddeclaracionsunatanual}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}" numOrden="${value.numOrden}"  fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
+              : ``
+          }`;
+          rowestado = `<h3><p class="badge badge-danger">Fuera de plazo</br>por rectificatoria</p></h3>`;
+        } else if (value.estado == 'Fuera de plazo por error contador') {
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" iddetalledeclaracionanual="${
+            value.iddetalledeclaracionanualsunat
+          }"  iddeclaracionAS="${value.iddeclaracionsunatanual}"  idestado="${
+            value.idestado
+          }" fecha="${
+            value.fechavencimiento
+          }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
+            canEdit
+              ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border ModalEditarDeclaraAnual" iddetalledeclaracionanual="${value.iddetalledeclaracionanualsunat}"  iddeclaracionAS="${value.iddeclaracionsunatanual}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}" numOrden="${value.numOrden}"  fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
+              : ``
+          }`;
+          rowestado = `<h3><p class="badge badge-danger">Fuera de plazo</br>por error contador</p></h3>`;
+        }
+        $('#tblDeclaracionAnualSunat')
+          .DataTable()
+          .row.add([
+            rowopcion,
+            value.ruc,
+            value.clientes,
+            value.fechavencimiento,
+            rowestado,
+            value.fechadeclarada,
+            value.numOrden,
+          ])
+          .draw(false);
+      });
+    },
+    error: function ({ respuesta }) {
+      console.log('Error', respuesta);
+    },
   });
+});
 
 $(document).on('click', '#ModalRegistroAnualDeclara', function () {
   $('#iddeclaracionAS').val($(this).attr('iddeclaracionAS'));
@@ -97,9 +99,7 @@ $(document).on('click', '#ModalRegistroAnualDeclara', function () {
 });
 
 $('#btnRegistroAS').on('click', function () {
-  let formulariodeclaracion = new FormData(
-    $('#formRegistroDeclaracionAS')[0]
-  );
+  let formulariodeclaracion = new FormData($('#formRegistroDeclaracionAS')[0]);
   formulariodeclaracion.append('opcion', 'RegistroAnual');
   $.ajax({
     method: 'POST',
@@ -144,7 +144,9 @@ $(document).on('click', '.ModalEditarDeclaraAnual', function () {
 });
 
 $('#btnEditarDeclaracionAnual').on('click', function () {
-  let formulariodeclaracion = new FormData($('#formEditarDeclaracionAnualSunat')[0]);
+  let formulariodeclaracion = new FormData(
+    $('#formEditarDeclaracionAnualSunat')[0]
+  );
   formulariodeclaracion.append('opcion', 'ActualizarAnual');
   $.ajax({
     method: 'POST',

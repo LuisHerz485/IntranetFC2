@@ -161,33 +161,33 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   }
 }
 ?>
-<script src="vistas/js/usuario.js?v=1"></script>
-<script src="vistas/js/tipousuario.js?v=1"></script>
-<script src="vistas/js/departamento.js?v=1"></script>
-<script src="vistas/js/asistencia.js?v=1"></script>
-<script src="vistas/js/reportes.js?v=1"></script>
-<script src="vistas/js/clientes.js?v=2"></script>
-<script src="vistas/js/agenda.js?v=1"></script>
-<script src="vistas/js/archivo.js?v=1"></script>
-<script src="vistas/js/pagosclientes.js?v=1"></script>
-<script src="vistas/js/cobranza.js?v=2.1"></script>
-<script src="vistas/js/detallecobranza.js?v=1"></script>
-<script src="vistas/js/traduccion.js?v=1"></script>
-<script src="vistas/js/dataTable.js?v=3.1"></script>
-<script src="vistas/js/clock.js?v=1"></script>
-<script src="vistas/js/select2.js?v=1"></script>
-<script src="vistas/js/menu.js?v=1"></script>
-<script src="vistas/js/servicio.js?v=1"></script>
-<script src="vistas/js/economia.js?v=2"></script>
-<script src="vistas/js/checklist.js?v=1"></script>
-<script src="vistas/js/tiposervicio.js?v=1"></script>
-<script src="vistas/js/permiso.js?v=2"></script>
-<script src="vistas/js/subida.js?v=1"></script>
-<script src="vistas/js/tardanzas.js?v=1"></script>
-<script src="vistas/js/cronogramaSunat.js?v=2"></script>
-<script src="vistas/js/declaracionSunat.js?v=1.1"></script>
-<script src="vistas/js/liquidaciones.js?v=3.2"></script>
-<script src="vistas/js/declaracionAnualSunat.js?v=1.2"></script>
+<script src="vistas/js/usuario.js?v=1.1"></script>
+<script src="vistas/js/tipousuario.js?v=1.1"></script>
+<script src="vistas/js/departamento.js?v=1.1"></script>
+<script src="vistas/js/asistencia.js?v=1.1"></script>
+<script src="vistas/js/reportes.js?v=1.1"></script>
+<script src="vistas/js/clientes.js?v=2.1"></script>
+<script src="vistas/js/agenda.js?v=1.1"></script>
+<script src="vistas/js/archivo.js?v=1.1"></script>
+<script src="vistas/js/pagosclientes.js?v=1.1"></script>
+<script src="vistas/js/cobranza.js?v=2.2"></script>
+<script src="vistas/js/detallecobranza.js?v=1.1"></script>
+<script src="vistas/js/traduccion.js?v=1.1"></script>
+<script src="vistas/js/dataTable.js?v=3.2"></script>
+<script src="vistas/js/clock.js?v=1.1"></script>
+<script src="vistas/js/select2.js?v=1.1"></script>
+<script src="vistas/js/menu.js?v=1.1"></script>
+<script src="vistas/js/servicio.js?v=1.1"></script>
+<script src="vistas/js/economia.js?v=2.1"></script>
+<script src="vistas/js/checklist.js?v=1.1"></script>
+<script src="vistas/js/tiposervicio.js?v=1.1"></script>
+<script src="vistas/js/permiso.js?v=2.1"></script>
+<script src="vistas/js/subida.js?v=1.1"></script>
+<script src="vistas/js/tardanzas.js?v=1.1"></script>
+<script src="vistas/js/cronogramaSunat.js?v=2.1"></script>
+<script src="vistas/js/declaracionSunat.js?v=1.2"></script>
+<script src="vistas/js/liquidaciones.js?v=3.3"></script>
+<script src="vistas/js/declaracionAnualSunat.js?v=1.5"></script>
 <script>
   if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);

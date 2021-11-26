@@ -13,7 +13,7 @@ class ControladorEmail
         //Create an instance; passing `true` enables exceptions
         $mail = new PHPMailer(true);
         try {
-            //Server settings
+            //Server settings 
             $mail->SMTPDebug = SMTP::DEBUG_OFF;                      //Enable verbose debug output
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'mail.fccontadores.com';       //Set the SMTP server to send through
@@ -21,10 +21,10 @@ class ControladorEmail
             $mail->Username   = "permisosfcc@fccontadores.com";                             //SMTP username
             $mail->Password   = 'DAbD,1w2q2kH';                             //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
-            $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+            $mail->Port       = 465;                     //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
             //Recipients
             $mail->setFrom("permisosfcc@fccontadores.com", "permisosfcc@fccontadores.com");
-            $mail->addAddress($correoDestino);                     //Add a recipient
+            $mail->addAddress($correoDestino);                     //Add a recipient 
             if (isset($archivoPath)) {
                 $mail->addAttachment($archivoPath, $archivoNombre);
             }
@@ -34,6 +34,10 @@ class ControladorEmail
             $mail->Body    = $mensaje;
             return $mail->send();
         } catch (Exception $e) {
+            echo "<script>
+                console.log(`";
+            var_dump($e->getMessage());
+            echo "`)</script>";
             return false;
         }
     }
