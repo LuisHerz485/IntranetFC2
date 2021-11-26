@@ -10,17 +10,21 @@
 
       <form action="#" method="post">
         <div class="input-group mb-3">
-          <div class="input-group-text border-0">
-            <span class="fas fa-user text-dark"></span>
-          </div>
-          <input type="text" class="form-control border" placeholder="Usuario" name="usuario">
+          <input type="text" class="form-control" placeholder="Username" name="usuario">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-user-tie fa-fw text-dark"></span>
+              </div>
+            </div>
         </div>
 
         <div class="input-group mb-3">
-          <input type="password" class="form-control border" placeholder="Password" name="password">
-          <div class="input-group-text border-0">
-            <span class="fas fa-lock text-dark"></span>
-          </div>
+          <input type="password" class="form-control" placeholder="Password" name="password">
+            <div class="input-group-append">
+              <div class="input-group-text">
+                <span class="fas fa-key fa-fw text-dark"></span>
+              </div>
+            </div>
         </div>
         <div class="row">
           <div class="col-3">

@@ -17,7 +17,8 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row mx-5">
-                <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
+                <div class="col-xl-2 col-lg-1 col-md-1"></div>
+                <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <a href="usuarios" class="small-box bg-danger">
                         <div class="inner">
                             <h3>Colaboradores</h3>
@@ -26,51 +27,57 @@
                         <div class="icon text-white">
                             <i class="fas fa-users"></i>
                         </div>
-                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
-                <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-                    <a href="permisos-pendientes" class="small-box bg-success">
-                        <div class="inner">
+                <div class="col-xl-1 col-lg-1 col-md-1"></div>
+                <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                    <a href="permisos-pendientes" class="small-box bg-warning">
+                        <div class="inner text-white">
                             <h3>Permisos</h3>
                             <p>Permisos Pendientes: <span id="dashboardPermisos">0</span></p>
                         </div>
                         <div class="icon text-white">
                             <i class="fas fa-comments"></i>
                         </div>
-                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
+                <div class="col-xl-1"></div>
+                <div class="col-xl-5 col-lg-5 col-md-5"></div>
                 <?php
                 if ($_SESSION['idtipousuario'] != 4) { ?>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <a href="clientes" class="small-box bg-indigo">
                             <div class="inner">
                                 <h3>Clientes</h3>
                                 <p>Lista de clientes</p>
                             </div>
                             <div class="icon text-white">
-                                <i class="fas fa-handshake"></i>
+                                <i class="fas fa-user-tie"></i>
                             </div>
-                            <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                         </a>
                     </div>
+                    <div class="col-xl-4 col-lg-3 col-md-3"></div>
                     <?php
                     if ($_SESSION['idtipousuario'] == 1) { ?>
-                        <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
-                            <a href="#" class="small-box bg-orange" data-toggle="modal" data-target="#modalCobra">
-                                <div class="inner">
-                                    <h3>Tesoreria FC</h3>
-                                    <p>Gestión de Cobranza</p>
+                        <div class="col-xl-2 col-lg-1 col-md-1"></div>
+                        <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                            <a href="#" class="small-box bg-teal" data-toggle="modal" data-target="#modalCobra">
+                                <div class="inner  text-white">
+                                <h3>Tesoreria FC</h3>
+                                <p>Gestión de Cobranza</p>
                                 </div>
                                 <div class="icon text-white">
                                     <i class="fas fa-hand-holding-usd"></i>
                                 </div>
-                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>
                         </div>
                     <?php } ?>
-                    <div class="col-xl-4 col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-xl-1 col-lg-1 col-md-1"></div>
+                    <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
                         <a href="#" class="small-box bg-info " data-toggle="modal" data-target="#modalDecMen">
                             <div class="inner">
                                 <h3>Sunat</h3>
@@ -79,9 +86,10 @@
                             <div class="icon text-white">
                                 <i class="fas fa-landmark"></i>
                             </div>
-                            <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                         </a>
                     </div>
+                    <div class="col-xl-1"></div>
                 <?php } ?>
             </div>
         </div>
@@ -92,7 +100,7 @@
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h4 class="modal-title text-orange"><strong>Gestor de Cobranza</strong></h4>
+                <h4 class="modal-title text-teal"><strong>Gestor de Cobranza</strong></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -101,44 +109,44 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
-                            <a href="generarCobranza" class="small-box bg-orange">
+                            <a href="generarCobranza" class="small-box bg-teal">
                                 <div class="inner">
                                     <h3><span>Generar</span></br><span>Cobranza</span></h3>
                                 </div>
                                 <div class="icon text-white">
                                     <i class="fas fa-donate"></i>
                                 </div>
-                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
-                            <a href="mostrarcobranza" class="small-box bg-orange">
+                            <a href="mostrarcobranza" class="small-box bg-teal">
                                 <div class="inner">
                                     <h3><span>Mostrar</span></br><span>Adeudados</span></h3>
                                 </div>
                                 <div class="icon text-white">
-                                    <i class="fas fa-comments-dollar"></i>
+                                    <i class="fas fa-search-dollar"></i>
                                 </div>
-                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-center">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
-                            <a href="mostrarpagado" class="small-box bg-orange">
+                            <a href="mostrarpagado" class="small-box bg-teal">
                                 <div class="inner">
                                     <h3><span>Mostrar</span></br><span>Pagados</span></h3>
                                 </div>
                                 <div class="icon text-white">
                                     <i class="fas fa-file-invoice-dollar"></i>
                                 </div>
-                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer bg-orange" al>
+            <div class="modal-footer bg-teal" al>
                 <b></b>
             </div>
         </div>
@@ -149,7 +157,7 @@
     <div class="modal-dialog modal-lg modal-dialog-scrollable modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header bg-light">
-                <h4 class="modal-title text-info"><strong>Menú Declaraciones SUNAT</strong></h4>
+                <h4 class="modal-title text-info"><strong>Menú Declaraciones Sunat</strong></h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -166,7 +174,7 @@
                                 <div class="icon text-white">
                                     <i class="fas fa-paste"></i>
                                 </div>
-                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
@@ -178,7 +186,7 @@
                                 <div class="icon text-white">
                                     <i class="fas fa-paste"></i>
                                 </div>
-                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>
                         </div>
                     </div>
@@ -192,7 +200,7 @@
                                 <div class="icon text-white">
                                     <i class="fas fa-paste"></i>
                                 </div>
-                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
@@ -204,7 +212,7 @@
                                 <div class="icon text-white">
                                     <i class="fas fa-money-check-alt"></i>
                                 </div>
-                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>
                         </div>
                     </div>
@@ -218,7 +226,7 @@
                                 <div class="icon text-white">
                                     <i class="fas fa-money-check"></i>
                                 </div>
-                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>
                         </div>
                     </div>
