@@ -111,14 +111,16 @@ class ControladorDrive
                 if (strcmp($carpetaPadreId,  $this->carpetaId) !== 0) {
                     $file = $this->service->files->get($carpetaPadreId, array("fields" => 'parents'));
                     return $this->service->files->listFiles([
+                        'pageSize' => 1000,
                         'q' => "'" . $file["parents"][0] . "' in parents",
                         'fields' => 'files(id, webViewLink, parents, webContentLink, name, mimeType, createdTime)',
                     ])->getFiles();
                 }
             } else {
                 return $this->service->files->listFiles([
+                    'pageSize' => 1000,
                     'q' => "'" . $carpetaPadreId . "' in parents",
-                    'fields' => 'files(id, webViewLink, parents, webContentLink, name, mimeType, createdTime)',
+                    'fields' => 'nextPageToken, files(id, webViewLink, parents, webContentLink, name, mimeType, createdTime)',
                 ])->getFiles();
             }
         } catch (Exception $e) {
@@ -132,6 +134,7 @@ class ControladorDrive
         try {
             $carpetaPadreId = $this->validarID(htmlspecialchars($_POST["carpetaPadreId"] ?? ""));
             return $this->service->files->listFiles([
+                'pageSize' => 1000,
                 'q' => "'" . $carpetaPadreId . "' in parents AND mimeType != 'application/vnd.google-apps.folder'",
                 'fields' => 'files(id, webViewLink, parents, webContentLink, name, mimeType, createdTime)',
             ])->getFiles();
@@ -146,6 +149,7 @@ class ControladorDrive
         try {
             $carpetaPadreId = $this->validarID(htmlspecialchars($_POST["carpetaPadreId"] ?? ""));
             return $this->service->files->listFiles([
+                'pageSize' => 1000,
                 'q' => "'" . $carpetaPadreId . "' in parents AND mimeType = 'application/vnd.google-apps.folder'",
                 'fields' => 'files(id, webViewLink, parents, webContentLink, name, mimeType, createdTime)',
             ])->getFiles();
