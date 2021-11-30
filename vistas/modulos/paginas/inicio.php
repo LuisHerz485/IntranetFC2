@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="text-center">
-			<img src="vistas/img/sello/logo.png" alt="" class="" width="60%"><br>
+			<a href="https://fccontadores.com/"><img src="vistas/img/sello/logo.png" alt="" class="" width="60%"></a><br>
 		</div>
 	</div>
 	<div class="text-center">
