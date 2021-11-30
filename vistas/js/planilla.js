@@ -13,6 +13,7 @@ $(document).on('click', '.btn-editar-planilla', function () {
       .val(dataPlanilla['idestadoplanilla'])
       .trigger('change');
     $('#honorario').val(dataPlanilla['honorario']);
+    $('#diaslaborales').val(dataPlanilla['diaslaborales']);
     $('#remuneraciondiaria').val(dataPlanilla['remuneraciondiaria']);
     $('#remuneracionmensual').val(dataPlanilla['remuneracionmensual']);
     $('#fechaingreso').val(dataPlanilla['fechaingreso']);
@@ -25,13 +26,17 @@ $(document).on('click', '.btn-editar-planilla', function () {
 });
 
 $('#honorario').on('change', function () {
-  let diasLaboralesDelMes = 22;
+  let diasLaboralesDelMes = redondear($('#diaslaborales').val());
   let honorario = redondear($('#honorario').val());
   let montoDescuento = redondear($('#montodescuento').val());
   let remuneracionMensual = redondear(honorario - montoDescuento);
   let remuneracionDiaria = redondear(remuneracionMensual / diasLaboralesDelMes);
   $('#remuneracionmensual').val(remuneracionMensual);
   $('#remuneraciondiaria').val(remuneracionDiaria);
+});
+
+$('#diaslaborales').on('change', function () {
+  $('#honorario').trigger('change');
 });
 
 $('#montodescuento').on('change', function () {

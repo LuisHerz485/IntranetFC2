@@ -13,6 +13,7 @@ class ControladorPlanilla
             "idestadoplanilla" => "enteroPositivo",
             "montodescuento" => "flotante",
             "observacion" => "longitud1000",
+            "diaslaborales" => "enteroPositivo",
         ]);
 
         if (is_array($data) && !in_array(false, $data, true)) {
@@ -34,6 +35,7 @@ class ControladorPlanilla
             "idestadoplanilla" => "enteroPositivo",
             "montodescuento" => "flotante",
             "observacion" => "longitud1000",
+            "diaslaborales" => "enteroPositivo",
             "idplanilla" => "enteroPositivo",
         ]);
 

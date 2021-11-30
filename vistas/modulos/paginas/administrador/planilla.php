@@ -85,15 +85,19 @@
                                             ?>
                                         </select>
                                     </div>
-                                    <div class="col-12 col-lg-4">
+                                    <div class="col-12 col-lg-3">
                                         <label>Honorario:</label>
-                                        <input class="form-control" type="number" name="honorario" id="honorario" value="0" required>
+                                        <input class="form-control" type="number" name="honorario" id="honorario" min="0" value="0" required>
                                     </div>
-                                    <div class="col-12 col-lg-4">
+                                    <div class="col-12 col-lg-3">
+                                        <label>Dias Laborales</label>
+                                        <input class="form-control" type="number" name="diaslaborales" id="diaslaborales" min="1" value="0" required>
+                                    </div>
+                                    <div class="col-12 col-lg-3">
                                         <label>Remuneración Diaria:</label>
                                         <input class="form-control" type="number" name="remuneraciondiaria" id="remuneraciondiaria" value="0" readonly required>
                                     </div>
-                                    <div class="col-12 col-lg-4">
+                                    <div class="col-12 col-lg-3">
                                         <label>Remuneración Mensual:</label>
                                         <input class="form-control" type="number" name="remuneracionmensual" id="remuneracionmensual" value="0" readonly required>
                                     </div>
