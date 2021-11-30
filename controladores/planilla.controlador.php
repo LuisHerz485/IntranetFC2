@@ -4,13 +4,15 @@ class ControladorPlanilla
     public static function ctrRegistrarPlanilla(): int|false
     {
         $data = ControladorValidacion::validar([
-            ["honorario" => "flotante"],
-            ["remuneraciondiaria" => "flotante"],
-            ["remuneracionmensual" => "flotante"],
-            ["fechaingreso" => "fecha"],
-            ["fechafin" => "fecha"],
-            ["idusuario" => "enteroPositivo"],
-            ["idestadoplanilla" => "enteroPositivo"],
+            "honorario" => "flotante",
+            "remuneraciondiaria" => "flotante",
+            "remuneracionmensual" => "flotante",
+            "fechaingreso" => "fecha",
+            "fechafin" => "fecha",
+            "idusuario" => "enteroPositivo",
+            "idestadoplanilla" => "enteroPositivo",
+            "montodescuento" => "flotante",
+            "observacion" => "longitud1000",
         ]);
 
         if (is_array($data) && !in_array(false, $data, true)) {
@@ -23,14 +25,16 @@ class ControladorPlanilla
     public static function ctrEditarPlanilla(): int|false
     {
         $data = ControladorValidacion::validar([
-            ["honorario" => "flotante"],
-            ["remuneraciondiaria" => "flotante"],
-            ["remuneracionmensual" => "flotante"],
-            ["fechaingreso" => "fecha"],
-            ["fechafin" => "fecha"],
-            ["idusuario" => "enteroPositivo"],
-            ["idestadoplanilla" => "enteroPositivo"],
-            ["idplanilla" => "enteroPositivo"],
+            "honorario" => "flotante",
+            "remuneraciondiaria" => "flotante",
+            "remuneracionmensual" => "flotante",
+            "fechaingreso" => "fecha",
+            "fechafin" => "fecha",
+            "idusuario" => "enteroPositivo",
+            "idestadoplanilla" => "enteroPositivo",
+            "montodescuento" => "flotante",
+            "observacion" => "longitud1000",
+            "idplanilla" => "enteroPositivo",
         ]);
 
         if (is_array($data) && !in_array(false, $data, true)) {
@@ -53,7 +57,7 @@ class ControladorPlanilla
     public static function ctrBuscarPlanillaPorID(): mixed
     {
         $data = ControladorValidacion::validar([
-            ["idplanilla" => "enteroPositivo"],
+            "idplanilla" => "enteroPositivo",
         ]);
 
         if (is_array($data) && !in_array(false, $data, true)) {
@@ -66,7 +70,7 @@ class ControladorPlanilla
     public static function ctrBuscarPlanillaPorDepartamento(): mixed
     {
         $data = ControladorValidacion::validar([
-            ["iddepartamento" => "enteroPositivo"],
+            "iddepartamento" => "enteroPositivo",
         ]);
 
         if (is_array($data) && !in_array(false, $data, true)) {
@@ -79,7 +83,7 @@ class ControladorPlanilla
     public static function ctrBuscarPlanillaDeUnUsuario(): mixed
     {
         $data = ControladorValidacion::validar([
-            ["idusuario" => "enteroPositivo"],
+            "idusuario" => "enteroPositivo",
         ]);
 
         if (is_array($data) && !in_array(false, $data, true)) {

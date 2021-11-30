@@ -18,7 +18,7 @@
         if (empty($_SESSION['nombre'])) {
           echo '<a id="username" class="d-block">Nombre de usuario</a>';
         } else {
-          echo '<a id="username" class="d-block">'.'<p style="color: white;">' . $_SESSION['nombre']. ' <br/>' . $_SESSION['apellidos'].'</p>'.'</a>';
+          echo '<a id="username" class="d-block">' . '<p style="color: white;">' . $_SESSION['nombre'] . ' <br/>' . $_SESSION['apellidos'] . '</p>' . '</a>';
         }
         ?>
       </div>
@@ -36,7 +36,7 @@
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-building"></i>
-            <p style="font-size: 14px;" > ADMINISTRACIÓN INTRANET<i class="right fas fa-angle-left"></i></p>
+            <p style="font-size: 14px;"> ADMINISTRACIÓN INTRANET<i class="right fas fa-angle-left"></i></p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
@@ -82,6 +82,12 @@
               <a href="usuarios" class="nav-link ml-4">
                 <i class="fas fa-forward"></i>
                 <p>Usuarios</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="planilla" class="nav-link ml-4">
+                <i class="fas fa-forward"></i>
+                <p>Planilla</p>
               </a>
             </li>
         </li>

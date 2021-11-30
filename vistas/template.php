@@ -173,7 +173,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/cobranza.js?v=2.2"></script>
 <script src="vistas/js/detallecobranza.js?v=1.1"></script>
 <script src="vistas/js/traduccion.js?v=1.1"></script>
-<script src="vistas/js/dataTable.js?v=3.2"></script>
+<script src="vistas/js/dataTable.js?v=3.3"></script>
 <script src="vistas/js/clock.js?v=1.1"></script>
 <script src="vistas/js/select2.js?v=1.1"></script>
 <script src="vistas/js/menu.js?v=1.1"></script>
@@ -188,6 +188,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/declaracionSunat.js?v=1.2"></script>
 <script src="vistas/js/liquidaciones.js?v=3.3"></script>
 <script src="vistas/js/declaracionAnualSunat.js?v=1.5"></script>
+<script src="vistas/js/planilla.js?v=1.0"></script>
 <script>
   if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);

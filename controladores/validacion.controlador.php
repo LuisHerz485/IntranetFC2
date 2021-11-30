@@ -95,6 +95,12 @@ class ControladorValidacion
     {
         return (ControladorValidacion::formatoFechaMes($fecha)) ? $fecha : false;
     }
+
+    public static function longitud1000(string $texto): string|bool
+    {
+        return (ControladorValidacion::longitud($texto, 1000)) ? $texto : false;
+    }
+
     /**
      * @param array $campos Ejemplo:  ["campo1"=>"tipoDeValidacion", "campo2"=>"tipoDeValidacion"]
      */
