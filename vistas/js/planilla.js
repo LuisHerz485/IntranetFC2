@@ -24,17 +24,18 @@ $(document).on('click', '.btn-editar-planilla', function () {
   }
 });
 
-$('#remuneracionmensual').on('change', function () {
+$('#honorario').on('change', function () {
   let diasLaboralesDelMes = 22;
-  let remuneracionMensual = redondear($('#remuneracionmensual').val());
+  let honorario = redondear($('#honorario').val());
   let montoDescuento = redondear($('#montodescuento').val());
-  $('#remuneraciondiaria').val(
-    redondear((remuneracionMensual - montoDescuento) / diasLaboralesDelMes)
-  );
+  let remuneracionMensual = redondear(honorario - montoDescuento);
+  let remuneracionDiaria = redondear(remuneracionMensual / diasLaboralesDelMes);
+  $('#remuneracionmensual').val(remuneracionMensual);
+  $('#remuneraciondiaria').val(remuneracionDiaria);
 });
 
 $('#montodescuento').on('change', function () {
-  $('#remuneracionmensual').trigger('change');
+  $('#honorario').trigger('change');
 });
 
 $('#btnCancelarEditarPlanilla').on('click', function () {

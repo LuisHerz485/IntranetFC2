@@ -95,7 +95,7 @@
                                     </div>
                                     <div class="col-12 col-lg-4">
                                         <label>Remuneración Mensual:</label>
-                                        <input class="form-control" type="number" name="remuneracionmensual" id="remuneracionmensual" value="0" required>
+                                        <input class="form-control" type="number" name="remuneracionmensual" id="remuneracionmensual" value="0" readonly required>
                                     </div>
                                     <div class="col-12 col-lg-4">
                                         <label>Fecha de ingreso:</label>
