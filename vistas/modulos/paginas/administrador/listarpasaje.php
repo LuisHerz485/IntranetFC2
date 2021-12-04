@@ -31,16 +31,17 @@
                       <div class="col-3 mb-2">
                       </div>
                       <div class="col-12">
-                        <select class="form-control col-11 select2" id="idusuario" name="idusuario">
-                          <?php
-                          $item = 1;
-                          $valor = null;
-                          $usuario = ControladorUsuarios::ctrMostrarUsuario($item, $valor);
-                          foreach ($usuario as $key => $value) {
-                            echo '<option value="' . $value['idusuario'] . '">' . $value['nombre'] . '</option>';
-                          }
-                          ?>
-                        </select>
+                      <label>Seleccione el colaborador:</label>
+                      <input class="form-control" type="hidden" name="idplanilla" id="idplanilla" placeholder="idplanilla">
+                            <select name="idusuario" id="idusuario" class="form-control select2" required>
+                                <?php
+                                    if ($usuarios = ModeloUsuarios::mdlMostrarUsuariosNombre()) {
+                                        foreach ($usuarios as $usuario) {
+                                            echo '<option value="' . $usuario['idusuario'] . '">' . $usuario['nombre'] . ' ' . $usuario['apellidos'] . '</option>';
+                                        }
+                                    }
+                                ?>
+                            </select>
                       </div>
                     </div>
                   </div>
