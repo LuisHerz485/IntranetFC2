@@ -44,10 +44,10 @@
                     </a>
                 </div>
                 <div class="col-xl-1"></div>
-                <div class="col-xl-5 col-lg-5 col-md-5"></div>
                 <?php
                 if ($_SESSION['idtipousuario'] != 4) { ?>
-                    <div class="col-xl-3 col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-xl-2 col-lg-1 col-md-1"></div>
+                    <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
                         <a href="clientes" class="small-box bg-indigo">
                             <div class="inner">
                                 <h3>Clientes</h3>
@@ -59,7 +59,20 @@
                             <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                         </a>
                     </div>
-                    <div class="col-xl-4 col-lg-3 col-md-3"></div>
+                    <div class="col-xl-1 col-lg-1 col-md-1"></div>
+                    <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                        <a href="planilla" class="small-box bg-success">
+                            <div class="inner text-white">
+                                <h3>Planilla</h3>
+                                <p>Registro de Planilla <span id="dashboardPermisos"></span></p>
+                            </div>
+                            <div class="icon text-white">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        </a>
+                    </div>
+                    <div class="col-xl-1"></div>
                     <?php
                     if ($_SESSION['idtipousuario'] == 1) { ?>
                         <div class="col-xl-2 col-lg-1 col-md-1"></div>

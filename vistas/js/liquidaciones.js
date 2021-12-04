@@ -274,18 +274,25 @@ $('#saldo_afavor').on('change', function () {
     let sumatoria = getSumaArrayMonto([
       '#percepciones_periodo',
       '#percepciones_periodo_ant',
-      '#saldo_percepciones_no_apl',
       '#retenciones_declaradas',
       '#retenciones_declaradas_ant',
-      '#saldo_retenciones_no_apl',
       '#pagos_previos_compras',
     ]);
-    $('#igv_a_pagar')
+    if (saldoafavor > sumatoria) {
+      $('#igv_a_pagar')
       .val(redondear(saldoafavor - sumatoria))
       .trigger('change');
-    $('#importe_apagar')
+      $('#importe_apagar')
       .val(redondear(saldoafavor - sumatoria))
       .trigger('change');
+    } else {
+      $('#igv_a_pagar')
+      .val(redondear(saldoafavor = 0))
+      .trigger('change');
+      $('#importe_apagar')
+      .val(redondear(saldoafavor = 0))
+      .trigger('change');
+    }
   } else {
     $('#igv_a_pagar').val(saldoafavor).trigger('change');
     $('#importe_apagar').val(0).trigger('change');

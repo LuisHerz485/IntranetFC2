@@ -66,7 +66,7 @@
                         <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
-                <?php if (in_array($_SESSION['iddepartamento'], [18, 13, 5, 8, 3])) { ?>
+                <?php if (in_array($_SESSION['iddepartamento'], [3, 20])) { ?>
                     <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
                         <a href="#" class="small-box bg-info " data-toggle="modal" data-target="#modalDecMen">
                             <div class="inner">

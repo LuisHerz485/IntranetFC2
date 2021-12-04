@@ -113,6 +113,29 @@
           </li>
         </ul>
       </li>
+      
+      <li class="nav-item has-treeview">
+        <a href="#" class="nav-link">
+          <i class="fas fa-car"></i>
+          <p style="font-size: 14px;"> PASAJES<i class="right fas fa-angle-left"></i></p>
+        </a>
+        <ul class="nav nav-treeview">
+          <li class="nav-item">
+            <a href="pasaje" class="nav-link ml-4">
+              <i class="fas fa-forward"></i>
+              <p>Registro</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="listarpasaje" class="nav-link ml-4">
+              <i class="fas fa-forward"></i>
+              <p>Resumen</p>
+            </a>
+          </li>
+        </ul>
+      </li>
+
+
       <?php if ($_SESSION['idtipousuario'] != 4) { ?>
         <li class="nav-header" style="color: white;">Drive</li>
         <li class="nav-item has-treeview">
