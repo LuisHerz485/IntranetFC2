@@ -120,4 +120,24 @@ class ModeloClientes
             return "error";
         }
     }
+
+    public static function mdlEditarRegimen(array $datos): int|false
+    {
+        $filasActualizadas = false;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $filasActualizadas = $conexion->updateOrDelete("UPDATE cliente SET idregimen=? WHERE idcliente=?;
+            ", $datos);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $filasActualizadas;
+    }
+    
 }

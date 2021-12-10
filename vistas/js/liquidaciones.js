@@ -270,6 +270,8 @@ $('#saldo_afavor_anterior').on('change', function () {
 
 $('#saldo_afavor').on('change', function () {
   let saldoafavor = redondear(this.value);
+  let sum_per = getSumaArrayMonto(['#percepciones_periodo','#percepciones_periodo_ant']);
+  let sum_ret = getSumaArrayMonto(['#retenciones_declaradas','#retenciones_declaradas_ant']);
   if (saldoafavor > 0) {
     let sumatoria = getSumaArrayMonto([
       '#percepciones_periodo',
@@ -279,21 +281,32 @@ $('#saldo_afavor').on('change', function () {
       '#pagos_previos_compras',
     ]);
     if (saldoafavor > sumatoria) {
-      $('#igv_a_pagar')
-      .val(redondear(saldoafavor - sumatoria))
-      .trigger('change');
-      $('#importe_apagar')
-      .val(redondear(saldoafavor - sumatoria))
-      .trigger('change');
+      $('#saldo_percepciones_no_apl').val(0).trigger('change');
+      $('#saldo_retenciones_no_apl').val(0).trigger('change');
+      $('#igv_a_pagar').val(redondear(saldoafavor - sumatoria)).trigger('change');
+      $('#importe_apagar').val(redondear(saldoafavor - sumatoria)).trigger('change');
     } else {
-      $('#igv_a_pagar')
-      .val(redondear(saldoafavor = 0))
-      .trigger('change');
-      $('#importe_apagar')
-      .val(redondear(saldoafavor = 0))
-      .trigger('change');
+      if ((sum_per > 0) && (sum_ret == 0)) {
+        $('#saldo_percepciones_no_apl').val(redondear(sum_per - saldoafavor)).trigger('change');
+        $('#saldo_retenciones_no_apl').val(0).trigger('change');
+      } else if ((sum_ret > 0) && (sum_per == 0)) {
+        $('#saldo_percepciones_no_apl').val(0).trigger('change');
+        $('#saldo_retenciones_no_apl').val(redondear(sum_ret - saldoafavor)).trigger('change');
+      } else if ((sum_per > 0) && (sum_ret > 0)) {
+        if (sum_per > saldoafavor) {
+          $('#saldo_percepciones_no_apl').val(redondear(Math.abs(saldoafavor - sum_per))).trigger('change');
+          $('#saldo_retenciones_no_apl').val(sum_ret).trigger('change');
+        } else {
+          $('#saldo_percepciones_no_apl').val(0).trigger('change');
+          $('#saldo_retenciones_no_apl').val(redondear(Math.abs((saldoafavor - sum_per) - sum_ret))).trigger('change');
+        }
+      }
+      $('#igv_a_pagar').val(0).trigger('change');
+      $('#importe_apagar').val(0).trigger('change');
     }
   } else {
+    $('#saldo_percepciones_no_apl').val(sum_per).trigger('change');
+    $('#saldo_retenciones_no_apl').val(sum_ret).trigger('change');
     $('#igv_a_pagar').val(saldoafavor).trigger('change');
     $('#importe_apagar').val(0).trigger('change');
   }
@@ -307,9 +320,9 @@ $('#percepciones_periodo_ant').on('change', function () {
   $('#saldo_afavor').trigger('change');
 });
 
-$('#saldo_percepciones_no_apl').on('change', function () {
+/*$('#saldo_percepciones_no_apl').on('change', function () {
   $('#saldo_afavor').trigger('change');
-});
+});*/
 
 $('#retenciones_declaradas').on('change', function () {
   $('#saldo_afavor').trigger('change');
@@ -319,9 +332,9 @@ $('#retenciones_declaradas_ant').on('change', function () {
   $('#saldo_afavor').trigger('change');
 });
 
-$('#saldo_retenciones_no_apl').on('change', function () {
+/*$('#saldo_retenciones_no_apl').on('change', function () {
   $('#saldo_afavor').trigger('change');
-});
+});*/
 
 $('#pagos_previos_compras').on('change', function () {
   $('#saldo_afavor').trigger('change');

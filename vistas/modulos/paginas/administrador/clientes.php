@@ -33,26 +33,30 @@
               <table id="" class="table table-striped tablaDataClientes dt-responsive">
                 <thead>
                   <th class="no-exportar">Opciones</th>
+                  <th>N°</th>
                   <th>Estado</th>
                   <th>RUC</th>
                   <th>Razón Social</th>
                   <th>Usuario SUNAT</th>
                   <th>Clave SOL</th>
+                  <th>Regimen</th>
                   <th class="no-exportar">Imagen</th>
                 </thead>
                 <tbody>
                   <?php
                   $item = null;
                   $valor = null;
+                  $numero = 1;
                   $clientes = ControladorClientes::ctrMostrarCliente($item, $valor);
                   foreach ($clientes as $key => $value) {
                     if ($_SESSION['idtipousuario'] == 1) {
                       echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-circle btn-xl btnEditarCliente" onclick="mostrarformC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
+                          <th scope="row"><button class="btn btn-warning btn-circle btn-xl btnEditarCliente" onclick="mostrarformC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button>   <button class="btn btn-danger btn-circle btn-xl btnRegiTriub" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalRegi"><i class="fas fa-balance-scale-left"></i></button></th>';
                     } else {
                       echo '<tr>
                           <th scope="row"><button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
                     }
+                    echo '<td>' . $numero . '</td>';
                     if ($value['estado'] != "1") {
                       echo '<td><button class="btn btn-danger btn-xs btnActivarC" idcliente="' . $value["idcliente"] . '" estado="1">Inactivo</button></td>';
                     } else {
@@ -61,23 +65,27 @@
                     echo '<td>' . $value['ruc'] . '</td>
                           <td>' . $value['razonsocial'] . '</td>
                           <td>' . $value['usuariosunat'] . '</td>
-                          <td>' . $value['clavesunat'] . '</td>';
+                          <td>' . $value['clavesunat'] . '</td>
+                          <td>' . $value['idregimen'] . '</td>';
                     if ($value["imagen"] != "") {
                       echo '<td><img src="' . $value['imagen'] . '" width="50px"></td>';
                     } else {
                       echo '<td><img src="vistas/dist/img/avatar.png" width="50px"></td>';
                     }
+                    $numero += 1;
                     echo '</tr>';
                   }
                   ?>
                 </tbody>
                 <tfoot>
                   <th>Opciones</th>
+                  <th>N°</th>
                   <th>Estado</th>
                   <th>RUC</th>
                   <th>Razón Social</th>
                   <th>Usuario</th>
                   <th>Clave</th>
+                  <th>Regimen</th>
                   <th>Imagen</th>
                 </tfoot>
               </table>
@@ -128,8 +136,8 @@
                     <?php
                     $regimenes = ModeloLiquidaciones::mdlListarRegimenesTributario();
                     if ($regimenes) {
-                      foreach ($regimenes as $regimen) {
                         echo '<option value="0"> Selecciones Regimen </option>';
+                      foreach ($regimenes as $regimen) {
                         echo '<option value="' . $regimen["idregimen"] . '">' . $regimen["nombreregimen"] . '</option>';
                       }
                     }
@@ -237,6 +245,43 @@
               <span class="input-group-addon" style="margin:10px 10px 0px 0px;"><i class="fas fa-key"></i></span>
               <input class="form-control" type="hidden" name="idusuario1" id="idusuario1">
               <input type="password" name="contra" id="contra" class="form-control input-lg" placeholder="Ingrese Nueva Contraseña" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal fade" id="modalRegi" role="dialog">
+  <div class="modal-dialog">
+    <form role="form" method="post" enctype="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cambio de regimen tributario</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" type="hidden" name="idusuario2" id="idusuario2">
+              <select class="form-control col-3 select2" name="regimen" id="regimen">
+                    <?php
+                    $regimenes = ModeloLiquidaciones::mdlListarRegimenesTributario();
+                    if ($regimenes) {
+                        echo '<option value="0"> Selecciones Regimen </option>';
+                      foreach ($regimenes as $regimen) {
+                        echo '<option value="' . $regimen["idregimen"] . '">' . $regimen["nombreregimen"] . '</option>';
+                      }
+                    }
+                    ?>
+                </select>
             </div>
           </div>
         </div>

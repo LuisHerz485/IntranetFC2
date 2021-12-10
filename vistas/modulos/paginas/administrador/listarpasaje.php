@@ -50,7 +50,7 @@
                     <div class="info-box bg-secondary col-9">
                       <span class="info-box-icon bg-warning"><i class="fas fa-coins"></i></span>
                       <div class="info-box-content">
-                        <span class="info-box-text">Monto total de pasajes</span>
+                        <span class="info-box-text">Monto de pasaje por Colaborador</span>
                         <span class="info-box-number"><span id="montoTotal">S/.0</span></span>
                       </div>
                     </div>
@@ -60,7 +60,7 @@
                     <div class="info-box bg-secondary col-9">
                       <span class="info-box-icon bg-warning"><i class="fas fa-coins"></i></span>
                       <div class="info-box-content">
-                        <span class="info-box-text">Monto total de pasajes</span>
+                        <span class="info-box-text">Monto general de Pasajes</span>
                         <span class="info-box-number"><span id="TotalGeneral">S/.0</span></span>
                       </div>
                     </div>

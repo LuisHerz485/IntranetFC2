@@ -57,3 +57,17 @@ if (isset($_POST["opcion"])) {
 			}
 	}
 }
+
+if (isset($_POST["opcion"])) {
+	switch ($_POST["opcion"]) {
+        case "MontoTotalColaborador": {
+            $respuesta = ControladorClientes::ctrEditarRegimen();
+            if ($respuesta !== null) {
+                http_response_code(200);
+                echo json_encode(["respuesta" => $respuesta]);
+            }
+            break;
+        }
+	}
+}
+

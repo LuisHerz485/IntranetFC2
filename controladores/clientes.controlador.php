@@ -24,6 +24,7 @@ class ControladorClientes
 							$_SESSION['login'] = $respuesta['logincliente'];
 							$_SESSION['tipousuario'] = $respuesta['tipocliente'];
 							$_SESSION['estado'] = $respuesta['estado'];
+							$_SESSION['idregimen'] = $respuesta['idregimen'];
 							$_SESSION['imagen'] = $respuesta['imagen'];
 							echo '<script>
 									window.location="escritorio";
@@ -178,5 +179,18 @@ class ControladorClientes
 				</script>");
 			}
 		}
+	}
+
+	public static function ctrEditarRegimen(): int|false
+	{
+		$data = ControladorValidacion::validar([
+			"idcliente" => "enteroPositivo",
+			"idregimen" => "enteroPositivo",
+		]);
+		
+		if (is_array($data) && !in_array(false, $data, true)) {
+			return ModeloClientes::mdlEditarRegimen($data);
+		}
+		return false;
 	}
 }

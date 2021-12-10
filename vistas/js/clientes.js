@@ -173,6 +173,27 @@ $(".btnContraC").click(function () {
   });
 });
 
+$(".btnEditarTribu").click(function () {
+  var idcliente = $(this).attr("idcliente");
+  var datos = new FormData();
+  datos.append("idcliente", idcliente);
+  $.ajax({
+    url: "ajax/clientes.ajax.php",
+    method: "POST",
+    data: datos,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function (respuesta) {
+      $("#idusuario2").val(respuesta["idcliente"]);
+    },
+    error: function (respuesta) {
+      console.log("Error", respuesta);
+    },
+  });
+});
+
 $("#btnBuscarRazon").click(function () {
   var datos = new FormData();
   datos.append("ruc", $("#ruc").val());

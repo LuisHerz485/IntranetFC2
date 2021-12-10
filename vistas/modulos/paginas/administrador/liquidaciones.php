@@ -300,7 +300,7 @@
                                                         <tr>
                                                             <td>SALDO DE PERCEPCIONES NO APLICADAS </td>
                                                             <td> </td>
-                                                            <td> <input type="number" name="saldo_percepciones_no_apl" id="saldo_percepciones_no_apl" class="form-control text-center" value="0" required></td>
+                                                            <td> <input type="text" name="saldo_percepciones_no_apl" id="saldo_percepciones_no_apl" class="form-control text-center" value="0" readonly></td>
                                                             <td> </td>
                                                         </tr>
                                                         <tr>
@@ -318,7 +318,7 @@
                                                         <tr>
                                                             <td>SALDO DE RETENCIONES NO APLICADAS </td>
                                                             <td> </td>
-                                                            <td> <input type="number" name="saldo_retenciones_no_apl" id="saldo_retenciones_no_apl" class="form-control text-center" value="0" required></td>
+                                                            <td> <input type="text" name="saldo_retenciones_no_apl" id="saldo_retenciones_no_apl" class="form-control text-center" value="0" readonly></td>
                                                             <td> </td>
                                                         </tr>
                                                         <tr>

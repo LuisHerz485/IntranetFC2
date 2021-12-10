@@ -19,6 +19,21 @@ $('#btnfiltrarda').on('click', function () {
         if (value.estado === null) {
           rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" idestado="${value.idestado}" iddeclaracionAS="${value.iddeclaracionsunatanual}" fecha="${value.fechavencimiento}"><i class="far fa-calendar-check"></i></button></abbr>`;
           rowestado = `<h3><p class="badge badge-primary">Pendiente</p></h3>`;
+
+        } else if (value.estado == 'Pendiente') {
+          rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" iddetalledeclaracionanual="${
+            value.iddetalledeclaracionanualsunat
+          }" iddeclaracionAS="${value.iddeclaracionsunatanual}"  idestado="${
+            value.idestado
+          }" fecha="${
+            value.fechavencimiento
+          }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
+            canEdit
+              ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border ModalEditarDeclaraAnual" iddetalledeclaracionanual="${value.iddetalledeclaracionanualsunat}" iddeclaracionAS="${value.iddeclaracionsunatanual}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}"  numOrden="${value.numOrden}" fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
+              : ``
+          }`;
+          rowestado = `<h3><p class="badge badge-primary">${value.estado}</p></h3>`;
+
         } else if (value.estado == 'Dentro de plazo') {
           rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="ModalRegistroAnualDeclara" iddetalledeclaracionanual="${
             value.iddetalledeclaracionanualsunat

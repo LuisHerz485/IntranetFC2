@@ -83,13 +83,6 @@
                 <i class="fas fa-forward"></i>
                 <p>Usuarios</p>
               </a>
-            </li>
-            <li class="nav-item">
-              <a href="planilla" class="nav-link ml-4">
-                <i class="fas fa-forward"></i>
-                <p>Planilla</p>
-              </a>
-            </li>
         </li>
       </ul>
 
@@ -116,20 +109,27 @@
       
       <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
-          <i class="fas fa-car"></i>
-          <p style="font-size: 14px;"> PASAJES<i class="right fas fa-angle-left"></i></p>
+          <i class="fas fa-dollar-sign"></i>
+          <p style="font-size: 14px;"> PAGOS A COLABORADORES<i class="right fas fa-angle-left"></i></p>
         </a>
         <ul class="nav nav-treeview">
+          </li>
+            <li class="nav-item">
+              <a href="planilla" class="nav-link ml-4">
+              <i class="fas fa-forward"></i>
+              <p>Registro Planilla</p>
+            </a>
+          </li>
           <li class="nav-item">
             <a href="pasaje" class="nav-link ml-4">
               <i class="fas fa-forward"></i>
-              <p>Registro</p>
+              <p>Registro Pasaje</p>
             </a>
           </li>
           <li class="nav-item">
             <a href="listarpasaje" class="nav-link ml-4">
               <i class="fas fa-forward"></i>
-              <p>Resumen</p>
+              <p>Resumen Pasaje</p>
             </a>
           </li>
         </ul>
@@ -212,6 +212,12 @@
               <a href="cronogramaAnualSunat" class="nav-link ml-4">
                 <i class="fas fa-forward"></i>
                 <p>Cronograma Anual</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="cronogramaLibros" class="nav-link ml-4">
+                <i class="fas fa-forward"></i>
+                <p>Cronograma Ple-Sunat</p>
               </a>
             </li>
           </ul>

@@ -80,7 +80,7 @@ $(".btnTotalPasaje").click(function () {
     error: function (respuesta) {
       console.log("Error", respuesta);
     },
-  });
+});
 
   $.ajax({
     url: "ajax/pasaje.ajax.php",
