@@ -10,7 +10,7 @@ class ModeloPasaje
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $idpasaje = $conexion->insert("INSERT INTO pasajes (idusuario, gastos, ida, vuelta, dias, semana, mensual, detalle, fechacreacion) VALUES(? ,? ,?, ?, ?, ?, ?, ?, ?);
+            $idpasaje = $conexion->insert("INSERT INTO pasajes (idusuario, gastos, ida, vuelta, dias, semana, mensual, detalle, fechacreacion, idestadopasaje, pagomedio, totalpasaje, diasextra, diasmenos) VALUES(? ,? ,?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
             ", $datos);
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -29,7 +29,7 @@ class ModeloPasaje
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $filasActualizadas = $conexion->updateOrDelete("UPDATE pasajes SET idusuario=?, gastos=?, ida=?, vuelta=?, dias=?, semana=?, mensual=?, detalle=?, fechacreacion=? WHERE idpasajes=?;
+            $filasActualizadas = $conexion->updateOrDelete("UPDATE pasajes SET idusuario=?, gastos=?, ida=?, vuelta=?, dias=?, semana=?, mensual=?, detalle=?, fechacreacion=?, idestadopasaje=?, pagomedio=?, totalpasaje=?, diasextra=?, diasmenos=? WHERE idpasajes=?;
             ", $datos);
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -42,13 +42,31 @@ class ModeloPasaje
         return $filasActualizadas;
     }
 
+    public static function mdlListarEstadosPasajes(): mixed
+    {
+        $estadosPasajes = null;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $estadosPasajes = $conexion->getData("SELECT idestadopasaje, estadopasaje FROM estadodepasaje");
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $estadosPasajes;
+    }
+
     public static function mdlListarPasaje(): mixed
     {
         $pasajes = null;
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $pasajes = $conexion->getData("SELECT PA.idpasajes, PA.idusuario, PA.gastos, PA.ida, PA.vuelta, PA.semana, PA.mensual, PA.dias, PA.detalle, PA.fechacreacion, CONCAT(U.nombre,'',U.apellidos) AS nombrecompleto, D.nombre	AS departamento FROM pasajes AS PA INNER JOIN usuario U ON U.idusuario = PA.idusuario INNER JOIN departamento D ON D.iddepartamento = U.iddepartamento");
+            $pasajes = $conexion->getData("SELECT PA.idpasajes, PA.idusuario, PA.gastos, PA.ida, PA.vuelta, PA.semana, PA.mensual, PA.dias, PA.detalle, PA.fechacreacion, PA.idestadopasaje, EPA.estadopasaje, PA.pagomedio, PA.totalpasaje, PA.diasextra, PA.diasmenos, CONCAT(U.nombre,'',U.apellidos) AS nombrecompleto, D.nombre	AS departamento FROM pasajes AS PA INNER JOIN usuario U ON U.idusuario = PA.idusuario INNER JOIN departamento D ON D.iddepartamento = U.iddepartamento INNER JOIN estadodepasaje EPA ON EPA.idestadopasaje = PA.idestadopasaje");
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -66,7 +84,7 @@ class ModeloPasaje
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $planillas = $conexion->getDataSingle("SELECT PA.idpasajes, PA.idusuario, PA.gastos, PA.ida, PA.vuelta, PA.semana, PA.mensual, PA.dias, PA.detalle, PA.fechacreacion, CONCAT(U.nombre,'',U.apellidos) AS nombrecompleto, D.nombre	AS departamento FROM pasajes AS PA INNER JOIN usuario U ON U.idusuario = PA.idusuario INNER JOIN departamento D ON D.iddepartamento = U.iddepartamento WHERE P.idpasajes = ?", $datos);
+            $planillas = $conexion->getDataSingle("SELECT PA.idpasajes, PA.idusuario, PA.gastos, PA.ida, PA.vuelta, PA.semana, PA.mensual, PA.dias, PA.detalle, PA.fechacreacion, PA.idestadopasaje, EPA.estadopasaje, PA.pagomedio, PA.totalpasaje, PA.diasextra, PA.diasmenos, CONCAT(U.nombre,'',U.apellidos) AS nombrecompleto, D.nombre	AS departamento FROM pasajes AS PA INNER JOIN usuario U ON U.idusuario = PA.idusuario INNER JOIN departamento D ON D.iddepartamento = U.iddepartamento INNER JOIN estadodepasaje EPA ON EPA.idestadopasaje = PA.idestadopasaje WHERE P.idpasajes = ?", $datos);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -84,7 +102,7 @@ class ModeloPasaje
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $pasajes = $conexion->getData("SELECT PA.idpasajes, PA.idusuario, PA.gastos, PA.ida, PA.vuelta, PA.semana, PA.mensual, PA.dias, PA.detalle, PA.fechacreacion, CONCAT(U.nombre,'',U.apellidos) AS nombrecompleto, D.nombre	AS departamento FROM pasajes AS PA INNER JOIN usuario U ON U.idusuario = PA.idusuario INNER JOIN departamento D ON D.iddepartamento = U.iddepartamento WHERE U.iddepartamento = ?", $datos);
+            $pasajes = $conexion->getData("SELECT PA.idpasajes, PA.idusuario, PA.gastos, PA.ida, PA.vuelta, PA.semana, PA.mensual, PA.dias, PA.detalle, PA.fechacreacion, PA.estadopasaje, EPA.estadopasaje, PA.pagomedio, PA.totalpasaje, PA.diasextra, PA.diasmenos, CONCAT(U.nombre,'',U.apellidos) AS nombrecompleto, D.nombre	AS departamento FROM pasajes AS PA INNER JOIN usuario U ON U.idusuario = PA.idusuario INNER JOIN departamento D ON D.iddepartamento = U.iddepartamento INNER JOIN estadodepasaje EPA ON EPA.idestadopasaje = PA.idestadopasaje WHERE U.iddepartamento = ?", $datos);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -120,7 +138,7 @@ class ModeloPasaje
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $pasajes = $conexion->getData("SELECT PA.idpasajes, PA.idusuario, PA.gastos, PA.ida, PA.vuelta, PA.semana, PA.mensual, PA.dias, PA.detalle, PA.fechacreacion, CONCAT(U.nombre,'',U.apellidos) AS nombrecompleto, D.nombre	AS departamento FROM pasajes AS PA INNER JOIN usuario U ON U.idusuario = PA.idusuario INNER JOIN departamento D ON D.iddepartamento = U.iddepartamento WHERE PA.fechacreacion = ?", $datos);
+            $pasajes = $conexion->getData("SELECT PA.idpasajes, PA.idusuario, PA.gastos, PA.ida, PA.vuelta, PA.semana, PA.mensual, PA.dias, PA.detalle, PA.fechacreacion, PA.estadopasaje, EPA.estadopasaje, PA.pagomedio, PA.totalpasaje, PA.diasextra, PA.diasmenos, CONCAT(U.nombre,'',U.apellidos) AS nombrecompleto, D.nombre	AS departamento FROM pasajes AS PA INNER JOIN usuario U ON U.idusuario = PA.idusuario INNER JOIN departamento D ON D.iddepartamento = U.iddepartamento INNER JOIN estadodepasaje EPA ON EPA.idestadopasaje = PA.idestadopasaje WHERE PA.fechacreacion = ?", $datos);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {

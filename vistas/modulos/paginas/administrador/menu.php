@@ -113,6 +113,7 @@
           <p style="font-size: 14px;"> PAGOS A COLABORADORES<i class="right fas fa-angle-left"></i></p>
         </a>
         <ul class="nav nav-treeview">
+        <?php if ($_SESSION['idtipousuario'] == 1) { ?>
           </li>
             <li class="nav-item">
               <a href="planilla" class="nav-link ml-4">
@@ -120,6 +121,7 @@
               <p>Registro Planilla</p>
             </a>
           </li>
+          <?php } ?>
           <li class="nav-item">
             <a href="pasaje" class="nav-link ml-4">
               <i class="fas fa-forward"></i>

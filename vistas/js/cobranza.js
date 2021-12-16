@@ -115,7 +115,9 @@ function listarCobranzas(idcliente) {
                 value.idcobranza +
                 " value='" +
                 index +
-                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza"  value="' +
+                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> '
+                +
+                '<abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza"  value="' +
                 value.idcobranza +
                 '"><button type="submit" id=\'btnEstado' +
                 index +
@@ -146,7 +148,9 @@ function listarCobranzas(idcliente) {
                 value.idcobranza +
                 " value='" +
                 index +
-                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza"  value="' +
+                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> '
+                +
+                '<abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza"  value="' +
                 value.idcobranza +
                 '"><button type="submit" id=\'btnEstado' +
                 index +
@@ -177,7 +181,10 @@ function listarCobranzas(idcliente) {
                 value.idcobranza +
                 " value='" +
                 index +
-                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza"  value="' +
+                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> '
+                +
+                
+                '<abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza"  value="' +
                 value.idcobranza +
                 '"><button type="submit" id=\'btnEstado' +
                 index +
@@ -208,7 +215,10 @@ function listarCobranzas(idcliente) {
                 value.idcobranza +
                 " value='" +
                 index +
-                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza" value="' +
+                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> '
+                +
+
+                '<abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name="idcobranza" value="' +
                 value.idcobranza +
                 '"><button type="submit" id=\'btnEstado' +
                 index +
@@ -231,7 +241,9 @@ function listarCobranzas(idcliente) {
                 "'>Vencido</button>",
             ])
             .draw(false);
+            var_dumb(datos);
         }
+        var_dumb(datos);
       });
       $('.btnMostraDetCob').click(function () {
         var datos = new FormData();
@@ -257,6 +269,34 @@ function listarCobranzas(idcliente) {
           },
         });
       });
+
+
+      $('.btnMostraEdiCob').click(function () {
+        var datos2 = new FormData();
+        datos.append('idcobranza', $(this).attr('idcobranza'));
+        $('#modalDepartamento').val(respuesta[this.value].departamento);
+        $('#modalDistrito').val(respuesta[this.value].distrito);
+        $('#modalDireccion').val(respuesta[this.value].direccion);
+        $('#modalFechaEmision').val(respuesta[this.value].fechaemision);
+        $('#modelFechaVencimiento').val(respuesta[this.value].fechavencimiento);
+        $('#modalDescripcion').val(respuesta[this.value].descripcion);
+        $.ajax({
+          url: 'ajax/detallecobranza.ajax.php',
+          method: 'POST',
+          cache: false,
+          contentType: false,
+          processData: false,
+          dataType: 'json',
+          data: datos,
+          success: function (data) {
+            $('#modalPlan').val(data[0].plan);
+            $('#modalMonto').val(data[0].monto);
+            $('#modalObservacion').val(data[0].observacion);
+          },
+        });
+      });
+
+
     },
     error: function (respuesta) {
       console.log('Error', respuesta);
@@ -607,7 +647,17 @@ $('.btnFiltroMes').click(function () {
                 value.idcobranza +
                 " value='" +
                 index +
-                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr><abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name=idcobranza value="' +
+                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr>'
+                +
+
+                '<abbr title="Eliminar cobranza"><button class="btn btn-danger btn-circle btn-xl btnEliminarCobranza mx-1" idcobranza=' +
+                value.idcobranza +
+                " value='" +
+                index +
+                '\' ><i class="far fa-trash-alt"></i></button></abbr>'
+                
+                +
+                '<abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name=idcobranza value="' +
                 value.idcobranza +
                 '"><button type="submit" id=\'btnEstado' +
                 index +
@@ -639,7 +689,17 @@ $('.btnFiltroMes').click(function () {
                 value.idcobranza +
                 " value='" +
                 index +
-                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"> <form action="ajax/generarPDF.php" method="POST" target="_blank"><input type="hidden" name=idcobranza value="' +
+                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> '
+                +
+
+                '<abbr title="Eliminar cobranza"><button class="btn btn-danger btn-circle btn-xl btnEliminarCobranza mx-1" idcobranza=' +
+                value.idcobranza +
+                " value='" +
+                index +
+                '\' ><i class="far fa-trash-alt"></i></button></abbr>'
+
+                +
+                '<abbr title="Constancia"> <form action="ajax/generarPDF.php" method="POST" target="_blank"><input type="hidden" name=idcobranza value="' +
                 value.idcobranza +
                 '"><button type="submit" id=\'btnEstado' +
                 index +
@@ -671,7 +731,17 @@ $('.btnFiltroMes').click(function () {
                 value.idcobranza +
                 " value='" +
                 index +
-                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"> <form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name=idcobranza value="' +
+                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr>' 
+                +
+                
+                '<abbr title="Eliminar cobranza"><button class="btn btn-danger btn-circle btn-xl btnEliminarCobranza mx-1" idcobranza=' +
+                value.idcobranza +
+                " value='" +
+                index +
+                '\' ><i class="far fa-trash-alt"></i></button></abbr>'
+
+                +
+                '<abbr title="Constancia"> <form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name=idcobranza value="' +
                 value.idcobranza +
                 '"><button type="submit" id=\'btnEstado' +
                 index +
@@ -703,7 +773,18 @@ $('.btnFiltroMes').click(function () {
                 value.idcobranza +
                 " value='" +
                 index +
-                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr> <abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name=idcobranza value="' +
+                '\' data-toggle="modal" data-target="#modalDetCob"><i class="far fa-eye"></i></button></abbr>' 
+                +
+                
+                '<abbr title="Eliminar Cobranza"><button class="btn btn-danger btn-circle btn-xl btnEliminarCobranza mx-1" idcobranza=' +
+                value.idcobranza +
+                " value='" +
+                index +
+                '\' ><i class="far fa-trash-alt"></i></button></abbr>'
+                
+                
+                + 
+                '<abbr title="Constancia"><form action="ajax/generarPDF.php" method="POST" target="_blank"> <input type="hidden" name=idcobranza value="' +
                 value.idcobranza +
                 '"><button type="submit" id=\'btnEstado' +
                 index +
@@ -753,6 +834,64 @@ $('.btnFiltroMes').click(function () {
             $('#modalMonto').val(data[0].monto);
             $('#modalObservacion').val(data[0].observacion);
           },
+        });
+      });
+
+      $('.btnEliminarCobranza').click(function () {
+
+        Swal.fire({
+          title: '¿Estas seguro de eliminar?',
+          text: 'Usted va a eliminar la cobranza',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Si, eliminar'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            var datos = new FormData();
+            datos.append('opcion', 'eliminarCobranza')
+            datos.append('idcobranza', $(this).attr('idcobranza'));
+
+            $.ajax({
+              url: 'ajax/cobranza.ajax.php',
+              method: 'POST',
+              cache: false,
+              contentType: false,
+              processData: false,
+              dataType: 'json',
+              data: datos,
+
+              success: function({eliminado}){
+                if(eliminado){
+                    $(".btnFiltroMes").trigger("click");
+                    Swal.fire({
+                      title: 'Eliminado!',
+                      text: '¡Se Elimino la cobranza!',
+                      icon: 'success',
+                      confirmButtonText: 'Ok',
+                  });
+                }else{
+                    Swal.fire({
+                      title: 'Error!',
+                      text: '¡No se pudo eliminar la cobranza!',
+                      icon: 'error',
+                      confirmButtonText: 'Ok',
+                  });
+                } 
+              },
+              error: function(){
+                Swal.fire({
+                  title: 'Error!',
+                  text: '¡No se pudo eliminar la cobranza!',
+                  icon: 'error',
+                  confirmButtonText: 'Ok',
+              });
+              }
+            })
+          }else{
+            Swal.fire('Cobranza no eliminada', '', 'info')
+          }
         });
       });
 

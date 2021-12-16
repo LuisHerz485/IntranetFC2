@@ -9,8 +9,8 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Escritorio</a></li>
-                        <li class="breadcrumb-item active">Principal</li>
+                        <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Escritorio</b></a></li>
+                        <li class="breadcrumb-item active h5">Principal</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -24,9 +24,10 @@
             <!-- Small boxes (Stat box) -->
             <div class="row mx-5">
                 <!-- ./col -->
-                <div class="col-12 col-lg-6">
+                <div class="col-xl-1 col-lg-1 col-md-1"></div>
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <!-- small box -->
-                    <a href="asistencia" class="small-box bg-danger">
+                    <a href="asistencia" class="small-box bg-success">
                         <div class="inner">
                             <h3>Asistencia</h3>
                             <p>Lista de asistencia</p>
@@ -34,13 +35,14 @@
                         <div class="icon text-white">
                             <i class="fas fa-tasks"></i>
                         </div>
-                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <!-- ./col -->
-                <div class="col-12 col-lg-6">
+                <div class="col-xl-1 col-lg-1 col-md-1"></div>
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <!-- small box -->
-                    <a href="checklist-jefe" class="small-box bg-primary">
+                    <a href="checklist-jefe" class="small-box bg-success">
                         <div class="inner">
                             <h3>Check List</h3>
                             <p>Lista de actividades a realizar</p>
@@ -48,23 +50,38 @@
                         <div class="icon text-white">
                             <i class="fas fa-tasks"></i>
                         </div>
-                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
-                <div class="col-12 col-lg-6">
+                <div class="col-xl-1 col-lg-1 col-md-1"></div>
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12" style="margin-top:20px">
                     <a href="https://fccontadores.com:2096/" class="small-box bg-orange" target="_blank">
-                        <div class="inner">
+                        <div class="inner text-white">
                             <h3>Webmail</h3>
                             <p>Ir al correo de la empresa</p>
                         </div>
                         <div class="icon text-white">
-                            <i class="fas fa-envelope-square"></i>
+                        <i class="fas fa-envelope-open-text"></i>
                         </div>
-                        <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                        <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                    </a>
+                </div>
+                <div class="col-xl-1 col-lg-1 col-md-1"></div>
+                    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12" style="margin-top:20px">
+                    <a href="permisos" class="small-box bg-yellow">
+                        <div class="inner text-white">
+                            <h3>Permisos</h3>
+                            <p>Solicitar Permiso</p>
+                        </div>
+                        <div class="icon text-white">
+                            <i class="fas fa-comment-alt"></i>
+                        </div>
+                        <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
                 <?php if (in_array($_SESSION['iddepartamento'], [18, 13, 5, 8, 3])) { ?>
-                    <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
+                    <div class="col-xl-4 col-lg-1 col-md-1"></div>
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12" style="margin-top:20px">
                         <a href="#" class="small-box bg-info " data-toggle="modal" data-target="#modalDecMen">
                             <div class="inner">
                                 <h3>SUNAT</h3>
@@ -73,7 +90,7 @@
                             <div class="icon text-white">
                                 <i class="fas fa-landmark"></i>
                             </div>
-                            <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                         </a>
                     </div>
                 <?php } ?>
@@ -103,7 +120,7 @@
                                 <div class="icon text-white">
                                     <i class="fas fa-paste"></i>
                                 </div>
-                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
@@ -115,7 +132,7 @@
                                 <div class="icon text-white">
                                     <i class="fas fa-paste"></i>
                                 </div>
-                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>
                         </div>
                     </div>
@@ -129,7 +146,7 @@
                                 <div class="icon text-white">
                                     <i class="fas fa-paste"></i>
                                 </div>
-                                <p class="small-box-footer bg-secondary border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                             </a>
                         </div>
                     </div>

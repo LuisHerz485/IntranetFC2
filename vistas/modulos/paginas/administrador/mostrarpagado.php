@@ -13,7 +13,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> 
   <div class="content">
     <div class="row">
       <div class="col-md-12">
@@ -30,6 +30,7 @@
                 </div>
                 <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-12" style="margin-top: 30px;">
                   <button class="btn btn-success btn-s btnFiltroMes"><strong><i class="fas fa-search-dollar"></i> Buscar</strong></button>
+                  <a href="generarCobranza" class="btn btn-warning btn-s btnGenerarCobranza"><strong><i class="fas fa-donate"></i> Agregar</strong></a>
                 </div>
                 <div class="form-group col ">
                   <div class="row justify-content-center mt-2">

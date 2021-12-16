@@ -1,5 +1,7 @@
-<?php
+<?php 
+
 require_once "conexion.php";
+require_once "conexion-v2.php";
 class ModeloCobranza
 {
 
@@ -71,4 +73,23 @@ class ModeloCobranza
         $stmt->execute();
         return $stmt->fetch();
     }
+
+    public static function mdlEliminarCobranza(array $datos): bool
+    {
+        $ejecutado = false;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $ejecutado = $conexion->execute("CALL `sp_set_eliminarCobranza_V1`(?)", $datos);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $ejecutado;
+    }
+
 }

@@ -16,9 +16,20 @@ $(document).on('click', '.btn-editar-pasaje', function () {
     $('#mensual').val(dataPasaje['mensual']);
     $('#detalle').val(dataPasaje['detalle']);
     $('#fechacreacion').val(dataPasaje['fechacreacion']);
+    $('#pagomedio').val(dataPasaje['pagomedio']);
+    $('#totalpasaje').val(dataPasaje['totalpasaje']);
+    $('#diasextra').val(dataPasaje['diasextra']);
+    $('#diasmenos').val(dataPasaje['diasmenos']);
     $('#opcionesEditarPasaje').removeClass('d-none');
     $('#opcionesRegistrarPasaje').addClass('d-none');
-    var_dumb(dataPasaje);
+  }
+});
+
+$(document).on('click', '.btn-pagos-pasaje', function () {
+  let dataPasaje = JSON.parse($(this).attr('dataPasaje'));
+  if (dataPasaje) {
+    $('#opcionesEditarPasaje').removeClass('d-none');
+    $('#opcionesRegistrarPasaje').addClass('d-none');
   }
 });
 
@@ -26,12 +37,20 @@ $('#ida').on('change', function () {
     let ida = redondear($('#ida').val());
     let vuelta = redondear($('#vuelta').val());
     let dias = redondear($('#dias').val());
+    let pagomedio = redondear($('#pagomedio').val());
+    let extra = redondear($('#diasextra').val());
+    let menos = redondear($('#diasmenos').val());
     let montoGasto = redondear(ida + vuelta);
     let proysem = redondear(montoGasto * dias);
     let proymes = redondear(proysem * 4);
+    let total = redondear(proymes - pagomedio);
+    let ecuextra = redondear(extra * montoGasto);
+    let ecuemenos = redondear(menos * montoGasto);
+    let diaextra = redondear((ecuextra + total) - ecuemenos);
     $('#gastos').val(montoGasto);
     $('#semana').val(proysem);
     $('#mensual').val(proymes);
+    $('#totalpasaje').val(diaextra);
 });
 
 $('#dias').on('change', function () {
@@ -42,6 +61,17 @@ $('#vuelta').on('change', function () {
     $('#ida').trigger('change');
 });
 
+$('#pagomedio').on('change', function () {
+  $('#ida').trigger('change');
+});
+
+$('#diasextra').on('change', function () {
+  $('#ida').trigger('change');
+});
+
+$('#diasmenos').on('change', function () {
+  $('#ida').trigger('change');
+});
 
 $('#btnCancelarEditarPasaje').on('click', function () {
   $('#opcionesRegistrarPasaje').removeClass('d-none');

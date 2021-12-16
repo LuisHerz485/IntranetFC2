@@ -6,6 +6,20 @@ require_once "../controladores/cobranza.controlador.php";
 require_once "../modelos/cobranza.modelo.php";
 require_once "../modelos/detallecobranza.modelo.php";
 
+if(isset($_POST["opcion"])){
+	http_response_code(400);
+  switch($_POST["opcion"]){
+	case "eliminarCobranza":{
+		$respuesta =  ControladorCobranza::ctrEliminarCobranzaPorID();
+		if ($respuesta !== null) {
+			http_response_code(200);
+			echo json_encode(["eliminado" => $respuesta]);
+		} 
+		break;
+	}
+  }
+}
+
 class AjaxCobranza
 {
 	public $idcliente;
@@ -14,7 +28,8 @@ class AjaxCobranza
 		$valor = $this->idcliente;
 		$respuesta = ModeloCobranza::mdlMostrarCobranza($valor);
 		echo json_encode($respuesta);
-	}
+	} 
+	
 
 	public $idlocalcliente;
 	public $idcliente1;
@@ -96,3 +111,4 @@ if (isset($_POST['estado'])) {
 	$estado->activarId = $_POST['idcobranza'];
 	$estado->ajaxActivarCobranza();
 }
+ 

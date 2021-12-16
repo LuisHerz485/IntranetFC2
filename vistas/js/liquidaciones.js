@@ -152,18 +152,29 @@ $('#ingreso_bruto').on('change', function () {
 });
 
 $('#nota_credito').on('change', function () {
-  calcularIGVNeto('#nota_credito', '#nota_credito_igv', '#nota_credito_total');
-  restaDosMontos('#ingreso_bruto', '#nota_credito', '#ingreso_neto');
+  let ventas_netas = redondear($('#ventas_netas').val());
+  if (ventas_netas > 0) {
+    calcularIGVNeto(
+      '#nota_credito',
+      '#nota_credito_igv',
+      '#nota_credito_total');
+  } else {
+    calcularNeto(
+      '#nota_credito',
+      '#nota_credito_total');
+  }
+  restaDosMontos(
+    '#ingreso_bruto',
+    '#nota_credito',
+    '#ingreso_neto');
   restaDosMontos(
     '#ingreso_bruto_igv',
     '#nota_credito_igv',
-    '#ingreso_neto_igv'
-  );
+    '#ingreso_neto_igv');
   restaDosMontos(
     '#ingreso_bruto_total',
     '#nota_credito_total',
-    '#ingreso_neto_total'
-  );
+    '#ingreso_neto_total');
 });
 
 //COMPRAS

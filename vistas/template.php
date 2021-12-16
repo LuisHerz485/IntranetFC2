@@ -84,7 +84,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive", "cambiarhorario", "tardanzas", "consultaruc", "menuAsistencia", "menuChecklist", "menuCobranza", "menuIngreso", "cronogramaSunat", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "cronogramaAnualSunat", "liquidaciones", "listarliquidaciones", "declaracionAnualSunat", "planilla", "pasaje","listarpasaje","cronogramaLibros"];
+          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive", "cambiarhorario", "tardanzas", "consultaruc", "menuAsistencia", "menuChecklist", "menuCobranza", "menuIngreso", "cronogramaSunat", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "cronogramaAnualSunat", "liquidaciones", "listarliquidaciones", "declaracionAnualSunat", "planilla", "pasaje","listarpasaje","cronogramaLibros","declaracionSunatPle"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorGeneralRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -104,7 +104,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 3: {
-          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "consultaruc", "consultadni", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "menuAsistencia", "menuChecklist", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion"];
+          $administradorRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "clientes", "reportes", "consultaruc", "consultadni", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "menuAsistencia", "menuChecklist", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "pasaje", "listarpasaje"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -170,7 +170,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/agenda.js?v=1.1"></script>
 <script src="vistas/js/archivo.js?v=1.1"></script>
 <script src="vistas/js/pagosclientes.js?v=1.1"></script>
-<script src="vistas/js/cobranza.js?v=2.2"></script>
+<script src="vistas/js/cobranza.js?v=2.6"></script>
 <script src="vistas/js/detallecobranza.js?v=1.1"></script>
 <script src="vistas/js/traduccion.js?v=1.1"></script>
 <script src="vistas/js/dataTable.js?v=3.3"></script>
@@ -189,8 +189,9 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/liquidaciones.js?v=3.3"></script>
 <script src="vistas/js/declaracionAnualSunat.js?v=1.6"></script>
 <script src="vistas/js/planilla.js?v=1.2"></script>
-<script src="vistas/js/pasaje.js?v=1.2"></script>
+<script src="vistas/js/pasaje.js?v=1.5"></script>
 <script src="vistas/js/cronogramaLibros.js?v=1.1"></script>
+<script src="vistas/js/declaracionSunatPle.js?v=1.1"></script>
 <script>
   if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);

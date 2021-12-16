@@ -18,6 +18,14 @@ if(isset($_POST["opcion"])){
             echo json_encode(["respuesta" => ControladorPasaje::ctrEditarPasaje()]);
             break;
         }
+        case "estadosPlanilla": {
+            $respuesta = ControladorPasaje::ctrListarEstadosPasajes();
+            if ($respuesta !== null) {
+                http_response_code(200);
+                echo json_encode(["respuesta" => $respuesta]);
+            }
+            break;
+        }
         case "listarPasaje":{
             $respuesta = ControladorPasaje::ctrListarPasaje();
             if ($respuesta !== null) {

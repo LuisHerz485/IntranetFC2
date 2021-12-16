@@ -74,35 +74,75 @@
                                         </select>
                                     </div>
                                     <div class="col-12 col-lg-3">
+                                        <label>Seleccione el estado pasaje:</label>
+                                        <select name="idestadopasaje" id="idestadopasaje" class="form-control select2" required>
+                                            <?php
+                                            if ($estadosPasaje = ControladorPasaje::ctrListarEstadosPasajes()) {
+                                                foreach ($estadosPasaje as $estadosPasaje) {
+                                                    echo '<option value="' . $estadosPasaje["idestadopasaje"] . '">' . $estadosPasaje["estadopasaje"] . '</option>';
+                                                }
+                                            }
+                                            ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 col-lg-2">
                                         <label>Ida:</label>
                                         <input class="form-control" type="number" name="ida" id="ida" max="10.00" step="0.01" value="0" required>
                                     </div>
-                                    <div class="col-12 col-lg-3">
+                                    <div class="col-12 col-lg-2">
                                         <label>Vuelta:</label>
                                         <input class="form-control" type="number" name="vuelta" id="vuelta" max="10.00" step="0.01" value="0" required>
                                     </div>
-                                    <div class="col-12 col-lg-3">
+                                    <div class="col-12 col-lg-2">
                                         <label>Dias:</label>
                                         <input class="form-control" type="number" name="dias" id="dias" value="0" required>
                                     </div>
-                                    <div class="col-12 col-lg-4">
+                                    <div class="col-12 col-lg-2">
                                         <label>Gastos:</label>
                                         <input class="form-control" type="number" name="gastos" id="gastos" step="0.01" value="0" readonly required>
                                     </div>
-                                    <div class="col-12 col-lg-4">
+                                    <div class="col-12 col-lg-2">
                                         <label>Semana:</label>
                                         <input class="form-control" type="number" name="semana" id="semana" step="0.01" value="0" readonly required>
                                     </div>
-                                    <div class="col-12 col-lg-4">
+                                    <div class="col-12 col-lg-2">
                                         <label>Mensual:</label>
                                         <input type="number" class="form-control" name="mensual" id="mensual" step="0.01" value="0" readonly required>
                                     </div>
-                                    <div class="col-12 col-lg-4">
-                                        <textarea name="detalle" class="form-control" id="detalle" rows="3" maxlength="1000" placeholder="Asignación de Dias(Tamaño Max. 1000):" style="margin-top: 20px;"></textarea>
+                                    <div class="col-12 col-lg-3">
+                                        <label>Dias Extra:</label>
+                                        <input type="number" class="form-control" name="diasextra" id="diasextra" step="0.01" value="0" required>
                                     </div>
                                     <div class="col-12 col-lg-3">
+                                        <label>Inasistencias:</label>
+                                        <input type="number" class="form-control" name="diasmenos" id="diasmenos" step="0.01" value="0" required>
+                                    </div>
+                                    <div class="col-12 col-lg-2">
                                         <label>Seleccione Fecha</label>
                                         <input type="date" class="form-control" name="fechacreacion" id="fechacreacion">
+                                    </div>
+                                    <div class="col-12 col-lg-2">
+                                        <textarea name="detalle" class="form-control" id="detalle" rows="5" maxlength="1000" placeholder="Detalle Registro Pasaje" style="margin-top: 20px;"></textarea>
+                                    </div>
+                                    <div class="col-12 col-lg-2">
+                                        <div class="info-box bg-secondary col-12 " style="margin-top:20px;">
+                                        <span class="info-box-icon bg-warning"><i class="fas fa-coins"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Pagos</span>
+                                            <input type="number" class="form-control" name="pagomedio" id="pagomedio" step="0.01" value="0" required>
+                                        </div>
+                                        </div>
+                                        <div class="col-6"></div>
+                                    </div>
+                                    <div class="col-12 col-lg-2">
+                                        <div class="col-6"></div>
+                                        <div class="info-box bg-secondary col-12" style="margin-top:20px;">
+                                        <span class="info-box-icon bg-warning"><i class="fas fa-coins"></i></span>
+                                        <div class="info-box-content">
+                                            <span class="info-box-text">Monto por Pagar</span>
+                                            <input type="number" class="form-control" name="totalpasaje" id="totalpasaje" step="0.01" value="0" readonly required>
+                                        </div>
+                                        </div>
                                     </div>
                                     <div class="col-12 col-lg-4">
                                         <div class="container-fluid" id="opcionesRegistrarPasaje" align="center" style="margin-top:32px;">
@@ -140,7 +180,12 @@
                                 <th>Gastos</th>
                                 <th>Semana</th>
                                 <th>Mensual</th>
+                                <th>Dias Extra</th>
+                                <th>Inasistencias</th>
+                                <th>Pagos</th>
+                                <th>Monto por pagar</th>
                                 <th>Fecha</th>
+                                <th>Estado</th>
                             </thead>
                             <tbody>
                                 <?php
@@ -157,7 +202,12 @@
                                                 <td>{$unpasaje['gastos']}</td>
                                                 <td>{$unpasaje['semana']}</td>
                                                 <td>{$unpasaje['mensual']}</td>
+                                                <td>{$unpasaje['diasextra']}</td>
+                                                <td>{$unpasaje['diasmenos']}</td>
+                                                <td>{$unpasaje['pagomedio']}</td>
+                                                <td>{$unpasaje['totalpasaje']}</td>
                                                 <td>{$unpasaje['fechacreacion']}</td>
+                                                <td>{$unpasaje['estadopasaje']}</td>
                                             </tr>";
                                     }
                                 }
@@ -173,7 +223,12 @@
                                 <th>Gastos</th>
                                 <th>Semana</th>
                                 <th>Mensual</th>
+                                <th>Dias Extra</th>
+                                <th>Inasistencias</th>
+                                <th>Pagos</th>
+                                <th>Monto por pagar</th>
                                 <th>Fecha</th>
+                                <th>Estado</th>
                             </tfoot>
                         </table>
                     </div>

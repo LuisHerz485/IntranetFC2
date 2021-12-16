@@ -14,6 +14,11 @@
                 "mensual" => "flotante",
                 "detalle" => "longitud1000",
                 "fechacreacion" => "Fecha",
+                "idestadopasaje" => "enteroPositivo",
+                "pagomedio" => "flotante",
+                "totalpasaje" => "flotante",
+                "diasextra" => "flotante",
+                "diasmenos" => "flotante",
             ]);
             if (is_array($data) && !in_array(false, $data, true)) {
                 return ModeloPasaje::mdlRegistrarPasaje($data);
@@ -33,6 +38,11 @@
                 "mensual" => "flotante",
                 "detalle" => "longitud1000",
                 "fechacreacion" => "Fecha",
+                "idestadopasaje" => "enteroPositivo",
+                "pagomedio" => "flotante",
+                "totalpasaje" => "flotante",
+                "diasextra" => "flotante",
+                "diasmenos" => "flotante",
                 "idpasajes" => "enteroPositivo",
             ]);
             
@@ -40,6 +50,11 @@
                 return ModeloPasaje::mdlEditarPasaje($data);
             }
             return false;
+        }
+
+        public static function ctrListarEstadosPasajes(): mixed
+        {
+            return ModeloPasaje::mdlListarEstadosPasajes();
         }
 
         public static function ctrListarPasaje(): mixed
@@ -78,19 +93,6 @@
             return null;
         }
 
-        public static function ctrBuscarPasajeDeUnUsuario(): mixed
-        {
-            $data = ControladorValidacion::validar([
-                "idusuario" => "enteroPositivo",
-            ]);
-    
-            if (is_array($data) && !in_array(false, $data, true)) {
-                return ModeloPasaje::mdlBuscarPasajeDeUnUsuario($data);
-            }
-
-            return null;
-        }
-
         public static function ctrBuscarPasajeDeUnUsuarioPorFecha(): mixed
         {
             $data = ControladorValidacion::validar([
@@ -99,6 +101,19 @@
     
             if (is_array($data) && !in_array(false, $data, true)) {
                 return ModeloPasaje::mdlBuscarPasajeDeUnUsuarioPorFecha($data);
+            }
+    
+            return null;
+        }
+
+        public static function ctrBuscarPasajeDeUnUsuario(): mixed
+        {
+            $data = ControladorValidacion::validar([
+                "idusuario" => "enteroPositivo",
+            ]);
+    
+            if (is_array($data) && !in_array(false, $data, true)) {
+                return ModeloPasaje::mdlBuscarPasajeDeUnUsuario($data);
             }
 
             return null;
