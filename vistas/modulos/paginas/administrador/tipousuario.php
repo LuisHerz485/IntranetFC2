@@ -1,4 +1,4 @@
-  <div class="content-wrapper">
+<div class="content-wrapper">
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -18,17 +18,15 @@
     <div class="content">
       <div class="row">
         <div class="col-md-12">
-          <div class="card card-danger">
-            <div class="card-header">
-              <b class="h4">Tipo de Usuario</b>
-            </div>
-            <div class="mt-4 ml-5 h2">
-              <b><button button class="btn btn-outline-danger centro" onclick="mostrarformTU(true)" id="btnagregar"><i class=" fas fa-plus-circle"> Seleccione este botón para añadir tipo de usuario</button></b></i>
+          <div class="card card">
+            <div class="card-header" style="background-color: rgb(204,0,0);">
+              <b style="color: white; font-size: 27px;">Tipo de Usuario</b>
+              <b><button class="btn bg-yellow" style="margin-left: 65%;" onclick="mostrarformTU(true)" id="btnagregar"><i class=" fas fa-plus-circle"> Añadir tipo de usuario</button></b></i>
             </div>
             <div class="card-body panel-body" id="listadoregistrosTU">
               <div id="tbllistado">
                 <table class="table table-striped tablaDataTipoUsuario dt-responsive">
-                  <thead>
+                  <thead style="background-color:lightgray; font-size: 20px;">
                     <th class="no-exportar">Opciones</th>
                     <th>Estado</th>
                     <th>Nombre</th>
@@ -54,7 +52,7 @@
                     }
                     ?>
                   </tbody>
-                  <tfoot>
+                  <tfoot style="background-color:lightgray; font-size: 20px;">
                     <th class="no-exportar">Opciones</th>
                     <th>Estado</th>
                     <th>Nombre</th>

@@ -153,6 +153,20 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
+                            <p style="margin-left:4px;">Declaraciones Ple<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                             <li class="nav-item">
+                                <a href="declaracionple" class="nav-link ml-4">
+                                    <i class="fas fa-landmark"></i>
+                                    <p style="margin-left:4px;">Libros Electrónicos</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-file-invoice"></i>
                             <p>Liquidaciones Impuestos<i class="right fas fa-angle-left"></i></p>
                         </a>
                         <ul class="nav nav-treeview">

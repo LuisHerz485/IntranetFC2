@@ -37,9 +37,9 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-danger">
-                    <div class="card-header">
-                        <b class="h4">Permisos Pendientes</b>
+                <div class="card card">
+                    <div class="card-header" style="background-color: rgb(204,0,0);">
+                        <b style="color: white; font-size: 27px;">Permisos Pendientes</b>
                     </div>
                     <div class="card-body panel-body">
                         <form method=POST id="frmFiltroPermiso">
@@ -68,14 +68,14 @@
                                         <input type="date" class="form-control" name="fechahasta" id="fechahasta">
                                     </div>
                                     <div class="col-12 col-lg-3 mt-1" align="right">
-                                        <button type="submit" value="filtrar" class="btn btn-outline-danger" id="btnFiltrar" name="btnFiltrar"><i class="fas fa-search"></i> Filtrar</button>
+                                        <button type="submit" value="filtrar" class="btn btn-outline-danger" id="btnFiltrar" name="btnFiltrar" style="margin-top: 10%; width:50%"><i class="fas fa-search"></i> Filtrar</button>
                                     </div>
                                 </div>
                             </div>
                         </form>
                         <div class="mt-3">
                             <table id="tblPermisosPendientes" class="table table-striped dt-responsive tablaDataPermisosPendientes">
-                                <thead>
+                                <thead style="background-color:lightgray; font-size: 20px;">
                                     <th>Estado</th>
                                     <th>Nombres y Apellidos</th>
                                     <th>Tipo Permiso</th>
@@ -127,7 +127,7 @@
                                     }
                                     ?>
                                 </tbody>
-                                <tfoot>
+                                <tfoot style="background-color:lightgray; font-size: 20px;">
                                     <th>Estado</th>
                                     <th>Nombres y Apellidos</th>
                                     <th>Tipo Permiso</th>

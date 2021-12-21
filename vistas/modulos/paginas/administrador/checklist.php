@@ -17,9 +17,9 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-danger">
-          <div class="card-header">
-            <b class="h4">Check List - Personal</b>
+        <div class="card card">
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+            <b style="color: white; font-size: 27px;">Check List - Personal</b>
           </div>
           <div class="card-body panel-body" id="formularioCheckListColaborador">
             <form method=POST id="frmFiltroChecklist">
@@ -49,15 +49,15 @@
                     <input type="date" class="form-control" name="fechahasta" id="fechahasta" required>
                   </div>
                   <div class="col-12 col-lg-3 mt-1" align="center">
-                    <button type="button" value="filtrar" class="btn btn-outline-primary" id="btnFiltrarChecklist" name="btnFiltrarChecklist"><i class="fas fa-search"></i> Buscar Checklist</button>
-                    <button type="button" class="btn btn-outline-success btnAgregarCL" data-toggle="modal" data-target="#modalCheckList"><i class="fas fa-plus"></i> Añadir</button>
+                    <button type="button" value="filtrar" class="btn btn-outline-primary" id="btnFiltrarChecklist" name="btnFiltrarChecklist" style="margin-top: 10%;"><i class="fas fa-search"></i> Buscar Checklist</button>
+                    <button type="button" class="btn btn-outline-success btnAgregarCL" data-toggle="modal" data-target="#modalCheckList" style="margin-top: 10%; margin-left:5%;"><i class="fas fa-plus"></i> Añadir</button>
                   </div>
                 </div>
               </div>
             </form>
             <hr>
             <table id="mostrarCheckList" class="table table-striped tablaDataCheckList dt-responsive">
-              <thead>
+              <thead style="background-color:lightgray; font-size: 20px;">
                 <th class="no-exportar">Opciones</th>
                 <th>Actividad</th>
                 <th>Fecha</th>
@@ -67,7 +67,7 @@
               </thead>
               <tbody>
               </tbody>
-              <tfoot>
+              <tfoot style="background-color:lightgray; font-size: 20px;">
                 <th class="no-exportar">Opciones</th>
                 <th>Actividad</th>
                 <th>Fecha</th>

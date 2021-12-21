@@ -17,14 +17,14 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-danger">
-                    <div class="card-header">
+                <div class="card card">
+                    <div class="card-header" style="background-color: rgb(204,0,0);">
                         <div class="row">
                             <div>
-                                <b class="h4">Actividades asignadas - Checklist</b>
+                                <b style="color: white; font-size: 27px;">Actividades asignadas - Checklist</b>
                             </div>
                             <div class="col" align="right">
-                                <abbr title="Ayuda"><button class="btn btn-warning btn-circle"><i class="fas fa-question-circle"></i></button></abbr>
+                                <abbr title="Ayuda"><button class="btn btn-warning btn-circle" style="margin-top: 0.7%;"><i class="fas fa-question-circle"></i></button></abbr>
                             </div>
                         </div>
                     </div>
@@ -52,14 +52,14 @@
                                     <input type="date" class="form-control" name="fechahasta" id="fechahasta" required>
                                 </div>
                                 <div class="col-12 col-lg-3 mt-2" align="right">
-                                    <button type="button" value="filtrar" class="btn btn-outline-danger" id="btnFiltrarChecklistAsignado" name="btnFiltrarChecklistAsignado"><i class="fas fa-search"></i> Buscar Checklist</button>
+                                    <button type="button" value="filtrar" class="btn btn-outline-danger" id="btnFiltrarChecklistAsignado" name="btnFiltrarChecklistAsignado" style="margin-top: 8.5%;"><i class="fas fa-search"></i> Buscar Checklist</button>
                                 </div>
                             </form>
                             <hr>
                             <div class="row">
                                 <div class="col">
                                     <table id="mostrarCheckListAsignado" class="table table-striped tablaDataCheckListAsignado dt-responsive">
-                                        <thead>
+                                        <thead style="background-color:lightgray; font-size: 20px;">
                                             <th class="no-exportar">Opciones</th>
                                             <th>Actividad</th>
                                             <th>Nombre Completo</th>
@@ -70,7 +70,7 @@
                                         </thead>
                                         <tbody>
                                         </tbody>
-                                        <tfoot>
+                                        <tfoot style="background-color:lightgray; font-size: 20px;">
                                             <th class="no-exportar">Opciones</th>
                                             <th>Actividad</th>
                                             <th>Nombre Completo</th>
@@ -102,7 +102,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <textarea id="detalle2" name="detalle" class="form-control" rows="5" placeholder="Descripicion" disabled></textarea>
+                            <textarea id="detalle2" name="detalle" class="form-control" rows="5" placeholder="Descripción" disabled></textarea>
                         </div>
                     </div>
                 </div>

@@ -18,22 +18,20 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-danger">
-          <div class="card-header">
-            <b class="h4">Departamentos de la empresa</b>
-          </div>
-          <div class="mt-4 ml-5 h2">
-            <b><button class="btn btn-outline-danger centro" onclick="mostrarformD(true)" id="btnagregar"><i class="fas fa-plus-circle"> Seleccione este botón para añadir departamento</button></b></i>
+        <div class="card card">
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+            <b style="color: white; font-size: 27px;">Departamentos de la empresa</b>
+            <b><button class="btn bg-yellow" style="margin-left: 50%;" onclick="mostrarformD(true)" id="btnagregar"><i class="fas fa-plus"> Añadir departamento</button></b></i>
           </div>
           <div class="card-body panel-body" id="listadoregistrosD">
             <div id="tbllistado">
               <table class="table table-striped tablaDataAreas dt-responsive">
-                <thead>
-                  <th class="no-exportar">Opciones</th>
-                  <th>Estado</th>
-                  <th>Nombre</th>
-                  <th>Descripción</th>
-                  <th>Fecha de registro</th>
+                <thead style="background-color:lightgray; font-size: 20px;">
+                  <th class="no-exportar" style="width: 8%;">Opciones</th>
+                  <th style="width: 8%;">Estado</th>
+                  <th style="width: 30%;">Nombre</th>
+                  <th style="width: 30%;">Descripción</th>
+                  <th style="width: 24%;">Fecha de registro</th>
                 </thead>
                 <tbody>
                   <?php
@@ -54,12 +52,12 @@
                   }
                   ?>
                 </tbody>
-                <tfoot>
+                <tfoot style="background-color:lightgray; font-size: 20px;">
                   <th>Opciones</th>
                   <th>Estado</th>
                   <th>Nombre</th>
                   <th>Descripción</th>
-                  <th>Fecha/registro</th>
+                  <th>Fecha de registro</th>
                 </tfoot>
               </table>
             </div>

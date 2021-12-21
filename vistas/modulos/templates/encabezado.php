@@ -8,7 +8,7 @@
     <?php if (isset($_SESSION['idtipousuario']) && in_array($_SESSION['idtipousuario'], [1, 3])) { ?>
       <li class="nav-item dropdown">
         <a class="nav-link" data-toggle="dropdown" href="#" aria-expanded="false">
-          <i class="far fa-bell"></i>
+          <i class="fas fa-bell"></i>
           <span class="badge badge-warning navbar-badge" id="notificaciones"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right" style="left: inherit; right: 0px;">
@@ -23,7 +23,7 @@
     <?php } ?>
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="fas fa-user-times"></i>
+        <i class="fas fa-sign-out-alt"></i>
       </a>
       <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
         <?php
@@ -35,7 +35,7 @@
         ?>
         <div class="dropdown-divider"></div>
         <a href="salir" class="dropdown-item">
-          <i class="fas fa-user-times mr-2"></i> Cerrar Sesión
+          <i class="fas fa-sign-out-alt mr-2"></i> Cerrar Sesión
           <span class="float-right text-muted text-sm">Activa</span>
         </a>
     </li>

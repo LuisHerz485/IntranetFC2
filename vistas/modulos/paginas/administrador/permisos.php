@@ -52,9 +52,9 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-danger" id="form">
-                    <div class="card-header">
-                        <b class="h4">Solicitud de permisos</b>
+                <div class="card card" id="form">
+                    <div class="card-header" style="background-color: rgb(204,0,0);">
+                        <b style="color: white; font-size: 27px;">Solicitud de permisos</b>
                     </div>
                     <div class="card-body panel-body">
                         <form method="POST" id="frmRegistrarPermiso" class="container-fluid" enctype="multipart/form-data">
@@ -92,10 +92,10 @@
                                     <div class="container-fluid" id="opcionesRegistrarPermiso" align="center">
                                         <div class="input-group row">
                                             <div class="col-12">
-                                                <button class="btn btn-primary" name="btnRegistrarPermiso" value="btnRegistrarPermiso" type="submit"><i class="fas fa-lg fa-save"></i> Registrar</button>
+                                                <button class="btn btn-primary btn-block" name="btnRegistrarPermiso" value="btnRegistrarPermiso" type="submit"><i class="fas fa-lg fa-save"></i> Registrar</button>
                                             </div>
                                             <div class="col-12 mt-2">
-                                                <button class="btn btn-secondary" id="btnLimpiarFormPermiso" type="button"><i class="fas fa-lg fa-broom"></i> Limpiar</button>
+                                                <button class="btn btn-secondary btn-block" id="btnLimpiarFormPermiso" type="button"><i class="fas fa-lg fa-broom"></i> Limpiar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -119,7 +119,7 @@
                         <br />
                         <div>
                             <table id="tablaPermisos" class="table table-striped tablaDataPermisos dt-responsive">
-                                <thead>
+                                <thead style="background-color:lightgray; font-size: 20px;">
                                     <th class="no-exportar">id</th>
                                     <th class="no-exportar">idTipoPermiso</th>
                                     <th class="no-exportar">Opciones</th>
@@ -163,7 +163,7 @@
                                     }
                                     ?>
                                 </tbody>
-                                <tfoot>
+                                <tfoot style="background-color:lightgray; font-size: 20px;">
                                     <th class="no-exportar">id</th>
                                     <th class="no-exportar">idTipoPermiso</th>
                                     <th class="no-exportar">Opciones</th>

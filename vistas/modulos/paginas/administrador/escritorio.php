@@ -19,7 +19,7 @@
             <div class="row mx-5">
                 <div class="col-xl-2 col-lg-1 col-md-1"></div>
                 <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                    <a href="usuarios" class="small-box bg-danger">
+                    <a href="usuarios" class="small-box bg" style="background-color: rgb(204,0,0); color:white;">
                         <div class="inner">
                             <h3>Colaboradores</h3>
                             <p>Lista de colaboradores</p>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-xl-1 col-lg-1 col-md-1"></div>
                 <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                    <a href="permisos-pendientes" class="small-box bg-danger">
+                    <a href="permisos-pendientes" class="small-box bg" style="background-color: rgb(204,0,0); color:white;">
                         <div class="inner text-white">
                             <h3>Permisos</h3>
                             <p>Permisos Pendientes: <span id="dashboardPermisos">0</span></p>

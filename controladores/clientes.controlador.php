@@ -104,6 +104,7 @@ class ControladorClientes
 					"idregimen" => ($_POST['idregimen'] <= 0 ? null : $_POST['idregimen']),
 					"coeficiente" => $_POST['coeficiente'],
 				);
+
 				if ($_POST['editarDA'] === "no") {
 					$respuesta = ModeloClientes::mdlIngresarCliente($tabla, $datos);
 					if ($respuesta) {
@@ -181,16 +182,38 @@ class ControladorClientes
 		}
 	}
 
-	public static function ctrEditarRegimen(): int|false
-	{
-		$data = ControladorValidacion::validar([
-			"idcliente" => "enteroPositivo",
-			"idregimen" => "enteroPositivo",
-		]);
-		
-		if (is_array($data) && !in_array(false, $data, true)) {
-			return ModeloClientes::mdlEditarRegimen($data);
+	/* EDITAR REGIMEN TRIBUTARIO */
+
+	static public function ctrEditarRegimen(){
+		$tabla = "cliente";
+
+		if (isset($_POST['idregimen2'])) {
+
+			$datos = array(
+				"idcliente" => $_POST['idusuario2'],
+				"idregimen" => $_POST['idregimen2']
+			);
+
+			$respuesta = ModeloClientes::mdlEditarRegimen($tabla, $datos);
+			if ($respuesta == "ok") {
+				echo "<script>
+						Swal.fire({ 
+							title: 'Success!',
+							text: '¡El regimen tributario fue modificado correctamente!',
+							icon: 'success',
+							confirmButtonText:'Ok'
+							});
+					</script>";
+			}else{
+				echo ("<script>
+					Swal.fire({
+					title: 'Error!',
+					text: '¡No puedes F!',
+					icon: 'error',
+					confirmButtonText: 'Ok'
+					});
+				</script>");
+			}
 		}
-		return false;
 	}
 }

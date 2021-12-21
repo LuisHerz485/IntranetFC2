@@ -120,15 +120,30 @@ class ModeloClientes
             return "error";
         }
     }
+    /*EDITAR REGIMEN TRIBUTARIO */
 
-    public static function mdlEditarRegimen(array $datos): int|false
+    static public function mdlEditarRegimen($tabla, $datos)
     {
-        $filasActualizadas = false;
+        $stmt = conexion::conectar()->prepare("UPDATE $tabla SET idregimen=:idregimen WHERE idcliente=:idcliente");
+        $stmt->bindParam(":idregimen", $datos["idregimen"], PDO::PARAM_STR);
+        $stmt->bindParam(":idcliente", $datos["idcliente"], PDO::PARAM_STR);
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+    }
+
+
+    /* BUSCAR REGIMEN TRIBUTARIO DEL CLIENTE - NO SE ESTA USANDO XD */
+
+    public static function mdlbuscarRegimenTributarioDelCliente(array $datos): mixed
+    {
+        $ejecutado = false;
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $filasActualizadas = $conexion->updateOrDelete("UPDATE cliente SET idregimen=? WHERE idcliente=?;
-            ", $datos);
+            $ejecutado = $conexion->execute("CALL `sp_get_buscarRegimenTributario_V1`(?)", $datos);
         } catch (PDOException $e) {
             echo $e->getMessage();
         } finally {
@@ -137,7 +152,7 @@ class ModeloClientes
                 $conexion = null;
             }
         }
-        return $filasActualizadas;
-    }
+        return $ejecutado;
+    }    
     
 }

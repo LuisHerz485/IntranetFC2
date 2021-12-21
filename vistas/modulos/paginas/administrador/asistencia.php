@@ -18,15 +18,15 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-danger">
-          <div class="card-header">
-          <b class="h4">Control de Asistencia</b>
+        <div class="card card">
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+          <b style="color: white; font-size: 27px;">Control de Asistencia</b>
           </div>
           <div class="card-body panel-body" id="listadoregistrosA">
             <div id="tbllistado">
               <table class="table table-striped tablaDataAsistencia dt-responsive">
-                <thead>
-                  <th class="no-exportar">Opciones</th>
+                <thead style="background-color:lightgray; font-size: 20px;">
+                  <th class="no-exportar" style="width: 8%;">Opciones</th>
                   <th class="no-exportar">Código</th>
                   <th>Área</th>
                   <th>Nombre Completo</th>
@@ -59,7 +59,7 @@
                   }
                   ?>
                 </tbody>
-                <tfoot>
+                <tfoot style="background-color:lightgray; font-size: 20px;">
                   <th>Opciones</th>
                   <th>Código</th>
                   <th>Área</th>

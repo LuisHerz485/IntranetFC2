@@ -17,9 +17,9 @@
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-danger">
-          <div class="card-header">
-          <b class="h4">Consulta de Asistencia por Fecha</b>
+        <div class="card card">
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+          <b style="color: white; font-size: 27px;">Consulta de Asistencia por Fecha</b>
           </div>
           <div class="card-body panel-body" id="listadoregistrosR">
             <div class="row">
@@ -31,7 +31,7 @@
                 <label>Fecha Fin</label>
                 <input type="date" class="form-control" name="fecha_fin" id="fecha_fin">
               </div>
-              <div class="form-group col-lg-6 col-md-3 col-sm-6 col-xs-12">
+              <div class="form-group col-lg-4 col-md-3 col-sm-6 col-xs-12">
                 <label for="">Empleado</label>
                 <select name="idusuario" id="idusuario" class="form-control select2" data-live-search="true" required>
                   <option value="0">Seleccione ...</option>
@@ -44,13 +44,12 @@
                   ?>
                 </select>
               </div>
+              <button class="btn btn-outline-danger btn-s btnMostrar" style="width:10%; height:40%; margin-top:2.7%; margin-left:4%;"><strong><i class="far fa-eye"></i> Mostrar</strong></button>
             </div>
-            <button class="btn btn-outline-danger  btn-s btnMostrar"><strong><i class="far fa-eye"></i> Mostrar</strong></button>
-            <br />
             <br />
             <div id="tbllistado">
               <table id="mostrarReporte" class="table table-striped tablaDataAsistencia dt-responsive">
-                <thead>
+                <thead style="background-color:lightgray; font-size: 20px;">
                   <th class="no-exportar">Código</th>
                   <th>Área</th>
                   <th>Nombre Completo</th>
@@ -61,7 +60,7 @@
                 </thead>
                 <tbody>
                 </tbody>
-                <tfoot>
+                <tfoot style="background-color:lightgray; font-size: 20px;">
                   <th>Código</th>
                   <th>Área</th>
                   <th>Nombre Completo</th>

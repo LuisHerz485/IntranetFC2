@@ -17,27 +17,26 @@
   <?php
   ControladorClientes::ctrCrearCliente();
   ControladorClientes::ctrEditarContra();
+  ControladorClientes::ctrEditarRegimen();
   ?>
   <div class="content">
     <div class="row">
       <div class="col-md-12">
-        <div class="card card-danger">
-          <div class="card-header">
-            <b class="h4">Clientes</b>
-          </div>
-          <div class="mt-4 ml-5 h2">
-            <b><button button class="btn btn-outline-danger centro" onclick="mostrarformC(true)" id="btnagregar"><i class=" fas fa-plus-circle"> Seleccione este botón para añadir cliente</button></b></i>
+        <div class="card card">
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+            <b style="color: white; font-size: 27px;">Clientes</b>
+            <b><button class="btn bg-yellow" style="margin-left: 77%;" onclick="mostrarformC(true)" id="btnagregar"><i class=" fas fa-plus-circle"> Añadir cliente</button></b></i>
           </div>
           <div class="card-body panel-body" id="listadoregistrosC">
             <div id="tbllistado">
               <table id="" class="table table-striped tablaDataClientes dt-responsive">
-                <thead>
+                <thead style="background-color:lightgray; font-size: 20px;">
                   <th class="no-exportar">Opciones</th>
                   <th>N°</th>
                   <th>Estado</th>
                   <th>RUC</th>
                   <th>Razón Social</th>
-                  <th>Usuario SUNAT</th>
+                  <th style="width: 15%;">Usuario SUNAT</th>
                   <th>Clave SOL</th>
                   <th>Regimen</th>
                   <th class="no-exportar">Imagen</th>
@@ -47,11 +46,17 @@
                   $item = null;
                   $valor = null;
                   $numero = 1;
+                  
+
                   $clientes = ControladorClientes::ctrMostrarCliente($item, $valor);
                   foreach ($clientes as $key => $value) {
                     if ($_SESSION['idtipousuario'] == 1) {
                       echo '<tr>
-                          <th scope="row"><button class="btn btn-warning btn-circle btn-xl btnEditarCliente" onclick="mostrarformC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-pencil-alt"></i></button> <button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button>   <button class="btn btn-danger btn-circle btn-xl btnRegiTriub" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalRegi"><i class="fas fa-balance-scale-left"></i></button></th>';
+                          <th scope="row">
+                          <button class="btn btn-warning btn-circle btn-xl btnEditarCliente" onclick="mostrarformC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-pencil-alt"></i></button> 
+                          <button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> 
+                          <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button>   
+                          <button class="btn btn-danger btn-circle btn-xl btnEditarTribu" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalRegi"><i class="fas fa-balance-scale-left"></i></button></th>';
                     } else {
                       echo '<tr>
                           <th scope="row"><button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button></th>';
@@ -65,8 +70,24 @@
                     echo '<td>' . $value['ruc'] . '</td>
                           <td>' . $value['razonsocial'] . '</td>
                           <td>' . $value['usuariosunat'] . '</td>
-                          <td>' . $value['clavesunat'] . '</td>
-                          <td>' . $value['idregimen'] . '</td>';
+                          <td>' . $value['clavesunat'] . '</td>';
+
+                    $variableRegimen = $value['idregimen'];
+                    
+                    $regimen1 = "REGIMEN MYPE TRIBUTARIO";
+                    $regimen2 = "REGIMEN ESPECIAL";
+                    $regimen3 = "RENTA - 3RA CATEGORIA";
+
+                    if($variableRegimen == 1){
+                      echo '<td>' . $regimen1 . '</td>';
+                    }else if($variableRegimen == 2){
+                      echo '<td>' . $regimen2 . '</td>';
+                    }else if($variableRegimen == 3){
+                      echo '<td>' . $regimen3 . '</td>';
+                    }else{
+                      echo '<td> F mano</td>';
+                    }
+
                     if ($value["imagen"] != "") {
                       echo '<td><img src="' . $value['imagen'] . '" width="50px"></td>';
                     } else {
@@ -77,7 +98,7 @@
                   }
                   ?>
                 </tbody>
-                <tfoot>
+                <tfoot style="background-color:lightgray; font-size: 20px;">
                   <th>Opciones</th>
                   <th>N°</th>
                   <th>Estado</th>
@@ -271,7 +292,7 @@
           <div class="form-group">
             <div class="input-group">
               <input class="form-control" type="hidden" name="idusuario2" id="idusuario2">
-              <select class="form-control col-3 select2" name="regimen" id="regimen">
+              <select class="form-control col-3 select2" id="idregimen2" name="idregimen2">
                     <?php
                     $regimenes = ModeloLiquidaciones::mdlListarRegimenesTributario();
                     if ($regimenes) {
@@ -281,13 +302,13 @@
                       }
                     }
                     ?>
-                </select>
+              </select>
             </div>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary">Guardar</button>
+          <button type="submit" class="btn btn-primary btnGuardarRegimen" >Guardar</button>
         </div>
       </div>
     </form>

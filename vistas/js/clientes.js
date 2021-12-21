@@ -173,6 +173,7 @@ $(".btnContraC").click(function () {
   });
 });
 
+
 $(".btnEditarTribu").click(function () {
   var idcliente = $(this).attr("idcliente");
   var datos = new FormData();

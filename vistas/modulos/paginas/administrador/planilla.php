@@ -52,15 +52,15 @@
     <div class="content">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-danger">
-                    <div class="card-header">
-                        <b class="h4">Planilla - Registro</b>
+                <div class="card card">
+                    <div class="card-header" style="background-color: rgb(204,0,0);">
+                        <b style="color: white; font-size: 27px;">Planilla - Registro</b>
                     </div>
                     <div class="card-body panel-body">
                         <form method="POST" id="frmPlanilla" enctype="multipart/form-data">
                             <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-12 col-lg-6">
+                                    <div class="col-12 col-lg-3">
                                         <label>Seleccione el colaborador:</label>
                                         <input class="form-control" type="hidden" name="idplanilla" id="idplanilla" placeholder="idplanilla">
                                         <select name="idusuario" id="idusuario" class="form-control select2" required>
@@ -73,8 +73,8 @@
                                             ?>
                                         </select>
                                     </div>
-                                    <div class="col-12 col-lg-6">
-                                        <label>Seleccione el estado de la planilla:</label>
+                                    <div class="col-12 col-lg-3">
+                                        <label>Seleccione su estado:</label>
                                         <select name="idestadoplanilla" id="idestadoplanilla" class="form-control select2" required>
                                             <?php
                                             if ($estadosPlanilla = ControladorPlanilla::ctrListarEstadosPlanillas()) {
@@ -86,28 +86,28 @@
                                         </select>
                                     </div>
                                     <div class="col-12 col-lg-3">
-                                        <label>Honorario:</label>
-                                        <input class="form-control" type="number" name="honorario" id="honorario" min="0" value="0" required>
-                                    </div>
-                                    <div class="col-12 col-lg-3">
-                                        <label>Dias Laborales</label>
-                                        <input class="form-control" type="number" name="diaslaborales" id="diaslaborales" min="1" value="0" required>
-                                    </div>
-                                    <div class="col-12 col-lg-3">
-                                        <label>Remuneración Diaria:</label>
-                                        <input class="form-control" type="number" name="remuneraciondiaria" id="remuneraciondiaria" value="0" readonly required>
-                                    </div>
-                                    <div class="col-12 col-lg-3">
-                                        <label>Remuneración Mensual:</label>
-                                        <input class="form-control" type="number" name="remuneracionmensual" id="remuneracionmensual" value="0" readonly required>
-                                    </div>
-                                    <div class="col-12 col-lg-4">
                                         <label>Fecha de ingreso:</label>
                                         <input type="date" class="form-control" name="fechaingreso" id="fechaingreso" required>
                                     </div>
-                                    <div class="col-12 col-lg-4">
+                                    <div class="col-12 col-lg-3">
                                         <label>Fecha de fin:</label>
                                         <input type="date" class="form-control" name="fechafin" id="fechafin" required>
+                                    </div>
+                                    <div class="col-12 col-lg-2">
+                                        <label>Honorario:</label>
+                                        <input class="form-control" type="number" name="honorario" id="honorario" min="0" value="0" required>
+                                    </div>
+                                    <div class="col-12 col-lg-2">
+                                        <label>Dias Laborales</label>
+                                        <input class="form-control" type="number" name="diaslaborales" id="diaslaborales" min="1" value="0" required>
+                                    </div>
+                                    <div class="col-12 col-lg-2">
+                                        <label>Remuneración Diaria:</label>
+                                        <input class="form-control" type="number" name="remuneraciondiaria" id="remuneraciondiaria" value="0" readonly required>
+                                    </div>
+                                    <div class="col-12 col-lg-2">
+                                        <label>Remuneración Mensual:</label>
+                                        <input class="form-control" type="number" name="remuneracionmensual" id="remuneracionmensual" value="0" readonly required>
                                     </div>
                                     <div class="col-12 col-lg-4">
                                         <label>Descuento:</label>
@@ -118,23 +118,23 @@
                                         <textarea name="observacion" class="form-control" id="observacion" rows="3" maxlength="1000"></textarea>
                                     </div>
                                     <div class="col-12 col-lg-3">
-                                        <div class="container-fluid" id="opcionesRegistrarPlanilla" align="center" style="margin-top:32px;">
+                                        <div class="container-fluid" id="opcionesRegistrarPlanilla" align="center" style="margin-top:13%;">
                                             <div class="input-group row">
-                                                <div class="col-12">
-                                                    <button class="btn btn-primary btn-block" name="btnRegistrarPlanilla" value="btnRegistrarPlanilla" type="submit"><i class="fas fa-lg fa-save"></i> Registrar</button>
+                                                <div class="col-12 col-lg-6">
+                                                    <button class="btn bg-primary btn-block" style="padding: 12%;" name="btnRegistrarPlanilla" value="btnRegistrarPlanilla" type="submit"><i class="fas fa-lg fa-save fa-4x"></i></button>
                                                 </div>
-                                                <div class="col-12">
-                                                    <button class="btn btn-secondary btn-block" id="btnLimpiarFormPlanilla" type="button"><i class="fas fa-lg fa-broom"></i> Limpiar</button>
+                                                <div class="col-12 col-lg-6">
+                                                    <button class="btn bg-gray btn-block" style="padding: 12%;" id="btnLimpiarFormPlanilla" type="button"><i class="fas fa-lg fa-broom fa-4x"></i></button>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="container-fluid d-none" id="opcionesEditarPlanilla" align="center" style="margin-top:32px;">
+                                        <div class="container-fluid d-none" id="opcionesEditarPlanilla" align="center" style="margin-top:13%;">
                                             <div class="input-group row">
-                                                <div class="col-12">
-                                                    <button class="btn btn-success btn-block" name="btnEditarPlanilla" value="btnEditarPlanilla" type="submit"><i class="fas fa-lg fa-save"></i> Editar</button>
+                                                <div class="col-12 col-lg-6">
+                                                    <button class="btn btn-success btn-block" style="padding: 12%;" name="btnEditarPlanilla" value="btnEditarPlanilla" type="submit"><i class="fas fa-lg fa-save fa-4x"></i></button>
                                                 </div>
-                                                <div class="col-12">
-                                                    <button class="btn btn-danger btn-block" id="btnCancelarEditarPlanilla" type="button"><i class="fas fa-lg fa-times-circle"></i> Cancelar</button>
+                                                <div class="col-12 col-lg-6">
+                                                    <button class="btn btn-danger btn-block" style="padding: 12%;" id="btnCancelarEditarPlanilla" type="button"><i class="fas fa-lg fa-times-circle fa-4x"></i></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -143,7 +143,7 @@
                         </form>
                         <hr>
                         <table id="tblPlanilla" class="table table-striped dt-responsive">
-                            <thead>
+                            <thead style="background-color:lightgray; font-size: 20px;">
                                 <th class="no-exportar">Opciones</th>
                                 <th>Nombre</th>
                                 <th>Cargo</th>
@@ -170,7 +170,7 @@
                                 }
                                 ?>
                             </tbody>
-                            <tfoot>
+                            <tfoot style="background-color:lightgray; font-size: 20px;">
                                 <th class="no-exportar">Opciones</th>
                                 <th>Nombre</th>
                                 <th>Cargo</th>
