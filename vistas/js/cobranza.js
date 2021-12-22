@@ -241,9 +241,7 @@ function listarCobranzas(idcliente) {
                 "'>Vencido</button>",
             ])
             .draw(false);
-            var_dumb(datos);
         }
-        var_dumb(datos);
       });
       $('.btnMostraDetCob').click(function () {
         var datos = new FormData();

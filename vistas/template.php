@@ -170,7 +170,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/agenda.js?v=1.1"></script>
 <script src="vistas/js/archivo.js?v=1.1"></script>
 <script src="vistas/js/pagosclientes.js?v=1.1"></script>
-<script src="vistas/js/cobranza.js?v=2.6"></script>
+<script src="vistas/js/cobranza.js?v=2.7"></script>
 <script src="vistas/js/detallecobranza.js?v=1.1"></script>
 <script src="vistas/js/traduccion.js?v=1.1"></script>
 <script src="vistas/js/dataTable.js?v=3.4"></script>
