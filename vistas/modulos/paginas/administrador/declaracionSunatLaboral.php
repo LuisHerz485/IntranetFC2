@@ -89,8 +89,6 @@
         </div>
     </div>
 </div>
-
-
 <div class="modal fade" id="modalFechaDeclara" role="dialog">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">
