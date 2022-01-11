@@ -59,13 +59,13 @@ class ModeloCumpleanos
         return $cumpleanos;
     }
 
-    public static function mdlBuscarCumpleanosPorID(): mixed
+    public static function mdlBuscarCumpleanosPorID(array $datos): mixed
     {
         $uncumpleanos = null;
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $planillas = $conexion->getDataSingle("SELECT CU.idcumpleanos, , CU.fechacumple, CONCAT(U.nombre,'',U.apellidos) AS nombrecompleto, U.imagen FROM cumpleanos AS CU INNER JOIN usuario U ON U.idusuario = CU.idusuario WHERE CU.idcumpleanos = ?", $datos);
+            $uncumpleanos = $conexion->getDataSingle("SELECT CU.idcumpleanos, , CU.fechacumple, CONCAT(U.nombre,'',U.apellidos) AS nombrecompleto, U.imagen FROM cumpleanos AS CU INNER JOIN usuario U ON U.idusuario = CU.idusuario WHERE CU.idcumpleanos = ?", $datos);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {

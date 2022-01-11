@@ -84,6 +84,19 @@ $('#btnfiltrar1').on('click', function () {
                 : ``
             }`;
             rowestado = `<h3><p class="badge badge-danger">Fuera de plazo</br>por error contador</p></h3>`;
+          }else if (value.estado == 'Inactivos') {
+            rowopcion = `<abbr title="Declarar Fecha"><button class="btn btn-warning border" id="btnModalRegistrarDeclaracion" iddetalledeclaracion="${
+              value.iddetalledeclaracionsunatple
+            }"  iddeclaracion="${value.iddeclaracionple}"  idestado="${
+              value.idestado
+            }" fecha="${
+              value.fechavencimiento
+            }" disabled><i class="far fa-calendar-check"></i></button></abbr>${
+              canEdit
+                ? `<abbr title="Editar Declaracion"><button class="btn btn-secondary border btnModalEditarDeclaracion" iddetalledeclaracion="${value.iddetalledeclaracionsunatple}"  iddeclaracion="${value.iddeclaracionple}" fecha="${value.fechavencimiento}"  idestado="${value.idestado}" numOrden="${value.numOrden}"  fechadeclarada="${value.fechadeclarada}" ><i class="far fa-calendar-check"></i></button></abbr>`
+                : ``
+            }`;
+            rowestado = `<h3><p class="badge badge-warning">Inactivos</p></h3>`;
           }
           $('#tblDeclaracionSunatPle')
             .DataTable()

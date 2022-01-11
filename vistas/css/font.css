@@ -1,0 +1,18 @@
+#todocumple{
+  font-family: Bahnschrift;
+  background: linear-gradient(
+  to right,
+  #0c9ef2,
+  #05befd,
+
+  #89d8f1,
+  #c1ffff,
+  #89d8f1,
+ 
+  #05befd,
+  #0c9ef2);
+  background-size: 110vw;
+animation: sliding 100s linear infinite;
+-webkit-background-clip: background;
+  }
+  

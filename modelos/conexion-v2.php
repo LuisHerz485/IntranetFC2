@@ -1,7 +1,7 @@
 <?php
 class ConexionV2
 {
-    private static string $host = "147.135.1.109";
+    private static string $host = "147.135.6.159";
     private static string $usuario = "fccontad";
     private static string $pass = "l2WDJ3@@bI2_X4gVQ?112189";
     private static string $db = "fccontad_intranet_fc_dev";

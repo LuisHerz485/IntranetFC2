@@ -68,7 +68,7 @@ class ControladorCumpleanos
             ]);
     
             if (is_array($data) && !in_array(false, $data, true)) {
-                return ModeloCumpleanos::ctrBuscarPasajeDeUnCumpleanosPorFecha($data);
+                return ModeloCumpleanos::mdlBuscarPasajeDeUnCumpleanosPorFecha($data);
             }
     
             return null;

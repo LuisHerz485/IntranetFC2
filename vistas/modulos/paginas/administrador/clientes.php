@@ -65,7 +65,7 @@
                     if ($value['estado'] != "1") {
                       echo '<td><button class="btn btn-danger btn-xs btnActivarC" idcliente="' . $value["idcliente"] . '" estado="1">Inactivo</button></td>';
                     } else {
-                      echo '<td><button class="btn btn-success btn-xs btnActivarC" idcliente="' . $value["idcliente"] . '" estado="0">Activo</button></td>';
+                      echo '<td><button class="btn btn-success btn-xs btnActivarC" idcliente="' . $value["idcliente"] . '" estado="0">Activos</button></td>';
                     }
                     echo '<td>' . $value['ruc'] . '</td>
                           <td>' . $value['razonsocial'] . '</td>

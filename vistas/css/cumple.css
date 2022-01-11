@@ -1,0 +1,142 @@
+#thcumpleanos{   
+    font-weight: 900;
+    background-image: linear-gradient(
+        to right,
+        #bc0cf2,
+        red,
+        orangered,
+        orange,
+        orangered,
+        #bc0cf2,
+        red);
+    background-size: 110vw;
+    animation: sliding 100s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+#thcumpleanos2{
+    background: linear-gradient(
+        to right,
+        orangered,
+        orange,
+        gold,
+        hotpink,
+        orangered);
+  background-size: 110vw;
+    animation: sliding 100s linear infinite;
+    -webkit-background-clip: background;
+}
+
+#thcumpleanos3{
+    background: linear-gradient(
+        to right,
+        orangered,
+        orange,
+        gold,
+        hotpink,
+        orangered);
+  background-size: 110vw;
+    animation: sliding 100s linear infinite;
+    -webkit-background-clip: background;
+}
+#thsidebar{
+    background: linear-gradient(
+        to right,
+        #B31616,
+        #c71515,
+        #df2121,
+        #c71515,
+        #B31616);
+  background-size: 240vw;
+  animation: sliding 100s linear infinite;
+  -webkit-background-clip: background;
+}
+
+
+#btnRegistrar{
+  background: linear-gradient(
+  to right,
+  #0049aa,
+  #05befd,
+  #affaf7,
+  #20add2,
+  #032e48,
+  #0049aa);
+background-size: 110vw;
+animation: sliding 100s linear infinite;
+-webkit-background-clip: background;
+}
+#btnLimpiar,#btnLimpiarcliente{
+  background: linear-gradient(
+  to right,
+  #e6e6e6,
+  #b3b3b3,
+  #4d4d4d,
+  #b3b3b3,
+  #e6e6e6);
+  background-size: 110vw;
+animation: sliding 100s linear infinite;
+-webkit-background-clip: background;
+}
+
+#tblCumpleanos{
+  background: linear-gradient(
+  to right,
+  #b1ffff,
+  #c2f0ff,
+  #4dc8ee,
+  #c2f0ff,
+  #b1ffff);
+  background-size: 110vw;
+  animation: sliding 100s linear infinite;
+  -webkit-background-clip: background;
+  }
+
+  #tblCumpleClientes{
+    background: linear-gradient(
+    to right,
+    #b1ffff,
+    #c2f0ff,
+    #4dc8ee,
+    #c2f0ff,
+    #b1ffff);
+    background-size: 110vw;
+    animation: sliding 100s linear infinite;
+    -webkit-background-clip: background;
+  }
+
+@keyframes sliding {
+    to {
+        background-position: -2000vw;
+    }
+}
+
+.padre {
+    display: flex;
+    justify-content: center;
+}
+
+@media(min-width: 992px){
+
+	#fec{
+	margin-top: 0px;	
+	}
+
+	#divLimpiar{
+	margin-top: 0px;
+	
+	}
+}
+#fec{
+  margin-top: 15px;	
+  }
+  
+  #svg-col{
+    margin-left: 15px;
+  }
+  
+  #svg-fec{
+    margin-left: 15px;
+  }

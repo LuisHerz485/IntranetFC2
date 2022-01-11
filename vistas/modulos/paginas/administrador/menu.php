@@ -137,16 +137,22 @@
         </ul>
       </li>
           
-          <li class="nav-item has-treeview">
+      <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
-          <i class="fas fa-cake"></i>
+        <i class="fas fa-birthday-cake"></i>
           <p style="font-size: 14px; margin-left:4px;"> CUMPLEAÑOS<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
         </a>
         <ul class="nav nav-treeview">
           <li class="nav-item">
             <a href="cumpleanos" class="nav-link ml-4">
               <i class="fas fa-user"></i>
-              <p style="margin-left:6px;">Cumpleaños</p>
+              <p style="margin-left:6px;">Colaboradores</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="cumplecliente" class="nav-link ml-4">
+              <i class="fas fa-user"></i>
+              <p style="margin-left:6px;">Clientes</p>
             </a>
           </li>
         </ul>

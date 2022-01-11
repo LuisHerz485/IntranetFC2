@@ -25,6 +25,7 @@ require_once "controladores/planilla.controlador.php";
 require_once "controladores/pasajes.controlador.php";
 require_once "controladores/declaracionsunatple.controlador.php";
 require_once "controladores/cumpleanos.controlador.php";
+require_once "controladores/cumpleclientes.controlador.php";
 
 require_once "modelos/usuarios.modelo.php";
 require_once "modelos/departamento.modelo.php";
@@ -51,5 +52,6 @@ require_once "modelos/planilla.modelo.php";
 require_once "modelos/pasajes.modelo.php";
 require_once "modelos/declaracionplesunat.modelo.php";
 require_once "modelos/cumpleanos.modelo.php";
+require_once "modelos/cumpleanoscliente.modelo.php";
 
 include "vistas/template.php";

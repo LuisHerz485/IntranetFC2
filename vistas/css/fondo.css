@@ -1,0 +1,115 @@
+#fondo  {
+    background-image: url('https://i.pinimg.com/originals/8c/d5/fb/8cd5fb1d410572d9a2066978655aee04.png%');
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover; 
+ }
+
+#fond2{
+  background: linear-gradient(159deg,#bbbec0,#c2f0ff,#4d5357);
+}
+
+
+
+.luz{
+  position: absolute;
+  top: 90%;
+  left: 25%;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: linear-gradient(120deg, yellow, white);
+  animation-name: twinkle;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+.luz.a {
+  top: 45%;
+  left: 50%;
+  animation-delay: 1s;
+  animation-name: twinkle;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(120deg, yellow, white);
+}
+.luz.b {
+    top: 84%;
+    left: 80%;
+    animation-delay: 1s;
+    animation-name: twinkle;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(120deg,yellow, white);
+}
+
+.luz.c {
+    top: 55%;
+    left: 85%;
+    animation-delay: 1s;
+    animation-name: twinkle;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(120deg, yellow, white);
+}
+
+.luz.d {
+    top: 80%;
+    left: 56%;
+    animation-delay: 1s;
+    animation-name: twinkle;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(120deg, yellow, white);
+}
+
+.luz.e {
+    top: 55%;
+    left: 20%;
+    animation-delay: 1s;
+    animation-name: twinkle;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(120deg, yellow, white);
+}
+.luz.f{
+    top: 40%;
+    left: 65%;
+    animation-delay: 1s;
+    animation-name: twinkle;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(120deg, yellow, white);
+}
+.luz.g{
+    top: 70%;
+    left: 12%;
+    animation-delay: 1s;
+    animation-name: twinkle;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(120deg, yellow, white);
+}
+.luz.h{
+    top: 30%;
+    left: 5%;
+    animation-delay: 1s;
+    animation-name: twinkle;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  background: linear-gradient(120deg, yellow, white);
+}
+  
+
+@keyframes twinkle {
+  0% {
+    transform: scale(1.0);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1.0);
+  }
+}
