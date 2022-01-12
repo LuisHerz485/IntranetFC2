@@ -136,7 +136,8 @@
           </li>
         </ul>
       </li>
-          
+      
+      <?php if ($_SESSION['iddepartamento'] == 4 || $_SESSION['idtipousuario'] == 1) { ?>
       <li class="nav-item has-treeview">
         <a href="#" class="nav-link">
         <i class="fas fa-birthday-cake"></i>
@@ -157,8 +158,8 @@
           </li>
         </ul>
       </li>
-
-      <?php if ($_SESSION['idtipousuario'] != 4) { ?>
+      <?php } ?>
+      <?php if ($_SESSION['idtipousuario'] != 4 || $_SESSION['iddepartamento'] == 15) { ?>
         <li class="nav-header" style="color: white;">Drive</li>
         <li class="nav-item has-treeview">
           <a href="admindrive" class="nav-link">

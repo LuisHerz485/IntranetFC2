@@ -59,7 +59,7 @@
                         </li>
                     </ul>
                 </li>
-                <?php if ($_SESSION['iddepartamento'] == 3 || $_SESSION['iddepartamento'] == 5 || $_SESSION['iddepartamento'] == 8 || $_SESSION['iddepartamento'] == 12 || $_SESSION['iddepartamento'] == 13 || $_SESSION['iddepartamento'] == 14 || $_SESSION['iddepartamento'] == 17) { ?>
+                <?php if ($_SESSION['iddepartamento'] == 3 || $_SESSION['iddepartamento'] == 5 || $_SESSION['iddepartamento'] == 8 || $_SESSION['iddepartamento'] == 12 || $_SESSION['iddepartamento'] == 13) { ?>
                     <li class="nav-header" style="color: white;">DRIVE</li>
                     <li class="nav-item has-treeview">
                         <a href="admindrive" class="nav-link">
@@ -102,6 +102,28 @@
                             </li>
                         </ul>
                     </li>
+                <?php } ?>
+                <?php if ($_SESSION['iddepartamento'] == 4) { ?>
+                          <li class="nav-item has-treeview">
+                            <a href="#" class="nav-link">
+                            <i class="fas fa-birthday-cake"></i>
+                            <p style="font-size: 14px; margin-left:4px;"> CUMPLEAÑOS<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="cumpleanos" class="nav-link ml-4">
+                                <i class="fas fa-user"></i>
+                                <p style="margin-left:6px;">Colaboradores</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="cumplecliente" class="nav-link ml-4">
+                                <i class="fas fa-user"></i>
+                                <p style="margin-left:6px;">Clientes</p>
+                                </a>
+                            </li>
+                            </ul>
+                        </li>
                 <?php } ?>
                 <?php if (in_array($_SESSION['iddepartamento'], [19, 13, 5, 8, 3, 20])) { ?>
                     <li class="nav-item">

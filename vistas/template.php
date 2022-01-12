@@ -97,7 +97,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 2: {
-          $colaboradorRutas = ["escritorio", "asistencia", "permisos", "checklist", "admindrive", "cronogramaSunat", "consultaruc", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "cronogramaAnualSunat", "declaracionAnualSunat", "liquidaciones", "listarliquidaciones"];
+          $colaboradorRutas = ["escritorio", "asistencia", "permisos", "checklist", "admindrive", "cronogramaSunat", "consultaruc", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "cronogramaAnualSunat", "declaracionAnualSunat", "liquidaciones", "listarliquidaciones","cumpleanos","cumplecliente"];
           include "vistas/modulos/paginas/colaborador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
             include "vistas/modulos/paginas/colaborador/" . $_GET['ruta'] . ".php";
@@ -117,7 +117,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 4: {
-          $recursosHumanosRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "reportes", "consultaruc", "consultadni", "permisos", "checklist", "checklist-administrador", "checklist-jefe", "permisos-pendientes", "menuAsistencia", "menuChecklist"];
+          $recursosHumanosRutas = ["escritorio", "usuarios", "tipousuario", "departamento", "asistencia", "reportes", "consultaruc", "consultadni", "permisos", "checklist", "checklist-administrador", "checklist-jefe", "permisos-pendientes", "menuAsistencia", "menuChecklist","admindrive"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $recursosHumanosRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
