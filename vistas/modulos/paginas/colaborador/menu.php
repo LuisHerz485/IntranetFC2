@@ -64,7 +64,7 @@
                     <li class="nav-item has-treeview">
                         <a href="admindrive" class="nav-link">
                             <i class="fab fa-google-drive"></i>
-                            <p style="font-size: 15px;" class="ml-1">ADMINISTRACIÓN DEL DRIVE</p>
+                            <p style="font-size: 15px;" class="ml-1">ADMINISTRACIÓN DE CLIENTES</p>
                         </a>
                     </li>
                     <li class="nav-header" style="color: white;">SUNAT</li>
@@ -103,6 +103,7 @@
                         </ul>
                     </li>
                 <?php } ?>
+
                 <?php if ($_SESSION['iddepartamento'] == 4) { ?>
                           <li class="nav-item has-treeview">
                             <a href="#" class="nav-link">
@@ -125,6 +126,30 @@
                             </ul>
                         </li>
                 <?php } ?>
+
+                <?php  if ($_SESSION['iddepartamento'] == 4) { ?>
+                    
+                    <li class="nav-item has-treeview">
+                        <a href="" class="nav-link">
+                            <i class="fas fa-birthday-cake"></i>
+                            <p style="font-size: 15px;" class="ml-1">CUMPLEAÑOS</p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="cumpleanos" class="nav-link ml-4">
+                                    <i class="fas fa-forward"></i>
+                                    <p>Colaboradores</p>
+                                </a>
+                                <a href="cumplecliente" class="nav-link ml-4">
+                                    <i class="fas fa-forward"></i>
+                                    <p>Clientes</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                <?php } ?>
+
                 <?php if (in_array($_SESSION['iddepartamento'], [19, 13, 5, 8, 3, 20])) { ?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">

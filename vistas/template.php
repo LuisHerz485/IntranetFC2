@@ -196,7 +196,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/cumpleano.js?v=1.1"></script>
 <script src="vistas/js/cronogramaLibros.js?v=1.1"></script>
 <script src="vistas/js/declaracionple.js?v=1.2"></script>
-<script src="vistas/js/cumpleclientes.js?v=1.1"></script>
+<script src="vistas/js/cumplecliente.js?v=1.1"></script>
 <script>
   if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);

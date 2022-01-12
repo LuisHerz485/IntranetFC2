@@ -1,41 +1,42 @@
 <?php
+// AJAX de cumplecliente
 
 require_once "./validarsesion.php";
 require_once "../controladores/validacion.controlador.php";
-require_once "../controladores/cumpleclientes.controlador.php";
-require_once "../modelos/cumpleanosclientes.modelo.php";
+require_once "../controladores/cumplecliente.controlador.php";
+require_once "../modelos/cumplecliente.modelo.php";
 
 http_response_code(400);
 if(isset($_POST["opcion"])){
     switch ($_POST["opcion"]){
-        case "registrasCumpleanos":{
+        case "registrasCumpleCliente":{
             http_response_code(200);
-            echo json_encode(["respuesta" => ControladorCumpleClientes::ctrRegistrarCumpleClientes()]);
+            echo json_encode(["respuesta" => controladorcumplecliente::ctrRegistrarCumplecliente()]);
             break;
         }
-        case "editarCumpleanos":{
+        case "editarCumpleCliente":{
             http_response_code(200);
-            echo json_encode(["respuesta" => ControladorCumpleClientes::ctrEditarCumpleaClientes()]);
+            echo json_encode(["respuesta" => controladorcumplecliente::ctrEditarCumplecliente()]);
             break;
         }
-        case "listarCumpleanos":{
-            $respuesta = ControladorCumpleClientes::ctrListarCumpleClientes();
+        case "listarCumpleCliente":{
+            $respuesta = controladorcumplecliente::ctrListarCumplecliente();
             if ($respuesta !== null) {
                 http_response_code(200);
                 echo json_encode(["respuesta" => $respuesta]);
             }
             break;
         }
-        case "buscarCumpleanosPorID":{
-            $respuesta = ControladorCumpleClientes::ctrBuscarCumpleanosClientesPorID();
+        case "buscarCumpleClientePorID":{
+            $respuesta = controladorcumplecliente::ctrBuscarCumpleclientePorID();
             if ($respuesta !== null) {
                 http_response_code(200);
                 echo json_encode(["respuesta" => $respuesta]);
             }
             break;
         }
-        case "buscarCumpleanosDeUnUsuario": {
-            $respuesta = ControladorCumpleClientes::ctrBuscarCumpleanosDeUnCliente();
+        case "BuscarCumpledeunCliente": {
+            $respuesta = controladorcumplecliente::ctrBuscarCumpleclienteDeUnCliente();
             if ($respuesta !== null) {
                 http_response_code(200);
                 echo json_encode(["respuesta" => $respuesta]);
@@ -43,21 +44,14 @@ if(isset($_POST["opcion"])){
             break;
         }
 
-        case "buscarCumpleanosDeUnUsuarioPorFecha": {
-            $respuesta = ControladorCumpleClientes::ctrBuscarCumpleClientePorFecha();
-            if ($respuesta !== null) {
+        case "BuscarCumpledeunClienteporFecha": {
+            $respuesta = controladorcumplecliente::crtBuscarCumpleclienteporfecha();
+            if ($respuesta !== null)
+            {
                 http_response_code(200);
                 echo json_encode(["respuesta" => $respuesta]);
             }
-            break;
-        }
-
-        default: {
             break;
         }
     }
 }
-
-
-
-
