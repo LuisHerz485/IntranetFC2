@@ -158,14 +158,21 @@
         </ul>
       </li>
 
-      <?php if ($_SESSION['idtipousuario'] != 4) { ?>
-        <li class="nav-header" style="color: white;">Drive</li>
+      
+
+      <li class="nav-header" style="color: white;">Drives</li>
         <li class="nav-item has-treeview">
           <a href="admindrive" class="nav-link">
             <i class="fab fa-google-drive"></i>
             <p style="margin-left:4px;">Administración de Clientes</p>
           </a>
-        </li>
+      </li>
+      
+      
+
+
+      <?php if ($_SESSION['idtipousuario'] != 4 ) { ?>
+        
         <li class="nav-header" style="color: white;">SISTEMA EMPRESA</li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">

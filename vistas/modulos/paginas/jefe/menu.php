@@ -64,7 +64,7 @@
                     </ul>
                 </li>
 
-                <?php if ($_SESSION['iddepartamento'] == 3 || $_SESSION['iddepartamento'] == 5 || $_SESSION['iddepartamento'] == 8 || $_SESSION['iddepartamento'] == 12 || $_SESSION['iddepartamento'] == 13 || $_SESSION['iddepartamento'] == 14  && $_SESSION['idtipousuario'] == 6) { ?>
+                <?php if ($_SESSION['iddepartamento'] == 3 || $_SESSION['iddepartamento'] == 5 || $_SESSION['iddepartamento'] == 8 || $_SESSION['iddepartamento'] == 12 || $_SESSION['iddepartamento'] == 11 || $_SESSION['iddepartamento'] == 13 || $_SESSION['iddepartamento'] == 14  && $_SESSION['idtipousuario'] == 6) { ?>
                     <li class="nav-header">DRIVE</li>
                     <li class="nav-item has-treeview">
                         <a href="admindrive" class="nav-link">
