@@ -70,7 +70,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="pagospendientes" class="nav-link ml-4">
+                            <a href="consultaruc" class="nav-link ml-4">
                                 <i class="fas fa-forward"></i>
                                 <p>Consulta Ruc</p>
                             </a>

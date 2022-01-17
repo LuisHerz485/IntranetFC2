@@ -17,8 +17,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-danger">
-                    <div class="card-header">
-                        <b class="h4">Administración de Google Drive - Clientes</b>
+                    <div class="card-header" style="background-color: rgb(204,0,0);">
+                        <b class="h4" style="color: white; font-size: 27px;">Administración de Google Drive - Clientes</b>
                     </div>
                     <div class="card-body">
                         <div class="container-fluid">
@@ -48,7 +48,7 @@
                             <div class="row">
                                 <div class="col">
                                     <table id="mostrarArchivos" class="table table-striped tablaDataArchivos dt-responsive">
-                                        <thead>
+                                        <thead style="background-color:lightgray; font-size: 20px;">
                                             <th>Opciones</th>
                                             <th>Nombre</th>
                                             <th>Tipo de Archivo</th>
@@ -56,7 +56,7 @@
                                         </thead>
                                         <tbody style="font-size: 20px">
                                         </tbody>
-                                        <tfoot>
+                                        <tfoot style="background-color:lightgray; font-size: 20px;">
                                             <th>Opciones</th>
                                             <th>Nombre</th>
                                             <th>Tipo de Archivo</th>

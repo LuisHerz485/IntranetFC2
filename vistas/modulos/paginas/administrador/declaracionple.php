@@ -21,9 +21,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-danger">
-                    <div class="card-header">
+                    <div class="card-header" style="background-color: rgb(204,0,0);">
                         <div class="row">
-                            <b class="h4">Registro de Declaraciones Mensuales Libro Ple</b>
+                            <b class="h4" style="color: white; font-size: 27px;">Registro de Declaraciones Mensuales Libro Ple</b>
                             <div class="col" align="right">
                                 <abbr title="Ayuda"><button class="btn btn-warning btn-circle" data-toggle="modal" data-target="#modalAyuda"><i class="fas fa-question-circle"></i></button></abbr>
                             </div>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="mt-3">
                             <table id="tblDeclaracionSunatPle" class="table table-striped dt-responsive tablaDataDeclaracionSunatPle">
-                                <thead>
+                                <thead style="background-color:lightgray; font-size: 20px;">
                                     <th class="no-exportar">Opciones</th>
                                     <th>Ruc</th>
                                     <th>Clientes </th>
@@ -72,7 +72,7 @@
                                 </thead>
                                 <tbody>
                                 </tbody>
-                                <tfoot>
+                                <tfoot style="background-color:lightgray; font-size: 20px;">
                                     <th class="no-exportar">Opciones</th>
                                     <th>Ruc</th>
                                     <th>Clientes </th>

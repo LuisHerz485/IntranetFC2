@@ -69,13 +69,13 @@
                 </div>
                 <div class="col-7">
                   <table id="tablaIngresoPasajes" class="table table-striped tablaIngresoPasaje dt-responsive">
-                    <thead>
+                    <thead style="background-color:lightgray; font-size: 20px;">
                       <th>FECHA</th>
                       <th>MONTO</th>
                     </thead>
                     <tbody>
                     </tbody>
-                    <tfoot>
+                    <tfoot style="background-color:lightgray; font-size: 20px;">
                       <th>FECHA</th>
                       <th>MONTO</th>
                     </tfoot>

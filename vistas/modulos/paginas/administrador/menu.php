@@ -271,6 +271,8 @@
             </li>
           </ul>
         </li>
+
+        <?php if (in_array($_SESSION['iddepartamento'], [1,3,7,9])) {?>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fas fa-file-invoice"></i>
@@ -285,6 +287,8 @@
             </li>
           </ul>
         </li>
+        <?php } ?>
+
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fas fa-file-invoice"></i>
@@ -299,6 +303,7 @@
             </li>
           </ul>
         </li>
+        <?php if (in_array($_SESSION['iddepartamento'], [1,7,9])) {?>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fas fa-file-invoice"></i>
@@ -317,6 +322,8 @@
             </li>
           </ul>
         </li>
+        <?php } ?>
+
       <?php } ?>
       <li class="nav-header" style="color: white;">AYUDA</li>
       <li class="nav-item">

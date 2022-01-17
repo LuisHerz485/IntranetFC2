@@ -70,6 +70,23 @@
                         <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                     </a>
                 </div>
+
+                <?php if (in_array($_SESSION['idusuario'], [114,90])) {?>
+                <div class="col-xl-1 col-lg-1 col-md-1"></div>
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                    <a href="clientes" class="small-box bg-success">
+                        <div class="inner">
+                            <h3>Clientes</h3>
+                             <p>Lista de clientes</p>
+                        </div>
+                        <div class="icon text-white">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                    </a>
+                </div>
+                <?php } ?>
+
                 <?php if (in_array($_SESSION['iddepartamento'], [3, 20])) { ?>
                     <div class="col-xl-4 col-lg-1 col-md-1"></div>
                         <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12" style="margin-top:20px">
@@ -127,6 +144,8 @@
                             </a>
                         </div>
                     </div>
+
+                    <?php if (in_array($_SESSION['idusuario'], [90])) {?>
                     <div class="row d-flex justify-content-center">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
                             <a href="declaracionAnualSunat" class="small-box bg-info">
@@ -141,6 +160,8 @@
                             </a>
                         </div>
                     </div>
+                    <?php } ?>
+                   
                 </div>
             </div>
             <div class="modal-footer bg-info" al>

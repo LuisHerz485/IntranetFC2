@@ -18,8 +18,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-danger">
-          <div class="card-header">
-            <b class="h3">Check List - Personal</b>
+          <div class="card-header" style="background-color: rgb(204,0,0);"s>
+            <b class="h3" style="color: white; font-size: 27px;">Check List - Personal</b>
           </div>
           <div class="card-body panel-body" id="formularioCheckListColaborador">
             <form method=POST id="frmFiltroChecklist">
@@ -57,7 +57,7 @@
             </form>
             <hr>
             <table id="mostrarCheckList" class="table table-striped tablaDataCheckList dt-responsive">
-              <thead>
+              <thead style="background-color:lightgray; font-size: 20px;">
                 <th class="no-exportar">Opciones</th>
                 <th>Actividad</th>
                 <th>Fecha</th>
@@ -67,7 +67,7 @@
               </thead>
               <tbody>
               </tbody>
-              <tfoot>
+              <tfoot style="background-color:lightgray; font-size: 20px;">
                 <th class="no-exportar">Opciones</th>
                 <th>Actividad</th>
                 <th>Fecha</th>

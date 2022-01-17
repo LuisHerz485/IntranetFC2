@@ -17,8 +17,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-danger">
-          <div class="card-header">
-              <b class="h4">Pagos pendiendes</b>
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+              <b class="h4" style="color: white; font-size: 27px;">Pagos pendiendes</b>
           </div>
           <div class="mt-4 ml-5 h2">
               <a href="https://fccontadores.com/servicios/" class="btn btn-outline-danger centro"><i class="fas fa-donate"> Seleccione este botón para Pagar</i></a>
@@ -26,7 +26,7 @@
           <div class="card-body">
             <div id="tbllistado">
               <table id="mostrarPendiente" class="table table-striped tablaDataClientesPagos dt-responsive text-center">
-                <thead>
+                <thead style="background-color:lightgray; font-size: 20px;">
                   <th>Fecha de Emisión</th>
                   <th>Local</th>
                   <th>Servicio</th>
@@ -75,7 +75,7 @@
                   }
                   ?>
                 </tbody>
-                <tfoot>
+                <tfoot style="background-color:lightgray; font-size: 20px;">
                   <th>Fecha de Emisión</th>
                   <th>Local</th>
                   <th>Monto</th>

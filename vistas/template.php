@@ -97,7 +97,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
           break;
         }
       case 2: {
-          $colaboradorRutas = ["escritorio", "asistencia", "permisos", "checklist", "admindrive", "cronogramaSunat", "consultaruc", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "cronogramaAnualSunat", "declaracionAnualSunat", "liquidaciones", "listarliquidaciones","cumpleanos","cumplecliente"];
+          $colaboradorRutas = ["escritorio", "asistencia", "permisos", "checklist", "admindrive", "cronogramaSunat", "consultaruc", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "cronogramaAnualSunat", "declaracionAnualSunat", "liquidaciones", "listarliquidaciones","cumpleanos","cumplecliente","clientes"];
           include "vistas/modulos/paginas/colaborador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $colaboradorRutas)) {
             include "vistas/modulos/paginas/colaborador/" . $_GET['ruta'] . ".php";
@@ -141,7 +141,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
         }
     }
   } else {
-    $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados", "drivecliente"];
+    $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados","consultaruc", "drivecliente"];
     include "vistas/modulos/paginas/cliente/menu.php";
     if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
       include "vistas/modulos/paginas/cliente/" . $_GET['ruta'] . ".php";

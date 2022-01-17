@@ -18,14 +18,14 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-danger">
-                    <div class="card-header">
-                        <b class="h4">Gestor de Cobranza</b>
+                    <div class="card-header" style="background-color: rgb(204,0,0);">
+                        <b class="h4" style="color: white; font-size: 27px;">Gestor de Cobranza</b>
                     </div>
                     <div class="  card-body panel-body p-4">
                         <div class="row d-flex justify-content-center">
                             <div class="col-lg-4 col-md-6 col-xs-12">
                                 <a href="generarCobranza" class="small-box bg-danger">
-                                    <div class="inner">
+                                    <div class="inner" style="background-color: rgb(204,0,0);">
                                         <h3><span>Generar</span></br><span>Cobranza</span></h3>
                                     </div>
                                     <div class="icon text-white">
@@ -36,7 +36,7 @@
                             </div>
                             <div class="col-lg-4 col-md-6 col-xs-12">
                                 <a href="mostrarcobranza" class="small-box bg-danger">
-                                    <div class="inner">
+                                    <div class="inner" style="background-color: rgb(204,0,0);">
                                         <h3><span>Mostrar</span></br><span>Adeudados</span></h3>
                                     </div>
                                     <div class="icon text-white">
@@ -50,7 +50,7 @@
                         <div class="row d-flex justify-content-center">
                             <div class="col-lg-4 col-md-6 col-xs-12">
                                 <a href="mostrarpagado" class="small-box bg-danger">
-                                    <div class="inner">
+                                    <div class="inner" style="background-color: rgb(204,0,0);">
                                         <h3><span>Mostrar</span></br><span>Pagados</span></h3>
                                     </div>
                                     <div class="icon text-white">

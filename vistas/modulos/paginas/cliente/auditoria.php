@@ -17,8 +17,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-primary">
-          <div class="card-header">
-            <h3 class="card-title">Auditorias</h3>
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+            <h3 class="card-title" style="color: white; font-size: 27px;">Auditorias</h3>
           </div>
           <div class="card-body">
             <input class="form-control" type="hidden" name="idcliente" id="idcliente" value="<?php echo $_SESSION['idcliente']; ?>">

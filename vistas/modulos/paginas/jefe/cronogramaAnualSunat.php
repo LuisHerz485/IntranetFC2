@@ -18,8 +18,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-danger">
-                    <div class="card-header">
-                        <b class="h4">Consultar Cronograma Anual</b>
+                    <div class="card-header" style="background-color: rgb(204,0,0);">
+                        <b class="h4" style="color: white; font-size: 27px;">Consultar Cronograma Anual</b>
                     </div>
                     <div class="card-body panel-body">
                         <div class="container-fluid">
@@ -43,7 +43,7 @@
                         </div>
                         <div class="mt-3">
                             <table id="tblCronogramaAnualSunat" class="container table table-striped dt-responsive tablaDataCronogramaAnual">
-                                <thead>
+                                <thead style="background-color:lightgray; font-size: 20px;">
                                     <tr>
                                         <th>ULTIMO DÍGITO DEL RUC</th>
                                         <th>FECHA DE VENCIMIENTO</th>
@@ -51,7 +51,7 @@
                                 </thead>
                                 <tbody>
                                 </tbody>
-                                <tfoot>
+                                <tfoot style="background-color:lightgray; font-size: 20px;">
                                     <tr>
                                         <th>ULTIMO DÍGITO DEL RUC</th>
                                         <th>FECHA DE VENCIMIENTO</th>

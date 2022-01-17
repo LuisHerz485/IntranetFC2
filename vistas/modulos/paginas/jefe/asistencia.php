@@ -21,13 +21,13 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-danger">
-          <div class="card-header">
-            <b class="h4">Registro de Asistencia</b>
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+            <b class="h4" style="color: white; font-size: 27px;">Registro de Asistencia</b>
           </div>
           <div class="card-body panel-body" id="listadoregistrosA">
             <div id="tbllistado">
               <table class="table table-striped dt-responsive tablaDataAsistenciaUsuario">
-                <thead>
+                <thead style="background-color:lightgray; font-size: 20px;">
                   <th>Asistencia</th>
                   <th>Fecha</th>
                   <th>Estado</th>
@@ -51,7 +51,7 @@
                   }
                   ?>
                 </tbody>
-                <tfoot>
+                <tfoot style="background-color:lightgray; font-size: 20px;">
                   <th>Asistencia</th>
                   <th>Fecha</th>
                   <th>Estado</th>

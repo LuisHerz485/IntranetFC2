@@ -18,13 +18,13 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-danger">
-          <div class="card-header">
-            <b class="h3">Generar Cobranza</b>
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+            <b class="h3" style="color: white; font-size: 27px;">Generar Cobranza</b>
           </div>
           <div class="card-body panel-body" id="listadoGC">
             <div id="tbllistadoCobranza">
               <table id="" class="table table-striped tablaDataTableC dt-responsive text-center">
-                <thead>
+                <thead style="background-color:lightgray; font-size: 20px;">
                   <th>Opciones</th>
                   <th>RUC</th>
                   <th>Razón Social</th>
@@ -55,7 +55,7 @@
                   }
                   ?>
                 </tbody>
-                <tfoot>
+                <tfoot style="background-color:lightgray; font-size: 20px;">
                   <th>Opciones</th>
                   <th>RUC</th>
                   <th>Razón Social</th>

@@ -18,9 +18,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-danger">
-                    <div class="card-header">
+                    <div class="card-header" style="background-color: rgb(204,0,0);">
                         <div class="row">
-                            <b class="h4">Reporte de Declaraciones Mensuales</b>
+                            <b class="h4" style="color: white; font-size: 27px;">Reporte de Declaraciones Mensuales</b>
                         </div>
                     </div>
                     <div class="card-body panel-body">
@@ -66,7 +66,7 @@
                         </div>
                         <div class="mt-3">
                             <table id="tblReporteDeclaracionSunat" class="table table-striped dt-responsive tablaDataReporteDeclaracionSunat">
-                                <thead>
+                                <thead style="background-color:lightgray; font-size: 20px;">
                                     <th>Mes</th>
                                     <th>Fecha de Vencimiento </th>
                                     <th>Estado</th>
@@ -75,7 +75,7 @@
                                 </thead>
                                 <tbody>
                                 </tbody>
-                                <tfoot>
+                                <tfoot style="background-color:lightgray; font-size: 20px;">
                                     <th>Mes</th>
                                     <th>Fecha de Vencimiento </th>
                                     <th>Estado</th>

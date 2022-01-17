@@ -21,8 +21,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-danger">
-          <div class="card-header">
-            <b class="h4">Check List</b>
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+            <b class="h4" style="color: white; font-size: 27px;">Check List</b>
           </div>
           <div class="card-body panel-body" id="listadoUserCL">
             <label class="text-primary h2" align="center">Este es tu equipo <i class="fas fa-users"></i></label>
@@ -48,7 +48,7 @@
               </div>
             <?php } ?>
             <table id="listaCheckUser" class="table table-striped tablaDataTableC dt-responsive text-center">
-              <thead>
+              <thead style="background-color:lightgray; font-size: 20px;">
                 <th>Nombre</th>
                 <th>Correo</th>
                 <th>Área</th>
@@ -87,7 +87,7 @@
 
                 ?>
               </tbody>
-              <tfoot>
+              <tfoot style="background-color:lightgray; font-size: 20px;">
                 <th>Nombre</th>
                 <th>Correo</th>
                 <th>Área</th>

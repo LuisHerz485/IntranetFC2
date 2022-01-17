@@ -18,8 +18,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-danger">
-          <div class="card-header">
-            <b class="h3">Consulta la informacion RUC</b>
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+            <b class="h3" style="color: white; font-size: 27px;">Consulta la informacion RUC</b>
           </div>
           <div class="card-body panel-body text-center" id="listadoregistrosD">
             <h1><strong>Consulta RUC</strong></h1>

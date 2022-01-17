@@ -21,9 +21,9 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-danger">
-                    <div class="card-header">
+                    <div class="card-header" style="background-color: rgb(204,0,0);">
                         <div class="row">
-                            <b class="h4">Liquidaciones Impuesto SUNAT</b>
+                            <b class="h4" style="color: white; font-size: 27px;">Liquidaciones Impuesto SUNAT</b>
                             <div class="col" align="right">
                                 <abbr title="Ayuda"><button class="btn btn-warning btn-circle" data-toggle="modal" data-target="#modalAyuda"><i class="fas fa-question-circle"></i></button></abbr>
                             </div>
@@ -51,7 +51,7 @@
                                         <div class="card ">
                                             <div class="card-body panel-body">
                                                 <table id="tablaLiquidaciones" class="table table-striped dt-responsive tablaDataLiquidacionesGeneral">
-                                                    <thead>
+                                                    <thead style="background-color:lightgray; font-size: 20px;">
                                                         <th class="no-exportar">Opciones</th>
                                                         <th>Cliente</th>
                                                         <th>Importe a Pagar</th>
@@ -64,7 +64,7 @@
                                                     <tbody>
 
                                                     </tbody>
-                                                    <tfoot>
+                                                    <tfoot style="background-color:lightgray; font-size: 20px;">
                                                         <th class="no-exportar">Opciones</th>
                                                         <th>Cliente</th>
                                                         <th>Importe a Pagar</th>

@@ -108,29 +108,32 @@
                                 </div>
                         </form>
                         <hr>
-                        <table id="tblCumpleanos" class="table table-dordered table-striped">
+                        
+                        <table  id ="tblCumpleanos" class="table table-dordered table-striped">                       
                             <thead id="thcumpleanos2" style="background-color: black; color:white;">
                                 <th  class="no-exportar">Opciones</th>
                                 <th >Nombre</th>
                                 <th >Fecha Cumpleaños</th>
                                 <th  class="no-exportar">Imagen</th>
                             </thead>
-                            <tbody>
-                            <div class="luz"></div>
-                            <div class="luz a"></div>
-                            <div class="luz b"></div>
-                            <div class="luz c"></div>
-                            <div class="luz d"></div>
-                            <div class="luz e"></div>
-                            <div class="luz f"></div>
-                            <div class="luz g"></div>
-                            <div class="luz h"></div>
+                            <tbody id="tblbody">
+                            
+                                <div class="luz"></div>
+                                <div class="luz a"></div>
+                                <div class="luz b"></div>
+                                <div class="luz c"></div>
+                                <div class="luz d"></div>
+                                <div class="luz e"></div>
+                                <div class="luz f"></div>
+                                <div class="luz g"></div>
+                                <div class="luz h"></div>
                                 <?php
+                                
                                 $cumpleanos = ControladorCumpleanos::ctrListarCumpleanos();
                                 if ($cumpleanos) {
                                     foreach ($cumpleanos as $uncumpleanos) {
                                         echo 
-                                       '<td>' . "<button type='button' class='btn btn-s btn-warning btn-editar-cumpleanos' dataCumpleanos='" . json_encode($uncumpleanos) . "' ><i class='fas fa-magic'></i> </button>" . '</td>
+                                       '<td >' . "<button type='button' class='btn btn-s btn-warning btn-editar-cumpleanos' dataCumpleanos='" . json_encode($uncumpleanos) . "' ><i class='fas fa-magic'></i> </button>" . '</td>
                                         <td style="color:black;">' . $uncumpleanos['nombrecompleto'] . '</td>
                                         <td style="color:black;">' . $uncumpleanos['fechacumple'] . '</td>';
                                         if ($uncumpleanos["imagen"] != "") {
@@ -142,6 +145,7 @@
                                     }
                                 }
                                 ?>
+                            
                             </tbody>
                             <tfoot id="thcumpleanos2" style="background-color: black; color:white;">
                                 <th  class="no-exportar">Opciones</th>
@@ -149,7 +153,9 @@
                                 <th >Fecha Cumpleaños</th>
                                 <th class="no-exportar">Imagen</th>
                             </tfoot>
+                            
                         </table>
+                        
                     </div>
                 </div>
             </div>

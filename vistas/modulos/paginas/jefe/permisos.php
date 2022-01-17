@@ -57,8 +57,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-danger" id="form">
-                    <div class="card-header">
-                        <b class="h3">Permisos</b>
+                    <div class="card-header" style="background-color: rgb(204,0,0);">
+                        <b class="h3" style="color: white; font-size: 27px;">Permisos</b>
                     </div>
                     <div class="card-body panel-body">
                         <form method="POST" id="frmRegistrarPermiso" class="container-fluid" enctype="multipart/form-data">
@@ -123,7 +123,7 @@
                         <br />
                         <div>
                             <table id="tablaPermisos" class="table table-striped tablaDataPermisos dt-responsive">
-                                <thead>
+                                <thead style="background-color:lightgray; font-size: 20px;">
                                     <th class="no-exportar">id</th>
                                     <th class="no-exportar">idTipoPermiso</th>
                                     <th class="no-exportar">Opciones</th>
@@ -135,7 +135,7 @@
                                     <th>Observacion</th>
                                     <th class="no-exportar">Ver mas</th>
                                 </thead>
-                                <tbody>
+                                <tbody >
                                     <?php
                                     $permisos = ModeloPermiso::mdlListarPermisosxUsuarios($_SESSION["idusuario"]);
                                     if ($permisos) {
@@ -167,7 +167,7 @@
                                     }
                                     ?>
                                 </tbody>
-                                <tfoot>
+                                <tfoot style="background-color:lightgray; font-size: 20px;">
                                     <th class="no-exportar">id</th>
                                     <th class="no-exportar">idTipoPermiso</th>
                                     <th class="no-exportar">Opciones</th>

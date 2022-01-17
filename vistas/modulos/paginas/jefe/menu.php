@@ -37,8 +37,8 @@
                 <li class="nav-header">ADMINISTRACION</li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="fas fa-user-cog"></i>
-                        <p style="font-size: 14px;" class="">ADMINISTRACIÓN PERSONAL<i class="right fas fa-angle-left"></i></p>
+                        <i class="fas fa-user-circle"></i>
+                        <p style="font-size: 14px;" class="">ADMINISTRACIÓN PERSONAL<i class="right fas fa-caret-left"></i></p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
@@ -77,7 +77,7 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-atlas"></i>
-                            <p>Consultas<i class="right fas fa-angle-left"></i></p>
+                            <p>Consultas<i class="right fas fa-caret-left"></i></p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
@@ -91,7 +91,7 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-calendar-alt"></i>
-                            <p>Cronograma<i class="right fas fa-angle-left"></i></p>
+                            <p>Cronograma<i class="right fas fa-caret-left"></i></p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
@@ -113,7 +113,7 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
-                            <p>Declaraciones Mensuales<i class="right fas fa-angle-left"></i></p>
+                            <p>Declaraciones Mensuales<i class="right fas fa-caret-left"></i></p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
@@ -139,7 +139,7 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
-                            <p>Declaraciones Anuales<i class="right fas fa-angle-left"></i></p>
+                            <p>Declaraciones Anuales<i class="right fas fa-caret-left"></i></p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
@@ -167,7 +167,7 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
-                            <p>Liquidaciones Impuestos<i class="right fas fa-angle-left"></i></p>
+                            <p>Liquidaciones Impuestos<i class="right fas fa-caret-left"></i></p>
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">

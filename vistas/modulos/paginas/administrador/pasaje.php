@@ -169,8 +169,8 @@
                                 </div>
                         </form>
                         <hr>
-                        <table id="tblPasaje" class="table table-striped dt-responsive">
-                            <thead>
+                        <table id="tblPasaje" class="table table-striped dt-responsive" >
+                            <thead style="background-color:lightgray; font-size: 20px;">
                                 <th class="no-exportar">Opciones</th>
                                 <th>Nombre</th>
                                 <th>Departamento</th>
@@ -213,7 +213,7 @@
                                 }
                                 ?>
                             </tbody>
-                            <tfoot>
+                            <tfoot style="background-color:lightgray; font-size: 20px;">
                                 <th class="no-exportar">Opciones</th>
                                 <th>Nombre</th>
                                 <th>Departamento</th>

@@ -18,8 +18,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-danger">
-          <div class="card-header">
-            <h3 class="card-title">Tipo de servicios&emsp;<button class="btn btn-light" onclick="mostrarform(true)" id="btnagregar"><i class="fa fa-plus-circle"></i> Añadir</button></h3>
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+            <b class="card-title" style="color: white; font-size: 27px;">Tipo de servicios&emsp;<button class="btn bg-yellow" onclick="mostrarform(true)" id="btnagregar"><i class="fas fa-plus"> Añadir</button></b></i>
           </div>
           <div class="card-body" id="listadoregistros">
             <div class="row justify-content-center">
@@ -46,7 +46,7 @@
             <br>
             <div id="tbllistado">
               <table id="mostrarArchivoS" class="table table-striped tablaDataTipoServicio dt-responsive">
-                <thead>
+                <thead style="background-color:lightgray; font-size: 20px;">
                   <th class="no-exportar">Opciones</th>
                   <th>Nombre</th>
                   <th>Descripción</th>
@@ -60,7 +60,7 @@
                   }
                   ?>
                 </tbody>
-                <tfoot>
+                <tfoot style="background-color:lightgray; font-size: 20px;">
                   <th>Opciones</th>
                   <th>Nombre</th>
                   <th>Descripción</th>

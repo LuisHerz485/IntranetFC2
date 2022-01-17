@@ -19,7 +19,7 @@
             <div class="row mx-5">
                 <div class="col-12 col-lg-6">
                     <a href="pagospendientes" class="small-box bg-danger">
-                        <div class="inner">
+                        <div class="inner" style="background-color: rgb(204,0,0);">
                             <h3>Pagar</h3>
                             <p>Ir a pagar pendientes</p>
                         </div>
@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-12 col-lg-6">
                     <a href="pagosrealizados" class="small-box bg-danger">
-                        <div class="inner">
+                        <div class="inner" style="background-color: rgb(204,0,0);">
                             <h3>Mis Pagos</h3>
                             <p>Mis pagos realizados</p>
                         </div>

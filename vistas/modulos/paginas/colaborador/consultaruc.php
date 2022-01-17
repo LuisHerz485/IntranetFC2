@@ -8,7 +8,7 @@
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
           <li class="breadcrumb-item h4"><a href="#"><b class="text-red">Consulta</b></a></li>
-            <li class="breadcrumb-item active h4">Consulta RUC</li></b>
+            <li class="breadcrumb-item active h4" >Consulta RUC</li></b>
           </ol>
         </div>
       </div>
@@ -18,8 +18,8 @@
     <div class="row">
       <div class="col-md-12">
         <div class="card card-danger">
-          <div class="card-header">
-            <b class="h3">Consulta la informacion RUC</b>
+          <div class="card-header" style="background-color: rgb(204,0,0);">
+            <b class="h3" style="color: white; font-size: 27px;">Consulta la informacion RUC</b>
           </div>
           <div class="card-body panel-body text-center" id="listadoregistrosD">
             <h1><strong>Consulta RUC</strong></h1>

@@ -41,18 +41,7 @@
     animation: sliding 100s linear infinite;
     -webkit-background-clip: background;
 }
-#thsidebar{
-    background: linear-gradient(
-        to right,
-        #B31616,
-        #c71515,
-        #df2121,
-        #c71515,
-        #B31616);
-  background-size: 240vw;
-  animation: sliding 100s linear infinite;
-  -webkit-background-clip: background;
-}
+
 
 
 #btnRegistrar{
@@ -81,7 +70,8 @@ animation: sliding 100s linear infinite;
 -webkit-background-clip: background;
 }
 
-#tblCumpleanos{
+
+#tblbody{
   background: linear-gradient(
   to right,
   #b1ffff,
@@ -92,7 +82,8 @@ animation: sliding 100s linear infinite;
   background-size: 110vw;
   animation: sliding 100s linear infinite;
   -webkit-background-clip: background;
-  }
+}
+
 
   #tblCumpleClientes{
     background: linear-gradient(
@@ -106,18 +97,43 @@ animation: sliding 100s linear infinite;
     animation: sliding 100s linear infinite;
     -webkit-background-clip: background;
   }
+/* sidebar del menu*/
+/*
+#barra{
+  background: linear-gradient(
+      #fd1717,
+      #d41818,
+      #B31616,
+      #B31616, 
+      #d31919,
+      #d31919,
+      #d31919,
+      #B31616,
+      #B31616,
+      #d41818,
+      #fd1717);
+background-size: 200% 200%;
+-webkit-animation:color 5s ease infinite;
+-moz-animation: color 5s ease infinite;
+animation: color 20s ease infinite;
+}
+*/
 
-@keyframes sliding {
-    to {
-        background-position: -2000vw;
-    }
+@keyframes color {
+  0%{background-position:50% 0%}
+  50%{background-position:50% 100%}
+  100%{background-position:50% 00%}
 }
 
 .padre {
     display: flex;
     justify-content: center;
 }
-
+@keyframes sliding {
+  to {
+      background-position: -1000vw;
+  }
+}
 @media(min-width: 992px){
 
 	#fec{

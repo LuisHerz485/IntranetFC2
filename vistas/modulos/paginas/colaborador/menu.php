@@ -127,28 +127,6 @@
                         </li>
                 <?php } ?>
 
-                <?php  if ($_SESSION['iddepartamento'] == 4) { ?>
-                    
-                    <li class="nav-item has-treeview">
-                        <a href="" class="nav-link">
-                            <i class="fas fa-birthday-cake"></i>
-                            <p style="font-size: 15px;" class="ml-1">CUMPLEAÑOS</p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="cumpleanos" class="nav-link ml-4">
-                                    <i class="fas fa-forward"></i>
-                                    <p>Colaboradores</p>
-                                </a>
-                                <a href="cumplecliente" class="nav-link ml-4">
-                                    <i class="fas fa-forward"></i>
-                                    <p>Clientes</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                <?php } ?>
 
                 <?php if (in_array($_SESSION['iddepartamento'], [19, 13, 5, 8, 3, 20])) { ?>
                     <li class="nav-item">
@@ -177,6 +155,9 @@
                             </li>
                         </ul>
                     </li>
+
+
+                    <?php if (in_array($_SESSION['idusuario'], [90])) {?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
@@ -191,6 +172,10 @@
                             </li>
                         </ul>
                     </li>
+                    <?php } ?>
+
+
+                    <?php if (in_array($_SESSION['idusuario'], [90,88,114,128,129])) {?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
@@ -209,6 +194,8 @@
                             </li>
                         </ul>
                     </li>
+                    <?php } ?>
+
                 <?php } ?>
 
                 <li class="nav-header" style="color: white;">AYUDA</li>
