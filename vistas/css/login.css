@@ -1,0 +1,86 @@
+/*//////////////////////////////////////////////////////////////////
+[ login ]*/
+.limiter {
+    width: 100%;
+    margin: 0 auto; 
+    /*
+    background-image: url('https://i.ibb.co/CHgrKVx/fc-contadores-53.png');
+    background-repeat: no-repeat;
+    background-size: cover;*/
+}
+  
+  .container-login100 {
+    width: 100%;  
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+  }
+  
+  
+  .wrap-login100 {
+    width: 100%;
+    background: transparent;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    flex-direction: row-reverse;
+  
+  }
+  .wrap-login102{
+    width: 50%;
+    background: yellow;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    flex-direction: row-reverse;
+  
+  }
+  
+  /*==================================================================
+  [ login more ]*/
+  .login100-more {
+    width: calc(100% - 560px);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+  }
+  
+  
+  
+  /*==================================================================
+  [ Form ]*/
+  
+  .login100-form {
+    width: 560px;
+    min-height: 100vh;
+    display: block;
+    background-color: #f7f7f7;
+    background-image: url('https://i.ibb.co/1RK3zrY/Fondo-corto.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 173px 55px 55px 55px;
+    
+  }
+
+  
+  #cardred{
+    background-color: transparent;
+    /*background-color: rgb(214,0,0);*/
+  }

@@ -98,26 +98,20 @@ animation: sliding 100s linear infinite;
     -webkit-background-clip: background;
   }
 /* sidebar del menu*/
-/*
+
 #barra{
   background: linear-gradient(
-      #fd1717,
-      #d41818,
+      rgb(214,0,0),
       #B31616,
-      #B31616, 
-      #d31919,
-      #d31919,
-      #d31919,
+      rgb(214,0,0),
       #B31616,
-      #B31616,
-      #d41818,
-      #fd1717);
+      rgb(214,0,0));
 background-size: 200% 200%;
 -webkit-animation:color 5s ease infinite;
 -moz-animation: color 5s ease infinite;
 animation: color 20s ease infinite;
 }
-*/
+
 
 @keyframes color {
   0%{background-position:50% 0%}

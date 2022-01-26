@@ -16,12 +16,13 @@
           <input type="text" class="form-control border" placeholder="Usuario" name="usuario">
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control border" placeholder="Password" name="password">
           <div class="input-group-append">
             <div class="input-group-text border-0">
               <span class="fas fa-lock text-dark"></span>
             </div>
           </div>
+          <input type="password" class="form-control border" placeholder="Password" name="password">
+          
         </div>
         <div class="row">
           <div class="col-3">
