@@ -157,7 +157,7 @@
                     </li>
 
 
-                    <?php if (in_array($_SESSION['idusuario'], [90])) {?>
+                    <?php if (in_array($_SESSION['idusuario'], [90,153,154])) {?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>

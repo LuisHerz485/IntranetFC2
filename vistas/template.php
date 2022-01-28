@@ -42,7 +42,6 @@
   <link rel="stylesheet" href="vistas/css/cumple.css">
   <link rel="stylesheet" href="vistas/css/font.css">
   <link rel="stylesheet" href="vistas/css/fondo.css">
-  <link rel="stylesheet" type="text/css" href="vistas/plugins/vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="vistas/css/login.css">
   
 
