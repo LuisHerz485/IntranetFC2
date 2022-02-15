@@ -26,6 +26,8 @@ require_once "controladores/pasajes.controlador.php";
 require_once "controladores/declaracionsunatple.controlador.php";
 require_once "controladores/cumpleanos.controlador.php";
 require_once "controladores/cumplecliente.controlador.php";
+require_once "controladores/horarioscolab.controlador.php";
+require_once "controladores/credencialesclientes.controlador.php";
 
 require_once "modelos/usuarios.modelo.php";
 require_once "modelos/departamento.modelo.php";
@@ -53,6 +55,8 @@ require_once "modelos/pasajes.modelo.php";
 require_once "modelos/declaracionplesunat.modelo.php";
 require_once "modelos/cumpleanos.modelo.php";
 require_once "modelos/cumplecliente.modelo.php";
+require_once "modelos/horarioscolab.modelo.php";
+require_once "modelos/credencialesclientes.modelo.php";
 
 
 include "vistas/template.php";

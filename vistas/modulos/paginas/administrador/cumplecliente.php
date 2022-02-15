@@ -112,16 +112,7 @@
                                 <th class="no-exportar">IMAGEN</th>
                                 </tr>
                             </thead>
-                        <tbody>
-                            <div class="luz"></div>
-                            <div class="luz a"></div>
-                            <div class="luz b"></div>
-                            <div class="luz c"></div>
-                            <div class="luz d"></div>
-                            <div class="luz e"></div>
-                            <div class="luz f"></div>
-                            <div class="luz g"></div>
-                            <div class="luz h"></div>
+                        <tbody id="tblbody">
                             <?php
                             $cumplecliente = controladorcumplecliente::ctrListarCumpleCliente();
                             if($cumplecliente){

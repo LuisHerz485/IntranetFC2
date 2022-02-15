@@ -88,7 +88,7 @@
                                                     <button id="btnRegistrar" class="btn btn-primary btn-lg btn-block pull-right" name="btnRegistrarCumpleanos" value="btnRegistrarCumpleanos" type="submit"><span class="fas fa-lg fa-birthday-cake fa-3x"></span></button>
                                                 </div>
                                                 <div class="col-12 col-lg-6">
-                                                    <button id="btnLimpiar" class="btn btn-secondary btn-lg btn-block pull-right" id="btnLimpiarFormCumpleanos" type="button"><span class="fas fa-lg fa-broom fa-3x"></span></button>
+                                                    <button class="btn btn-secondary btn-lg btn-block pull-right" id="btnLimpiarFormCumpleanos" type="button"><span class="fas fa-lg fa-broom fa-3x"></span></button>
                                                 </div>
                                             </div>
                                         </div>
@@ -117,16 +117,6 @@
                                 <th  class="no-exportar">Imagen</th>
                             </thead>
                             <tbody id="tblbody">
-                            
-                                <div class="luz"></div>
-                                <div class="luz a"></div>
-                                <div class="luz b"></div>
-                                <div class="luz c"></div>
-                                <div class="luz d"></div>
-                                <div class="luz e"></div>
-                                <div class="luz f"></div>
-                                <div class="luz g"></div>
-                                <div class="luz h"></div>
                                 <?php
                                 
                                 $cumpleanos = ControladorCumpleanos::ctrListarCumpleanos();

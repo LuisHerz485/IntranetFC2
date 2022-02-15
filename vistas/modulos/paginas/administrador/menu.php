@@ -33,6 +33,23 @@
           </a>
         </li>
         <li class="nav-header" style="color: white;">ADMINISTRACIÓN</li>
+        <?php if (in_array($_SESSION['idusuario'], [16,54,152,56,151])) { ?>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fas fa-file-invoice"></i>
+            <p style="margin-left:4px;">Credenciales<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="credencialesclientes" class="nav-link ml-4">
+                <i class="fas fa-landmark"></i>
+                <p style="margin-left:4px;">Clientes</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <?php } ?>
+
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-building"></i>
@@ -63,15 +80,24 @@
                 <p style="margin-left:6px;">Clientes</p>
               </a>
             </li>
-            <?php
-            if ($_SESSION['idtipousuario'] != 4) { ?>
+
+            
               <li class="nav-item">
                 <a href="permisos-pendientes" class="nav-link ml-4">
                   <i class="fas fa-id-badge"></i>
                   <p style="margin-left:6px;">Permisos</p>
                 </a>
               </li>
-            <?php } ?>
+
+              <?php if (in_array($_SESSION['idusuario'], [16,54,152,56,151])) { ?>
+              <li class="nav-item">
+                <a href="horariocolab" class="nav-link ml-4">
+                  <i class="fas fa-id-badge"></i>
+                  <p style="margin-left:6px;">Horarios colaboradores</p>
+                </a>
+              </li>
+              <?php } ?>
+             
             <li class="nav-item">
               <a href="tipousuario" class="nav-link ml-4">
                 <i class="fas fa-user-cog"></i>

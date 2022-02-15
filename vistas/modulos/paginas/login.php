@@ -51,7 +51,7 @@
           </div>
         </form>   
         <!-- /.imagen de fondo -->
-        <div class="login100-more" style="background-image: url('https://i.ibb.co/CHgrKVx/fc-contadores-53.png');">
+        <div class="login100-more" style="background-image: url('vistas/dist/img/Fondologinadmin.png');">
 				</div>   
       </div>
     </div> 

@@ -71,7 +71,7 @@ animation: sliding 100s linear infinite;
 }
 
 
-#tblbody{
+.tblbody{
   background: linear-gradient(
   to right,
   #b1ffff,

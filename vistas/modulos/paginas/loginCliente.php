@@ -50,7 +50,7 @@
         </div>
       </div>
       <!-- /.imagen de fondo -->
-      <div class="login100-more" style="background-image: url('https://i.ibb.co/LdL7rt7/Fondocliente.png');">
+      <div class="login100-more" style="background-image: url('vistas/dist/img/Fondocliente.jpg');">
 			</div> 
     </div>
   </div>

@@ -79,7 +79,7 @@
 				</div>
 				
 			</div>
-			<div class="login100-more" style="background-image: url('https://i.ibb.co/nmfF7wv/Fondoasistencia.png');">
+			<div class="login100-more" style="background-image: url('vistas/dist/img/Fondoasistencia.jpg');">
 			</div>
 					
 		</div>		

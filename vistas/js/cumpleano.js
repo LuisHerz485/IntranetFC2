@@ -1,7 +1,7 @@
 $('#btnLimpiarFormCumpleanos').on('click', function () {
   $('#idusuario').val(null).trigger('change');
   $('#fechacumple').val(null).trigger('change');
-  $('form#frmCumpleanosClientes')[0].reset();
+  $('form#frmCumpleanos')[0].reset();
 });
 
   $(document).on('click', '.btn-editar-cumpleanos', function () {
