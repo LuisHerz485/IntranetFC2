@@ -23,12 +23,35 @@ class controladorhorarioscolab
             }
         }
         return false;
-        
-
     }
+
     public static function ctrListhorarioscolab(): mixed
     {
         return modelohorariocolab::mdlListarHorarioColab();
     }
 
+    public static function ctrBuscarhorarioscolabporid(): mixed
+    {
+        $data = ControladorValidacion::validar([
+            "idhorariocolab" => "enteroPositivo",
+        ]);
+
+        if (is_array($data) && !in_array(false, $data, true)) {
+            return modelohorariocolab::mdlBuscarHorarioColabporID($data);
+        }
+        return null;
+    }
+
+    public static function ctrEditarhorarioscolab(): int|false
+    {
+        $data = ControladorValidacion::validar([
+            "idusuario" => "enteroPositivo",
+        ]);
+
+        if (is_array($data) && !in_array(false, $data, true)) {
+            return modelohorariocolab::mdlEditarHorarioColab($data);
+        }
+        return false;
+    }
+   
 }

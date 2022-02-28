@@ -12,7 +12,7 @@ class modelocredencialesclientes{
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $credencialesclientes = $conexion->getData("SELECT u.razonsocial, u.ruc , hc.Gerente, u.logincliente, hc.contrase FROM Credencliente hc 
+            $credencialesclientes = $conexion->getData("SELECT u.razonsocial, u.estado, u.ruc , hc.Gerente, u.logincliente, hc.contrase FROM Credencliente hc 
             INNER JOIN cliente u ON hc.idcliente = u.idcliente");
         } catch (PDOException $e) {
             echo $e->getMessage();

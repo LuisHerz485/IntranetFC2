@@ -7,8 +7,8 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Clientes</b></a></li>
-                        <li class="breadcrumb-item active h5">Credenciales</li></b>
+                        <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Colaboradores</b></a></li>
+                        <li class="breadcrumb-item active h5">Usuario</li></b>
                     </ol>
                 </div>
             </div>
@@ -20,7 +20,7 @@
             <div class="col-md-12">
                 <div class="card card-danger">
                     <div id="barra"class="card-header">
-                        <b class="h4">Credenciales de Clientes</b>
+                        <b class="h4">Credenciales de Usuarios</b>
                     </div>
                     <div class="card-body panel-body">
                         <form>
@@ -28,12 +28,11 @@
                         </form>
                         <hr>
 
-                        <table id="tblcredencialesclientes" class="table table-bordered table-striped">
+                        <table id="tblcredencialesusuario" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
-                                    <th>Razon Social</th>
-                                    <th>RUC</th>
-                                    <th>Gerente</th>
+                                    <th>Nombres completo</th>
+                                    <th>departamento</th>
                                     <th>Login</th>
                                     <th>Contraseña</th>
                                     <th>Estado</th>
@@ -42,43 +41,40 @@
                             </thead>
                             <tbody>
                                 <?php
-                                $credencialesclientes = controladorcredencialesclientes::ctrlistarcredencialesclientes();
-                                if($credencialesclientes){
-                                    foreach($credencialesclientes as $credencialesclientes){
+                                $credencialesusuario = controladorcredencialesusuario::ctrlistarcredencialesusuario();
+                                if($credencialesusuario){
+                                    foreach($credencialesusuario as $credencialesusuario){
                                         echo
                                         '<tr>'.
+                                        '<td>'.$credencialesusuario["nombrecompleto"].'</td>
+                                        <td>'.$credencialesusuario["nombre"].'</td>
+                                        <td>'.$credencialesusuario["login"].'</td>
+                                        <td>'.$credencialesusuario["contrase"].'</td>';
                                         
-                                            '<td>'.$credencialesclientes["razonsocial"].'</td>
-                                            <td>'.$credencialesclientes["ruc"].'</td>
-                                            <td>'.$credencialesclientes["Gerente"].'</td>
-                                            <td>'.$credencialesclientes["logincliente"].'</td>
-                                            <td>'.$credencialesclientes["contrase"].'</td>';
-                                            if($credencialesclientes["estado"] == "1"){
+                                            if($credencialesusuario["estado"] == "1"){
                                                 echo '<td><button class="btn btn-success btn-sm">Activo</button></td>';
                                             }else{
                                                 echo '<td><button class="btn btn-danger btn-sm">Inactivo</button></td>';
                                             }
+                                        
                                     }
                                 }
                                 ?>
-
                             </tbody>
+
                             <tfoot>
                                 <tr>
-                                    <th>Razon Social</th>
-                                    <th>RUC</th>
-                                    <th>Gerente</th>
+                                    <th>Nombres completo</th>
+                                    <th>departamento</th>
                                     <th>Login</th>
                                     <th>Contraseña</th>
                                     <th>Estado</th>
                                 </tr>
-
                             </tfoot>
-
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div> 
-</div>    
+</div>

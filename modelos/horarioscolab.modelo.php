@@ -63,6 +63,22 @@ class modelohorariocolab{
         return $unhorariocolab;
     }
 
-    
-    
+    public static function mdlEditarHorarioColab(array $datos):int|false
+    {
+        $filasActualizadas = false;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $filasActualizadas = $conexion->updateorDelete("UPDATE horarioscolab SET idusuario=?, horaentrada=?, horasalida=?, detalle=? WHERE idhorario=?;", $datos);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $filasActualizadas;
+
+    }
 }

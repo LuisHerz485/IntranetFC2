@@ -33,6 +33,22 @@
                     </a>
                 </li>
                 <li class="nav-header" style="color: white;">ADMINISTRACION</li>
+                <?php if (in_array($_SESSION['idusuario'], [145])) { ?>
+                <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-file-invoice"></i>
+                    <p style="margin-left:4px;">Credenciales<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                    <a href="afp" class="nav-link ml-4">
+                        <i class="fas fa-user-circle"></i>
+                        <p style="margin-left:4px;">AFP</p>
+                    </a>
+                    </li>
+                </ul>
+                </li>
+                <?php } ?>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="fas fa-user-cog"></i>
@@ -157,7 +173,7 @@
                     </li>
 
 
-                    <?php if (in_array($_SESSION['idusuario'], [90,153,154])) {?>
+                    <?php if (in_array($_SESSION['idusuario'], [90,153,154,128])) {?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
@@ -175,7 +191,7 @@
                     <?php } ?>
 
 
-                    <?php if (in_array($_SESSION['idusuario'], [90,88,114,128,129,155,153,154])) {?>
+                    <?php if (in_array($_SESSION['idusuario'], [90,88,114,128,129,155,153,154,159,141,156,157,145])) {?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>

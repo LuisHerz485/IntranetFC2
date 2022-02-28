@@ -32,7 +32,7 @@
                 })</script>";
         }
     } else if (isset($_POST["btnGuardarHorario"])) {
-        if (ControladorEntrada::ctrEditarEntrada()) {
+        if (controladorhorarioscolab::ctrEditarhorarioscolab()) {
             echo "<script>Swal.fire({
                     title: 'Editado!',
                     text: '¡Se Edito el horario correctamente!',

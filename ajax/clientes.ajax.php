@@ -28,6 +28,13 @@ class AjaxClientes
 		$respuesta = ControladorClientes::ctrMostrarCliente($item, $valor);
 		echo json_encode($respuesta);
 	}
+	public function ajaxteditarfechacontrato()
+	{
+		$item = "fechacontrato";
+		$valor = $this->idcliente;
+		$respuesta = ControladorClientes::ctreditarfecha($item, $valor);
+		echo json_encode($respuesta);
+	}
 }
 
 if (isset($_POST['estado'])) {

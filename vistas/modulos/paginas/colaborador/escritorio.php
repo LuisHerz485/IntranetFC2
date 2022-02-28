@@ -71,7 +71,7 @@
                     </a>
                 </div>
 
-                <?php if (in_array($_SESSION['idusuario'], [114,90])) {?>
+                <?php if (in_array($_SESSION['idusuario'], [114,90,128])) {?>
                 <div class="col-xl-1 col-lg-1 col-md-1"></div>
                 <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <a href="clientes" class="small-box bg-success">
@@ -88,19 +88,21 @@
                 <?php } ?>
 
                 <?php if (in_array($_SESSION['iddepartamento'], [3, 20])) { ?>
-                    <div class="col-xl-4 col-lg-1 col-md-1"></div>
-                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12" style="margin-top:20px">
-                        <a href="#" class="small-box bg-info " data-toggle="modal" data-target="#modalDecMen">
-                            <div class="inner">
-                                <h3>SUNAT</h3>
-                                <p>Declaraciones</p>
-                            </div>
-                            <div class="icon text-white">
-                                <i class="fas fa-landmark"></i>
-                            </div>
-                            <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
-                        </a>
-                    </div>
+                
+                <div class="col-xl-4 col-lg-1 col-md-1"></div>
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12" style="margin-top:20px">
+                    <a href="#" class="small-box bg-info " data-toggle="modal" data-target="#modalDecMen">
+                        <div class="inner">
+                             <h3>SUNAT</h3>
+                             <p>Declaraciones</p>
+                        </div>
+                        <div class="icon text-white">
+                             <i class="fas fa-landmark"></i>
+                        </div>
+                        <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                    </a>
+                </div>
+
                 <?php } ?>
             </div>
         </div>

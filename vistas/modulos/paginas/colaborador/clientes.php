@@ -57,7 +57,12 @@
                           <button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> 
                           <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button>   
                           <button class="btn btn-danger btn-circle btn-xl btnEditarTribu" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalRegi"><i class="fas fa-balance-scale-left"></i></button></th>';
-                    } else {
+                    } else if(in_array($_SESSION['idusuario'], [114,90,128])){
+                      echo '<tr>
+                          <th scope="row">
+                          <button class="btn btn-warning btn-circle btn-xl btnEditarCliente" onclick="mostrarformC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-pencil-alt"></i></button> 
+                          <button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button>';             
+                    }else {
                       echo '<tr>
                           <th scope="row"><button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> </th>';
                     }

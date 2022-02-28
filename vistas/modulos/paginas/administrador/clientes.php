@@ -18,6 +18,7 @@
   ControladorClientes::ctrCrearCliente();
   ControladorClientes::ctrEditarContra();
   ControladorClientes::ctrEditarRegimen();
+  ControladorClientes::ctreditarfecha();
   ?>
   <div class="content">
     <div class="row">
@@ -38,7 +39,8 @@
                   <th>Razón Social</th>
                   <th style="width: 15%;">Usuario SUNAT</th>
                   <th>Clave SOL</th>
-                  <th>Regimen</th>
+                  <th>Regimen</th>              
+                  <th>Inicio de Contrato</th>
                   <th class="no-exportar">Imagen</th>
                 </thead>
                 <tbody>
@@ -55,7 +57,8 @@
                           <th scope="row">
                           <button class="btn btn-warning btn-circle btn-xl btnEditarCliente" onclick="mostrarformC(true)" idcliente="' . $value['idcliente'] . '"><i class="fas fa-pencil-alt"></i></button> 
                           <button class="btn btn-secondary btn-circle btn-xl btnEditarDetalleCliente" onclick="mostrarDetformC(true)" idcliente="' . $value['idcliente'] . '"><i class="far fa-address-book"></i></button> 
-                          <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button>   
+                          <button class="btn btn-info btn-circle btn-xl btnContraC" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalContra"><i class="fas fa-key"></i></button>
+                          <button title="Editar fecha de inicio de contrato" class="btn btn-primary btn-circle btn-xl btnfechacontrato" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalfechacontra"><i class="fas fa-calendar-alt"></i></button>   
                           <button class="btn btn-danger btn-circle btn-xl btnEditarTribu" idcliente="' . $value['idcliente'] . '" data-toggle="modal" data-target="#modalRegi"><i class="fas fa-balance-scale-left"></i></button></th>';
                     } else {
                       echo '<tr>
@@ -87,6 +90,7 @@
                     }else{
                       echo '<td> F mano</td>';
                     }
+                    echo '<td>'. $value['fechacontrato'] .'</td>';
 
                     if ($value["imagen"] != "") {
                       echo '<td><img src="' . $value['imagen'] . '" width="50px"></td>';
@@ -107,6 +111,7 @@
                   <th>Usuario</th>
                   <th>Clave</th>
                   <th>Regimen</th>
+                  <th>Inicio de Contrato</th>
                   <th>Imagen</th>
                 </tfoot>
               </table>
@@ -309,6 +314,34 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
           <button type="submit" class="btn btn-primary btnGuardarRegimen" >Guardar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="modal fade" id="modalfechacontra" role="dialog">
+  <div class="modal-dialog">
+    <form role="form" method="post" enctype="multipart/form-data">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Fecha de inicio de contrato</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" type="hidden" name="idusuario3" id="idusuario3">                
+                <label>Fecha</label>
+                <input type="date" class="form-control" name="fechacontrato" id="fechacontrato" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+          <button type="submit" class="btn btn-primary" name="guardarfechacontrato" value="guardarfechacontrato" >Guardar</button>
         </div>
       </div>
     </form>

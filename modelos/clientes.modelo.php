@@ -134,6 +134,20 @@ class ModeloClientes
         }
     }
 
+    /*EDITAR FECHA CONTRATO */
+
+    static public function mdlEditarFechaContrato($tabla, $datos)
+    {
+        $stmt = conexion::conectar()->prepare("UPDATE $tabla SET fechacontrato=:fechacontrato WHERE idcliente=:idcliente");
+        $stmt->bindParam(":fechacontrato", $datos["fechacontrato"], PDO::PARAM_STR);
+        $stmt->bindParam(":idcliente", $datos["idcliente"], PDO::PARAM_STR);
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+    }
+
 
     /* BUSCAR REGIMEN TRIBUTARIO DEL CLIENTE - NO SE ESTA USANDO XD */
 

@@ -46,6 +46,18 @@
                 <p style="margin-left:4px;">Clientes</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="credencialesusuario" class="nav-link ml-4">
+                <i class="fas fa-landmark"></i>
+                <p style="margin-left:4px;">Usuarios</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="afp" class="nav-link ml-4">
+                <i class="fas fa-user-circle"></i>
+                <p style="margin-left:4px;">AFP</p>
+              </a>
+            </li>
           </ul>
         </li>
         <?php } ?>
@@ -230,6 +242,24 @@
             </ul>
           </li>
         <?php } ?>
+
+        <li class="nav-header" style="color: white;">OPERACIONES</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fas fa-atlas"></i>
+            <p style="margin-left:4px;">COTIZACIONES<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="estadofinanciero" class="nav-link ml-4">
+                <i class="fas fa-globe"></i>
+                <p style="margin-left:4px;">Cotizacion</p>
+              </a>
+            </li>
+          </ul>
+        <li>
+        </li>
+
         <li class="nav-header" style="color: white;">SUNAT</li>
         <li class="nav-item">
           <a href="#" class="nav-link">

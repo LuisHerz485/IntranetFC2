@@ -216,4 +216,36 @@ class ControladorClientes
 			}
 		}
 	}
+	/* EDITAR fecha contrato */
+	static public function ctreditarfecha(){
+		$tabla = "cliente";
+
+		if (isset($_POST['fechacontrato'])) {
+			$datos = array(
+				"idcliente" => $_POST['idusuario3'],
+				"fechacontrato" => $_POST['fechacontrato']
+			);
+
+			$respuesta = ModeloClientes::mdlEditarFechaContrato($tabla, $datos);
+			if ($respuesta == "ok") {
+				echo "<script>
+						Swal.fire({ 
+							title: 'Success!',
+							text: '¡La fecha de contrato fue modificada correctamente!',
+							icon: 'success',
+							confirmButtonText:'Ok'
+							});
+						</script>";
+			}else{
+				echo ("<script>
+					Swal.fire({
+					title: 'Error!',
+					text: '¡No puedes F!',
+					icon: 'error',
+					confirmButtonText: 'Ok'
+					});
+				</script>");
+			}
+		}
+	}
 }

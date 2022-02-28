@@ -194,6 +194,32 @@ $(".btnEditarTribu").click(function () {
     },
   });
 });
+//editar fecha contrato
+$(".btnfechacontrato").click(function () {
+  var idcliente = $(this).attr("idcliente");
+  var datos = new FormData();
+  datos.append("idcliente", idcliente);
+  $.ajax({
+    url: "ajax/clientes.ajax.php",
+    method: "POST",
+    data: datos,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function (respuesta) {
+      $("#idusuario3").val(respuesta["idcliente"]);
+    },
+    error: function (respuesta) {
+      console.log("Error", respuesta);
+    },
+  });
+});
+$(document).on('click', '.btnfechacontrato', function () {
+  let btn = $(this);
+  $("#modalfechacontra").modal("show");   
+});
+
 
 $("#btnBuscarRazon").click(function () {
   var datos = new FormData();

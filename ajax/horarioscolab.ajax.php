@@ -22,6 +22,19 @@ if(isset($_POST["opcion"])){
             }
             break;
         }
+        case "buscarhorarioscolabporid":{
+            $respuesta = controladorhorarioscolab::ctrBuscarhorarioscolabporid();
+            if ($respuesta !== null) {
+                http_response_code(200);
+                echo json_encode(["respuesta" => $respuesta]);
+            }
+            break;
+        }
+        case "editarhorarioscolab":{
+            http_response_code(200);
+            echo json_encode(["respuesta" => controladorhorarioscolab::ctrEditarhorarioscolab()]);
+            break;
+        }
 
         default: {
             break;
