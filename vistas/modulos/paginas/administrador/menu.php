@@ -58,6 +58,13 @@
                 <p style="margin-left:4px;">AFP</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="contratocolab" class="nav-link ml-4">
+                <i class="fas fa-user-circle"></i>
+                <p style="margin-left:4px;">Contrato colaboradores</p>
+              </a>
+
+            </li>
           </ul>
         </li>
         <?php } ?>

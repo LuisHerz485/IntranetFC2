@@ -191,7 +191,7 @@
                     <?php } ?>
 
 
-                    <?php if (in_array($_SESSION['idusuario'], [90,88,114,128,129,155,153,154,159,141,156,157,145])) {?>
+                    <?php if (in_array($_SESSION['idusuario'], [90,88,114,128,129,155,153,154,159,141,156,157,145,162,163])) {?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>
