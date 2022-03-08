@@ -33,7 +33,7 @@
           </a>
         </li>
         <li class="nav-header" style="color: white;">ADMINISTRACIÓN</li>
-        <?php if (in_array($_SESSION['idusuario'], [16,54,152,56,151])) { ?>
+        <?php if (in_array($_SESSION['idusuario'], [16,54,152,56,151,164])) { ?>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fas fa-file-invoice"></i>
