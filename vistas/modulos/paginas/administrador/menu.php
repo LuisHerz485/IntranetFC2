@@ -254,13 +254,13 @@
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fas fa-atlas"></i>
-            <p style="margin-left:4px;">COTIZACIONES<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
+            <p style="margin-left:4px;">BALANCE<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="estadofinanciero" class="nav-link ml-4">
                 <i class="fas fa-globe"></i>
-                <p style="margin-left:4px;">Cotizacion</p>
+                <p style="margin-left:4px;">Estado Financiero</p>
               </a>
             </li>
           </ul>

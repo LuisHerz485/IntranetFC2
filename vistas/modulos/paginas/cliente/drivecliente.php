@@ -89,7 +89,7 @@
                                 <button type="button" class="btn btn-danger btn-block" data-dismiss="modal">Salir</button>
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-success btn-block" name="btnSubirArchivos" id="btnSubirArchivosCliente">Aceptar</button>
+                                <button type="button" class="btn btn-success btn-block" name="btnSubirArchivos" id="btnSubirArchivos">Aceptar</button>
                             </div>
                         </div>
                         <div class="row">

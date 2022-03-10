@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-danger">
-                    <div class="card-header" style="background-color: rgb(204,0,0);>
+                    <div class="card-header" style="background-color: rgb(204,0,0);">
                         <div class="row">
                             <b class="h4" style="color: white; font-size: 27px;">Reporte de Declaraciones Mensuales</b>
                         </div>

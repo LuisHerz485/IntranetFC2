@@ -106,8 +106,31 @@
                             <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
                         </a>
                     </div>
+
                     <div class="col-xl-1"></div>
                 <?php } ?>
+                
+                <!--ACCESO RESTRINGIDO CALENDARIO-->
+                <?php if (in_array($_SESSION['idusuario'], [16,54,152,56,151,164])) { ?>
+                
+                    <div class="col-xl-1"></div>
+                    <div class="col-xl-3 col-lg-1 col-md-1"></div>
+                        <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                            <a href="calendario" class="small-box bg-primary">
+                                <div class="inner">
+                                    <h3>Calendario - Agenda Web</h3>
+                                    <p>Manejos de Eventos</p>
+                                </div>
+                                <div class="icon text-white">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <p class="small-box-footer bg-dark border">Ingresar <i class="fas fa-arrow-circle-right"></i></p>
+                            </a>
+                    </div>
+                
+                <?php } ?>
+
+
             </div>
         </div>
     </section>

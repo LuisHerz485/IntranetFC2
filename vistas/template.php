@@ -96,7 +96,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive", "cambiarhorario", "tardanzas", "consultaruc", "menuAsistencia", "menuChecklist", "menuCobranza", "menuIngreso", "cronogramaSunat", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "cronogramaAnualSunat", "liquidaciones", "listarliquidaciones", "declaracionAnualSunat", "planilla", "pasaje","listarpasaje","cronogramaLibros","cumpleanos","declaracionple","busquedacumple","cumplecliente","horariocolab","credencialesclientes","credencialesusuario","afp","estadofinanciero","contratocolab","calendario"];
+          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive", "cambiarhorario", "tardanzas", "consultaruc", "menuAsistencia", "menuChecklist", "menuCobranza", "menuIngreso", "cronogramaSunat", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "cronogramaAnualSunat", "liquidaciones", "listarliquidaciones", "declaracionAnualSunat", "planilla", "pasaje","listarpasaje","cronogramaLibros","cumpleanos","declaracionple","busquedacumple","cumplecliente","horariocolab","credencialesclientes","credencialesusuario","afp","estadofinanciero","contratocolab","calendario","resultadosintegrales"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorGeneralRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -209,7 +209,8 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/horariocolab.js?v=1.1"></script>
 <script src="vistas/js/estadofinanciero.js?v=1.1"></script>
 <script src="vistas/js/contratocolab.js?v=1.1"></script>
-
+<script src="vistas/js/resultadosintegrales.js?v=1.1"></script>
+<script src="vistas/js/afp.js?v=1.1"></script>
 
 
 

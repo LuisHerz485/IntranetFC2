@@ -16,6 +16,20 @@ http_response_code(400);
                     echo json_encode(["respuesta" => $respuesta]);
                 }
             }
+            case "registrar afp":{
+                $respuesta = controladorafp::ctrregistrarafp();
+                if($respuesta){
+                    http_response_code(200);
+                    echo json_encode(["respuesta" => $respuesta]);
+                }
+            }
+            case "editarafp":{
+                http_response_code(200);
+                echo json_encode(["respuesta" => controladorafp::ctreditarafp()]);
+            }
+            default: {
+                break;
+            }
         }
     }
 ?>

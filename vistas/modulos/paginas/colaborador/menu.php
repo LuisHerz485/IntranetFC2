@@ -33,6 +33,7 @@
                     </a>
                 </li>
                 <li class="nav-header" style="color: white;">ADMINISTRACION</li>
+
                 <?php if (in_array($_SESSION['idusuario'], [145])) { ?>
                 <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -49,6 +50,7 @@
                 </ul>
                 </li>
                 <?php } ?>
+
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
                         <i class="fas fa-user-cog"></i>

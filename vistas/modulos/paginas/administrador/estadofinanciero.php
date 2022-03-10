@@ -7,7 +7,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Liquidacionde Impuestos</b></a></li>
+                            <li class="breadcrumb-item h5"><a href="#"><b class="text-red">Liquidacion de Impuestos</b></a></li>
                             <li class="breadcrumb-item active h5">Registro de Liquidaciones</li></b>
                         </ol>
                     </div>
@@ -26,6 +26,29 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
+                        <h2>&nbsp;&nbsp;&nbsp;CONSULTA RUC:</h2>
+                        
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                    <label for="">RUC(*):</label>
+                                    <input class="form-control" type="hidden" name="editarDA" id="editarDA" value="no">
+                                    <input class="form-control" type="hidden" name="idcliente" id="idcliente">
+                                    <div class="input-group mb-3">
+                                        <input class="form-control" type="text" name="ruc" id="ruc" maxlength="12" placeholder="RUC" required>
+                                        <div class="input-group-append">
+                                        <button class="btn btn-outline-success" id="btnBuscarRazon" type="button"><i class="fas fa-search"></i> Buscar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-6 col-md-6 col-xs-12">
+                                    <label for="">Razón Social(*):</label>
+                                    <input class="form-control" type="text" name="razonsocial" id="razonsocial" maxlength="100" placeholder="Razón Social" required>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="card-body panel-body">
                             <div class="container-fluid">
                                 <form id="frmliquidaciones" method="POST" action="ajax/generarLiquidacionPDF.php" enctype="multipart/form-data" target="_blank">
@@ -40,13 +63,13 @@
                                                     <table>
                                                         
                                                         <thead>
-                                                            <th>Nombre</th>
+                                                            <th>NOMBRE</th>
                                                             <th>ANEXO</th>
                                                             <th>VALOR</th>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td><div class="text-white" style="background-color: rgb(189, 3, 3);" align="left">-ACTIVO CORRIENTE-</div></td>
+                                                                <td><div class="text-white" style="background-color: #1E83C7;" align="center">ACTIVO CORRIENTE</div></td>
                                                             </tr>
                                                         
                                                             <tr>
@@ -91,14 +114,14 @@
                                                             </tr>
 
                                                             <tr>
-                                                                <td class="h5">TOTAL-ACTIVO-CORRIENTE</td>
+                                                                <td class="h5"><b>TOTAL ACTIVO CORRIENTE</b></td>
                                                                 <td> <input type="text" class="form-control text-center col-sm-6 bg-warning" readonly></td>
                                                                 <td> <input type="number" name="totalactivoc" id="totalactivoc" class="form-control text-center bg-warning"  onchange="sumaTotal1();" readonly></td>
                                                             </tr>
     
                                                             <tr>
                                                                 
-                                                                <td> <div class="text-white" style="background-color: rgb(204,0,0);" align="left">-ACTIVO NO CORRIENTE-</div></td>
+                                                                <td> <div class="text-white" style="background-color: #1E83C7;" align="center">ACTIVO NO CORRIENTE</div></td>
                                                             </tr>
     
                                                             <tr>
@@ -120,12 +143,17 @@
                                                                 <td><input type="number" name="depamorti" id="depamorti" class="form-control text-center monto2" value="0" onchange="sumarActiNoCorr();"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="h5">TOTAL-ACTIVO-NO-CORRIENTE</td>
+                                                                <td class="h5"><b>TOTAL ACTIVO NO CORRIENTE</b></td>
                                                                 <td> <input type="text" class="form-control text-center col-sm-6 bg-warning" readonly></td>
                                                                 <td> <input type="number" name="totalactivonoc" id="totalactivonoc"   class="form-control text-center bg-warning "  onchange="sumaTotal1();" readonly></td>
-                                                            </tr>
+                                                            </tr>           
+                                                            <tr><td> </td></tr> 
+                                                            <tr><td> </td></tr>  
+                                                            <tr><td> </td></tr>  
+                                                            <tr><td> </td></tr>  
+                                                            <tr><td> </td></tr>                                                 
                                                             <tr>
-                                                                <td class="h5">TOTAL-ACTIVO</td>
+                                                                <td class="h5"><b>TOTAL ACTIVO</b></td>
                                                                 <td> <input type="text" class="form-control text-center col-sm-6 bg-warning" readonly></td>
                                                                 <td> <input type="number" name="totalactivo" id="totalactivo"  class="form-control text-center bg-warning"  onchange="sumaTotal1();"  readonly></td>
                                                             </tr>
@@ -143,13 +171,13 @@
                                                 <div class="card-body panel-body">
                                                     <table>
                                                         <thead>
-                                                            <th>Nombre</th>
+                                                            <th>NOMBRE</th>
                                                             <th>ANEXO</th>
                                                             <th>VALOR</th>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td><div class="text-white" style="background-color: rgb(189, 3, 3);" align="left">-PASIVO CORRIENTE-</div></td>
+                                                                <td><div class="text-white" style="background-color: #1E83C7;" align="center">PASIVO CORRIENTE</div></td>
                                                             </tr>
                                                         
                                                             <tr>
@@ -183,18 +211,18 @@
                                                                 <td> <input type="number"  name ="divterce" id="divterce" class="form-control text-center mon" value="0" onchange="sumarPasivo();"></td> 
                                                             </tr>
                                                             <tr>
-                                                                <td>Ingresos Diferidos</td>
+                                                                <td>Pasivo Diferidos</td>
                                                                 <td> <input type="text"  style="text-align: center;" class="form-control text-center col-sm-6" readonly></td>
                                                                 <td> <input type="number"  name ="ingredif" id="ingredif" class="form-control text-center mon" value="0" onchange="sumarPasivo();"></td> 
                                                             </tr>
                                                             <tr>
-                                                                <td class="h5">TOTAL-PASIVO-CORRIENTE</td>
+                                                                <td class="h5"><b>TOTAL PASIVO CORRIENTE</b></td>
                                                                 <td> <input type="text" class="form-control text-center col-sm-6 bg-warning" readonly></td>
-                                                                <td> <input type="number" name="totalpasivoc" id="totalpasivoc" class="form-control text-center bg-warning" value="0" readonly></td>
+                                                                <td> <input type="number" name="totalpasivoc" id="totalpasivoc" class="form-control text-center bg-warning" readonly></td>
                                                             </tr>
     
                                                             <tr>
-                                                                <td> <div class="text-white" style="background-color: rgb(204,0,0);" align="left">-PASIVO NO CORRIENTE-</div></td>
+                                                                <td> <div class="text-white" style="background-color: #1E83C7;" align="center">PASIVO NO CORRIENTE</div></td>
                                                             </tr>
                                                             
                                                             <tr>
@@ -203,18 +231,18 @@
                                                                 <td> <input type="number"  name ="oblilargo" id="oblilargo" class="form-control text-center mon2" value="0" onchange="sumarPasivoNoCorr();"></td> 
                                                             </tr>
                                                             <tr>
-                                                                <td class="h5">TOTAL-PASIVO-NO-CORRIENTE</td>
+                                                                <td class="h5"><b>TOTAL PASIVO NO CORRIENTE</b></td>
                                                                 <td> <input type="text" class="form-control text-center col-sm-6 bg-warning" readonly></td>
-                                                                <td> <input type="number" name="totalpasivonoc" id="totalpasivonoc" class="form-control text-center bg-warning" value="0" onchange="sumaTotal2();" readonly></td>
+                                                                <td> <input type="number" name="totalpasivonoc" id="totalpasivonoc" class="form-control text-center bg-warning"  onchange="sumaTotal2();" readonly></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="h5">TOTAL-PASIVO</td>
+                                                                <td class="h5"><b>TOTAL PASIVO</b></td>
                                                                 <td> <input type="text" class="form-control text-center col-sm-6 bg-warning" readonly></td>
-                                                                <td> <input type="number" name="totalpasivo" id="totalpasivo" class="form-control text-center bg-warning" value="0" onchange="sumaTotal2();"  onchange="sumaTotal3();" readonly></td>
+                                                                <td> <input type="number" name="totalpasivo" id="totalpasivo" class="form-control text-center bg-warning" onchange="sumaTotal2();"  onchange="sumaTotal3();" readonly></td>
                                                             </tr>
     
                                                             <tr>
-                                                                <td> <div class="text-white" style="background-color: rgb(204,0,0);" align="left">-PATRIMONIO-</div></td>
+                                                                <td> <div class="text-white" style="background-color: #1E83C7;" align="center">PATRIMONIO</div></td>
                                                             </tr>
     
                                                             <tr>
@@ -244,14 +272,14 @@
                                                             </tr>
     
                                                             <tr>
-                                                                <td class="h5">TOTAL-PATRIMONIO</td>
+                                                                <td class="h5"><b>TOTAL PATRIMONIO</b></td>
                                                                 <td> <input type="text" class="form-control text-center col-sm-6 bg-warning" readonly></td>
-                                                                <td> <input type="number" name="totalpatrimo" id="totalpatrimo" class="form-control text-center bg-warning" onchange="sumaTotal3();" value="0" readonly></td>
+                                                                <td> <input type="number" name="totalpatrimo" id="totalpatrimo" class="form-control text-center bg-warning" onchange="sumaTotal3();"  readonly></td>
                                                             </tr>
                                                             <tr>
-                                                                <td class="h5">TOTAL-PASIVO-Y-PATRIMONIO</td>
+                                                                <td class="h5"><b>TOTAL PASIVO Y PATRIMONIO</b></td>
                                                                 <td> <input type="text" class="form-control text-center col-sm-6 bg-warning" readonly></td>
-                                                                <td> <input type="number" name="totalpasivopat" id="totalpasivopat" class="form-control text-center bg-warning" onchange="sumaTotal3();" value="0" readonly></td>
+                                                                <td> <input type="number" name="totalpasivopat" id="totalpasivopat" class="form-control text-center bg-warning" onchange="sumaTotal3();" readonly></td>
                                                             </tr>
                                                         </tbody>
                                                     </table>
@@ -267,4 +295,4 @@
             </div>
         </div>
     </div>
-    </div>
+</div>
