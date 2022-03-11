@@ -145,6 +145,35 @@
                         </li>
                 <?php } ?>
 
+                <li class="nav-header" style="color: white;">OPERACIONES</li>
+                    <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-atlas"></i>
+                        <p style="margin-left:4px;">BALANCE<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                        <a href="estadofinanciero" class="nav-link ml-4">
+                            <i class="fas fa-globe"></i>
+                            <p style="margin-left:4px;">Estado Financiero</p>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="resultadosintegrales" class="nav-link ml-4">
+                            <i class="fas fa-globe"></i>
+                            <p style="margin-left:4px;">Resultados Integrales</p>
+                        </a>
+                        </li>
+                        <li class="nav-item">
+                        <a href="pagosactaimps" class="nav-link ml-4">
+                            <i class="fas fa-globe"></i>
+                            <p style="margin-left:4px;">Pagos - Acta - Impuestos</p>
+                        </a>
+                        </li>
+                    </ul>
+                    <li>
+                </li>
+
 
                 <?php if (in_array($_SESSION['iddepartamento'], [19, 13, 5, 8, 3, 20])) { ?>
                     <li class="nav-item">

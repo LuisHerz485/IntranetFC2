@@ -358,7 +358,7 @@ function sumarActiCorr()
       subtotal += parseFloat(element.value);
     }
   });
-  total90 = subtotal.toFixed(3);
+  total90 = subtotal.toFixed(2);
 
   $total.value = total90;
 }
@@ -375,8 +375,8 @@ function sumarActiNoCorr()
         subtotal += parseFloat(element.value);
     }
   });
-  numfix = (2*numres).toFixed(3);
-  total90 = (subtotal.toFixed(3) - (2*numres)).toFixed(3);
+  numfix = (2*numres).toFixed(2);
+  total90 = (subtotal.toFixed(2) - (2*numres)).toFixed(2);
 
   $total.value = total90;
 }
@@ -393,7 +393,7 @@ function sumarPasivo()
       subtotal += parseFloat(element.value);
     }
   });
-  total90 = subtotal.toFixed(3);
+  total90 = subtotal.toFixed(2);
 
   $total.value = total90;
 }
@@ -407,7 +407,7 @@ function sumarPasivoNoCorr(){
       subtotal += parseFloat(element.value);
     }
   });
-  total90 = subtotal.toFixed(3);
+  total90 = subtotal.toFixed(2);
 
   $total.value = total90;
 }
@@ -421,7 +421,7 @@ function sumarPatrimonio(){
       subtotal += parseFloat(element.value);
     }
   });
-  total90 = subtotal.toFixed(3);
+  total90 = subtotal.toFixed(2);
 
   $total.value = total90;
 }
@@ -431,27 +431,36 @@ function sumarPatrimonio(){
 function sumaTotal1(){
     let num1 = parseFloat(Number(document.getElementById('totalactivoc').value));
     let num2 = parseFloat(Number(document.getElementById('totalactivonoc').value));
-    let res = (num1 + num2).toFixed(3);
+    let res = (num1 + num2).toFixed(2);
 
     document.getElementById('totalactivo').value = res;
 }
 function sumaTotal2(){
   let num1 = parseFloat(Number(document.getElementById('totalpasivoc').value));
   let num2 = parseFloat(Number(document.getElementById('totalpasivonoc').value));
-  let res = (num1 + num2).toFixed(3);
+  let res = (num1 + num2).toFixed(2);
 
   document.getElementById('totalpasivo').value = res;
 }
 function sumaTotal3(){
   let num1 = parseFloat(Number(document.getElementById('totalpasivo').value));
   let num2 = parseFloat(Number(document.getElementById('totalpatrimo').value));
-  let res = (num1 + num2).toFixed(3);
+  let res = (num1 + num2).toFixed(2);
 
   document.getElementById('totalpasivopat').value = res;
 }
-//
-//////
 
+
+// DIFERENCIA DE PASIVO - ACTIVO
+
+function diferenciaAcpa()
+{
+  let num1 = parseFloat(Number(document.getElementById('totalactivo').value));
+  let num2 = parseFloat(Number(document.getElementById('totalpasivopat').value));
+  let res = (num1 - num2).toFixed(2);
+
+  document.getElementById('diferencia_acpa').value = res;
+}
 
 
 

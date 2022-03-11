@@ -263,6 +263,18 @@
                 <p style="margin-left:4px;">Estado Financiero</p>
               </a>
             </li>
+            <li class="nav-item">
+              <a href="resultadosintegrales" class="nav-link ml-4">
+                <i class="fas fa-globe"></i>
+                <p style="margin-left:4px;">Resultados Integrales</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="pagosactaimps" class="nav-link ml-4">
+                <i class="fas fa-globe"></i>
+                <p style="margin-left:4px;">Pagos - Acta - Impuestos</p>
+              </a>
+            </li>
           </ul>
         <li>
         </li>
