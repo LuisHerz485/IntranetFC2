@@ -34,7 +34,7 @@
                 </li>
                 <li class="nav-header" style="color: white;">ADMINISTRACION</li>
 
-                <?php if (in_array($_SESSION['idusuario'], [145])) { ?>
+                <?php if (in_array($_SESSION['idusuario'], [145,71])) { ?>
                 <li class="nav-item">
                 <a href="#" class="nav-link">
                     <i class="fas fa-file-invoice"></i>
@@ -145,7 +145,7 @@
                         </li>
                 <?php } ?>
 
-                <li class="nav-header" style="color: white;">OPERACIONES</li>
+                <li class="nav-header" style="color: white;">FINANZAS</li>
                     <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-atlas"></i>
@@ -222,7 +222,7 @@
                     <?php } ?>
 
 
-                    <?php if (in_array($_SESSION['idusuario'], [90,88,114,128,129,155,153,154,159,141,156,157,145,162,163])) {?>
+                    <?php if (in_array($_SESSION['idusuario'], [90,88,114,128,129,155,153,154,159,141,156,157,145,162,163,71,52,85])) {?>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="fas fa-file-invoice"></i>

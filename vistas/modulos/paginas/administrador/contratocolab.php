@@ -173,6 +173,18 @@
                                         <th>Estado</th>
                                         <th>Opciones</th>
                                     </tr>
+                                    <tr>
+                                        <th>Total:<?php 
+                                            
+                
+                                        ?></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
                                 </tfoot>
                             </table>    
                         </div>

@@ -68,10 +68,7 @@
                                                         </thead>
                                                         <tbody>
                                                         
-                                                            <tr>
-                                                                <td>Ventas Netas de Servicios</td>
-                                                                <td> <input type="number" name ="ventas_netas_servicios" id="ventas_netas_servicios" class="form-control text-center" value="0" onchange="sumarResulInte();"></td>                                                    
-                                                            </tr>
+                                                             
                                                             <tr>
                                                                 <td>Descuentos Concedidos</td>
                                                                 <td> <input type="number"  name ="descuentos_concedidos" id="descuentos_concedidos" class="form-control text-center" value="0" onchange="sumarResulInte();"></td> 

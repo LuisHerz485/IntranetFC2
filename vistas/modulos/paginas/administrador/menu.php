@@ -250,7 +250,7 @@
           </li>
         <?php } ?>
 
-        <li class="nav-header" style="color: white;">OPERACIONES</li>
+        <li class="nav-header" style="color: white;">FINANZAS</li>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="fas fa-atlas"></i>

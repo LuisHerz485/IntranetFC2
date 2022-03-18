@@ -169,4 +169,25 @@ class ModeloClientes
         return $ejecutado;
     }    
     
+
+    static public function mdlMostrarClienteParaPrueba(): mixed
+    {
+        $clientes = null;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $clientes = $conexion->getData("SELECT 
+                C.idcliente,
+                C.razonsocial
+                FROM cliente C");
+        } catch (PDOException $e) {
+            //echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $clientes;
+    }
 }

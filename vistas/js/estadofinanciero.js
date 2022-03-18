@@ -462,9 +462,16 @@ function diferenciaAcpa()
   document.getElementById('diferencia_acpa').value = res;
 }
 
+//FIN DEL JS DE ESTADO FINANCIERO
+
 
 
 $('#btnjsprueba').on('click', function () {
     $('#btnremove').addclass('d-none');
 });
   
+
+//generar pdf
+$('#btnPDFestadofinanciero').on('click', function () {
+  $('#frmestadofinanciero').trigger('submit');
+});
