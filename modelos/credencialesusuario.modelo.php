@@ -14,7 +14,7 @@ class modelocredencialesusuario{
             $conexion = new ConexionV2();
             $credencialesusuario = $conexion->getData("SELECT c.idcredenusuario, u.estado ,d.nombre , CONCAT(u.nombre,'',u.apellidos) AS nombrecompleto,u.login ,c.contrase 	FROM credenusuario c 
             INNER JOIN usuario u ON c.idusuario = u.idusuario
-            INNER JOIN departamento d ON d.iddepartamento = u.iddepartamento");
+            INNER JOIN departamento d ON d.iddepartamento = u.iddepartamento where u.estado =1");
         }catch (PDOException $e){
             echo $e->getMessage();
         }finally{

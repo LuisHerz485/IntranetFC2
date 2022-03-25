@@ -94,9 +94,10 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     include "vistas/modulos/paginas/salir.php";
   } else 
   if (isset($_SESSION['cliente']) && $_SESSION['cliente'] == "no") {
+    if ($_SESSION['idusuario'] != 114) {
     switch ($_SESSION['idtipousuario']) {
       case 1: {
-          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive", "cambiarhorario", "tardanzas", "consultaruc", "menuAsistencia", "menuChecklist", "menuCobranza", "menuIngreso", "cronogramaSunat", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "cronogramaAnualSunat", "liquidaciones", "listarliquidaciones", "declaracionAnualSunat", "planilla", "pasaje","listarpasaje","cronogramaLibros","cumpleanos","declaracionple","busquedacumple","cumplecliente","horariocolab","credencialesclientes","credencialesusuario","afp","estadofinanciero","contratocolab","calendario","resultadosintegrales","pagosactaimps","listarprueba","pruebapdf"];
+          $administradorGeneralRutas = ["escritorio", "usuarios", "tipousuario", "servicios",  "departamento", "asistencia", "clientes", "reportes", "generarCobranza", "mostrarcobranza", "mostrarpagado", "ingreso", "ingresocliente", "ingresoanualcliente", "permisos", "permisos-pendientes", "checklist", "checklist-administrador", "checklist-jefe", "checklist-asignado", "admindrive", "cambiarhorario", "tardanzas", "consultaruc", "menuAsistencia", "menuChecklist", "menuCobranza", "menuIngreso", "cronogramaSunat", "declaracionSunatTributaria", "declaracionSunatLaboral", "reportesDeclaracion", "cronogramaAnualSunat", "liquidaciones", "listarliquidaciones", "declaracionAnualSunat", "planilla", "pasaje","listarpasaje","cronogramaLibros","cumpleanos","declaracionple","busquedacumple","cumplecliente","horariocolab","credencialesclientes","credencialesusuario","afp","estadofinanciero","contratocolab","calendario","resultadosintegrales","pagosactaimps","listarprueba","pruebapdf","cuentasporpagar","facturas"];
           include "vistas/modulos/paginas/administrador/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $administradorGeneralRutas)) {
             include "vistas/modulos/paginas/administrador/" . $_GET['ruta'] . ".php";
@@ -148,14 +149,30 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
       default: {
           include "vistas/modulos/paginas/salir.php";
         }
+      }
     }
   } else {
-    $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados","consultaruc", "drivecliente"];
-    include "vistas/modulos/paginas/cliente/menu.php";
-    if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
-      include "vistas/modulos/paginas/cliente/" . $_GET['ruta'] . ".php";
-    } else {
-      include "vistas/modulos/paginas/404.php";
+    if ($_SESSION['idcliente'] == 180) {
+      $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados","consultaruc", "drivecliente","cuentasporpagar"];
+      {
+        include "vistas/modulos/paginas/cliente/menu.php";
+          if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
+          include "vistas/modulos/paginas/cliente/" . $_GET['ruta'] . ".php";
+        } else {
+          include "vistas/modulos/paginas/404.php";
+        }
+      }
+    }
+    else {
+      $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados","consultaruc", "drivecliente"];
+      {
+        include "vistas/modulos/paginas/cliente/menu.php";
+          if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
+          include "vistas/modulos/paginas/cliente/" . $_GET['ruta'] . ".php";
+        } else {
+          include "vistas/modulos/paginas/404.php";
+        }
+      }
     }
   }
   include "vistas/modulos/templates/footer.php";
@@ -212,6 +229,9 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/resultadosintegrales.js?v=1.1"></script>
 <script src="vistas/js/afp.js?v=1.1"></script>
 <script src="vistas/js/pagosactaimps.js?v=1.1"></script>
+<script src="vistas/js/pruebapdf.js?v=1.1"></script>
+<script src="vistas/js/cuentasporpagar.js?v=1.1"></script>
+<script src="vistas/js/facturas.js?v=1.1"></script>
 
 
 

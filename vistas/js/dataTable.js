@@ -3937,8 +3937,9 @@ $('.tablaDataPrueba').DataTable({
           '15%',
           '15%',
           '15%',
-          '15%',
-          '15%',
+          '10%',
+          '10%',
+          '10%',
         ];
         doc.watermark = {
           text: 'FC Contadores & Asociados',

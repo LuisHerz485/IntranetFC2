@@ -47,7 +47,7 @@ class ModeloCumpleanos
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $cumpleanos = $conexion->getData("SELECT CU.idcumpleanos, CU.idusuario, CU.fechacumple, CONCAT(U.nombre,'',U.apellidos) AS nombrecompleto, U.imagen FROM cumpleanos AS CU INNER JOIN usuario U ON U.idusuario = CU.idusuario");
+            $cumpleanos = $conexion->getData("SELECT CU.idcumpleanos, CU.idusuario, CU.fechacumple, CONCAT(U.nombre,'',U.apellidos) AS nombrecompleto, U.imagen FROM cumpleanos AS CU INNER JOIN usuario U ON U.idusuario = CU.idusuario where U.estado =1");
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {

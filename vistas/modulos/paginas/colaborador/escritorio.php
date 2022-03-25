@@ -71,7 +71,7 @@
                     </a>
                 </div>
 
-                <?php if (in_array($_SESSION['idusuario'], [114,90,128])) {?>
+                <?php if (in_array($_SESSION['idusuario'], [90,128,52,82])) {?>
                 <div class="col-xl-1 col-lg-1 col-md-1"></div>
                 <div class="col-xl-5 col-lg-5 col-md-5 col-sm-12 col-xs-12">
                     <a href="clientes" class="small-box bg-success">

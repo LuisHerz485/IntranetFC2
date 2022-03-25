@@ -31,6 +31,8 @@ require_once "controladores/credencialesclientes.controlador.php";
 require_once "controladores/credencialesusuario.controlador.php";
 require_once "controladores/afp.controlador.php";
 require_once "controladores/contratousuario.controlador.php";
+require_once "controladores/facturas.controlador.php";
+require_once "controladores/cuentasporpagar.controlador.php";
 
 require_once "modelos/usuarios.modelo.php";
 require_once "modelos/departamento.modelo.php";
@@ -63,6 +65,10 @@ require_once "modelos/credencialesclientes.modelo.php";
 require_once "modelos/credencialesusuario.modelo.php";
 require_once "modelos/afp.modelo.php";
 require_once "modelos/contratousuario.modelo.php";
+require_once "modelos/facturas.modelo.php";
+require_once "modelos/cuentasporpagar.modelo.php";
+
+
 
 
 

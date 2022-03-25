@@ -49,7 +49,7 @@ class modelocumplecliente{
         try {
             $conexion = new ConexionV2();
             $cumplecliente = $conexion->getData("SELECT C.idcumplecliente,C.idcliente,C.fechacumplecliente,CL.razonsocial,CL.imagen FROM cumplecliente AS C
-            INNER JOIN cliente CL ON CL.idcliente = C.idcliente ");
+            INNER JOIN cliente CL ON CL.idcliente = C.idcliente where CL.estado =1");
         }
         catch (PDOException $e) {
             echo $e->getMessage();
