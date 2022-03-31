@@ -36,7 +36,7 @@
 													</div>
 												</div>
 												<div>
-													<button type="submit" class="btn btn-danger btn-block">Marcar</button>
+													<button id="btnmarcarasis" type="submit" class="btn btn-danger btn-block">Marcar</button>
 												</div>
 												<?php
 												$marcarAsistencia = new ControladorAsistencia();
@@ -85,3 +85,25 @@
 		</div>		
 	</div>
 </body>
+<script>
+	window.setInterval(
+    function(){
+      var d = new Date();
+      var hour = d.getHours()+':'+d.getMinutes()
+	  //hora desde 7:00 hasta 8:35 y desde 13:00 hasta 19:00
+      let houra = ['7:00'];
+	  let hourb = ['8:35'];
+	  let hourc = ['13:00'];
+	  let hourd = ['19:00'];
+      
+      if(hour>= houra && hour<= hourb){
+        document.getElementById('btnmarcarasis').style.display = 'block';
+      }else if (hour>= hourc && hour<= hourd){
+		document.getElementById('btnmarcarasis').style.display = 'block';
+	  }
+	  else{
+        document.getElementById('btnmarcarasis').style.display = 'none';
+      }
+	}
+	,2000);
+</script>

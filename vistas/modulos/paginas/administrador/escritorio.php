@@ -32,7 +32,7 @@
                 </div>
                 <div class="col-xl-1 col-lg-1 col-md-1"></div>
                 <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                    <a href="permisos-pendientes" class="small-box bg" style="background-color: rgb(204,0,0); color:white;">
+                    <a href="permisos-pendientes" class="small-box bg" style="background-color: #A569BD; color:white;">
                         <div class="inner text-white">
                             <h3>Permisos</h3>
                             <p>Permisos Pendientes: <span id="dashboardPermisos">0</span></p>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="col-xl-1 col-lg-1 col-md-1"></div>
                     <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                        <a href="planilla" class="small-box bg-success">
+                        <a href="planilla" class="small-box" style="background-color: #16A085; color:white;">
                             <div class="inner text-white">
                                 <h3>Planilla</h3>
                                 <p>Registro de Planilla <span id="dashboardPermisos"></span></p>
@@ -77,7 +77,7 @@
                     if ($_SESSION['idtipousuario'] == 1) { ?>
                         <div class="col-xl-2 col-lg-1 col-md-1"></div>
                         <div class="col-xl-4 col-lg-5 col-md-5 col-sm-12 col-xs-12">
-                            <a href="#" class="small-box bg-info" data-toggle="modal" data-target="#modalCobra">
+                            <a href="#" class="small-box" data-toggle="modal" data-target="#modalCobra" style="background-color: #F7DC6F; color:white;">
                                 <div class="inner  text-white">
                                 <h3>Tesoreria FC</h3>
                                 <p>Gestión de Cobranza</p>

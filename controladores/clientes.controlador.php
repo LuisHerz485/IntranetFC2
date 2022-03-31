@@ -248,4 +248,12 @@ class ControladorClientes
 			}
 		}
 	}
+
+	/*buscar cliente por id*/
+	public static function ctrbuscarclienteporid($id): mixed
+	{
+		$tabla = "cliente";
+		$respuesta = ModeloClientes::mdlbuscarclienteporid($tabla, $id);
+		return $respuesta;
+	}
 }

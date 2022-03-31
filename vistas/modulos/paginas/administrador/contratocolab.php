@@ -36,7 +36,7 @@
         if(controladorcontratocolab::ctreditarcontratocolab()){
             echo "<script>Swal.fire({
                 title: 'Editado!',
-                text: '¡Se Edito el contrato correctamente!',
+                text: '¡Se Edito el contrato correctamentessss!',
                 icon: 'success',
                 confirmButtonText: 'Ok',
             })</script>";
@@ -49,6 +49,22 @@
             })</script>";
         }
 
+    }else if(isset($_POST["btneliminarcontratocolab"])){
+        if(controladorcontratocolab::ctreliminarcontratocolab()){
+            echo "<script>Swal.fire({
+                title: 'Eliminado!',
+                text: '¡Se Elimino el contrato correctamente!',
+                icon: 'success',
+                confirmButtonText: 'Ok',
+            })</script>";
+        }else{
+            echo "<script>Swal.fire({
+                title: 'Error!',
+                text: '¡No se pudo eliminar el contrato!',
+                icon: 'error',
+                confirmButtonText: 'Ok',
+            })</script>";
+        }
     }
 
     ?>
@@ -75,7 +91,7 @@
                                                 }
                                             }
                                             ?>
-                                     </select>
+                                        </select>
                                     </div>
 
                                     <div class="col-12 col-lg-3">
@@ -125,6 +141,12 @@
                                 </div>
                             </div>
                         </form>
+
+                        <form method="POST" enctype="multipart/form-data">
+                            <input type="number"  class="d-none" id="idcontratousuario10" name="idcontratousuario10">
+                            <button type="submit"  class="d-none"id="btneliminarcontratocolab" name="btneliminarcontratocolab" ></button>
+                        </form>
+                        
                         <hr>
 
                         <div class="table-responsive">
@@ -146,18 +168,24 @@
                                     /*datos de tabla de contrato colaboradores */
                                     $contratocolab = controladorcontratocolab::ctrlistarcontratocolab();
                                     if($contratocolab){
+                                        $monto=0;
                                         foreach($contratocolab as $uncontratocolab){
                                             echo'<td>'.$uncontratocolab["nombrecompleto"].'</td>';
                                             echo'<td>'.$uncontratocolab["nombre"].'</td>';
                                             echo'<td>'.$uncontratocolab["iniciocontrato"].'</td>';
                                             echo'<td>'.$uncontratocolab["fincontrato"].'</td>';
                                             echo '<td>'.'S/. '.$uncontratocolab["Pago"].'</td>';
+                                            //sumar montos
+                                            $monto=$monto+$uncontratocolab["Pago"];
                                             if($uncontratocolab["estado"] == "1"){
                                                 echo '<td><button class="btn btn-success btn-sm">Activo</button></td>';
                                             }else{
                                                 echo '<td><button class="btn btn-danger btn-sm">Inactivo</button></td>';
                                             }
-                                            echo'<td>' . "<button type='button' class='btn btn-s btn-warning btn-editar-contratocolabs' dataContratoColab='" . json_encode($uncontratocolab) . "' ><i class='fas fa-edit'></i> </button>" . '</td>';
+                                            echo'<td>' . "
+                                            <button type='button' class='btn btn-s btn-warning btn-editar-contratocolab' dataContratoColab='" . json_encode($uncontratocolab) . "' ><i class='fas fa-edit'></i> </button>
+                                            <button type='button' class='btn btn-s btn-danger btn-eliminar-contratocolab' dataContratoColab='" . json_encode($uncontratocolab) . "' ><i class='fas fa-trash-alt'></i> </button>
+                                            " . '</td>';
                                             echo'</tr>';
                                         }
                                     }
@@ -173,20 +201,11 @@
                                         <th>Estado</th>
                                         <th>Opciones</th>
                                     </tr>
-                                    <tr>
-                                        <th>Total:<?php 
-                                            
-                
-                                        ?></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                    </tr>
                                 </tfoot>
-                            </table>    
+                            </table> 
+                            <div>
+                            TOTAL=<input type="text" class="form-control" id="total" name="total" value="S/. <?php echo $monto  ?>" readonly>
+                        </div>   
                         </div>
                         <div>
                             
@@ -197,37 +216,40 @@
             </div>
         </div>
     </div>
-<div class="modal fade" id="modaleditarcontratocolab" role="dialog">
-  <div class="modal-dialog">
-    <form role="form" method="post" enctype="multipart/form-data">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">EDITAR CONTRATO</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <div class="input-group">
-              <input class="form-control" type="hidden" name="idusuario5" id="idusuario5">                
-                <div><label>Fecha inicio Contrato</label>
-                <input type="date" class="form-control" name="iniciocontrato" id="iniciocontrato" required></div>
-                <br>
-                <div><label>Fecha fin Contrato</label>
-                <input type="date" class="form-control" name="fincontrato" id="fincontrato" required></div>
-                <br>
-                <div><label>Monto</label>
-                <input type="number" class="form-control" name="monto" id="monto" required></div>
+
+
+            <!--MODAL NO USADO EDITAR------>
+    <div class="modal fade" id="modaleditarcontratocolab" role="dialog">
+    <div class="modal-dialog">
+        <form role="form" method="post" enctype="multipart/form-data">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">EDITAR CONTRATO</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <div class="form-group">
+                <div class="input-group">
+                <input class="form-control" type="hidden" name="idusuario5" id="idusuario5">                
+                    <div><label>Fecha inicio Contrato</label>
+                    <input type="date" class="form-control" name="iniciocontrato" id="iniciocontrato" required></div>
+                    <br>
+                    <div><label>Fecha fin Contrato</label>
+                    <input type="date" class="form-control" name="fincontrato" id="fincontrato" required></div>
+                    <br>
+                    <div><label>Monto</label>
+                    <input type="number" class="form-control" name="monto" id="monto" required></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
+            <button type="submit" class="btn btn-primary" name="guardareditarcontrato" value="guardareditarcontrato" >Guardar</button>
             </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Salir</button>
-          <button type="submit" class="btn btn-primary" name="guardareditarcontrato" value="guardareditarcontrato" >Guardar</button>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
+        </form>
+    </div>
+    </div>
 </div>
 

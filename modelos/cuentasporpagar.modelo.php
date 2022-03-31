@@ -100,4 +100,24 @@ class modelocuentasporpagar{
         return $filaactualizada;
     }
 
+    //listar cuentas por pagar por tipo de documento
+    public static function mdlfiltrartipodoc(int $idtipodoc): mixed
+    {
+        $cuentasporpagar = null;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $cuentasporpagar = $conexion->getData("SELECT t.idtipodoccuentapp, cp.idcuentaporpagar, cp.ruc, cp.proovedor, t.tipodoc, cp.serie, cp.numdoc, cp.fechaemision, cp.base, cp.igv, cp.total, cp.estatus, cp.vencimiento, cp.fechapago FROM cuentasporpagar cp
+            INNER JOIN tipodoccuentapp t WHERE cp.idtipodoccuentapp = t.idtipodoccuentapp AND t.idtipodoccuentapp = ?", [$idtipodoc]);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $cuentasporpagar;
+    }
+
 }

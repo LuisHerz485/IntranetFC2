@@ -79,6 +79,7 @@
                                         <label><p id ="thcumpleanos">Seleccione Fecha de Cumpleaños</p></label>
                                         <input type="date" class="form-control" name="fechacumple" id="fechacumple">
                                     </div>
+                                    <input type="hidden" id="idcumpleanos">
 
 
                                     <div align="right" class="col-12 col-lg-4">
@@ -123,7 +124,10 @@
                                 if ($cumpleanos) {
                                     foreach ($cumpleanos as $uncumpleanos) {
                                         echo 
-                                       '<td >' . "<button type='button' class='btn btn-s btn-warning btn-editar-cumpleanos' dataCumpleanos='" . json_encode($uncumpleanos) . "' ><i class='fas fa-magic'></i> </button>" . '</td>
+                                       '<td >' . "
+                                       <button type='button' class='btn btn-s btn-warning btn-editar-cumpleanos' dataCumpleanos='" . json_encode($uncumpleanos) . "' ><i class='fas fa-magic'></i> </button>
+                                       <button type='button' class='btn btn-s btn-danger btn-eliminar-cumpleanos' dataCumpleanos='" . json_encode($uncumpleanos) . "' ><i class='fas fa-trash-alt'></i> </button>
+                                       " . '</td>
                                         <td style="color:black;">' . $uncumpleanos['nombrecompleto'] . '</td>
                                         <td style="color:black;">' . $uncumpleanos['fechacumple'] . '</td>';
                                         if ($uncumpleanos["imagen"] != "") {

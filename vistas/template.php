@@ -153,7 +153,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
     }
   } else {
     if ($_SESSION['idcliente'] == 180) {
-      $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados","consultaruc", "drivecliente","cuentasporpagar"];
+      $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados","consultaruc", "drivecliente","informacion","cuentasporpagar","cronogramaAnualSunat","cronogramaLibros","cronogramaSunat"];
       {
         include "vistas/modulos/paginas/cliente/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
@@ -164,7 +164,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
       }
     }
     else {
-      $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados","consultaruc", "drivecliente"];
+      $clienteRutas = ["escritorio", "tributaria", "laboral", "auditoria", "upload",  "pagospendientes", "pagosrealizados","consultaruc", "drivecliente","informacion","cronogramaAnualSunat","cronogramaLibros","cronogramaSunat"];
       {
         include "vistas/modulos/paginas/cliente/menu.php";
           if (isset($_GET['ruta']) && in_array($_GET['ruta'], $clienteRutas)) {
@@ -229,9 +229,7 @@ if (isset($_SESSION['iniciarSesion']) && $_SESSION['iniciarSesion'] == "ok") {
 <script src="vistas/js/resultadosintegrales.js?v=1.1"></script>
 <script src="vistas/js/afp.js?v=1.1"></script>
 <script src="vistas/js/pagosactaimps.js?v=1.1"></script>
-<script src="vistas/js/pruebapdf.js?v=1.1"></script>
 <script src="vistas/js/cuentasporpagar.js?v=1.1"></script>
-<script src="vistas/js/facturas.js?v=1.1"></script>
 
 
 

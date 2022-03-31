@@ -1,3 +1,8 @@
+<script>
+    window.onload=function() {
+            $('#listarregistros').trigger('click');
+	}
+</script>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -22,7 +27,8 @@
                     text: '¡Se Registro correctamente!',
                     icon: 'success',
                     confirmButtonText: 'Ok',
-                })</script>";
+                })
+                </script>";
         }else{
             echo "<script>Swal.fire({
                     title: 'Error!',
@@ -93,7 +99,7 @@
                                         <div class="col-12 col-xl-12">
                                             <div class="card card-primary">
                                                 <div class="card-body panel-body">
-                                                    <form id="cuentaporpagarform" method="POST" enctype="multipart/form-data">
+                                                        <form id="cuentaporpagarform" method="POST" enctype="multipart/form-data">
                                                         <!-- Ingresar cuentas por pagar a proovedores  -->
                                                         <table>
                                                             <thead>
@@ -160,26 +166,35 @@
                                                             </tbody>
                                                         </table>
                                                         <br>
+                                                        </form>
                                                         <div class="container-fluid" id="opcionesfiltrar">
-                                                            <div class="col-12 col-lg-3">
-                                                                <label>Seleccione tipo de documento:</label>
-                                                                <select name="idtipodoccuentaporpagar" id="idtipodoccuentaporpagar" class="form-control select2" required>
-                                                                    <option value="1">
-                                                                        <?php
-                                                                        $cuentasporpagar = modelocuentasporpagar::mdllistartipodoccuentaporpagar();
-                                                                        if ($cuentasporpagar) {
-                                                                            foreach ($cuentasporpagar as $cuentasporpagar) {
-                                                                                echo '<option value="' . $cuentasporpagar["idtipodoccuentapp"] . '">' . $cuentasporpagar["tipodoc"] . '</option>';
+                                                        <form id="formcuentaconsulta" method="POST">
+                                                                <div class="col-12 col-lg-3">
+                                                                    <label>Seleccione tipo de documento:</label>
+                                                                    <select name="idtipodoccuentaporpagar" id="idtipodoccuentaporpagar" class="form-control select2" required>
+                                                                        <option value="1">
+                                                                            <?php
+                                                                            $cuentasporpagar = modelocuentasporpagar::mdllistartipodoccuentaporpagar();
+                                                                            if ($cuentasporpagar) {
+                                                                                foreach ($cuentasporpagar as $cuentasporpagar) {
+                                                                                    echo '<option value="' . $cuentasporpagar["idtipodoccuentapp"] . '">' . $cuentasporpagar["tipodoc"] . '</option>';
+                                                                                }
                                                                             }
-                                                                        }
-                                                                        ?>
-                                                                </select>
-                                                                
-                                                            </div>
-                                                            <div class="col-12 col-lg-3">
-                                                                    <label>Opcion:</label>
-                                                                    <button type="button" class="btn btn-outline-danger  btn-block" id="btnfiltrarcuentas" name="btnfiltrarcuentas"><i class="fas fa-search"></i> Filtrar</button>
-                                                            </div>
+                                                                            ?>
+                                                                    </select>
+                                                                    
+                                                                </div>
+                                                                <div class="col-12 col-lg-3">
+                                                                        <label>Opcion:</label>
+                                                                        <button type="button" class="btn btn-outline-danger  btn-block" id="btnfiltrarcuentas" name="btnfiltrarcuentas"><i class="fas fa-search"></i> Filtrar</button>
+                                                                </div>
+
+                                                                <div>
+                                                                    <label>mostrar</label>
+                                                                    <button type="button" id="listarregistros"  name="listarregistros" class="btn btn-outline-primary btn-block">listar</button>
+                                                                </div>
+                                                        
+
                                                         </div>
                                                         <!-- Mostrar cuentas por pagar a proovedores  -->
                                                     
@@ -204,38 +219,8 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <?php
-                                                                    $cuentasporpagar = controladorcuentasporpagar::ctrlistarcuentasporpagar();
-                                                                    if($cuentasporpagar){
-                                                                        $monto=0;
-                                                                        foreach($cuentasporpagar as $cuentasporpagar){
-                                                                            echo '<tr>';
-                                                                            echo '<td>'.$cuentasporpagar["ruc"].'</td>';
-                                                                            echo '<td>'.$cuentasporpagar["proovedor"].'</td>';
-                                                                            echo '<td>'.$cuentasporpagar["tipodoc"].'</td>';
-                                                                            echo '<td>'.$cuentasporpagar["serie"].'</td>';
-                                                                            echo '<td>'.$cuentasporpagar["numdoc"].'</td>';
-                                                                            echo '<td>'.$cuentasporpagar["fechaemision"].'</td>';
-                                                                            echo '<td>S/.'.$cuentasporpagar["base"].'</td>';
-                                                                            echo '<td>S/.'.$cuentasporpagar["igv"].'</td>';
-                                                                            echo '<td>S/.'.$cuentasporpagar["total"].'</td>';
-                                                                            //suma para calcular el total
-                                                                            $monto+= $cuentasporpagar["total"];
 
-                                                                            echo '<td>'.$cuentasporpagar["estatus"].'</td>';
-                                                                            echo '<td>'.$cuentasporpagar["vencimiento"].'</td>';
-                                                                            echo '<td>'.$cuentasporpagar["fechapago"].'</td>';
-                                                                            echo '<td>
-                                                                                <div class="btn-group">'.
-                                                                                    "<button id='btneliminarcuentapp' name='btneliminarcuentapp' type='submit' class='btn btn-danger btn-sm btn-eliminar-cuentapp' datacuentapp='" . json_encode($cuentasporpagar) . "'><i class='fa fa-times'></i></button>
-                                                                                    <button id='btnmodificarcuentapp' name='btnmodificarcuentapp' type='button' class='btn btn-warning btn-sm btn-modificar-cuentapp' datacuentapp='" . json_encode($cuentasporpagar) . "'><i class='fa fa-pencil'></i></button>
-                                                                                    
-                                                                                </div>"
-                                                                            .'</td>';
-                                                                            echo '</tr>';
-                                                                        }
-                                                                    }
-                                                                    ?>
+
                                                                 </tbody>
                                                                 <tfoot>
                                                                     <tr style="background-color: OrangeRed; color:white;">
@@ -253,32 +238,49 @@
                                                                     <th>Fecha Pago</th>
                                                                     <th class= "no-exportar">Opciones</th>
                                                                     </tr>
+                                                                </tfoot>
 
+                                                            </table>
+                                                            <table>
+                                                                <thead>
                                                                     <tr>
                                                                     <th></th>
                                                                     <th></th>
                                                                     <th></th>
                                                                     <th></th>
                                                                     <th></th>
-                                                                    <th>TOTAL</th>
+                                                                    <th></th>
                                                                     <th>Base</th>
                                                                     <th>IGV</th>
-                                                                    <th><?php if ($monto == 0){
-                                                                            echo '0.00';
-                                                                        }else{
-                                                                            echo 'S/.', $monto;
-                                                                        } ?></th>
+                                                                    <th>TOTAL</th>
                                                                     <th></th>
                                                                     <th></th>
                                                                     <th></th>
                                                                     <th></th>
                                                                     </tr>
-                                                                </tfoot>
-
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                    <th></th>
+                                                                    <th></th>
+                                                                    <th></th>
+                                                                    <th></th>
+                                                                    <th></th>
+                                                                    <th></th>
+                                                                    <th><input class="form-control" id="totaltotalbase"></th>
+                                                                    <th><input class="form-control" id="totaltotaligv"></th>
+                                                                    <th><input class="form-control" id="totaltotal123" onchange="basetotaltotal();"></th>
+                                                                    <th></th>
+                                                                    <th></th>
+                                                                    <th></th>
+                                                                    <th></th>
+                                                                    </tr>
+                                                                </tbody>
                                                             </table>
 
                                                         </div>
-                                                    </form>
+                                                        </form>
+                                                    
                                                 </div>
                                             </div>
                                         </div>
@@ -288,6 +290,31 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--modal eliminar registro  cuenta por pagar -->
+<div class="modal fade" id="modaleliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar Cuenta por pagar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="frmeliminarcuentasporpagar" name="frmeliminarcuentasporpagar">
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">¿Esta seguro de eliminar el registro?</label>
+                        <input type="text" class="form-control" id="idcuentasporpagar" name="idcuentasporpagar" hidden>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

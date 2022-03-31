@@ -27,7 +27,11 @@ if(isset($_POST["opcion"])){
         }
         case "eliminarcuentaporpagar":{
             http_response_code(200);
-            echo json_encode(["respuesta" => controladorcuentasporpagar::ctreliminarcuentaporpagar()]);
+            echo json_encode(["respuesta" => controladorcuentasporpagar::ctreliminarcuentaporpagar($idcuentapp)]);
+        }
+        case "filtrartipodoc":{
+            http_response_code(200);
+            echo json_encode(["respuesta" => controladorcuentasporpagar::ctrfiltrartipodoc()]);
         }
         default: {
             break;

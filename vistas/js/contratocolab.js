@@ -1,10 +1,10 @@
 
 //boton editar contrato colab
-$(document).on('click', '.btn-editar-contratocolabs', function () {
+$(document).on('click', '.btn-editar-contratocolab', function () {
     let dataContratoColab = JSON.parse($(this).attr('dataContratoColab'));
     if (dataContratoColab) {
         $('#idcontratousuario').val(dataContratoColab['idcontratousuario']);
-        $('#idusuario2').val(dataContratoColab['idusuario']).trigger('change');
+        $('#idusuario').val(dataContratoColab['idusuario']).trigger('change');
         $('#iniciocontrato').val(dataContratoColab['iniciocontrato']);
         $('#fincontrato').val(dataContratoColab['fincontrato']);
         $('#Pago').val(dataContratoColab['Pago']);
@@ -19,12 +19,23 @@ $('#btncancelarcontratocolab').on('click', function () {
     $('#btnlimpiarformcontratocolab').trigger('click');
 });
 
-//editar con modal
-$(document).on('click', '.btn-editar-contratocolab', function () {
+//eliminar contrato colab
+$(document).on('click', '.btn-eliminar-contratocolab', function () {
+    let dataContratoColab = JSON.parse($(this).attr('dataContratoColab'));
+    if (dataContratoColab) {
+        $('#idcontratousuario10').val(dataContratoColab['idcontratousuario']).trigger('change');
+    }
+    //trigerclick boton eliminar
+    $('#btneliminarcontratocolab').trigger('click');
+
+});
+
+//editar con modal no funcionan
+$(document).on('click', '.btn-editar-contratocolabssss', function () {
     let btn=$(this);
     $("#modaleditarcontratocolab").modal("show");
 });
-$(".btn-editar-contratocolab").click(function () {
+$(".btn-editar-contratocolabsssss").click(function () {
     var idcontratousuario = $(this).attr("idcontratousuario");
     var datos = new FormData();
     datos.append("idcontratousuario", idcontratousuario);

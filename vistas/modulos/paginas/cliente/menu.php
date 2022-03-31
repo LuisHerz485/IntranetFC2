@@ -41,6 +41,14 @@
                     </a>
                 </li>
 
+                <li class="nav-header" style="color: white;">MI INFORMACIÓN</li>
+                <li class="nav-item">
+                    <a href="informacion" class="nav-link">
+                        <i class="fas fa-book-reader"></i>
+                        <p>Información</p>
+                    </a>
+                </li>
+
                 <li class="nav-header" style="color: white;">PAGOS</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -77,6 +85,34 @@
                         </li>
                     </ul>
                 </li>
+
+                <li class="nav-item">
+                <a href="#" class="nav-link">
+                    <i class="fas fa-calendar-alt"></i>
+                    <p style="margin-left:4px;">Cronograma<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                    <a href="cronogramaSunat" class="nav-link ml-4">
+                        <i class="far fa-calendar"></i>
+                        <p style="margin-left:4px;">Cronograma Mensual</p>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="cronogramaAnualSunat" class="nav-link ml-4">
+                        <i class="far fa-calendar"></i>
+                        <p style="margin-left:4px;">Cronograma Anual</p>
+                    </a>
+                    </li>
+                    <li class="nav-item">
+                    <a href="cronogramaLibros" class="nav-link ml-4">
+                        <i class="far fa-calendar"></i>
+                        <p style="margin-left:4px;">Cronograma Ple-Sunat</p>
+                    </a>
+                    </li>
+                </ul>
+                </li>
+
                 <li class="nav-header" style="color: white;">AYUDA</li>
                 <li class="nav-item">
                     <a href="https://www.youtube.com/watch?v=VwHqLrttPJo&amp;ab_channel=FCCONTADORESYASOCIADOS" target="_blank" class="nav-link">

@@ -41,7 +41,7 @@ class controladorcuentasporpagar
     public static function ctreliminarcuentaporpagar():int|false
     {
         $data= ControladorValidacion::validar([
-            "idcuentaporpagar"=>"enteroPositivo"
+            "idcuentapp"=>"enteroPositivo"
         ]);
         if(is_array($data) && !in_array(false,$data,true)){
             return modelocuentasporpagar::mdleliminarcuentaporpagar($data);
@@ -75,6 +75,16 @@ class controladorcuentasporpagar
             }
         }
         return false;
+    }
+    //listar cuentas por pagar por tipo de documento
+
+    public static function ctrfiltrartipodoc(): mixed
+    {
+        if(isset($_POST["idtipodoccuentaporpagar"]))
+        {
+            $idtipodoc = $_POST["idtipodoccuentaporpagar"];
+            return modelocuentasporpagar::mdlfiltrartipodoc($idtipodoc);
+        }
     }
 }
 ?>

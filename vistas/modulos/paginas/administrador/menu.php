@@ -32,43 +32,65 @@
             </h5>
           </a>
         </li>
-        <li class="nav-header" style="color: white;">ADMINISTRACIÓN</li>
+        <li class="nav-header" style="color: white;">CREDENCIALES</li>
         <?php if (in_array($_SESSION['idusuario'], [16,54,152,56,151,164])) { ?>
-        <li class="nav-item">
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="fas fa-file-invoice"></i>
+              <p style="margin-left:4px;">INTRANET<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="credencialesclientes" class="nav-link ml-4">
+                  <i class="fas fa-landmark"></i>
+                  <p style="margin-left:4px;">Clientes</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="credencialesusuario" class="nav-link ml-4">
+                  <i class="fas fa-landmark"></i>
+                  <p style="margin-left:4px;">Usuarios</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+        <?php } ?>
+        
+        <?php if (in_array($_SESSION['idusuario'], [16,54,152,56,164])) { ?>
+        <li class="nav-header" style="color: white;">GERENCIA</li>
+        <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
-            <i class="fas fa-file-invoice"></i>
-            <p style="margin-left:4px;">Credenciales<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
+            <i class="fas fa-building"></i>
+            <p style="font-size: 14px; margin-left:4px;">COLABORADORES<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="credencialesclientes" class="nav-link ml-4">
-                <i class="fas fa-landmark"></i>
-                <p style="margin-left:4px;">Clientes</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="credencialesusuario" class="nav-link ml-4">
-                <i class="fas fa-landmark"></i>
-                <p style="margin-left:4px;">Usuarios</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="afp" class="nav-link ml-4">
-                <i class="fas fa-user-circle"></i>
-                <p style="margin-left:4px;">AFP</p>
-              </a>
-            </li>
-            <li class="nav-item">
               <a href="contratocolab" class="nav-link ml-4">
-                <i class="fas fa-user-circle"></i>
-                <p style="margin-left:4px;">Contrato colaboradores</p>
+                <i class="fas fa-home"></i>
+                <p style="margin-left:6px;">Contrato colaboradores</p>
               </a>
-
             </li>
           </ul>
         </li>
-        <?php } ?>
+        <?php } ?> 
+        <?php if (in_array($_SESSION['idusuario'], [16,54,152,164])) { ?>
+        <li class="nav-item has-treeview"> 
+          <a href="#" class="nav-link">
+            <i class="fas fa-building"></i>
+            <p style="font-size: 14px; margin-left:4px;">CUENTAS POR PAGAR<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="cuentasporpagar" class="nav-link ml-4">
+                <i class="fas fa-home"></i>
+                <p style="margin-left:6px;">Pineda</p>
+              </a>
+            </li>
+          </ul>  
+        </li>
+        <?php } ?> 
 
+        <li class="nav-header" style="color: white;">ADMINISTRACIÓN</li>
         <li class="nav-item has-treeview">
           <a href="#" class="nav-link">
             <i class="fas fa-building"></i>
@@ -204,6 +226,31 @@
         </ul>
       </li>
       <?php } ?>
+
+
+      <li class="nav-header" style="color: white;">CONTABILIDAD</li>
+        <li class="nav-item has-treeview">
+          <a href="#" class="nav-link">
+            <i class="fas fa-building"></i>
+            <p style="font-size: 14px; margin-left:4px;">Cuentas<i class="right fas fa-caret-left" style="font-size: 20px;"></i></p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="facturas" class="nav-link ml-4">
+                <i class="fas fa-landmark"></i>
+                <p style="margin-left:4px;">FACTURADORES</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="afp" class="nav-link ml-4">
+                <i class="fas fa-user-circle"></i>
+                <p style="margin-left:4px;">AFP</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </li>
+
       <?php if ($_SESSION['idtipousuario'] != 4 || $_SESSION['iddepartamento'] == 15) { ?>
         <li class="nav-header" style="color: white;">Drive</li>
         <li class="nav-item has-treeview">
@@ -272,7 +319,7 @@
             <li class="nav-item">
               <a href="pagosactaimps" class="nav-link ml-4">
                 <i class="fas fa-globe"></i>
-                <p style="margin-left:4px;">Pagos - Acta - Impuestos</p>
+                <p style="margin-left:4px;">Pagos a cuenta</p>
               </a>
             </li>
           </ul>

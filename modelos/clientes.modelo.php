@@ -170,16 +170,22 @@ class ModeloClientes
     }    
     
 
-    static public function mdlMostrarClienteParaPrueba(): mixed
+    /*buscar cliente por id */
+    static public function mdlBuscarClientePorId($tabla, $datos)
     {
-        $clientes = null;
+        $stmt = conexion::conectar()->prepare("SELECT * FROM $tabla WHERE idcliente=:idcliente");
+        $stmt->bindParam(":idcliente", $datos, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
+
+    /*static public function mdlMostrarClientePorid(int $idcliente): int|false
+    {
+        $clientes = false;
         $conexion = null;
         try {
             $conexion = new ConexionV2();
-            $clientes = $conexion->getData("SELECT 
-                C.idcliente,
-                C.razonsocial
-                FROM cliente C");
+            $clientes = $conexion->getData("SELECT C.idcliente,C.razonsocial, C.ruc, C.usuariosunat, C.clavesunat FROM cliente C where idcliente = ?", [$idcliente]);
         } catch (PDOException $e) {
             //echo $e->getMessage();
         } finally {
@@ -189,5 +195,5 @@ class ModeloClientes
             }
         }
         return $clientes;
-    }
+    }*/
 }

@@ -12,7 +12,7 @@ class modelocontratocolab{
             $conexion = new ConexionV2();
             $contratocolab = $conexion->getData("SELECT c.idcontratousuario ,c.idusuario, u.iddepartamento, d.nombre , CONCAT(u.nombre,' ',u.apellidos) AS nombrecompleto,  u.estado, c.iniciocontrato, c.fincontrato, c.Pago FROM contratousuario c 
             INNER JOIN usuario u ON c.idusuario = u.idusuario
-            INNER JOIN departamento d ON d.iddepartamento = u.iddepartamento");
+            INNER JOIN departamento d ON d.iddepartamento = u.iddepartamento where u.estado =1");
         } catch (PDOException $e){
             //echo $e->getMessage();
         } finally {
@@ -81,6 +81,26 @@ class modelocontratocolab{
             }
         }
         return $uncontratocolab;
+    }
+
+    //eliminar contrato colab por id
+    public static function mdleliminarcontratocolab(array $datos):mixed
+    {
+        $filasEliminadas = false;
+        $conexion = null;
+        try {
+            $conexion = new ConexionV2();
+            $filasEliminadas = $conexion->updateOrDelete("DELETE FROM contratousuario WHERE idcontratousuario=?;", $datos);
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        } finally {
+            if ($conexion) {
+                $conexion->close();
+                $conexion = null;
+            }
+        }
+        return $filasEliminadas;
+
     }
 
 

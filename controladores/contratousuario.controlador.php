@@ -55,5 +55,18 @@ class controladorcontratocolab
         }
         return null;
     }
+
+
+    //eliminar contrato de colaborador por id
+    public static function ctreliminarcontratocolab():mixed
+    {
+        $data=ControladorValidacion::validar([
+            "idcontratousuario10"=>"enteroPositivo",
+        ]);
+        if(is_array($data) && !in_array(false,$data,true)){
+            return modelocontratocolab::mdleliminarcontratocolab($data);
+        }
+        return false;
+    }
 }
 ?>

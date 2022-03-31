@@ -163,7 +163,7 @@
                                         '
                                         <tr>
                                             <td>'.$factura["razonsocial"].'</td>
-                                            <td><a href='.$factura['portal'].' target="_blank"></a></td>
+                                            <td>'.$factura['portal'].'</a></td>
                                             <td>'.$factura["usuariofacturas"].'</td>
                                             <td>'.$factura["contrasefacturas"].'</td>
                                             <td>
